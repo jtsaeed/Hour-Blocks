@@ -1,0 +1,608 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2338BEBC220A7840004F288F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEBB220A7840004F288F /* AppDelegate.swift */; };
+		2338BEBE220A7840004F288F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEBD220A7840004F288F /* ViewController.swift */; };
+		2338BEC1220A7840004F288F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2338BEBF220A7840004F288F /* Main.storyboard */; };
+		2338BEC4220A7840004F288F /* neon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEC2220A7840004F288F /* neon.xcdatamodeld */; };
+		2338BEC6220A7841004F288F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2338BEC5220A7841004F288F /* Assets.xcassets */; };
+		2338BEC9220A7841004F288F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2338BEC7220A7841004F288F /* LaunchScreen.storyboard */; };
+		2338BED4220A7841004F288F /* neonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338BED3220A7841004F288F /* neonTests.swift */; };
+		2338BEDF220A7841004F288F /* neonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEDE220A7841004F288F /* neonUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2338BED0220A7841004F288F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2338BEB0220A7840004F288F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2338BEB7220A7840004F288F;
+			remoteInfo = neon;
+		};
+		2338BEDB220A7841004F288F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2338BEB0220A7840004F288F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2338BEB7220A7840004F288F;
+			remoteInfo = neon;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2338BEB8220A7840004F288F /* neon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = neon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2338BEBB220A7840004F288F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2338BEBD220A7840004F288F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2338BEC0220A7840004F288F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2338BEC3220A7840004F288F /* neon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = neon.xcdatamodel; sourceTree = "<group>"; };
+		2338BEC5220A7841004F288F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2338BEC8220A7841004F288F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2338BECA220A7841004F288F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2338BECF220A7841004F288F /* neonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = neonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2338BED3220A7841004F288F /* neonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = neonTests.swift; sourceTree = "<group>"; };
+		2338BED5220A7841004F288F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2338BEDA220A7841004F288F /* neonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = neonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2338BEDE220A7841004F288F /* neonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = neonUITests.swift; sourceTree = "<group>"; };
+		2338BEE0220A7841004F288F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2338BEB5220A7840004F288F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2338BECC220A7841004F288F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2338BED7220A7841004F288F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2338BEAF220A7840004F288F = {
+			isa = PBXGroup;
+			children = (
+				2338BEBA220A7840004F288F /* neon */,
+				2338BED2220A7841004F288F /* neonTests */,
+				2338BEDD220A7841004F288F /* neonUITests */,
+				2338BEB9220A7840004F288F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2338BEB9220A7840004F288F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2338BEB8220A7840004F288F /* neon.app */,
+				2338BECF220A7841004F288F /* neonTests.xctest */,
+				2338BEDA220A7841004F288F /* neonUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2338BEBA220A7840004F288F /* neon */ = {
+			isa = PBXGroup;
+			children = (
+				2338BEBB220A7840004F288F /* AppDelegate.swift */,
+				2338BEBD220A7840004F288F /* ViewController.swift */,
+				2338BEBF220A7840004F288F /* Main.storyboard */,
+				2338BEC5220A7841004F288F /* Assets.xcassets */,
+				2338BEC7220A7841004F288F /* LaunchScreen.storyboard */,
+				2338BECA220A7841004F288F /* Info.plist */,
+				2338BEC2220A7840004F288F /* neon.xcdatamodeld */,
+			);
+			path = neon;
+			sourceTree = "<group>";
+		};
+		2338BED2220A7841004F288F /* neonTests */ = {
+			isa = PBXGroup;
+			children = (
+				2338BED3220A7841004F288F /* neonTests.swift */,
+				2338BED5220A7841004F288F /* Info.plist */,
+			);
+			path = neonTests;
+			sourceTree = "<group>";
+		};
+		2338BEDD220A7841004F288F /* neonUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2338BEDE220A7841004F288F /* neonUITests.swift */,
+				2338BEE0220A7841004F288F /* Info.plist */,
+			);
+			path = neonUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2338BEB7220A7840004F288F /* neon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2338BEE3220A7841004F288F /* Build configuration list for PBXNativeTarget "neon" */;
+			buildPhases = (
+				2338BEB4220A7840004F288F /* Sources */,
+				2338BEB5220A7840004F288F /* Frameworks */,
+				2338BEB6220A7840004F288F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = neon;
+			productName = neon;
+			productReference = 2338BEB8220A7840004F288F /* neon.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2338BECE220A7841004F288F /* neonTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2338BEE6220A7841004F288F /* Build configuration list for PBXNativeTarget "neonTests" */;
+			buildPhases = (
+				2338BECB220A7841004F288F /* Sources */,
+				2338BECC220A7841004F288F /* Frameworks */,
+				2338BECD220A7841004F288F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2338BED1220A7841004F288F /* PBXTargetDependency */,
+			);
+			name = neonTests;
+			productName = neonTests;
+			productReference = 2338BECF220A7841004F288F /* neonTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2338BED9220A7841004F288F /* neonUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2338BEE9220A7841004F288F /* Build configuration list for PBXNativeTarget "neonUITests" */;
+			buildPhases = (
+				2338BED6220A7841004F288F /* Sources */,
+				2338BED7220A7841004F288F /* Frameworks */,
+				2338BED8220A7841004F288F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2338BEDC220A7841004F288F /* PBXTargetDependency */,
+			);
+			name = neonUITests;
+			productName = neonUITests;
+			productReference = 2338BEDA220A7841004F288F /* neonUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2338BEB0220A7840004F288F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "James Saeed";
+				TargetAttributes = {
+					2338BEB7220A7840004F288F = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					2338BECE220A7841004F288F = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 2338BEB7220A7840004F288F;
+					};
+					2338BED9220A7841004F288F = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 2338BEB7220A7840004F288F;
+					};
+				};
+			};
+			buildConfigurationList = 2338BEB3220A7840004F288F /* Build configuration list for PBXProject "neon" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2338BEAF220A7840004F288F;
+			productRefGroup = 2338BEB9220A7840004F288F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2338BEB7220A7840004F288F /* neon */,
+				2338BECE220A7841004F288F /* neonTests */,
+				2338BED9220A7841004F288F /* neonUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2338BEB6220A7840004F288F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2338BEC9220A7841004F288F /* LaunchScreen.storyboard in Resources */,
+				2338BEC6220A7841004F288F /* Assets.xcassets in Resources */,
+				2338BEC1220A7840004F288F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2338BECD220A7841004F288F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2338BED8220A7841004F288F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2338BEB4220A7840004F288F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2338BEC4220A7840004F288F /* neon.xcdatamodeld in Sources */,
+				2338BEBE220A7840004F288F /* ViewController.swift in Sources */,
+				2338BEBC220A7840004F288F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2338BECB220A7841004F288F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2338BED4220A7841004F288F /* neonTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2338BED6220A7841004F288F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2338BEDF220A7841004F288F /* neonUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2338BED1220A7841004F288F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2338BEB7220A7840004F288F /* neon */;
+			targetProxy = 2338BED0220A7841004F288F /* PBXContainerItemProxy */;
+		};
+		2338BEDC220A7841004F288F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2338BEB7220A7840004F288F /* neon */;
+			targetProxy = 2338BEDB220A7841004F288F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2338BEBF220A7840004F288F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2338BEC0220A7840004F288F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2338BEC7220A7841004F288F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2338BEC8220A7841004F288F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2338BEE1220A7841004F288F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2338BEE2220A7841004F288F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2338BEE4220A7841004F288F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 577WSH643L;
+				INFOPLIST_FILE = neon/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2338BEE5220A7841004F288F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 577WSH643L;
+				INFOPLIST_FILE = neon/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2338BEE7220A7841004F288F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 577WSH643L;
+				INFOPLIST_FILE = neonTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neonTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/neon.app/neon";
+			};
+			name = Debug;
+		};
+		2338BEE8220A7841004F288F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 577WSH643L;
+				INFOPLIST_FILE = neonTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neonTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/neon.app/neon";
+			};
+			name = Release;
+		};
+		2338BEEA220A7841004F288F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 577WSH643L;
+				INFOPLIST_FILE = neonUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neonUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = neon;
+			};
+			name = Debug;
+		};
+		2338BEEB220A7841004F288F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 577WSH643L;
+				INFOPLIST_FILE = neonUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neonUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = neon;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2338BEB3220A7840004F288F /* Build configuration list for PBXProject "neon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2338BEE1220A7841004F288F /* Debug */,
+				2338BEE2220A7841004F288F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2338BEE3220A7841004F288F /* Build configuration list for PBXNativeTarget "neon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2338BEE4220A7841004F288F /* Debug */,
+				2338BEE5220A7841004F288F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2338BEE6220A7841004F288F /* Build configuration list for PBXNativeTarget "neonTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2338BEE7220A7841004F288F /* Debug */,
+				2338BEE8220A7841004F288F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2338BEE9220A7841004F288F /* Build configuration list for PBXNativeTarget "neonUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2338BEEA220A7841004F288F /* Debug */,
+				2338BEEB220A7841004F288F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2338BEC2220A7840004F288F /* neon.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2338BEC3220A7840004F288F /* neon.xcdatamodel */,
+			);
+			currentVersion = 2338BEC3220A7840004F288F /* neon.xcdatamodel */;
+			path = neon.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 2338BEB0220A7840004F288F /* Project object */;
+}
