@@ -1,0 +1,1412 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0602DE9DB9D7134F409590756E80F170 /* MalertQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3A3682A77CD44AC0550D49EC6DA8A1 /* MalertQueue.swift */; };
+		07A2145A53A9CA02E927DBCAFF4518E9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71718B9E3FAB7579AD2AB189F0C1D461 /* Extensions.swift */; };
+		07A3D5F4156ACDD6A6EE5D9631E6D4F1 /* SwipeCollectionViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387473B275D6895B209996494947AEF3 /* SwipeCollectionViewCellDelegate.swift */; };
+		097BBF5D0F514EDE4C1D6192761EA71A /* MalertDimissTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3B9F7BE25CB85D8622328716D3063D /* MalertDimissTransitioning.swift */; };
+		0E18E09555C951B1E19CAF205657F341 /* SwipeTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E62CD9ED3FF083C860661F83761E56 /* SwipeTableViewCellDelegate.swift */; };
+		0F23F6290A2B7D2AB682C2434BCA8F7F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E67679F67619178DFCFBAB7DCCC8457 /* Extensions.swift */; };
+		12771D0574C5EE1A5E2D5A8EA03ABC32 /* BaseTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5DA9A84D4CFB9FB9397C90F5DD8D16 /* BaseTransitioning.swift */; };
+		12B77ADFA8207D0D7C36F29A95DFFA7C /* SwipeCollectionViewCell+Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236FFD6A1018C3EA29C3449CFE37F64E /* SwipeCollectionViewCell+Accessibility.swift */; };
+		15D187A70B714B05E05A1177B81E43F4 /* SwipeActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37313EE34EE2F9BF1465A2984ED835FA /* SwipeActionsView.swift */; };
+		1F011A4ED258CA3BCCDE8B02F3840791 /* SwipeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E9478EF5CD2EAEA08AD09FF87F6EC5 /* SwipeCollectionViewCell.swift */; };
+		22B117C077B6C39788F187C3CF0A0C73 /* SwipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BFA78D1CF4739129CB0C594EE049AF /* SwipeTableViewCell.swift */; };
+		2399A9E80A06F32A12C9DBA235CB8286 /* SwipeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505D470A109D90A0B112D661E4BE02D7 /* SwipeAction.swift */; };
+		23C85E4A3C0DFECC5224B2195D35BE22 /* Malert_brand.png in Resources */ = {isa = PBXBuildFile; fileRef = B9037DDAB3D7F98829DC3FE89C4BA0B6 /* Malert_brand.png */; };
+		26AB5C291E3125908DB21C7494A65F12 /* SwipeAccessibilityCustomAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ACCA86096D54BB3477741BE75C4230 /* SwipeAccessibilityCustomAction.swift */; };
+		27B6E70006ED5C959DFD6506D1272BC7 /* MalertPresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0820619310CA74CFE69707ED367620EA /* MalertPresentationManager.swift */; };
+		2F4A255F2CBBB9497FDA93D19FC02C37 /* SwipeActionTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8AD1B93F3E4CF6FC716B42BAA78199 /* SwipeActionTransitioning.swift */; };
+		3C6010F1CC538049778A08A8633925B5 /* SwipeActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3E2D36D46AAAC4048483CA41B7D06F /* SwipeActionButton.swift */; };
+		417A578474B370BA7834ADF722CFDA9A /* SwipeCollectionViewCell+Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B0E356A4204C12DC1E7AFF165CCABC /* SwipeCollectionViewCell+Display.swift */; };
+		4393D82DBE0BE453FD7D64EF0899540E /* Pods-neonUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 96FC68344C9BB10E53E9773064B72040 /* Pods-neonUITests-dummy.m */; };
+		43F8D76E84B7AEB1342A776D0FC0E5CF /* Malert-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F1CE33E88610F07DF24AAD886CE0BB /* Malert-dummy.m */; };
+		4AFDB337E9C7259BB26698E3FDCF653F /* SwipeCellKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C7B727B7C5D9EC70D8C6318208ABFC8 /* SwipeCellKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F16509EC122F2861906C8F064EACB09 /* MalertButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9284462FF8E3549CFB28D01F50133F66 /* MalertButtonView.swift */; };
+		51CDFFED3DEF2A6574D49D84B59F3129 /* MalertInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26628822F846538FB6F43C8683C26905 /* MalertInteractiveTransition.swift */; };
+		52BF6369D8F004119AFBB51EDDE775A7 /* MalertPresentTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCBD513E5C3CFEC05318C20998435C7 /* MalertPresentTransitioning.swift */; };
+		598501E4E64F5E622F951E673A8E4F88 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
+		5EF4EE7D62618E33F78CED38326A09C0 /* SwipeFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A448687C1E562244773756B6DDE91FE /* SwipeFeedback.swift */; };
+		678AF3BAD78FADD79BF12DB200DBF1F6 /* Pods-neonUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 11090DB8010C6C5C47DDAE2DE100ABB7 /* Pods-neonUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6AEB084FE00261AFB5D36F100E5BC81A /* SwipeTableViewCell+Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073192F5553C1CAE783ACF64738E0E50 /* SwipeTableViewCell+Accessibility.swift */; };
+		6E7A3A4CBB2CA19C5DBEC6F48A5E4575 /* SwipeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A2A6BE30AFB0C042BCEC4711CE00 /* SwipeController.swift */; };
+		76D49D8B4654168966E0EECB2A0ECF88 /* Pods-neonTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 97DB6AB01A202DAE94E526C9B1999861 /* Pods-neonTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7A3FD617E3402973687792901ABCF6BC /* MalertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE051EB11006DB77380A6AB5690B56B /* MalertView.swift */; };
+		83215C715E30A6B11ECADD14A3D32D1C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
+		93607135B0750327C8161AB90944EE51 /* mockup.png in Resources */ = {isa = PBXBuildFile; fileRef = 267DE614D1D1308830291D0BA374FE67 /* mockup.png */; };
+		956213414580CB0F6E693434FC255E3E /* MalertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5C026AAC4E509D36B8D3B86E204EF9 /* MalertAction.swift */; };
+		983130E22E5379FD4552C487406B87D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
+		98C75E5A0435C2B3C65458DA64EF8EBA /* Malert+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED37E89C40464B00B9CBF4EED67206F /* Malert+Constraints.swift */; };
+		B81721EBCE15A66802074FE167BD59B9 /* SwipeOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA14F8855CC566F6B018FE68B7D3609 /* SwipeOptions.swift */; };
+		BC1E3295A7FB7FA8F6C7E98A76FE058E /* SwipeExpanding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8112AE0DCFAFB7780C45D8D373558994 /* SwipeExpanding.swift */; };
+		C2B89133B4F96192E5B179C4EAE8DA40 /* Malert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA743E0BA776246B73FA59125ECB3E4 /* Malert.swift */; };
+		C359F9F67E6483DDA733502B45F57A32 /* Pods-neon-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B2B4AD124CE3989A7DB6693122D9771 /* Pods-neon-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C75B8FE546B1753961B51976819B3450 /* SwipeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3262724F48C34D2AE24106BF9CF3DED0 /* SwipeAnimator.swift */; };
+		CB0267E120A2983F21CDF69C1C79659B /* Pods-neonTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C546F137182A537201B1DDAF95E4B2A /* Pods-neonTests-dummy.m */; };
+		CBDA44ADAED8648F3F66104242756094 /* Pods-neon-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E342C23D0A5202EF974B68398ECD7E /* Pods-neon-dummy.m */; };
+		CFC0E300E582FA30C140F83E485D3689 /* Malert+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF84CB13436D3B362F0C12A34E5E714 /* Malert+Actions.swift */; };
+		D38FB40FC76C98DEC2CF5ED3BC48C6DE /* SwipeExpansionStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AD84D00BC85E82A646402EB3F67D7B /* SwipeExpansionStyle.swift */; };
+		D63BA87C973867800E4EE1EA83D0DF52 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
+		DAA8C482D0F496068C8D7DC96152189D /* SwipeTransitionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE3D1E3286E23B80513A5581ABA18F /* SwipeTransitionLayout.swift */; };
+		DFF77C46F6B699C2FCF71B557A3151CB /* Malert.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C004F61A2F2FA270ABA8B3E21667CF7D /* Malert.bundle */; };
+		EA5618D6D0E8202AB46FA123EE3115DB /* Swipeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8112673AAD54B29E6AF4821F8575FBA /* Swipeable.swift */; };
+		EA8D5B8BDE5181DB682C1C09B8E075CE /* SwipeTableViewCell+Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41522D301BAB50DD739069D59FA2BFC2 /* SwipeTableViewCell+Display.swift */; };
+		EBB3635757847072653E88F58EAFA41D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
+		F7763737F74CCB3358D4491F1C0DBB26 /* BaseMalertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED510F4423AFA36D3FBB4E90585B6118 /* BaseMalertViewController.swift */; };
+		FB5F0E799C918488DC4EC6A99D696C7C /* Malert-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 96BBEC79F52C2F32CA4756D261DF9AB7 /* Malert-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FEBADDD1BDBCB907645942204BADAD98 /* SwipeCellKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ED1658ECAF83A659B6BF85ABD7FDD7 /* SwipeCellKit-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0E8FE7167B22180985C41C03686EFA02 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C8142AE99CC73F605D7EE590F683D712;
+			remoteInfo = SwipeCellKit;
+		};
+		238FF9A0268567743581AD660C5B9529 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ADE01BFA9C5A5DF8578364A640384F68;
+			remoteInfo = Malert;
+		};
+		39D2190878FABD5DC1F64DEDC74148AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AAAAE528ADF1FC1D0E2F1F935AAF9E5E;
+			remoteInfo = "Pods-neon";
+		};
+		CEFB5B1B3C5B584817FDD42F1202561B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6309E1B7F8E96D0F341C266099E1959E;
+			remoteInfo = "Malert-Malert";
+		};
+		F0BE102252898105A80FD6026667A0DA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AAAAE528ADF1FC1D0E2F1F935AAF9E5E;
+			remoteInfo = "Pods-neon";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		01BE93B2FE37705682E781595A5FB54E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		025445DA61CDDA194C44DBF0F57EE04E /* Pods-neonUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-neonUITests.release.xcconfig"; sourceTree = "<group>"; };
+		06C52987F4A30C35B3BF439819B13AE5 /* Pods_neonUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_neonUITests.framework; path = "Pods-neonUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		073192F5553C1CAE783ACF64738E0E50 /* SwipeTableViewCell+Accessibility.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SwipeTableViewCell+Accessibility.swift"; path = "Source/SwipeTableViewCell+Accessibility.swift"; sourceTree = "<group>"; };
+		0820619310CA74CFE69707ED367620EA /* MalertPresentationManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MalertPresentationManager.swift; path = Malert/Classes/Animations/MalertPresentationManager.swift; sourceTree = "<group>"; };
+		08E62CD9ED3FF083C860661F83761E56 /* SwipeTableViewCellDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeTableViewCellDelegate.swift; path = Source/SwipeTableViewCellDelegate.swift; sourceTree = "<group>"; };
+		0A76A2A6BE30AFB0C042BCEC4711CE00 /* SwipeController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeController.swift; path = Source/SwipeController.swift; sourceTree = "<group>"; };
+		1076238D30A66FF247091C2B54D8A763 /* Pods_neon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_neon.framework; path = "Pods-neon.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		11090DB8010C6C5C47DDAE2DE100ABB7 /* Pods-neonUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-neonUITests-umbrella.h"; sourceTree = "<group>"; };
+		147EA2299730CD4FF2BBDF4E4250942F /* Pods_neonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_neonTests.framework; path = "Pods-neonTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		15FA7D9ACE12D95CB7F9D1F5DC9A23FF /* Pods-neonUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-neonUITests-frameworks.sh"; sourceTree = "<group>"; };
+		1876EF4A5AFFB2464BC2B9B9F42BD5CF /* Pods-neonUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-neonUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		1DA4817A04ACC602664F5C91703BAEF5 /* Pods-neon-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-neon-frameworks.sh"; sourceTree = "<group>"; };
+		1E67679F67619178DFCFBAB7DCCC8457 /* Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Malert/Classes/Util/Extensions.swift; sourceTree = "<group>"; };
+		1FE051EB11006DB77380A6AB5690B56B /* MalertView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MalertView.swift; path = Malert/Classes/MalertView/MalertView.swift; sourceTree = "<group>"; };
+		236FFD6A1018C3EA29C3449CFE37F64E /* SwipeCollectionViewCell+Accessibility.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SwipeCollectionViewCell+Accessibility.swift"; path = "Source/SwipeCollectionViewCell+Accessibility.swift"; sourceTree = "<group>"; };
+		26628822F846538FB6F43C8683C26905 /* MalertInteractiveTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MalertInteractiveTransition.swift; path = Malert/Classes/Animations/MalertInteractiveTransition.swift; sourceTree = "<group>"; };
+		267DE614D1D1308830291D0BA374FE67 /* mockup.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = mockup.png; path = Malert/Assets/mockup.png; sourceTree = "<group>"; };
+		2C546F137182A537201B1DDAF95E4B2A /* Pods-neonTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-neonTests-dummy.m"; sourceTree = "<group>"; };
+		2F8B39CB7887E42946AA5BB4062DE5FA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		308EA776978F0DDF12567817E7DEF66B /* Pods-neon-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-neon-acknowledgements.plist"; sourceTree = "<group>"; };
+		3262724F48C34D2AE24106BF9CF3DED0 /* SwipeAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeAnimator.swift; path = Source/SwipeAnimator.swift; sourceTree = "<group>"; };
+		32E9478EF5CD2EAEA08AD09FF87F6EC5 /* SwipeCollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeCollectionViewCell.swift; path = Source/SwipeCollectionViewCell.swift; sourceTree = "<group>"; };
+		37313EE34EE2F9BF1465A2984ED835FA /* SwipeActionsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeActionsView.swift; path = Source/SwipeActionsView.swift; sourceTree = "<group>"; };
+		387473B275D6895B209996494947AEF3 /* SwipeCollectionViewCellDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeCollectionViewCellDelegate.swift; path = Source/SwipeCollectionViewCellDelegate.swift; sourceTree = "<group>"; };
+		38ACCA86096D54BB3477741BE75C4230 /* SwipeAccessibilityCustomAction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeAccessibilityCustomAction.swift; path = Source/SwipeAccessibilityCustomAction.swift; sourceTree = "<group>"; };
+		38F1CE33E88610F07DF24AAD886CE0BB /* Malert-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Malert-dummy.m"; sourceTree = "<group>"; };
+		3BF5BD2090B592EE28EDF86D07A77644 /* Pods-neonTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-neonTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		3C3E2D36D46AAAC4048483CA41B7D06F /* SwipeActionButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeActionButton.swift; path = Source/SwipeActionButton.swift; sourceTree = "<group>"; };
+		3CE78CAE177918ACB1121E16326999C8 /* Pods-neonTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-neonTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		3F3C81745DA542C9401E09DA7BF0C940 /* Pods-neon-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-neon-resources.sh"; sourceTree = "<group>"; };
+		41522D301BAB50DD739069D59FA2BFC2 /* SwipeTableViewCell+Display.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SwipeTableViewCell+Display.swift"; path = "Source/SwipeTableViewCell+Display.swift"; sourceTree = "<group>"; };
+		43AD84D00BC85E82A646402EB3F67D7B /* SwipeExpansionStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeExpansionStyle.swift; path = Source/SwipeExpansionStyle.swift; sourceTree = "<group>"; };
+		4CA179E110619932C659FE450AE874F0 /* Malert.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Malert.modulemap; sourceTree = "<group>"; };
+		4ED37E89C40464B00B9CBF4EED67206F /* Malert+Constraints.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Malert+Constraints.swift"; path = "Malert/Classes/Malert/Malert+Constraints.swift"; sourceTree = "<group>"; };
+		4F3A3682A77CD44AC0550D49EC6DA8A1 /* MalertQueue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MalertQueue.swift; path = Malert/Classes/Util/MalertQueue.swift; sourceTree = "<group>"; };
+		505D470A109D90A0B112D661E4BE02D7 /* SwipeAction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeAction.swift; path = Source/SwipeAction.swift; sourceTree = "<group>"; };
+		53AB9AC53C058879D51E57DCCDA4E42E /* Malert.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Malert.framework; path = Malert.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		53F3A42747828B5D5D0F57853D112AE0 /* Pods-neon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-neon.debug.xcconfig"; sourceTree = "<group>"; };
+		581075EE72A3A225EA36F9908EC3160B /* Pods-neon-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-neon-acknowledgements.markdown"; sourceTree = "<group>"; };
+		5D9BC0D81A2AAC73517B52DB13B4B861 /* Pods-neonTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-neonTests-resources.sh"; sourceTree = "<group>"; };
+		5DF84CB13436D3B362F0C12A34E5E714 /* Malert+Actions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Malert+Actions.swift"; path = "Malert/Classes/Malert/Malert+Actions.swift"; sourceTree = "<group>"; };
+		609CE437D5B60737A11FF5A91B9DFC20 /* SwipeCellKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwipeCellKit.framework; path = SwipeCellKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		61B0E356A4204C12DC1E7AFF165CCABC /* SwipeCollectionViewCell+Display.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SwipeCollectionViewCell+Display.swift"; path = "Source/SwipeCollectionViewCell+Display.swift"; sourceTree = "<group>"; };
+		6D5DA9A84D4CFB9FB9397C90F5DD8D16 /* BaseTransitioning.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BaseTransitioning.swift; path = Malert/Classes/Animations/BaseTransitioning.swift; sourceTree = "<group>"; };
+		6E5C026AAC4E509D36B8D3B86E204EF9 /* MalertAction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MalertAction.swift; path = Malert/Classes/MalertButtonView/MalertAction.swift; sourceTree = "<group>"; };
+		6F7A734DE2AF2B29ACF6825E411EDF0E /* Pods-neonUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-neonUITests-resources.sh"; sourceTree = "<group>"; };
+		709710C5DCA9C01E9887866D06144EA9 /* Pods-neon.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-neon.modulemap"; sourceTree = "<group>"; };
+		71718B9E3FAB7579AD2AB189F0C1D461 /* Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Source/Extensions.swift; sourceTree = "<group>"; };
+		7632F63BCD3E064EF89F356933DAB4A2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7995D902EBC96BC3FF5A7493116AF5EB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7FA14F8855CC566F6B018FE68B7D3609 /* SwipeOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeOptions.swift; path = Source/SwipeOptions.swift; sourceTree = "<group>"; };
+		80B3A1AE3179EEEAE3A84B5DB9C93599 /* SwipeCellKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwipeCellKit.modulemap; sourceTree = "<group>"; };
+		80D9465E9398F338DFEEE1C03AE71F80 /* Pods-neon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-neon.release.xcconfig"; sourceTree = "<group>"; };
+		8112AE0DCFAFB7780C45D8D373558994 /* SwipeExpanding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeExpanding.swift; path = Source/SwipeExpanding.swift; sourceTree = "<group>"; };
+		89BFA78D1CF4739129CB0C594EE049AF /* SwipeTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeTableViewCell.swift; path = Source/SwipeTableViewCell.swift; sourceTree = "<group>"; };
+		8B2B4AD124CE3989A7DB6693122D9771 /* Pods-neon-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-neon-umbrella.h"; sourceTree = "<group>"; };
+		8B721948A0005E7A659DD7F9DEE789D8 /* SwipeCellKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwipeCellKit-prefix.pch"; sourceTree = "<group>"; };
+		8C7B727B7C5D9EC70D8C6318208ABFC8 /* SwipeCellKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwipeCellKit-umbrella.h"; sourceTree = "<group>"; };
+		9284462FF8E3549CFB28D01F50133F66 /* MalertButtonView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MalertButtonView.swift; path = Malert/Classes/MalertButtonView/MalertButtonView.swift; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		96BBEC79F52C2F32CA4756D261DF9AB7 /* Malert-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Malert-umbrella.h"; sourceTree = "<group>"; };
+		96FC68344C9BB10E53E9773064B72040 /* Pods-neonUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-neonUITests-dummy.m"; sourceTree = "<group>"; };
+		97DB6AB01A202DAE94E526C9B1999861 /* Pods-neonTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-neonTests-umbrella.h"; sourceTree = "<group>"; };
+		9A448687C1E562244773756B6DDE91FE /* SwipeFeedback.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeFeedback.swift; path = Source/SwipeFeedback.swift; sourceTree = "<group>"; };
+		9FA743E0BA776246B73FA59125ECB3E4 /* Malert.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Malert.swift; path = Malert/Classes/Malert/Malert.swift; sourceTree = "<group>"; };
+		A36C006C4334FACB2F2BD02F58E44C73 /* Pods-neonTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-neonTests.modulemap"; sourceTree = "<group>"; };
+		AB4118F6D81B6C8F3AE4E363D58FAC74 /* Pods-neonTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-neonTests-frameworks.sh"; sourceTree = "<group>"; };
+		AD632404EC8D90CCB3E5D5487E02B4A0 /* ResourceBundle-Malert-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-Malert-Info.plist"; sourceTree = "<group>"; };
+		B9037DDAB3D7F98829DC3FE89C4BA0B6 /* Malert_brand.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = Malert_brand.png; path = Malert/Assets/Malert_brand.png; sourceTree = "<group>"; };
+		B9AF2B42AA6EC0CB1BD5F3EE27169118 /* Malert.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Malert.xcconfig; sourceTree = "<group>"; };
+		C004F61A2F2FA270ABA8B3E21667CF7D /* Malert.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Malert.bundle; path = "Malert-Malert.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3507A6C3D494ED24CCD4120FCE9524E /* Pods-neonUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-neonUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		CA19714CBE2A48178ACC3C644D144C8E /* Pods-neonUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-neonUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		CDCBD513E5C3CFEC05318C20998435C7 /* MalertPresentTransitioning.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MalertPresentTransitioning.swift; path = Malert/Classes/Animations/MalertPresentTransitioning.swift; sourceTree = "<group>"; };
+		D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		DB8AD1B93F3E4CF6FC716B42BAA78199 /* SwipeActionTransitioning.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeActionTransitioning.swift; path = Source/SwipeActionTransitioning.swift; sourceTree = "<group>"; };
+		DE3B9F7BE25CB85D8622328716D3063D /* MalertDimissTransitioning.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MalertDimissTransitioning.swift; path = Malert/Classes/Animations/MalertDimissTransitioning.swift; sourceTree = "<group>"; };
+		DEDC9C5C3BFC287DB868958979BACD4B /* SwipeCellKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwipeCellKit.xcconfig; sourceTree = "<group>"; };
+		E9E342C23D0A5202EF974B68398ECD7E /* Pods-neon-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-neon-dummy.m"; sourceTree = "<group>"; };
+		ECA4FC7ECCB2EF6CEAC8C95A199599F0 /* Pods-neonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-neonTests.debug.xcconfig"; sourceTree = "<group>"; };
+		ED510F4423AFA36D3FBB4E90585B6118 /* BaseMalertViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BaseMalertViewController.swift; path = Malert/Classes/Base/BaseMalertViewController.swift; sourceTree = "<group>"; };
+		EE1B39FA82EE65CD25930CF635C57DA7 /* Pods-neonUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-neonUITests.modulemap"; sourceTree = "<group>"; };
+		F09A570B00C58FF472ABB3F919880F16 /* Malert-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Malert-prefix.pch"; sourceTree = "<group>"; };
+		F3CE3D1E3286E23B80513A5581ABA18F /* SwipeTransitionLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeTransitionLayout.swift; path = Source/SwipeTransitionLayout.swift; sourceTree = "<group>"; };
+		F4E5D869C467C5007D49A351B1D2E2ED /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4ED1658ECAF83A659B6BF85ABD7FDD7 /* SwipeCellKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwipeCellKit-dummy.m"; sourceTree = "<group>"; };
+		F8112673AAD54B29E6AF4821F8575FBA /* Swipeable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Swipeable.swift; path = Source/Swipeable.swift; sourceTree = "<group>"; };
+		FBD11B2899EAE087B9BBBF0030C34293 /* Pods-neonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-neonTests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		00365FCC16E9475A76D1BBD5E19E7495 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83215C715E30A6B11ECADD14A3D32D1C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3E526D0F6E27A8AF8CA5EE614C65F51E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBB3635757847072653E88F58EAFA41D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62025DD45484FBB71B5EE430B73528F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				983130E22E5379FD4552C487406B87D5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA679D6CD1A237A2658C7C741EA7AFBE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				598501E4E64F5E622F951E673A8E4F88 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D796D00E72CF16E455F8CF0EF36B339A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E9097393560287B3A0FAB8D69B437EAE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D63BA87C973867800E4EE1EA83D0DF52 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		07516B76F9ED4BAA2CE89039F5195265 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C004F61A2F2FA270ABA8B3E21667CF7D /* Malert.bundle */,
+				53AB9AC53C058879D51E57DCCDA4E42E /* Malert.framework */,
+				1076238D30A66FF247091C2B54D8A763 /* Pods_neon.framework */,
+				147EA2299730CD4FF2BBDF4E4250942F /* Pods_neonTests.framework */,
+				06C52987F4A30C35B3BF439819B13AE5 /* Pods_neonUITests.framework */,
+				609CE437D5B60737A11FF5A91B9DFC20 /* SwipeCellKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0AC5B307119F57511C012F7428E313E7 /* SwipeCellKit */ = {
+			isa = PBXGroup;
+			children = (
+				71718B9E3FAB7579AD2AB189F0C1D461 /* Extensions.swift */,
+				F8112673AAD54B29E6AF4821F8575FBA /* Swipeable.swift */,
+				38ACCA86096D54BB3477741BE75C4230 /* SwipeAccessibilityCustomAction.swift */,
+				505D470A109D90A0B112D661E4BE02D7 /* SwipeAction.swift */,
+				3C3E2D36D46AAAC4048483CA41B7D06F /* SwipeActionButton.swift */,
+				37313EE34EE2F9BF1465A2984ED835FA /* SwipeActionsView.swift */,
+				DB8AD1B93F3E4CF6FC716B42BAA78199 /* SwipeActionTransitioning.swift */,
+				3262724F48C34D2AE24106BF9CF3DED0 /* SwipeAnimator.swift */,
+				32E9478EF5CD2EAEA08AD09FF87F6EC5 /* SwipeCollectionViewCell.swift */,
+				236FFD6A1018C3EA29C3449CFE37F64E /* SwipeCollectionViewCell+Accessibility.swift */,
+				61B0E356A4204C12DC1E7AFF165CCABC /* SwipeCollectionViewCell+Display.swift */,
+				387473B275D6895B209996494947AEF3 /* SwipeCollectionViewCellDelegate.swift */,
+				0A76A2A6BE30AFB0C042BCEC4711CE00 /* SwipeController.swift */,
+				8112AE0DCFAFB7780C45D8D373558994 /* SwipeExpanding.swift */,
+				43AD84D00BC85E82A646402EB3F67D7B /* SwipeExpansionStyle.swift */,
+				9A448687C1E562244773756B6DDE91FE /* SwipeFeedback.swift */,
+				7FA14F8855CC566F6B018FE68B7D3609 /* SwipeOptions.swift */,
+				89BFA78D1CF4739129CB0C594EE049AF /* SwipeTableViewCell.swift */,
+				073192F5553C1CAE783ACF64738E0E50 /* SwipeTableViewCell+Accessibility.swift */,
+				41522D301BAB50DD739069D59FA2BFC2 /* SwipeTableViewCell+Display.swift */,
+				08E62CD9ED3FF083C860661F83761E56 /* SwipeTableViewCellDelegate.swift */,
+				F3CE3D1E3286E23B80513A5581ABA18F /* SwipeTransitionLayout.swift */,
+				BF7961007697AD111F17790A4BE13200 /* Support Files */,
+			);
+			name = SwipeCellKit;
+			path = SwipeCellKit;
+			sourceTree = "<group>";
+		};
+		44D5347904CF754D6785B84253F2574A /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				E56C4E4995E163FB65080A6574173F32 /* Pods */,
+				07516B76F9ED4BAA2CE89039F5195265 /* Products */,
+				F5FB9C323052E5EBB8863582D509B1B5 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		A46DF91209A4BD3F558A48030F4A00F7 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2F8B39CB7887E42946AA5BB4062DE5FA /* Info.plist */,
+				4CA179E110619932C659FE450AE874F0 /* Malert.modulemap */,
+				B9AF2B42AA6EC0CB1BD5F3EE27169118 /* Malert.xcconfig */,
+				38F1CE33E88610F07DF24AAD886CE0BB /* Malert-dummy.m */,
+				F09A570B00C58FF472ABB3F919880F16 /* Malert-prefix.pch */,
+				96BBEC79F52C2F32CA4756D261DF9AB7 /* Malert-umbrella.h */,
+				AD632404EC8D90CCB3E5D5487E02B4A0 /* ResourceBundle-Malert-Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Malert";
+			sourceTree = "<group>";
+		};
+		A5F7C7335E23DBF257CA38D608B591C6 /* Malert */ = {
+			isa = PBXGroup;
+			children = (
+				ED510F4423AFA36D3FBB4E90585B6118 /* BaseMalertViewController.swift */,
+				6D5DA9A84D4CFB9FB9397C90F5DD8D16 /* BaseTransitioning.swift */,
+				1E67679F67619178DFCFBAB7DCCC8457 /* Extensions.swift */,
+				9FA743E0BA776246B73FA59125ECB3E4 /* Malert.swift */,
+				5DF84CB13436D3B362F0C12A34E5E714 /* Malert+Actions.swift */,
+				4ED37E89C40464B00B9CBF4EED67206F /* Malert+Constraints.swift */,
+				6E5C026AAC4E509D36B8D3B86E204EF9 /* MalertAction.swift */,
+				9284462FF8E3549CFB28D01F50133F66 /* MalertButtonView.swift */,
+				DE3B9F7BE25CB85D8622328716D3063D /* MalertDimissTransitioning.swift */,
+				26628822F846538FB6F43C8683C26905 /* MalertInteractiveTransition.swift */,
+				0820619310CA74CFE69707ED367620EA /* MalertPresentationManager.swift */,
+				CDCBD513E5C3CFEC05318C20998435C7 /* MalertPresentTransitioning.swift */,
+				4F3A3682A77CD44AC0550D49EC6DA8A1 /* MalertQueue.swift */,
+				1FE051EB11006DB77380A6AB5690B56B /* MalertView.swift */,
+				E3F7E58B02E15D430060ADF9BBC1F885 /* Resources */,
+				A46DF91209A4BD3F558A48030F4A00F7 /* Support Files */,
+			);
+			name = Malert;
+			path = Malert;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				44D5347904CF754D6785B84253F2574A /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF7961007697AD111F17790A4BE13200 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7632F63BCD3E064EF89F356933DAB4A2 /* Info.plist */,
+				80B3A1AE3179EEEAE3A84B5DB9C93599 /* SwipeCellKit.modulemap */,
+				DEDC9C5C3BFC287DB868958979BACD4B /* SwipeCellKit.xcconfig */,
+				F4ED1658ECAF83A659B6BF85ABD7FDD7 /* SwipeCellKit-dummy.m */,
+				8B721948A0005E7A659DD7F9DEE789D8 /* SwipeCellKit-prefix.pch */,
+				8C7B727B7C5D9EC70D8C6318208ABFC8 /* SwipeCellKit-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwipeCellKit";
+			sourceTree = "<group>";
+		};
+		D9510DAE369EB348C6DE0797BBEA5A6F /* Pods-neonTests */ = {
+			isa = PBXGroup;
+			children = (
+				F4E5D869C467C5007D49A351B1D2E2ED /* Info.plist */,
+				A36C006C4334FACB2F2BD02F58E44C73 /* Pods-neonTests.modulemap */,
+				3BF5BD2090B592EE28EDF86D07A77644 /* Pods-neonTests-acknowledgements.markdown */,
+				3CE78CAE177918ACB1121E16326999C8 /* Pods-neonTests-acknowledgements.plist */,
+				2C546F137182A537201B1DDAF95E4B2A /* Pods-neonTests-dummy.m */,
+				AB4118F6D81B6C8F3AE4E363D58FAC74 /* Pods-neonTests-frameworks.sh */,
+				5D9BC0D81A2AAC73517B52DB13B4B861 /* Pods-neonTests-resources.sh */,
+				97DB6AB01A202DAE94E526C9B1999861 /* Pods-neonTests-umbrella.h */,
+				ECA4FC7ECCB2EF6CEAC8C95A199599F0 /* Pods-neonTests.debug.xcconfig */,
+				FBD11B2899EAE087B9BBBF0030C34293 /* Pods-neonTests.release.xcconfig */,
+			);
+			name = "Pods-neonTests";
+			path = "Target Support Files/Pods-neonTests";
+			sourceTree = "<group>";
+		};
+		E23CA8879D03A8A398D8611738B13711 /* Pods-neonUITests */ = {
+			isa = PBXGroup;
+			children = (
+				7995D902EBC96BC3FF5A7493116AF5EB /* Info.plist */,
+				EE1B39FA82EE65CD25930CF635C57DA7 /* Pods-neonUITests.modulemap */,
+				C3507A6C3D494ED24CCD4120FCE9524E /* Pods-neonUITests-acknowledgements.markdown */,
+				1876EF4A5AFFB2464BC2B9B9F42BD5CF /* Pods-neonUITests-acknowledgements.plist */,
+				96FC68344C9BB10E53E9773064B72040 /* Pods-neonUITests-dummy.m */,
+				15FA7D9ACE12D95CB7F9D1F5DC9A23FF /* Pods-neonUITests-frameworks.sh */,
+				6F7A734DE2AF2B29ACF6825E411EDF0E /* Pods-neonUITests-resources.sh */,
+				11090DB8010C6C5C47DDAE2DE100ABB7 /* Pods-neonUITests-umbrella.h */,
+				CA19714CBE2A48178ACC3C644D144C8E /* Pods-neonUITests.debug.xcconfig */,
+				025445DA61CDDA194C44DBF0F57EE04E /* Pods-neonUITests.release.xcconfig */,
+			);
+			name = "Pods-neonUITests";
+			path = "Target Support Files/Pods-neonUITests";
+			sourceTree = "<group>";
+		};
+		E3F7E58B02E15D430060ADF9BBC1F885 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B9037DDAB3D7F98829DC3FE89C4BA0B6 /* Malert_brand.png */,
+				267DE614D1D1308830291D0BA374FE67 /* mockup.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		E56C4E4995E163FB65080A6574173F32 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A5F7C7335E23DBF257CA38D608B591C6 /* Malert */,
+				0AC5B307119F57511C012F7428E313E7 /* SwipeCellKit */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E702B022D8AC0B1FB9B0884BBE365146 /* Pods-neon */ = {
+			isa = PBXGroup;
+			children = (
+				01BE93B2FE37705682E781595A5FB54E /* Info.plist */,
+				709710C5DCA9C01E9887866D06144EA9 /* Pods-neon.modulemap */,
+				581075EE72A3A225EA36F9908EC3160B /* Pods-neon-acknowledgements.markdown */,
+				308EA776978F0DDF12567817E7DEF66B /* Pods-neon-acknowledgements.plist */,
+				E9E342C23D0A5202EF974B68398ECD7E /* Pods-neon-dummy.m */,
+				1DA4817A04ACC602664F5C91703BAEF5 /* Pods-neon-frameworks.sh */,
+				3F3C81745DA542C9401E09DA7BF0C940 /* Pods-neon-resources.sh */,
+				8B2B4AD124CE3989A7DB6693122D9771 /* Pods-neon-umbrella.h */,
+				53F3A42747828B5D5D0F57853D112AE0 /* Pods-neon.debug.xcconfig */,
+				80D9465E9398F338DFEEE1C03AE71F80 /* Pods-neon.release.xcconfig */,
+			);
+			name = "Pods-neon";
+			path = "Target Support Files/Pods-neon";
+			sourceTree = "<group>";
+		};
+		F5FB9C323052E5EBB8863582D509B1B5 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E702B022D8AC0B1FB9B0884BBE365146 /* Pods-neon */,
+				D9510DAE369EB348C6DE0797BBEA5A6F /* Pods-neonTests */,
+				E23CA8879D03A8A398D8611738B13711 /* Pods-neonUITests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		16FED794CB7B9007E381BBC66E7BF95F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB5F0E799C918488DC4EC6A99D696C7C /* Malert-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90B7F9ADBDCD95C00393B9E6C72C57C1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C359F9F67E6483DDA733502B45F57A32 /* Pods-neon-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5E0A4D9F2646743201F9A1DC82002DD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				678AF3BAD78FADD79BF12DB200DBF1F6 /* Pods-neonUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA2EE2ACCF2BF62C74DF99D9A6D846EC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4AFDB337E9C7259BB26698E3FDCF653F /* SwipeCellKit-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7B84DC20EDABCC7C7D2495B16701A75 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76D49D8B4654168966E0EECB2A0ECF88 /* Pods-neonTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		028F2EAC6DAD587FC1079E1F4618F5F5 /* Pods-neonUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 81F52EA6F656D38B561774EFB1977532 /* Build configuration list for PBXNativeTarget "Pods-neonUITests" */;
+			buildPhases = (
+				A5E0A4D9F2646743201F9A1DC82002DD /* Headers */,
+				90FA9C458676973A5431C17728C1480E /* Sources */,
+				E9097393560287B3A0FAB8D69B437EAE /* Frameworks */,
+				A51899CAE80293DA62327422906A4F04 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				72D866E2D4D6FE0B06684DDFB1E46FA8 /* PBXTargetDependency */,
+			);
+			name = "Pods-neonUITests";
+			productName = "Pods-neonUITests";
+			productReference = 06C52987F4A30C35B3BF439819B13AE5 /* Pods_neonUITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		030D01089CCC4C7BB0BA0A1DA546ED42 /* Pods-neonTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E8A648EDBA5CC1CE0A33E6BCCBBDBD44 /* Build configuration list for PBXNativeTarget "Pods-neonTests" */;
+			buildPhases = (
+				D7B84DC20EDABCC7C7D2495B16701A75 /* Headers */,
+				ED8C405B0B128A138D19FF4F494823D9 /* Sources */,
+				BA679D6CD1A237A2658C7C741EA7AFBE /* Frameworks */,
+				88C160C031EF17D3D46D8A5A27DBAFB9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				329974B9D201859E59774EDFD8D27DD8 /* PBXTargetDependency */,
+			);
+			name = "Pods-neonTests";
+			productName = "Pods-neonTests";
+			productReference = 147EA2299730CD4FF2BBDF4E4250942F /* Pods_neonTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		6309E1B7F8E96D0F341C266099E1959E /* Malert-Malert */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 125A2CA38ED4C597D61082BE6D02796E /* Build configuration list for PBXNativeTarget "Malert-Malert" */;
+			buildPhases = (
+				5479FDDBF7E06755C997F5F118D186A2 /* Sources */,
+				D796D00E72CF16E455F8CF0EF36B339A /* Frameworks */,
+				0E3AA4AE02F818CD323A0E08B2109BD8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Malert-Malert";
+			productName = "Malert-Malert";
+			productReference = C004F61A2F2FA270ABA8B3E21667CF7D /* Malert.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		AAAAE528ADF1FC1D0E2F1F935AAF9E5E /* Pods-neon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C7BDFE9801599D03DBF0DEA5542171A3 /* Build configuration list for PBXNativeTarget "Pods-neon" */;
+			buildPhases = (
+				90B7F9ADBDCD95C00393B9E6C72C57C1 /* Headers */,
+				2AFC995BF86F0A1D6CF8DB6CB08290CA /* Sources */,
+				62025DD45484FBB71B5EE430B73528F6 /* Frameworks */,
+				E7F67BC0C5A22527B7C48D2F07DFB7F9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				14DC15EF860134C1E720FB0CC5CB936A /* PBXTargetDependency */,
+				115788A0A5E2A6300FFF34D2A817B12A /* PBXTargetDependency */,
+			);
+			name = "Pods-neon";
+			productName = "Pods-neon";
+			productReference = 1076238D30A66FF247091C2B54D8A763 /* Pods_neon.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		ADE01BFA9C5A5DF8578364A640384F68 /* Malert */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9633792858833E2FC317EB02F565F44D /* Build configuration list for PBXNativeTarget "Malert" */;
+			buildPhases = (
+				16FED794CB7B9007E381BBC66E7BF95F /* Headers */,
+				DF58EBEC45317618672F91DCDDAA7AE0 /* Sources */,
+				3E526D0F6E27A8AF8CA5EE614C65F51E /* Frameworks */,
+				1CA2C2A90E19039CDED9EC8AB0440B7E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				58520810899F673831D60BDC7168F316 /* PBXTargetDependency */,
+			);
+			name = Malert;
+			productName = Malert;
+			productReference = 53AB9AC53C058879D51E57DCCDA4E42E /* Malert.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C8142AE99CC73F605D7EE590F683D712 /* SwipeCellKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2BF9497AA9B9B21B16D0AB2A55974703 /* Build configuration list for PBXNativeTarget "SwipeCellKit" */;
+			buildPhases = (
+				AA2EE2ACCF2BF62C74DF99D9A6D846EC /* Headers */,
+				4FA55754E6E739A9C954BD04F12992F2 /* Sources */,
+				00365FCC16E9475A76D1BBD5E19E7495 /* Frameworks */,
+				C565D0E3F648401797FB7C6A4BE1F774 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwipeCellKit;
+			productName = SwipeCellKit;
+			productReference = 609CE437D5B60737A11FF5A91B9DFC20 /* SwipeCellKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 07516B76F9ED4BAA2CE89039F5195265 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ADE01BFA9C5A5DF8578364A640384F68 /* Malert */,
+				6309E1B7F8E96D0F341C266099E1959E /* Malert-Malert */,
+				AAAAE528ADF1FC1D0E2F1F935AAF9E5E /* Pods-neon */,
+				030D01089CCC4C7BB0BA0A1DA546ED42 /* Pods-neonTests */,
+				028F2EAC6DAD587FC1079E1F4618F5F5 /* Pods-neonUITests */,
+				C8142AE99CC73F605D7EE590F683D712 /* SwipeCellKit */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0E3AA4AE02F818CD323A0E08B2109BD8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23C85E4A3C0DFECC5224B2195D35BE22 /* Malert_brand.png in Resources */,
+				93607135B0750327C8161AB90944EE51 /* mockup.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1CA2C2A90E19039CDED9EC8AB0440B7E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFF77C46F6B699C2FCF71B557A3151CB /* Malert.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88C160C031EF17D3D46D8A5A27DBAFB9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A51899CAE80293DA62327422906A4F04 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C565D0E3F648401797FB7C6A4BE1F774 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7F67BC0C5A22527B7C48D2F07DFB7F9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2AFC995BF86F0A1D6CF8DB6CB08290CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBDA44ADAED8648F3F66104242756094 /* Pods-neon-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FA55754E6E739A9C954BD04F12992F2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07A2145A53A9CA02E927DBCAFF4518E9 /* Extensions.swift in Sources */,
+				EA5618D6D0E8202AB46FA123EE3115DB /* Swipeable.swift in Sources */,
+				26AB5C291E3125908DB21C7494A65F12 /* SwipeAccessibilityCustomAction.swift in Sources */,
+				2399A9E80A06F32A12C9DBA235CB8286 /* SwipeAction.swift in Sources */,
+				3C6010F1CC538049778A08A8633925B5 /* SwipeActionButton.swift in Sources */,
+				15D187A70B714B05E05A1177B81E43F4 /* SwipeActionsView.swift in Sources */,
+				2F4A255F2CBBB9497FDA93D19FC02C37 /* SwipeActionTransitioning.swift in Sources */,
+				C75B8FE546B1753961B51976819B3450 /* SwipeAnimator.swift in Sources */,
+				FEBADDD1BDBCB907645942204BADAD98 /* SwipeCellKit-dummy.m in Sources */,
+				12B77ADFA8207D0D7C36F29A95DFFA7C /* SwipeCollectionViewCell+Accessibility.swift in Sources */,
+				417A578474B370BA7834ADF722CFDA9A /* SwipeCollectionViewCell+Display.swift in Sources */,
+				1F011A4ED258CA3BCCDE8B02F3840791 /* SwipeCollectionViewCell.swift in Sources */,
+				07A3D5F4156ACDD6A6EE5D9631E6D4F1 /* SwipeCollectionViewCellDelegate.swift in Sources */,
+				6E7A3A4CBB2CA19C5DBEC6F48A5E4575 /* SwipeController.swift in Sources */,
+				BC1E3295A7FB7FA8F6C7E98A76FE058E /* SwipeExpanding.swift in Sources */,
+				D38FB40FC76C98DEC2CF5ED3BC48C6DE /* SwipeExpansionStyle.swift in Sources */,
+				5EF4EE7D62618E33F78CED38326A09C0 /* SwipeFeedback.swift in Sources */,
+				B81721EBCE15A66802074FE167BD59B9 /* SwipeOptions.swift in Sources */,
+				6AEB084FE00261AFB5D36F100E5BC81A /* SwipeTableViewCell+Accessibility.swift in Sources */,
+				EA8D5B8BDE5181DB682C1C09B8E075CE /* SwipeTableViewCell+Display.swift in Sources */,
+				22B117C077B6C39788F187C3CF0A0C73 /* SwipeTableViewCell.swift in Sources */,
+				0E18E09555C951B1E19CAF205657F341 /* SwipeTableViewCellDelegate.swift in Sources */,
+				DAA8C482D0F496068C8D7DC96152189D /* SwipeTransitionLayout.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5479FDDBF7E06755C997F5F118D186A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90FA9C458676973A5431C17728C1480E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4393D82DBE0BE453FD7D64EF0899540E /* Pods-neonUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF58EBEC45317618672F91DCDDAA7AE0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7763737F74CCB3358D4491F1C0DBB26 /* BaseMalertViewController.swift in Sources */,
+				12771D0574C5EE1A5E2D5A8EA03ABC32 /* BaseTransitioning.swift in Sources */,
+				0F23F6290A2B7D2AB682C2434BCA8F7F /* Extensions.swift in Sources */,
+				CFC0E300E582FA30C140F83E485D3689 /* Malert+Actions.swift in Sources */,
+				98C75E5A0435C2B3C65458DA64EF8EBA /* Malert+Constraints.swift in Sources */,
+				43F8D76E84B7AEB1342A776D0FC0E5CF /* Malert-dummy.m in Sources */,
+				C2B89133B4F96192E5B179C4EAE8DA40 /* Malert.swift in Sources */,
+				956213414580CB0F6E693434FC255E3E /* MalertAction.swift in Sources */,
+				4F16509EC122F2861906C8F064EACB09 /* MalertButtonView.swift in Sources */,
+				097BBF5D0F514EDE4C1D6192761EA71A /* MalertDimissTransitioning.swift in Sources */,
+				51CDFFED3DEF2A6574D49D84B59F3129 /* MalertInteractiveTransition.swift in Sources */,
+				27B6E70006ED5C959DFD6506D1272BC7 /* MalertPresentationManager.swift in Sources */,
+				52BF6369D8F004119AFBB51EDDE775A7 /* MalertPresentTransitioning.swift in Sources */,
+				0602DE9DB9D7134F409590756E80F170 /* MalertQueue.swift in Sources */,
+				7A3FD617E3402973687792901ABCF6BC /* MalertView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED8C405B0B128A138D19FF4F494823D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB0267E120A2983F21CDF69C1C79659B /* Pods-neonTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		115788A0A5E2A6300FFF34D2A817B12A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwipeCellKit;
+			target = C8142AE99CC73F605D7EE590F683D712 /* SwipeCellKit */;
+			targetProxy = 0E8FE7167B22180985C41C03686EFA02 /* PBXContainerItemProxy */;
+		};
+		14DC15EF860134C1E720FB0CC5CB936A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Malert;
+			target = ADE01BFA9C5A5DF8578364A640384F68 /* Malert */;
+			targetProxy = 238FF9A0268567743581AD660C5B9529 /* PBXContainerItemProxy */;
+		};
+		329974B9D201859E59774EDFD8D27DD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-neon";
+			target = AAAAE528ADF1FC1D0E2F1F935AAF9E5E /* Pods-neon */;
+			targetProxy = F0BE102252898105A80FD6026667A0DA /* PBXContainerItemProxy */;
+		};
+		58520810899F673831D60BDC7168F316 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Malert-Malert";
+			target = 6309E1B7F8E96D0F341C266099E1959E /* Malert-Malert */;
+			targetProxy = CEFB5B1B3C5B584817FDD42F1202561B /* PBXContainerItemProxy */;
+		};
+		72D866E2D4D6FE0B06684DDFB1E46FA8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-neon";
+			target = AAAAE528ADF1FC1D0E2F1F935AAF9E5E /* Pods-neon */;
+			targetProxy = 39D2190878FABD5DC1F64DEDC74148AF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		06D2657570D26E9A4AE8444700DC4D2D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B9AF2B42AA6EC0CB1BD5F3EE27169118 /* Malert.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Malert/Malert-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Malert/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Malert/Malert.modulemap";
+				PRODUCT_MODULE_NAME = Malert;
+				PRODUCT_NAME = Malert;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		0AA3B91655AF95B1F49159CD8085CD89 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		225F869281983B40F898441F617DF3B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 025445DA61CDDA194C44DBF0F57EE04E /* Pods-neonUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-neonUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-neonUITests/Pods-neonUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4BBABE68DE6C74AFE1E995B6333D18EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B9AF2B42AA6EC0CB1BD5F3EE27169118 /* Malert.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Malert/Malert-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Malert/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Malert/Malert.modulemap";
+				PRODUCT_MODULE_NAME = Malert;
+				PRODUCT_NAME = Malert;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		5E1E4BD69A3E645E1722CE83DF904AE6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53F3A42747828B5D5D0F57853D112AE0 /* Pods-neon.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-neon/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-neon/Pods-neon.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		6234F3C8F3AD1E3126B5CC8260EED679 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B9AF2B42AA6EC0CB1BD5F3EE27169118 /* Malert.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Malert";
+				INFOPLIST_FILE = "Target Support Files/Malert/ResourceBundle-Malert-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = Malert;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		8000995DA02063BF3777393CD52061DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		8DD277397FCAA56F89DA1DF38F38235A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ECA4FC7ECCB2EF6CEAC8C95A199599F0 /* Pods-neonTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-neonTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-neonTests/Pods-neonTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		9F8A11F65318CCDE50BC9CD12294E11F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DEDC9C5C3BFC287DB868958979BACD4B /* SwipeCellKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwipeCellKit/SwipeCellKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwipeCellKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwipeCellKit/SwipeCellKit.modulemap";
+				PRODUCT_MODULE_NAME = SwipeCellKit;
+				PRODUCT_NAME = SwipeCellKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A414076517421C3C174D0D4F5939F619 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FBD11B2899EAE087B9BBBF0030C34293 /* Pods-neonTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-neonTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-neonTests/Pods-neonTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D8B2A524F9281CE91159802661BCE986 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA19714CBE2A48178ACC3C644D144C8E /* Pods-neonUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-neonUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-neonUITests/Pods-neonUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		DBA573C6CA9031C8BC98C29A5A8CEF45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 80D9465E9398F338DFEEE1C03AE71F80 /* Pods-neon.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-neon/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-neon/Pods-neon.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		EE33A9DD7DD056EBEB48E282AFD8C60F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B9AF2B42AA6EC0CB1BD5F3EE27169118 /* Malert.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Malert";
+				INFOPLIST_FILE = "Target Support Files/Malert/ResourceBundle-Malert-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = Malert;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		F398E0BD1B7DF4A94942A04FC3994EFE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DEDC9C5C3BFC287DB868958979BACD4B /* SwipeCellKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwipeCellKit/SwipeCellKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwipeCellKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwipeCellKit/SwipeCellKit.modulemap";
+				PRODUCT_MODULE_NAME = SwipeCellKit;
+				PRODUCT_NAME = SwipeCellKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		125A2CA38ED4C597D61082BE6D02796E /* Build configuration list for PBXNativeTarget "Malert-Malert" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE33A9DD7DD056EBEB48E282AFD8C60F /* Debug */,
+				6234F3C8F3AD1E3126B5CC8260EED679 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2BF9497AA9B9B21B16D0AB2A55974703 /* Build configuration list for PBXNativeTarget "SwipeCellKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F8A11F65318CCDE50BC9CD12294E11F /* Debug */,
+				F398E0BD1B7DF4A94942A04FC3994EFE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0AA3B91655AF95B1F49159CD8085CD89 /* Debug */,
+				8000995DA02063BF3777393CD52061DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		81F52EA6F656D38B561774EFB1977532 /* Build configuration list for PBXNativeTarget "Pods-neonUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8B2A524F9281CE91159802661BCE986 /* Debug */,
+				225F869281983B40F898441F617DF3B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9633792858833E2FC317EB02F565F44D /* Build configuration list for PBXNativeTarget "Malert" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06D2657570D26E9A4AE8444700DC4D2D /* Debug */,
+				4BBABE68DE6C74AFE1E995B6333D18EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C7BDFE9801599D03DBF0DEA5542171A3 /* Build configuration list for PBXNativeTarget "Pods-neon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E1E4BD69A3E645E1722CE83DF904AE6 /* Debug */,
+				DBA573C6CA9031C8BC98C29A5A8CEF45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E8A648EDBA5CC1CE0A33E6BCCBBDBD44 /* Build configuration list for PBXNativeTarget "Pods-neonTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DD277397FCAA56F89DA1DF38F38235A /* Debug */,
+				A414076517421C3C174D0D4F5939F619 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
