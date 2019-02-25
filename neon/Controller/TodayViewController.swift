@@ -24,21 +24,14 @@ class TodayViewController: UITableViewController {
         setStatusBarBackground(as: .white)
         generateCards(from: DataGateway.shared.loadTodaysAgendaItems())
     }
-    
+}
+
+// MARK: - Functionality
+
+extension TodayViewController {
     func generateCards(from agendaItems: [Int: AgendaItem]) {
-        print(agendaItems.count)
         for hour in 0...23 {
             cards.append(TodayCard(hour: hour, agendaItem: agendaItems[hour]))
-        }
-    }
-
-    func setStatusBarBackground(as color: UIColor) {
-        // Make status bar white
-        guard let statusBarView = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else {
-            return
-        }
-        UIView.animate(withDuration: 0.2) {
-            statusBarView.backgroundColor = color
         }
     }
 }
@@ -58,7 +51,6 @@ extension TodayViewController: AddAgendaDelegate {
             return cell
         } else {
             let cardPosition = indexPath.row - 1
-            
             if let agendaItem = cards[cardPosition].agendaItem {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "todayAgendaCell") as? TodayAgendaCell else { return UITableViewCell() }
                 cell.build(with: agendaItem, forHour: cards[cardPosition].hour)
@@ -80,7 +72,7 @@ extension TodayViewController: AddAgendaDelegate {
         edit.backgroundColor = UIColor(named: "main")
         
         let clear = UIContextualAction(style: .normal, title: "Clear") { (action, view, handler) in
-            // handler
+            // TODO: clear agenda item
         }
         clear.backgroundColor = UIColor(named: "main")
         
@@ -90,30 +82,42 @@ extension TodayViewController: AddAgendaDelegate {
 
 // MARK: - Dialogs
 
-extension TodayViewController {
+extension TodayViewController: AddAgendaAlertViewDelegate {
+    
+    func doneButtonTapped(textFieldValue: String, cardPosition: Int) {
+        let agendaItem = AgendaItem(title: textFieldValue)
+        DataGateway.shared.saveAgendaItem(agendaItem, for: self.cards[cardPosition].hour)
+        self.cards[cardPosition].agendaItem = agendaItem
+        self.tableView.reloadRows(at: [IndexPath(row: cardPosition + 1, section: 0)], with: .fade)
+        self.setStatusBarBackground(as: .white)
+    }
     
     func showAddAgendaDialog(forCardPosition cardPosition: Int) {
-        let alert = UIAlertController(title: "What's in store at \(cards[cardPosition].hour.getFormattedHour())?", message: nil, preferredStyle: .alert)
-        alert.addTextField(configurationHandler: { (textField) in
-            textField.autocorrectionType = .yes
-        })
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
-            self.setStatusBarBackground(as: .white)
-        }))
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-            if let title = alert.textFields?.first?.text {
-                let agendaItem = AgendaItem(title: title)
-                DataGateway.shared.saveAgendaItem(agendaItem, for: self.cards[cardPosition].hour)
-                self.cards[cardPosition].agendaItem = agendaItem
-                self.tableView.reloadRows(at: [IndexPath(row: cardPosition + 1, section: 0)], with: .fade)
-            } else {
-                // TODO Error
-            }
-            self.setStatusBarBackground(as: .white)
-        }))
-        
+        let alert = self.storyboard?.instantiateViewController(withIdentifier: "AddAgendaAlert") as! AddAgendAlertViewController
+        alert.providesPresentationContextTransitionStyle = true
+        alert.definesPresentationContext = true
+        alert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        alert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        alert.delegate = self
+        alert.cardPosition = cardPosition
+        alert.time = cards[cardPosition].hour.getFormattedHour().lowercased()
         setStatusBarBackground(as: .clear)
-        present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
+    }
+}
+
+// MARK: - UI
+
+extension TodayViewController {
+    
+    func setStatusBarBackground(as color: UIColor) {
+        // Make status bar white
+        guard let statusBarView = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else {
+            return
+        }
+        UIView.animate(withDuration: 0.2) {
+            statusBarView.backgroundColor = color
+        }
     }
 }
 

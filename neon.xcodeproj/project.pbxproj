@@ -11,6 +11,7 @@
 		23074FCA220B4B5700B64762 /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23074FC9220B4B5700B64762 /* Int+Ext.swift */; };
 		23074FCC220B4DE800B64762 /* TodayEmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23074FCB220B4DE800B64762 /* TodayEmptyCell.swift */; };
 		23074FCE220B53AB00B64762 /* UIButtonX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23074FCD220B53AB00B64762 /* UIButtonX.swift */; };
+		231898DD221D92F1005766AF /* AddAgendAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231898DC221D92F1005766AF /* AddAgendAlertViewController.swift */; };
 		231F73EA2215AF6400A1A32A /* DataGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231F73E92215AF6400A1A32A /* DataGateway.swift */; };
 		2338BEBC220A7840004F288F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEBB220A7840004F288F /* AppDelegate.swift */; };
 		2338BEBE220A7840004F288F /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEBD220A7840004F288F /* TodayViewController.swift */; };
@@ -51,6 +52,7 @@
 		23074FC9220B4B5700B64762 /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
 		23074FCB220B4DE800B64762 /* TodayEmptyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayEmptyCell.swift; sourceTree = "<group>"; };
 		23074FCD220B53AB00B64762 /* UIButtonX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonX.swift; sourceTree = "<group>"; };
+		231898DC221D92F1005766AF /* AddAgendAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAgendAlertViewController.swift; sourceTree = "<group>"; };
 		231F73E92215AF6400A1A32A /* DataGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGateway.swift; sourceTree = "<group>"; };
 		2338BEB8220A7840004F288F /* neon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = neon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2338BEBB220A7840004F288F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				23074FCB220B4DE800B64762 /* TodayEmptyCell.swift */,
 				23074FCD220B53AB00B64762 /* UIButtonX.swift */,
 				234C1A0A220C8F9900344316 /* TodayHeaderCell.swift */,
+				231898DC221D92F1005766AF /* AddAgendAlertViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				231898DD221D92F1005766AF /* AddAgendAlertViewController.swift in Sources */,
 				231F73EA2215AF6400A1A32A /* DataGateway.swift in Sources */,
 				23074FC8220B4A5D00B64762 /* AgendaItem.swift in Sources */,
 				2338BEC4220A7840004F288F /* neon.xcdatamodeld in Sources */,

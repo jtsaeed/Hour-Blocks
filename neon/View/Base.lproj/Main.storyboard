@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -221,12 +222,140 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Today" id="bKj-dD-k3p"/>
-                    <userDefinedRuntimeAttributes>
-                    </userDefinedRuntimeAttributes>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dfw-wy-1Tl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1927.2" y="50.246305418719217"/>
+        </scene>
+        <!--AddAgendaAlert-->
+        <scene sceneID="Jau-NK-BNI">
+            <objects>
+                <viewController storyboardIdentifier="AddAgendaAlert" title="AddAgendaAlert" id="bnA-yA-elB" customClass="AddAgendAlertViewController" customModule="neon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wTI-bP-PsW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Luo-Uo-qaA" customClass="UIViewX" customModule="neon" customModuleProvider="target">
+                                <rect key="frame" x="40" y="172" width="295" height="212"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="Ovn-ED-QoM">
+                                        <rect key="frame" x="32" y="26" width="231" height="160"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="602-G6-q84">
+                                                <rect key="frame" x="0.0" y="0.0" width="231" height="84"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's in store for 11am?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfM-m6-D9u">
+                                                        <rect key="frame" x="0.0" y="0.0" width="231" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kUj-Xe-iyf" customClass="UIViewX" customModule="neon" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="40" width="231" height="44"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GoQ-RD-rtA">
+                                                                <rect key="frame" x="0.0" y="0.0" width="231" height="44"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                        <color key="backgroundColor" name="mainLight"/>
+                                                        <constraints>
+                                                            <constraint firstItem="GoQ-RD-rtA" firstAttribute="top" secondItem="kUj-Xe-iyf" secondAttribute="top" id="0kO-cZ-5au"/>
+                                                            <constraint firstAttribute="bottom" secondItem="GoQ-RD-rtA" secondAttribute="bottom" id="4uX-5C-xEJ"/>
+                                                            <constraint firstItem="GoQ-RD-rtA" firstAttribute="leading" secondItem="kUj-Xe-iyf" secondAttribute="leading" id="KE2-Rh-eCW"/>
+                                                            <constraint firstAttribute="width" constant="231" id="lDR-1Q-7U1"/>
+                                                            <constraint firstAttribute="height" constant="44" id="oem-iB-Hwx"/>
+                                                            <constraint firstAttribute="trailing" secondItem="GoQ-RD-rtA" secondAttribute="trailing" id="s3U-4n-O6K"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="22"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="F3Z-Tl-NUN">
+                                                <rect key="frame" x="11.666666666666671" y="116" width="208" height="44"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="krX-ws-mJm" customClass="UIButtonX" customModule="neon" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="96" height="44"/>
+                                                        <color key="backgroundColor" name="mainLight"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="96" id="Jzr-KZ-vr1"/>
+                                                            <constraint firstAttribute="height" constant="44" id="KpH-PG-oLP"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                        <state key="normal" title="CANCEL">
+                                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="22"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="cancelButtonPressed:" destination="bnA-yA-elB" eventType="touchUpInside" id="dE0-0Y-2wD"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9eq-4R-4fU" customClass="UIButtonX" customModule="neon" customModuleProvider="target">
+                                                        <rect key="frame" x="112" y="0.0" width="96" height="44"/>
+                                                        <color key="backgroundColor" name="mainLight"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="96" id="FdI-RI-nPs"/>
+                                                            <constraint firstAttribute="height" constant="44" id="S8q-DQ-qCs"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                        <state key="normal" title="DONE">
+                                                            <color key="titleColor" name="main"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="22"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="doneButtonPressed:" destination="bnA-yA-elB" eventType="touchUpInside" id="XHK-Xn-MLt"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Ovn-ED-QoM" firstAttribute="centerX" secondItem="Luo-Uo-qaA" secondAttribute="centerX" id="Qf2-HG-xcB"/>
+                                    <constraint firstAttribute="width" constant="295" id="lnl-le-2wC"/>
+                                    <constraint firstItem="Ovn-ED-QoM" firstAttribute="centerY" secondItem="Luo-Uo-qaA" secondAttribute="centerY" id="qal-AD-xWP"/>
+                                    <constraint firstAttribute="height" constant="212" id="th3-Od-SjP"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="32"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="Luo-Uo-qaA" firstAttribute="centerX" secondItem="wTI-bP-PsW" secondAttribute="centerX" id="DW2-tE-Kcr"/>
+                            <constraint firstItem="Luo-Uo-qaA" firstAttribute="top" secondItem="1M3-hH-ipk" secondAttribute="top" constant="128" id="q2f-bM-bAL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1M3-hH-ipk"/>
+                    </view>
+                    <connections>
+                        <outlet property="alertView" destination="Luo-Uo-qaA" id="d2X-V3-eqj"/>
+                        <outlet property="titleLabel" destination="pfM-m6-D9u" id="rUW-zy-ZdL"/>
+                        <outlet property="titleTextField" destination="GoQ-RD-rtA" id="ZvP-Y2-rLJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r1b-K6-LF1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2642.4000000000001" y="50.246305418719217"/>
         </scene>
     </scenes>
     <resources>
