@@ -54,8 +54,41 @@ extension DataGateway {
                 guard let title = data.value(forKey: "title") as? String else { return agendaItems }
                 
                 // Only pull the tasks that are in today, delete any others still laying around
+                // except tomorrow
                 if Calendar.current.isDateInToday(day) {
                     agendaItems[hour] = AgendaItem(title: title)
+                } else if Calendar.current.isDateInTomorrow(day) {
+                    continue
+                } else {
+                    persistentContainer.viewContext.delete(data)
+                }
+            }
+        } catch {
+            print("Failed loading")
+        }
+        
+        return agendaItems
+    }
+    
+    /// Returns the agenda items for tomorrow
+    public func loadTomorrowsAgendaItems() -> [Int: AgendaItem] {
+        var agendaItems = [Int: AgendaItem]()
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "AgendaEntity")
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            let result = try persistentContainer.viewContext.fetch(request)
+            for data in result as! [NSManagedObject] {
+                guard let day = data.value(forKey: "day") as? Date else { return agendaItems }
+                guard let hour = data.value(forKey: "hour") as? Int else { return agendaItems }
+                guard let title = data.value(forKey: "title") as? String else { return agendaItems }
+                
+                // Only pull the tasks that are in today, delete any others still laying around
+                // except today
+                if Calendar.current.isDateInTomorrow(day) {
+                    agendaItems[hour] = AgendaItem(title: title)
+                } else if Calendar.current.isDateInToday(day) {
+                    continue
                 } else {
                     persistentContainer.viewContext.delete(data)
                 }
@@ -68,15 +101,37 @@ extension DataGateway {
     }
     
     /// Saves a given task if it doesn't already exist
-    public func saveAgendaItem(_ agendaItem: AgendaItem, for hour: Int) {
+    public func saveAgendaItem(_ agendaItem: AgendaItem, for hour: Int, today: Bool) {
         let entity = NSEntityDescription.entity(forEntityName: "AgendaEntity", in: persistentContainer.viewContext)
         let newAgendaItem = NSManagedObject(entity: entity!, insertInto: persistentContainer.viewContext)
         
-        newAgendaItem.setValue(Date(), forKey: "day")
+        newAgendaItem.setValue(today ? Date() : Calendar.current.date(byAdding: .day, value: 1, to: Date())!, forKey: "day")
         newAgendaItem.setValue(hour, forKey: "hour")
         newAgendaItem.setValue(agendaItem.icon, forKey: "icon")
         newAgendaItem.setValue(agendaItem.title, forKey: "title")
         
         saveContext()
+    }
+    
+    public func deleteAgendaItem(from agendaCard: AgendaCard) {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "AgendaEntity")
+        request.returnsObjectsAsFaults = false
+        
+        print("Trying to delete!")
+        
+        do {
+            let result = try persistentContainer.viewContext.fetch(request)
+            for data in result as! [NSManagedObject] {
+                guard let hour = data.value(forKey: "hour") as? Int else { return }
+                guard let title = data.value(forKey: "title") as? String else { return }
+                
+                if agendaCard.hour == hour && agendaCard.agendaItem!.title == title {
+                    print("Deleting!")
+                    persistentContainer.viewContext.delete(data)
+                }
+            }
+        } catch {
+            print("Failed loading")
+        }
     }
 }

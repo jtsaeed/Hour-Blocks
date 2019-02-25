@@ -11,68 +11,123 @@ import SwipeCellKit
 
 class TodayViewController: UITableViewController {
     
-    var cards = [TodayCard]() {
+    var todayCards = [AgendaCard]() {
         didSet {
-            cards = cards.filter { $0.hour >= Calendar.current.component(.hour, from: Date()) }
+            todayCards = todayCards.filter { $0.hour >= Calendar.current.component(.hour, from: Date()) }
         }
     }
+    var tomorrowCards = [AgendaCard]()
     var agendaItems = [Int: AgendaItem]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.frame = .zero
         setStatusBarBackground(as: .white)
-        generateCards(from: DataGateway.shared.loadTodaysAgendaItems())
+        generateCards(from: DataGateway.shared.loadTodaysAgendaItems(),
+                      and: DataGateway.shared.loadTomorrowsAgendaItems())
     }
 }
 
 // MARK: - Functionality
 
 extension TodayViewController {
-    func generateCards(from agendaItems: [Int: AgendaItem]) {
+    
+    func generateCards(from todayAgendaItems: [Int: AgendaItem], and tomorrowAgendaItems: [Int: AgendaItem]) {
         for hour in 0...23 {
-            cards.append(TodayCard(hour: hour, agendaItem: agendaItems[hour]))
+            todayCards.append(AgendaCard(hour: hour, agendaItem: todayAgendaItems[hour]))
+            tomorrowCards.append(AgendaCard(hour: hour, agendaItem: tomorrowAgendaItems[hour]))
         }
+    }
+    
+    func addCard(for indexPath: IndexPath, with title: String) {
+        let agendaItem = AgendaItem(title: title)
+        
+        if indexPath.section == SectionType.today.rawValue {
+            DataGateway.shared.saveAgendaItem(agendaItem, for: self.todayCards[indexPath.row].hour, today: true)
+            self.todayCards[indexPath.row].agendaItem = agendaItem
+        } else if indexPath.section == SectionType.tomorrow.rawValue {
+            DataGateway.shared.saveAgendaItem(agendaItem, for: self.tomorrowCards[indexPath.row].hour, today: false)
+            self.tomorrowCards[indexPath.row].agendaItem = agendaItem
+        }
+        
+        self.tableView.reloadRows(at: [indexPath], with: .fade)
     }
 }
 
 // MARK: - Table View
 
-extension TodayViewController: AddAgendaDelegate {
+extension TodayViewController {
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 112
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 112))
+        guard let sectionHeader = Bundle.main.loadNibNamed("SectionHeaderView", owner: self, options: nil)?.first as? SectionHeaderView else { return UIView() }
+        
+        if section == SectionType.today.rawValue {
+            sectionHeader.build(for: .today)
+        } else if section == SectionType.tomorrow.rawValue {
+            sectionHeader.build(for: .tomorrow)
+        }
+        
+        view.addSubview(sectionHeader)
+        return view
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cards.count + 1
+        if section == SectionType.today.rawValue {
+            return todayCards.count
+        } else if section == SectionType.tomorrow.rawValue {
+            return tomorrowCards.count
+        } else {
+            return 0
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "todayHeaderCell") as? TodayHeaderCell else { return UITableViewCell() }
-            cell.build()
-            return cell
-        } else {
-            let cardPosition = indexPath.row - 1
-            if let agendaItem = cards[cardPosition].agendaItem {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "todayAgendaCell") as? TodayAgendaCell else { return UITableViewCell() }
-                cell.build(with: agendaItem, forHour: cards[cardPosition].hour)
+        if indexPath.section == SectionType.today.rawValue {
+            if let agendaItem = todayCards[indexPath.row].agendaItem {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "todayAgendaCell") as? AgendaCardCell else { return UITableViewCell() }
+                cell.build(with: agendaItem, forHour: todayCards[indexPath.row].hour)
                 return cell
             } else {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "todayEmptyCell") as? TodayEmptyCell else { return UITableViewCell() }
-                cell.build(forHour: cards[cardPosition].hour, atPosition: cardPosition)
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "todayEmptyCell") as? EmptyCardCell else { return UITableViewCell() }
+                cell.build(for: todayCards[indexPath.row].hour, at: indexPath)
                 cell.delegate = self
                 return cell
             }
+        } else if indexPath.section == SectionType.tomorrow.rawValue {
+            if let agendaItem = tomorrowCards[indexPath.row].agendaItem {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "todayAgendaCell") as? AgendaCardCell else { return UITableViewCell() }
+                cell.build(with: agendaItem, forHour: tomorrowCards[indexPath.row].hour)
+                return cell
+            } else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "todayEmptyCell") as? EmptyCardCell else { return UITableViewCell() }
+                cell.build(for: tomorrowCards[indexPath.row].hour, at: indexPath)
+                cell.delegate = self
+                return cell
+            }
+        } else {
+            return UITableViewCell()
         }
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let edit = UIContextualAction(style: .normal, title: "Edit") { (action, view, handler) in
-            self.showAddAgendaDialog(forCardPosition: indexPath.row - 1)
+            self.showAddAgendaDialog(for: indexPath)
         }
         edit.backgroundColor = UIColor(named: "main")
         
         let clear = UIContextualAction(style: .normal, title: "Clear") { (action, view, handler) in
-            // TODO: clear agenda item
+            // TODO
         }
         clear.backgroundColor = UIColor(named: "main")
         
@@ -82,25 +137,28 @@ extension TodayViewController: AddAgendaDelegate {
 
 // MARK: - Dialogs
 
-extension TodayViewController: AddAgendaAlertViewDelegate {
+extension TodayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
     
-    func doneButtonTapped(textFieldValue: String, cardPosition: Int) {
-        let agendaItem = AgendaItem(title: textFieldValue)
-        DataGateway.shared.saveAgendaItem(agendaItem, for: self.cards[cardPosition].hour)
-        self.cards[cardPosition].agendaItem = agendaItem
-        self.tableView.reloadRows(at: [IndexPath(row: cardPosition + 1, section: 0)], with: .fade)
+    func doneButtonTapped(textFieldValue: String, indexPath: IndexPath) {
+        addCard(for: indexPath, with: textFieldValue)
         self.setStatusBarBackground(as: .white)
     }
     
-    func showAddAgendaDialog(forCardPosition cardPosition: Int) {
+    func showAddAgendaDialog(for indexPath: IndexPath) {
         let alert = self.storyboard?.instantiateViewController(withIdentifier: "AddAgendaAlert") as! AddAgendAlertViewController
         alert.providesPresentationContextTransitionStyle = true
         alert.definesPresentationContext = true
         alert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         alert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         alert.delegate = self
-        alert.cardPosition = cardPosition
-        alert.time = cards[cardPosition].hour.getFormattedHour().lowercased()
+        alert.indexPath = indexPath
+        
+        if indexPath.section == SectionType.today.rawValue {
+            alert.time = todayCards[indexPath.row].hour.getFormattedHour().lowercased()
+        } else if indexPath.section == SectionType.tomorrow.rawValue {
+            alert.time = tomorrowCards[indexPath.row].hour.getFormattedHour().lowercased()
+        }
+        
         setStatusBarBackground(as: .clear)
         self.present(alert, animated: true, completion: nil)
     }
@@ -121,7 +179,7 @@ extension TodayViewController {
     }
 }
 
-struct TodayCard {
+struct AgendaCard {
     
     let hour: Int
     var agendaItem: AgendaItem?

@@ -15,7 +15,7 @@ class AddAgendAlertViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     
     var delegate: AddAgendaAlertViewDelegate?
-    var cardPosition: Int!
+    var indexPath: IndexPath!
     var time: String!
     
     override func viewDidLoad() {
@@ -33,7 +33,7 @@ class AddAgendAlertViewController: UIViewController {
     
     @IBAction func doneButtonPressed(_ sender: Any) {
         titleTextField.resignFirstResponder()
-        delegate?.doneButtonTapped(textFieldValue: titleTextField.text!, cardPosition: cardPosition!)
+        delegate?.doneButtonTapped(textFieldValue: titleTextField.text!, indexPath: indexPath!)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -46,7 +46,7 @@ class AddAgendAlertViewController: UIViewController {
 extension AddAgendAlertViewController {
     
     func setupView() {
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.25)
         titleLabel.text = "What's in store at \(time!)?"
     }
     
@@ -62,5 +62,5 @@ extension AddAgendAlertViewController {
 
 protocol AddAgendaAlertViewDelegate {
     
-    func doneButtonTapped(textFieldValue: String, cardPosition: Int)
+    func doneButtonTapped(textFieldValue: String, indexPath: IndexPath)
 }

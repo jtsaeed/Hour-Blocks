@@ -54,7 +54,7 @@
                                     <outlet property="dateLabel" destination="pFy-a8-ysK" id="hzi-r7-83m"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="todayAgendaCell" rowHeight="112" id="T7U-XF-XBY" customClass="TodayAgendaCell" customModule="neon" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="todayAgendaCell" rowHeight="112" id="T7U-XF-XBY" customClass="AgendaCardCell" customModule="neon" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="140" width="375" height="112"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="T7U-XF-XBY" id="k3c-bF-MGa">
@@ -130,7 +130,7 @@
                                     <outlet property="title" destination="Esi-oV-yXI" id="2Wg-MO-RGX"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="todayEmptyCell" rowHeight="112" id="fRe-Ob-KBC" customClass="TodayEmptyCell" customModule="neon" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="todayEmptyCell" rowHeight="112" id="fRe-Ob-KBC" customClass="EmptyCardCell" customModule="neon" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="252" width="375" height="112"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fRe-Ob-KBC" id="569-y1-XD0">

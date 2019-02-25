@@ -9,22 +9,22 @@
 import UIKit
 
 protocol AddAgendaDelegate {
-    func showAddAgendaDialog(forCardPosition cardPosition: Int)
+    func showAddAgendaDialog(for indexPath: IndexPath)
 }
 
-class TodayEmptyCell: UITableViewCell {
+class EmptyCardCell: UITableViewCell {
     
     var delegate: AddAgendaDelegate!
 
     @IBOutlet weak var time: UILabel!
-    var cardPosition: Int!
+    var indexPath: IndexPath!
     
-    func build(forHour hour: Int, atPosition position: Int) {
+    func build(for hour: Int, at indexPath: IndexPath) {
         self.time.text = hour.getFormattedHour()
-        self.cardPosition = position
+        self.indexPath = indexPath
     }
     
     @IBAction func addButtonPressed(_ sender: Any) {
-        self.delegate.showAddAgendaDialog(forCardPosition: cardPosition)
+        self.delegate.showAddAgendaDialog(for: indexPath)
     }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TodayAgendaCell: UITableViewCell {
+class AgendaCardCell: UITableViewCell {
 
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var title: UILabel!
