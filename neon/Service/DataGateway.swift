@@ -64,7 +64,7 @@ extension DataGateway {
                 }
             }
         } catch {
-            print("Failed loading")
+            print("Failed loading from Core Data")
         }
         
         return agendaItems
@@ -94,7 +94,13 @@ extension DataGateway {
                 }
             }
         } catch {
-            print("Failed loading")
+            print("Failed loading from Core Data")
+        }
+        
+        for event in CalendarGateway.shared.importTomorrowsEvents() {
+            for i in event.startTime...event.endTime {
+                agendaItems[i] = AgendaItem(title: event.title)
+            }
         }
         
         return agendaItems
