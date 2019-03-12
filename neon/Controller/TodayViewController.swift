@@ -93,9 +93,9 @@ extension TodayViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == SectionType.today.rawValue {
-            
+            if !todayCards[indexPath.row].isEmpty { showAgendaOptionsDialog(for: indexPath) }
         } else if indexPath.section == SectionType.tomorrow.rawValue {
-            
+            if !todayCards[indexPath.row].isEmpty { showAgendaOptionsDialog(for: indexPath) }
         }
     }
     
@@ -139,11 +139,6 @@ extension TodayViewController {
 
 extension TodayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
     
-    func doneButtonTapped(textFieldValue: String, indexPath: IndexPath) {
-        addCard(for: indexPath, with: textFieldValue)
-        self.setStatusBarBackground(as: .white)
-    }
-    
     func showAddAgendaDialog(for indexPath: IndexPath) {
         let alert = self.storyboard?.instantiateViewController(withIdentifier: "AddAgendaAlert") as! AddAgendAlertViewController
         alert.providesPresentationContextTransitionStyle = true
@@ -162,6 +157,30 @@ extension TodayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
         setStatusBarBackground(as: .clear)
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func doneButtonTapped(textFieldValue: String, indexPath: IndexPath) {
+        addCard(for: indexPath, with: textFieldValue)
+        self.setStatusBarBackground(as: .white)
+    }
+    
+    func showAgendaOptionsDialog(for indexPath: IndexPath) {
+        let actionSheet = UIAlertController(title: "Options", message: "Options", preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: "Edit", style: .default, handler: { action in
+            self.showAddAgendaDialog(for: indexPath)
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Clear", style: .destructive, handler: { action in
+            // TODO: Clear
+            self.setStatusBarBackground(as: .white)
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+            actionSheet.dismiss(animated: true, completion: nil)
+            self.setStatusBarBackground(as: .white)
+        }))
+        
+        setStatusBarBackground(as: .clear)
+        present(actionSheet, animated: true, completion: nil)
+    }
 }
 
 // MARK: - UI
@@ -169,7 +188,6 @@ extension TodayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
 extension TodayViewController {
     
     func setStatusBarBackground(as color: UIColor) {
-        // Make status bar white
         guard let statusBarView = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else {
             return
         }
@@ -183,4 +201,7 @@ struct AgendaCard {
     
     let hour: Int
     var agendaItem: AgendaItem?
+    var isEmpty: Bool {
+        return agendaItem == nil
+    }
 }
