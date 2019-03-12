@@ -6,8 +6,6 @@ target 'neon' do
   use_frameworks!
 
   # Pods for neon
-  pod 'Malert'
-  pod 'SwipeCellKit'
 
   target 'neonTests' do
     inherit! :search_paths

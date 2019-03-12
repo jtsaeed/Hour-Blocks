@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwipeCellKit
 import EventKit
 
 class TodayViewController: UITableViewController {
@@ -92,47 +91,47 @@ extension TodayViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == SectionType.today.rawValue {
+            
+        } else if indexPath.section == SectionType.tomorrow.rawValue {
+            
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == SectionType.today.rawValue {
-            if let agendaItem = todayCards[indexPath.row].agendaItem {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "todayAgendaCell") as? AgendaCardCell else { return UITableViewCell() }
-                cell.build(with: agendaItem, forHour: todayCards[indexPath.row].hour)
-                return cell
-            } else {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "todayEmptyCell") as? EmptyCardCell else { return UITableViewCell() }
-                cell.build(for: todayCards[indexPath.row].hour, at: indexPath)
-                cell.delegate = self
-                return cell
-            }
+            return buildCell(with: todayCards[indexPath.row].agendaItem,
+                             for: todayCards[indexPath.row].hour,
+                             at: indexPath)
         } else if indexPath.section == SectionType.tomorrow.rawValue {
-            if let agendaItem = tomorrowCards[indexPath.row].agendaItem {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "todayAgendaCell") as? AgendaCardCell else { return UITableViewCell() }
-                cell.build(with: agendaItem, forHour: tomorrowCards[indexPath.row].hour)
-                return cell
-            } else {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "todayEmptyCell") as? EmptyCardCell else { return UITableViewCell() }
-                cell.build(for: tomorrowCards[indexPath.row].hour, at: indexPath)
-                cell.delegate = self
-                return cell
-            }
+            return buildCell(with: tomorrowCards[indexPath.row].agendaItem,
+                             for: tomorrowCards[indexPath.row].hour,
+                             at: indexPath)
         } else {
             return UITableViewCell()
         }
     }
     
-    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        
-        let edit = UIContextualAction(style: .normal, title: "Edit") { (action, view, handler) in
-            self.showAddAgendaDialog(for: indexPath)
+    func buildCell(with agendaItem: AgendaItem?, for hour: Int, at indexPath: IndexPath) -> UITableViewCell {
+        if let unwrappedAgendaItem = agendaItem {
+            return buildAgendaCell(with: unwrappedAgendaItem, for: hour)
+        } else {
+            return buildEmptyCell(for: hour, at: indexPath)
         }
-        edit.backgroundColor = UIColor(named: "main")
-        
-        let clear = UIContextualAction(style: .normal, title: "Clear") { (action, view, handler) in
-            // TODO
-        }
-        clear.backgroundColor = UIColor(named: "main")
-        
-        return UISwipeActionsConfiguration(actions: [clear, edit])
+    }
+    
+    func buildAgendaCell(with agendaItem: AgendaItem, for hour: Int) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "todayAgendaCell") as? AgendaCardCell else { return UITableViewCell() }
+        cell.build(with: agendaItem, for: hour)
+        return cell
+    }
+    
+    func buildEmptyCell(for hour: Int, at indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "todayEmptyCell") as? EmptyCardCell else { return UITableViewCell() }
+        cell.build(for: hour, at: indexPath)
+        cell.delegate = self
+        return cell
     }
 }
 

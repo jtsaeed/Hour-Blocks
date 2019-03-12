@@ -1,20 +1,3 @@
-PODS:
-  - Malert (3.0)
-  - SwipeCellKit (2.5.1)
-
-DEPENDENCIES:
-  - Malert
-  - SwipeCellKit
-
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - Malert
-    - SwipeCellKit
-
-SPEC CHECKSUMS:
-  Malert: 945f3ac9176cf99bc22d025a2589ab336cd030dc
-  SwipeCellKit: 30fd6a4f8a8b8ac864ea389c8b4c8bac5ba5471a
-
-PODFILE CHECKSUM: 43a71ffa99823a433817acfd19a546ec21d18a06
+PODFILE CHECKSUM: b119085db74b2e47132c3c0405ef7cd9a89f285a
 
 COCOAPODS: 1.5.3

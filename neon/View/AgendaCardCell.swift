@@ -14,7 +14,7 @@ class AgendaCardCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var icon: UIImageView!
     
-    func build(with agendaItem: AgendaItem, forHour hour: Int) {
+    func build(with agendaItem: AgendaItem, for hour: Int) {
         self.time.text = hour.getFormattedHour()
         self.title.text = agendaItem.title.capitalized
         self.icon.image = UIImage(named: agendaItem.icon)?.withRenderingMode(.alwaysTemplate)
