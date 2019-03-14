@@ -33,11 +33,12 @@ class AddAgendAlertViewController: UIViewController {
     
     @IBAction func doneButtonPressed(_ sender: Any) {
         if !(titleTextField.text?.isEmpty)! {
+            UINotificationFeedbackGenerator().notificationOccurred(.success)
             titleTextField.resignFirstResponder()
             delegate?.doneButtonTapped(textFieldValue: titleTextField.text!, indexPath: indexPath!)
             self.dismiss(animated: true, completion: nil)
         } else {
-            // TODO: Generate haptic feedback
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
         }
     }
     
