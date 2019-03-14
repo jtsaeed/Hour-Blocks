@@ -120,24 +120,15 @@ extension DataGateway {
     }
     
     public func deleteAgendaItem(from agendaCard: AgendaCard) {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "AgendaEntity")
-        request.returnsObjectsAsFaults = false
-        
-        print("Trying to delete!")
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "AgendaEntity")
+        let predicate = NSPredicate(format: "title = %@ AND hour = %d", agendaCard.agendaItem!.title, agendaCard.hour)
+        fetch.predicate = predicate
+        let request = NSBatchDeleteRequest(fetchRequest: fetch)
         
         do {
-            let result = try persistentContainer.viewContext.fetch(request)
-            for data in result as! [NSManagedObject] {
-                guard let hour = data.value(forKey: "hour") as? Int else { return }
-                guard let title = data.value(forKey: "title") as? String else { return }
-                
-                if agendaCard.hour == hour && agendaCard.agendaItem!.title == title {
-                    print("Deleting!")
-                    persistentContainer.viewContext.delete(data)
-                }
-            }
+            try persistentContainer.viewContext.execute(request)
         } catch {
-            print("Failed loading")
+            print("Delete failed")
         }
     }
 }

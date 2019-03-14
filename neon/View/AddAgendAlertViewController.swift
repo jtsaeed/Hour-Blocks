@@ -33,7 +33,7 @@ class AddAgendAlertViewController: UIViewController {
     
     @IBAction func doneButtonPressed(_ sender: Any) {
         titleTextField.resignFirstResponder()
-        delegate?.doneButtonTapped(textFieldValue: titleTextField.text!, indexPath: indexPath!)
+        delegate?.doneButtonTapped(textFieldValue: titleTextField.text, indexPath: indexPath!)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -62,5 +62,5 @@ extension AddAgendAlertViewController {
 
 protocol AddAgendaAlertViewDelegate {
     
-    func doneButtonTapped(textFieldValue: String, indexPath: IndexPath)
+    func doneButtonTapped(textFieldValue: String?, indexPath: IndexPath)
 }

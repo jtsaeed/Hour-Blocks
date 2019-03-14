@@ -24,6 +24,11 @@ class TodayViewController: UITableViewController {
         
         tableView.frame = .zero
         setStatusBarBackground(as: .white)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         generateCards(from: DataGateway.shared.loadTodaysAgendaItems(),
                       and: DataGateway.shared.loadTomorrowsAgendaItems())
     }
@@ -49,6 +54,18 @@ extension TodayViewController {
         } else if indexPath.section == SectionType.tomorrow.rawValue {
             DataGateway.shared.saveAgendaItem(agendaItem, for: self.tomorrowCards[indexPath.row].hour, today: false)
             self.tomorrowCards[indexPath.row].agendaItem = agendaItem
+        }
+        
+        self.tableView.reloadRows(at: [indexPath], with: .fade)
+    }
+    
+    func removeCard(for indexPath: IndexPath) {
+        if indexPath.section == SectionType.today.rawValue {
+            DataGateway.shared.deleteAgendaItem(from: self.todayCards[indexPath.row])
+            self.todayCards[indexPath.row].agendaItem = nil
+        } else if indexPath.section == SectionType.tomorrow.rawValue {
+            DataGateway.shared.deleteAgendaItem(from: self.tomorrowCards[indexPath.row])
+            self.tomorrowCards[indexPath.row].agendaItem = nil
         }
         
         self.tableView.reloadRows(at: [indexPath], with: .fade)
@@ -158,19 +175,23 @@ extension TodayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func doneButtonTapped(textFieldValue: String, indexPath: IndexPath) {
-        addCard(for: indexPath, with: textFieldValue)
-        self.setStatusBarBackground(as: .white)
+    func doneButtonTapped(textFieldValue: String?, indexPath: IndexPath) {
+        if let title = textFieldValue {
+            addCard(for: indexPath, with: title)
+            self.setStatusBarBackground(as: .white)
+        } else {
+            // TODO: Haptic feedback
+        }
     }
     
     func showAgendaOptionsDialog(for indexPath: IndexPath) {
-        let actionSheet = UIAlertController(title: "Options", message: "Options", preferredStyle: .actionSheet)
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         actionSheet.addAction(UIAlertAction(title: "Edit", style: .default, handler: { action in
             self.showAddAgendaDialog(for: indexPath)
         }))
         actionSheet.addAction(UIAlertAction(title: "Clear", style: .destructive, handler: { action in
-            // TODO: Clear
+            self.removeCard(for: indexPath)
             self.setStatusBarBackground(as: .white)
         }))
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
