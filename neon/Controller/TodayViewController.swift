@@ -175,13 +175,9 @@ extension TodayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func doneButtonTapped(textFieldValue: String?, indexPath: IndexPath) {
-        if let title = textFieldValue {
-            addCard(for: indexPath, with: title)
-            self.setStatusBarBackground(as: .white)
-        } else {
-            // TODO: Haptic feedback
-        }
+    func doneButtonTapped(textFieldValue: String, indexPath: IndexPath) {
+        addCard(for: indexPath, with: textFieldValue)
+        self.setStatusBarBackground(as: .white)
     }
     
     func showAgendaOptionsDialog(for indexPath: IndexPath) {

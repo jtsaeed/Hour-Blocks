@@ -32,9 +32,13 @@ class AddAgendAlertViewController: UIViewController {
     }
     
     @IBAction func doneButtonPressed(_ sender: Any) {
-        titleTextField.resignFirstResponder()
-        delegate?.doneButtonTapped(textFieldValue: titleTextField.text, indexPath: indexPath!)
-        self.dismiss(animated: true, completion: nil)
+        if !(titleTextField.text?.isEmpty)! {
+            titleTextField.resignFirstResponder()
+            delegate?.doneButtonTapped(textFieldValue: titleTextField.text!, indexPath: indexPath!)
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            // TODO: Generate haptic feedback
+        }
     }
     
     @IBAction func cancelButtonPressed(_ sender: Any) {
@@ -62,5 +66,5 @@ extension AddAgendAlertViewController {
 
 protocol AddAgendaAlertViewDelegate {
     
-    func doneButtonTapped(textFieldValue: String?, indexPath: IndexPath)
+    func doneButtonTapped(textFieldValue: String, indexPath: IndexPath)
 }
