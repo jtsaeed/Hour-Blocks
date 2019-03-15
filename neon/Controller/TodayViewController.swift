@@ -180,6 +180,10 @@ extension TodayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
         self.setStatusBarBackground(as: .white)
     }
     
+    func cancelButtonTapped() {
+        self.setStatusBarBackground(as: .white)
+    }
+    
     func showAgendaOptionsDialog(for indexPath: IndexPath) {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
