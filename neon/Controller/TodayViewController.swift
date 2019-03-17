@@ -24,6 +24,7 @@ class TodayViewController: UITableViewController {
         
         tableView.frame = .zero
         setStatusBarBackground(as: .white)
+        CalendarGateway.shared.handlePermissions()
     }
     
     override func viewWillAppear(_ animated: Bool) {

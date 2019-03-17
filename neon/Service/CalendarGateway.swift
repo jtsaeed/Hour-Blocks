@@ -15,6 +15,21 @@ class CalendarGateway {
     
     let eventStore = EKEventStore()
     
+    func hasPermission() -> Bool {
+        let status = EKEventStore.authorizationStatus(for: EKEntityType.event)
+        return status == EKAuthorizationStatus.authorized
+    }
+    
+    func handlePermissions() {
+        let status = EKEventStore.authorizationStatus(for: EKEntityType.event)
+        
+        if status == EKAuthorizationStatus.notDetermined {
+            eventStore.requestAccess(to: .event) { (granted, error) in
+                
+            }
+        }
+    }
+    
     func importTomorrowsEvents() -> [ImportedCalendarEvent] {
         var importedCalendarEvents = [ImportedCalendarEvent]()
         

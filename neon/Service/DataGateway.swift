@@ -97,9 +97,11 @@ extension DataGateway {
             print("Failed loading from Core Data")
         }
         
-        for event in CalendarGateway.shared.importTomorrowsEvents() {
-            for i in event.startTime...event.endTime {
-                agendaItems[i] = AgendaItem(title: event.title)
+        if CalendarGateway.shared.hasPermission() {
+            for event in CalendarGateway.shared.importTomorrowsEvents() {
+                for i in event.startTime...event.endTime {
+                    agendaItems[i] = AgendaItem(title: event.title)
+                }
             }
         }
         
