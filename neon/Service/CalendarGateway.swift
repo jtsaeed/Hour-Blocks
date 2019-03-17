@@ -30,15 +30,28 @@ class CalendarGateway {
         }
     }
     
-    func importTomorrowsEvents() -> [ImportedCalendarEvent] {
-        var importedCalendarEvents = [ImportedCalendarEvent]()
+    func importTodaysEvents() -> [ImportedCalendarEvent] {
+        let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
+        let todayStart = Calendar.current.date(bySetting: .hour, value: 0, of: yesterday)
+        let todayEnd = Calendar.current.date(bySetting: .hour, value: 23, of: Date())
+        let eventsPredicate = eventStore.predicateForEvents(withStart: todayStart!, end: todayEnd!, calendars: eventStore.calendars(for: EKEntityType.event))
         
+        return importEvents(with: eventsPredicate)
+    }
+    
+    func importTomorrowsEvents() -> [ImportedCalendarEvent] {
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
         let tomorrowStart = Calendar.current.date(bySetting: .hour, value: 0, of: Date())
         let tomorrowEnd = Calendar.current.date(bySetting: .hour, value: 23, of: tomorrow)
         let eventsPredicate = eventStore.predicateForEvents(withStart: tomorrowStart!, end: tomorrowEnd!, calendars: eventStore.calendars(for: EKEntityType.event))
         
-        for storedEvent in eventStore.events(matching: eventsPredicate) {
+        return importEvents(with: eventsPredicate)
+    }
+    
+    func importEvents(with predicate: NSPredicate) -> [ImportedCalendarEvent] {
+        var importedCalendarEvents = [ImportedCalendarEvent]()
+        
+        for storedEvent in eventStore.events(matching: predicate) {
             let importedCalendarEvent = ImportedCalendarEvent(from: storedEvent)
             
             if (!isAllDay(event: importedCalendarEvent)) {
