@@ -40,6 +40,8 @@ class TodayViewController: UITableViewController {
 extension TodayViewController {
     
     func generateCards(from todayAgendaItems: [Int: AgendaItem], and tomorrowAgendaItems: [Int: AgendaItem]) {
+        todayCards.removeAll()
+        tomorrowCards.removeAll()
         for hour in 0...23 {
             todayCards.append(AgendaCard(hour: hour, agendaItem: todayAgendaItems[hour]))
             tomorrowCards.append(AgendaCard(hour: hour, agendaItem: tomorrowAgendaItems[hour]))
@@ -82,8 +84,8 @@ extension TodayViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 112))
         guard let sectionHeader = Bundle.main.loadNibNamed("SectionHeaderView", owner: self, options: nil)?.first as? SectionHeaderView else { return UIView() }
+        sectionHeader.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 112)
         
         if section == SectionType.today.rawValue {
             sectionHeader.build(for: .today)
@@ -91,8 +93,7 @@ extension TodayViewController {
             sectionHeader.build(for: .tomorrow)
         }
         
-        view.addSubview(sectionHeader)
-        return view
+        return sectionHeader
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -113,7 +114,7 @@ extension TodayViewController {
         if indexPath.section == SectionType.today.rawValue {
             if !todayCards[indexPath.row].isEmpty { showAgendaOptionsDialog(for: indexPath) }
         } else if indexPath.section == SectionType.tomorrow.rawValue {
-            if !todayCards[indexPath.row].isEmpty { showAgendaOptionsDialog(for: indexPath) }
+            if !tomorrowCards[indexPath.row].isEmpty { showAgendaOptionsDialog(for: indexPath) }
         }
     }
     

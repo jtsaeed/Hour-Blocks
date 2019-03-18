@@ -10,6 +10,9 @@ import Foundation
 
 struct AgendaItem {
     
+    var id: String {
+        return UUID().uuidString
+    }
     var title: String
     var icon: String
     
