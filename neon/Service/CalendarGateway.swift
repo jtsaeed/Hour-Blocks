@@ -72,7 +72,7 @@ struct ImportedCalendarEvent {
     let endTime: Int
     
     init(from event: EKEvent) {
-        title = "🗓 \(event.title!)"
+        title = event.title
         startTime = Calendar.current.component(.hour, from: event.startDate)
         endTime = Calendar.current.component(.hour, from: event.endDate) - 1
     }

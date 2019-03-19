@@ -24,7 +24,7 @@ struct AgendaItem {
     init(title: String) {
         self.id = UUID().uuidString
         self.title = title
-        self.icon = "people"
+        self.icon = "default"
         generateIcon()
     }
     

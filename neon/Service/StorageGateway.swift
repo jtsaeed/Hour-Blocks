@@ -47,7 +47,9 @@ extension StorageGateway {
         if CalendarGateway.shared.hasPermission() {
             for event in CalendarGateway.shared.importTodaysEvents() {
                 for i in event.startTime...event.endTime {
-                    agendaItems[i] = AgendaItem(title: event.title)
+                    var agendaItem = AgendaItem(title: event.title)
+                    agendaItem.icon = "calendar"
+                    agendaItems[i] = agendaItem
                 }
             }
         }
@@ -81,7 +83,9 @@ extension StorageGateway {
         if CalendarGateway.shared.hasPermission() {
             for event in CalendarGateway.shared.importTomorrowsEvents() {
                 for i in event.startTime...event.endTime {
-                    agendaItems[i] = AgendaItem(title: event.title)
+                    var agendaItem = AgendaItem(title: event.title)
+                    agendaItem.icon = "calendar"
+                    agendaItems[i] = agendaItem
                 }
             }
         }
