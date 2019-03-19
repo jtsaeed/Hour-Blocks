@@ -24,9 +24,7 @@ class CalendarGateway {
         let status = EKEventStore.authorizationStatus(for: EKEntityType.event)
         
         if status == EKAuthorizationStatus.notDetermined {
-            eventStore.requestAccess(to: .event) { (granted, error) in
-                
-            }
+            eventStore.requestAccess(to: .event) { (granted, error) in }
         }
     }
     

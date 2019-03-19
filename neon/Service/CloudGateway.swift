@@ -42,7 +42,7 @@ class CloudGateway {
         }
     }
     
-    func saveAgendaRecord(agendaItem: AgendaItem, for hour: Int, today: Bool) {
+    func saveAgendaRecord(_ agendaItem: AgendaItem, for hour: Int, today: Bool) {
         let database = CKContainer.default().privateCloudDatabase
         
         let record = CKRecord(recordType: "AgendaRecord")

@@ -10,21 +10,25 @@ import Foundation
 
 struct AgendaItem {
     
-    var id: String {
-        return UUID().uuidString
-    }
+    var id: String
     var title: String
     var icon: String
     
-    init(title: String, icon: String) {
+    init(with id: String, title: String) {
+        self.id = id
         self.title = title
-        self.icon = icon
+        self.icon = "people"
+        generateIcon()
     }
     
     init(title: String) {
+        self.id = UUID().uuidString
         self.title = title
         self.icon = "people"
-        
+        generateIcon()
+    }
+    
+    mutating func generateIcon() {
         if doesTitleContain(["draw", "paint", "art"]) {
             self.icon = "brush"
         } else if doesTitleContain(["develop", "developing", "code", "coding", "programming", "software", "app"]) {

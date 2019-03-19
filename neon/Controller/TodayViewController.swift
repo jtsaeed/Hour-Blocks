@@ -52,10 +52,10 @@ extension TodayViewController {
         let agendaItem = AgendaItem(title: title)
         
         if indexPath.section == SectionType.today.rawValue {
-            DataGateway.shared.saveAgendaItem(agendaItem, for: self.todayCards[indexPath.row].hour, today: true)
+            DataGateway.shared.saveAgendaItemToday(agendaItem, for: self.todayCards[indexPath.row].hour)
             self.todayCards[indexPath.row].agendaItem = agendaItem
         } else if indexPath.section == SectionType.tomorrow.rawValue {
-            DataGateway.shared.saveAgendaItem(agendaItem, for: self.tomorrowCards[indexPath.row].hour, today: false)
+            DataGateway.shared.saveAgendaItemTomorrow(agendaItem, for: self.tomorrowCards[indexPath.row].hour)
             self.tomorrowCards[indexPath.row].agendaItem = agendaItem
         }
         
