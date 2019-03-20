@@ -14,7 +14,7 @@
 		231898DD221D92F1005766AF /* AddAgendAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231898DC221D92F1005766AF /* AddAgendAlertViewController.swift */; };
 		231F73EA2215AF6400A1A32A /* StorageGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231F73E92215AF6400A1A32A /* StorageGateway.swift */; };
 		2338BEBC220A7840004F288F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEBB220A7840004F288F /* AppDelegate.swift */; };
-		2338BEBE220A7840004F288F /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEBD220A7840004F288F /* TodayViewController.swift */; };
+		2338BEBE220A7840004F288F /* DayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEBD220A7840004F288F /* DayViewController.swift */; };
 		2338BEC1220A7840004F288F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2338BEBF220A7840004F288F /* Main.storyboard */; };
 		2338BEC4220A7840004F288F /* neon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEC2220A7840004F288F /* neon.xcdatamodeld */; };
 		2338BEC6220A7841004F288F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2338BEC5220A7841004F288F /* Assets.xcassets */; };
@@ -62,7 +62,7 @@
 		231F73E92215AF6400A1A32A /* StorageGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageGateway.swift; sourceTree = "<group>"; };
 		2338BEB8220A7840004F288F /* neon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = neon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2338BEBB220A7840004F288F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2338BEBD220A7840004F288F /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		2338BEBD220A7840004F288F /* DayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewController.swift; sourceTree = "<group>"; };
 		2338BEC0220A7840004F288F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2338BEC3220A7840004F288F /* neon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = neon.xcdatamodel; sourceTree = "<group>"; };
 		2338BEC5220A7841004F288F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -154,7 +154,7 @@
 		23074FC4220B425600B64762 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				2338BEBD220A7840004F288F /* TodayViewController.swift */,
+				2338BEBD220A7840004F288F /* DayViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -480,7 +480,7 @@
 				2338BEED220A78C5004F288F /* UIViewX.swift in Sources */,
 				238EA766223EA0CE00981E98 /* CloudGateway.swift in Sources */,
 				234C1A0B220C8F9900344316 /* TodayHeaderCell.swift in Sources */,
-				2338BEBE220A7840004F288F /* TodayViewController.swift in Sources */,
+				2338BEBE220A7840004F288F /* DayViewController.swift in Sources */,
 				23074FCE220B53AB00B64762 /* UIButtonX.swift in Sources */,
 				23074FCA220B4B5700B64762 /* Int+Ext.swift in Sources */,
 				2338BEBC220A7840004F288F /* AppDelegate.swift in Sources */,

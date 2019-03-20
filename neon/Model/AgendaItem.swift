@@ -14,10 +14,10 @@ struct AgendaItem {
     var title: String
     var icon: String
     
-    init(with id: String, title: String) {
+    init(with id: String, and title: String) {
         self.id = id
         self.title = title
-        self.icon = "people"
+        self.icon = "default"
         generateIcon()
     }
     

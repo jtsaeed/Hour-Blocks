@@ -9,7 +9,7 @@
 import UIKit
 import EventKit
 
-class TodayViewController: UITableViewController {
+class DayViewController: UITableViewController {
     
     var todayCards = [AgendaCard]() {
         didSet {
@@ -25,6 +25,13 @@ class TodayViewController: UITableViewController {
         tableView.frame = .zero
         setStatusBarBackground(as: .white)
         CalendarGateway.shared.handlePermissions()
+        
+        /*
+        DataGateway.shared.fetchTodaysNewAgendaItems(checkAgainst: todayCards.filter({ $0.agendaItem != nil }).map({ $0.agendaItem! })) {
+            self.generateCards(from: DataGateway.shared.loadTodaysAgendaItems(),
+                               and: DataGateway.shared.loadTomorrowsAgendaItems())
+        }
+ */
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,11 +44,9 @@ class TodayViewController: UITableViewController {
 
 // MARK: - Functionality
 
-extension TodayViewController {
+extension DayViewController {
     
     func generateCards(from todayAgendaItems: [Int: AgendaItem], and tomorrowAgendaItems: [Int: AgendaItem]) {
-        todayCards.removeAll()
-        tomorrowCards.removeAll()
         for hour in 0...23 {
             todayCards.append(AgendaCard(hour: hour, agendaItem: todayAgendaItems[hour]))
             tomorrowCards.append(AgendaCard(hour: hour, agendaItem: tomorrowAgendaItems[hour]))
@@ -52,32 +57,42 @@ extension TodayViewController {
         let agendaItem = AgendaItem(title: title)
         
         if indexPath.section == SectionType.today.rawValue {
-            DataGateway.shared.saveAgendaItemToday(agendaItem, for: self.todayCards[indexPath.row].hour)
-            self.todayCards[indexPath.row].agendaItem = agendaItem
+            todayCards[indexPath.row].agendaItem = agendaItem
+            DataGateway.shared.save(agendaItem, for: todayCards[indexPath.row].hour, today: true)
         } else if indexPath.section == SectionType.tomorrow.rawValue {
-            DataGateway.shared.saveAgendaItemTomorrow(agendaItem, for: self.tomorrowCards[indexPath.row].hour)
-            self.tomorrowCards[indexPath.row].agendaItem = agendaItem
+            tomorrowCards[indexPath.row].agendaItem = agendaItem
+            DataGateway.shared.save(agendaItem, for: tomorrowCards[indexPath.row].hour, today: false)
         }
         
-        self.tableView.reloadRows(at: [indexPath], with: .fade)
+        tableView.reloadRows(at: [indexPath], with: .fade)
     }
     
     func removeCard(for indexPath: IndexPath) {
         if indexPath.section == SectionType.today.rawValue {
-            DataGateway.shared.deleteAgendaItem(from: self.todayCards[indexPath.row])
-            self.todayCards[indexPath.row].agendaItem = nil
+            DataGateway.shared.delete(todayCards[indexPath.row].agendaItem!)
+            todayCards[indexPath.row].agendaItem = nil
         } else if indexPath.section == SectionType.tomorrow.rawValue {
-            DataGateway.shared.deleteAgendaItem(from: self.tomorrowCards[indexPath.row])
-            self.tomorrowCards[indexPath.row].agendaItem = nil
+            DataGateway.shared.delete(tomorrowCards[indexPath.row].agendaItem!)
+            tomorrowCards[indexPath.row].agendaItem = nil
         }
         
-        self.tableView.reloadRows(at: [indexPath], with: .fade)
+        tableView.reloadRows(at: [indexPath], with: .fade)
+    }
+    
+    func isCalendarEvent(at indexPath: IndexPath) -> Bool {
+        if indexPath.section == SectionType.today.rawValue {
+            return todayCards[indexPath.row].agendaItem!.icon == "calendar"
+        } else if indexPath.section == SectionType.today.rawValue {
+            return tomorrowCards[indexPath.row].agendaItem!.icon == "calendar"
+        } else {
+            return false
+        }
     }
 }
 
 // MARK: - Table View
 
-extension TodayViewController {
+extension DayViewController {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 112
@@ -156,7 +171,7 @@ extension TodayViewController {
 
 // MARK: - Dialogs
 
-extension TodayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
+extension DayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
     
     func showAddAgendaDialog(for indexPath: IndexPath) {
         let alert = self.storyboard?.instantiateViewController(withIdentifier: "AddAgendaAlert") as! AddAgendAlertViewController
@@ -174,16 +189,16 @@ extension TodayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
         }
         
         setStatusBarBackground(as: .clear)
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     func doneButtonTapped(textFieldValue: String, indexPath: IndexPath) {
         addCard(for: indexPath, with: textFieldValue)
-        self.setStatusBarBackground(as: .white)
+        setStatusBarBackground(as: .white)
     }
     
     func cancelButtonTapped() {
-        self.setStatusBarBackground(as: .white)
+        setStatusBarBackground(as: .white)
     }
     
     func showAgendaOptionsDialog(for indexPath: IndexPath) {
@@ -192,10 +207,17 @@ extension TodayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
         actionSheet.addAction(UIAlertAction(title: "Edit", style: .default, handler: { action in
             self.showAddAgendaDialog(for: indexPath)
         }))
-        actionSheet.addAction(UIAlertAction(title: "Clear", style: .destructive, handler: { action in
-            self.removeCard(for: indexPath)
-            self.setStatusBarBackground(as: .white)
-        }))
+        
+        if (isCalendarEvent(at: indexPath)) {
+            actionSheet.addAction(UIAlertAction(title: "Info", style: .default, handler: { action in
+                // TODO: Show info
+            }))
+        } else {
+            actionSheet.addAction(UIAlertAction(title: "Clear", style: .destructive, handler: { action in
+                self.removeCard(for: indexPath)
+                self.setStatusBarBackground(as: .white)
+            }))
+        }
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
             actionSheet.dismiss(animated: true, completion: nil)
             self.setStatusBarBackground(as: .white)
@@ -208,7 +230,7 @@ extension TodayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
 
 // MARK: - UI
 
-extension TodayViewController {
+extension DayViewController {
     
     func setStatusBarBackground(as color: UIColor) {
         guard let statusBarView = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else {

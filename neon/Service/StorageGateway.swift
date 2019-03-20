@@ -60,13 +60,12 @@ extension StorageGateway {
             let result = try persistentContainer.viewContext.fetch(request)
             for data in result as! [NSManagedObject] {
                 guard let day = data.value(forKey: "day") as? Date else { return agendaItems }
-                guard let hour = data.value(forKey: "hour") as? Int else { return agendaItems }
+                guard let id = data.value(forKey: "id") as? String else { return agendaItems }
                 guard let title = data.value(forKey: "title") as? String else { return agendaItems }
+                guard let hour = data.value(forKey: "hour") as? Int else { return agendaItems }
                 
                 if Calendar.current.isDateInToday(day) {
-                    agendaItems[hour] = AgendaItem(title: title)
-                } else if Calendar.current.isDateInTomorrow(day) {
-                    continue
+                    agendaItems[hour] = AgendaItem(with: id, and: title)
                 }
             }
         } catch {
@@ -96,13 +95,12 @@ extension StorageGateway {
             let result = try persistentContainer.viewContext.fetch(request)
             for data in result as! [NSManagedObject] {
                 guard let day = data.value(forKey: "day") as? Date else { return agendaItems }
-                guard let hour = data.value(forKey: "hour") as? Int else { return agendaItems }
+                guard let id = data.value(forKey: "id") as? String else { return agendaItems }
                 guard let title = data.value(forKey: "title") as? String else { return agendaItems }
+                guard let hour = data.value(forKey: "hour") as? Int else { return agendaItems }
                 
                 if Calendar.current.isDateInTomorrow(day) {
-                    agendaItems[hour] = AgendaItem(title: title)
-                } else if Calendar.current.isDateInToday(day) {
-                    continue
+                    agendaItems[hour] = AgendaItem(with: id, and: title)
                 }
             }
         } catch {
@@ -113,21 +111,21 @@ extension StorageGateway {
     }
     
     /// Saves a given task if it doesn't already exist
-    public func saveAgendaItem(_ agendaItem: AgendaItem, for hour: Int, today: Bool) {
+    public func save(_ agendaItem: AgendaItem, for hour: Int, today: Bool) {
         let entity = NSEntityDescription.entity(forEntityName: "AgendaEntity", in: persistentContainer.viewContext)
         let newAgendaItem = NSManagedObject(entity: entity!, insertInto: persistentContainer.viewContext)
         
         newAgendaItem.setValue(today ? Date() : Calendar.current.date(byAdding: .day, value: 1, to: Date())!, forKey: "day")
-        newAgendaItem.setValue(hour, forKey: "hour")
-        newAgendaItem.setValue(agendaItem.icon, forKey: "icon")
+        newAgendaItem.setValue(agendaItem.id, forKey: "id")
         newAgendaItem.setValue(agendaItem.title, forKey: "title")
+        newAgendaItem.setValue(hour, forKey: "hour")
         
         saveContext()
     }
     
-    public func deleteAgendaItem(from agendaItem: AgendaItem, for hour: Int) {
+    public func delete(_ agendaItem: AgendaItem) {
         let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "AgendaEntity")
-        let predicate = NSPredicate(format: "title = %@ AND hour = %d", agendaItem.title, hour)
+        let predicate = NSPredicate(format: "id = %d", agendaItem.id)
         fetch.predicate = predicate
         let request = NSBatchDeleteRequest(fetchRequest: fetch)
         
@@ -135,6 +133,18 @@ extension StorageGateway {
             try persistentContainer.viewContext.execute(request)
         } catch {
             print("Delete failed")
+        }
+    }
+    
+    public func deleteAll() {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "AgendaEntity")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try persistentContainer.viewContext.execute(deleteRequest)
+            print("Done!")
+        } catch _ as NSError {
+            // TODO: handle the error
         }
     }
 }

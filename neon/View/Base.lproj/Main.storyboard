@@ -14,7 +14,7 @@
         <!--Today-->
         <scene sceneID="2y9-OQ-exI">
             <objects>
-                <tableViewController title="Today" id="63b-M3-lej" customClass="TodayViewController" customModule="neon" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Today" id="63b-M3-lej" customClass="DayViewController" customModule="neon" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="112" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="AnA-YE-fn4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
