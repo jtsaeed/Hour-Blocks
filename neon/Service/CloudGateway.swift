@@ -13,6 +13,17 @@ class CloudGateway {
     
     static let shared = CloudGateway()
     
+    func initSubscription(_ key: String, forType type: CKQuerySubscription.Options) {
+        let subscription = CKQuerySubscription(recordType: "AgendaRecord", predicate: NSPredicate(format: "TRUEPREDICATE"), options: type)
+        
+        let notificationInfo = CKSubscription.NotificationInfo()
+        notificationInfo.alertLocalizationKey = key
+        subscription.notificationInfo = notificationInfo
+        
+        let database = CKContainer.default().privateCloudDatabase
+        database.save(subscription) { (subscription, error) in }
+    }
+    
     func fetchTodaysNewAgendaItems(checkAgainst agendaIds: [String], completion: @escaping (_ agendaItems: [Int: AgendaItem]) -> ()) {
         var agendaItems = [Int: AgendaItem]()
         

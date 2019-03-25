@@ -74,6 +74,11 @@ struct ImportedCalendarEvent {
     init(from event: EKEvent) {
         title = event.title
         startTime = Calendar.current.component(.hour, from: event.startDate)
-        endTime = Calendar.current.component(.hour, from: event.endDate) - 1
+        
+        if (startTime == Calendar.current.component(.hour, from: event.endDate)) {
+            endTime = startTime
+        } else {
+            endTime = Calendar.current.component(.hour, from: event.endDate) - 1
+        }
     }
 }

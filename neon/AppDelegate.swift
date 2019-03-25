@@ -7,17 +7,36 @@
 //
 
 import UIKit
+import CloudKit
 import CoreData
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: { authorized, error in
+            if authorized {
+                DispatchQueue.main.async { application.registerForRemoteNotifications() }
+            }
+        })
+        
         return true
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        DataGateway.shared.initSubscriptions()
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        let notification = CKNotification(fromRemoteNotificationDictionary: userInfo)
+        
+        if notification.alertLocalizationKey == "New Agenda Record" {
+            NotificationCenter.default.post(name: Notification.Name("NewAgendaRecord"), object: nil)
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

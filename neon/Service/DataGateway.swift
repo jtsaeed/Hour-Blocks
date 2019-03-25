@@ -12,6 +12,12 @@ class DataGateway {
     
     static let shared = DataGateway()
     
+    func initSubscriptions() {
+        CloudGateway.shared.initSubscription("New Agenda Record", forType: .firesOnRecordCreation)
+        CloudGateway.shared.initSubscription("Updated Agenda Record", forType: .firesOnRecordUpdate)
+        CloudGateway.shared.initSubscription("Deleted Agenda Record", forType: .firesOnRecordDeletion)
+    }
+    
     func save(_ agendaItem: AgendaItem, for hour: Int, today: Bool) {
         StorageGateway.shared.save(agendaItem, for: hour, today: today)
         CloudGateway.shared.save(agendaItem, for: hour, today: today)

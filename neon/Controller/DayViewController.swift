@@ -8,6 +8,7 @@
 
 import UIKit
 import EventKit
+import NotificationCenter
 
 class DayViewController: UITableViewController {
     
@@ -22,23 +23,22 @@ class DayViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        generateCards(from: DataGateway.shared.loadTodaysAgendaItems(),
+                      and: DataGateway.shared.loadTomorrowsAgendaItems())
+        
         tableView.frame = .zero
         setStatusBarBackground(as: .white)
         CalendarGateway.shared.handlePermissions()
+        NotificationCenter.default.addObserver(self, selector: #selector(fetchNewAgendaItems), name: Notification.Name("NewAgendaRecord"), object: nil)
         
-        /*
-        DataGateway.shared.fetchTodaysNewAgendaItems(checkAgainst: todayCards.filter({ $0.agendaItem != nil }).map({ $0.agendaItem! })) {
-            self.generateCards(from: DataGateway.shared.loadTodaysAgendaItems(),
-                               and: DataGateway.shared.loadTomorrowsAgendaItems())
-        }
- */
+        fetchNewAgendaItems()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        generateCards(from: DataGateway.shared.loadTodaysAgendaItems(),
-                      and: DataGateway.shared.loadTomorrowsAgendaItems())
+//        generateCards(from: DataGateway.shared.loadTodaysAgendaItems(),
+//                      and: DataGateway.shared.loadTomorrowsAgendaItems())
     }
 }
 
@@ -46,7 +46,17 @@ class DayViewController: UITableViewController {
 
 extension DayViewController {
     
+    @objc func fetchNewAgendaItems() {
+        DataGateway.shared.fetchTodaysNewAgendaItems(checkAgainst: todayCards.filter({ $0.agendaItem != nil }).map({ $0.agendaItem! })) {
+            self.generateCards(from: DataGateway.shared.loadTodaysAgendaItems(),
+                               and: DataGateway.shared.loadTomorrowsAgendaItems())
+            DispatchQueue.main.async { self.tableView.reloadData() }
+        }
+    }
+    
     func generateCards(from todayAgendaItems: [Int: AgendaItem], and tomorrowAgendaItems: [Int: AgendaItem]) {
+        todayCards.removeAll()
+        tomorrowCards.removeAll()
         for hour in 0...23 {
             todayCards.append(AgendaCard(hour: hour, agendaItem: todayAgendaItems[hour]))
             tomorrowCards.append(AgendaCard(hour: hour, agendaItem: tomorrowAgendaItems[hour]))

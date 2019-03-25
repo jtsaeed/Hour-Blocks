@@ -53,6 +53,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		23BA59672242B0C400AE45DE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		23074FC7220B4A5D00B64762 /* AgendaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaItem.swift; sourceTree = "<group>"; };
 		23074FC9220B4B5700B64762 /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
@@ -205,12 +218,12 @@
 			isa = PBXGroup;
 			children = (
 				238EA767223EA0D900981E98 /* neon.entitlements */,
+				2338BEBB220A7840004F288F /* AppDelegate.swift */,
 				23074FC6220B426200B64762 /* Service */,
 				23074FC5220B425D00B64762 /* Extension */,
 				23074FC4220B425600B64762 /* Controller */,
 				23074FC3220B425300B64762 /* View */,
 				23074FC2220B424E00B64762 /* Model */,
-				2338BEBB220A7840004F288F /* AppDelegate.swift */,
 				2338BEC5220A7841004F288F /* Assets.xcassets */,
 				2338BECA220A7841004F288F /* Info.plist */,
 			);
@@ -270,6 +283,7 @@
 				2338BEB4220A7840004F288F /* Sources */,
 				2338BEB5220A7840004F288F /* Frameworks */,
 				2338BEB6220A7840004F288F /* Resources */,
+				23BA59672242B0C400AE45DE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -331,6 +345,9 @@
 					2338BEB7220A7840004F288F = {
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -662,6 +679,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A3593EBEBDFB2F7E14F71C3D /* Pods-neon.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -683,6 +701,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3090C3879864096A7AB572CC /* Pods-neon.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_STYLE = Automatic;
