@@ -23,6 +23,7 @@ class DayViewController: UITableViewController {
         
         initialiseUI()
         NotificationCenter.default.addObserver(self, selector: #selector(loadAgendaItems), name: Notification.Name("agendaUpdate"), object: nil)
+        DataGateway.shared.deletePastAgendaRecords()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,9 +33,8 @@ class DayViewController: UITableViewController {
     }
     
     @IBAction func pulledToRefresh(_ sender: UIRefreshControl) {
-        TestGateway.shared.fetchAgendaItems { (todaysAgendaItems, tomorrowsAgendaItems) in
+        DataGateway.shared.fetchAgendaItems { (todaysAgendaItems, tomorrowsAgendaItems) in
             self.generateCards(from: todaysAgendaItems, and: tomorrowsAgendaItems)
-            TestGateway.shared.deletePastAgendaRecords({ })
             DispatchQueue.main.async { sender.endRefreshing() }
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                 self.tableView.reloadData()
@@ -48,9 +48,8 @@ class DayViewController: UITableViewController {
 extension DayViewController {
     
     @objc func loadAgendaItems() {
-        TestGateway.shared.fetchAgendaItems { (todaysAgendaItems, tomorrowsAgendaItems) in
+        DataGateway.shared.fetchAgendaItems { (todaysAgendaItems, tomorrowsAgendaItems) in
             self.generateCards(from: todaysAgendaItems, and: tomorrowsAgendaItems)
-            TestGateway.shared.deletePastAgendaRecords({ })
             DispatchQueue.main.async { self.tableView.reloadData() }
         }
     }
@@ -68,13 +67,13 @@ extension DayViewController {
         let agendaItem = AgendaItem(title: title)
         
         if indexPath.section == SectionType.today.rawValue {
-            if let agendaItem = todayCards[indexPath.row].agendaItem { TestGateway.shared.delete(agendaItem) }
+            if let agendaItem = todayCards[indexPath.row].agendaItem { DataGateway.shared.delete(agendaItem) }
+            DataGateway.shared.save(agendaItem, for: todayCards[indexPath.row].hour, today: true)
             todayCards[indexPath.row].agendaItem = agendaItem
-            TestGateway.shared.save(agendaItem, for: todayCards[indexPath.row].hour, today: true)
         } else if indexPath.section == SectionType.tomorrow.rawValue {
-            if let agendaItem = todayCards[indexPath.row].agendaItem { TestGateway.shared.delete(agendaItem) }
+            if let agendaItem = todayCards[indexPath.row].agendaItem { DataGateway.shared.delete(agendaItem) }
+            DataGateway.shared.save(agendaItem, for: tomorrowCards[indexPath.row].hour, today: false)
             tomorrowCards[indexPath.row].agendaItem = agendaItem
-            TestGateway.shared.save(agendaItem, for: tomorrowCards[indexPath.row].hour, today: false)
         }
         
         tableView.reloadRows(at: [indexPath], with: .fade)
@@ -82,10 +81,10 @@ extension DayViewController {
     
     func removeCard(for indexPath: IndexPath) {
         if indexPath.section == SectionType.today.rawValue {
-            TestGateway.shared.delete(todayCards[indexPath.row].agendaItem!)
+            DataGateway.shared.delete(todayCards[indexPath.row].agendaItem!)
             todayCards[indexPath.row].agendaItem = nil
         } else if indexPath.section == SectionType.tomorrow.rawValue {
-            TestGateway.shared.delete(tomorrowCards[indexPath.row].agendaItem!)
+            DataGateway.shared.delete(tomorrowCards[indexPath.row].agendaItem!)
             tomorrowCards[indexPath.row].agendaItem = nil
         }
         

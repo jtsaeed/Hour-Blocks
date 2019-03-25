@@ -1,57 +1,97 @@
 //
-//  DataGateway.swift
+//  TestGateway.swift
 //  neon
 //
-//  Created by James Saeed on 18/03/2019.
+//  Created by James Saeed on 25/03/2019.
 //  Copyright © 2019 James Saeed. All rights reserved.
 //
 
 import Foundation
+import CloudKit
 
 class DataGateway {
     
     static let shared = DataGateway()
     
-    func initSubscriptions() {
-        CloudGateway.shared.initSubscription("New Agenda Record", forType: .firesOnRecordCreation)
-        CloudGateway.shared.initSubscription("Updated Agenda Record", forType: .firesOnRecordUpdate)
-        CloudGateway.shared.initSubscription("Deleted Agenda Record", forType: .firesOnRecordDeletion)
-    }
-    
-    func save(_ agendaItem: AgendaItem, for hour: Int, today: Bool) {
-        StorageGateway.shared.save(agendaItem, for: hour, today: today)
-        CloudGateway.shared.save(agendaItem, for: hour, today: today)
-    }
-    
-    func loadTodaysAgendaItems() -> [Int: AgendaItem] {
-        return StorageGateway.shared.loadTodaysAgendaItems()
-    }
-    
-    func loadTomorrowsAgendaItems() -> [Int: AgendaItem] {
-        return StorageGateway.shared.loadTomorrowsAgendaItems()
-    }
-    
-    func fetchTodaysNewAgendaItems(checkAgainst agendaItems: [AgendaItem], completion: @escaping () -> ()) {
-        CloudGateway.shared.fetchTodaysNewAgendaItems(checkAgainst: agendaItems.map({ $0.id })) { (agendaItems) in
-            for agendaItem in agendaItems {
-                let hour = agendaItem.key
-                StorageGateway.shared.save(agendaItem.value, for: hour, today: true)
+    func fetchAgendaItems(completion: @escaping (_ todaysAgendaItems: [Int: AgendaItem], _ tomorrowsAgendaItems: [Int: AgendaItem]) -> ()) {
+        var todaysAgendaItems = [Int: AgendaItem]()
+        var tomorrowsAgendaItems = [Int: AgendaItem]()
+        
+        if CalendarGateway.shared.hasPermission() {
+            for event in CalendarGateway.shared.importTodaysEvents() {
+                for i in event.startTime...event.endTime {
+                    var agendaItem = AgendaItem(title: event.title)
+                    agendaItem.icon = "calendar"
+                    todaysAgendaItems[i] = agendaItem
+                }
             }
-            completion()
+            
+            for event in CalendarGateway.shared.importTomorrowsEvents() {
+                for i in event.startTime...event.endTime {
+                    var agendaItem = AgendaItem(title: event.title)
+                    agendaItem.icon = "calendar"
+                    tomorrowsAgendaItems[i] = agendaItem
+                }
+            }
+        }
+        
+        let database = CKContainer.default().privateCloudDatabase
+        let query = CKQuery(recordType: "AgendaRecord", predicate: NSPredicate(value: true))
+        
+        database.perform(query, inZoneWith: nil) { (records, error) in
+            records?.forEach({ (record) in
+                guard let id = record.value(forKey: "id") as? String else { return }
+                guard let title = record.value(forKey: "title") as? String else { return }
+                guard let hour = record.value(forKey: "hour") as? Int else { return }
+                guard let day = record.value(forKey: "day") as? Date else { return }
+                
+                // Only pull the tasks that are in today and aren't already on device
+                if Calendar.current.isDateInToday(day) {
+                    todaysAgendaItems[hour] = AgendaItem(with: id, and: title)
+                } else if Calendar.current.isDateInTomorrow(day) {
+                    tomorrowsAgendaItems[hour] = AgendaItem(with: id, and: title)
+                }
+            })
+            
+            completion(todaysAgendaItems, tomorrowsAgendaItems)
         }
     }
     
-    func fetchTomorrowsNewAgendaItems() {
-        // TODO CloudGateway pull, then in the closure, save result using storagegateway
+    func save(_ agendaItem: AgendaItem, for hour: Int, today: Bool) {
+        let database = CKContainer.default().privateCloudDatabase
+        
+        let record = CKRecord(recordType: "AgendaRecord")
+        record.setObject((today ? Date() : Calendar.current.date(byAdding: .day, value: 1, to: Date())!) as CKRecordValue, forKey: "day")
+        record.setObject(agendaItem.id as CKRecordValue, forKey: "id")
+        record.setObject(agendaItem.title as CKRecordValue, forKey: "title")
+        record.setObject(hour as CKRecordValue, forKey: "hour")
+        
+        database.save(record) { (record, error) in }
     }
     
     func delete(_ agendaItem: AgendaItem) {
-        StorageGateway.shared.delete(agendaItem)
-        CloudGateway.shared.delete(agendaItem)
+        let database = CKContainer.default().privateCloudDatabase
+        let query = CKQuery(recordType: "AgendaRecord", predicate: NSPredicate(format: "id == %@", agendaItem.id))
+        
+        database.perform(query, inZoneWith: nil) { (records, error) in
+            records?.forEach({ (record) in
+                database.delete(withRecordID: record.recordID, completionHandler: { (recordID, error) in })
+            })
+        }
     }
     
-    func cleanPastAgendaItems() {
-        StorageGateway.shared.deletePastAgendaItems()
-        CloudGateway.shared.deletePastAgendaRecords()
+    func deletePastAgendaRecords() {
+        let database = CKContainer.default().privateCloudDatabase
+        let query = CKQuery(recordType: "AgendaRecord", predicate: NSPredicate(value: true))
+        
+        database.perform(query, inZoneWith: nil) { (records, error) in
+            records?.forEach({ (record) in
+                guard let day = record.value(forKey: "day") as? Date else { return }
+                
+                if (!Calendar.current.isDateInToday(day) && !Calendar.current.isDateInTomorrow(day)) {
+                    database.delete(withRecordID: record.recordID, completionHandler: { (recordID, error) in })
+                }
+            })
+        }
     }
 }
