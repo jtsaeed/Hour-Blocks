@@ -47,11 +47,11 @@ class DataGateway {
     
     func delete(_ agendaItem: AgendaItem) {
         StorageGateway.shared.delete(agendaItem)
-        // TODO CloudGateway.shared.deleteAgendaRecord(from: agendaCard.agendaItem!, for: agendaCard.hour)
+        CloudGateway.shared.delete(agendaItem)
     }
     
     func cleanPastAgendaItems() {
-        // TODO StorageGateway.shared.deletePastAgendaItems()
-        // TODO CloudGateway.shared.deletePastAgendaRecords()
+        StorageGateway.shared.deletePastAgendaItems()
+        CloudGateway.shared.deletePastAgendaRecords()
     }
 }

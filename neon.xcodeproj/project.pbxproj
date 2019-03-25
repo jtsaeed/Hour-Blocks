@@ -13,6 +13,7 @@
 		23074FCE220B53AB00B64762 /* UIButtonX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23074FCD220B53AB00B64762 /* UIButtonX.swift */; };
 		231898DD221D92F1005766AF /* AddAgendAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231898DC221D92F1005766AF /* AddAgendAlertViewController.swift */; };
 		231F73EA2215AF6400A1A32A /* StorageGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231F73E92215AF6400A1A32A /* StorageGateway.swift */; };
+		2325C88C224912B5008C687B /* TestGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2325C88B224912B5008C687B /* TestGateway.swift */; };
 		2338BEBC220A7840004F288F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEBB220A7840004F288F /* AppDelegate.swift */; };
 		2338BEBE220A7840004F288F /* DayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEBD220A7840004F288F /* DayViewController.swift */; };
 		2338BEC1220A7840004F288F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2338BEBF220A7840004F288F /* Main.storyboard */; };
@@ -73,6 +74,7 @@
 		23074FCD220B53AB00B64762 /* UIButtonX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonX.swift; sourceTree = "<group>"; };
 		231898DC221D92F1005766AF /* AddAgendAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAgendAlertViewController.swift; sourceTree = "<group>"; };
 		231F73E92215AF6400A1A32A /* StorageGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageGateway.swift; sourceTree = "<group>"; };
+		2325C88B224912B5008C687B /* TestGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestGateway.swift; sourceTree = "<group>"; };
 		2338BEB8220A7840004F288F /* neon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = neon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2338BEBB220A7840004F288F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2338BEBD220A7840004F288F /* DayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				23B63CE0222491050026B9C2 /* CalendarGateway.swift */,
 				238EA765223EA0CE00981E98 /* CloudGateway.swift */,
 				23A6C2592240206A00201284 /* DataGateway.swift */,
+				2325C88B224912B5008C687B /* TestGateway.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -346,10 +349,10 @@
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Push = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.iCloud = {
 								enabled = 1;
@@ -500,6 +503,7 @@
 				2338BEBE220A7840004F288F /* DayViewController.swift in Sources */,
 				23074FCE220B53AB00B64762 /* UIButtonX.swift in Sources */,
 				23074FCA220B4B5700B64762 /* Int+Ext.swift in Sources */,
+				2325C88C224912B5008C687B /* TestGateway.swift in Sources */,
 				2338BEBC220A7840004F288F /* AppDelegate.swift in Sources */,
 				23B63CE1222491050026B9C2 /* CalendarGateway.swift in Sources */,
 				23D41E6E222412FF00D909FD /* SectionHeaderView.swift in Sources */,

@@ -7,36 +7,15 @@
 //
 
 import UIKit
-import CloudKit
 import CoreData
-import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        UNUserNotificationCenter.current().delegate = self
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: { authorized, error in
-            if authorized {
-                DispatchQueue.main.async { application.registerForRemoteNotifications() }
-            }
-        })
-        
         return true
-    }
-    
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        DataGateway.shared.initSubscriptions()
-    }
-    
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        let notification = CKNotification(fromRemoteNotificationDictionary: userInfo)
-        
-        if notification.alertLocalizationKey == "New Agenda Record" {
-            NotificationCenter.default.post(name: Notification.Name("NewAgendaRecord"), object: nil)
-        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -51,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        NotificationCenter.default.post(name: Notification.Name("agendaUpdate"), object: nil)
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

@@ -136,6 +136,19 @@ extension StorageGateway {
         }
     }
     
+    public func deletePastAgendaItems() {
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "AgendaEntity")
+        let predicate = NSPredicate(format: "day < %@", NSDate())
+        fetch.predicate = predicate
+        let request = NSBatchDeleteRequest(fetchRequest: fetch)
+        
+        do {
+            try persistentContainer.viewContext.execute(request)
+        } catch {
+            print("Delete failed")
+        }
+    }
+    
     public func deleteAll() {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "AgendaEntity")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)

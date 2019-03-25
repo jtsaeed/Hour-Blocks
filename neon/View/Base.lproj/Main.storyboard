@@ -222,6 +222,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Today" id="bKj-dD-k3p"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="DXi-ak-Voy">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="pulledToRefresh:" destination="63b-M3-lej" eventType="valueChanged" id="1Sc-jx-IRf"/>
+                        </connections>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dfw-wy-1Tl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
