@@ -26,6 +26,21 @@
 		234C1A09220C8E9D00344316 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C1A08220C8E9D00344316 /* Date+Ext.swift */; };
 		234C1A0B220C8F9900344316 /* TodayHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C1A0A220C8F9900344316 /* TodayHeaderCell.swift */; };
 		238EA769223EA0DC00981E98 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 238EA768223EA0DC00981E98 /* CloudKit.framework */; };
+		2395A94E224AE1750007D6F2 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2395A94D224AE1750007D6F2 /* NotificationCenter.framework */; };
+		2395A951224AE1750007D6F2 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2395A950224AE1750007D6F2 /* TodayViewController.swift */; };
+		2395A954224AE1750007D6F2 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2395A952224AE1750007D6F2 /* MainInterface.storyboard */; };
+		2395A958224AE1750007D6F2 /* neonToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2395A94C224AE1750007D6F2 /* neonToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2395A95E224AE1990007D6F2 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 238EA768223EA0DC00981E98 /* CloudKit.framework */; };
+		2395A960224AE1CC0007D6F2 /* DataGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2395A95F224AE1CC0007D6F2 /* DataGateway.swift */; };
+		2395A962224AE1EF0007D6F2 /* AgendaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2395A961224AE1EF0007D6F2 /* AgendaItem.swift */; };
+		2395A969224AE78C0007D6F2 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2395A967224AE78C0007D6F2 /* Interface.storyboard */; };
+		2395A96B224AE78D0007D6F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2395A96A224AE78D0007D6F2 /* Assets.xcassets */; };
+		2395A972224AE78D0007D6F2 /* neonWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2395A971224AE78D0007D6F2 /* neonWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2395A977224AE78D0007D6F2 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2395A976224AE78D0007D6F2 /* InterfaceController.swift */; };
+		2395A979224AE78D0007D6F2 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2395A978224AE78D0007D6F2 /* ExtensionDelegate.swift */; };
+		2395A97B224AE78D0007D6F2 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2395A97A224AE78D0007D6F2 /* NotificationController.swift */; };
+		2395A97D224AE78E0007D6F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2395A97C224AE78E0007D6F2 /* Assets.xcassets */; };
+		2395A982224AE78E0007D6F2 /* neonWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 2395A965224AE78C0007D6F2 /* neonWatch.app */; };
 		23B63CE1222491050026B9C2 /* CalendarGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B63CE0222491050026B9C2 /* CalendarGateway.swift */; };
 		23D41E6C2224127800D909FD /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D41E6B2224127800D909FD /* SectionHeaderView.xib */; };
 		23D41E6E222412FF00D909FD /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D41E6D222412FF00D909FD /* SectionHeaderView.swift */; };
@@ -49,9 +64,63 @@
 			remoteGlobalIDString = 2338BEB7220A7840004F288F;
 			remoteInfo = neon;
 		};
+		2395A956224AE1750007D6F2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2338BEB0220A7840004F288F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2395A94B224AE1750007D6F2;
+			remoteInfo = neonToday;
+		};
+		2395A973224AE78D0007D6F2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2338BEB0220A7840004F288F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2395A970224AE78D0007D6F2;
+			remoteInfo = "neonWatch Extension";
+		};
+		2395A980224AE78E0007D6F2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2338BEB0220A7840004F288F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2395A964224AE78C0007D6F2;
+			remoteInfo = neonWatch;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		2395A95C224AE1750007D6F2 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				2395A958224AE1750007D6F2 /* neonToday.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2395A986224AE78E0007D6F2 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				2395A972224AE78D0007D6F2 /* neonWatch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2395A98A224AE78E0007D6F2 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				2395A982224AE78E0007D6F2 /* neonWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		23BA59672242B0C400AE45DE /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -91,6 +160,25 @@
 		234C1A0A220C8F9900344316 /* TodayHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayHeaderCell.swift; sourceTree = "<group>"; };
 		238EA767223EA0D900981E98 /* neon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = neon.entitlements; sourceTree = "<group>"; };
 		238EA768223EA0DC00981E98 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		2395A94C224AE1750007D6F2 /* neonToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = neonToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2395A94D224AE1750007D6F2 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		2395A950224AE1750007D6F2 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		2395A953224AE1750007D6F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		2395A955224AE1750007D6F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2395A95D224AE1920007D6F2 /* neonToday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = neonToday.entitlements; sourceTree = "<group>"; };
+		2395A95F224AE1CC0007D6F2 /* DataGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGateway.swift; sourceTree = "<group>"; };
+		2395A961224AE1EF0007D6F2 /* AgendaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaItem.swift; sourceTree = "<group>"; };
+		2395A965224AE78C0007D6F2 /* neonWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = neonWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2395A968224AE78C0007D6F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		2395A96A224AE78D0007D6F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2395A96C224AE78D0007D6F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2395A971224AE78D0007D6F2 /* neonWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "neonWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2395A976224AE78D0007D6F2 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		2395A978224AE78D0007D6F2 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		2395A97A224AE78D0007D6F2 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		2395A97C224AE78E0007D6F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2395A97E224AE78E0007D6F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2395A97F224AE78E0007D6F2 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		23B63CE0222491050026B9C2 /* CalendarGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGateway.swift; sourceTree = "<group>"; };
 		23D41E6B2224127800D909FD /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		23D41E6D222412FF00D909FD /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
@@ -128,6 +216,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				B912B77E89CBF0E08ECEB8A2 /* Pods_neonUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2395A949224AE1750007D6F2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2395A94E224AE1750007D6F2 /* NotificationCenter.framework in Frameworks */,
+				2395A95E224AE1990007D6F2 /* CloudKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2395A96E224AE78D0007D6F2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +296,9 @@
 				2338BEBA220A7840004F288F /* neon */,
 				2338BED2220A7841004F288F /* neonTests */,
 				2338BEDD220A7841004F288F /* neonUITests */,
+				2395A94F224AE1750007D6F2 /* neonToday */,
+				2395A966224AE78C0007D6F2 /* neonWatch */,
+				2395A975224AE78D0007D6F2 /* neonWatch Extension */,
 				2338BEB9220A7840004F288F /* Products */,
 				4B7EB119015E82801222CD3A /* Pods */,
 				CBE1FB35023C3D4B2AC08158 /* Frameworks */,
@@ -204,6 +311,9 @@
 				2338BEB8220A7840004F288F /* neon.app */,
 				2338BECF220A7841004F288F /* neonTests.xctest */,
 				2338BEDA220A7841004F288F /* neonUITests.xctest */,
+				2395A94C224AE1750007D6F2 /* neonToday.appex */,
+				2395A965224AE78C0007D6F2 /* neonWatch.app */,
+				2395A971224AE78D0007D6F2 /* neonWatch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -242,6 +352,42 @@
 			path = neonUITests;
 			sourceTree = "<group>";
 		};
+		2395A94F224AE1750007D6F2 /* neonToday */ = {
+			isa = PBXGroup;
+			children = (
+				2395A95D224AE1920007D6F2 /* neonToday.entitlements */,
+				2395A950224AE1750007D6F2 /* TodayViewController.swift */,
+				2395A952224AE1750007D6F2 /* MainInterface.storyboard */,
+				2395A955224AE1750007D6F2 /* Info.plist */,
+				2395A95F224AE1CC0007D6F2 /* DataGateway.swift */,
+				2395A961224AE1EF0007D6F2 /* AgendaItem.swift */,
+			);
+			path = neonToday;
+			sourceTree = "<group>";
+		};
+		2395A966224AE78C0007D6F2 /* neonWatch */ = {
+			isa = PBXGroup;
+			children = (
+				2395A967224AE78C0007D6F2 /* Interface.storyboard */,
+				2395A96A224AE78D0007D6F2 /* Assets.xcassets */,
+				2395A96C224AE78D0007D6F2 /* Info.plist */,
+			);
+			path = neonWatch;
+			sourceTree = "<group>";
+		};
+		2395A975224AE78D0007D6F2 /* neonWatch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				2395A976224AE78D0007D6F2 /* InterfaceController.swift */,
+				2395A978224AE78D0007D6F2 /* ExtensionDelegate.swift */,
+				2395A97A224AE78D0007D6F2 /* NotificationController.swift */,
+				2395A97C224AE78E0007D6F2 /* Assets.xcassets */,
+				2395A97E224AE78E0007D6F2 /* Info.plist */,
+				2395A97F224AE78E0007D6F2 /* PushNotificationPayload.apns */,
+			);
+			path = "neonWatch Extension";
+			sourceTree = "<group>";
+		};
 		4B7EB119015E82801222CD3A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +408,7 @@
 				8BA23B93EB57D0A9C87A3846 /* Pods_neon.framework */,
 				9076E2F3ADB2E623D12BBF3D /* Pods_neonTests.framework */,
 				F07358A92310DC9C6BA03B89 /* Pods_neonUITests.framework */,
+				2395A94D224AE1750007D6F2 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -279,10 +426,14 @@
 				2338BEB6220A7840004F288F /* Resources */,
 				23BA59672242B0C400AE45DE /* Embed Frameworks */,
 				09348666DF0B4B3C5CAA324F /* [CP] Embed Pods Frameworks */,
+				2395A95C224AE1750007D6F2 /* Embed App Extensions */,
+				2395A98A224AE78E0007D6F2 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				2395A957224AE1750007D6F2 /* PBXTargetDependency */,
+				2395A981224AE78E0007D6F2 /* PBXTargetDependency */,
 			);
 			name = neon;
 			productName = neon;
@@ -327,13 +478,64 @@
 			productReference = 2338BEDA220A7841004F288F /* neonUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		2395A94B224AE1750007D6F2 /* neonToday */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2395A95B224AE1750007D6F2 /* Build configuration list for PBXNativeTarget "neonToday" */;
+			buildPhases = (
+				2395A948224AE1750007D6F2 /* Sources */,
+				2395A949224AE1750007D6F2 /* Frameworks */,
+				2395A94A224AE1750007D6F2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = neonToday;
+			productName = neonToday;
+			productReference = 2395A94C224AE1750007D6F2 /* neonToday.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		2395A964224AE78C0007D6F2 /* neonWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2395A987224AE78E0007D6F2 /* Build configuration list for PBXNativeTarget "neonWatch" */;
+			buildPhases = (
+				2395A963224AE78C0007D6F2 /* Resources */,
+				2395A986224AE78E0007D6F2 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2395A974224AE78D0007D6F2 /* PBXTargetDependency */,
+			);
+			name = neonWatch;
+			productName = neonWatch;
+			productReference = 2395A965224AE78C0007D6F2 /* neonWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		2395A970224AE78D0007D6F2 /* neonWatch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2395A983224AE78E0007D6F2 /* Build configuration list for PBXNativeTarget "neonWatch Extension" */;
+			buildPhases = (
+				2395A96D224AE78D0007D6F2 /* Sources */,
+				2395A96E224AE78D0007D6F2 /* Frameworks */,
+				2395A96F224AE78D0007D6F2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "neonWatch Extension";
+			productName = "neonWatch Extension";
+			productReference = 2395A971224AE78D0007D6F2 /* neonWatch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		2338BEB0220A7840004F288F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "James Saeed";
 				TargetAttributes = {
@@ -353,11 +555,30 @@
 					};
 					2338BECE220A7841004F288F = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = 2338BEB7220A7840004F288F;
 					};
 					2338BED9220A7841004F288F = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = 2338BEB7220A7840004F288F;
+					};
+					2395A94B224AE1750007D6F2 = {
+						CreatedOnToolsVersion = 10.2;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
+					};
+					2395A964224AE78C0007D6F2 = {
+						CreatedOnToolsVersion = 10.2;
+					};
+					2395A970224AE78D0007D6F2 = {
+						CreatedOnToolsVersion = 10.2;
 					};
 				};
 			};
@@ -377,6 +598,9 @@
 				2338BEB7220A7840004F288F /* neon */,
 				2338BECE220A7841004F288F /* neonTests */,
 				2338BED9220A7841004F288F /* neonUITests */,
+				2395A94B224AE1750007D6F2 /* neonToday */,
+				2395A964224AE78C0007D6F2 /* neonWatch */,
+				2395A970224AE78D0007D6F2 /* neonWatch Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -404,6 +628,31 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2395A94A224AE1750007D6F2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2395A954224AE1750007D6F2 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2395A963224AE78C0007D6F2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2395A96B224AE78D0007D6F2 /* Assets.xcassets in Resources */,
+				2395A969224AE78C0007D6F2 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2395A96F224AE78D0007D6F2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2395A97D224AE78E0007D6F2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,6 +788,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2395A948224AE1750007D6F2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2395A962224AE1EF0007D6F2 /* AgendaItem.swift in Sources */,
+				2395A960224AE1CC0007D6F2 /* DataGateway.swift in Sources */,
+				2395A951224AE1750007D6F2 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2395A96D224AE78D0007D6F2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2395A97B224AE78D0007D6F2 /* NotificationController.swift in Sources */,
+				2395A979224AE78D0007D6F2 /* ExtensionDelegate.swift in Sources */,
+				2395A977224AE78D0007D6F2 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -551,6 +820,21 @@
 			isa = PBXTargetDependency;
 			target = 2338BEB7220A7840004F288F /* neon */;
 			targetProxy = 2338BEDB220A7841004F288F /* PBXContainerItemProxy */;
+		};
+		2395A957224AE1750007D6F2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2395A94B224AE1750007D6F2 /* neonToday */;
+			targetProxy = 2395A956224AE1750007D6F2 /* PBXContainerItemProxy */;
+		};
+		2395A974224AE78D0007D6F2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2395A970224AE78D0007D6F2 /* neonWatch Extension */;
+			targetProxy = 2395A973224AE78D0007D6F2 /* PBXContainerItemProxy */;
+		};
+		2395A981224AE78E0007D6F2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2395A964224AE78C0007D6F2 /* neonWatch */;
+			targetProxy = 2395A980224AE78E0007D6F2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -569,6 +853,22 @@
 				2338BEC8220A7841004F288F /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		2395A952224AE1750007D6F2 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2395A953224AE1750007D6F2 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+		2395A967224AE78C0007D6F2 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2395A968224AE78C0007D6F2 /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -750,7 +1050,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neonTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/neon.app/neon";
 			};
@@ -772,7 +1072,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neonTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/neon.app/neon";
 			};
@@ -793,7 +1093,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neonUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = neon;
 			};
@@ -814,9 +1114,133 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neonUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = neon;
+			};
+			name = Release;
+		};
+		2395A959224AE1750007D6F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = neonToday/neonToday.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 577WSH643L;
+				INFOPLIST_FILE = neonToday/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.neonToday;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2395A95A224AE1750007D6F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = neonToday/neonToday.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 577WSH643L;
+				INFOPLIST_FILE = neonToday/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.neonToday;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2395A984224AE78E0007D6F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 577WSH643L;
+				INFOPLIST_FILE = "neonWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
+			};
+			name = Debug;
+		};
+		2395A985224AE78E0007D6F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 577WSH643L;
+				INFOPLIST_FILE = "neonWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
+			};
+			name = Release;
+		};
+		2395A988224AE78E0007D6F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 577WSH643L;
+				IBSC_MODULE = neonWatch_Extension;
+				INFOPLIST_FILE = neonWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
+			};
+			name = Debug;
+		};
+		2395A989224AE78E0007D6F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 577WSH643L;
+				IBSC_MODULE = neonWatch_Extension;
+				INFOPLIST_FILE = neonWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
 			};
 			name = Release;
 		};
@@ -855,6 +1279,33 @@
 			buildConfigurations = (
 				2338BEEA220A7841004F288F /* Debug */,
 				2338BEEB220A7841004F288F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2395A95B224AE1750007D6F2 /* Build configuration list for PBXNativeTarget "neonToday" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2395A959224AE1750007D6F2 /* Debug */,
+				2395A95A224AE1750007D6F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2395A983224AE78E0007D6F2 /* Build configuration list for PBXNativeTarget "neonWatch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2395A984224AE78E0007D6F2 /* Debug */,
+				2395A985224AE78E0007D6F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2395A987224AE78E0007D6F2 /* Build configuration list for PBXNativeTarget "neonWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2395A988224AE78E0007D6F2 /* Debug */,
+				2395A989224AE78E0007D6F2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
