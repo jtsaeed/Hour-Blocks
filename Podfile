@@ -6,6 +6,7 @@ target 'neon' do
   use_frameworks!
 
   # Pods for neon
+  pod 'WhatsNewKit'
 
   target 'neonTests' do
     inherit! :search_paths

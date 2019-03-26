@@ -8,6 +8,7 @@
 
 import UIKit
 import EventKit
+import WhatsNewKit
 
 class DayViewController: UITableViewController {
     
@@ -30,6 +31,12 @@ class DayViewController: UITableViewController {
         super.viewDidAppear(animated)
         
         loadAgendaItems()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        checkAppUpgrade()
     }
     
     @IBAction func pulledToRefresh(_ sender: UIRefreshControl) {
@@ -94,7 +101,7 @@ extension DayViewController {
     func isCalendarEvent(at indexPath: IndexPath) -> Bool {
         if indexPath.section == SectionType.today.rawValue {
             return todayCards[indexPath.row].agendaItem!.icon == "calendar"
-        } else if indexPath.section == SectionType.today.rawValue {
+        } else if indexPath.section == SectionType.tomorrow.rawValue {
             return tomorrowCards[indexPath.row].agendaItem!.icon == "calendar"
         } else {
             return false
@@ -219,12 +226,7 @@ extension DayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
         actionSheet.addAction(UIAlertAction(title: "Edit", style: .default, handler: { action in
             self.showAddAgendaDialog(for: indexPath)
         }))
-        
-        if (isCalendarEvent(at: indexPath)) {
-            actionSheet.addAction(UIAlertAction(title: "Info", style: .default, handler: { action in
-                // TODO: Show info
-            }))
-        } else {
+        if (!isCalendarEvent(at: indexPath)) {
             actionSheet.addAction(UIAlertAction(title: "Clear", style: .destructive, handler: { action in
                 self.removeCard(for: indexPath)
                 self.setStatusBarBackground(as: .white)
@@ -245,10 +247,39 @@ extension DayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
 extension DayViewController {
     
     func initialiseUI() {
+        CalendarGateway.shared.handlePermissions()
         setupTableView()
         setStatusBarBackground(as: .white)
-        CalendarGateway.shared.handlePermissions()
         generateEmptyCards()
+    }
+    
+    func presentWhatsNewIfNeeded() {
+        let whatsNew = WhatsNew(
+            title: "What's New in Beta 2.0",
+            items: [
+                WhatsNew.Item(
+                    title: "Cross Device Sync & Backup",
+                    subtitle: "Your Hour Blocks will now sync between all of your devices that are signed into your iCloud account, whilst also being backed up to iCloud ☁️",
+                    image: nil
+                ),
+                WhatsNew.Item(
+                    title: "New Language",
+                    subtitle: "Hour Blocks is now built on Swift 5, so those of you running on iOS 12.2 will enjoy faster app launches and install times for future updates ⚡️",
+                    image: nil
+                ),
+                WhatsNew.Item(
+                    title: "Bug Fixes",
+                    subtitle: "Fixed an issue where the app would crash if it found Calendar events shorter than an hour long 🐛",
+                    image: nil
+                )
+            ]
+        )
+        var configuration = WhatsNewViewController.Configuration()
+        configuration.completionButton.backgroundColor = UIColor(named: "main")!
+        configuration.completionButton.title = "Let's go!"
+        let whatsNewVC = WhatsNewViewController(whatsNew: whatsNew, configuration: configuration)
+        
+        self.present(whatsNewVC, animated: true, completion: nil)
     }
     
     func setupTableView() {
@@ -269,6 +300,18 @@ extension DayViewController {
             todayCards.append(AgendaCard(hour: hour, agendaItem: nil))
             tomorrowCards.append(AgendaCard(hour: hour, agendaItem: nil))
         }
+    }
+    
+    func checkAppUpgrade() {
+        let currentVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+        let versionOfLastRun = UserDefaults.standard.object(forKey: "VersionOfLastRun") as? String
+        
+        if versionOfLastRun != currentVersion {
+            presentWhatsNewIfNeeded()
+        }
+        
+        UserDefaults.standard.set(currentVersion, forKey: "VersionOfLastRun")
+        UserDefaults.standard.synchronize()
     }
 }
 
