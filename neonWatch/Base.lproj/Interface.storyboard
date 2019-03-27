@@ -4,24 +4,33 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="watchOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14490.21"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--Hour Blocks-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="neonWatch" customModuleProvider="target">
+                <controller title="Hour Blocks" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="neonWatch" customModuleProvider="target">
                     <items>
                         <table alignment="left" id="gFw-hg-Yj3">
                             <items>
-                                <tableRow id="fXj-fe-1OQ">
-                                    <group key="rootItem" width="1" alignment="left" id="gw5-s8-g5R"/>
+                                <tableRow identifier="agendaCardRow" selectable="NO" id="fXj-fe-1OQ" customClass="AgendaCardRowController" customModule="neonWatch_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="gw5-s8-g5R">
+                                        <items>
+                                            <label width="136" height="67" alignment="left" text="Label" textAlignment="left" id="N6P-Qf-uy3"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="agendaTitle" destination="N6P-Qf-uy3" id="aIo-1y-bhi"/>
+                                    </connections>
                                 </tableRow>
                             </items>
                         </table>
                     </items>
+                    <connections>
+                        <outlet property="tableView" destination="gFw-hg-Yj3" id="mdF-3G-Bc7"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="174" y="345"/>
@@ -58,4 +67,5 @@
             <point key="canvasLocation" x="468" y="345"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.99607843137254903" green="0.6705882352941176" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

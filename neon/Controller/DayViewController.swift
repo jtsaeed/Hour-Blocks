@@ -255,21 +255,21 @@ extension DayViewController {
     
     func presentWhatsNewIfNeeded() {
         let whatsNew = WhatsNew(
-            title: "What's New in Beta 2.0",
+            title: "What's New in Beta 3.0",
             items: [
                 WhatsNew.Item(
-                    title: "Cross Device Sync & Backup",
-                    subtitle: "Your Hour Blocks will now sync between all of your devices that are signed into your iCloud account, whilst also being backed up to iCloud ☁️",
+                    title: "Reminders",
+                    subtitle: "Hour Blocks can now have reminders attached to them that fire off at the start of the hour 🔔",
                     image: nil
                 ),
                 WhatsNew.Item(
-                    title: "New Language",
-                    subtitle: "Hour Blocks is now built on Swift 5, so those of you running on iOS 12.2 will enjoy faster app launches and install times for future updates ⚡️",
+                    title: "Widget",
+                    subtitle: "You can now add a widget to your home/lock screen to display the current Hour Block 👀",
                     image: nil
                 ),
                 WhatsNew.Item(
-                    title: "Bug Fixes",
-                    subtitle: "Fixed an issue where the app would crash if it found Calendar events shorter than an hour long 🐛",
+                    title: "Apple Watch Support",
+                    subtitle: "A basic version of Hour Blocks now runs on the Apple Watch, showing you your Hour Blocks for today ⌚️",
                     image: nil
                 )
             ]
