@@ -10,6 +10,7 @@ import UIKit
 
 class AddAgendAlertViewController: UIViewController {
 
+    @IBOutlet weak var topInset: NSLayoutConstraint!
     @IBOutlet weak var alertView: UIViewX!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var titleLabel: UILabel!
@@ -52,6 +53,7 @@ class AddAgendAlertViewController: UIViewController {
 extension AddAgendAlertViewController {
     
     func setupView() {
+        setupInset()
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.25)
         titleLabel.text = "What's in store at \(time!)?"
     }
@@ -63,6 +65,17 @@ extension AddAgendAlertViewController {
             self.alertView.alpha = 1.0;
             self.alertView.frame.origin.y = self.alertView.frame.origin.y - 100
         })
+    }
+    
+    func setupInset() {
+        let model = UIDevice.current.name
+        if model == "iPhone SE" || model == "iPhone 5S" {
+            topInset.constant = 64
+        } else if model == "iPhone Xs Max" || model == "iPhone Xr" {
+            topInset.constant = 192
+        } else if model.contains("iPad") {
+            topInset.constant = 384
+        }
     }
 }
 

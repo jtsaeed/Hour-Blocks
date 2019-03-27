@@ -247,10 +247,10 @@ extension DayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
 extension DayViewController {
     
     func initialiseUI() {
+        generateEmptyCards()
         CalendarGateway.shared.handlePermissions()
         setupTableView()
         setStatusBarBackground(as: .white)
-        generateEmptyCards()
     }
     
     func presentWhatsNewIfNeeded() {

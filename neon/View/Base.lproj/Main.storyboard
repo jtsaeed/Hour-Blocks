@@ -385,6 +385,7 @@
                         <outlet property="alertView" destination="Luo-Uo-qaA" id="d2X-V3-eqj"/>
                         <outlet property="titleLabel" destination="pfM-m6-D9u" id="rUW-zy-ZdL"/>
                         <outlet property="titleTextField" destination="GoQ-RD-rtA" id="ZvP-Y2-rLJ"/>
+                        <outlet property="topInset" destination="q2f-bM-bAL" id="za2-w7-zqw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r1b-K6-LF1" userLabel="First Responder" sceneMemberID="firstResponder"/>
