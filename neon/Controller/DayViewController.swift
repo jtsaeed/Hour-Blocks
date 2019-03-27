@@ -9,6 +9,7 @@
 import UIKit
 import EventKit
 import WhatsNewKit
+import UserNotifications
 
 class DayViewController: UITableViewController {
     
@@ -105,6 +106,50 @@ extension DayViewController {
             return tomorrowCards[indexPath.row].agendaItem!.icon == "calendar"
         } else {
             return false
+        }
+    }
+    
+    func hasReminderSet(at indexPath: IndexPath, completion: @escaping (_ result: Bool) -> ()) {
+        if indexPath.section == SectionType.today.rawValue {
+            NotificationsGateway.shared.hasPendingNotification(for: todayCards[indexPath.row]) { (result) in
+                completion(result)
+            }
+        } else if indexPath.section == SectionType.tomorrow.rawValue {
+            NotificationsGateway.shared.hasPendingNotification(for: tomorrowCards[indexPath.row]) { (result) in
+                completion(result)
+            }
+        } else {
+            completion(false)
+        }
+    }
+    
+    func addReminder(for indexPath: IndexPath, timeOffset: Int) {
+        if indexPath.section == SectionType.today.rawValue {
+            NotificationsGateway.shared.addNotification(for: todayCards[indexPath.row], with: timeOffset, completion: { (success) in
+                if success {
+                    DispatchQueue.main.async { UINotificationFeedbackGenerator().notificationOccurred(.success) }
+                } else {
+                    DispatchQueue.main.async { UINotificationFeedbackGenerator().notificationOccurred(.error) }
+                }
+            })
+        } else if indexPath.section == SectionType.tomorrow.rawValue {
+            NotificationsGateway.shared.addNotification(for: tomorrowCards[indexPath.row], with: timeOffset, completion: { (success) in
+                if success {
+                    DispatchQueue.main.async { UINotificationFeedbackGenerator().notificationOccurred(.success) }
+                } else {
+                    DispatchQueue.main.async { UINotificationFeedbackGenerator().notificationOccurred(.error) }
+                }
+            })
+        }
+    }
+    
+    func removeReminder(for indexPath: IndexPath) {
+        if indexPath.section == SectionType.today.rawValue {
+            NotificationsGateway.shared.removeNotification(for: todayCards[indexPath.row])
+            UINotificationFeedbackGenerator().notificationOccurred(.success)
+        } else if indexPath.section == SectionType.tomorrow.rawValue {
+            NotificationsGateway.shared.removeNotification(for: tomorrowCards[indexPath.row])
+            UINotificationFeedbackGenerator().notificationOccurred(.success)
         }
     }
 }
@@ -231,9 +276,49 @@ extension DayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
                 self.removeCard(for: indexPath)
                 self.setStatusBarBackground(as: .white)
             }))
+            
+            hasReminderSet(at: indexPath) { (result) in
+                print(result)
+                if result == true {
+                    actionSheet.addAction(UIAlertAction(title: "Remove Reminder", style: .destructive, handler: { action in
+                        self.removeReminder(for: indexPath)
+                        self.setStatusBarBackground(as: .white)
+                    }))
+                } else {
+                    actionSheet.addAction(UIAlertAction(title: "Set Reminder", style: .default, handler: { action in
+                        self.showReminderOptionsDialog(for: indexPath)
+                    }))
+                }
+            }
         }
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
-            actionSheet.dismiss(animated: true, completion: nil)
+            self.setStatusBarBackground(as: .white)
+        }))
+        
+        setStatusBarBackground(as: .clear)
+        present(actionSheet, animated: true, completion: nil)
+    }
+    
+    func showReminderOptionsDialog(for indexPath: IndexPath) {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: "60 minutes before", style: .default, handler: { action in
+            self.addReminder(for: indexPath, timeOffset: 60)
+            self.setStatusBarBackground(as: .white)
+        }))
+        actionSheet.addAction(UIAlertAction(title: "30 minutes before", style: .default, handler: { action in
+            self.addReminder(for: indexPath, timeOffset: 30)
+            self.setStatusBarBackground(as: .white)
+        }))
+        actionSheet.addAction(UIAlertAction(title: "15 minutes before", style: .default, handler: { action in
+            self.addReminder(for: indexPath, timeOffset: 15)
+            self.setStatusBarBackground(as: .white)
+        }))
+        actionSheet.addAction(UIAlertAction(title: "5 minutes before", style: .default, handler: { action in
+            self.addReminder(for: indexPath, timeOffset: 5)
+            self.setStatusBarBackground(as: .white)
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
             self.setStatusBarBackground(as: .white)
         }))
         
@@ -248,12 +333,11 @@ extension DayViewController {
     
     func initialiseUI() {
         generateEmptyCards()
-        CalendarGateway.shared.handlePermissions()
         setupTableView()
         setStatusBarBackground(as: .white)
     }
     
-    func presentWhatsNewIfNeeded() {
+    func presentWhatsNew() {
         let whatsNew = WhatsNew(
             title: "What's New in Beta 3.0",
             items: [
@@ -271,12 +355,23 @@ extension DayViewController {
                     title: "Apple Watch Support",
                     subtitle: "A basic version of Hour Blocks now runs on the Apple Watch, showing you your Hour Blocks for today ⌚️",
                     image: nil
+                ),
+                WhatsNew.Item(
+                    title: "Bug Fixes & Improvements",
+                    subtitle: "Fixed a few layout bugs on iPads and smaller iPhones & some random crashes, and implemented some other small improvements 🐜",
+                    image: nil
                 )
             ]
         )
         var configuration = WhatsNewViewController.Configuration()
         configuration.completionButton.backgroundColor = UIColor(named: "main")!
         configuration.completionButton.title = "Let's go!"
+        configuration.completionButton.hapticFeedback = .impact(.light)
+        configuration.completionButton.action = .custom(action: { vc in
+            vc.dismiss(animated: true, completion: {
+                CalendarGateway.shared.handlePermissions()
+            })
+        })
         let whatsNewVC = WhatsNewViewController(whatsNew: whatsNew, configuration: configuration)
         
         self.present(whatsNewVC, animated: true, completion: nil)
@@ -307,7 +402,7 @@ extension DayViewController {
         let versionOfLastRun = UserDefaults.standard.object(forKey: "VersionOfLastRun") as? String
         
         if versionOfLastRun != currentVersion {
-            presentWhatsNewIfNeeded()
+            presentWhatsNew()
         }
         
         UserDefaults.standard.set(currentVersion, forKey: "VersionOfLastRun")
@@ -315,11 +410,4 @@ extension DayViewController {
     }
 }
 
-struct AgendaCard {
-    
-    let hour: Int
-    var agendaItem: AgendaItem?
-    var isEmpty: Bool {
-        return agendaItem == nil
-    }
-}
+

@@ -74,3 +74,17 @@ struct AgendaItem {
         return false
     }
 }
+
+struct AgendaCard {
+    
+    let hour: Int
+    var agendaItem: AgendaItem?
+    var isEmpty: Bool {
+        return agendaItem == nil
+    }
+    
+    init(hour: Int, agendaItem: AgendaItem?) {
+        self.hour = hour
+        self.agendaItem = agendaItem
+    }
+}
