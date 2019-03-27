@@ -16,8 +16,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        DataGateway.shared.fetchAgendaItems { (todaysAgendaItems, tomorrowsAgendaItems) in
-            self.setLabel(for: todaysAgendaItems[Calendar.current.component(.hour, from: Date())])
+        DataGateway.shared.fetchCurrentAgendaItem { (agendaItem) in
+            self.setLabel(for: agendaItem)
         }
     }
     
