@@ -309,6 +309,12 @@ extension DayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
             self.setStatusBarBackground(as: .white)
         }))
         
+        if let popoverController = actionSheet.popoverPresentationController {
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
+        }
+        
         setStatusBarBackground(as: .clear)
         present(actionSheet, animated: true, completion: nil)
     }
@@ -335,6 +341,12 @@ extension DayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
             self.setStatusBarBackground(as: .white)
         }))
+        
+        if let popoverController = actionSheet.popoverPresentationController {
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
+        }
         
         setStatusBarBackground(as: .clear)
         present(actionSheet, animated: true, completion: nil)
