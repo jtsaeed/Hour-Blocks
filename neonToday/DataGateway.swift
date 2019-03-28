@@ -14,6 +14,17 @@ class DataGateway {
     static let shared = DataGateway()
     
     func fetchCurrentAgendaItem(completion: @escaping (_ currentAgendaItem: AgendaItem?) -> ()) {
+        if CalendarGateway.shared.hasPermission() {
+            for event in CalendarGateway.shared.importTodaysEvents() {
+                for i in event.startTime...event.endTime {
+                    if i == Calendar.current.component(.hour, from: Date()) {
+                        completion(AgendaItem(title: event.title))
+                        return
+                    }
+                }
+            }
+        }
+        
         let database = CKContainer(identifier: "iCloud.com.evh98.neon").privateCloudDatabase
         let query = CKQuery(recordType: "AgendaRecord", predicate: NSPredicate(value: true))
         

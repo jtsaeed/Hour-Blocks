@@ -13,7 +13,7 @@ class AgendaCardRowController: NSObject {
     
     var agendaCard: AgendaCard? {
         didSet {
-            agendaTitle.setText("\(agendaCard?.hour.getFormattedHour() ?? "") - \(agendaCard?.agendaItem?.title ?? "Empty")")
+            agendaTitle.setText("\(agendaCard?.hour.getFormattedHour() ?? "") - \(agendaCard?.agendaItem?.title.capitalized ?? "Empty")")
         }
     }
     

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		230212E0224D3E9600B8FCED /* CalendarGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230212DF224D3E9600B8FCED /* CalendarGateway.swift */; };
+		230212E1224D3FD200B8FCED /* notification.aif in Resources */ = {isa = PBXBuildFile; fileRef = 2304BD45224D37BB006F9F2F /* notification.aif */; };
 		23074FC8220B4A5D00B64762 /* AgendaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23074FC7220B4A5D00B64762 /* AgendaItem.swift */; };
 		23074FCA220B4B5700B64762 /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23074FC9220B4B5700B64762 /* Int+Ext.swift */; };
 		23074FCC220B4DE800B64762 /* EmptyCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23074FCB220B4DE800B64762 /* EmptyCardCell.swift */; };
@@ -140,6 +142,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		230212DF224D3E9600B8FCED /* CalendarGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGateway.swift; sourceTree = "<group>"; };
 		2304BD45224D37BB006F9F2F /* notification.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = notification.aif; path = ../../../Assets/notification.aif; sourceTree = "<group>"; };
 		23074FC7220B4A5D00B64762 /* AgendaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaItem.swift; sourceTree = "<group>"; };
 		23074FC9220B4B5700B64762 /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
@@ -379,6 +382,7 @@
 				2395A955224AE1750007D6F2 /* Info.plist */,
 				2395A95F224AE1CC0007D6F2 /* DataGateway.swift */,
 				2395A961224AE1EF0007D6F2 /* AgendaItem.swift */,
+				230212DF224D3E9600B8FCED /* CalendarGateway.swift */,
 			);
 			path = neonToday;
 			sourceTree = "<group>";
@@ -644,6 +648,7 @@
 				23D41E6C2224127800D909FD /* SectionHeaderView.xib in Resources */,
 				2338BEC9220A7841004F288F /* LaunchScreen.storyboard in Resources */,
 				2338BEC6220A7841004F288F /* Assets.xcassets in Resources */,
+				230212E1224D3FD200B8FCED /* notification.aif in Resources */,
 				2338BEC1220A7840004F288F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -825,6 +830,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				230212E0224D3E9600B8FCED /* CalendarGateway.swift in Sources */,
 				2395A962224AE1EF0007D6F2 /* AgendaItem.swift in Sources */,
 				2395A960224AE1CC0007D6F2 /* DataGateway.swift in Sources */,
 				2395A951224AE1750007D6F2 /* TodayViewController.swift in Sources */,
