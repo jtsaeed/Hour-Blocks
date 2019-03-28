@@ -40,6 +40,7 @@ class DayViewController: UITableViewController {
         
         CalendarGateway.shared.handlePermissions()
         checkAppUpgrade()
+        checkConnection()
     }
     
     @IBAction func pulledToRefresh(_ sender: UIRefreshControl) {
@@ -349,6 +350,38 @@ extension DayViewController {
         setStatusBarBackground(as: .white)
     }
     
+    func setupTableView() {
+        tableView.frame = .zero
+    }
+    
+    func setStatusBarBackground(as color: UIColor) {
+        guard let statusBarView = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else {
+            return
+        }
+        UIView.animate(withDuration: 0.15) {
+            statusBarView.backgroundColor = color
+        }
+    }
+    
+    func generateEmptyCards() {
+        for hour in 0...23 {
+            todayCards.append(AgendaCard(hour: hour, agendaItem: nil))
+            tomorrowCards.append(AgendaCard(hour: hour, agendaItem: nil))
+        }
+    }
+    
+    func checkAppUpgrade() {
+        let currentVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+        let versionOfLastRun = UserDefaults.standard.object(forKey: "VersionOfLastRun") as? String
+        
+        if versionOfLastRun != nil && versionOfLastRun != currentVersion {
+            presentWhatsNew()
+        }
+        
+        UserDefaults.standard.set(currentVersion, forKey: "VersionOfLastRun")
+        UserDefaults.standard.synchronize()
+    }
+    
     func presentWhatsNew() {
         let whatsNew = WhatsNew(
             title: "What's New in Beta 3.0",
@@ -384,36 +417,14 @@ extension DayViewController {
         self.present(whatsNewVC, animated: true, completion: nil)
     }
     
-    func setupTableView() {
-        tableView.frame = .zero
-    }
-    
-    func setStatusBarBackground(as color: UIColor) {
-        guard let statusBarView = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else {
-            return
+    func checkConnection() {
+        DataGateway.shared.checkConnection { (success) in
+            if success == false {
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "showNoConnection", sender: nil)
+                }
+            }
         }
-        UIView.animate(withDuration: 0.15) {
-            statusBarView.backgroundColor = color
-        }
-    }
-    
-    func generateEmptyCards() {
-        for hour in 0...23 {
-            todayCards.append(AgendaCard(hour: hour, agendaItem: nil))
-            tomorrowCards.append(AgendaCard(hour: hour, agendaItem: nil))
-        }
-    }
-    
-    func checkAppUpgrade() {
-        let currentVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
-        let versionOfLastRun = UserDefaults.standard.object(forKey: "VersionOfLastRun") as? String
-        
-        if versionOfLastRun != nil && versionOfLastRun != currentVersion {
-            presentWhatsNew()
-        }
-        
-        UserDefaults.standard.set(currentVersion, forKey: "VersionOfLastRun")
-        UserDefaults.standard.synchronize()
     }
 }
 

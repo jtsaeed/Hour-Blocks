@@ -13,6 +13,15 @@ class DataGateway {
     
     static let shared = DataGateway()
     
+    func checkConnection(completion: @escaping (_ success: Bool) -> ()) {
+        let database = CKContainer.default().privateCloudDatabase
+        let query = CKQuery(recordType: "AgendaRecord", predicate: NSPredicate(value: true))
+        
+        database.perform(query, inZoneWith: nil) { (records, error) in
+            completion(error == nil)
+        }
+    }
+    
     func fetchAgendaItems(completion: @escaping (_ todaysAgendaItems: [Int: AgendaItem], _ tomorrowsAgendaItems: [Int: AgendaItem]) -> ()) {
         var todaysAgendaItems = [Int: AgendaItem]()
         var tomorrowsAgendaItems = [Int: AgendaItem]()

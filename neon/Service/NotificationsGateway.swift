@@ -54,7 +54,7 @@ class NotificationsGateway {
         let content = UNMutableNotificationContent()
         content.title = "Upcoming Hour Block"
         content.body = "You have \(agendaCard.agendaItem!.title) coming up at \(agendaCard.hour.getFormattedHour())"
-        content.sound = UNNotificationSound.default
+        content.sound = UNNotificationSound.init(named: UNNotificationSoundName("notification.aif"))
         
         var date = Calendar.current.date(bySettingHour: agendaCard.hour, minute: 0, second: 0, of: Date())!
         date = Calendar.current.date(byAdding: .minute, value: -timeOffset, to: date)!
