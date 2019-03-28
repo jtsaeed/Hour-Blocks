@@ -27,6 +27,7 @@ class DayViewController: UITableViewController {
         initialiseUI()
         NotificationCenter.default.addObserver(self, selector: #selector(loadAgendaItems), name: Notification.Name("agendaUpdate"), object: nil)
         DataGateway.shared.deletePastAgendaRecords()
+        checkConnection()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,10 +41,11 @@ class DayViewController: UITableViewController {
         
         CalendarGateway.shared.handlePermissions()
         checkAppUpgrade()
-        checkConnection()
     }
     
     @IBAction func pulledToRefresh(_ sender: UIRefreshControl) {
+        checkConnection()
+        
         DataGateway.shared.fetchAgendaItems { (todaysAgendaItems, tomorrowsAgendaItems) in
             self.generateCards(from: todaysAgendaItems, and: tomorrowsAgendaItems)
             DispatchQueue.main.async { sender.endRefreshing() }
@@ -291,7 +293,6 @@ extension DayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
             }))
             
             hasReminderSet(at: indexPath) { (result) in
-                print(result)
                 if result == true {
                     actionSheet.addAction(UIAlertAction(title: "Remove Reminder", style: .destructive, handler: { action in
                         self.removeReminder(for: indexPath)
