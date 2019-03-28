@@ -38,6 +38,7 @@ class DayViewController: UITableViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        CalendarGateway.shared.handlePermissions()
         checkAppUpgrade()
     }
     
@@ -378,11 +379,6 @@ extension DayViewController {
         configuration.completionButton.backgroundColor = UIColor(named: "main")!
         configuration.completionButton.title = "Let's go!"
         configuration.completionButton.hapticFeedback = .impact(.light)
-        configuration.completionButton.action = .custom(action: { vc in
-            vc.dismiss(animated: true, completion: {
-                CalendarGateway.shared.handlePermissions()
-            })
-        })
         let whatsNewVC = WhatsNewViewController(whatsNew: whatsNew, configuration: configuration)
         
         self.present(whatsNewVC, animated: true, completion: nil)
@@ -412,7 +408,7 @@ extension DayViewController {
         let currentVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
         let versionOfLastRun = UserDefaults.standard.object(forKey: "VersionOfLastRun") as? String
         
-        if versionOfLastRun != currentVersion {
+        if versionOfLastRun != nil && versionOfLastRun != currentVersion {
             presentWhatsNew()
         }
         
