@@ -37,9 +37,9 @@ struct AgendaItem {
             self.icon = "commute"
         } else if doesTitleContain(["relax", "chill"]) {
             self.icon = "couch"
-        } else if doesTitleContain(["study", "lecture", "school", "read"]) {
+        } else if doesTitleContain(["study", "lecture", "school", "read", "research", "revise", "revision"]) {
             self.icon = "education"
-        } else if doesTitleContain(["breakfast", "lunch", "dinner", "food", "meal", "eat"]) {
+        } else if doesTitleContain(["breakfast", "lunch", "dinner", "food", "meal", "eat", "snack", "brunch"]) {
             self.icon = "food"
         } else if doesTitleContain(["gym", "exercise", "run"]) {
             self.icon = "gym"
@@ -47,7 +47,7 @@ struct AgendaItem {
             self.icon = "love"
         } else if doesTitleContain(["movie", "film", "cinema"]) {
             self.icon = "movie"
-        } else if doesTitleContain(["music", "concert"]) {
+        } else if doesTitleContain(["music", "concert", "gig"]) {
             self.icon = "music"
         } else if doesTitleContain(["write", "writing"]) {
             self.icon = "pencil"

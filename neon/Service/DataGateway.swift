@@ -66,7 +66,9 @@ class DataGateway {
         record.setObject(agendaItem.title as CKRecordValue, forKey: "title")
         record.setObject(hour as CKRecordValue, forKey: "hour")
         
-        database.save(record) { (record, error) in }
+        database.save(record) { (record, error) in
+            if error == nil { self.incrementTotalAgendaCount() }
+        }
     }
     
     func delete(_ agendaItem: AgendaItem) {
@@ -93,5 +95,24 @@ class DataGateway {
                 }
             })
         }
+    }
+    
+    func getTotalAgendaCount() -> Int {
+        guard let totalAgendaCount = UserDefaults.standard.object(forKey: "totalAgendaCount") as? Int else {
+            return 0
+        }
+        return totalAgendaCount
+    }
+    
+    private func incrementTotalAgendaCount() {
+        let totalAgendaCount = UserDefaults.standard.object(forKey: "totalAgendaCount") as? Int
+        
+        if totalAgendaCount == nil {
+            UserDefaults.standard.set(1, forKey: "totalAgendaCount")
+        } else {
+            UserDefaults.standard.set(totalAgendaCount! + 1, forKey: "totalAgendaCount")
+        }
+        
+        UserDefaults.standard.synchronize()
     }
 }

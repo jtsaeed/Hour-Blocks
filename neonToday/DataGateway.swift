@@ -17,8 +17,6 @@ class DataGateway {
         let database = CKContainer(identifier: "iCloud.com.evh98.neon").privateCloudDatabase
         let query = CKQuery(recordType: "AgendaRecord", predicate: NSPredicate(value: true))
         
-        print(Calendar.current.component(.hour, from: Date()))
-        
         database.perform(query, inZoneWith: nil) { (records, error) in
             records?.forEach({ (record) in
                 guard let id = record.value(forKey: "id") as? String else { return }
@@ -28,7 +26,6 @@ class DataGateway {
                 
                 // Only pull the tasks that are in today and aren't already on device
                 if Calendar.current.isDateInToday(day) && hour == Calendar.current.component(.hour, from: Date()) {
-                    print("Bingo!")
                     completion(AgendaItem(with: id, and: title))
                     return
                 }

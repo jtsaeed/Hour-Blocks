@@ -8,6 +8,7 @@
 
 import UIKit
 import EventKit
+import StoreKit
 import WhatsNewKit
 import UserNotifications
 
@@ -79,12 +80,14 @@ extension DayViewController {
             DataGateway.shared.save(agendaItem, for: todayCards[indexPath.row].hour, today: true)
             todayCards[indexPath.row].agendaItem = agendaItem
         } else if indexPath.section == SectionType.tomorrow.rawValue {
-            if let agendaItem = todayCards[indexPath.row].agendaItem { DataGateway.shared.delete(agendaItem) }
+            if let agendaItem = tomorrowCards[indexPath.row].agendaItem { DataGateway.shared.delete(agendaItem) }
             DataGateway.shared.save(agendaItem, for: tomorrowCards[indexPath.row].hour, today: false)
             tomorrowCards[indexPath.row].agendaItem = agendaItem
         }
         
         tableView.reloadRows(at: [indexPath], with: .fade)
+        
+        handleReviewRequest()
     }
     
     func removeCard(for indexPath: IndexPath) {
@@ -150,6 +153,14 @@ extension DayViewController {
         } else if indexPath.section == SectionType.tomorrow.rawValue {
             NotificationsGateway.shared.removeNotification(for: tomorrowCards[indexPath.row])
             UINotificationFeedbackGenerator().notificationOccurred(.success)
+        }
+    }
+    
+    func handleReviewRequest() {
+        let count = DataGateway.shared.getTotalAgendaCount()
+        
+        if count == 10 || count == 25 || count == 50 {
+            SKStoreReviewController.requestReview()
         }
     }
 }
@@ -358,7 +369,7 @@ extension DayViewController {
                 ),
                 WhatsNew.Item(
                     title: "Bug Fixes & Improvements",
-                    subtitle: "Fixed a few layout bugs on iPads and smaller iPhones & some random crashes, and implemented some other small improvements 🐜",
+                    subtitle: "Fixed a few layout bugs on iPads & smaller iPhones + fixed some random crashes + implemented some other small improvements 🐜",
                     image: nil
                 )
             ]
