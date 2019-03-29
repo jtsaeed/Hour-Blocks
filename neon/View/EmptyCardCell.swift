@@ -9,7 +9,7 @@
 import UIKit
 
 protocol AddAgendaDelegate {
-    func showAddAgendaDialog(for indexPath: IndexPath)
+    func showAddAgendaDialog(for agendaCard: AgendaCard?, at indexPath: IndexPath)
 }
 
 class EmptyCardCell: UITableViewCell {
@@ -25,6 +25,6 @@ class EmptyCardCell: UITableViewCell {
     }
     
     @IBAction func addButtonPressed(_ sender: Any) {
-        self.delegate.showAddAgendaDialog(for: indexPath)
+        self.delegate.showAddAgendaDialog(for: nil, at: indexPath)
     }
 }

@@ -18,6 +18,7 @@ class AddAgendAlertViewController: UIViewController {
     var delegate: AddAgendaAlertViewDelegate?
     var indexPath: IndexPath!
     var time: String!
+    var preFilledTitle: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +57,7 @@ extension AddAgendAlertViewController {
         setupInset()
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.25)
         titleLabel.text = "What's in store at \(time!)?"
+        titleTextField.text = preFilledTitle
     }
     
     func animateView() {

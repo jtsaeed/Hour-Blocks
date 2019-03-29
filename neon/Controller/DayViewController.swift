@@ -206,9 +206,9 @@ extension DayViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == SectionType.today.rawValue {
-            if !todayCards[indexPath.row].isEmpty { showAgendaOptionsDialog(for: indexPath) }
+            if !todayCards[indexPath.row].isEmpty { showAgendaOptionsDialog(for: todayCards[indexPath.row], at: indexPath) }
         } else if indexPath.section == SectionType.tomorrow.rawValue {
-            if !tomorrowCards[indexPath.row].isEmpty { showAgendaOptionsDialog(for: indexPath) }
+            if !tomorrowCards[indexPath.row].isEmpty { showAgendaOptionsDialog(for: tomorrowCards[indexPath.row], at: indexPath) }
         }
     }
     
@@ -252,7 +252,7 @@ extension DayViewController {
 
 extension DayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
     
-    func showAddAgendaDialog(for indexPath: IndexPath) {
+    func showAddAgendaDialog(for agendaCard: AgendaCard?, at indexPath: IndexPath) {
         let alert = self.storyboard?.instantiateViewController(withIdentifier: "AddAgendaAlert") as! AddAgendAlertViewController
         alert.providesPresentationContextTransitionStyle = true
         alert.definesPresentationContext = true
@@ -260,6 +260,7 @@ extension DayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
         alert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         alert.delegate = self
         alert.indexPath = indexPath
+        alert.preFilledTitle = agendaCard?.agendaItem?.title
         
         if indexPath.section == SectionType.today.rawValue {
             alert.time = todayCards[indexPath.row].hour.getFormattedHour().lowercased()
@@ -280,11 +281,11 @@ extension DayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
         setStatusBarBackground(as: .white)
     }
     
-    func showAgendaOptionsDialog(for indexPath: IndexPath) {
+    func showAgendaOptionsDialog(for agendaCard: AgendaCard, at indexPath: IndexPath) {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         actionSheet.addAction(UIAlertAction(title: "Edit", style: .default, handler: { action in
-            self.showAddAgendaDialog(for: indexPath)
+            self.showAddAgendaDialog(for: agendaCard, at: indexPath)
         }))
         if (!isCalendarEvent(at: indexPath)) {
             actionSheet.addAction(UIAlertAction(title: "Clear", style: .destructive, handler: { action in
@@ -397,21 +398,11 @@ extension DayViewController {
     
     func presentWhatsNew() {
         let whatsNew = WhatsNew(
-            title: "What's New in Beta 3.1",
+            title: "What's New in Beta 4.0",
             items: [
                 WhatsNew.Item(
-                    title: "Reminders",
-                    subtitle: "Hour Blocks can now have reminders attached to them that fire off at the start of the hour 🔔",
-                    image: nil
-                ),
-                WhatsNew.Item(
-                    title: "Widget",
-                    subtitle: "You can now add a widget to your home/lock screen to display the current Hour Block 👀",
-                    image: nil
-                ),
-                WhatsNew.Item(
-                    title: "Apple Watch Support",
-                    subtitle: "A basic version of Hour Blocks now runs on the Apple Watch, showing you your Hour Blocks for today ⌚️",
+                    title: "Siri Shortcuts",
+                    subtitle: "Your frequently created Hour Blocks can now be called from Siri Shortcuts 🛠",
                     image: nil
                 ),
                 WhatsNew.Item(
