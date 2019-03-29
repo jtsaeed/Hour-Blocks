@@ -13,6 +13,11 @@
 		23074FCA220B4B5700B64762 /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23074FC9220B4B5700B64762 /* Int+Ext.swift */; };
 		23074FCC220B4DE800B64762 /* EmptyCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23074FCB220B4DE800B64762 /* EmptyCardCell.swift */; };
 		23074FCE220B53AB00B64762 /* UIButtonX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23074FCD220B53AB00B64762 /* UIButtonX.swift */; };
+		230D09A3224E7F4300C103CC /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230D09A2224E7F4300C103CC /* IntentHandler.swift */; };
+		230D09A7224E7F4300C103CC /* neonSiri.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 230D09A0224E7F4300C103CC /* neonSiri.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		230D09AC224E7F6200C103CC /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 238EA768223EA0DC00981E98 /* CloudKit.framework */; };
+		230D09B0224E82B000C103CC /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 230D09AF224E82B000C103CC /* Intents.intentdefinition */; };
+		230D09B1224E847B00C103CC /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 230D09AF224E82B000C103CC /* Intents.intentdefinition */; };
 		231898DD221D92F1005766AF /* AddAgendAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231898DC221D92F1005766AF /* AddAgendAlertViewController.swift */; };
 		2325C88C224912B5008C687B /* DataGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2325C88B224912B5008C687B /* DataGateway.swift */; };
 		2338BEBC220A7840004F288F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEBB220A7840004F288F /* AppDelegate.swift */; };
@@ -51,13 +56,19 @@
 		23D41E6C2224127800D909FD /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D41E6B2224127800D909FD /* SectionHeaderView.xib */; };
 		23D41E6E222412FF00D909FD /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D41E6D222412FF00D909FD /* SectionHeaderView.swift */; };
 		23E45BE2224BA3A9002D01AC /* NotificationsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E45BE1224BA3A9002D01AC /* NotificationsGateway.swift */; };
-		23FE7A27224D39C4000AD365 /* NoConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FE7A26224D39C4000AD365 /* NoConnectionViewController.swift */; };
 		61B305ACEAA2B4F72109821D /* Pods_neon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BA23B93EB57D0A9C87A3846 /* Pods_neon.framework */; };
 		B658B761255B945710FC2F42 /* Pods_neonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9076E2F3ADB2E623D12BBF3D /* Pods_neonTests.framework */; };
 		B912B77E89CBF0E08ECEB8A2 /* Pods_neonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F07358A92310DC9C6BA03B89 /* Pods_neonUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		230D09A5224E7F4300C103CC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2338BEB0220A7840004F288F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 230D099F224E7F4300C103CC;
+			remoteInfo = neonSiri;
+		};
 		2338BED0220A7841004F288F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2338BEB0220A7840004F288F /* Project object */;
@@ -103,6 +114,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				2395A958224AE1750007D6F2 /* neonToday.appex in Embed App Extensions */,
+				230D09A7224E7F4300C103CC /* neonSiri.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -148,6 +160,11 @@
 		23074FC9220B4B5700B64762 /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
 		23074FCB220B4DE800B64762 /* EmptyCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCardCell.swift; sourceTree = "<group>"; };
 		23074FCD220B53AB00B64762 /* UIButtonX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonX.swift; sourceTree = "<group>"; };
+		230D09A0224E7F4300C103CC /* neonSiri.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = neonSiri.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		230D09A2224E7F4300C103CC /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		230D09A4224E7F4300C103CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		230D09AB224E7F4D00C103CC /* neonSiri.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = neonSiri.entitlements; sourceTree = "<group>"; };
+		230D09AF224E82B000C103CC /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
 		231898DC221D92F1005766AF /* AddAgendAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAgendAlertViewController.swift; sourceTree = "<group>"; };
 		2325C88B224912B5008C687B /* DataGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGateway.swift; sourceTree = "<group>"; };
 		2338BEB8220A7840004F288F /* neon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = neon.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,7 +215,6 @@
 		23D41E6B2224127800D909FD /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		23D41E6D222412FF00D909FD /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		23E45BE1224BA3A9002D01AC /* NotificationsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsGateway.swift; sourceTree = "<group>"; };
-		23FE7A26224D39C4000AD365 /* NoConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoConnectionViewController.swift; sourceTree = "<group>"; };
 		3090C3879864096A7AB572CC /* Pods-neon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neon.release.xcconfig"; path = "Pods/Target Support Files/Pods-neon/Pods-neon.release.xcconfig"; sourceTree = "<group>"; };
 		390CCC3E80133F37FB4A2306 /* Pods-neonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neonTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-neonTests/Pods-neonTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6B9A0107CCBF37CCAA2CAAD3 /* Pods-neonUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neonUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-neonUITests/Pods-neonUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -211,6 +227,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		230D099D224E7F4300C103CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				230D09AC224E7F6200C103CC /* CloudKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2338BEB5220A7840004F288F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -286,7 +310,6 @@
 			isa = PBXGroup;
 			children = (
 				2338BEBD220A7840004F288F /* DayViewController.swift */,
-				23FE7A26224D39C4000AD365 /* NoConnectionViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -310,6 +333,17 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		230D09A1224E7F4300C103CC /* neonSiri */ = {
+			isa = PBXGroup;
+			children = (
+				230D09AB224E7F4D00C103CC /* neonSiri.entitlements */,
+				230D09A2224E7F4300C103CC /* IntentHandler.swift */,
+				230D09A4224E7F4300C103CC /* Info.plist */,
+				230D09AF224E82B000C103CC /* Intents.intentdefinition */,
+			);
+			path = neonSiri;
+			sourceTree = "<group>";
+		};
 		2338BEAF220A7840004F288F = {
 			isa = PBXGroup;
 			children = (
@@ -319,6 +353,7 @@
 				2395A94F224AE1750007D6F2 /* neonToday */,
 				2395A966224AE78C0007D6F2 /* neonWatch */,
 				2395A975224AE78D0007D6F2 /* neonWatch Extension */,
+				230D09A1224E7F4300C103CC /* neonSiri */,
 				2338BEB9220A7840004F288F /* Products */,
 				4B7EB119015E82801222CD3A /* Pods */,
 				CBE1FB35023C3D4B2AC08158 /* Frameworks */,
@@ -334,6 +369,7 @@
 				2395A94C224AE1750007D6F2 /* neonToday.appex */,
 				2395A965224AE78C0007D6F2 /* neonWatch.app */,
 				2395A971224AE78D0007D6F2 /* neonWatch Extension.appex */,
+				230D09A0224E7F4300C103CC /* neonSiri.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -443,6 +479,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		230D099F224E7F4300C103CC /* neonSiri */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 230D09A8224E7F4300C103CC /* Build configuration list for PBXNativeTarget "neonSiri" */;
+			buildPhases = (
+				230D099C224E7F4300C103CC /* Sources */,
+				230D099D224E7F4300C103CC /* Frameworks */,
+				230D099E224E7F4300C103CC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = neonSiri;
+			productName = neonSiri;
+			productReference = 230D09A0224E7F4300C103CC /* neonSiri.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		2338BEB7220A7840004F288F /* neon */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2338BEE3220A7841004F288F /* Build configuration list for PBXNativeTarget "neon" */;
@@ -461,6 +514,7 @@
 			dependencies = (
 				2395A957224AE1750007D6F2 /* PBXTargetDependency */,
 				2395A981224AE78E0007D6F2 /* PBXTargetDependency */,
+				230D09A6224E7F4300C103CC /* PBXTargetDependency */,
 			);
 			name = neon;
 			productName = neon;
@@ -566,6 +620,17 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "James Saeed";
 				TargetAttributes = {
+					230D099F224E7F4300C103CC = {
+						CreatedOnToolsVersion = 10.2;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
+					};
 					2338BEB7220A7840004F288F = {
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
@@ -573,6 +638,9 @@
 								enabled = 0;
 							};
 							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.Siri = {
 								enabled = 1;
 							};
 							com.apple.iCloud = {
@@ -636,11 +704,19 @@
 				2395A94B224AE1750007D6F2 /* neonToday */,
 				2395A964224AE78C0007D6F2 /* neonWatch */,
 				2395A970224AE78D0007D6F2 /* neonWatch Extension */,
+				230D099F224E7F4300C103CC /* neonSiri */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		230D099E224E7F4300C103CC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2338BEB6220A7840004F288F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -786,11 +862,19 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		230D099C224E7F4300C103CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				230D09B0224E82B000C103CC /* Intents.intentdefinition in Sources */,
+				230D09A3224E7F4300C103CC /* IntentHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2338BEB4220A7840004F288F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23FE7A27224D39C4000AD365 /* NoConnectionViewController.swift in Sources */,
 				231898DD221D92F1005766AF /* AddAgendAlertViewController.swift in Sources */,
 				23074FC8220B4A5D00B64762 /* AgendaItem.swift in Sources */,
 				2338BEC4220A7840004F288F /* neon.xcdatamodeld in Sources */,
@@ -802,6 +886,7 @@
 				23074FCA220B4B5700B64762 /* Int+Ext.swift in Sources */,
 				2325C88C224912B5008C687B /* DataGateway.swift in Sources */,
 				2338BEBC220A7840004F288F /* AppDelegate.swift in Sources */,
+				230D09B1224E847B00C103CC /* Intents.intentdefinition in Sources */,
 				23B63CE1222491050026B9C2 /* CalendarGateway.swift in Sources */,
 				23D41E6E222412FF00D909FD /* SectionHeaderView.swift in Sources */,
 				23E45BE2224BA3A9002D01AC /* NotificationsGateway.swift in Sources */,
@@ -853,6 +938,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		230D09A6224E7F4300C103CC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 230D099F224E7F4300C103CC /* neonSiri */;
+			targetProxy = 230D09A5224E7F4300C103CC /* PBXContainerItemProxy */;
+		};
 		2338BED1220A7841004F288F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2338BEB7220A7840004F288F /* neon */;
@@ -916,6 +1006,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		230D09A9224E7F4300C103CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = neonSiri/neonSiri.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 577WSH643L;
+				INFOPLIST_FILE = neonSiri/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.neonSiri;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		230D09AA224E7F4300C103CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = neonSiri/neonSiri.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 577WSH643L;
+				INFOPLIST_FILE = neonSiri/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.neonSiri;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		2338BEE1220A7841004F288F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1291,6 +1423,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		230D09A8224E7F4300C103CC /* Build configuration list for PBXNativeTarget "neonSiri" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				230D09A9224E7F4300C103CC /* Debug */,
+				230D09AA224E7F4300C103CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2338BEB3220A7840004F288F /* Build configuration list for PBXProject "neon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

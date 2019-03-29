@@ -229,75 +229,10 @@
                             <action selector="pulledToRefresh:" destination="63b-M3-lej" eventType="valueChanged" id="1Sc-jx-IRf"/>
                         </connections>
                     </refreshControl>
-                    <connections>
-                        <segue destination="dee-WX-bhi" kind="presentation" identifier="showNoConnection" id="vig-B3-iJ1"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dfw-wy-1Tl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1926" y="50"/>
-        </scene>
-        <!--No Connection View Controller-->
-        <scene sceneID="ECv-3j-ouB">
-            <objects>
-                <viewController id="dee-WX-bhi" customClass="NoConnectionViewController" customModule="neon" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3V4-n3-t1t">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="gh3-P3-njR">
-                                <rect key="frame" x="32" y="269.33333333333326" width="311" height="273.66666666666674"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No connection" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEG-60-crR">
-                                        <rect key="frame" x="41.000000000000014" y="0.0" width="229.33333333333337" height="40.666666666666664"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAQ-QS-4NY">
-                                        <rect key="frame" x="3" y="58.666666666666686" width="305.33333333333331" height="215"/>
-                                        <string key="text">Hour Blocks requires an internet connection and an iCloud account signed into your device.  This is to ensure your Hour Blocks are reliably synced to the cloud across all your devices and backed up. We apologise and hope to bring offline support in the near future.</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1cv-Hk-SRD" customClass="UIButtonX" customModule="neon" customModuleProvider="target">
-                                <rect key="frame" x="32" y="682" width="311" height="64"/>
-                                <color key="backgroundColor" name="main"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="a5a-iw-y8K"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                <state key="normal" title="Check again!">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="16"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="checkAgainPressed:" destination="dee-WX-bhi" eventType="touchUpInside" id="RyX-gv-LLe"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="gh3-P3-njR" firstAttribute="centerY" secondItem="3V4-n3-t1t" secondAttribute="centerY" id="680-pv-LAT"/>
-                            <constraint firstItem="gh3-P3-njR" firstAttribute="leading" secondItem="eBm-bK-fyt" secondAttribute="leading" constant="32" id="Bti-ce-dbC"/>
-                            <constraint firstItem="eBm-bK-fyt" firstAttribute="bottom" secondItem="1cv-Hk-SRD" secondAttribute="bottom" constant="32" id="OKV-hP-g5s"/>
-                            <constraint firstAttribute="trailing" secondItem="gh3-P3-njR" secondAttribute="trailing" constant="32" id="PSc-O7-zaU"/>
-                            <constraint firstItem="eBm-bK-fyt" firstAttribute="trailing" secondItem="1cv-Hk-SRD" secondAttribute="trailing" constant="32" id="wHU-Lc-hf0"/>
-                            <constraint firstItem="1cv-Hk-SRD" firstAttribute="leading" secondItem="eBm-bK-fyt" secondAttribute="leading" constant="32" id="wOh-Lg-sQw"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="eBm-bK-fyt"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZhL-At-pZe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1925.5999999999999" y="763.30049261083752"/>
         </scene>
         <!--AddAgendaAlert-->
         <scene sceneID="Jau-NK-BNI">

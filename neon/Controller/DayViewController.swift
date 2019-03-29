@@ -11,6 +11,7 @@ import EventKit
 import StoreKit
 import WhatsNewKit
 import UserNotifications
+import Intents
 
 class DayViewController: UITableViewController {
     
@@ -27,7 +28,6 @@ class DayViewController: UITableViewController {
         initialiseUI()
         NotificationCenter.default.addObserver(self, selector: #selector(loadAgendaItems), name: Notification.Name("agendaUpdate"), object: nil)
         DataGateway.shared.deletePastAgendaRecords()
-        checkConnection()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,8 +44,6 @@ class DayViewController: UITableViewController {
     }
     
     @IBAction func pulledToRefresh(_ sender: UIRefreshControl) {
-        checkConnection()
-        
         DataGateway.shared.fetchAgendaItems { (todaysAgendaItems, tomorrowsAgendaItems) in
             self.generateCards(from: todaysAgendaItems, and: tomorrowsAgendaItems)
             DispatchQueue.main.async { sender.endRefreshing() }
@@ -83,6 +81,7 @@ extension DayViewController {
             if let agendaItem = todayCards[indexPath.row].agendaItem { DataGateway.shared.delete(agendaItem) }
             DataGateway.shared.save(agendaItem, for: todayCards[indexPath.row].hour, today: true)
             todayCards[indexPath.row].agendaItem = agendaItem
+            if #available(iOS 12.0, *) { donateInteraction(for: todayCards[indexPath.row]) }
         } else if indexPath.section == SectionType.tomorrow.rawValue {
             if let agendaItem = tomorrowCards[indexPath.row].agendaItem { DataGateway.shared.delete(agendaItem) }
             DataGateway.shared.save(agendaItem, for: tomorrowCards[indexPath.row].hour, today: false)
@@ -166,6 +165,12 @@ extension DayViewController {
         if count == 10 || count == 25 || count == 50 {
             SKStoreReviewController.requestReview()
         }
+    }
+    
+    @available(iOS 12.0, *)
+    func donateInteraction(for agendaCard: AgendaCard) {
+        let interaction = INInteraction(intent: agendaCard.intent, response: nil)
+        interaction.donate { error in }
     }
 }
 
@@ -397,12 +402,38 @@ extension DayViewController {
     }
     
     func presentWhatsNew() {
+        /*
         let whatsNew = WhatsNew(
             title: "What's New in Beta 4.0",
             items: [
                 WhatsNew.Item(
                     title: "Siri Shortcuts",
                     subtitle: "Your frequently created Hour Blocks can now be called from Siri Shortcuts 🛠",
+                    image: nil
+                ),
+                WhatsNew.Item(
+                    title: "Bug Fixes & Improvements",
+                    subtitle: "Fixed a few layout bugs on iPads & smaller iPhones + fixed some random crashes + implemented some other small improvements 🐜",
+                    image: nil
+                )
+            ]
+        )*/
+        let whatsNew = WhatsNew(
+            title: "What's New in Beta 3.0",
+            items: [
+                WhatsNew.Item(
+                    title: "Reminders",
+                    subtitle: "Hour Blocks can now have reminders attached to them that fire off at the start of the hour 🔔",
+                    image: nil
+                ),
+                WhatsNew.Item(
+                    title: "Widget",
+                    subtitle: "You can now add a widget to your home/lock screen to display the current Hour Block 👀",
+                    image: nil
+                ),
+                WhatsNew.Item(
+                    title: "Apple Watch Support",
+                    subtitle: "A basic version of Hour Blocks now runs on the Apple Watch, showing you your Hour Blocks for today ⌚️",
                     image: nil
                 ),
                 WhatsNew.Item(
@@ -419,16 +450,6 @@ extension DayViewController {
         let whatsNewVC = WhatsNewViewController(whatsNew: whatsNew, configuration: configuration)
         
         self.present(whatsNewVC, animated: true, completion: nil)
-    }
-    
-    func checkConnection() {
-        DataGateway.shared.checkConnection { (success) in
-            if success == false {
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "showNoConnection", sender: nil)
-                }
-            }
-        }
     }
 }
 
