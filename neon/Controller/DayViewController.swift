@@ -397,7 +397,7 @@ extension DayViewController {
     
     func presentWhatsNew() {
         let whatsNew = WhatsNew(
-            title: "What's New in Beta 3.0",
+            title: "What's New in Beta 3.1",
             items: [
                 WhatsNew.Item(
                     title: "Reminders",
