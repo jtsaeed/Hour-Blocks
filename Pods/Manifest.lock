@@ -1,16 +1,20 @@
 PODS:
+  - Toaster (2.1.1)
   - WhatsNewKit (1.1.7)
 
 DEPENDENCIES:
+  - Toaster
   - WhatsNewKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Toaster
     - WhatsNewKit
 
 SPEC CHECKSUMS:
+  Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
   WhatsNewKit: 3976120978db0089535f777cd1b442579418b6fa
 
-PODFILE CHECKSUM: 643f0cbd3104e71ea264bedfeeb174cb82c1e4e7
+PODFILE CHECKSUM: db299ddf0eda29a702a690efbd2291cb8c967610
 
 COCOAPODS: 1.5.3

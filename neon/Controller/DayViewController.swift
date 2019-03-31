@@ -12,6 +12,7 @@ import StoreKit
 import WhatsNewKit
 import UserNotifications
 import Intents
+import Toaster
 
 class DayViewController: UITableViewController {
     
@@ -34,6 +35,7 @@ class DayViewController: UITableViewController {
         super.viewDidAppear(animated)
         
         loadAgendaItems()
+        checkConnection()
     }
     
     override func viewDidLayoutSubviews() {
@@ -450,6 +452,21 @@ extension DayViewController {
         let whatsNewVC = WhatsNewViewController(whatsNew: whatsNew, configuration: configuration)
         
         self.present(whatsNewVC, animated: true, completion: nil)
+    }
+    
+    func checkConnection() {
+        DataGateway.shared.checkConnection { (success) in
+            if success == false {
+                DispatchQueue.main.async {
+                    ToastView.appearance().font = .systemFont(ofSize: 17)
+                    ToastView.appearance().cornerRadius = 8
+                    ToastView.appearance().textInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+                    ToastView.appearance().bottomOffsetPortrait = 48
+                    
+                    Toast(text: "I'm having some trouble fetching your Hour Blocks from iCloud 😞\nPlease check your network connection", duration: 10).show()
+                }
+            }
+        }
     }
 }
 

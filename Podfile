@@ -7,6 +7,7 @@ target 'neon' do
 
   # Pods for neon
   pod 'WhatsNewKit'
+  pod 'Toaster'
 
   target 'neonTests' do
     inherit! :search_paths

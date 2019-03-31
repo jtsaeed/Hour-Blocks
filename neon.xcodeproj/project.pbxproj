@@ -277,6 +277,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D40B707114D3FA66103A3E34 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -582,6 +589,7 @@
 			buildPhases = (
 				2395A963224AE78C0007D6F2 /* Resources */,
 				2395A986224AE78E0007D6F2 /* Embed App Extensions */,
+				D40B707114D3FA66103A3E34 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -780,12 +788,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-neon/Pods-neon-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Toaster/Toaster.framework",
 				"${BUILT_PRODUCTS_DIR}/WhatsNewKit/WhatsNewKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toaster.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WhatsNewKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
