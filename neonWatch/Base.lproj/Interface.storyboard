@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="watchOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14490.21"/>
     </dependencies>
@@ -16,13 +17,18 @@
                         <table alignment="left" id="gFw-hg-Yj3">
                             <items>
                                 <tableRow identifier="agendaCardRow" selectable="NO" id="fXj-fe-1OQ" customClass="AgendaCardRowController" customModule="neonWatch_Extension">
-                                    <group key="rootItem" width="1" alignment="left" id="gw5-s8-g5R">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="gw5-s8-g5R">
                                         <items>
-                                            <label width="136" height="67" alignment="left" text="Label" textAlignment="left" id="N6P-Qf-uy3"/>
+                                            <label width="136" alignment="left" text="4PM" textAlignment="left" id="N6P-Qf-uy3" userLabel="Time">
+                                                <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                            </label>
+                                            <label width="136" alignment="left" text="Go to the gym" id="nIR-so-SJP" userLabel="Title"/>
                                         </items>
+                                        <edgeInsets key="margins" left="8" right="8" top="8" bottom="8"/>
                                     </group>
                                     <connections>
-                                        <outlet property="agendaTitle" destination="N6P-Qf-uy3" id="aIo-1y-bhi"/>
+                                        <outlet property="timeLabel" destination="N6P-Qf-uy3" id="gp7-eO-cp9"/>
+                                        <outlet property="titleLabel" destination="nIR-so-SJP" id="324-Jk-Dva"/>
                                     </connections>
                                 </tableRow>
                             </items>

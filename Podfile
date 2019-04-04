@@ -8,6 +8,7 @@ target 'neon' do
   # Pods for neon
   pod 'WhatsNewKit'
   pod 'Toaster'
+  pod 'Firebase/Core'
 
   target 'neonTests' do
     inherit! :search_paths

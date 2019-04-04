@@ -21,9 +21,7 @@ class DataGateway {
         let query = CKQuery(recordType: "AgendaRecord", predicate: NSPredicate(value: true))
         
         database.perform(query, inZoneWith: nil) { (records, error) in
-            print("Performing query for \(records?.count)")
             records?.forEach({ (record) in
-                print("Found a record")
                 guard let id = record.value(forKey: "id") as? String else { return }
                 guard let title = record.value(forKey: "title") as? String else { return }
                 guard let hour = record.value(forKey: "hour") as? Int else { return }

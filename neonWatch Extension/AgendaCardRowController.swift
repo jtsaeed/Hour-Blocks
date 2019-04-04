@@ -13,12 +13,13 @@ class AgendaCardRowController: NSObject {
     
     var agendaCard: AgendaCard? {
         didSet {
-            agendaTitle.setText("\(agendaCard?.hour.getFormattedHour() ?? "") - \(agendaCard?.agendaItem?.title.capitalized ?? "Empty")")
+            timeLabel.setText(agendaCard?.hour.getFormattedHour() ?? "")
+            titleLabel.setText(agendaCard?.agendaItem?.title.capitalized ?? "Empty")
         }
     }
     
-    @IBOutlet weak var agendaTitle: WKInterfaceLabel!
-    
+    @IBOutlet weak var timeLabel: WKInterfaceLabel!
+    @IBOutlet weak var titleLabel: WKInterfaceLabel!
 }
 
 extension Int {
