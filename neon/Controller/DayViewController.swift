@@ -421,26 +421,16 @@ extension DayViewController {
             ]
         )*/
         let whatsNew = WhatsNew(
-            title: "What's New in Beta 3.0",
+            title: "What's New in Beta 4.0",
             items: [
                 WhatsNew.Item(
-                    title: "Reminders",
-                    subtitle: "Hour Blocks can now have reminders attached to them that fire off at the start of the hour 🔔",
-                    image: nil
-                ),
-                WhatsNew.Item(
-                    title: "Widget",
-                    subtitle: "You can now add a widget to your home/lock screen to display the current Hour Block 👀",
-                    image: nil
-                ),
-                WhatsNew.Item(
-                    title: "Apple Watch Support",
-                    subtitle: "A basic version of Hour Blocks now runs on the Apple Watch, showing you your Hour Blocks for today ⌚️",
+                    title: "Siri Shortcuts",
+                    subtitle: "Create custom routines and quickly add your favourite Hour Blocks with support for Siri Shortcuts ⚡️",
                     image: nil
                 ),
                 WhatsNew.Item(
                     title: "Bug Fixes & Improvements",
-                    subtitle: "Fixed a few layout bugs on iPads & smaller iPhones + fixed some random crashes + implemented some other small improvements 🐜",
+                    subtitle: "Fixed some notification related bugs, improved the UI of the Watch app & fine tuned the icon generation 🐞",
                     image: nil
                 )
             ]

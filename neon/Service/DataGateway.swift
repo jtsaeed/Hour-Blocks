@@ -18,6 +18,9 @@ class DataGateway {
         let query = CKQuery(recordType: "AgendaRecord", predicate: NSPredicate(value: true))
         
         database.perform(query, inZoneWith: nil) { (records, error) in
+            if error != nil {
+                print("ICLOUD ISSUE \(error?.localizedDescription)")
+            }
             completion(error == nil)
         }
     }
