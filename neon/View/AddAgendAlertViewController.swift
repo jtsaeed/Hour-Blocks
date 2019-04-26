@@ -34,14 +34,7 @@ class AddAgendAlertViewController: UIViewController {
     }
     
     @IBAction func doneButtonPressed(_ sender: Any) {
-        if !(titleTextField.text?.isEmpty)! {
-            UINotificationFeedbackGenerator().notificationOccurred(.success)
-            titleTextField.resignFirstResponder()
-            delegate?.doneButtonTapped(textFieldValue: titleTextField.text!, indexPath: indexPath!)
-            self.dismiss(animated: true, completion: nil)
-        } else {
-            UINotificationFeedbackGenerator().notificationOccurred(.error)
-        }
+		handleDone()
     }
     
     @IBAction func cancelButtonPressed(_ sender: Any) {
@@ -51,6 +44,16 @@ class AddAgendAlertViewController: UIViewController {
     }
 }
 
+extension AddAgendAlertViewController: UITextFieldDelegate {
+	
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		handleDone()
+		return true
+	}
+}
+
+// MARK: - UI
+
 extension AddAgendAlertViewController {
     
     func setupView() {
@@ -58,6 +61,8 @@ extension AddAgendAlertViewController {
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.25)
         titleLabel.text = "What's in store at \(time!)?"
         titleTextField.text = preFilledTitle
+		titleTextField.delegate = self
+		titleTextField.returnKeyType = .done
     }
     
     func animateView() {
@@ -79,6 +84,25 @@ extension AddAgendAlertViewController {
             topInset.constant = 384
         }
     }
+}
+
+extension AddAgendAlertViewController {
+	
+	
+	func handleDone() {
+		if !(titleTextField.text?.isEmpty)! {
+			UINotificationFeedbackGenerator().notificationOccurred(.success)
+			titleTextField.resignFirstResponder()
+			delegate?.doneButtonTapped(textFieldValue: titleTextField.text!, indexPath: indexPath!)
+			self.dismiss(animated: true, completion: nil)
+		} else {
+			UINotificationFeedbackGenerator().notificationOccurred(.error)
+		}
+	}
+	
+	func handleCancel() {
+		
+	}
 }
 
 protocol AddAgendaAlertViewDelegate {

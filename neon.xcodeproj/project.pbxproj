@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23020E2F2273ACE100B03C8E /* neonWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 2395A965224AE78C0007D6F2 /* neonWatch.app */; };
 		230212E0224D3E9600B8FCED /* CalendarGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230212DF224D3E9600B8FCED /* CalendarGateway.swift */; };
 		230212E1224D3FD200B8FCED /* notification.aif in Resources */ = {isa = PBXBuildFile; fileRef = 2304BD45224D37BB006F9F2F /* notification.aif */; };
 		23074FC8220B4A5D00B64762 /* AgendaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23074FC7220B4A5D00B64762 /* AgendaItem.swift */; };
@@ -34,7 +35,6 @@
 		234C1A09220C8E9D00344316 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C1A08220C8E9D00344316 /* Date+Ext.swift */; };
 		234C1A0B220C8F9900344316 /* TodayHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C1A0A220C8F9900344316 /* TodayHeaderCell.swift */; };
 		237FFC30224B8FAA000A02C0 /* AgendaCardRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237FFC2E224B8D84000A02C0 /* AgendaCardRowController.swift */; };
-		237FFC33224B909C000A02C0 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 237FFC32224B909C000A02C0 /* CloudKit.framework */; };
 		238EA769223EA0DC00981E98 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 238EA768223EA0DC00981E98 /* CloudKit.framework */; };
 		2395A94E224AE1750007D6F2 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2395A94D224AE1750007D6F2 /* NotificationCenter.framework */; };
 		2395A951224AE1750007D6F2 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2395A950224AE1750007D6F2 /* TodayViewController.swift */; };
@@ -51,7 +51,6 @@
 		2395A97B224AE78D0007D6F2 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2395A97A224AE78D0007D6F2 /* NotificationController.swift */; };
 		2395A97D224AE78E0007D6F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2395A97C224AE78E0007D6F2 /* Assets.xcassets */; };
 		2395A98C224AEABE0007D6F2 /* AgendaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2395A98B224AEABE0007D6F2 /* AgendaItem.swift */; };
-		2395A98E224AEACD0007D6F2 /* DataGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2395A98D224AEACD0007D6F2 /* DataGateway.swift */; };
 		23B63CE1222491050026B9C2 /* CalendarGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B63CE0222491050026B9C2 /* CalendarGateway.swift */; };
 		23D41E6C2224127800D909FD /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D41E6B2224127800D909FD /* SectionHeaderView.xib */; };
 		23D41E6E222412FF00D909FD /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D41E6D222412FF00D909FD /* SectionHeaderView.swift */; };
@@ -62,6 +61,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		23020E2D2273AC6200B03C8E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2338BEB0220A7840004F288F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2395A964224AE78C0007D6F2;
+			remoteInfo = neonWatch;
+		};
 		230D09A5224E7F4300C103CC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2338BEB0220A7840004F288F /* Project object */;
@@ -129,6 +135,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
+				23020E2F2273ACE100B03C8E /* neonWatch.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -180,7 +187,6 @@
 		234C1A0A220C8F9900344316 /* TodayHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayHeaderCell.swift; sourceTree = "<group>"; };
 		237FFC2E224B8D84000A02C0 /* AgendaCardRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaCardRowController.swift; sourceTree = "<group>"; };
 		237FFC31224B909A000A02C0 /* neonWatch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "neonWatch Extension.entitlements"; sourceTree = "<group>"; };
-		237FFC32224B909C000A02C0 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS5.2.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		238EA767223EA0D900981E98 /* neon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = neon.entitlements; sourceTree = "<group>"; };
 		238EA768223EA0DC00981E98 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		2395A94C224AE1750007D6F2 /* neonToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = neonToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,7 +209,6 @@
 		2395A97E224AE78E0007D6F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2395A97F224AE78E0007D6F2 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		2395A98B224AEABE0007D6F2 /* AgendaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaItem.swift; sourceTree = "<group>"; };
-		2395A98D224AEACD0007D6F2 /* DataGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGateway.swift; sourceTree = "<group>"; };
 		23B63CE0222491050026B9C2 /* CalendarGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGateway.swift; sourceTree = "<group>"; };
 		23D41E6B2224127800D909FD /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		23D41E6D222412FF00D909FD /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
@@ -266,7 +271,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				237FFC33224B909C000A02C0 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,7 +450,6 @@
 				2395A97E224AE78E0007D6F2 /* Info.plist */,
 				2395A97F224AE78E0007D6F2 /* PushNotificationPayload.apns */,
 				2395A98B224AEABE0007D6F2 /* AgendaItem.swift */,
-				2395A98D224AEACD0007D6F2 /* DataGateway.swift */,
 			);
 			path = "neonWatch Extension";
 			sourceTree = "<group>";
@@ -467,7 +470,6 @@
 		CBE1FB35023C3D4B2AC08158 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				237FFC32224B909C000A02C0 /* CloudKit.framework */,
 				238EA768223EA0DC00981E98 /* CloudKit.framework */,
 				8BA23B93EB57D0A9C87A3846 /* Pods_neon.framework */,
 				9076E2F3ADB2E623D12BBF3D /* Pods_neonTests.framework */,
@@ -513,6 +515,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				23020E2E2273AC6200B03C8E /* PBXTargetDependency */,
 				2395A957224AE1750007D6F2 /* PBXTargetDependency */,
 				230D09A6224E7F4300C103CC /* PBXTargetDependency */,
 			);
@@ -680,7 +683,7 @@
 								enabled = 1;
 							};
 							com.apple.iCloud = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -935,7 +938,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				237FFC30224B8FAA000A02C0 /* AgendaCardRowController.swift in Sources */,
-				2395A98E224AEACD0007D6F2 /* DataGateway.swift in Sources */,
 				2395A97B224AE78D0007D6F2 /* NotificationController.swift in Sources */,
 				2395A979224AE78D0007D6F2 /* ExtensionDelegate.swift in Sources */,
 				2395A98C224AEABE0007D6F2 /* AgendaItem.swift in Sources */,
@@ -946,6 +948,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		23020E2E2273AC6200B03C8E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2395A964224AE78C0007D6F2 /* neonWatch */;
+			targetProxy = 23020E2D2273AC6200B03C8E /* PBXContainerItemProxy */;
+		};
 		230D09A6224E7F4300C103CC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 230D099F224E7F4300C103CC /* neonSiri */;

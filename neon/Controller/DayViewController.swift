@@ -86,6 +86,8 @@ extension DayViewController {
             todayCards.append(AgendaCard(hour: hour, agendaItem: todayAgendaItems[hour]))
             tomorrowCards.append(AgendaCard(hour: hour, agendaItem: tomorrowAgendaItems[hour]))
         }
+		
+		copyToWatch(data: todayCards)
     }
     
     func addCard(for indexPath: IndexPath, with title: String) {
@@ -101,7 +103,8 @@ extension DayViewController {
             DataGateway.shared.save(agendaItem, for: tomorrowCards[indexPath.row].hour, today: false)
             tomorrowCards[indexPath.row].agendaItem = agendaItem
         }
-        
+		
+		copyToWatch(data: todayCards)
         tableView.reloadRows(at: [indexPath], with: .fade)
         
         handleReviewRequest()
@@ -115,7 +118,8 @@ extension DayViewController {
             DataGateway.shared.delete(tomorrowCards[indexPath.row].agendaItem!)
             tomorrowCards[indexPath.row].agendaItem = nil
         }
-        
+		
+		copyToWatch(data: todayCards)
         tableView.reloadRows(at: [indexPath], with: .fade)
     }
     
@@ -417,16 +421,16 @@ extension DayViewController {
     
     func presentWhatsNew() {
         let whatsNew = WhatsNew(
-            title: "What's New in Beta 4.1",
+            title: "What's New in Version 1.1",
             items: [
                 WhatsNew.Item(
-                    title: "Siri Shortcuts",
-                    subtitle: "Create custom routines and quickly add your favourite Hour Blocks with support for Siri Shortcuts ⚡️",
+                    title: "Apple Watch App",
+                    subtitle: "Quickly glance at your day with the teeny tiny Hour Blocks Apple Watch app ⌚️",
                     image: nil
                 ),
                 WhatsNew.Item(
-                    title: "Bug Fixes & Improvements",
-                    subtitle: "Fixed some notification related bugs, improved the UI of the Watch app & fine tuned the icon generation 🐞",
+                    title: "Minor Improvements",
+                    subtitle: "All day Calendar events now show in the header and the return key when editing/adding an hour block now acts as a 'Done' button 🎉",
                     image: nil
                 )
             ]
@@ -455,6 +459,26 @@ extension DayViewController {
 // MARK: - Watch
 
 extension DayViewController: WCSessionDelegate {
+	
+	func copyToWatch(data todayCards: [AgendaCard]) {
+		var watchAgendaItems = [Int: String]()
+		
+		for hour in 0...23 {
+			watchAgendaItems[hour] = "Empty"
+		}
+		
+		for todayCard in todayCards {
+			watchAgendaItems[todayCard.hour] = todayCard.agendaItem?.title
+		}
+		
+		if let validSession = session {
+			let phoneAppContext = ["todaysAgendaItems": watchAgendaItems]
+			
+			do {
+				try validSession.updateApplicationContext(phoneAppContext)
+			} catch _  { }
+		}
+	}
 	
 	func setupWCSession() {
 		if WCSession.isSupported() {
