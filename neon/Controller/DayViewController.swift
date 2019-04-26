@@ -13,8 +13,11 @@ import WhatsNewKit
 import UserNotifications
 import Intents
 import Toaster
+import WatchConnectivity
 
 class DayViewController: UITableViewController {
+	
+	var session: WCSession?
     
     var todayCards = [AgendaCard]() {
         didSet {
@@ -27,6 +30,7 @@ class DayViewController: UITableViewController {
         super.viewDidLoad()
         
         initialiseUI()
+		setupWCSession()
         NotificationCenter.default.addObserver(self, selector: #selector(loadAgendaItems), name: Notification.Name("agendaUpdate"), object: nil)
         DataGateway.shared.deletePastAgendaRecords()
     }
@@ -35,7 +39,6 @@ class DayViewController: UITableViewController {
         super.viewDidAppear(animated)
         
         loadAgendaItems()
-        checkConnection()
     }
     
     override func viewDidLayoutSubviews() {
@@ -46,12 +49,17 @@ class DayViewController: UITableViewController {
     }
     
     @IBAction func pulledToRefresh(_ sender: UIRefreshControl) {
-        DataGateway.shared.fetchAgendaItems { (todaysAgendaItems, tomorrowsAgendaItems) in
-            self.generateCards(from: todaysAgendaItems, and: tomorrowsAgendaItems)
-            DispatchQueue.main.async { sender.endRefreshing() }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-                self.tableView.reloadData()
-            })
+        DataGateway.shared.fetchAgendaItems { (todaysAgendaItems, tomorrowsAgendaItems, success) in
+            if success {
+                self.generateCards(from: todaysAgendaItems, and: tomorrowsAgendaItems)
+                DispatchQueue.main.async { sender.endRefreshing() }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                    self.tableView.reloadData()
+                })
+            } else {
+                self.showConnectionToast()
+                DispatchQueue.main.async { sender.endRefreshing() }
+            }
         }
     }
 }
@@ -61,9 +69,13 @@ class DayViewController: UITableViewController {
 extension DayViewController {
     
     @objc func loadAgendaItems() {
-        DataGateway.shared.fetchAgendaItems { (todaysAgendaItems, tomorrowsAgendaItems) in
-            self.generateCards(from: todaysAgendaItems, and: tomorrowsAgendaItems)
-            DispatchQueue.main.async { self.tableView.reloadData() }
+        DataGateway.shared.fetchAgendaItems { (todaysAgendaItems, tomorrowsAgendaItems, success) in
+            if success {
+                self.generateCards(from: todaysAgendaItems, and: tomorrowsAgendaItems)
+                DispatchQueue.main.async { self.tableView.reloadData() }
+            } else {
+                self.showConnectionToast()
+            }
         }
     }
     
@@ -404,24 +416,8 @@ extension DayViewController {
     }
     
     func presentWhatsNew() {
-        /*
         let whatsNew = WhatsNew(
-            title: "What's New in Beta 4.0",
-            items: [
-                WhatsNew.Item(
-                    title: "Siri Shortcuts",
-                    subtitle: "Your frequently created Hour Blocks can now be called from Siri Shortcuts 🛠",
-                    image: nil
-                ),
-                WhatsNew.Item(
-                    title: "Bug Fixes & Improvements",
-                    subtitle: "Fixed a few layout bugs on iPads & smaller iPhones + fixed some random crashes + implemented some other small improvements 🐜",
-                    image: nil
-                )
-            ]
-        )*/
-        let whatsNew = WhatsNew(
-            title: "What's New in Beta 4.0",
+            title: "What's New in Beta 4.1",
             items: [
                 WhatsNew.Item(
                     title: "Siri Shortcuts",
@@ -444,20 +440,31 @@ extension DayViewController {
         self.present(whatsNewVC, animated: true, completion: nil)
     }
     
-    func checkConnection() {
-        DataGateway.shared.checkConnection { (success) in
-            if success == false {
-                DispatchQueue.main.async {
-                    ToastView.appearance().font = .systemFont(ofSize: 17)
-                    ToastView.appearance().cornerRadius = 8
-                    ToastView.appearance().textInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
-                    ToastView.appearance().bottomOffsetPortrait = 48
-                    
-                    Toast(text: "I'm having some trouble fetching your Hour Blocks from iCloud 😞\nPlease check your network connection", duration: 10).show()
-                }
-            }
+    func showConnectionToast() {
+        DispatchQueue.main.async {
+            ToastView.appearance().font = .systemFont(ofSize: 17)
+            ToastView.appearance().cornerRadius = 8
+            ToastView.appearance().textInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+            ToastView.appearance().bottomOffsetPortrait = 48
+            
+            Toast(text: "I'm having some trouble fetching your Hour Blocks from iCloud 😞\nPlease check your network connection", duration: 10).show()
         }
     }
 }
 
+// MARK: - Watch
 
+extension DayViewController: WCSessionDelegate {
+	
+	func setupWCSession() {
+		if WCSession.isSupported() {
+			session = WCSession.default
+			session?.delegate = self
+			session?.activate()
+		}
+	}
+	
+	func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) { }
+	func sessionDidBecomeInactive(_ session: WCSession) { }
+	func sessionDidDeactivate(_ session: WCSession) { }
+}

@@ -14,6 +14,9 @@ class CalendarGateway {
     static let shared = CalendarGateway()
     
     let eventStore = EKEventStore()
+	
+	var todaysAllDayEvent: ImportedCalendarEvent?
+	var tomorrowsAllDayEvent: ImportedCalendarEvent?
     
     func hasPermission() -> Bool {
         let status = EKEventStore.authorizationStatus(for: EKEntityType.event)
@@ -34,7 +37,7 @@ class CalendarGateway {
         let todayEnd = Calendar.current.date(bySetting: .hour, value: 23, of: Date())
         let eventsPredicate = eventStore.predicateForEvents(withStart: todayStart!, end: todayEnd!, calendars: eventStore.calendars(for: EKEntityType.event))
         
-        return importEvents(with: eventsPredicate)
+		return importEvents(with: eventsPredicate, today: true)
     }
     
     func importTomorrowsEvents() -> [ImportedCalendarEvent] {
@@ -43,18 +46,24 @@ class CalendarGateway {
         let tomorrowEnd = Calendar.current.date(bySetting: .hour, value: 23, of: tomorrow)
         let eventsPredicate = eventStore.predicateForEvents(withStart: tomorrowStart!, end: tomorrowEnd!, calendars: eventStore.calendars(for: EKEntityType.event))
         
-        return importEvents(with: eventsPredicate)
+		return importEvents(with: eventsPredicate, today: false)
     }
     
-    func importEvents(with predicate: NSPredicate) -> [ImportedCalendarEvent] {
+	func importEvents(with predicate: NSPredicate, today: Bool) -> [ImportedCalendarEvent] {
         var importedCalendarEvents = [ImportedCalendarEvent]()
         
         for storedEvent in eventStore.events(matching: predicate) {
             let importedCalendarEvent = ImportedCalendarEvent(from: storedEvent)
             
-            if (!isAllDay(event: importedCalendarEvent)) {
-                importedCalendarEvents.append(importedCalendarEvent)
-            }
+            if (isAllDay(event: importedCalendarEvent)) {
+				if today {
+					todaysAllDayEvent = importedCalendarEvent
+				} else {
+					tomorrowsAllDayEvent = importedCalendarEvent
+				}
+			} else {
+				importedCalendarEvents.append(importedCalendarEvent)
+			}
         }
         
         return importedCalendarEvents

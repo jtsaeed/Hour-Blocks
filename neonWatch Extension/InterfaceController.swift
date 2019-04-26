@@ -23,9 +23,13 @@ class InterfaceController: WKInterfaceController {
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
-        DataGateway.shared.fetchAgendaItems { (todaysAgendaItems, _) in
-            self.generateCards(from: todaysAgendaItems)
-            DispatchQueue.main.async { self.updateTableView() }
+        DataGateway.shared.fetchAgendaItems { (todaysAgendaItems, _, success) in
+            if success {
+                self.generateCards(from: todaysAgendaItems)
+                self.updateTableView()
+            } else {
+                self.showError()
+            }
         }
     }
     
@@ -33,9 +37,13 @@ class InterfaceController: WKInterfaceController {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         
-        DataGateway.shared.fetchAgendaItems { (todaysAgendaItems, _) in
-            self.generateCards(from: todaysAgendaItems)
-            DispatchQueue.main.async { self.updateTableView() }
+        DataGateway.shared.fetchAgendaItems { (todaysAgendaItems, _, success) in
+            if success {
+                self.generateCards(from: todaysAgendaItems)
+                self.updateTableView()
+            } else {
+                self.showError()
+            }
         }
     }
     
@@ -45,9 +53,11 @@ class InterfaceController: WKInterfaceController {
     }
     
     func generateCards(from todayAgendaItems: [Int: AgendaItem]) {
-        todayCards.removeAll()
-        for hour in 0...23 {
-            todayCards.append(AgendaCard(hour: hour, agendaItem: todayAgendaItems[hour]))
+        DispatchQueue.main.async {
+            self.todayCards.removeAll()
+            for hour in 0...23 {
+                self.todayCards.append(AgendaCard(hour: hour, agendaItem: todayAgendaItems[hour]))
+            }
         }
     }
     
@@ -57,6 +67,13 @@ class InterfaceController: WKInterfaceController {
             guard let controller = tableView.rowController(at: index) as? AgendaCardRowController else { continue }
             
             controller.agendaCard = todayCards[index]
+        }
+    }
+    
+    func showError() {
+        DispatchQueue.main.async {
+            let action = WKAlertAction(title: "OK", style: .default) {}
+            self.presentAlert(withTitle: "Error", message: "I'm having some trouble fetching your Hour Blocks from iCloud, please check your network connection", preferredStyle: .alert, actions: [action])
         }
     }
 }
