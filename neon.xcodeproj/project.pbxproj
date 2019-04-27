@@ -34,6 +34,7 @@
 		2338BEEF220A78FF004F288F /* AgendaCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEEE220A78FF004F288F /* AgendaCardCell.swift */; };
 		234C1A09220C8E9D00344316 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C1A08220C8E9D00344316 /* Date+Ext.swift */; };
 		234C1A0B220C8F9900344316 /* TodayHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C1A0A220C8F9900344316 /* TodayHeaderCell.swift */; };
+		23557D7822747ECD0048B42C /* IconClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 23557D7722747ECD0048B42C /* IconClassifier.mlmodel */; };
 		237FFC30224B8FAA000A02C0 /* AgendaCardRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237FFC2E224B8D84000A02C0 /* AgendaCardRowController.swift */; };
 		238EA769223EA0DC00981E98 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 238EA768223EA0DC00981E98 /* CloudKit.framework */; };
 		2395A94E224AE1750007D6F2 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2395A94D224AE1750007D6F2 /* NotificationCenter.framework */; };
@@ -185,6 +186,7 @@
 		2338BEEE220A78FF004F288F /* AgendaCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaCardCell.swift; sourceTree = "<group>"; };
 		234C1A08220C8E9D00344316 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		234C1A0A220C8F9900344316 /* TodayHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayHeaderCell.swift; sourceTree = "<group>"; };
+		23557D7722747ECD0048B42C /* IconClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = IconClassifier.mlmodel; sourceTree = "<group>"; };
 		237FFC2E224B8D84000A02C0 /* AgendaCardRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaCardRowController.swift; sourceTree = "<group>"; };
 		237FFC31224B909A000A02C0 /* neonWatch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "neonWatch Extension.entitlements"; sourceTree = "<group>"; };
 		238EA767223EA0D900981E98 /* neon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = neon.entitlements; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 		23074FC2220B424E00B64762 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				23557D7722747ECD0048B42C /* IconClassifier.mlmodel */,
 				2338BEC2220A7840004F288F /* neon.xcdatamodeld */,
 				23074FC7220B4A5D00B64762 /* AgendaItem.swift */,
 			);
@@ -902,6 +905,7 @@
 				23D41E6E222412FF00D909FD /* SectionHeaderView.swift in Sources */,
 				23E45BE2224BA3A9002D01AC /* NotificationsGateway.swift in Sources */,
 				23074FCC220B4DE800B64762 /* EmptyCardCell.swift in Sources */,
+				23557D7822747ECD0048B42C /* IconClassifier.mlmodel in Sources */,
 				234C1A09220C8E9D00344316 /* Date+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1023,7 +1027,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neonSiri/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1044,7 +1048,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neonSiri/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

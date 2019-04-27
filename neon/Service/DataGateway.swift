@@ -8,6 +8,7 @@
 
 import Foundation
 import CloudKit
+import Firebase
 
 class DataGateway {
     
@@ -71,7 +72,10 @@ class DataGateway {
         record.setObject(hour as CKRecordValue, forKey: "hour")
         
         database.save(record) { (record, error) in
-            if error == nil { self.incrementTotalAgendaCount() }
+            if error == nil {
+				self.logHourBlock(with: agendaItem.title)
+				self.incrementTotalAgendaCount()
+			}
         }
     }
     
@@ -122,4 +126,8 @@ class DataGateway {
         
         UserDefaults.standard.synchronize()
     }
+	
+	private func logHourBlock(with title: String) {
+		Analytics.logEvent("hourBlock", parameters: ["title": title])
+	}
 }

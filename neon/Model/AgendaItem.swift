@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import NaturalLanguage
 
 struct AgendaItem {
     
@@ -16,57 +17,79 @@ struct AgendaItem {
     
     init(with id: String, and title: String) {
         self.id = id
-        self.title = title
+        self.title = title.lowercased()
         self.icon = "default"
         generateIcon()
     }
     
     init(title: String) {
         self.id = UUID().uuidString
-        self.title = title
+        self.title = title.lowercased()
         self.icon = "default"
         generateIcon()
     }
     
     mutating func generateIcon() {
-        if doesTitleContain(["draw", "paint", "art"]) {
-            self.icon = "brush"
-        } else if doesTitleContain(["develop", "code", "coding", "programming", "software"]) {
-            self.icon = "code"
-        } else if doesTitleContain(["commute", "commuting", "drive", "driving", "journey", "travel"]) {
-            self.icon = "commute"
-        } else if doesTitleContain(["relax", "chill"]) {
-            self.icon = "couch"
-        } else if doesTitleContain(["study", "lecture", "school", "read", "research", "revise", "revision"]) {
-            self.icon = "education"
-        } else if doesTitleContain(["breakfast", "lunch", "dinner", "food", "meal", "eat", "snack", "brunch"]) {
-            self.icon = "food"
-        } else if doesTitleContain(["game", "play", "arcade"]) {
-            self.icon = "game"
-        } else if doesTitleContain(["gym", "exercise", "run"]) {
-            self.icon = "gym"
-        } else if doesTitleContain(["date", "romantic", "boyfriend", "girlfriend", "husband", "wife", "family"]) {
-            self.icon = "love"
-        } else if doesTitleContain(["movie", "film", "cinema"]) {
-            self.icon = "movie"
-        } else if doesTitleContain(["music", "concert", "gig"]) {
-            self.icon = "music"
-        } else if doesTitleContain(["write", "writing"]) {
-            self.icon = "pencil"
-        } else if doesTitleContain(["party", "friend"]) {
-            self.icon = "people"
-		} else if doesTitleContain(["sleep", "bed", "nap", "rest"]) {
-			self.icon = "sleep"
-		} else if doesTitleContain(["shop", "shopping", "store"]) {
-            self.icon = "store"
-        } else if doesTitleContain(["morning", "beach", "park"]) {
-            self.icon = "sun"
-        } else if doesTitleContain(["tv", "episode", "television"]) {
-            self.icon = "tv"
-        } else if doesTitleContain(["work", "meeting", "assignment", "project"]) {
-            self.icon = "work"
-        }
+		if #available(iOS 12.0, *) {
+			if let icon = generateMLIcon() {
+				self.icon = icon
+			}
+		} else {
+			if let icon = generateLegacyIcon() {
+				self.icon = icon
+			}
+		}
     }
+	
+	@available(iOS 12.0, *)
+	func generateMLIcon() -> String? {
+		do {
+			let generator = try NLModel(mlModel: IconClassifier().model)
+			return generator.predictedLabel(for: title)
+		} catch _ {
+			return nil
+		}
+	}
+	
+	func generateLegacyIcon() -> String? {
+		if doesTitleContain(["draw", "paint", "art"]) {
+			return "brush"
+		} else if doesTitleContain(["develop", "code", "coding", "programming", "software"]) {
+			return "code"
+		} else if doesTitleContain(["commute", "commuting", "drive", "driving", "journey", "travel"]) {
+			return "commute"
+		} else if doesTitleContain(["relax", "chill"]) {
+			return "couch"
+		} else if doesTitleContain(["study", "lecture", "school", "read", "research", "revise", "revision"]) {
+			return "education"
+		} else if doesTitleContain(["breakfast", "lunch", "dinner", "food", "meal", "eat", "snack", "brunch"]) {
+			return "food"
+		} else if doesTitleContain(["game", "play", "arcade"]) {
+			return "game"
+		} else if doesTitleContain(["gym", "exercise", "run"]) {
+			return "gym"
+		} else if doesTitleContain(["date", "romantic", "boyfriend", "girlfriend", "husband", "wife", "family"]) {
+			return "love"
+		} else if doesTitleContain(["movie", "film", "cinema"]) {
+			return "movie"
+		} else if doesTitleContain(["music", "concert", "gig"]) {
+			return "music"
+		} else if doesTitleContain(["write", "writing"]) {
+			return "pencil"
+		} else if doesTitleContain(["party", "friend"]) {
+			return "people"
+		} else if doesTitleContain(["sleep", "bed", "nap", "rest"]) {
+			return "sleep"
+		} else if doesTitleContain(["shop", "shopping", "store"]) {
+			return "store"
+		} else if doesTitleContain(["morning", "beach", "park"]) {
+			return "sun"
+		} else if doesTitleContain(["work", "meeting", "assignment", "project"]) {
+			return "work"
+		} else {
+			return nil
+		}
+	}
     
     func doesTitleContain(_ words: [String]) -> Bool {
         for word in words {

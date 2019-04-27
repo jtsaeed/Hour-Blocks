@@ -427,7 +427,12 @@ extension DayViewController {
                     title: "Apple Watch App",
                     subtitle: "Quickly glance at your day with the teeny tiny Hour Blocks Apple Watch app ⌚️",
                     image: nil
-                ),
+				),
+				WhatsNew.Item(
+					title: "Clever Icons",
+					subtitle: "Icons are now automatically generated using Machine Learning for more accurate results 🎓",
+					image: nil
+				),
                 WhatsNew.Item(
                     title: "Minor Improvements",
                     subtitle: "All day Calendar events now show in the header and the return key when editing/adding an hour block now acts as a 'Done' button 🎉",

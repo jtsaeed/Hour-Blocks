@@ -51,7 +51,9 @@ class CalendarGateway {
     
 	func importEvents(with predicate: NSPredicate, today: Bool) -> [ImportedCalendarEvent] {
         var importedCalendarEvents = [ImportedCalendarEvent]()
-        
+		if today { todaysAllDayEvent = nil }
+		if !today { tomorrowsAllDayEvent = nil }
+		
         for storedEvent in eventStore.events(matching: predicate) {
             let importedCalendarEvent = ImportedCalendarEvent(from: storedEvent)
             
