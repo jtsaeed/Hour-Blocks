@@ -31,7 +31,7 @@ struct AgendaItem {
     mutating func generateIcon() {
         if doesTitleContain(["draw", "paint", "art"]) {
             self.icon = "brush"
-        } else if doesTitleContain(["develop", "developing", "code", "coding", "programming", "software", "app"]) {
+        } else if doesTitleContain(["develop", "code", "coding", "programming", "software"]) {
             self.icon = "code"
         } else if doesTitleContain(["commute", "commuting", "drive", "driving", "journey", "travel"]) {
             self.icon = "commute"
@@ -41,7 +41,7 @@ struct AgendaItem {
             self.icon = "education"
         } else if doesTitleContain(["breakfast", "lunch", "dinner", "food", "meal", "eat", "snack", "brunch"]) {
             self.icon = "food"
-        } else if doesTitleContain(["game", "play"]) {
+        } else if doesTitleContain(["game", "play", "arcade"]) {
             self.icon = "game"
         } else if doesTitleContain(["gym", "exercise", "run"]) {
             self.icon = "gym"
@@ -55,11 +55,13 @@ struct AgendaItem {
             self.icon = "pencil"
         } else if doesTitleContain(["party", "friend"]) {
             self.icon = "people"
-        } else if doesTitleContain(["shop", "shopping"]) {
+		} else if doesTitleContain(["sleep", "bed", "nap", "rest"]) {
+			self.icon = "sleep"
+		} else if doesTitleContain(["shop", "shopping", "store"]) {
             self.icon = "store"
-        } else if doesTitleContain(["morning", "beach"]) {
+        } else if doesTitleContain(["morning", "beach", "park"]) {
             self.icon = "sun"
-        } else if doesTitleContain(["tv", "episode"]) {
+        } else if doesTitleContain(["tv", "episode", "television"]) {
             self.icon = "tv"
         } else if doesTitleContain(["work", "meeting", "assignment", "project"]) {
             self.icon = "work"
