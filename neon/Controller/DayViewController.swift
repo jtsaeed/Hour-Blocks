@@ -288,6 +288,19 @@ extension DayViewController: TableViewReorderDelegate {
 		UINotificationFeedbackGenerator().notificationOccurred(.success)
 		tableView.reloadData()
 	}
+	
+	func tableView(_ tableView: UITableView, targetIndexPathForReorderFromRowAt sourceIndexPath: IndexPath, to proposedDestinationIndexPath: IndexPath) -> IndexPath {
+		if sourceIndexPath.section == SectionType.today.rawValue &&
+			proposedDestinationIndexPath.section == SectionType.tomorrow.rawValue {
+			let lastRowOfToday = tableView.numberOfRows(inSection: SectionType.today.rawValue) - 1
+			return IndexPath(row: lastRowOfToday, section: SectionType.today.rawValue)
+		} else if sourceIndexPath.section == SectionType.tomorrow.rawValue &&
+			proposedDestinationIndexPath.section == SectionType.today.rawValue {
+			return IndexPath(row: 0, section: SectionType.tomorrow.rawValue)
+		} else {
+			return proposedDestinationIndexPath
+		}
+	}
     
     func buildCell(with agendaItem: AgendaItem?, for hour: Int, at indexPath: IndexPath) -> UITableViewCell {
         if let unwrappedAgendaItem = agendaItem {
