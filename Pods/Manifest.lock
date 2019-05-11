@@ -48,11 +48,13 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - SwiftReorder (6.0.1)
   - Toaster (2.1.1)
   - WhatsNewKit (1.1.7)
 
 DEPENDENCIES:
   - Firebase/Core
+  - SwiftReorder
   - Toaster
   - WhatsNewKit
 
@@ -65,6 +67,7 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleUtilities
     - nanopb
+    - SwiftReorder
     - Toaster
     - WhatsNewKit
 
@@ -76,9 +79,10 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 621f3bc6211d5ba548debe01fafad30cf5ab6859
   GoogleUtilities: 111a012f4c3a29c9e7c954c082fafd6ee3c999c0
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  SwiftReorder: b59368b978c9826116147672ff1f59a2d4dd9110
   Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
   WhatsNewKit: 3976120978db0089535f777cd1b442579418b6fa
 
-PODFILE CHECKSUM: a36fcffd30c2c7a4f8e3f2fa7a898c2bfcc34afd
+PODFILE CHECKSUM: 3d9fc558b45918df17ad079f90877a784de81acb
 
 COCOAPODS: 1.5.3

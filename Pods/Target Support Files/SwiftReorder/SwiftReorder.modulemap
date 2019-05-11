@@ -1,0 +1,6 @@
+framework module SwiftReorder {
+  umbrella header "SwiftReorder-umbrella.h"
+
+  export *
+  module * { export * }
+}

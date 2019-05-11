@@ -14,6 +14,7 @@ import UserNotifications
 import Intents
 import Toaster
 import WatchConnectivity
+import SwiftReorder
 
 class DayViewController: UITableViewController {
 	
@@ -149,7 +150,7 @@ extension DayViewController {
     
     func addReminder(for indexPath: IndexPath, timeOffset: Int) {
         if indexPath.section == SectionType.today.rawValue {
-            NotificationsGateway.shared.addNotification(for: todayCards[indexPath.row], with: timeOffset, completion: { (success) in
+			NotificationsGateway.shared.addNotification(for: todayCards[indexPath.row], with: timeOffset, today: true, completion: { (success) in
                 if success {
                     DispatchQueue.main.async { UINotificationFeedbackGenerator().notificationOccurred(.success) }
                 } else {
@@ -157,7 +158,7 @@ extension DayViewController {
                 }
             })
         } else if indexPath.section == SectionType.tomorrow.rawValue {
-            NotificationsGateway.shared.addNotification(for: tomorrowCards[indexPath.row], with: timeOffset, completion: { (success) in
+			NotificationsGateway.shared.addNotification(for: tomorrowCards[indexPath.row], with: timeOffset, today: false, completion: { (success) in
                 if success {
                     DispatchQueue.main.async { UINotificationFeedbackGenerator().notificationOccurred(.success) }
                 } else {
@@ -194,7 +195,7 @@ extension DayViewController {
 
 // MARK: - Table View
 
-extension DayViewController {
+extension DayViewController: TableViewReorderDelegate {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 112
@@ -236,6 +237,8 @@ extension DayViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		if let spacer = tableView.reorder.spacerCell(for: indexPath) { return spacer }
+		
         if indexPath.section == SectionType.today.rawValue {
             return buildCell(with: todayCards[indexPath.row].agendaItem,
                              for: todayCards[indexPath.row].hour,
@@ -248,6 +251,43 @@ extension DayViewController {
             return UITableViewCell()
         }
     }
+	
+	func tableView(_ tableView: UITableView, reorderRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) { }
+	
+	func tableView(_ tableView: UITableView, canReorderRowAt indexPath: IndexPath) -> Bool {
+		if indexPath.section == SectionType.today.rawValue {
+			return todayCards[indexPath.row].agendaItem != nil
+		} else if indexPath.section == SectionType.tomorrow.rawValue {
+			return tomorrowCards[indexPath.row].agendaItem != nil
+		} else {
+			return false
+		}
+	}
+	
+	func tableViewDidBeginReordering(_ tableView: UITableView, at indexPath: IndexPath) {
+		UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+	}
+	
+	func tableViewDidFinishReordering(_ tableView: UITableView, from initialSourceIndexPath: IndexPath, to finalDestinationIndexPath: IndexPath) {
+		if initialSourceIndexPath.section == SectionType.today.rawValue {
+			let agendaItem = todayCards[initialSourceIndexPath.row].agendaItem!
+			DataGateway.shared.delete(todayCards[initialSourceIndexPath.row].agendaItem!)
+			todayCards[initialSourceIndexPath.row].agendaItem = nil
+			
+			todayCards[finalDestinationIndexPath.row].agendaItem = agendaItem
+			DataGateway.shared.save(agendaItem, for: todayCards[finalDestinationIndexPath.row].hour, today: true)
+		} else if initialSourceIndexPath.section == SectionType.tomorrow.rawValue {
+			let agendaItem = tomorrowCards[initialSourceIndexPath.row].agendaItem!
+			DataGateway.shared.delete(tomorrowCards[initialSourceIndexPath.row].agendaItem!)
+			tomorrowCards[initialSourceIndexPath.row].agendaItem = nil
+			
+			tomorrowCards[finalDestinationIndexPath.row].agendaItem = agendaItem
+			DataGateway.shared.save(agendaItem, for: tomorrowCards[finalDestinationIndexPath.row].hour, today: true)
+		}
+		
+		UINotificationFeedbackGenerator().notificationOccurred(.success)
+		tableView.reloadData()
+	}
     
     func buildCell(with agendaItem: AgendaItem?, for hour: Int, at indexPath: IndexPath) -> UITableViewCell {
         if let unwrappedAgendaItem = agendaItem {
@@ -315,19 +355,21 @@ extension DayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
                 self.removeCard(for: indexPath)
                 self.setStatusBarBackground(as: .white)
             }))
-            
-            hasReminderSet(at: indexPath) { (result) in
-                if result == true {
-                    actionSheet.addAction(UIAlertAction(title: "Remove Reminder", style: .destructive, handler: { action in
-                        self.removeReminder(for: indexPath)
-                        self.setStatusBarBackground(as: .white)
-                    }))
-                } else {
-                    actionSheet.addAction(UIAlertAction(title: "Set Reminder", style: .default, handler: { action in
-                        self.showReminderOptionsDialog(for: indexPath)
-                    }))
-                }
-            }
+			
+			if indexPath.section == SectionType.today.rawValue {
+            	hasReminderSet(at: indexPath) { (result) in
+                	if result == true {
+                    	actionSheet.addAction(UIAlertAction(title: "Remove Reminder", style: .destructive, handler: { action in
+                	        self.removeReminder(for: indexPath)
+                    	    self.setStatusBarBackground(as: .white)
+                    	}))
+                	} else {
+                    	actionSheet.addAction(UIAlertAction(title: "Set Reminder", style: .default, handler: { action in
+                        	self.showReminderOptionsDialog(for: indexPath)
+                    	}))
+                	}
+            	}
+			}
         }
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
             self.setStatusBarBackground(as: .white)
@@ -389,6 +431,10 @@ extension DayViewController {
     
     func setupTableView() {
         tableView.frame = .zero
+		tableView.reorder.delegate = self
+		tableView.reorder.cellScale = 1.05
+		tableView.reorder.shadowOpacity = 0
+		tableView.reorder.shadowRadius = 0
     }
     
     func setStatusBarBackground(as color: UIColor) {

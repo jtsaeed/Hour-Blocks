@@ -243,7 +243,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Luo-Uo-qaA" customClass="UIViewX" customModule="neon" customModuleProvider="target">
-                                <rect key="frame" x="40" y="172" width="295" height="212"/>
+                                <rect key="frame" x="40" y="182" width="295" height="212"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="Ovn-ED-QoM">
                                         <rect key="frame" x="32" y="26" width="231" height="160"/>
@@ -350,15 +350,15 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Luo-Uo-qaA" firstAttribute="centerX" secondItem="wTI-bP-PsW" secondAttribute="centerX" id="DW2-tE-Kcr"/>
-                            <constraint firstItem="Luo-Uo-qaA" firstAttribute="top" secondItem="1M3-hH-ipk" secondAttribute="top" constant="128" id="q2f-bM-bAL"/>
+                            <constraint firstItem="1M3-hH-ipk" firstAttribute="bottom" secondItem="Luo-Uo-qaA" secondAttribute="bottom" constant="384" id="uXl-T6-TUF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1M3-hH-ipk"/>
                     </view>
                     <connections>
                         <outlet property="alertView" destination="Luo-Uo-qaA" id="d2X-V3-eqj"/>
+                        <outlet property="bottomInset" destination="uXl-T6-TUF" id="VtM-ec-QbX"/>
                         <outlet property="titleLabel" destination="pfM-m6-D9u" id="rUW-zy-ZdL"/>
                         <outlet property="titleTextField" destination="GoQ-RD-rtA" id="ZvP-Y2-rLJ"/>
-                        <outlet property="topInset" destination="q2f-bM-bAL" id="za2-w7-zqw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r1b-K6-LF1" userLabel="First Responder" sceneMemberID="firstResponder"/>

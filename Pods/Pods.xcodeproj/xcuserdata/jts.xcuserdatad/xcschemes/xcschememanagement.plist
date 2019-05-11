@@ -39,19 +39,26 @@
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
-		<key>Toaster.xcscheme</key>
+		<key>SwiftReorder.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>6</integer>
 		</dict>
-		<key>WhatsNewKit.xcscheme</key>
+		<key>Toaster.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>7</integer>
+		</dict>
+		<key>WhatsNewKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
 		<key>nanopb.xcscheme</key>
 		<dict>

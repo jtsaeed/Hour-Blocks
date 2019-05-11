@@ -58,6 +58,7 @@ class DataGateway {
                 completion(todaysAgendaItems, tomorrowsAgendaItems, true)
             } else {
                 completion(todaysAgendaItems, tomorrowsAgendaItems, false)
+				print(error?.localizedDescription)
             }
         }
     }

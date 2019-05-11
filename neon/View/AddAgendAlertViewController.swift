@@ -10,8 +10,8 @@ import UIKit
 
 class AddAgendAlertViewController: UIViewController {
 
-    @IBOutlet weak var topInset: NSLayoutConstraint!
-    @IBOutlet weak var alertView: UIViewX!
+	@IBOutlet weak var bottomInset: NSLayoutConstraint!
+	@IBOutlet weak var alertView: UIViewX!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -77,11 +77,9 @@ extension AddAgendAlertViewController {
     func setupInset() {
         let model = UIDevice.current.name
         if model == "iPhone SE" || model == "iPhone 5S" {
-            topInset.constant = 64
-        } else if model == "iPhone Xs Max" || model == "iPhone Xr" {
-            topInset.constant = 192
+            bottomInset.constant = 288
         } else if model.contains("iPad") {
-            topInset.constant = 384
+            bottomInset.constant = 448
         }
     }
 }
