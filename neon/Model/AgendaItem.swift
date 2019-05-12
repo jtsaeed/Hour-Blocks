@@ -102,7 +102,7 @@ struct AgendaItem {
     }
 }
 
-struct AgendaCard {
+struct Block {
     
     let hour: Int
     var agendaItem: AgendaItem?

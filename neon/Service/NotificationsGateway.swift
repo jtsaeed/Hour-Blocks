@@ -13,18 +13,18 @@ class NotificationsGateway {
     
     static let shared = NotificationsGateway()
     
-	func addNotification(for agendaCard: AgendaCard, with timeOffset: Int, today: Bool, completion: @escaping (_ success: Bool) -> ()) {
+	func addNotification(for block: Block, with timeOffset: Int, today: Bool, completion: @escaping (_ success: Bool) -> ()) {
         UNUserNotificationCenter.current().getNotificationSettings(completionHandler: { (settings) in
             if settings.authorizationStatus == .notDetermined || settings.authorizationStatus == .denied {
                 UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: { (result, error) in
                     if result == true {
-						self.createNotification(for: agendaCard, with: timeOffset, today: today, completion: { (success) in
+						self.createNotification(for: block, with: timeOffset, today: today, completion: { (success) in
                             completion(success)
                         })
                     }
                 })
             } else if settings.authorizationStatus == .authorized {
-				self.createNotification(for: agendaCard, with: timeOffset, today: today, completion: { (success) in
+				self.createNotification(for: block, with: timeOffset, today: today, completion: { (success) in
                     completion(success)
                 })
             } else {
@@ -33,14 +33,14 @@ class NotificationsGateway {
         })
     }
     
-    func removeNotification(for agendaCard: AgendaCard) {
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [agendaCard.agendaItem!.id])
+    func removeNotification(for block: Block) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [block.agendaItem!.id])
     }
     
-    func hasPendingNotification(for agendaCard: AgendaCard, completion: @escaping (_ result: Bool) -> ()) {
+    func hasPendingNotification(for block: Block, completion: @escaping (_ result: Bool) -> ()) {
         UNUserNotificationCenter.current().getPendingNotificationRequests { (requests) in
             for request in requests {
-                if request.identifier == agendaCard.agendaItem!.id {
+                if request.identifier == block.agendaItem!.id {
                     completion(true)
                     return
                 }
@@ -50,19 +50,19 @@ class NotificationsGateway {
         }
     }
     
-	private func createNotification(for agendaCard: AgendaCard, with timeOffset: Int, today: Bool, completion: @escaping (_ success: Bool) -> ()) {
+	private func createNotification(for block: Block, with timeOffset: Int, today: Bool, completion: @escaping (_ success: Bool) -> ()) {
         let content = UNMutableNotificationContent()
         content.title = "Upcoming Hour Block"
-        content.body = "You have \(agendaCard.agendaItem!.title.lowercased()) coming up at \(agendaCard.hour.getFormattedHour())"
+        content.body = "You have \(block.agendaItem!.title.lowercased()) coming up at \(block.hour.getFormattedHour())"
         content.sound = UNNotificationSound.init(named: UNNotificationSoundName("notification.aif"))
 		
-        var date = Calendar.current.date(bySettingHour: agendaCard.hour, minute: 0, second: 0, of: Date())!
+        var date = Calendar.current.date(bySettingHour: block.hour, minute: 0, second: 0, of: Date())!
 		date = Calendar.current.date(byAdding: .minute, value: -timeOffset, to: date)!
 		
         let dateTrigger = Calendar.current.dateComponents([.hour, .minute, .second], from: date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateTrigger, repeats: false)
         
-        let request = UNNotificationRequest(identifier: agendaCard.agendaItem!.id, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: block.agendaItem!.id, content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request) { error in
             completion(error == nil)

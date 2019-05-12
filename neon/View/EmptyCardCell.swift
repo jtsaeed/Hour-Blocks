@@ -9,7 +9,7 @@
 import UIKit
 
 protocol AddAgendaDelegate {
-    func showAddAgendaDialog(for agendaCard: AgendaCard?, at indexPath: IndexPath)
+    func showAddAgendaDialog(for block: Block?, at indexPath: IndexPath)
 }
 
 class EmptyCardCell: UITableViewCell {

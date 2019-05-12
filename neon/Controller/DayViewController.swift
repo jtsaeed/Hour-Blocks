@@ -19,13 +19,12 @@ import SwiftReorder
 class DayViewController: UITableViewController {
 	
 	var session: WCSession?
-    
-    var todayCards = [AgendaCard]() {
-        didSet {
-            todayCards = todayCards.filter { $0.hour >= Calendar.current.component(.hour, from: Date()) }
-        }
-    }
-    var tomorrowCards = [AgendaCard]()
+	
+	var blocks = [Int: [Block]]() {
+		didSet {
+			blocks[Day.today.rawValue] = blocks[Day.today.rawValue]?.filter { $0.hour >= Calendar.current.component(.hour, from: Date()) }
+		}
+	}
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,114 +80,95 @@ extension DayViewController {
     }
     
     func generateCards(from todayAgendaItems: [Int: AgendaItem], and tomorrowAgendaItems: [Int: AgendaItem]) {
-        todayCards.removeAll()
-        tomorrowCards.removeAll()
+		blocks[Day.today.rawValue] = [Block]()
+		blocks[Day.tomorrow.rawValue] = [Block]()
         for hour in 0...23 {
-            todayCards.append(AgendaCard(hour: hour, agendaItem: todayAgendaItems[hour]))
-            tomorrowCards.append(AgendaCard(hour: hour, agendaItem: tomorrowAgendaItems[hour]))
+            blocks[Day.today.rawValue]?.append(Block(hour: hour, agendaItem: todayAgendaItems[hour]))
+            blocks[Day.tomorrow.rawValue]?.append(Block(hour: hour, agendaItem: tomorrowAgendaItems[hour]))
         }
 		
-		copyToWatch(data: todayCards)
+		copyToWatch(data: blocks[Day.today.rawValue] ?? [Block]())
     }
     
-    func addCard(for indexPath: IndexPath, with title: String) {
-        let agendaItem = AgendaItem(title: title)
-        
-        if indexPath.section == SectionType.today.rawValue {
-            if let agendaItem = todayCards[indexPath.row].agendaItem { DataGateway.shared.delete(agendaItem) }
-            DataGateway.shared.save(agendaItem, for: todayCards[indexPath.row].hour, today: true)
-            todayCards[indexPath.row].agendaItem = agendaItem
-            if #available(iOS 12.0, *) { donateInteraction(for: todayCards[indexPath.row]) }
-        } else if indexPath.section == SectionType.tomorrow.rawValue {
-            if let agendaItem = tomorrowCards[indexPath.row].agendaItem { DataGateway.shared.delete(agendaItem) }
-            DataGateway.shared.save(agendaItem, for: tomorrowCards[indexPath.row].hour, today: false)
-            tomorrowCards[indexPath.row].agendaItem = agendaItem
-        }
+    func addBlock(for indexPath: IndexPath, with title: String) {
+		// Grab a reference to the Hour Block that we want to add to
+		guard let block = blocks[indexPath.section]?[indexPath.row] else { return }
 		
-		copyToWatch(data: todayCards)
+		// If there was already something here, get rid of it
+		if let previousAgendaItem = block.agendaItem { DataGateway.shared.delete(previousAgendaItem) }
+		
+		// Initiate & save the new Hour Block and update the model
+		let newAgendaItem = AgendaItem(title: title)
+		DataGateway.shared.save(newAgendaItem, for: block.hour,
+								today: indexPath.section == Day.today.rawValue)
+		blocks[indexPath.section]?[indexPath.row].agendaItem = newAgendaItem
+		if #available(iOS 12.0, *) { donateInteraction(for: block) }
+
+		// Finishing tasks
+		copyToWatch(data: blocks[Day.today.rawValue] ?? [Block]())
         tableView.reloadRows(at: [indexPath], with: .fade)
-        
         handleReviewRequest()
     }
     
     func removeCard(for indexPath: IndexPath) {
-        if indexPath.section == SectionType.today.rawValue {
-            DataGateway.shared.delete(todayCards[indexPath.row].agendaItem!)
-            todayCards[indexPath.row].agendaItem = nil
-        } else if indexPath.section == SectionType.tomorrow.rawValue {
-            DataGateway.shared.delete(tomorrowCards[indexPath.row].agendaItem!)
-            tomorrowCards[indexPath.row].agendaItem = nil
-        }
+		// Grab a reference to the Hour Block's agenda item that we want to remove
+		guard let currentAgendaItem = blocks[indexPath.section]?[indexPath.row].agendaItem else { return }
 		
-		copyToWatch(data: todayCards)
+		// Delete and update the model
+		DataGateway.shared.delete(currentAgendaItem)
+		blocks[indexPath.section]?[indexPath.row].agendaItem = nil
+		
+		// Finishing tasks
+		copyToWatch(data: blocks[Day.today.rawValue] ?? [Block]())
         tableView.reloadRows(at: [indexPath], with: .fade)
     }
     
     func isCalendarEvent(at indexPath: IndexPath) -> Bool {
-        if indexPath.section == SectionType.today.rawValue {
-            return todayCards[indexPath.row].agendaItem!.icon == "calendar"
-        } else if indexPath.section == SectionType.tomorrow.rawValue {
-            return tomorrowCards[indexPath.row].agendaItem!.icon == "calendar"
-        } else {
-            return false
-        }
+		// Return false if we can't grab an instance of the agenda item in question
+		guard let currentAgendaItem = blocks[indexPath.section]?[indexPath.row].agendaItem else { return false }
+		
+		// Return if the referenced agenda item icon is a calendar
+		return currentAgendaItem.icon == "calendar"
     }
     
     func hasReminderSet(at indexPath: IndexPath, completion: @escaping (_ result: Bool) -> ()) {
-        if indexPath.section == SectionType.today.rawValue {
-            NotificationsGateway.shared.hasPendingNotification(for: todayCards[indexPath.row]) { (result) in
-                completion(result)
-            }
-        } else if indexPath.section == SectionType.tomorrow.rawValue {
-            NotificationsGateway.shared.hasPendingNotification(for: tomorrowCards[indexPath.row]) { (result) in
-                completion(result)
-            }
-        } else {
-            completion(false)
-        }
+		if let block = blocks[indexPath.section]?[indexPath.row] {
+			NotificationsGateway.shared.hasPendingNotification(for: block) { (result) in
+				completion(result)
+			}
+		} else {
+			completion(false)
+		}
     }
     
     func addReminder(for indexPath: IndexPath, timeOffset: Int) {
-        if indexPath.section == SectionType.today.rawValue {
-			NotificationsGateway.shared.addNotification(for: todayCards[indexPath.row], with: timeOffset, today: true, completion: { (success) in
-                if success {
-                    DispatchQueue.main.async { UINotificationFeedbackGenerator().notificationOccurred(.success) }
-                } else {
-                    DispatchQueue.main.async { UINotificationFeedbackGenerator().notificationOccurred(.error) }
-                }
-            })
-        } else if indexPath.section == SectionType.tomorrow.rawValue {
-			NotificationsGateway.shared.addNotification(for: tomorrowCards[indexPath.row], with: timeOffset, today: false, completion: { (success) in
-                if success {
-                    DispatchQueue.main.async { UINotificationFeedbackGenerator().notificationOccurred(.success) }
-                } else {
-                    DispatchQueue.main.async { UINotificationFeedbackGenerator().notificationOccurred(.error) }
-                }
-            })
-        }
+		guard let block = blocks[indexPath.section]?[indexPath.row] else { return }
+		
+		NotificationsGateway.shared.addNotification(for: block, with: timeOffset, today: true, completion: { (success) in
+			if success {
+				DispatchQueue.main.async { UINotificationFeedbackGenerator().notificationOccurred(.success) }
+			} else {
+				DispatchQueue.main.async { UINotificationFeedbackGenerator().notificationOccurred(.error) }
+			}
+		})
     }
     
     func removeReminder(for indexPath: IndexPath) {
-        if indexPath.section == SectionType.today.rawValue {
-            NotificationsGateway.shared.removeNotification(for: todayCards[indexPath.row])
-            UINotificationFeedbackGenerator().notificationOccurred(.success)
-        } else if indexPath.section == SectionType.tomorrow.rawValue {
-            NotificationsGateway.shared.removeNotification(for: tomorrowCards[indexPath.row])
-            UINotificationFeedbackGenerator().notificationOccurred(.success)
-        }
+		if let block = blocks[indexPath.section]?[indexPath.row] {
+			NotificationsGateway.shared.removeNotification(for: block)
+			UINotificationFeedbackGenerator().notificationOccurred(.success)
+		}
     }
     
     func handleReviewRequest() {
         let count = DataGateway.shared.getTotalAgendaCount()
         
-        if count == 10 || count == 25 || count == 50 {
-            SKStoreReviewController.requestReview()
-        }
+        if count == 10 || count == 25 || count == 50 { SKStoreReviewController.requestReview() }
     }
     
     @available(iOS 12.0, *)
-    func donateInteraction(for agendaCard: AgendaCard) {
-        let interaction = INInteraction(intent: agendaCard.intent, response: nil)
+    func donateInteraction(for block: Block) {
+        let interaction = INInteraction(intent: block.intent, response: nil)
         interaction.donate { error in }
     }
 }
@@ -205,9 +185,9 @@ extension DayViewController: TableViewReorderDelegate {
         guard let sectionHeader = Bundle.main.loadNibNamed("SectionHeaderView", owner: self, options: nil)?.first as? SectionHeaderView else { return UIView() }
         sectionHeader.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 112)
         
-        if section == SectionType.today.rawValue {
+        if section == Day.today.rawValue {
             sectionHeader.build(for: .today)
-        } else if section == SectionType.tomorrow.rawValue {
+        } else if section == Day.tomorrow.rawValue {
             sectionHeader.build(for: .tomorrow)
         }
         
@@ -219,49 +199,33 @@ extension DayViewController: TableViewReorderDelegate {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == SectionType.today.rawValue {
-            return todayCards.count
-        } else if section == SectionType.tomorrow.rawValue {
-            return tomorrowCards.count
-        } else {
-            return 0
-        }
+		return blocks[section]?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == SectionType.today.rawValue {
-            if !todayCards[indexPath.row].isEmpty { showAgendaOptionsDialog(for: todayCards[indexPath.row], at: indexPath) }
-        } else if indexPath.section == SectionType.tomorrow.rawValue {
-            if !tomorrowCards[indexPath.row].isEmpty { showAgendaOptionsDialog(for: tomorrowCards[indexPath.row], at: indexPath) }
-        }
+		guard let block = blocks[indexPath.section]?[indexPath.row] else { return }
+		
+		if !block.isEmpty { showAgendaOptionsDialog(for: block, at: indexPath) }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		if let spacer = tableView.reorder.spacerCell(for: indexPath) { return spacer }
 		
-        if indexPath.section == SectionType.today.rawValue {
-            return buildCell(with: todayCards[indexPath.row].agendaItem,
-                             for: todayCards[indexPath.row].hour,
-                             at: indexPath)
-        } else if indexPath.section == SectionType.tomorrow.rawValue {
-            return buildCell(with: tomorrowCards[indexPath.row].agendaItem,
-                             for: tomorrowCards[indexPath.row].hour,
-                             at: indexPath)
-        } else {
-            return UITableViewCell()
-        }
+		guard let block = blocks[indexPath.section]?[indexPath.row] else { return UITableViewCell() }
+		
+		if let agendaItem = block.agendaItem {
+			return buildAgendaCell(with: agendaItem, for: block.hour)
+		} else {
+			return buildEmptyCell(for: block.hour, at: indexPath)
+		}
     }
 	
 	func tableView(_ tableView: UITableView, reorderRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) { }
 	
 	func tableView(_ tableView: UITableView, canReorderRowAt indexPath: IndexPath) -> Bool {
-		if indexPath.section == SectionType.today.rawValue {
-			return todayCards[indexPath.row].agendaItem != nil
-		} else if indexPath.section == SectionType.tomorrow.rawValue {
-			return tomorrowCards[indexPath.row].agendaItem != nil
-		} else {
-			return false
-		}
+		guard let block = blocks[indexPath.section]?[indexPath.row] else { return false }
+		
+		return block.agendaItem != nil
 	}
 	
 	func tableViewDidBeginReordering(_ tableView: UITableView, at indexPath: IndexPath) {
@@ -269,20 +233,15 @@ extension DayViewController: TableViewReorderDelegate {
 	}
 	
 	func tableViewDidFinishReordering(_ tableView: UITableView, from initialSourceIndexPath: IndexPath, to finalDestinationIndexPath: IndexPath) {
-		if initialSourceIndexPath.section == SectionType.today.rawValue {
-			let agendaItem = todayCards[initialSourceIndexPath.row].agendaItem!
-			DataGateway.shared.delete(todayCards[initialSourceIndexPath.row].agendaItem!)
-			todayCards[initialSourceIndexPath.row].agendaItem = nil
+		guard let sourceBlock = blocks[initialSourceIndexPath.section]?[initialSourceIndexPath.row] else { return }
+		guard let destinationBlock = blocks[finalDestinationIndexPath.section]?[finalDestinationIndexPath.row] else { return }
+		
+		if let agendaItem = sourceBlock.agendaItem {
+			DataGateway.shared.delete(agendaItem)
+			blocks[initialSourceIndexPath.section]?[initialSourceIndexPath.row].agendaItem = nil
 			
-			todayCards[finalDestinationIndexPath.row].agendaItem = agendaItem
-			DataGateway.shared.save(agendaItem, for: todayCards[finalDestinationIndexPath.row].hour, today: true)
-		} else if initialSourceIndexPath.section == SectionType.tomorrow.rawValue {
-			let agendaItem = tomorrowCards[initialSourceIndexPath.row].agendaItem!
-			DataGateway.shared.delete(tomorrowCards[initialSourceIndexPath.row].agendaItem!)
-			tomorrowCards[initialSourceIndexPath.row].agendaItem = nil
-			
-			tomorrowCards[finalDestinationIndexPath.row].agendaItem = agendaItem
-			DataGateway.shared.save(agendaItem, for: tomorrowCards[finalDestinationIndexPath.row].hour, today: true)
+			blocks[finalDestinationIndexPath.section]?[finalDestinationIndexPath.row].agendaItem = agendaItem
+			DataGateway.shared.save(agendaItem, for: destinationBlock.hour, today: initialSourceIndexPath.section == Day.today.rawValue)
 		}
 		
 		UINotificationFeedbackGenerator().notificationOccurred(.success)
@@ -290,25 +249,17 @@ extension DayViewController: TableViewReorderDelegate {
 	}
 	
 	func tableView(_ tableView: UITableView, targetIndexPathForReorderFromRowAt sourceIndexPath: IndexPath, to proposedDestinationIndexPath: IndexPath) -> IndexPath {
-		if sourceIndexPath.section == SectionType.today.rawValue &&
-			proposedDestinationIndexPath.section == SectionType.tomorrow.rawValue {
-			let lastRowOfToday = tableView.numberOfRows(inSection: SectionType.today.rawValue) - 1
-			return IndexPath(row: lastRowOfToday, section: SectionType.today.rawValue)
-		} else if sourceIndexPath.section == SectionType.tomorrow.rawValue &&
-			proposedDestinationIndexPath.section == SectionType.today.rawValue {
-			return IndexPath(row: 0, section: SectionType.tomorrow.rawValue)
+		if sourceIndexPath.section == Day.today.rawValue &&
+			proposedDestinationIndexPath.section == Day.tomorrow.rawValue {
+			let lastRowOfToday = tableView.numberOfRows(inSection: Day.today.rawValue) - 1
+			return IndexPath(row: lastRowOfToday, section: Day.today.rawValue)
+		} else if sourceIndexPath.section == Day.tomorrow.rawValue &&
+			proposedDestinationIndexPath.section == Day.today.rawValue {
+			return IndexPath(row: 0, section: Day.tomorrow.rawValue)
 		} else {
 			return proposedDestinationIndexPath
 		}
 	}
-    
-    func buildCell(with agendaItem: AgendaItem?, for hour: Int, at indexPath: IndexPath) -> UITableViewCell {
-        if let unwrappedAgendaItem = agendaItem {
-            return buildAgendaCell(with: unwrappedAgendaItem, for: hour)
-        } else {
-            return buildEmptyCell(for: hour, at: indexPath)
-        }
-    }
     
     func buildAgendaCell(with agendaItem: AgendaItem, for hour: Int) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "todayAgendaCell") as? AgendaCardCell else { return UITableViewCell() }
@@ -328,7 +279,7 @@ extension DayViewController: TableViewReorderDelegate {
 
 extension DayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
     
-    func showAddAgendaDialog(for agendaCard: AgendaCard?, at indexPath: IndexPath) {
+    func showAddAgendaDialog(for block: Block?, at indexPath: IndexPath) {
         let alert = self.storyboard?.instantiateViewController(withIdentifier: "AddAgendaAlert") as! AddAgendAlertViewController
         alert.providesPresentationContextTransitionStyle = true
         alert.definesPresentationContext = true
@@ -336,20 +287,15 @@ extension DayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
         alert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         alert.delegate = self
         alert.indexPath = indexPath
-        alert.preFilledTitle = agendaCard?.agendaItem?.title
-        
-        if indexPath.section == SectionType.today.rawValue {
-            alert.time = todayCards[indexPath.row].hour.getFormattedHour().lowercased()
-        } else if indexPath.section == SectionType.tomorrow.rawValue {
-            alert.time = tomorrowCards[indexPath.row].hour.getFormattedHour().lowercased()
-        }
+        alert.preFilledTitle = block?.agendaItem?.title
+		alert.time = blocks[indexPath.section]![indexPath.row].hour.getFormattedHour().lowercased()
         
         setStatusBarBackground(as: .clear)
         present(alert, animated: true, completion: nil)
     }
     
     func doneButtonTapped(textFieldValue: String, indexPath: IndexPath) {
-        addCard(for: indexPath, with: textFieldValue)
+        addBlock(for: indexPath, with: textFieldValue)
         setStatusBarBackground(as: .white)
     }
     
@@ -357,11 +303,11 @@ extension DayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
         setStatusBarBackground(as: .white)
     }
     
-    func showAgendaOptionsDialog(for agendaCard: AgendaCard, at indexPath: IndexPath) {
+    func showAgendaOptionsDialog(for block: Block, at indexPath: IndexPath) {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         actionSheet.addAction(UIAlertAction(title: "Edit", style: .default, handler: { action in
-            self.showAddAgendaDialog(for: agendaCard, at: indexPath)
+            self.showAddAgendaDialog(for: block, at: indexPath)
         }))
         if (!isCalendarEvent(at: indexPath)) {
             actionSheet.addAction(UIAlertAction(title: "Clear", style: .destructive, handler: { action in
@@ -369,7 +315,7 @@ extension DayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
                 self.setStatusBarBackground(as: .white)
             }))
 			
-			if indexPath.section == SectionType.today.rawValue {
+			if indexPath.section == Day.today.rawValue {
             	hasReminderSet(at: indexPath) { (result) in
                 	if result == true {
                     	actionSheet.addAction(UIAlertAction(title: "Remove Reminder", style: .destructive, handler: { action in
@@ -460,9 +406,12 @@ extension DayViewController {
     }
     
     func generateEmptyCards() {
+		blocks[Day.today.rawValue] = [Block]()
+		blocks[Day.tomorrow.rawValue] = [Block]()
+		
         for hour in 0...23 {
-            todayCards.append(AgendaCard(hour: hour, agendaItem: nil))
-            tomorrowCards.append(AgendaCard(hour: hour, agendaItem: nil))
+            blocks[Day.today.rawValue]?.append(Block(hour: hour, agendaItem: nil))
+            blocks[Day.tomorrow.rawValue]?.append(Block(hour: hour, agendaItem: nil))
         }
     }
     
@@ -524,16 +473,11 @@ extension DayViewController {
 
 extension DayViewController: WCSessionDelegate {
 	
-	func copyToWatch(data todayCards: [AgendaCard]) {
+	func copyToWatch(data blocks: [Block]) {
 		var watchAgendaItems = [Int: String]()
 		
-		for hour in 0...23 {
-			watchAgendaItems[hour] = "Empty"
-		}
-		
-		for todayCard in todayCards {
-			watchAgendaItems[todayCard.hour] = todayCard.agendaItem?.title
-		}
+		for hour in 0...23 { watchAgendaItems[hour] = "Empty" }
+		for block in blocks { watchAgendaItems[block.hour] = block.agendaItem?.title }
 		
 		if let validSession = session {
 			let phoneAppContext = ["todaysAgendaItems": watchAgendaItems]

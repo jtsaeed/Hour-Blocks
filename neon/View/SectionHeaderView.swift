@@ -14,7 +14,7 @@ class SectionHeaderView: UIView {
 	@IBOutlet weak var eventLabel: UILabel!
 	@IBOutlet weak var titleLabel: UILabel!
     
-    func build(for type: SectionType) {
+    func build(for type: Day) {
         if type == .today {
             dateLabel.text = Date().getFormattedDate()
 			eventLabel.text = CalendarGateway.shared.todaysAllDayEvent?.title.uppercased() ?? ""
@@ -27,6 +27,6 @@ class SectionHeaderView: UIView {
     }
 }
 
-enum SectionType: Int {
+enum Day: Int {
     case today = 0, tomorrow = 1
 }
