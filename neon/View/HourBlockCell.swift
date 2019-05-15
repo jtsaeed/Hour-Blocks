@@ -8,16 +8,16 @@
 
 import UIKit
 
-class AgendaCardCell: UITableViewCell {
+class HourBlockCell: UITableViewCell {
 
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var icon: UIImageView!
     
     func build(with agendaItem: AgendaItem, for hour: Int) {
-        self.time.text = hour.getFormattedHour()
-        self.title.text = agendaItem.title.capitalized
-        self.icon.image = UIImage(named: agendaItem.icon)?.withRenderingMode(.alwaysTemplate)
+        time.text = hour.getFormattedHour()
+        title.text = agendaItem.title.capitalized
+        icon.image = UIImage(named: agendaItem.icon)?.withRenderingMode(.alwaysTemplate)
     }
 
 }

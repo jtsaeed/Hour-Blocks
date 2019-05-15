@@ -62,6 +62,9 @@ class DayViewController: UITableViewController {
             }
         }
     }
+	@IBAction func swiped(_ sender: Any) {
+		tabBarController?.selectedIndex = 0
+	}
 }
 
 // MARK: - Functionality
@@ -105,6 +108,7 @@ extension DayViewController {
 		if #available(iOS 12.0, *) { donateInteraction(for: block) }
 
 		// Finishing tasks
+		AnalyticsGateway.shared.logNewHourBlock(for: newAgendaItem.title, and: newAgendaItem.icon)
 		copyToWatch(data: blocks[Day.today.rawValue] ?? [Block]())
         tableView.reloadRows(at: [indexPath], with: .fade)
         handleReviewRequest()
@@ -112,10 +116,11 @@ extension DayViewController {
     
     func removeCard(for indexPath: IndexPath) {
 		// Grab a reference to the Hour Block's agenda item that we want to remove
-		guard let currentAgendaItem = blocks[indexPath.section]?[indexPath.row].agendaItem else { return }
+		guard let block = blocks[indexPath.section]?[indexPath.row] else { return }
 		
 		// Delete and update the model
-		DataGateway.shared.delete(currentAgendaItem)
+		DataGateway.shared.delete(block.agendaItem!)
+		NotificationsGateway.shared.removeNotification(for: block)
 		blocks[indexPath.section]?[indexPath.row].agendaItem = nil
 		
 		// Finishing tasks
@@ -262,13 +267,13 @@ extension DayViewController: TableViewReorderDelegate {
 	}
     
     func buildAgendaCell(with agendaItem: AgendaItem, for hour: Int) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "todayAgendaCell") as? AgendaCardCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "hourBlockCell") as? HourBlockCell else { return UITableViewCell() }
         cell.build(with: agendaItem, for: hour)
         return cell
     }
     
     func buildEmptyCell(for hour: Int, at indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "todayEmptyCell") as? EmptyCardCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "emptyBlockCell") as? EmptyBlockCell else { return UITableViewCell() }
         cell.build(for: hour, at: indexPath)
         cell.delegate = self
         return cell
@@ -288,6 +293,7 @@ extension DayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
         alert.delegate = self
         alert.indexPath = indexPath
         alert.preFilledTitle = block?.agendaItem?.title
+		// TODO: Unwrap this safely
 		alert.time = blocks[indexPath.section]![indexPath.row].hour.getFormattedHour().lowercased()
         
         setStatusBarBackground(as: .clear)

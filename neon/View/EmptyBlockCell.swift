@@ -12,7 +12,7 @@ protocol AddAgendaDelegate {
     func showAddAgendaDialog(for block: Block?, at indexPath: IndexPath)
 }
 
-class EmptyCardCell: UITableViewCell {
+class EmptyBlockCell: UITableViewCell {
     
     var delegate: AddAgendaDelegate!
 
@@ -20,11 +20,11 @@ class EmptyCardCell: UITableViewCell {
     var indexPath: IndexPath!
     
     func build(for hour: Int, at indexPath: IndexPath) {
-        self.time.text = hour.getFormattedHour()
+        time.text = hour.getFormattedHour()
         self.indexPath = indexPath
     }
     
     @IBAction func addButtonPressed(_ sender: Any) {
-        self.delegate.showAddAgendaDialog(for: nil, at: indexPath)
+        delegate.showAddAgendaDialog(for: nil, at: indexPath)
     }
 }
