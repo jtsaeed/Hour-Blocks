@@ -60,6 +60,7 @@
 		23D41E6C2224127800D909FD /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D41E6B2224127800D909FD /* SectionHeaderView.xib */; };
 		23D41E6E222412FF00D909FD /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D41E6D222412FF00D909FD /* SectionHeaderView.swift */; };
 		23E45BE2224BA3A9002D01AC /* NotificationsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E45BE1224BA3A9002D01AC /* NotificationsGateway.swift */; };
+		23E8A93C228D587C0046C699 /* CalendarSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E8A93B228D587C0046C699 /* CalendarSettingCell.swift */; };
 		23FAE4782288E549001D9823 /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FAE4772288E549001D9823 /* ToDoViewController.swift */; };
 		23FAE47A2288E7BC001D9823 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FAE4792288E7BC001D9823 /* ToDoItem.swift */; };
 		23FAE47C2288EF90001D9823 /* ToDoBlockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FAE47B2288EF90001D9823 /* ToDoBlockCell.swift */; };
@@ -226,6 +227,7 @@
 		23D41E6B2224127800D909FD /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		23D41E6D222412FF00D909FD /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		23E45BE1224BA3A9002D01AC /* NotificationsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsGateway.swift; sourceTree = "<group>"; };
+		23E8A93B228D587C0046C699 /* CalendarSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSettingCell.swift; sourceTree = "<group>"; };
 		23FAE4772288E549001D9823 /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
 		23FAE4792288E7BC001D9823 /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 		23FAE47B2288EF90001D9823 /* ToDoBlockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoBlockCell.swift; sourceTree = "<group>"; };
@@ -314,12 +316,13 @@
 		23074FC3220B425300B64762 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				23E8A93A228D572C0046C699 /* Settings */,
+				23E8A939228D57210046C699 /* To Do */,
 				23C3FBAD228D51F900D20F21 /* Schedule */,
 				2338BEC7220A7841004F288F /* LaunchScreen.storyboard */,
 				2338BEBF220A7840004F288F /* Main.storyboard */,
 				2338BEEC220A78C5004F288F /* UIViewX.swift */,
 				23074FCD220B53AB00B64762 /* UIButtonX.swift */,
-				23FAE47B2288EF90001D9823 /* ToDoBlockCell.swift */,
 				23A3709D2289965B0097BFB6 /* HourBlocksTabBarController.swift */,
 			);
 			path = View;
@@ -484,6 +487,22 @@
 				23D41E6D222412FF00D909FD /* SectionHeaderView.swift */,
 			);
 			path = Schedule;
+			sourceTree = "<group>";
+		};
+		23E8A939228D57210046C699 /* To Do */ = {
+			isa = PBXGroup;
+			children = (
+				23FAE47B2288EF90001D9823 /* ToDoBlockCell.swift */,
+			);
+			path = "To Do";
+			sourceTree = "<group>";
+		};
+		23E8A93A228D572C0046C699 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				23E8A93B228D587C0046C699 /* CalendarSettingCell.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		4B7EB119015E82801222CD3A /* Pods */ = {
@@ -965,6 +984,7 @@
 				23074FCC220B4DE800B64762 /* EmptyBlockCell.swift in Sources */,
 				23557D7822747ECD0048B42C /* IconClassifier.mlmodel in Sources */,
 				234C1A09220C8E9D00344316 /* Date+Ext.swift in Sources */,
+				23E8A93C228D587C0046C699 /* CalendarSettingCell.swift in Sources */,
 				23FAE4782288E549001D9823 /* ToDoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

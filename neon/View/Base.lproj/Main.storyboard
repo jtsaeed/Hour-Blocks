@@ -193,6 +193,7 @@
                     <tabBarItem key="tabBarItem" title="Schedule" image="today_apps" id="p0w-Ow-aZI"/>
                     <navigationItem key="navigationItem" title="Today" id="bKj-dD-k3p"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="oaz-ri-3N2">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <action selector="pulledToRefresh:" destination="63b-M3-lej" eventType="valueChanged" id="5V6-go-Ztx"/>
@@ -543,7 +544,7 @@
         <!--Settings-->
         <scene sceneID="znv-Rr-dTd">
             <objects>
-                <viewController id="Cht-JT-ql6" customClass="SettingsViewController" sceneMemberID="viewController">
+                <viewController id="Cht-JT-ql6" customClass="SettingsViewController" customModule="neon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="84T-ra-Poa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -583,22 +584,21 @@
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="pWs-O8-s9I"/>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oWE-sR-rg8">
-                                <rect key="frame" x="0.0" y="164" width="375" height="565"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oWE-sR-rg8">
+                                <rect key="frame" x="0.0" y="156" width="375" height="573"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="calendarSettingCell" rowHeight="40" id="OUD-BJ-GgR">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="calendarSettingCell" rowHeight="40" id="OUD-BJ-GgR" customClass="CalendarSettingCell" customModule="neon" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OUD-BJ-GgR" id="Dq0-lp-IvA">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="39.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZV-Ab-cF5">
                                                     <rect key="frame" x="32" y="4.3333333333333286" width="311" height="31"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNS-wj-A4r">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calendar Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNS-wj-A4r">
                                                             <rect key="frame" x="0.0" y="0.0" width="262" height="31"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                             <nil key="textColor"/>
@@ -606,6 +606,9 @@
                                                         </label>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QVs-7F-bCl">
                                                             <rect key="frame" x="262" y="0.0" width="51" height="31"/>
+                                                            <connections>
+                                                                <action selector="switchPressed:" destination="OUD-BJ-GgR" eventType="valueChanged" id="z4v-bO-M4b"/>
+                                                            </connections>
                                                         </switch>
                                                     </subviews>
                                                 </stackView>
@@ -616,15 +619,27 @@
                                                 <constraint firstAttribute="trailing" secondItem="hZV-Ab-cF5" secondAttribute="trailing" constant="32" id="TQc-xf-owF"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="SNS-wj-A4r" id="IkS-dX-cdV"/>
+                                            <outlet property="toggleSwitch" destination="QVs-7F-bCl" id="lfK-xa-0CV"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Cht-JT-ql6" id="2v0-Xi-qlm"/>
+                                    <outlet property="delegate" destination="Cht-JT-ql6" id="NaA-n8-J8O"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="iWr-N8-F48" firstAttribute="leading" secondItem="ydJ-Lb-dyw" secondAttribute="leading" id="2nC-gc-70s"/>
+                            <constraint firstItem="oWE-sR-rg8" firstAttribute="bottom" secondItem="ydJ-Lb-dyw" secondAttribute="bottom" id="KOY-Pb-vuU"/>
+                            <constraint firstItem="oWE-sR-rg8" firstAttribute="leading" secondItem="ydJ-Lb-dyw" secondAttribute="leading" id="SmP-bQ-rnu"/>
+                            <constraint firstItem="oWE-sR-rg8" firstAttribute="top" secondItem="iWr-N8-F48" secondAttribute="bottom" id="Tod-hz-aNz"/>
                             <constraint firstItem="iWr-N8-F48" firstAttribute="top" secondItem="ydJ-Lb-dyw" secondAttribute="top" id="TzR-c3-c7F"/>
+                            <constraint firstItem="oWE-sR-rg8" firstAttribute="trailing" secondItem="ydJ-Lb-dyw" secondAttribute="trailing" id="dSR-n0-qfg"/>
                             <constraint firstItem="iWr-N8-F48" firstAttribute="trailing" secondItem="ydJ-Lb-dyw" secondAttribute="trailing" id="q5b-cx-zhd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ydJ-Lb-dyw"/>
@@ -635,9 +650,9 @@
                     <tabBarItem key="tabBarItem" tag="1" title="Settings" image="settings" id="9ff-x3-12v"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tP9-UG-B6W" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="left" id="ajQ-3B-l5r">
+                <swipeGestureRecognizer direction="right" id="ajQ-3B-l5r">
                     <connections>
-                        <action selector="swipedLeft:" destination="Cht-JT-ql6" id="cJG-IN-XXW"/>
+                        <action selector="swipedRight:" destination="Cht-JT-ql6" id="Fit-Rb-DON"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>

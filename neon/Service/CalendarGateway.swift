@@ -71,13 +71,15 @@ class CalendarGateway {
         return importedCalendarEvents
     }
 	
-	func getEnabledCalendars() -> [EKCalendar] {
+	private func getEnabledCalendars() -> [EKCalendar] {
 		var enabledCalendars = [EKCalendar]()
 		
-		if let calendarIdentifiers = StorageGateway.shared.loadEnabledCalendars() {
-			for calendarInditifier in calendarIdentifiers {
-				if let enabledCalendar = eventStore.calendar(withIdentifier: calendarInditifier) {
-					enabledCalendars.append(enabledCalendar)
+		if let loadedEnabledCalenders = StorageGateway.shared.loadEnabledCalendars() {
+			for loadedEnabledCalender in loadedEnabledCalenders {
+				if loadedEnabledCalender.value == true {
+					if let enabledCalendar = eventStore.calendar(withIdentifier: loadedEnabledCalender.key) {
+						enabledCalendars.append(enabledCalendar)
+					}
 				}
 			}
 			
@@ -85,6 +87,10 @@ class CalendarGateway {
 		} else {
 			return eventStore.calendars(for: EKEntityType.event)
 		}
+	}
+	
+	func getAllCalendars() -> [EKCalendar] {
+		return eventStore.calendars(for: .event)
 	}
     
     func isAllDay(event: ImportedCalendarEvent) -> Bool {

@@ -9,6 +9,7 @@
 import UIKit
 
 protocol AddAgendaDelegate {
+	
     func showAddAgendaDialog(for block: Block?, at indexPath: IndexPath)
 }
 

@@ -16,17 +16,7 @@ class StorageGateway {
 		UserDefaults.standard.set(calendars, forKey: "enabledCalendars")
 	}
 	
-	func loadEnabledCalendars() -> [String]? {
-		var calendarList = [String]()
-		
-		if let enabledCalendars = UserDefaults.standard.dictionary(forKey: "enabledCalendars") as? [String: Bool] {
-			for calendar in enabledCalendars {
-				if calendar.value == true { calendarList.append(calendar.key) }
-			}
-			
-			return calendarList
-		} else {
-			return nil
-		}
+	func loadEnabledCalendars() -> [String: Bool]? {
+		return UserDefaults.standard.dictionary(forKey: "enabledCalendars") as? [String: Bool]
 	}
 }
