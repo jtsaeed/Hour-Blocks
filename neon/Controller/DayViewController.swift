@@ -436,23 +436,28 @@ extension DayViewController {
     
     func presentWhatsNew() {
         let whatsNew = WhatsNew(
-            title: "What's New in Version 1.1",
+            title: "What's New in Version 1.2",
             items: [
                 WhatsNew.Item(
-                    title: "Apple Watch App",
-                    subtitle: "Quickly glance at your day with the teeny tiny Hour Blocks Apple Watch app ⌚️",
+                    title: "Draggable Blocks",
+                    subtitle: "Tap and hold on an hour block to drag it around when your schedule moves around 🏃‍♂️",
                     image: nil
 				),
 				WhatsNew.Item(
-					title: "Clever Icons",
-					subtitle: "Icons are now automatically generated using Machine Learning for more accurate results 🎓",
+					title: "User Settings",
+					subtitle: "Take literal control of your day by choosing your calendars, just swipe left! 🙌",
 					image: nil
 				),
                 WhatsNew.Item(
                     title: "Minor Improvements",
-                    subtitle: "All day Calendar events now show in the header and the return key when editing/adding an hour block now acts as a 'Done' button 🎉",
+                    subtitle: "The automatic icon generation has been improved and there's some small visual touch ups 🎨",
                     image: nil
-                )
+                ),
+				WhatsNew.Item(
+					title: "Fixes",
+					subtitle: "Reduced the number of crashes and an issue where the window for adding an Hour Block is hidden in landscape on iPad 🛠",
+					image: nil
+				)
             ]
         )
         var configuration = WhatsNewViewController.Configuration()
@@ -469,7 +474,7 @@ extension DayViewController {
             ToastView.appearance().font = .systemFont(ofSize: 17)
             ToastView.appearance().cornerRadius = 8
             ToastView.appearance().textInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
-            ToastView.appearance().bottomOffsetPortrait = 48
+            ToastView.appearance().bottomOffsetPortrait = 64
             
             Toast(text: "I'm having some trouble fetching your Hour Blocks from iCloud 😞\nPlease check your network connection", duration: 10).show()
         }

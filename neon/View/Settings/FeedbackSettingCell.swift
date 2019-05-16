@@ -19,7 +19,7 @@ class FeedbackSettingCell: UITableViewCell, UITextViewDelegate {
 		feedbackField.delegate = self
 		feedbackField.textColor = UIColor(named: "lightGray")!
 		submitButton.setTitle("Thank you!", for: .disabled)
-		submitButton.setTitleColor(UIColor(named: "lightGray"), for: .disabled)
+		submitButton.setTitleColor(UIColor(named: "gray"), for: .disabled)
 	}
 
 	func textViewDidBeginEditing(_ textView: UITextView) {
@@ -44,7 +44,7 @@ class FeedbackSettingCell: UITableViewCell, UITextViewDelegate {
 			IQKeyboardManager.shared.enable = false
 			AnalyticsGateway.shared.logFeedback(with: feedbackField.text)
 			submitButton.isEnabled = false
-			submitButton.titleLabel?.textColor = UIColor(named: "lightGray")!
+			submitButton.backgroundColor = UIColor(named: "mainLight")
 			feedbackField.isHidden = true
 			feedbackField.text = ""
 		}

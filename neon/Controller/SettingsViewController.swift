@@ -75,7 +75,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 		if indexPath.section == SettingsSection.calendar.rawValue {
 			return 38
 		} else if indexPath.section == SettingsSection.feedback.rawValue {
-			return 256
+			return 240
 		} else {
 			return 0
 		}

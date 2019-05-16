@@ -596,16 +596,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZV-Ab-cF5">
-                                                    <rect key="frame" x="32" y="3.6666666666666679" width="256" height="31.000000000000004"/>
+                                                    <rect key="frame" x="32" y="3.6666666666666679" width="311" height="31.000000000000004"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calendar Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNS-wj-A4r">
-                                                            <rect key="frame" x="0.0" y="0.0" width="207" height="31"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="262" height="31"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QVs-7F-bCl">
-                                                            <rect key="frame" x="207" y="0.0" width="51" height="31"/>
+                                                            <rect key="frame" x="262" y="0.0" width="51" height="31"/>
                                                             <connections>
                                                                 <action selector="switchPressed:" destination="OUD-BJ-GgR" eventType="valueChanged" id="z4v-bO-M4b"/>
                                                             </connections>
@@ -624,18 +624,18 @@
                                             <outlet property="toggleSwitch" destination="QVs-7F-bCl" id="lfK-xa-0CV"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedbackSettingCell" rowHeight="256" id="GXj-Dv-XC1" customClass="FeedbackSettingCell" customModule="neon" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="66" width="375" height="256"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedbackSettingCell" rowHeight="240" id="GXj-Dv-XC1" customClass="FeedbackSettingCell" customModule="neon" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="66" width="375" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GXj-Dv-XC1" id="6sP-aT-lM1">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="256"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="6fE-PP-dmd">
-                                                    <rect key="frame" x="31" y="16.666666666666657" width="258" height="223"/>
+                                                    <rect key="frame" x="31" y="8.6666666666666714" width="313" height="223"/>
                                                     <subviews>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="If you have any thoughts about your Hour Blocks experience, let me know here!" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="i5v-TE-vNT" customClass="UITextViewX" customModule="neon" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="258" height="95"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="313" height="95"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="95" id="QsS-og-ZGU"/>
@@ -656,18 +656,18 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </textView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znp-6J-ugu" customClass="UIButtonX" customModule="neon" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="111" width="258" height="48"/>
-                                                            <color key="backgroundColor" name="mainLight"/>
+                                                            <rect key="frame" x="0.0" y="111" width="313" height="48"/>
+                                                            <color key="backgroundColor" name="main"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="48" id="hB5-jj-zis"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                             <state key="normal" title="Submit feedback">
-                                                                <color key="titleColor" name="main"/>
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                    <real key="value" value="16"/>
+                                                                    <real key="value" value="12"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                             <connections>
@@ -675,18 +675,18 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydc-3b-DSd" customClass="UIButtonX" customModule="neon" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="175" width="258" height="48"/>
-                                                            <color key="backgroundColor" name="mainLight"/>
+                                                            <rect key="frame" x="0.0" y="175" width="313" height="48"/>
+                                                            <color key="backgroundColor" name="main"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="48" id="xPP-iC-QPc"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                             <state key="normal" title="Follow me on Twitter for updates">
-                                                                <color key="titleColor" name="main"/>
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                    <real key="value" value="16"/>
+                                                                    <real key="value" value="12"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                             <connections>
