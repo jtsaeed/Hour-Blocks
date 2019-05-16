@@ -62,9 +62,6 @@ class DayViewController: UITableViewController {
             }
         }
     }
-	@IBAction func swiped(_ sender: Any) {
-		tabBarController?.selectedIndex = 0
-	}
 }
 
 // MARK: - Functionality
@@ -114,7 +111,7 @@ extension DayViewController {
         handleReviewRequest()
     }
     
-    func removeCard(for indexPath: IndexPath) {
+    func removeBlock(for indexPath: IndexPath) {
 		// Grab a reference to the Hour Block's agenda item that we want to remove
 		guard let block = blocks[indexPath.section]?[indexPath.row] else { return }
 		
@@ -317,7 +314,7 @@ extension DayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
         }))
         if (!isCalendarEvent(at: indexPath)) {
             actionSheet.addAction(UIAlertAction(title: "Clear", style: .destructive, handler: { action in
-                self.removeCard(for: indexPath)
+                self.removeBlock(for: indexPath)
                 self.setStatusBarBackground(as: .white)
             }))
 			

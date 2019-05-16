@@ -55,6 +55,7 @@
 		2395A98C224AEABE0007D6F2 /* AgendaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2395A98B224AEABE0007D6F2 /* AgendaItem.swift */; };
 		23A3709E2289965B0097BFB6 /* HourBlocksTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A3709D2289965B0097BFB6 /* HourBlocksTabBarController.swift */; };
 		23B63CE1222491050026B9C2 /* CalendarGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B63CE0222491050026B9C2 /* CalendarGateway.swift */; };
+		23C3FBA9228D41BE00D20F21 /* StorageGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C3FBA8228D41BE00D20F21 /* StorageGateway.swift */; };
 		23D41E6C2224127800D909FD /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D41E6B2224127800D909FD /* SectionHeaderView.xib */; };
 		23D41E6E222412FF00D909FD /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D41E6D222412FF00D909FD /* SectionHeaderView.swift */; };
 		23E45BE2224BA3A9002D01AC /* NotificationsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E45BE1224BA3A9002D01AC /* NotificationsGateway.swift */; };
@@ -219,6 +220,7 @@
 		2395A98B224AEABE0007D6F2 /* AgendaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaItem.swift; sourceTree = "<group>"; };
 		23A3709D2289965B0097BFB6 /* HourBlocksTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourBlocksTabBarController.swift; sourceTree = "<group>"; };
 		23B63CE0222491050026B9C2 /* CalendarGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGateway.swift; sourceTree = "<group>"; };
+		23C3FBA8228D41BE00D20F21 /* StorageGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageGateway.swift; sourceTree = "<group>"; };
 		23D41E6B2224127800D909FD /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		23D41E6D222412FF00D909FD /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		23E45BE1224BA3A9002D01AC /* NotificationsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsGateway.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 				23B63CE0222491050026B9C2 /* CalendarGateway.swift */,
 				23E45BE1224BA3A9002D01AC /* NotificationsGateway.swift */,
 				232ED4DF228C93A4008FC4A0 /* AnalyticsGateway.swift */,
+				23C3FBA8228D41BE00D20F21 /* StorageGateway.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -529,6 +532,7 @@
 				09348666DF0B4B3C5CAA324F /* [CP] Embed Pods Frameworks */,
 				2395A95C224AE1750007D6F2 /* Embed App Extensions */,
 				2395A98A224AE78E0007D6F2 /* Embed Watch Content */,
+				23C3FBAA228D457800D20F21 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -826,6 +830,24 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-neon/Pods-neon-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		23C3FBAA228D457800D20F21 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
+		};
 		7C8B58ECED1F9FF1006E3FB1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -914,6 +936,7 @@
 				231392A922666FC400DB0ABF /* DataGateway.swift in Sources */,
 				2338BEC4220A7840004F288F /* neon.xcdatamodeld in Sources */,
 				232ED4E0228C93A4008FC4A0 /* AnalyticsGateway.swift in Sources */,
+				23C3FBA9228D41BE00D20F21 /* StorageGateway.swift in Sources */,
 				2338BEEF220A78FF004F288F /* HourBlockCell.swift in Sources */,
 				2338BEED220A78C5004F288F /* UIViewX.swift in Sources */,
 				234C1A0B220C8F9900344316 /* TodayHeaderCell.swift in Sources */,

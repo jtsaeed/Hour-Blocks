@@ -57,8 +57,8 @@ class DataGateway {
                 
                 completion(todaysAgendaItems, tomorrowsAgendaItems, true)
             } else {
+				AnalyticsGateway.shared.logCloudError(for: error!.localizedDescription)
                 completion(todaysAgendaItems, tomorrowsAgendaItems, false)
-				print(error?.localizedDescription)
             }
         }
     }

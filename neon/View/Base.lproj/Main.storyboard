@@ -189,7 +189,7 @@
                             <outletCollection property="gestureRecognizers" destination="EMj-bZ-emP" appends="YES" id="2jd-fH-68D"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" tag="1" title="Day" id="p0w-Ow-aZI"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Schedule" image="today_apps" id="p0w-Ow-aZI"/>
                     <navigationItem key="navigationItem" title="Today" id="bKj-dD-k3p"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
@@ -355,7 +355,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kdL-2f-L42">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="mainLight"/>
                         <color key="tintColor" name="main"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="selectedIndex">
@@ -368,7 +368,6 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <segue destination="LQf-xV-zKZ" kind="relationship" relationship="viewControllers" id="FnU-63-0dM"/>
                         <segue destination="63b-M3-lej" kind="relationship" relationship="viewControllers" id="XyB-lO-oFc"/>
                         <segue destination="Cht-JT-ql6" kind="relationship" relationship="viewControllers" id="S2q-Wb-1Km"/>
                     </connections>
@@ -522,7 +521,7 @@
                             <outletCollection property="gestureRecognizers" destination="7ia-PD-vKE" appends="YES" id="lLf-2i-qGH"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="To Do" id="4Ep-WE-jMp"/>
+                    <tabBarItem key="tabBarItem" title="To Do" image="list" id="4Ep-WE-jMp"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zCg-G3-wvu" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="left" id="7ia-PD-vKE">
@@ -589,7 +588,7 @@
                             <outletCollection property="gestureRecognizers" destination="ajQ-3B-l5r" appends="YES" id="094-pf-Rwt"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="9ff-x3-12v"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="9ff-x3-12v"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tP9-UG-B6W" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="left" id="ajQ-3B-l5r">
@@ -603,6 +602,9 @@
     </scenes>
     <resources>
         <image name="education" width="48" height="48"/>
+        <image name="list" width="30" height="30"/>
+        <image name="settings" width="30" height="30"/>
+        <image name="today_apps" width="30" height="30"/>
         <namedColor name="main">
             <color red="0.99607843137254903" green="0.6705882352941176" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

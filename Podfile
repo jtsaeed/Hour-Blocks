@@ -11,6 +11,8 @@ target 'neon' do
   pod 'SwiftReorder'
   pod 'Hero'
   pod 'Firebase/Core'
+  pod 'Fabric', '~> 1.10.0'
+  pod 'Crashlytics', '~> 3.13.0'
 
   target 'neonTests' do
     inherit! :search_paths

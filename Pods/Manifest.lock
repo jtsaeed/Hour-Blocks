@@ -1,4 +1,7 @@
 PODS:
+  - Crashlytics (3.13.0):
+    - Fabric (~> 1.10.0)
+  - Fabric (1.10.0)
   - Firebase/Core (5.16.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 5.5.0)
@@ -54,6 +57,8 @@ PODS:
   - WhatsNewKit (1.1.7)
 
 DEPENDENCIES:
+  - Crashlytics (~> 3.13.0)
+  - Fabric (~> 1.10.0)
   - Firebase/Core
   - Hero
   - SwiftReorder
@@ -62,6 +67,8 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Crashlytics
+    - Fabric
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -75,6 +82,8 @@ SPEC REPOS:
     - WhatsNewKit
 
 SPEC CHECKSUMS:
+  Crashlytics: 1f5f752c7feac0add0cc1774756f96444fa3b1a7
+  Fabric: 09de1e053eb7dc415593166ad3e53d4c88123405
   Firebase: 749a8ff4962f9d8c79dda1966de20f6f77583d67
   FirebaseAnalytics: d35d47c03c50c73c14a7fd31463c5775843e78a9
   FirebaseCore: ea2d1816723ef21492b8e9113303e1350db5e08c
@@ -87,6 +96,6 @@ SPEC CHECKSUMS:
   Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
   WhatsNewKit: 3976120978db0089535f777cd1b442579418b6fa
 
-PODFILE CHECKSUM: 5e8225ac63243653fd8cfc1e014374bb98389384
+PODFILE CHECKSUM: 581f157d061ff0ce3d4309a6f68940d9657e9d49
 
 COCOAPODS: 1.5.3

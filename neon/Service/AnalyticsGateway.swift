@@ -16,4 +16,8 @@ class AnalyticsGateway {
 	func logNewHourBlock(for title: String, and icon: String) {
 		Analytics.logEvent("newHourBlock", parameters: ["title": title, "icon": icon])
 	}
+	
+	func logCloudError(for error: String) {
+		
+	}
 }
