@@ -47,6 +47,7 @@ PODS:
   - GoogleUtilities/UserDefaults (5.3.7):
     - GoogleUtilities/Logger
   - Hero (1.4.0)
+  - IQKeyboardManagerSwift (6.3.0)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -61,6 +62,7 @@ DEPENDENCIES:
   - Fabric (~> 1.10.0)
   - Firebase/Core
   - Hero
+  - IQKeyboardManagerSwift
   - SwiftReorder
   - Toaster
   - WhatsNewKit
@@ -76,6 +78,7 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleUtilities
     - Hero
+    - IQKeyboardManagerSwift
     - nanopb
     - SwiftReorder
     - Toaster
@@ -91,11 +94,12 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 621f3bc6211d5ba548debe01fafad30cf5ab6859
   GoogleUtilities: 111a012f4c3a29c9e7c954c082fafd6ee3c999c0
   Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
+  IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   SwiftReorder: b59368b978c9826116147672ff1f59a2d4dd9110
   Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
   WhatsNewKit: 3976120978db0089535f777cd1b442579418b6fa
 
-PODFILE CHECKSUM: 581f157d061ff0ce3d4309a6f68940d9657e9d49
+PODFILE CHECKSUM: f2cc6d48b57648568d7a5409a553cb0c4058f064
 
 COCOAPODS: 1.5.3

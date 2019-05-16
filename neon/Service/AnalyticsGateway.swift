@@ -20,4 +20,8 @@ class AnalyticsGateway {
 	func logCloudError(for error: String) {
 		Analytics.logEvent("cloudError", parameters: ["error": error])
 	}
+	
+	func logFeedback(with text: String) {
+		Analytics.logEvent("feedback", parameters: ["feedback": text])
+	}
 }
