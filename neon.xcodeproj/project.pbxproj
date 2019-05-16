@@ -56,6 +56,7 @@
 		23A3709E2289965B0097BFB6 /* HourBlocksTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A3709D2289965B0097BFB6 /* HourBlocksTabBarController.swift */; };
 		23B63CE1222491050026B9C2 /* CalendarGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B63CE0222491050026B9C2 /* CalendarGateway.swift */; };
 		23C3FBA9228D41BE00D20F21 /* StorageGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C3FBA8228D41BE00D20F21 /* StorageGateway.swift */; };
+		23C3FBAC228D48E800D20F21 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C3FBAB228D48E800D20F21 /* SettingsViewController.swift */; };
 		23D41E6C2224127800D909FD /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D41E6B2224127800D909FD /* SectionHeaderView.xib */; };
 		23D41E6E222412FF00D909FD /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D41E6D222412FF00D909FD /* SectionHeaderView.swift */; };
 		23E45BE2224BA3A9002D01AC /* NotificationsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E45BE1224BA3A9002D01AC /* NotificationsGateway.swift */; };
@@ -221,6 +222,7 @@
 		23A3709D2289965B0097BFB6 /* HourBlocksTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourBlocksTabBarController.swift; sourceTree = "<group>"; };
 		23B63CE0222491050026B9C2 /* CalendarGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGateway.swift; sourceTree = "<group>"; };
 		23C3FBA8228D41BE00D20F21 /* StorageGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageGateway.swift; sourceTree = "<group>"; };
+		23C3FBAB228D48E800D20F21 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		23D41E6B2224127800D909FD /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		23D41E6D222412FF00D909FD /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		23E45BE1224BA3A9002D01AC /* NotificationsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsGateway.swift; sourceTree = "<group>"; };
@@ -312,16 +314,11 @@
 		23074FC3220B425300B64762 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				23C3FBAD228D51F900D20F21 /* Schedule */,
 				2338BEC7220A7841004F288F /* LaunchScreen.storyboard */,
 				2338BEBF220A7840004F288F /* Main.storyboard */,
-				2338BEEE220A78FF004F288F /* HourBlockCell.swift */,
 				2338BEEC220A78C5004F288F /* UIViewX.swift */,
-				23074FCB220B4DE800B64762 /* EmptyBlockCell.swift */,
 				23074FCD220B53AB00B64762 /* UIButtonX.swift */,
-				234C1A0A220C8F9900344316 /* TodayHeaderCell.swift */,
-				231898DC221D92F1005766AF /* AddAgendAlertViewController.swift */,
-				23D41E6B2224127800D909FD /* SectionHeaderView.xib */,
-				23D41E6D222412FF00D909FD /* SectionHeaderView.swift */,
 				23FAE47B2288EF90001D9823 /* ToDoBlockCell.swift */,
 				23A3709D2289965B0097BFB6 /* HourBlocksTabBarController.swift */,
 			);
@@ -333,6 +330,7 @@
 			children = (
 				2338BEBD220A7840004F288F /* DayViewController.swift */,
 				23FAE4772288E549001D9823 /* ToDoViewController.swift */,
+				23C3FBAB228D48E800D20F21 /* SettingsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -473,6 +471,19 @@
 				2395A98B224AEABE0007D6F2 /* AgendaItem.swift */,
 			);
 			path = "neonWatch Extension";
+			sourceTree = "<group>";
+		};
+		23C3FBAD228D51F900D20F21 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				2338BEEE220A78FF004F288F /* HourBlockCell.swift */,
+				23074FCB220B4DE800B64762 /* EmptyBlockCell.swift */,
+				234C1A0A220C8F9900344316 /* TodayHeaderCell.swift */,
+				231898DC221D92F1005766AF /* AddAgendAlertViewController.swift */,
+				23D41E6B2224127800D909FD /* SectionHeaderView.xib */,
+				23D41E6D222412FF00D909FD /* SectionHeaderView.swift */,
+			);
+			path = Schedule;
 			sourceTree = "<group>";
 		};
 		4B7EB119015E82801222CD3A /* Pods */ = {
@@ -938,6 +949,7 @@
 				232ED4E0228C93A4008FC4A0 /* AnalyticsGateway.swift in Sources */,
 				23C3FBA9228D41BE00D20F21 /* StorageGateway.swift in Sources */,
 				2338BEEF220A78FF004F288F /* HourBlockCell.swift in Sources */,
+				23C3FBAC228D48E800D20F21 /* SettingsViewController.swift in Sources */,
 				2338BEED220A78C5004F288F /* UIViewX.swift in Sources */,
 				234C1A0B220C8F9900344316 /* TodayHeaderCell.swift in Sources */,
 				23A3709E2289965B0097BFB6 /* HourBlocksTabBarController.swift in Sources */,

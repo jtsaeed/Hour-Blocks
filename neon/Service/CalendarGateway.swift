@@ -35,7 +35,7 @@ class CalendarGateway {
         let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
         let todayStart = Calendar.current.date(bySetting: .hour, value: 0, of: yesterday)
         let todayEnd = Calendar.current.date(bySetting: .hour, value: 23, of: Date())
-        let eventsPredicate = eventStore.predicateForEvents(withStart: todayStart!, end: todayEnd!, calendars: eventStore.calendars(for: EKEntityType.event))
+        let eventsPredicate = eventStore.predicateForEvents(withStart: todayStart!, end: todayEnd!, calendars: getEnabledCalendars())
         
 		return importEvents(with: eventsPredicate, today: true)
     }
@@ -44,7 +44,7 @@ class CalendarGateway {
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
         let tomorrowStart = Calendar.current.date(bySetting: .hour, value: 0, of: Date())
         let tomorrowEnd = Calendar.current.date(bySetting: .hour, value: 23, of: tomorrow)
-        let eventsPredicate = eventStore.predicateForEvents(withStart: tomorrowStart!, end: tomorrowEnd!, calendars: eventStore.calendars(for: EKEntityType.event))
+        let eventsPredicate = eventStore.predicateForEvents(withStart: tomorrowStart!, end: tomorrowEnd!, calendars: getEnabledCalendars())
         
 		return importEvents(with: eventsPredicate, today: false)
     }
@@ -70,6 +70,22 @@ class CalendarGateway {
         
         return importedCalendarEvents
     }
+	
+	func getEnabledCalendars() -> [EKCalendar] {
+		var enabledCalendars = [EKCalendar]()
+		
+		if let calendarIdentifiers = StorageGateway.shared.loadEnabledCalendars() {
+			for calendarInditifier in calendarIdentifiers {
+				if let enabledCalendar = eventStore.calendar(withIdentifier: calendarInditifier) {
+					enabledCalendars.append(enabledCalendar)
+				}
+			}
+			
+			return enabledCalendars
+		} else {
+			return eventStore.calendars(for: EKEntityType.event)
+		}
+	}
     
     func isAllDay(event: ImportedCalendarEvent) -> Bool {
         return event.startTime == 0 && event.endTime == 22

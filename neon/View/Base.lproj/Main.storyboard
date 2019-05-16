@@ -187,18 +187,26 @@
                             <outlet property="dataSource" destination="63b-M3-lej" id="BUb-Az-uSq"/>
                             <outlet property="delegate" destination="63b-M3-lej" id="rtx-T5-hoe"/>
                             <outletCollection property="gestureRecognizers" destination="EMj-bZ-emP" appends="YES" id="2jd-fH-68D"/>
+                            <outletCollection property="gestureRecognizers" destination="mBA-sa-hmd" appends="YES" id="Olv-dp-dLl"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" tag="1" title="Schedule" image="today_apps" id="p0w-Ow-aZI"/>
+                    <tabBarItem key="tabBarItem" title="Schedule" image="today_apps" id="p0w-Ow-aZI"/>
                     <navigationItem key="navigationItem" title="Today" id="bKj-dD-k3p"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="oaz-ri-3N2">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="pulledToRefresh:" destination="63b-M3-lej" eventType="valueChanged" id="5V6-go-Ztx"/>
+                        </connections>
+                    </refreshControl>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dfw-wy-1Tl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="EMj-bZ-emP">
+                <swipeGestureRecognizer direction="right" id="EMj-bZ-emP" userLabel="Right Swipe Gesture Recognizer"/>
+                <swipeGestureRecognizer direction="left" id="mBA-sa-hmd" userLabel="Left Swipe Gesture Recognizer">
                     <connections>
-                        <action selector="swiped:" destination="63b-M3-lej" id="WpY-kd-ysh"/>
+                        <action selector="swipedLeft:" destination="63b-M3-lej" id="Ghr-83-QOj"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -547,10 +555,10 @@
                                         <rect key="frame" x="32" y="25.333333333333325" width="311" height="61.666666666666657"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="MEN-JD-VhI">
-                                                <rect key="frame" x="0.0" y="0.0" width="247" height="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="108" height="17"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOPE YOU'RE HAVING A GOOD DAY!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jdv-JV-aOn">
-                                                        <rect key="frame" x="0.0" y="0.0" width="247" height="17"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAKE CONTROL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jdv-JV-aOn">
+                                                        <rect key="frame" x="0.0" y="0.0" width="108" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                         <color key="textColor" red="0.55294117649999996" green="0.55294117649999996" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -575,6 +583,42 @@
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="pWs-O8-s9I"/>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oWE-sR-rg8">
+                                <rect key="frame" x="0.0" y="164" width="375" height="565"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="calendarSettingCell" rowHeight="40" id="OUD-BJ-GgR">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="40"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OUD-BJ-GgR" id="Dq0-lp-IvA">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="39.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZV-Ab-cF5">
+                                                    <rect key="frame" x="32" y="4.3333333333333286" width="311" height="31"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNS-wj-A4r">
+                                                            <rect key="frame" x="0.0" y="0.0" width="262" height="31"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QVs-7F-bCl">
+                                                            <rect key="frame" x="262" y="0.0" width="51" height="31"/>
+                                                        </switch>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="hZV-Ab-cF5" firstAttribute="leading" secondItem="Dq0-lp-IvA" secondAttribute="leading" constant="32" id="1oV-aE-ES4"/>
+                                                <constraint firstItem="hZV-Ab-cF5" firstAttribute="centerY" secondItem="Dq0-lp-IvA" secondAttribute="centerY" id="C7y-0Q-fkj"/>
+                                                <constraint firstAttribute="trailing" secondItem="hZV-Ab-cF5" secondAttribute="trailing" constant="32" id="TQc-xf-owF"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
@@ -588,7 +632,7 @@
                             <outletCollection property="gestureRecognizers" destination="ajQ-3B-l5r" appends="YES" id="094-pf-Rwt"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="9ff-x3-12v"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Settings" image="settings" id="9ff-x3-12v"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tP9-UG-B6W" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="left" id="ajQ-3B-l5r">
@@ -597,7 +641,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2868" y="801"/>
+            <point key="canvasLocation" x="2868" y="800.98522167487693"/>
         </scene>
     </scenes>
     <resources>

@@ -47,7 +47,7 @@ class DayViewController: UITableViewController {
         CalendarGateway.shared.handlePermissions()
         checkAppUpgrade()
     }
-    
+	
     @IBAction func pulledToRefresh(_ sender: UIRefreshControl) {
         DataGateway.shared.fetchAgendaItems { (todaysAgendaItems, tomorrowsAgendaItems, success) in
             if success {
@@ -62,6 +62,10 @@ class DayViewController: UITableViewController {
             }
         }
     }
+	
+	@IBAction func swipedLeft(_ sender: Any) {
+		tabBarController?.selectedIndex = 1
+	}
 }
 
 // MARK: - Functionality
