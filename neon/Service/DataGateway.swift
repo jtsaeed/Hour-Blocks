@@ -21,6 +21,7 @@ class DataGateway {
         if CalendarGateway.shared.hasPermission() {
             for event in CalendarGateway.shared.importTodaysEvents() {
                 for i in event.startTime...event.endTime {
+					print("Found event that starts at \(event.startTime) and ends at \(event.endTime)")
                     var agendaItem = AgendaItem(title: event.title)
                     agendaItem.icon = "calendar"
                     todaysAgendaItems[i] = agendaItem

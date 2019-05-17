@@ -455,7 +455,7 @@ extension DayViewController {
                 ),
 				WhatsNew.Item(
 					title: "Fixes",
-					subtitle: "Reduced the number of crashes and an issue where the window for adding an Hour Block is hidden in landscape on iPad 🛠",
+					subtitle: "Fixed the crash on launch that many people were experiencing- thank you Hamzah Malik for solving it! 🛠",
 					image: nil
 				)
             ]

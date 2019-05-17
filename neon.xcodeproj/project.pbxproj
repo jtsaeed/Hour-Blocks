@@ -568,7 +568,6 @@
 				09348666DF0B4B3C5CAA324F /* [CP] Embed Pods Frameworks */,
 				2395A95C224AE1750007D6F2 /* Embed App Extensions */,
 				2395A98A224AE78E0007D6F2 /* Embed Watch Content */,
-				23C3FBAA228D457800D20F21 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -867,24 +866,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-neon/Pods-neon-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		23C3FBAA228D457800D20F21 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
 		};
 		7C8B58ECED1F9FF1006E3FB1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
