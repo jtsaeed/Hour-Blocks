@@ -23,7 +23,7 @@ class SettingsViewController: UIViewController {
 		tableView.estimatedRowHeight = UITableView.automaticDimension
 		tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 32, right: 0)
 		
-		calendars = CalendarGateway.shared.getAllCalendars()
+		calendars = CalendarGateway.shared.getAllCalendars().sorted(by: { $0.title < $1.title })
 		enabledCalendars = StorageGateway.shared.loadEnabledCalendars()
     }
 	
