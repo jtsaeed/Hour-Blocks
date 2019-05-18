@@ -124,32 +124,54 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRO-YL-6kE" customClass="UIButtonX" customModule="neon" customModuleProvider="target">
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="QtL-gf-msO">
                                                     <rect key="frame" x="231" y="26" width="72" height="32"/>
-                                                    <color key="backgroundColor" name="mainLight"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="72" id="hlb-LH-ZLl"/>
-                                                        <constraint firstAttribute="height" constant="32" id="teg-DH-1lq"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                                    <state key="normal" title="ADD">
-                                                        <color key="titleColor" name="main"/>
-                                                    </state>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="16"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <action selector="addButtonPressed:" destination="fRe-Ob-KBC" eventType="touchUpInside" id="ktU-Oc-1Hs"/>
-                                                    </connections>
-                                                </button>
+                                                    <subviews>
+                                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDx-3x-enE" customClass="UIButtonX" customModule="neon" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="72" height="32"/>
+                                                            <color key="backgroundColor" name="mainLight"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="32" id="KEz-4E-gYP"/>
+                                                                <constraint firstAttribute="width" constant="72" id="Me5-if-qEb"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                            <state key="normal" title="AUTO">
+                                                                <color key="titleColor" name="main"/>
+                                                            </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="16"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRO-YL-6kE" customClass="UIButtonX" customModule="neon" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="72" height="32"/>
+                                                            <color key="backgroundColor" name="mainLight"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="72" id="hlb-LH-ZLl"/>
+                                                                <constraint firstAttribute="height" constant="32" id="teg-DH-1lq"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                            <state key="normal" title="ADD">
+                                                                <color key="titleColor" name="main"/>
+                                                            </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="16"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="addButtonPressed:" destination="fRe-Ob-KBC" eventType="touchUpInside" id="ktU-Oc-1Hs"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="VRO-YL-6kE" secondAttribute="trailing" constant="24" id="24z-C6-fMz"/>
+                                                <constraint firstItem="QtL-gf-msO" firstAttribute="centerY" secondItem="SYF-gk-ggx" secondAttribute="centerY" id="6ib-c6-Zyo"/>
                                                 <constraint firstItem="MI8-uD-rYt" firstAttribute="centerY" secondItem="SYF-gk-ggx" secondAttribute="centerY" id="LYY-Bo-lh8"/>
-                                                <constraint firstItem="VRO-YL-6kE" firstAttribute="centerY" secondItem="SYF-gk-ggx" secondAttribute="centerY" id="qkj-XW-Tau"/>
+                                                <constraint firstAttribute="trailing" secondItem="QtL-gf-msO" secondAttribute="trailing" constant="24" id="ZZD-ch-4XC"/>
                                                 <constraint firstItem="MI8-uD-rYt" firstAttribute="leading" secondItem="SYF-gk-ggx" secondAttribute="leading" constant="24" id="sTQ-DK-T5G"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>

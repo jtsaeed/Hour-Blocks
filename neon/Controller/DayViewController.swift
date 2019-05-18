@@ -109,7 +109,6 @@ extension DayViewController {
 		if #available(iOS 12.0, *) { donateInteraction(for: block) }
 
 		// Finishing tasks
-		AnalyticsGateway.shared.logNewHourBlock(for: newAgendaItem.title, and: newAgendaItem.icon)
 		copyToWatch(data: blocks[Day.today.rawValue] ?? [Block]())
         tableView.reloadRows(at: [indexPath], with: .fade)
         handleReviewRequest()
@@ -300,6 +299,10 @@ extension DayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
         setStatusBarBackground(as: .clear)
         present(alert, animated: true, completion: nil)
     }
+	
+	func addPredictedBlock(title: String, indexPath: IndexPath) {
+		addBlock(for: indexPath, with: title)
+	}
     
     func doneButtonTapped(textFieldValue: String, indexPath: IndexPath) {
         addBlock(for: indexPath, with: textFieldValue)

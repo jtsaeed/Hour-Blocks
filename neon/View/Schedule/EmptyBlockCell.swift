@@ -17,7 +17,8 @@ class EmptyBlockCell: UITableViewCell {
     
     var delegate: AddAgendaDelegate!
 
-    @IBOutlet weak var time: UILabel!
+	@IBOutlet weak var time: UILabel!
+	
     var indexPath: IndexPath!
     
     func build(for hour: Int, at indexPath: IndexPath) {

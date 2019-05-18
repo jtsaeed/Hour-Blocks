@@ -58,7 +58,6 @@ class DataGateway {
 				
                 completion(todaysAgendaItems, tomorrowsAgendaItems, true)
             } else {
-				AnalyticsGateway.shared.logCloudError(for: error!.localizedDescription)
                 completion(todaysAgendaItems, tomorrowsAgendaItems, false)
             }
         }
@@ -75,7 +74,7 @@ class DataGateway {
 		
         database.save(record) { (record, error) in
             if error == nil {
-				self.logHourBlock(with: agendaItem.title)
+				AnalyticsGateway.shared.logHourBlock(for: agendaItem.title)
 				self.incrementTotalAgendaCount()
 			}
         }
@@ -108,8 +107,6 @@ class DataGateway {
                     	database.delete(withRecordID: record.recordID, completionHandler: { (recordID, error) in })
                 	}
 				})
-			} else {
-				AnalyticsGateway.shared.logCloudError(for: error!.localizedDescription)
 			}
         }
     }
@@ -132,8 +129,4 @@ class DataGateway {
 		
         UserDefaults.standard.synchronize()
     }
-	
-	private func logHourBlock(with title: String) {
-		Analytics.logEvent("hourBlock", parameters: ["title": title])
-	}
 }
