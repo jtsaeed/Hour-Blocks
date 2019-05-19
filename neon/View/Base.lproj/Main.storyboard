@@ -252,7 +252,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="602-G6-q84" userLabel="Title">
                                                 <rect key="frame" x="0.0" y="0.0" width="231" height="84"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's in store for 11am?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfM-m6-D9u">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's in store for 11am?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfM-m6-D9u">
                                                         <rect key="frame" x="0.0" y="0.0" width="231" height="24"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                         <nil key="textColor"/>

@@ -51,6 +51,12 @@ class FeedbackSettingCell: UITableViewCell, UITextViewDelegate {
 	}
 	
 	@IBAction func followTwitterPressed(_ sender: Any) {
-		UIApplication.shared.open(URL(string: "twitter://user?screen_name=j_t_saeed")!, options: [:], completionHandler: nil)
+		let url = URL(string: "twitter://user?screen_name=j_t_saeed")!
+		
+		if UIApplication.shared.canOpenURL(url) {
+			UIApplication.shared.open(url, options: [:], completionHandler: nil)
+		} else {
+			UIApplication.shared.open(URL(string: "https://twitter.com/j_t_saeed")!, options: [:], completionHandler: nil)
+		}
 	}
 }
