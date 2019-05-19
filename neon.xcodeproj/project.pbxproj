@@ -21,6 +21,19 @@
 		230D09B1224E847B00C103CC /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 230D09AF224E82B000C103CC /* Intents.intentdefinition */; };
 		231392A922666FC400DB0ABF /* DataGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231392A822666FC400DB0ABF /* DataGateway.swift */; };
 		2314C456228D97C2001C51F2 /* UITextViewX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2314C455228D97C2001C51F2 /* UITextViewX.swift */; };
+		2317288E22917778007DBF8B /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2317288D22917778007DBF8B /* Messages.framework */; };
+		2317289122917778007DBF8B /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317289022917778007DBF8B /* MessagesViewController.swift */; };
+		2317289422917778007DBF8B /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2317289222917778007DBF8B /* MainInterface.storyboard */; };
+		231728962291777A007DBF8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 231728952291777A007DBF8B /* Assets.xcassets */; };
+		2317289A2291777A007DBF8B /* neonMessage.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2317288C22917778007DBF8B /* neonMessage.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2317289F22917FDF007DBF8B /* HourBlockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317289E22917FDF007DBF8B /* HourBlockCell.swift */; };
+		231728A122918008007DBF8B /* AgendaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231728A022918008007DBF8B /* AgendaItem.swift */; };
+		231728A32291802C007DBF8B /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231728A22291802C007DBF8B /* Int+Ext.swift */; };
+		231728A5229181D3007DBF8B /* IconClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 231728A4229181D3007DBF8B /* IconClassifier.mlmodel */; };
+		231728A7229188BC007DBF8B /* DataGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231728A6229188BC007DBF8B /* DataGateway.swift */; };
+		231728A922918951007DBF8B /* CalendarGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231728A822918951007DBF8B /* CalendarGateway.swift */; };
+		231728AB22918A3E007DBF8B /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 238EA768223EA0DC00981E98 /* CloudKit.framework */; };
+		231728AD22918F7E007DBF8B /* UIViewX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231728AC22918F7E007DBF8B /* UIViewX.swift */; };
 		231898DD221D92F1005766AF /* AddAgendAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231898DC221D92F1005766AF /* AddAgendAlertViewController.swift */; };
 		232C34C6228DE41100AC3B4F /* IconClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 232C34C5228DE41100AC3B4F /* IconClassifier.mlmodel */; };
 		232ED4E0228C93A4008FC4A0 /* AnalyticsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232ED4DF228C93A4008FC4A0 /* AnalyticsGateway.swift */; };
@@ -86,6 +99,13 @@
 			remoteGlobalIDString = 230D099F224E7F4300C103CC;
 			remoteInfo = neonSiri;
 		};
+		231728982291777A007DBF8B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2338BEB0220A7840004F288F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2317288B22917778007DBF8B;
+			remoteInfo = neonMessage;
+		};
 		2338BED0220A7841004F288F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2338BEB0220A7840004F288F /* Project object */;
@@ -123,6 +143,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				2317289A2291777A007DBF8B /* neonMessage.appex in Embed App Extensions */,
 				2395A958224AE1750007D6F2 /* neonToday.appex in Embed App Extensions */,
 				230D09A7224E7F4300C103CC /* neonSiri.appex in Embed App Extensions */,
 			);
@@ -177,6 +198,20 @@
 		230D09AF224E82B000C103CC /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
 		231392A822666FC400DB0ABF /* DataGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataGateway.swift; sourceTree = "<group>"; };
 		2314C455228D97C2001C51F2 /* UITextViewX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewX.swift; sourceTree = "<group>"; };
+		2317288C22917778007DBF8B /* neonMessage.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = neonMessage.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2317288D22917778007DBF8B /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
+		2317289022917778007DBF8B /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		2317289322917778007DBF8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		231728952291777A007DBF8B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		231728972291777A007DBF8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2317289E22917FDF007DBF8B /* HourBlockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourBlockCell.swift; sourceTree = "<group>"; };
+		231728A022918008007DBF8B /* AgendaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaItem.swift; sourceTree = "<group>"; };
+		231728A22291802C007DBF8B /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
+		231728A4229181D3007DBF8B /* IconClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = IconClassifier.mlmodel; sourceTree = "<group>"; };
+		231728A6229188BC007DBF8B /* DataGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGateway.swift; sourceTree = "<group>"; };
+		231728A822918951007DBF8B /* CalendarGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGateway.swift; sourceTree = "<group>"; };
+		231728AA22918A3B007DBF8B /* neonMessage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = neonMessage.entitlements; sourceTree = "<group>"; };
+		231728AC22918F7E007DBF8B /* UIViewX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewX.swift; sourceTree = "<group>"; };
 		231898DC221D92F1005766AF /* AddAgendAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAgendAlertViewController.swift; sourceTree = "<group>"; };
 		232C34C5228DE41100AC3B4F /* IconClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = IconClassifier.mlmodel; sourceTree = "<group>"; };
 		232ED4DF228C93A4008FC4A0 /* AnalyticsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsGateway.swift; sourceTree = "<group>"; };
@@ -252,6 +287,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				230D09AC224E7F6200C103CC /* CloudKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2317288922917778007DBF8B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2317288E22917778007DBF8B /* Messages.framework in Frameworks */,
+				231728AB22918A3E007DBF8B /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +419,25 @@
 			path = neonSiri;
 			sourceTree = "<group>";
 		};
+		2317288F22917778007DBF8B /* neonMessage */ = {
+			isa = PBXGroup;
+			children = (
+				231728AA22918A3B007DBF8B /* neonMessage.entitlements */,
+				2317289022917778007DBF8B /* MessagesViewController.swift */,
+				2317289222917778007DBF8B /* MainInterface.storyboard */,
+				231728952291777A007DBF8B /* Assets.xcassets */,
+				231728972291777A007DBF8B /* Info.plist */,
+				231728A4229181D3007DBF8B /* IconClassifier.mlmodel */,
+				2317289E22917FDF007DBF8B /* HourBlockCell.swift */,
+				231728A022918008007DBF8B /* AgendaItem.swift */,
+				231728A22291802C007DBF8B /* Int+Ext.swift */,
+				231728A6229188BC007DBF8B /* DataGateway.swift */,
+				231728A822918951007DBF8B /* CalendarGateway.swift */,
+				231728AC22918F7E007DBF8B /* UIViewX.swift */,
+			);
+			path = neonMessage;
+			sourceTree = "<group>";
+		};
 		2338BEAF220A7840004F288F = {
 			isa = PBXGroup;
 			children = (
@@ -385,6 +448,7 @@
 				2395A966224AE78C0007D6F2 /* neonWatch */,
 				2395A975224AE78D0007D6F2 /* neonWatch Extension */,
 				230D09A1224E7F4300C103CC /* neonSiri */,
+				2317288F22917778007DBF8B /* neonMessage */,
 				2338BEB9220A7840004F288F /* Products */,
 				4B7EB119015E82801222CD3A /* Pods */,
 				CBE1FB35023C3D4B2AC08158 /* Frameworks */,
@@ -401,6 +465,7 @@
 				2395A965224AE78C0007D6F2 /* neonWatch.app */,
 				2395A971224AE78D0007D6F2 /* neonWatch Extension.appex */,
 				230D09A0224E7F4300C103CC /* neonSiri.appex */,
+				2317288C22917778007DBF8B /* neonMessage.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -532,6 +597,7 @@
 				9076E2F3ADB2E623D12BBF3D /* Pods_neonTests.framework */,
 				F07358A92310DC9C6BA03B89 /* Pods_neonUITests.framework */,
 				2395A94D224AE1750007D6F2 /* NotificationCenter.framework */,
+				2317288D22917778007DBF8B /* Messages.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -556,6 +622,23 @@
 			productReference = 230D09A0224E7F4300C103CC /* neonSiri.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		2317288B22917778007DBF8B /* neonMessage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2317289B2291777A007DBF8B /* Build configuration list for PBXNativeTarget "neonMessage" */;
+			buildPhases = (
+				2317288822917778007DBF8B /* Sources */,
+				2317288922917778007DBF8B /* Frameworks */,
+				2317288A22917778007DBF8B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = neonMessage;
+			productName = neonMessage;
+			productReference = 2317288C22917778007DBF8B /* neonMessage.appex */;
+			productType = "com.apple.product-type.app-extension.messages";
+		};
 		2338BEB7220A7840004F288F /* neon */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2338BEE3220A7841004F288F /* Build configuration list for PBXNativeTarget "neon" */;
@@ -575,6 +658,7 @@
 				23020E2E2273AC6200B03C8E /* PBXTargetDependency */,
 				2395A957224AE1750007D6F2 /* PBXTargetDependency */,
 				230D09A6224E7F4300C103CC /* PBXTargetDependency */,
+				231728992291777A007DBF8B /* PBXTargetDependency */,
 			);
 			name = neon;
 			productName = neon;
@@ -692,6 +776,17 @@
 							};
 						};
 					};
+					2317288B22917778007DBF8B = {
+						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
+					};
 					2338BEB7220A7840004F288F = {
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
@@ -766,6 +861,7 @@
 				2395A964224AE78C0007D6F2 /* neonWatch */,
 				2395A970224AE78D0007D6F2 /* neonWatch Extension */,
 				230D099F224E7F4300C103CC /* neonSiri */,
+				2317288B22917778007DBF8B /* neonMessage */,
 			);
 		};
 /* End PBXProject section */
@@ -775,6 +871,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2317288A22917778007DBF8B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				231728962291777A007DBF8B /* Assets.xcassets in Resources */,
+				2317289422917778007DBF8B /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -945,6 +1050,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2317288822917778007DBF8B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				231728A922918951007DBF8B /* CalendarGateway.swift in Sources */,
+				231728AD22918F7E007DBF8B /* UIViewX.swift in Sources */,
+				231728A7229188BC007DBF8B /* DataGateway.swift in Sources */,
+				231728A122918008007DBF8B /* AgendaItem.swift in Sources */,
+				2317289122917778007DBF8B /* MessagesViewController.swift in Sources */,
+				2317289F22917FDF007DBF8B /* HourBlockCell.swift in Sources */,
+				231728A32291802C007DBF8B /* Int+Ext.swift in Sources */,
+				231728A5229181D3007DBF8B /* IconClassifier.mlmodel in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2338BEB4220A7840004F288F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1032,6 +1152,11 @@
 			target = 230D099F224E7F4300C103CC /* neonSiri */;
 			targetProxy = 230D09A5224E7F4300C103CC /* PBXContainerItemProxy */;
 		};
+		231728992291777A007DBF8B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2317288B22917778007DBF8B /* neonMessage */;
+			targetProxy = 231728982291777A007DBF8B /* PBXContainerItemProxy */;
+		};
 		2338BED1220A7841004F288F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2338BEB7220A7840004F288F /* neon */;
@@ -1055,6 +1180,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		2317289222917778007DBF8B /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2317289322917778007DBF8B /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		2338BEBF220A7840004F288F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1125,6 +1258,50 @@
 					"@executable_path/../../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.neonSiri;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2317289C2291777A007DBF8B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_ENTITLEMENTS = neonMessage/neonMessage.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 577WSH643L;
+				INFOPLIST_FILE = neonMessage/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.neonMessage;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2317289D2291777A007DBF8B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_ENTITLEMENTS = neonMessage/neonMessage.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 577WSH643L;
+				INFOPLIST_FILE = neonMessage/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.neonMessage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1514,6 +1691,15 @@
 			buildConfigurations = (
 				230D09A9224E7F4300C103CC /* Debug */,
 				230D09AA224E7F4300C103CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2317289B2291777A007DBF8B /* Build configuration list for PBXNativeTarget "neonMessage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2317289C2291777A007DBF8B /* Debug */,
+				2317289D2291777A007DBF8B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

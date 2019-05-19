@@ -210,6 +210,13 @@ extension DayViewController: TableViewReorderDelegate {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		guard let block = blocks[indexPath.section]?[indexPath.row] else { return }
 		
+		print("You selected \(block.hour) and it is \(Calendar.current.component(.hour, from: Date()))")
+		
+		if block.hour < Calendar.current.component(.hour, from: Date()) {
+			tableView.reloadData()
+			return
+		}
+		
 		if !block.isEmpty { showAgendaOptionsDialog(for: block, at: indexPath) }
     }
     

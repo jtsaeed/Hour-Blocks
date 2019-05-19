@@ -7,7 +7,7 @@
     {
       "idiom" : "universal",
       "color" : {
-        "color-space" : "srgb",
+        "color-space" : "display-p3",
         "components" : {
           "red" : "0xDD",
           "alpha" : "1.000",
