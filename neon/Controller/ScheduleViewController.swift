@@ -16,7 +16,9 @@ import Toaster
 import WatchConnectivity
 import SwiftReorder
 
-class DayViewController: UITableViewController {
+class ScheduleViewController: UITableViewController, Storyboarded {
+	
+	weak var coordinator: ScheduleCoordinator?
 	
 	var session: WCSession?
 	
@@ -64,13 +66,13 @@ class DayViewController: UITableViewController {
     }
 	
 	@IBAction func swipedLeft(_ sender: Any) {
-		tabBarController?.selectedIndex = 1
+		coordinator?.swipeToSettings()
 	}
 }
 
 // MARK: - Functionality
 
-extension DayViewController {
+extension ScheduleViewController {
     
     @objc func loadAgendaItems() {
         DataGateway.shared.fetchAgendaItems { (todaysAgendaItems, tomorrowsAgendaItems, success) in
@@ -180,7 +182,7 @@ extension DayViewController {
 
 // MARK: - Table View
 
-extension DayViewController: TableViewReorderDelegate {
+extension ScheduleViewController: TableViewReorderDelegate {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 112
@@ -289,7 +291,7 @@ extension DayViewController: TableViewReorderDelegate {
 
 // MARK: - Dialogs
 
-extension DayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
+extension ScheduleViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
     
     func showAddAgendaDialog(for block: Block?, at indexPath: IndexPath) {
         let alert = self.storyboard?.instantiateViewController(withIdentifier: "AddAgendaAlert") as! AddAgendAlertViewController
@@ -397,7 +399,7 @@ extension DayViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate {
 
 // MARK: - UI
 
-extension DayViewController {
+extension ScheduleViewController {
     
     func initialiseUI() {
         generateEmptyCards()
@@ -493,7 +495,7 @@ extension DayViewController {
 
 // MARK: - Watch
 
-extension DayViewController: WCSessionDelegate {
+extension ScheduleViewController: WCSessionDelegate {
 	
 	func copyToWatch(data blocks: [Block]) {
 		var watchAgendaItems = [Int: String]()

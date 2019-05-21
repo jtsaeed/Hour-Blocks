@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ToDoViewController: UIViewController {
+class ToDoViewController: UIViewController, Storyboarded {
+	
+	weak var coordinator: ToDoCoordinator?
 	
 	var items = [ToDoItem]() {
 		didSet {

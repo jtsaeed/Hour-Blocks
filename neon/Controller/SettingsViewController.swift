@@ -9,7 +9,9 @@
 import UIKit
 import EventKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, Storyboarded {
+	
+	weak var coordinator: SettingsCoordinator?
 	
 	@IBOutlet weak var tableView: UITableView!
 	
@@ -28,7 +30,7 @@ class SettingsViewController: UIViewController {
     }
 	
 	@IBAction func swipedRight(_ sender: Any) {
-		tabBarController?.selectedIndex = 0
+		coordinator?.swipeToSchedule()
 	}
 }
 

@@ -113,7 +113,11 @@ struct ImportedCalendarEvent {
 		} else if startTime > Calendar.current.component(.hour, from: event.endDate) {
 			endTime = 23
 		} else {
-            endTime = Calendar.current.component(.hour, from: event.endDate) - 1
+			if Calendar.current.component(.minute, from: event.endDate) == 0 {
+				endTime = Calendar.current.component(.hour, from: event.endDate) - 1
+			} else {
+            	endTime = Calendar.current.component(.hour, from: event.endDate)
+			}
         }
     }
 }
