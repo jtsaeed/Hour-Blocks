@@ -212,15 +212,7 @@
                             <outletCollection property="gestureRecognizers" destination="mBA-sa-hmd" appends="YES" id="Olv-dp-dLl"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Schedule" image="today_apps" id="p0w-Ow-aZI"/>
                     <navigationItem key="navigationItem" title="Today" id="bKj-dD-k3p"/>
-                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="oaz-ri-3N2">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <connections>
-                            <action selector="pulledToRefresh:" destination="63b-M3-lej" eventType="valueChanged" id="5V6-go-Ztx"/>
-                        </connections>
-                    </refreshControl>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
@@ -378,7 +370,7 @@
             </objects>
             <point key="canvasLocation" x="3806" y="1165"/>
         </scene>
-        <!--To Do-->
+        <!--To Do View Controller-->
         <scene sceneID="rz2-Gx-EbN">
             <objects>
                 <viewController storyboardIdentifier="ToDoViewController" id="LQf-xV-zKZ" customClass="ToDoViewController" customModule="neon" customModuleProvider="target" sceneMemberID="viewController">
@@ -523,7 +515,6 @@
                             <outletCollection property="gestureRecognizers" destination="7ia-PD-vKE" appends="YES" id="lLf-2i-qGH"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="To Do" image="list" id="4Ep-WE-jMp"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zCg-G3-wvu" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="left" id="7ia-PD-vKE">
@@ -534,7 +525,7 @@
             </objects>
             <point key="canvasLocation" x="2938" y="474"/>
         </scene>
-        <!--Settings-->
+        <!--Settings View Controller-->
         <scene sceneID="znv-Rr-dTd">
             <objects>
                 <viewController storyboardIdentifier="SettingsViewController" id="Cht-JT-ql6" customClass="SettingsViewController" customModule="neon" customModuleProvider="target" sceneMemberID="viewController">
@@ -591,7 +582,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZV-Ab-cF5">
                                                     <rect key="frame" x="32" y="3.6666666666666679" width="311" height="31.000000000000004"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calendar Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SNS-wj-A4r">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calendar Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="SNS-wj-A4r">
                                                             <rect key="frame" x="0.0" y="0.0" width="262" height="31"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                             <nil key="textColor"/>
@@ -729,7 +720,6 @@
                             <outletCollection property="gestureRecognizers" destination="ajQ-3B-l5r" appends="YES" id="094-pf-Rwt"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="1" title="Settings" image="settings" id="9ff-x3-12v"/>
                     <connections>
                         <outlet property="tableView" destination="oWE-sR-rg8" id="0Sa-xc-JxW"/>
                     </connections>
@@ -746,11 +736,8 @@
     </scenes>
     <resources>
         <image name="education" width="48" height="48"/>
-        <image name="list" width="30" height="30"/>
-        <image name="settings" width="30" height="30"/>
-        <image name="today_apps" width="30" height="30"/>
         <namedColor name="main">
-            <color red="0.99607843137254903" green="0.6705882352941176" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94509803921568625" green="0.68235294117647061" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="mainLight">
             <color red="0.96470588235294119" green="0.96078431372549022" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

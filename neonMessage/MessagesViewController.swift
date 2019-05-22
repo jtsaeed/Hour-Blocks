@@ -23,7 +23,8 @@ class MessagesViewController: MSMessagesAppViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		generateCards()
+		blocks = DataGateway.shared.loadBlocks()[Day.today.rawValue]!
+		DispatchQueue.main.async { self.tableView.reloadData() }
     }
     
     // MARK: - Conversation Handling
@@ -74,15 +75,6 @@ class MessagesViewController: MSMessagesAppViewController {
     
         // Use this method to finalize any behaviors associated with the change in presentation style.
     }
-	
-	func generateCards() {
-		DataGateway.shared.fetchAgendaItems { (agendaItems, success) in
-			for hour in 0...23 {
-				self.blocks.append(Block(hour: hour, agendaItem: success ? agendaItems[hour] : nil))
-			}
-			DispatchQueue.main.async { self.tableView.reloadData() }
-		}
-	}
 	
 	func createMessage(for block: Block) {
 		let layout = MSMessageTemplateLayout()

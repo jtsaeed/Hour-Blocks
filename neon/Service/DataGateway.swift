@@ -9,124 +9,180 @@
 import Foundation
 import CloudKit
 import Firebase
+import CoreData
 
 class DataGateway {
 	
     static let shared = DataGateway()
 	
-    func fetchAgendaItems(completion: @escaping (_ todaysAgendaItems: [Int: AgendaItem], _ tomorrowsAgendaItems: [Int: AgendaItem], _ success: Bool) -> ()) {
-        var todaysAgendaItems = [Int: AgendaItem]()
-        var tomorrowsAgendaItems = [Int: AgendaItem]()
+	lazy var persistentContainer: NSPersistentContainer = {
+		let container = NSHourBlocksPersistentContainer(name: "neon")
+		container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+			if let error = error as NSError? {
+				fatalError("Unresolved error \(error), \(error.userInfo)")
+			}
+		})
+		return container
+	}()
+	
+	func saveContext() {
+		let context = persistentContainer.viewContext
+		if context.hasChanges {
+			do {
+				try context.save()
+			} catch {
+				print("Error saving")
+			}
+		}
+	}
+}
+
+// MARK: - Blocks
+
+extension DataGateway {
+	
+	func loadBlocks() -> [Int: [Block]] {
+		// Initialise the blocks data structure
+		var blocks = [Int: [Block]]()
+		blocks[Day.today.rawValue] = [Block]()
+		blocks[Day.tomorrow.rawValue] = [Block]()
 		
-        if CalendarGateway.shared.hasPermission() {
-            for event in CalendarGateway.shared.importTodaysEvents() {
-                for i in event.startTime...event.endTime {
-					print("Found event that starts at \(event.startTime) and ends at \(event.endTime)")
-                    var agendaItem = AgendaItem(title: event.title)
-                    agendaItem.icon = "calendar"
-                    todaysAgendaItems[i] = agendaItem
-                }
-            }
+		// Initialise the agenda items data structure that will be fed into the blocks
+		var todayAgendaItems = [Int: AgendaItem]()
+		var tomorrowAgendaItems = [Int: AgendaItem]()
+		
+		// Pull all the calendar events
+		if CalendarGateway.shared.hasPermission() {
+			for event in CalendarGateway.shared.importTodaysEvents() {
+				for i in event.startTime...event.endTime {
+					var agendaItem = AgendaItem(title: event.title)
+					agendaItem.icon = "calendar"
+					todayAgendaItems[i] = agendaItem
+				}
+			}
 			
-            for event in CalendarGateway.shared.importTomorrowsEvents() {
-                for i in event.startTime...event.endTime {
-                    var agendaItem = AgendaItem(title: event.title)
-                    agendaItem.icon = "calendar"
-                    tomorrowsAgendaItems[i] = agendaItem
-                }
-            }
-        }
+			for event in CalendarGateway.shared.importTomorrowsEvents() {
+				for i in event.startTime...event.endTime {
+					var agendaItem = AgendaItem(title: event.title)
+					agendaItem.icon = "calendar"
+					tomorrowAgendaItems[i] = agendaItem
+				}
+			}
+		}
 		
-        let database = CKContainer.default().privateCloudDatabase
-        let query = CKQuery(recordType: "AgendaRecord", predicate: NSPredicate(value: true))
-		
-        database.perform(query, inZoneWith: nil) { (records, error) in
-            if error == nil {
-                records?.forEach({ (record) in
-                    guard let id = record.value(forKey: "id") as? String else { return }
-                    guard let title = record.value(forKey: "title") as? String else { return }
-                    guard let hour = record.value(forKey: "hour") as? Int else { return }
-                    guard let day = record.value(forKey: "day") as? Date else { return }
-					
-                    // Only pull the tasks that are in today and aren't already on device
-                    if Calendar.current.isDateInToday(day) {
-                        todaysAgendaItems[hour] = AgendaItem(with: id, and: title)
-                    } else if Calendar.current.isDateInTomorrow(day) {
-                        tomorrowsAgendaItems[hour] = AgendaItem(with: id, and: title)
-                    }
-                })
+		// Pull all the agenda items from Core Data
+		let request = NSFetchRequest<NSFetchRequestResult>(entityName: "AgendaEntity")
+		request.returnsObjectsAsFaults = false
+		do {
+			let result = try persistentContainer.viewContext.fetch(request)
+			for data in result as! [NSManagedObject] {
+				guard let day = data.value(forKey: "day") as? Date else { continue }
+				guard let hour = data.value(forKey: "hour") as? Int else { continue }
+				guard let title = data.value(forKey: "title") as? String else { continue }
+				guard let id = data.value(forKey: "id") as? String else { continue }
 				
-                completion(todaysAgendaItems, tomorrowsAgendaItems, true)
-            } else {
-                completion(todaysAgendaItems, tomorrowsAgendaItems, false)
-            }
-        }
-    }
-	
-    func save(_ agendaItem: AgendaItem, for hour: Int, today: Bool) {
-        let database = CKContainer.default().privateCloudDatabase
-		
-        let record = CKRecord(recordType: "AgendaRecord")
-        record.setObject((today ? Date() : Calendar.current.date(byAdding: .day, value: 1, to: Date())!) as CKRecordValue, forKey: "day")
-        record.setObject(agendaItem.id as CKRecordValue, forKey: "id")
-        record.setObject(agendaItem.title as CKRecordValue, forKey: "title")
-        record.setObject(hour as CKRecordValue, forKey: "hour")
-		
-        database.save(record) { (record, error) in
-            if error == nil {
-				AnalyticsGateway.shared.logHourBlock(for: agendaItem.title)
-				self.incrementTotalAgendaCount()
+				// Only pull the agenda items that are in today/tomorrow, delete any others
+				if Calendar.current.isDateInToday(day) {
+					todayAgendaItems[hour] = AgendaItem(with: id, and: title)
+				} else if Calendar.current.isDateInTomorrow(day) {
+					tomorrowAgendaItems[hour] = AgendaItem(with: id, and: title)
+				} else {
+					persistentContainer.viewContext.delete(data)
+				}
 			}
-        }
-    }
-	
-    func delete(_ agendaItem: AgendaItem) {
-        let database = CKContainer.default().privateCloudDatabase
-        let query = CKQuery(recordType: "AgendaRecord", predicate: NSPredicate(value: true))
+		} catch {
+			print("Failed loading from Core Data")
+		}
 		
-        database.perform(query, inZoneWith: nil) { (records, error) in
-            records?.forEach({ (record) in
-                guard let id = record.value(forKey: "id") as? String else { return }
-                if id == agendaItem.id {
-                    database.delete(withRecordID: record.recordID, completionHandler: { (recordID, error) in })
-                }
-            })
-        }
-    }
-	
-    func deletePastAgendaRecords() {
-        let database = CKContainer.default().privateCloudDatabase
-        let query = CKQuery(recordType: "AgendaRecord", predicate: NSPredicate(value: true))
+		// Generate blocks from agenda items
+		for hour in 0...23 {
+			blocks[Day.today.rawValue]?.append(Block(hour: hour, agendaItem: todayAgendaItems[hour]))
+			blocks[Day.tomorrow.rawValue]?.append(Block(hour: hour, agendaItem: tomorrowAgendaItems[hour]))
+		}
 		
-        database.perform(query, inZoneWith: nil) { (records, error) in
-			if error == nil {
-            	records?.forEach({ (record) in
-                	guard let day = record.value(forKey: "day") as? Date else { return }
-					
-                	if (!Calendar.current.isDateInToday(day) && !Calendar.current.isDateInTomorrow(day)) {
-                    	database.delete(withRecordID: record.recordID, completionHandler: { (recordID, error) in })
-                	}
-				})
+		return blocks
+	}
+	
+	func save(_ agendaItem: AgendaItem, for hour: Int, today: Bool) {
+		let entity = NSEntityDescription.entity(forEntityName: "AgendaEntity", in: persistentContainer.viewContext)
+		let newAgendaItem = NSManagedObject(entity: entity!, insertInto: persistentContainer.viewContext)
+		
+		newAgendaItem.setValue(today ? Date() : Calendar.current.date(byAdding: .day, value: 1, to: Date())!, forKey: "day")
+		newAgendaItem.setValue(hour, forKey: "hour")
+		newAgendaItem.setValue(agendaItem.title, forKey: "title")
+		newAgendaItem.setValue(agendaItem.id, forKey: "id")
+		
+		saveContext()
+	}
+	
+	func delete(_ agendaItem: AgendaItem) {
+		let request = NSFetchRequest<NSFetchRequestResult>(entityName: "AgendaEntity")
+		request.returnsObjectsAsFaults = false
+		
+		do {
+			let result = try persistentContainer.viewContext.fetch(request)
+			for data in result as! [NSManagedObject] {
+				guard let id = data.value(forKey: "id") as? String else { continue }
+				
+				if agendaItem.id == id {
+					persistentContainer.viewContext.delete(data)
+				}
 			}
-        }
-    }
+		} catch {
+			print("Failed loading")
+		}
+	}
+}
+
+// MARK: - Misc
+
+extension DataGateway {
 	
-    func getTotalAgendaCount() -> Int {
-        guard let totalAgendaCount = UserDefaults.standard.object(forKey: "totalAgendaCount") as? Int else {
-            return 0
-        }
-        return totalAgendaCount
-    }
+	func hasAppBeenUpdated() -> Bool {
+		let currentVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+		let versionOfLastRun = UserDefaults.standard.object(forKey: "VersionOfLastRun") as? String
+		
+		UserDefaults.standard.set(currentVersion, forKey: "VersionOfLastRun")
+		UserDefaults.standard.synchronize()
+		
+		return versionOfLastRun != nil && versionOfLastRun != currentVersion
+	}
 	
-    private func incrementTotalAgendaCount() {
-        let totalAgendaCount = UserDefaults.standard.object(forKey: "totalAgendaCount") as? Int
+	func getTotalAgendaCount() -> Int {
+		guard let totalAgendaCount = UserDefaults.standard.object(forKey: "totalAgendaCount") as? Int else {
+			return 0
+		}
+		return totalAgendaCount
+	}
+	
+	private func incrementTotalAgendaCount() {
+		let totalAgendaCount = UserDefaults.standard.object(forKey: "totalAgendaCount") as? Int
 		
-        if totalAgendaCount == nil {
-            UserDefaults.standard.set(1, forKey: "totalAgendaCount")
-        } else {
-            UserDefaults.standard.set(totalAgendaCount! + 1, forKey: "totalAgendaCount")
-        }
+		if totalAgendaCount == nil {
+			UserDefaults.standard.set(1, forKey: "totalAgendaCount")
+		} else {
+			UserDefaults.standard.set(totalAgendaCount! + 1, forKey: "totalAgendaCount")
+		}
 		
-        UserDefaults.standard.synchronize()
-    }
+		UserDefaults.standard.synchronize()
+	}
+	
+	func saveEnabledCalendars(_ calendars: [String: Bool]) {
+		UserDefaults.standard.set(calendars, forKey: "enabledCalendars")
+		UserDefaults.standard.synchronize()
+	}
+	
+	func loadEnabledCalendars() -> [String: Bool]? {
+		return UserDefaults.standard.dictionary(forKey: "enabledCalendars") as? [String: Bool]
+	}
+}
+
+// MARK: - Custom Persistent Container
+class NSHourBlocksPersistentContainer: NSPersistentContainer {
+	
+	override open class func defaultDirectoryURL() -> URL {
+		var storeURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.evh98.neon")
+		storeURL = storeURL?.appendingPathComponent("neon.sqlite")
+		return storeURL!
+	}
 }

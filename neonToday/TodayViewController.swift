@@ -12,13 +12,18 @@ import NotificationCenter
 class TodayViewController: UIViewController, NCWidgetProviding {
         
     @IBOutlet weak var label: UILabel!
+	
+	var blocks = [Int: [Block]]() {
+		didSet {
+			blocks[Day.today.rawValue] = blocks[Day.today.rawValue]?.filter { $0.hour >= Calendar.current.component(.hour, from: Date()) }
+		}
+	}
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        DataGateway.shared.fetchCurrentAgendaItem { (agendaItem) in
-            self.setLabel(for: agendaItem)
-        }
+		
+		self.blocks = DataGateway.shared.loadBlocks()
+		setLabel(for: blocks[Day.today.rawValue]?.first?.agendaItem)
     }
     
     func setLabel(for agendaItem: AgendaItem?) {

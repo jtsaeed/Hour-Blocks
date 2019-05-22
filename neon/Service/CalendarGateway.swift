@@ -55,7 +55,7 @@ class CalendarGateway {
 		if !today { tomorrowsAllDayEvent = nil }
 		
         for storedEvent in eventStore.events(matching: predicate) {
-            let importedCalendarEvent = ImportedCalendarEvent(from: storedEvent)
+            let importedCalendarEvent = ImportedCalendarEvent(from: storedEvent, today: today)
             
             if (isAllDay(event: importedCalendarEvent)) {
 				if today {
@@ -74,7 +74,7 @@ class CalendarGateway {
 	private func getEnabledCalendars() -> [EKCalendar] {
 		var enabledCalendars = [EKCalendar]()
 		
-		if let loadedEnabledCalenders = StorageGateway.shared.loadEnabledCalendars() {
+		if let loadedEnabledCalenders = DataGateway.shared.loadEnabledCalendars() {
 			for loadedEnabledCalender in loadedEnabledCalenders {
 				if loadedEnabledCalender.value == true {
 					if let enabledCalendar = eventStore.calendar(withIdentifier: loadedEnabledCalender.key) {
@@ -94,30 +94,45 @@ class CalendarGateway {
 	}
     
     func isAllDay(event: ImportedCalendarEvent) -> Bool {
-        return event.startTime == 0 && event.endTime == 22
+        return event.startTime == 0 && event.endTime == 23
     }
 }
 
 struct ImportedCalendarEvent {
     
     let title: String
-    let startTime: Int
-    let endTime: Int
+    var startTime: Int
+    var endTime: Int
     
-    init(from event: EKEvent) {
+	init(from event: EKEvent, today: Bool) {
         title = event.title
-        startTime = Calendar.current.component(.hour, from: event.startDate)
-        
-        if startTime == Calendar.current.component(.hour, from: event.endDate) {
-            endTime = startTime
-		} else if startTime > Calendar.current.component(.hour, from: event.endDate) {
-			endTime = 23
-		} else {
-			if Calendar.current.component(.minute, from: event.endDate) == 0 {
-				endTime = Calendar.current.component(.hour, from: event.endDate) - 1
+		startTime = Calendar.current.component(.hour, from: event.startDate)
+		endTime = Calendar.current.component(.hour, from: event.endDate)
+		
+		if today {
+			if startTime > Calendar.current.component(.hour, from: event.endDate) {
+				endTime = 23
+			} else if startTime == Calendar.current.component(.hour, from: event.endDate) {
+            	endTime = startTime
 			} else {
-            	endTime = Calendar.current.component(.hour, from: event.endDate)
+				if Calendar.current.component(.minute, from: event.endDate) == 0 {
+					endTime = Calendar.current.component(.hour, from: event.endDate) - 1
+				} else {
+            		endTime = Calendar.current.component(.hour, from: event.endDate)
+				}
+        	}
+		} else {
+			if startTime > Calendar.current.component(.hour, from: event.endDate) {
+				startTime = 0
+			} else if startTime == Calendar.current.component(.hour, from: event.endDate) {
+				endTime = startTime
+			} else {
+				if Calendar.current.component(.minute, from: event.endDate) == 0 {
+					endTime = Calendar.current.component(.hour, from: event.endDate) - 1
+				} else {
+					endTime = Calendar.current.component(.hour, from: event.endDate)
+				}
 			}
-        }
+		}
     }
 }

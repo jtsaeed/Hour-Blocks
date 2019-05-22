@@ -74,3 +74,21 @@ struct AgendaItem {
         return false
     }
 }
+
+struct Block {
+	
+	let hour: Int
+	var agendaItem: AgendaItem?
+	var isEmpty: Bool {
+		return agendaItem == nil
+	}
+	
+	init(hour: Int, agendaItem: AgendaItem?) {
+		self.hour = hour
+		self.agendaItem = agendaItem
+	}
+}
+
+enum Day: Int {
+	case today = 0, tomorrow = 1
+}

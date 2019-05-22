@@ -26,7 +26,7 @@ class SettingsViewController: UIViewController, Storyboarded {
 		tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 32, right: 0)
 		
 		calendars = CalendarGateway.shared.getAllCalendars().sorted(by: { $0.title < $1.title })
-		enabledCalendars = StorageGateway.shared.loadEnabledCalendars()
+		enabledCalendars = DataGateway.shared.loadEnabledCalendars()
     }
 	
 	@IBAction func swipedRight(_ sender: Any) {
@@ -121,7 +121,7 @@ extension SettingsViewController: CalendarSettingDelegate {
 		
 		enabledCalendars?[identifier] = status
 		
-		StorageGateway.shared.saveEnabledCalendars(enabledCalendars!)
+		DataGateway.shared.saveEnabledCalendars(enabledCalendars!)
 	}
 	
 	private func initialiseEnabledCalendars() {

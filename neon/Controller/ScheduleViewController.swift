@@ -33,36 +33,20 @@ class ScheduleViewController: UITableViewController, Storyboarded {
         
         initialiseUI()
 		setupWCSession()
-        NotificationCenter.default.addObserver(self, selector: #selector(loadAgendaItems), name: Notification.Name("agendaUpdate"), object: nil)
-        DataGateway.shared.deletePastAgendaRecords()
+		NotificationCenter.default.addObserver(self, selector: #selector(loadBlocks), name: Notification.Name("agendaUpdate"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        loadAgendaItems()
+        loadBlocks()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         CalendarGateway.shared.handlePermissions()
-        checkAppUpgrade()
-    }
-	
-    @IBAction func pulledToRefresh(_ sender: UIRefreshControl) {
-        DataGateway.shared.fetchAgendaItems { (todaysAgendaItems, tomorrowsAgendaItems, success) in
-            if success {
-                self.generateCards(from: todaysAgendaItems, and: tomorrowsAgendaItems)
-                DispatchQueue.main.async { sender.endRefreshing() }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-                    self.tableView.reloadData()
-                })
-            } else {
-                self.showConnectionToast()
-                DispatchQueue.main.async { sender.endRefreshing() }
-            }
-        }
+		if DataGateway.shared.hasAppBeenUpdated() { presentWhatsNew() }
     }
 	
 	@IBAction func swipedLeft(_ sender: Any) {
@@ -74,26 +58,9 @@ class ScheduleViewController: UITableViewController, Storyboarded {
 
 extension ScheduleViewController {
     
-    @objc func loadAgendaItems() {
-        DataGateway.shared.fetchAgendaItems { (todaysAgendaItems, tomorrowsAgendaItems, success) in
-            if success {
-                self.generateCards(from: todaysAgendaItems, and: tomorrowsAgendaItems)
-                DispatchQueue.main.async { self.tableView.reloadData() }
-            } else {
-                self.showConnectionToast()
-            }
-        }
-    }
-    
-    func generateCards(from todayAgendaItems: [Int: AgendaItem], and tomorrowAgendaItems: [Int: AgendaItem]) {
-		blocks[Day.today.rawValue] = [Block]()
-		blocks[Day.tomorrow.rawValue] = [Block]()
-        for hour in 0...23 {
-            blocks[Day.today.rawValue]?.append(Block(hour: hour, agendaItem: todayAgendaItems[hour]))
-            blocks[Day.tomorrow.rawValue]?.append(Block(hour: hour, agendaItem: tomorrowAgendaItems[hour]))
-        }
-		
-		copyToWatch(data: blocks[Day.today.rawValue] ?? [Block]())
+    @objc func loadBlocks() {
+		self.blocks = DataGateway.shared.loadBlocks()
+		DispatchQueue.main.async { self.tableView.reloadData() }
     }
     
     func addBlock(for indexPath: IndexPath, with title: String) {
@@ -108,7 +75,6 @@ extension ScheduleViewController {
 		DataGateway.shared.save(newAgendaItem, for: block.hour,
 								today: indexPath.section == Day.today.rawValue)
 		blocks[indexPath.section]?[indexPath.row].agendaItem = newAgendaItem
-		if #available(iOS 12.0, *) { donateInteraction(for: block) }
 
 		// Finishing tasks
 		copyToWatch(data: blocks[Day.today.rawValue] ?? [Block]())
@@ -172,12 +138,6 @@ extension ScheduleViewController {
         
         if count == 10 || count == 25 || count == 50 { SKStoreReviewController.requestReview() }
     }
-    
-    @available(iOS 12.0, *)
-    func donateInteraction(for block: Block) {
-        let interaction = INInteraction(intent: block.intent, response: nil)
-        interaction.donate { error in }
-    }
 }
 
 // MARK: - Table View
@@ -212,9 +172,7 @@ extension ScheduleViewController: TableViewReorderDelegate {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		guard let block = blocks[indexPath.section]?[indexPath.row] else { return }
 		
-		print("You selected \(block.hour) and it is \(Calendar.current.component(.hour, from: Date()))")
-		
-		if block.hour < Calendar.current.component(.hour, from: Date()) {
+		if block.hour < Calendar.current.component(.hour, from: Date()) && indexPath.section == Day.today.rawValue {
 			tableView.reloadData()
 			return
 		}
@@ -402,7 +360,6 @@ extension ScheduleViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate 
 extension ScheduleViewController {
     
     func initialiseUI() {
-        generateEmptyCards()
         setupTableView()
         setStatusBarBackground(as: .white)
     }
@@ -422,28 +379,6 @@ extension ScheduleViewController {
         UIView.animate(withDuration: 0.15) {
             statusBarView.backgroundColor = color
         }
-    }
-    
-    func generateEmptyCards() {
-		blocks[Day.today.rawValue] = [Block]()
-		blocks[Day.tomorrow.rawValue] = [Block]()
-		
-        for hour in 0...23 {
-            blocks[Day.today.rawValue]?.append(Block(hour: hour, agendaItem: nil))
-            blocks[Day.tomorrow.rawValue]?.append(Block(hour: hour, agendaItem: nil))
-        }
-    }
-    
-    func checkAppUpgrade() {
-        let currentVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
-        let versionOfLastRun = UserDefaults.standard.object(forKey: "VersionOfLastRun") as? String
-        
-        if versionOfLastRun != nil && versionOfLastRun != currentVersion {
-            presentWhatsNew()
-        }
-        
-        UserDefaults.standard.set(currentVersion, forKey: "VersionOfLastRun")
-        UserDefaults.standard.synchronize()
     }
     
     func presentWhatsNew() {
@@ -479,17 +414,6 @@ extension ScheduleViewController {
         let whatsNewVC = WhatsNewViewController(whatsNew: whatsNew, configuration: configuration)
         
         self.present(whatsNewVC, animated: true, completion: nil)
-    }
-    
-    func showConnectionToast() {
-        DispatchQueue.main.async {
-            ToastView.appearance().font = .systemFont(ofSize: 17)
-            ToastView.appearance().cornerRadius = 8
-            ToastView.appearance().textInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
-            ToastView.appearance().bottomOffsetPortrait = 64
-            
-            Toast(text: "I'm having some trouble fetching your Hour Blocks from iCloud 😞\nPlease check your network connection", duration: 10).show()
-        }
     }
 }
 

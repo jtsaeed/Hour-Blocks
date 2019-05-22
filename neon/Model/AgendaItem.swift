@@ -114,13 +114,4 @@ struct Block {
         self.hour = hour
         self.agendaItem = agendaItem
     }
-    
-    @available(iOS 12.0, *)
-    var intent: AddAgendaCardIntent {
-        let addAgendaCardIntent = AddAgendaCardIntent()
-        addAgendaCardIntent.hour = hour.getFormattedHour().lowercased()
-        addAgendaCardIntent.hourRaw = hour as NSNumber
-        addAgendaCardIntent.title = agendaItem?.title
-        return addAgendaCardIntent
-    }
 }
