@@ -23,7 +23,7 @@ class MessagesViewController: MSMessagesAppViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		blocks = DataGateway.shared.loadBlocks()[Day.today.rawValue]!
+//		blocks = DataGateway.shared.loadBlocks()[Day.today.rawValue]!
 		DispatchQueue.main.async { self.tableView.reloadData() }
     }
     

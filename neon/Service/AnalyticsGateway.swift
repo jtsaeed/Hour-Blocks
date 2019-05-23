@@ -21,4 +21,8 @@ class AnalyticsGateway {
 	func logFeedback(with text: String) {
 		Analytics.logEvent("feedback", parameters: ["feedback": text])
 	}
+	
+	func logReminder(for time: Int) {
+		Analytics.logEvent("reminder", parameters: ["time": time])
+	}
 }

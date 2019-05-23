@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import CloudKit
-import Firebase
 import CoreData
 
 class DataGateway {
@@ -117,16 +115,13 @@ extension DataGateway {
 	
 	func delete(_ agendaItem: AgendaItem) {
 		let request = NSFetchRequest<NSFetchRequestResult>(entityName: "AgendaEntity")
-		request.returnsObjectsAsFaults = false
+		request.predicate = NSPredicate(format: "id = %@", agendaItem.id)
 		
 		do {
 			let result = try persistentContainer.viewContext.fetch(request)
 			for data in result as! [NSManagedObject] {
-				guard let id = data.value(forKey: "id") as? String else { continue }
-				
-				if agendaItem.id == id {
-					persistentContainer.viewContext.delete(data)
-				}
+				persistentContainer.viewContext.delete(data)
+				saveContext()
 			}
 		} catch {
 			print("Failed loading")
