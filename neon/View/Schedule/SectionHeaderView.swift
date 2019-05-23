@@ -30,7 +30,3 @@ class SectionHeaderView: UIView {
 		}
     }
 }
-
-enum Day: Int {
-    case today = 0, tomorrow = 1
-}

@@ -115,3 +115,7 @@ struct Block {
         self.agendaItem = agendaItem
     }
 }
+
+enum Day: Int {
+	case today = 0, tomorrow = 1
+}
