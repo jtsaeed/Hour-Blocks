@@ -18,11 +18,11 @@ class SectionHeaderView: UIView {
         if type == .today {
             dateLabel.text = Date().getFormattedDate()
 			eventLabel.text = CalendarGateway.shared.todaysAllDayEvent?.title.uppercased() ?? ""
-            titleLabel.text = "Today"
+            titleLabel.text = AppStrings.Schedule.todayHeader
         } else if type == .tomorrow {
             dateLabel.text = Calendar.current.date(byAdding: .day, value: 1, to: Date())!.getFormattedDate()
 			eventLabel.text = CalendarGateway.shared.tomorrowsAllDayEvent?.title.uppercased() ?? ""
-            titleLabel.text = "Tomorrow"
+            titleLabel.text = AppStrings.Schedule.tomorrowHeader
 		} else {
 			dateLabel.text = "9 ITEMS"
 			eventLabel.text = ""

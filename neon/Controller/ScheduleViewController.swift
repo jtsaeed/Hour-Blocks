@@ -307,7 +307,7 @@ extension ScheduleViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate 
             	}
 			}
         }
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+        actionSheet.addAction(UIAlertAction(title: AppStrings.cancel, style: .cancel, handler: { action in
             self.setStatusBarBackground(as: .white)
         }))
         
@@ -340,7 +340,7 @@ extension ScheduleViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate 
             self.addReminder(for: indexPath, timeOffset: 5)
             self.setStatusBarBackground(as: .white)
         }))
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+        actionSheet.addAction(UIAlertAction(title: AppStrings.cancel, style: .cancel, handler: { action in
             self.setStatusBarBackground(as: .white)
         }))
         
@@ -383,26 +383,26 @@ extension ScheduleViewController {
     
     func presentWhatsNew() {
         let whatsNew = WhatsNew(
-            title: "What's New in Version 1.2",
+            title: "What's New in Version 1.3",
             items: [
                 WhatsNew.Item(
-                    title: "Draggable Blocks",
-                    subtitle: "Tap and hold on an hour block to drag it around when your schedule moves around 🏃‍♂️",
+                    title: "iMessage App",
+                    subtitle: "Let your friends and family know what you're up to in just a tap 💬",
                     image: nil
 				),
 				WhatsNew.Item(
-					title: "User Settings",
-					subtitle: "Take literal control of your day by choosing your calendars, just swipe left! 🙌",
+					title: "Icon Improvements",
+					subtitle: "3 new icons, see if you can spot them! In addition, automatic icon generation is now 2x as accurate! 🎨",
 					image: nil
 				),
                 WhatsNew.Item(
-                    title: "Minor Improvements",
-                    subtitle: "The automatic icon generation has been improved and there's some small visual touch ups 🎨",
+                    title: "Stability & Performance",
+                    subtitle: "A lot of things have been rewritten from the ground up to make your Hour Blocks a lot more responsive & reliable- this includes an offline mode! ⚡️",
                     image: nil
                 ),
 				WhatsNew.Item(
-					title: "Fixes",
-					subtitle: "Fixed the crash on launch that many people were experiencing- thank you Hamzah Malik for solving it! 🛠",
+					title: "Minor Improvements",
+					subtitle: "The ability to filter night time hours is here, along with a whole host of fixes",
 					image: nil
 				)
             ]

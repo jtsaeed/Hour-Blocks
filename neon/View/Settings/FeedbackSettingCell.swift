@@ -33,7 +33,7 @@ class FeedbackSettingCell: UITableViewCell, UITextViewDelegate {
 	
 	func textViewDidEndEditing(_ textView: UITextView) {
 		if feedbackField.text.isEmpty {
-			feedbackField.text = "If you have any thoughts about your Hour Blocks experience, let me know here!"
+			feedbackField.text = AppStrings.Settings.feedbackPlaceholder
 			feedbackField.textColor = UIColor(named: "lightGray")
 		}
 	}

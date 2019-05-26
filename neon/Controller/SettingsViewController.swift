@@ -14,6 +14,8 @@ class SettingsViewController: UIViewController, Storyboarded {
 	weak var coordinator: SettingsCoordinator?
 	
 	@IBOutlet weak var tableView: UITableView!
+	@IBOutlet weak var headerLabel: UILabel!
+	@IBOutlet weak var subHeaderLabel: UILabel!
 	
 	var calendars = [EKCalendar]()
 	var enabledCalendars: [String: Bool]?
@@ -24,6 +26,8 @@ class SettingsViewController: UIViewController, Storyboarded {
 		tableView.rowHeight = UITableView.automaticDimension
 		tableView.estimatedRowHeight = UITableView.automaticDimension
 		tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 32, right: 0)
+		headerLabel.text = AppStrings.Settings.header
+		subHeaderLabel.text = AppStrings.Settings.subHeader
 		
 		calendars = CalendarGateway.shared.getAllCalendars().sorted(by: { $0.title < $1.title })
 		enabledCalendars = DataGateway.shared.loadEnabledCalendars()
@@ -54,9 +58,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 		sectionHeader.font = UIFont.boldSystemFont(ofSize: 24)
 		
 		if section == SettingsSection.calendar.rawValue {
-			sectionHeader.text = "Calendars"
+			sectionHeader.text = AppStrings.Settings.calendars
 		} else if section == SettingsSection.feedback.rawValue {
-			sectionHeader.text = "Feedback"
+			sectionHeader.text = AppStrings.Settings.feedback
 		}
 		
 		sectionHeaderView.addSubview(sectionHeader)

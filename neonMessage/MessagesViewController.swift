@@ -76,47 +76,22 @@ class MessagesViewController: MSMessagesAppViewController {
         // Use this method to finalize any behaviors associated with the change in presentation style.
     }
 	
-	override func didSelect(_ message: MSMessage, conversation: MSConversation) {
-		if let message = conversation.selectedMessage {
-			openInMessagingURL(url: message.url!)
-		}
-	}
-	
-	func openInMessagingURL(url: URL){
-			let context = NSExtensionContext()
-			context.open(url, completionHandler: nil)
-			var responder = self as UIResponder?
-			
-			while (responder != nil){
-				if responder?.responds(to: #selector(UIApplication.open(_:options:completionHandler:))) == true{
-					responder?.perform(#selector(UIApplication.open(_:options:completionHandler:)), with: url)
-				}
-				responder = responder!.next
-			}
-	}
-	
 	func createMessage(for block: Block) {
 		let layout = MSMessageTemplateLayout()
 		layout.image = UIImage(named: "test")!
-		layout.caption = block.hour.getFormattedHour()
-		layout.subcaption = block.agendaItem?.title.capitalized
-		layout.trailingCaption = "Tap to add"
+		layout.caption = block.agendaItem?.title.capitalized
+		layout.subcaption = block.hour.getFormattedHour()
 		
 		let message = MSMessage()
 		message.layout = layout
 		
-		if let path = block.agendaItem?.title.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) {
-			message.url = URL(string: "http://hourblocks.jtsaeed.com/\(path)")!
-			savedConversation?.insert(message, completionHandler: { (error) in
-				if error == nil {
-					DispatchQueue.main.async { UINotificationFeedbackGenerator().notificationOccurred(.success) }
-				} else {
-					DispatchQueue.main.async { UINotificationFeedbackGenerator().notificationOccurred(.error) }
-				}
-			})
-		} else {
-			DispatchQueue.main.async { UINotificationFeedbackGenerator().notificationOccurred(.error) }
-		}
+		savedConversation?.insert(message, completionHandler: { (error) in
+			if error == nil {
+				DispatchQueue.main.async { UINotificationFeedbackGenerator().notificationOccurred(.success) }
+			} else {
+				DispatchQueue.main.async { UINotificationFeedbackGenerator().notificationOccurred(.error) }
+			}
+		})
 	}
 }
 

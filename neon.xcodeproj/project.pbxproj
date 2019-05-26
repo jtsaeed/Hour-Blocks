@@ -67,13 +67,14 @@
 		2395A98C224AEABE0007D6F2 /* AgendaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2395A98B224AEABE0007D6F2 /* AgendaItem.swift */; };
 		2395ACFE22959E5F00F561B2 /* neon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEC2220A7840004F288F /* neon.xcdatamodeld */; };
 		2395ACFF2295A3A000F561B2 /* neon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEC2220A7840004F288F /* neon.xcdatamodeld */; };
-		23A3709E2289965B0097BFB6 /* HourBlocksTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A3709D2289965B0097BFB6 /* HourBlocksTabBarController.swift */; };
 		23B63CE1222491050026B9C2 /* CalendarGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B63CE0222491050026B9C2 /* CalendarGateway.swift */; };
 		23C3FBAC228D48E800D20F21 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C3FBAB228D48E800D20F21 /* SettingsViewController.swift */; };
 		23C4D6672296A44200A96C10 /* IconClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 23C4D6662296A44100A96C10 /* IconClassifier.mlmodel */; };
 		23C4D6692296A44F00A96C10 /* DataGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231392A822666FC400DB0ABF /* DataGateway.swift */; };
 		23D41E6C2224127800D909FD /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D41E6B2224127800D909FD /* SectionHeaderView.xib */; };
 		23D41E6E222412FF00D909FD /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D41E6D222412FF00D909FD /* SectionHeaderView.swift */; };
+		23D642FC229B0B3C001E240F /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D642FB229B0B3C001E240F /* AppStrings.swift */; };
+		23D642FD229B1EDA001E240F /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D642FB229B0B3C001E240F /* AppStrings.swift */; };
 		23E45BE2224BA3A9002D01AC /* NotificationsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E45BE1224BA3A9002D01AC /* NotificationsGateway.swift */; };
 		23E8A93C228D587C0046C699 /* CalendarSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E8A93B228D587C0046C699 /* CalendarSettingCell.swift */; };
 		23FAE4782288E549001D9823 /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FAE4772288E549001D9823 /* ToDoViewController.swift */; };
@@ -240,12 +241,12 @@
 		2395A97E224AE78E0007D6F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2395A97F224AE78E0007D6F2 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		2395A98B224AEABE0007D6F2 /* AgendaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaItem.swift; sourceTree = "<group>"; };
-		23A3709D2289965B0097BFB6 /* HourBlocksTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourBlocksTabBarController.swift; sourceTree = "<group>"; };
 		23B63CE0222491050026B9C2 /* CalendarGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGateway.swift; sourceTree = "<group>"; };
 		23C3FBAB228D48E800D20F21 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		23C4D6662296A44100A96C10 /* IconClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = IconClassifier.mlmodel; sourceTree = "<group>"; };
 		23D41E6B2224127800D909FD /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		23D41E6D222412FF00D909FD /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
+		23D642FB229B0B3C001E240F /* AppStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStrings.swift; sourceTree = "<group>"; };
 		23E45BE1224BA3A9002D01AC /* NotificationsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsGateway.swift; sourceTree = "<group>"; };
 		23E8A93B228D587C0046C699 /* CalendarSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSettingCell.swift; sourceTree = "<group>"; };
 		23FAE4772288E549001D9823 /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
@@ -340,7 +341,6 @@
 				2381FD522291DA3F002DE3A0 /* Utility */,
 				2338BEC7220A7841004F288F /* LaunchScreen.storyboard */,
 				2338BEBF220A7840004F288F /* Main.storyboard */,
-				23A3709D2289965B0097BFB6 /* HourBlocksTabBarController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -473,6 +473,7 @@
 				2338BEEC220A78C5004F288F /* UIViewX.swift */,
 				23074FCD220B53AB00B64762 /* UIButtonX.swift */,
 				2314C455228D97C2001C51F2 /* UITextViewX.swift */,
+				23D642FB229B0B3C001E240F /* AppStrings.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1015,8 +1016,8 @@
 				23C3FBAC228D48E800D20F21 /* SettingsViewController.swift in Sources */,
 				2381FD562291DCEC002DE3A0 /* ToDoCoordinator.swift in Sources */,
 				2338BEED220A78C5004F288F /* UIViewX.swift in Sources */,
+				23D642FC229B0B3C001E240F /* AppStrings.swift in Sources */,
 				234C1A0B220C8F9900344316 /* TodayHeaderCell.swift in Sources */,
-				23A3709E2289965B0097BFB6 /* HourBlocksTabBarController.swift in Sources */,
 				2381FD512291DA05002DE3A0 /* AppCoordinator.swift in Sources */,
 				23FAE47C2288EF90001D9823 /* ToDoBlockCell.swift in Sources */,
 				2338BEBE220A7840004F288F /* ScheduleViewController.swift in Sources */,
@@ -1062,6 +1063,7 @@
 				23C4D6692296A44F00A96C10 /* DataGateway.swift in Sources */,
 				233D157F2296ACED00EE56EC /* IconClassifier.mlmodel in Sources */,
 				2395ACFE22959E5F00F561B2 /* neon.xcdatamodeld in Sources */,
+				23D642FD229B1EDA001E240F /* AppStrings.swift in Sources */,
 				233D156F2296A51D00EE56EC /* CalendarGateway.swift in Sources */,
 				2395A951224AE1750007D6F2 /* TodayViewController.swift in Sources */,
 			);

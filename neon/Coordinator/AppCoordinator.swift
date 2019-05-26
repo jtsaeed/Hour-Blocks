@@ -35,12 +35,12 @@ class AppCoordinator: Coordinator {
 		// Initialise schedule tab
 		self.scheduleCoordinator = ScheduleCoordinator()
 		let scheduleViewController = scheduleCoordinator.navigationController
-		scheduleViewController.tabBarItem = UITabBarItem(title: "Schedule", image: UIImage(named: "schedule"), tag: 1)
+		scheduleViewController.tabBarItem = UITabBarItem(title: AppStrings.Schedule.tab, image: UIImage(named: "schedule"), tag: 0)
 		
 		// Initialise settings tab
 		self.settingsCoordinator = SettingsCoordinator()
 		let settingsViewController = settingsCoordinator.navigationController
-		settingsViewController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "settings"), tag: 2)
+		settingsViewController.tabBarItem = UITabBarItem(title: AppStrings.Settings.tab, image: UIImage(named: "settings"), tag: 1)
 		
 		// Add app level coordinator to child coordinators
 		self.toDoCoordinator.appCoordinator = self
@@ -48,8 +48,8 @@ class AppCoordinator: Coordinator {
 		self.settingsCoordinator.appCoordinator = self
 		
 		// Construct the tab bar
-		self.tabBarController.viewControllers = [toDoViewController, scheduleViewController, settingsViewController]
-		self.tabBarController.selectedIndex = 1
+		self.tabBarController.viewControllers = [scheduleViewController, settingsViewController]
+		self.tabBarController.selectedIndex = 0
 	}
 	
 	func swipeToToDo() {
@@ -57,10 +57,10 @@ class AppCoordinator: Coordinator {
 	}
 	
 	func swipeToSchedule() {
-		self.tabBarController.selectedIndex = 1
+		self.tabBarController.selectedIndex = 0
 	}
 	
 	func swipeToSettings() {
-		self.tabBarController.selectedIndex = 2
+		self.tabBarController.selectedIndex = 1
 	}
 }

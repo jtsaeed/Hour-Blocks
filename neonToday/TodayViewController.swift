@@ -31,7 +31,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             if let title = agendaItem?.title {
                 self.label.text = title.capitalized
             } else {
-                self.label.text = "Nothing scheduled"
+                self.label.text = AppStrings.Extensions.Today.nothingScheduled
             }
         }
     }

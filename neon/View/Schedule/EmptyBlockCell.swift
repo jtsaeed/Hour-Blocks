@@ -18,11 +18,16 @@ class EmptyBlockCell: UITableViewCell {
     var delegate: AddAgendaDelegate!
 
 	@IBOutlet weak var time: UILabel!
+	@IBOutlet weak var emptyLabel: UILabel!
+	@IBOutlet weak var addButton: UIButtonX!
 	
     var indexPath: IndexPath!
     
     func build(for hour: Int, at indexPath: IndexPath) {
         time.text = hour.getFormattedHour()
+		emptyLabel.text = AppStrings.Schedule.empty
+		addButton.setTitle(AppStrings.Schedule.add, for: .normal)
+		
         self.indexPath = indexPath
     }
     

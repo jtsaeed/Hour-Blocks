@@ -14,7 +14,9 @@ class AddAgendAlertViewController: UIViewController {
 	@IBOutlet weak var alertView: UIViewX!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var titleLabel: UILabel!
-    
+	@IBOutlet weak var cancelButton: UIButtonX!
+	@IBOutlet weak var doneButton: UIButtonX!
+	
     var delegate: AddAgendaAlertViewDelegate?
     var indexPath: IndexPath!
     var time: String!
@@ -59,10 +61,13 @@ extension AddAgendAlertViewController {
     func setupView() {
         setupInset()
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.25)
-        titleLabel.text = "What's in store at \(time!)?"
+        titleLabel.text = String(format: AppStrings.Schedule.addAgendaTitle, time)
         titleTextField.text = preFilledTitle
 		titleTextField.delegate = self
 		titleTextField.returnKeyType = .done
+		
+		cancelButton.setTitle(AppStrings.cancel, for: .normal)
+		doneButton.setTitle(AppStrings.Schedule.done, for: .normal)
     }
     
     func animateView() {
