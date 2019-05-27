@@ -78,7 +78,7 @@ class MessagesViewController: MSMessagesAppViewController {
 	
 	func createMessage(for block: Block) {
 		let layout = MSMessageTemplateLayout()
-		layout.image = UIImage(named: "test")!
+		layout.image = UIImage(named: "message_\(block.agendaItem!.icon)")!
 		layout.caption = block.agendaItem?.title.capitalized
 		layout.subcaption = block.hour.getFormattedHour()
 		

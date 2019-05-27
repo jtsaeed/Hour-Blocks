@@ -47,6 +47,7 @@
 		233D157F2296ACED00EE56EC /* IconClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 23C4D6662296A44100A96C10 /* IconClassifier.mlmodel */; };
 		234C1A09220C8E9D00344316 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C1A08220C8E9D00344316 /* Date+Ext.swift */; };
 		234C1A0B220C8F9900344316 /* TodayHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C1A0A220C8F9900344316 /* TodayHeaderCell.swift */; };
+		2355CBE9229B2B3C00EA4D46 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2355CBEB229B2B3C00EA4D46 /* Localizable.strings */; };
 		237FFC30224B8FAA000A02C0 /* AgendaCardRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237FFC2E224B8D84000A02C0 /* AgendaCardRowController.swift */; };
 		2381FD4F2291D8F4002DE3A0 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2381FD4E2291D8F4002DE3A0 /* Coordinator.swift */; };
 		2381FD512291DA05002DE3A0 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2381FD502291DA05002DE3A0 /* AppCoordinator.swift */; };
@@ -215,6 +216,8 @@
 		2338BEEE220A78FF004F288F /* HourBlockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourBlockCell.swift; sourceTree = "<group>"; };
 		234C1A08220C8E9D00344316 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		234C1A0A220C8F9900344316 /* TodayHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayHeaderCell.swift; sourceTree = "<group>"; };
+		2355CBEA229B2B3C00EA4D46 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2355CBEC229B2B4800EA4D46 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		237FFC2E224B8D84000A02C0 /* AgendaCardRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaCardRowController.swift; sourceTree = "<group>"; };
 		237FFC31224B909A000A02C0 /* neonWatch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "neonWatch Extension.entitlements"; sourceTree = "<group>"; };
 		2381FD4E2291D8F4002DE3A0 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -474,6 +477,7 @@
 				23074FCD220B53AB00B64762 /* UIButtonX.swift */,
 				2314C455228D97C2001C51F2 /* UITextViewX.swift */,
 				23D642FB229B0B3C001E240F /* AppStrings.swift */,
+				2355CBEB229B2B3C00EA4D46 /* Localizable.strings */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -799,6 +803,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 2338BEAF220A7840004F288F;
 			productRefGroup = 2338BEB9220A7840004F288F /* Products */;
@@ -834,6 +839,7 @@
 				23D41E6C2224127800D909FD /* SectionHeaderView.xib in Resources */,
 				2338BEC9220A7841004F288F /* LaunchScreen.storyboard in Resources */,
 				2338BEC6220A7841004F288F /* Assets.xcassets in Resources */,
+				2355CBE9229B2B3C00EA4D46 /* Localizable.strings in Resources */,
 				230212E1224D3FD200B8FCED /* notification.aif in Resources */,
 				2338BEC1220A7840004F288F /* Main.storyboard in Resources */,
 				23356ED52256676E00541A60 /* GoogleService-Info.plist in Resources */,
@@ -1139,6 +1145,15 @@
 				2338BEC8220A7841004F288F /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		2355CBEB229B2B3C00EA4D46 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2355CBEA229B2B3C00EA4D46 /* en */,
+				2355CBEC229B2B4800EA4D46 /* es */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		2395A952224AE1750007D6F2 /* MainInterface.storyboard */ = {

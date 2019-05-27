@@ -15,50 +15,51 @@ struct AppStrings {
 	struct Schedule {
 		
 		// Title on the tab bar
-		static let tab = "Schedule"
+		static let tab = NSLocalizedString("tabSchedule", comment: "")
 		
 		// Section headers
-		static let todayHeader = "Today"
-		static let tomorrowHeader = "Tomorrow"
+		static let todayHeader = NSLocalizedString("todayHeader", comment: "")
+		static let tomorrowHeader = NSLocalizedString("tomorrowHeader", comment: "")
 		
 		// The empty hour block
-		static let empty = "Empty"
-		static let add = "ADD"
+		static let empty = NSLocalizedString("empty", comment: "")
+		static let add = NSLocalizedString("add", comment: "")
 		
 		// Action sheet options
-		static let edit = "Edit"
-		static let clear = "Clear"
-		static let setReminder = "Set Reminder"
-		static let removeReminder = "Remove Reminder"
-		static let timeBeforeReminder = "%@ minutes before"
+		static let edit = NSLocalizedString("edit", comment: "")
+		static let clear = NSLocalizedString("clear", comment: "")
+		static let setReminder = NSLocalizedString("setReminder", comment: "")
+		static let removeReminder = NSLocalizedString("removeReminder", comment: "")
+		static let timeBeforeReminder = NSLocalizedString("timeBeforeReminder", comment: "")
 		
 		// Add agenda window
-		static let addAgendaTitle = "What's in store at %@?"
-		static let done = "Done"
+		static let addAgendaTitle = NSLocalizedString("addAgendaTitle", comment: "")
+		static let done = NSLocalizedString("done", comment: "")
 	}
 	
 	struct Settings {
 		
 		// Title on the tab bar
-		static let tab = "Settings"
+		static let tab = NSLocalizedString("tabSettings", comment: "")
 		
 		// Header
-		static let header = "Settings"
-		static let subHeader = "TAKE CONTROL"
+		static let header = NSLocalizedString("settingsHeader", comment: "")
+		static let subHeader = NSLocalizedString("settingsSubHeader", comment: "")
 		
 		// Table view headers
-		static let calendars = "Calendars"
-		static let feedback = "Feedback"
-		static let feedbackPlaceholder = "If you have any thoughts about your Hour Blocks experience, let me know here!"
-		static let feedbackSubmit = "Submit feedback"
-		static let twitter = "Follow me on Twitter for updates"
+		static let calendars = NSLocalizedString("calendars", comment: "")
+		static let feedback = NSLocalizedString("feedback", comment: "")
+		static let feedbackPlaceholder = NSLocalizedString("feedbackPlaceholder", comment: "")
+		static let feedbackSubmit = NSLocalizedString("feedbackSubmit", comment: "")
+		static let thankYou = NSLocalizedString("thankYou", comment: "")
+		static let twitter = NSLocalizedString("twitter", comment: "")
 	}
 	
 	struct Extensions {
 		
 		struct Today {
 			
-			static let nothingScheduled = "Nothing scheduled"
+			static let nothingScheduled = NSLocalizedString("nothingScheduled", comment: "")
 		}
 	}
 }

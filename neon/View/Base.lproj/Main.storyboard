@@ -550,7 +550,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCb-gg-fcc">
-                                                <rect key="frame" x="0.0" y="21" width="133" height="40.666666666666657"/>
+                                                <rect key="frame" x="0.0" y="20.999999999999996" width="133" height="40.666666666666657"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -694,6 +694,7 @@
                                         <connections>
                                             <outlet property="feedbackField" destination="i5v-TE-vNT" id="wSa-Jg-Ewq"/>
                                             <outlet property="submitButton" destination="znp-6J-ugu" id="RhB-jA-JBd"/>
+                                            <outlet property="twitterButton" destination="ydc-3b-DSd" id="G9v-5i-I3Z"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -283,11 +283,11 @@ extension ScheduleViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate 
     func showAgendaOptionsDialog(for block: Block, at indexPath: IndexPath) {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        actionSheet.addAction(UIAlertAction(title: "Edit", style: .default, handler: { action in
+        actionSheet.addAction(UIAlertAction(title: AppStrings.Schedule.edit, style: .default, handler: { action in
             self.showAddAgendaDialog(for: block, at: indexPath)
         }))
         if (!isCalendarEvent(at: indexPath)) {
-            actionSheet.addAction(UIAlertAction(title: "Clear", style: .destructive, handler: { action in
+            actionSheet.addAction(UIAlertAction(title: AppStrings.Schedule.clear, style: .destructive, handler: { action in
                 self.removeBlock(for: indexPath)
                 self.setStatusBarBackground(as: .white)
             }))
@@ -295,12 +295,12 @@ extension ScheduleViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate 
 			if indexPath.section == Day.today.rawValue {
             	hasReminderSet(at: indexPath) { (result) in
                 	if result == true {
-                    	actionSheet.addAction(UIAlertAction(title: "Remove Reminder", style: .destructive, handler: { action in
+                    	actionSheet.addAction(UIAlertAction(title: AppStrings.Schedule.removeReminder, style: .destructive, handler: { action in
                 	        self.removeReminder(for: indexPath)
                     	    self.setStatusBarBackground(as: .white)
                     	}))
                 	} else {
-                    	actionSheet.addAction(UIAlertAction(title: "Set Reminder", style: .default, handler: { action in
+                    	actionSheet.addAction(UIAlertAction(title: AppStrings.Schedule.setReminder, style: .default, handler: { action in
                         	self.showReminderOptionsDialog(for: indexPath)
                     	}))
                 	}
@@ -324,19 +324,19 @@ extension ScheduleViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate 
     func showReminderOptionsDialog(for indexPath: IndexPath) {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        actionSheet.addAction(UIAlertAction(title: "60 minutes before", style: .default, handler: { action in
+        actionSheet.addAction(UIAlertAction(title: String(format: AppStrings.Schedule.timeBeforeReminder, 60), style: .default, handler: { action in
             self.addReminder(for: indexPath, timeOffset: 60)
             self.setStatusBarBackground(as: .white)
         }))
-        actionSheet.addAction(UIAlertAction(title: "30 minutes before", style: .default, handler: { action in
+        actionSheet.addAction(UIAlertAction(title: String(format: AppStrings.Schedule.timeBeforeReminder, 30), style: .default, handler: { action in
             self.addReminder(for: indexPath, timeOffset: 30)
             self.setStatusBarBackground(as: .white)
         }))
-        actionSheet.addAction(UIAlertAction(title: "15 minutes before", style: .default, handler: { action in
+        actionSheet.addAction(UIAlertAction(title: String(format: AppStrings.Schedule.timeBeforeReminder, 15), style: .default, handler: { action in
             self.addReminder(for: indexPath, timeOffset: 15)
             self.setStatusBarBackground(as: .white)
         }))
-        actionSheet.addAction(UIAlertAction(title: "5 minutes before", style: .default, handler: { action in
+        actionSheet.addAction(UIAlertAction(title: String(format: AppStrings.Schedule.timeBeforeReminder, 5), style: .default, handler: { action in
             self.addReminder(for: indexPath, timeOffset: 5)
             self.setStatusBarBackground(as: .white)
         }))

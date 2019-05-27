@@ -13,13 +13,19 @@ class FeedbackSettingCell: UITableViewCell, UITextViewDelegate {
 
 	@IBOutlet weak var feedbackField: UITextViewX!
 	@IBOutlet weak var submitButton: UIButtonX!
+	@IBOutlet weak var twitterButton: UIButtonX!
 	
 	func build() {
 		feedbackField.textContainerInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
 		feedbackField.delegate = self
 		feedbackField.textColor = UIColor(named: "lightGray")!
-		submitButton.setTitle("Thank you!", for: .disabled)
+		feedbackField.text = AppStrings.Settings.feedbackPlaceholder
+		
+		submitButton.setTitle(AppStrings.Settings.feedbackSubmit, for: .normal)
+		submitButton.setTitle(AppStrings.Settings.thankYou, for: .disabled)
 		submitButton.setTitleColor(UIColor(named: "gray"), for: .disabled)
+		
+		twitterButton.setTitle(AppStrings.Settings.twitter, for: .normal)
 	}
 
 	func textViewDidBeginEditing(_ textView: UITextView) {
