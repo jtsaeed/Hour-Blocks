@@ -66,8 +66,8 @@ extension AddAgendAlertViewController {
 		titleTextField.delegate = self
 		titleTextField.returnKeyType = .done
 		
-		cancelButton.setTitle(AppStrings.cancel, for: .normal)
-		doneButton.setTitle(AppStrings.Schedule.done, for: .normal)
+		cancelButton.setTitle(AppStrings.cancel.uppercased(), for: .normal)
+		doneButton.setTitle(AppStrings.Schedule.done.uppercased(), for: .normal)
     }
     
     func animateView() {

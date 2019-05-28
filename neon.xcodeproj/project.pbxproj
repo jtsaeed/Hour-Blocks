@@ -22,6 +22,7 @@
 		2317289A2291777A007DBF8B /* neonMessage.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2317288C22917778007DBF8B /* neonMessage.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2317289F22917FDF007DBF8B /* HourBlockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317289E22917FDF007DBF8B /* HourBlockCell.swift */; };
 		231898DD221D92F1005766AF /* AddAgendAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231898DC221D92F1005766AF /* AddAgendAlertViewController.swift */; };
+		232BAE89229D3EF9006C2B73 /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D642FB229B0B3C001E240F /* AppStrings.swift */; };
 		232ED4E0228C93A4008FC4A0 /* AnalyticsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232ED4DF228C93A4008FC4A0 /* AnalyticsGateway.swift */; };
 		2331C5DA228DAC7800068C14 /* FeedbackSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2331C5D9228DAC7800068C14 /* FeedbackSettingCell.swift */; };
 		23356ED52256676E00541A60 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23356ED42256676E00541A60 /* GoogleService-Info.plist */; };
@@ -48,6 +49,9 @@
 		234C1A09220C8E9D00344316 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C1A08220C8E9D00344316 /* Date+Ext.swift */; };
 		234C1A0B220C8F9900344316 /* TodayHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C1A0A220C8F9900344316 /* TodayHeaderCell.swift */; };
 		2355CBE9229B2B3C00EA4D46 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2355CBEB229B2B3C00EA4D46 /* Localizable.strings */; };
+		23693201229D842B00B0C635 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2355CBEB229B2B3C00EA4D46 /* Localizable.strings */; };
+		23693202229D842C00B0C635 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2355CBEB229B2B3C00EA4D46 /* Localizable.strings */; };
+		23693204229D8D3100B0C635 /* OtherSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23693203229D8D3100B0C635 /* OtherSettingCell.swift */; };
 		237FFC30224B8FAA000A02C0 /* AgendaCardRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237FFC2E224B8D84000A02C0 /* AgendaCardRowController.swift */; };
 		2381FD4F2291D8F4002DE3A0 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2381FD4E2291D8F4002DE3A0 /* Coordinator.swift */; };
 		2381FD512291DA05002DE3A0 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2381FD502291DA05002DE3A0 /* AppCoordinator.swift */; };
@@ -218,6 +222,8 @@
 		234C1A0A220C8F9900344316 /* TodayHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayHeaderCell.swift; sourceTree = "<group>"; };
 		2355CBEA229B2B3C00EA4D46 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2355CBEC229B2B4800EA4D46 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		23693200229D54A000B0C635 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		23693203229D8D3100B0C635 /* OtherSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSettingCell.swift; sourceTree = "<group>"; };
 		237FFC2E224B8D84000A02C0 /* AgendaCardRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaCardRowController.swift; sourceTree = "<group>"; };
 		237FFC31224B909A000A02C0 /* neonWatch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "neonWatch Extension.entitlements"; sourceTree = "<group>"; };
 		2381FD4E2291D8F4002DE3A0 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -329,6 +335,8 @@
 			children = (
 				23C4D6662296A44100A96C10 /* IconClassifier.mlmodel */,
 				2338BEC2220A7840004F288F /* neon.xcdatamodeld */,
+				23D642FB229B0B3C001E240F /* AppStrings.swift */,
+				2355CBEB229B2B3C00EA4D46 /* Localizable.strings */,
 				23074FC7220B4A5D00B64762 /* AgendaItem.swift */,
 				23FAE4792288E7BC001D9823 /* ToDoItem.swift */,
 			);
@@ -476,8 +484,6 @@
 				2338BEEC220A78C5004F288F /* UIViewX.swift */,
 				23074FCD220B53AB00B64762 /* UIButtonX.swift */,
 				2314C455228D97C2001C51F2 /* UITextViewX.swift */,
-				23D642FB229B0B3C001E240F /* AppStrings.swift */,
-				2355CBEB229B2B3C00EA4D46 /* Localizable.strings */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -545,6 +551,7 @@
 			children = (
 				23E8A93B228D587C0046C699 /* CalendarSettingCell.swift */,
 				2331C5D9228DAC7800068C14 /* FeedbackSettingCell.swift */,
+				23693203229D8D3100B0C635 /* OtherSettingCell.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -804,6 +811,7 @@
 				en,
 				Base,
 				es,
+				fr,
 			);
 			mainGroup = 2338BEAF220A7840004F288F;
 			productRefGroup = 2338BEB9220A7840004F288F /* Products */;
@@ -827,6 +835,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				231728962291777A007DBF8B /* Assets.xcassets in Resources */,
+				23693202229D842C00B0C635 /* Localizable.strings in Resources */,
 				233D15752296AB8700EE56EC /* Assets.xcassets in Resources */,
 				2317289422917778007DBF8B /* MainInterface.storyboard in Resources */,
 			);
@@ -865,6 +874,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2395A954224AE1750007D6F2 /* MainInterface.storyboard in Resources */,
+				23693201229D842B00B0C635 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1003,6 +1013,7 @@
 				233D157B2296AC5600EE56EC /* Int+Ext.swift in Sources */,
 				2395ACFF2295A3A000F561B2 /* neon.xcdatamodeld in Sources */,
 				233D157E2296ACEC00EE56EC /* IconClassifier.mlmodel in Sources */,
+				232BAE89229D3EF9006C2B73 /* AppStrings.swift in Sources */,
 				233D15722296A67C00EE56EC /* CalendarGateway.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1028,6 +1039,7 @@
 				23FAE47C2288EF90001D9823 /* ToDoBlockCell.swift in Sources */,
 				2338BEBE220A7840004F288F /* ScheduleViewController.swift in Sources */,
 				23074FCE220B53AB00B64762 /* UIButtonX.swift in Sources */,
+				23693204229D8D3100B0C635 /* OtherSettingCell.swift in Sources */,
 				2314C456228D97C2001C51F2 /* UITextViewX.swift in Sources */,
 				2381FD582291DCF5002DE3A0 /* SettingsCoordinator.swift in Sources */,
 				23074FCA220B4B5700B64762 /* Int+Ext.swift in Sources */,
@@ -1152,6 +1164,7 @@
 			children = (
 				2355CBEA229B2B3C00EA4D46 /* en */,
 				2355CBEC229B2B4800EA4D46 /* es */,
+				23693200229D54A000B0C635 /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

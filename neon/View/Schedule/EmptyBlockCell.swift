@@ -26,7 +26,7 @@ class EmptyBlockCell: UITableViewCell {
     func build(for hour: Int, at indexPath: IndexPath) {
         time.text = hour.getFormattedHour()
 		emptyLabel.text = AppStrings.Schedule.empty
-		addButton.setTitle(AppStrings.Schedule.add, for: .normal)
+		addButton.setTitle(AppStrings.Schedule.add.uppercased(), for: .normal)
 		
         self.indexPath = indexPath
     }

@@ -1,0 +1,144 @@
+/* 
+  Localizable.strings
+  neon
+
+  Created by James Saeed on 26/05/2019.
+  Copyright © 2019 James Saeed. All rights reserved.
+*/
+
+/* Global */
+
+"cancel" = "Annuler";
+
+/* Schedule */
+
+"tabSchedule" = "Programme";
+
+"todayHeader" = "Aujourd’hui";
+"tomorrowHeader" = "Demain";
+
+"empty" = "Vide";
+"add" = "Poser";
+
+"edit" = "Modifier";
+"clear" = "Eliminer";
+"setReminder" = "Programmer un rappel";
+"removeReminder" = "Eliminer rappel";
+"timeBeforeReminder" = "%i minutes avant";
+
+"addAgendaTitle" = "Qu’est qu’il se passe à %@?";
+"done" = "Fait";
+
+/* Settings */
+
+"tab" = "Règlages";
+
+"settingsHeader" = "Règlages";
+"settingsSubHeader" = "PRENEZ CONTROL";
+
+"calendars" = "Calendrier";
+"feedback" = "Remarques";
+"feedbackPlaceholder" = "Si tu as des remarques sur ton experience sur Hour Blocks, dis-moi ici!";
+"feedbackSubmit" = "Envoyer remarques";
+"twitter" = "Suivez moi sur Twitter";
+
+/* Icons */
+
+"bank1" = "bank";
+"bank2" = "finances";
+
+"brush1" = "draw";
+"brush2" = "paint";
+"brush3" = "art";
+"brush4" = "design";
+
+"code1" = "code";
+"code2" = "coding";
+"code3" = "programming";
+"code4" = "software";
+
+"commute1" = "commute";
+"commute2" = "drive";
+"commute3" = "travel";
+
+"couch1" = "relax";
+"couch2" = "chill";
+
+"education1" = "study";
+"education2" = "lecture";
+"education3" = "school";
+"education4" = "read";
+"education5" = "research";
+"education6" = "revise";
+"education7" = "revision";
+
+"food1" = "breakfast";
+"food2" = "lunch";
+"food3" = "dinner";
+"food4" = "food";
+"food5" = "meal";
+"food6" = "eat";
+"food7" = "snack";
+"food8" = "brunch";
+
+"game1" = "game";
+"game2" = "play";
+"game3" = "arcade";
+
+"gym1" = "gym";
+"gym2" = "exercise";
+"gym3" = "workout";
+"gym4" = "run";
+
+"health1" = "doctor";
+"health2" = "dentist";
+"health2" = "meditation";
+
+"house1" = "home";
+"house2" = "chores";
+"house3" = "clean";
+
+"love1" = "date";
+"love2" = "kids";
+"love3" = "family";
+
+"movie1" = "movie";
+"movie2" = "film";
+"movie3" = "cinema";
+
+"music1" = "music";
+"music2" = "concert";
+"music3" = "gig";
+"music4" = "song";
+
+"pencil1" = "write";
+
+"people1" = "party";
+"people2" = "friend";
+"people3" = "meet";
+
+"sleep1" = "sleep";
+"sleep2" = "bed";
+"sleep3" = "nap";
+"sleep4" = "rest";
+
+"store1" = "store";
+"store2" = "shopping";
+"store3" = "shop";
+
+"sun1" = "morning";
+"sun2" = "beach";
+"sun3" = "park";
+"sun4" = "wake up";
+"sun5" = "walk";
+
+"work1" = "work";
+"work2" = "meeting";
+"work3" = "assignment";
+"work4" = "project";
+
+/* Extensions */
+
+// Today
+
+"nothingScheduled" = "Rien de prévu";

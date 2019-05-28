@@ -43,7 +43,7 @@ class SettingsViewController: UIViewController, Storyboarded {
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
-		return 2
+		return 4
 	}
 	
 	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -59,8 +59,12 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 		
 		if section == SettingsSection.calendar.rawValue {
 			sectionHeader.text = AppStrings.Settings.calendars
+		} else if section == SettingsSection.other.rawValue {
+			sectionHeader.text = AppStrings.Settings.other
 		} else if section == SettingsSection.feedback.rawValue {
 			sectionHeader.text = AppStrings.Settings.feedback
+		} else if section == SettingsSection.about.rawValue {
+			sectionHeader.text = AppStrings.Settings.about
 		}
 		
 		sectionHeaderView.addSubview(sectionHeader)
@@ -70,15 +74,18 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		if section == SettingsSection.calendar.rawValue {
 			return calendars.count
+		} else if section == SettingsSection.other.rawValue {
+			return 1
 		} else if section == SettingsSection.feedback.rawValue {
 			return 1
-		} else {
+		}  else {
 			return 0
 		}
 	}
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		if indexPath.section == SettingsSection.calendar.rawValue {
+		if indexPath.section == SettingsSection.calendar.rawValue ||
+			indexPath.section == SettingsSection.other.rawValue {
 			return 38
 		} else if indexPath.section == SettingsSection.feedback.rawValue {
 			return 240
@@ -90,7 +97,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		if indexPath.section == SettingsSection.calendar.rawValue {
 			return buildCalendarSettingCell(at: indexPath)
-		} else if indexPath.section == SettingsSection.feedback.rawValue {
+		} else if indexPath.section == SettingsSection.other.rawValue {
+			return buildOtherSettingCell(at: indexPath)
+		}  else if indexPath.section == SettingsSection.feedback.rawValue {
 			return buildFeedbackSettingCell(at: indexPath)
 		} else {
 			return UITableViewCell()
@@ -107,6 +116,15 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 		return cell
 	}
 	
+	func buildOtherSettingCell(at indexPath: IndexPath) -> UITableViewCell {
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: "otherSettingCell") as? OtherSettingCell else { return UITableViewCell() }
+		
+		cell.build()
+		cell.delegate = self
+		
+		return cell
+	}
+	
 	func buildFeedbackSettingCell(at indexPath: IndexPath) -> UITableViewCell {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: "feedbackSettingCell") as? FeedbackSettingCell else { return UITableViewCell() }
 		cell.build()
@@ -116,7 +134,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - Settings Delegates
 
-extension SettingsViewController: CalendarSettingDelegate {
+extension SettingsViewController: CalendarSettingDelegate, OtherSettingDelegate {
 	
 	func toggleCalendar(for identifier: String, to status: Bool) {
 		if enabledCalendars == nil {
@@ -126,6 +144,10 @@ extension SettingsViewController: CalendarSettingDelegate {
 		enabledCalendars?[identifier] = status
 		
 		DataGateway.shared.saveEnabledCalendars(enabledCalendars!)
+	}
+	
+	func toggleOtherSetting(to status: Bool) {
+		DataGateway.shared.toggleNightHours(value: status)
 	}
 	
 	private func initialiseEnabledCalendars() {
@@ -139,5 +161,5 @@ extension SettingsViewController: CalendarSettingDelegate {
 
 enum SettingsSection: Int {
 	
-	case calendar = 0, feedback = 1
+	case calendar = 0, other = 1, feedback = 2, about = 3
 }

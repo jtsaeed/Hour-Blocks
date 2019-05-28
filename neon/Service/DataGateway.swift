@@ -162,6 +162,19 @@ extension DataGateway {
 		UserDefaults.standard.synchronize()
 	}
 	
+	func toggleNightHours(value: Bool) {
+		UserDefaults.standard.set(value, forKey: "nightHours")
+		UserDefaults.standard.synchronize()
+	}
+	
+	func getNightHours() -> Bool {
+		if let toggled = UserDefaults.standard.object(forKey: "nightHours") as? Bool {
+			return toggled
+		} else {
+			return false
+		}
+	}
+	
 	func saveEnabledCalendars(_ calendars: [String: Bool]) {
 		UserDefaults.standard.set(calendars, forKey: "enabledCalendars")
 		UserDefaults.standard.synchronize()

@@ -25,6 +25,10 @@ class ScheduleViewController: UITableViewController, Storyboarded {
 	var blocks = [Int: [Block]]() {
 		didSet {
 			blocks[Day.today.rawValue] = blocks[Day.today.rawValue]?.filter { $0.hour >= Calendar.current.component(.hour, from: Date()) }
+			
+			if !DataGateway.shared.getNightHours() {
+				blocks[Day.tomorrow.rawValue] = blocks[Day.tomorrow.rawValue]?.filter({ $0.hour >= 6 })
+			}
 		}
 	}
 
@@ -391,18 +395,23 @@ extension ScheduleViewController {
                     image: nil
 				),
 				WhatsNew.Item(
+					title: "New Languages",
+					subtitle: "Spanish and French are now supported thanks to Irene Arribas, Eve Machin & Sophie Corrigal 🇪🇸🇫🇷",
+					image: nil
+				),
+				WhatsNew.Item(
 					title: "Icon Improvements",
-					subtitle: "3 new icons, see if you can spot them! In addition, automatic icon generation is now 2x as accurate! 🎨",
+					subtitle: "4 new icons, see if you can spot them! In addition, automatic icon generation is now 2x as accurate! 🎨",
 					image: nil
 				),
                 WhatsNew.Item(
                     title: "Stability & Performance",
-                    subtitle: "A lot of things have been rewritten from the ground up to make your Hour Blocks a lot more responsive & reliable- this includes an offline mode! ⚡️",
+                    subtitle: "A lot of things have been rewritten from the ground up to make your Hour Blocks a lot more responsive & reliable- including an offline mode! ⚡️",
                     image: nil
                 ),
 				WhatsNew.Item(
 					title: "Minor Improvements",
-					subtitle: "The ability to filter night time hours is here, along with a whole host of fixes",
+					subtitle: "The ability to filter night time hours is here, along with a whole host of fixes 🐞",
 					image: nil
 				)
             ]

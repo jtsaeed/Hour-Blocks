@@ -246,7 +246,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="602-G6-q84" userLabel="Title">
                                                 <rect key="frame" x="0.0" y="0.0" width="231" height="84"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's in store for 11am?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfM-m6-D9u">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's in store for 11am?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pfM-m6-D9u">
                                                         <rect key="frame" x="0.0" y="0.0" width="231" height="24"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                         <nil key="textColor"/>
@@ -607,8 +607,44 @@
                                             <outlet property="toggleSwitch" destination="QVs-7F-bCl" id="lfK-xa-0CV"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="otherSettingCell" rowHeight="38" id="zBT-HD-x4Y" customClass="OtherSettingCell" customModule="neon" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="66" width="375" height="38"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zBT-HD-x4Y" id="dgU-Te-Xsd">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="38"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wkO-z4-pVJ">
+                                                    <rect key="frame" x="32" y="3.6666666666666679" width="311" height="31.000000000000004"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Other Setting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="sdx-Xn-ekz">
+                                                            <rect key="frame" x="0.0" y="0.0" width="262" height="31"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qIA-j6-OlR">
+                                                            <rect key="frame" x="262" y="0.0" width="51" height="31"/>
+                                                            <connections>
+                                                                <action selector="switchPressed:" destination="zBT-HD-x4Y" eventType="valueChanged" id="trD-lk-dpe"/>
+                                                            </connections>
+                                                        </switch>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="wkO-z4-pVJ" firstAttribute="leading" secondItem="dgU-Te-Xsd" secondAttribute="leading" constant="32" id="2mH-GD-tMb"/>
+                                                <constraint firstAttribute="trailing" secondItem="wkO-z4-pVJ" secondAttribute="trailing" constant="32" id="MSC-3z-L6Z"/>
+                                                <constraint firstItem="wkO-z4-pVJ" firstAttribute="centerY" secondItem="dgU-Te-Xsd" secondAttribute="centerY" id="ecb-W2-0ru"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="sdx-Xn-ekz" id="Fqk-qc-nYJ"/>
+                                            <outlet property="toggleSwitch" destination="qIA-j6-OlR" id="kuG-3C-ePg"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedbackSettingCell" rowHeight="240" id="GXj-Dv-XC1" customClass="FeedbackSettingCell" customModule="neon" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="66" width="375" height="240"/>
+                                        <rect key="frame" x="0.0" y="104" width="375" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GXj-Dv-XC1" id="6sP-aT-lM1">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>

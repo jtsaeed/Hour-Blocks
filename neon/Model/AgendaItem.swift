@@ -31,13 +31,13 @@ struct AgendaItem {
     
     mutating func generateIcon() {
 		if #available(iOS 12.0, *) {
-			if let icon = generateMLIcon() {
-				self.icon = icon
+			if Locale.current.languageCode == "es" || Locale.current.languageCode == "fr" {
+				if let icon = generateLegacyIcon() { self.icon = icon }
+			} else {
+				if let icon = generateMLIcon() { self.icon = icon }
 			}
 		} else {
-			if let icon = generateLegacyIcon() {
-				self.icon = icon
-			}
+			if let icon = generateLegacyIcon() { self.icon = icon }
 		}
     }
 	
@@ -52,43 +52,47 @@ struct AgendaItem {
 	}
 	
 	func generateLegacyIcon() -> String? {
-		if doesTitleContain(["draw", "paint", "art"]) {
+		if doesTitleContain(AppStrings.Icons.bank) {
+			return "bank"
+		} else if doesTitleContain(AppStrings.Icons.brush) {
 			return "brush"
-		} else if doesTitleContain(["develop", "code", "coding", "programming", "software"]) {
+		} else if doesTitleContain(AppStrings.Icons.code) {
 			return "code"
-		} else if doesTitleContain(["commute", "commuting", "drive", "driving", "journey", "travel"]) {
+		} else if doesTitleContain(AppStrings.Icons.commute) {
 			return "commute"
-		} else if doesTitleContain(["relax", "chill"]) {
+		} else if doesTitleContain(AppStrings.Icons.couch) {
 			return "couch"
-		} else if doesTitleContain(["study", "lecture", "school", "read", "research", "revise", "revision"]) {
+		} else if doesTitleContain(AppStrings.Icons.education) {
 			return "education"
-		} else if doesTitleContain(["breakfast", "lunch", "dinner", "food", "meal", "eat", "snack", "brunch"]) {
+		} else if doesTitleContain(AppStrings.Icons.food) {
 			return "food"
-		} else if doesTitleContain(["game", "play", "arcade"]) {
+		} else if doesTitleContain(AppStrings.Icons.game) {
 			return "game"
-		} else if doesTitleContain(["gym", "exercise", "run"]) {
+		} else if doesTitleContain(AppStrings.Icons.gym) {
 			return "gym"
-		} else if doesTitleContain(["date", "romantic", "boyfriend", "girlfriend", "husband", "wife", "family"]) {
+		} else if doesTitleContain(AppStrings.Icons.health) {
+			return "health"
+		} else if doesTitleContain(AppStrings.Icons.house) {
+			return "house"
+		} else if doesTitleContain(AppStrings.Icons.love) {
 			return "love"
-		} else if doesTitleContain(["movie", "film", "cinema"]) {
+		} else if doesTitleContain(AppStrings.Icons.movie) {
 			return "movie"
-		} else if doesTitleContain(["music", "concert", "gig"]) {
+		} else if doesTitleContain(AppStrings.Icons.music) {
 			return "music"
-		} else if doesTitleContain(["write", "writing"]) {
+		} else if doesTitleContain(AppStrings.Icons.pencil) {
 			return "pencil"
-		} else if doesTitleContain(["party", "friend"]) {
+		} else if doesTitleContain(AppStrings.Icons.people) {
 			return "people"
-		} else if doesTitleContain(["sleep", "bed", "nap", "rest"]) {
+		} else if doesTitleContain(AppStrings.Icons.sleep) {
 			return "sleep"
-		} else if doesTitleContain(["shop", "shopping", "store"]) {
+		} else if doesTitleContain(AppStrings.Icons.store) {
 			return "store"
-		} else if doesTitleContain(["morning", "beach", "park"]) {
+		} else if doesTitleContain(AppStrings.Icons.sun) {
 			return "sun"
-		} else if doesTitleContain(["work", "meeting", "assignment", "project"]) {
+		} else if doesTitleContain(AppStrings.Icons.work) {
 			return "work"
-		} else {
-			return nil
-		}
+		} else { return nil }
 	}
     
     func doesTitleContain(_ words: [String]) -> Bool {
