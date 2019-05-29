@@ -37,7 +37,11 @@
 "settingsSubHeader" = "TOMAR CONTROL";
 
 "calendars" = "Calendarios";
+"other" = "Otro";
 "feedback" = "Comentarios";
+"about" = "Acerca De";
+
+"nightTimeHours" = "Horas Nocturnas";
 "feedbackPlaceholder" = "Si tienes alguna opinión sobre tu experiencia en Hour Blocks, ¡dímelo aquí!";
 "feedbackSubmit" = "Enviar comentarios";
 "thankYou" = "¡Gracias!";

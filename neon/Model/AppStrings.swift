@@ -53,6 +53,7 @@ struct AppStrings {
 		static let about = NSLocalizedString("about", comment: "")
 		
 		// Items
+		static let nightTimeHours = NSLocalizedString("nightTimeHours", comment: "")
 		static let feedbackPlaceholder = NSLocalizedString("feedbackPlaceholder", comment: "")
 		static let feedbackSubmit = NSLocalizedString("feedbackSubmit", comment: "")
 		static let thankYou = NSLocalizedString("thankYou", comment: "")

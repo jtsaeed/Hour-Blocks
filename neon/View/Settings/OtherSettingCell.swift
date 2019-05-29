@@ -21,7 +21,7 @@ class OtherSettingCell: UITableViewCell {
 	var delegate: OtherSettingDelegate!
 	
 	func build() {
-		titleLabel.text = "Night Time Hours"
+		titleLabel.text = AppStrings.Settings.nightTimeHours
 		toggleSwitch.isOn = true
 	}
 

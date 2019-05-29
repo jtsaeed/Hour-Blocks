@@ -31,111 +31,115 @@
 
 /* Settings */
 
-"tab" = "Règlages";
+"tabSettings" = "Règlages";
 
 "settingsHeader" = "Règlages";
 "settingsSubHeader" = "PRENEZ CONTROL";
 
 "calendars" = "Calendrier";
+"other" = "Autre";
 "feedback" = "Remarques";
+"about" = "Sur";
+
+"nightTimeHours" = "Heures de Nuit";
 "feedbackPlaceholder" = "Si tu as des remarques sur ton experience sur Hour Blocks, dis-moi ici!";
 "feedbackSubmit" = "Envoyer remarques";
 "twitter" = "Suivez moi sur Twitter";
 
 /* Icons */
 
-"bank1" = "bank";
+"bank1" = "banque";
 "bank2" = "finances";
 
-"brush1" = "draw";
-"brush2" = "paint";
+"brush1" = "dessiner";
+"brush2" = "peindre";
 "brush3" = "art";
-"brush4" = "design";
+"brush4" = "conception";
 
 "code1" = "code";
-"code2" = "coding";
-"code3" = "programming";
-"code4" = "software";
+"code2" = "codage";
+"code3" = "la programmation";
+"code4" = "logiciel";
 
-"commute1" = "commute";
-"commute2" = "drive";
-"commute3" = "travel";
+"commute1" = "commuer";
+"commute2" = "conduire";
+"commute3" = "voyage";
 
-"couch1" = "relax";
-"couch2" = "chill";
+"couch1" = "se détendre";
+"couch2" = "refroidissement";
 
-"education1" = "study";
-"education2" = "lecture";
-"education3" = "school";
-"education4" = "read";
-"education5" = "research";
-"education6" = "revise";
-"education7" = "revision";
+"education1" = "étude";
+"education2" = "conférence";
+"education3" = "école";
+"education4" = "lis";
+"education5" = "recherche";
+"education6" = "réviser";
+"education7" = "révision";
 
-"food1" = "breakfast";
-"food2" = "lunch";
-"food3" = "dinner";
-"food4" = "food";
-"food5" = "meal";
-"food6" = "eat";
-"food7" = "snack";
+"food1" = "petit déjeuner";
+"food2" = "déjeuner";
+"food3" = "dîner";
+"food4" = "aliments";
+"food5" = "repas";
+"food6" = "manger";
+"food7" = "collation";
 "food8" = "brunch";
 
-"game1" = "game";
-"game2" = "play";
+"game1" = "jeu";
+"game2" = "jouer";
 "game3" = "arcade";
 
 "gym1" = "gym";
-"gym2" = "exercise";
-"gym3" = "workout";
-"gym4" = "run";
+"gym2" = "exercice";
+"gym3" = "exercice";
+"gym4" = "courir";
 
-"health1" = "doctor";
-"health2" = "dentist";
-"health2" = "meditation";
+"health1" = "médecin";
+"health2" = "dentiste";
+"health2" = "méditation";
 
-"house1" = "home";
-"house2" = "chores";
-"house3" = "clean";
+"house1" = "maison";
+"house2" = "corvées";
+"house3" = "nettoyer";
 
 "love1" = "date";
-"love2" = "kids";
-"love3" = "family";
+"love2" = "gamins";
+"love3" = "famille";
 
 "movie1" = "movie";
 "movie2" = "film";
-"movie3" = "cinema";
+"movie3" = "cinéma";
 
-"music1" = "music";
+"music1" = "musique";
 "music2" = "concert";
 "music3" = "gig";
-"music4" = "song";
+"music4" = "chanson";
 
-"pencil1" = "write";
+"pencil1" = "écrire";
 
-"people1" = "party";
-"people2" = "friend";
-"people3" = "meet";
+"people1" = "fête";
+"people2" = "ami";
+"people3" = "rencontrer";
 
-"sleep1" = "sleep";
-"sleep2" = "bed";
-"sleep3" = "nap";
-"sleep4" = "rest";
+"sleep1" = "dormir";
+"sleep2" = "lit";
+"sleep3" = "sieste";
+"sleep4" = "repos";
 
-"store1" = "store";
-"store2" = "shopping";
-"store3" = "shop";
+"store1" = "magasin";
+"store2" = "achats";
+"store3" = "boutique";
 
-"sun1" = "morning";
-"sun2" = "beach";
-"sun3" = "park";
-"sun4" = "wake up";
-"sun5" = "walk";
+"sun1" = "matin";
+"sun2" = "plage";
+"sun3" = "parc";
+"sun4" = "réveiller";
+"sun5" = "marche";
 
-"work1" = "work";
-"work2" = "meeting";
-"work3" = "assignment";
-"work4" = "project";
+"work1" = "travail";
+"work2" = "réunion";
+"work3" = "affectation";
+"work4" = "projet";
 
 /* Extensions */
 
