@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 	
+	/*
 	func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
 		guard var components = URLComponents(url: url, resolvingAgainstBaseURL: true) else { return false }
 		
@@ -36,24 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		return false
 	}
-	
-	func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-		guard userActivity.activityType == NSUserActivityTypeBrowsingWeb,
-			let url = userActivity.webpageURL,
-			var components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
-				return false
-		}
-		
-		if components.path != "" {
-			if let title = components.path.removingPercentEncoding?.replacingOccurrences(of: "/", with: "") {
-				DataGateway.shared.save(AgendaItem(title: title), for: 19, today: true)
-				NotificationCenter.default.post(name: Notification.Name("agendaUpdate"), object: nil)
-				return true
-			}
-		}
-		
-		return false
-	}
+*/
 	
 	private func coordinatorConfiguration() {
 		coordinator = AppCoordinator()

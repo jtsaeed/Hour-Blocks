@@ -31,7 +31,7 @@
 
 /* Settings */
 
-"tab" = "Settings";
+"tabSettings" = "Settings";
 
 "settingsHeader" = "Settings";
 "settingsSubHeader" = "TAKE CONTROL";

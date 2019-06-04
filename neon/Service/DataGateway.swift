@@ -101,7 +101,7 @@ extension DataGateway {
 		return blocks
 	}
 	
-	func save(_ agendaItem: AgendaItem, for hour: Int, today: Bool) {
+	func saveBlock(_ agendaItem: AgendaItem, for hour: Int, today: Bool) {
 		let entity = NSEntityDescription.entity(forEntityName: "AgendaEntity", in: persistentContainer.viewContext)
 		let newAgendaItem = NSManagedObject(entity: entity!, insertInto: persistentContainer.viewContext)
 		
@@ -113,9 +113,62 @@ extension DataGateway {
 		saveContext()
 	}
 	
-	func delete(_ agendaItem: AgendaItem) {
+	func deleteBlock(_ agendaItem: AgendaItem) {
 		let request = NSFetchRequest<NSFetchRequestResult>(entityName: "AgendaEntity")
 		request.predicate = NSPredicate(format: "id = %@", agendaItem.id)
+		
+		do {
+			let result = try persistentContainer.viewContext.fetch(request)
+			for data in result as! [NSManagedObject] {
+				persistentContainer.viewContext.delete(data)
+				saveContext()
+			}
+		} catch {
+			print("Failed loading")
+		}
+	}
+}
+
+// MARK: - To Do
+
+extension DataGateway {
+	
+	func loadToDos() -> [ToDoItem] {
+		var toDos = [ToDoItem]()
+		
+		// Pull all the to do items from Core Data
+		let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ToDoEntity")
+		request.returnsObjectsAsFaults = false
+		do {
+			let result = try persistentContainer.viewContext.fetch(request)
+			for data in result as! [NSManagedObject] {
+				guard let id = data.value(forKey: "id") as? String else { continue }
+				guard let title = data.value(forKey: "title") as? String else { continue }
+				guard let priority = data.value(forKey: "priority") as? String else { continue }
+				
+				toDos.append(ToDoItem(id: id, title: title, priority: ToDoPriority(rawValue: priority) ?? .none))
+			}
+		} catch {
+			print("Failed loading from Core Data")
+		}
+		
+		return toDos
+	}
+	
+	func saveToDo(item: ToDoItem) {
+		let entity = NSEntityDescription.entity(forEntityName: "ToDoEntity", in: persistentContainer.viewContext)
+		let newToDoItem = NSManagedObject(entity: entity!, insertInto: persistentContainer.viewContext)
+		
+		newToDoItem.setValue(item.id, forKey: "id")
+		newToDoItem.setValue(item.title, forKey: "title")
+		newToDoItem.setValue(item.priority.rawValue, forKey: "priority")
+		
+		saveContext()
+	}
+	
+	func deleteToDo(item: ToDoItem) {
+		let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ToDoEntity")
+		request.predicate = NSPredicate(format: "id = %@", item.id)
 		
 		do {
 			let result = try persistentContainer.viewContext.fetch(request)

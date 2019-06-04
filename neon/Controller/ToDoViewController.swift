@@ -21,14 +21,14 @@ class ToDoViewController: UIViewController, Storyboarded {
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
-		items.append(ToDoItem(title: "Hire a plumber", priority: .high))
-		items.append(ToDoItem(title: "Sort Charlie's room", priority: .low))
-		items.append(ToDoItem(title: "Redesign website", priority: .medium))
-		items.append(ToDoItem(title: "Export clips for Illusions", priority: .medium))
-		items.append(ToDoItem(title: "Buy interview prep books", priority: .low))
-		items.append(ToDoItem(title: "Edit New Orleans vlog", priority: .none))
-		items.append(ToDoItem(title: "Write internship blog post", priority: .medium))
-		items.append(ToDoItem(title: "Reconfirm Prime student", priority: .high))
+		items.append(ToDoItem(id: nil, title: "Hire a plumber", priority: .high))
+		items.append(ToDoItem(id: nil, title: "Sort Charlie's room", priority: .low))
+		items.append(ToDoItem(id: nil, title: "Redesign website", priority: .medium))
+		items.append(ToDoItem(id: nil, title: "Export clips for Illusions", priority: .medium))
+		items.append(ToDoItem(id: nil, title: "Buy interview prep books", priority: .low))
+		items.append(ToDoItem(id: nil, title: "Edit New Orleans vlog", priority: .none))
+		items.append(ToDoItem(id: nil, title: "Write internship blog post", priority: .medium))
+		items.append(ToDoItem(id: nil, title: "Reconfirm Prime student", priority: .high))
     }
 	
 	@IBAction func swipedLeft(_ sender: Any) {

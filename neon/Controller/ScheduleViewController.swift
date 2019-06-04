@@ -72,15 +72,16 @@ extension ScheduleViewController {
 		guard let block = blocks[indexPath.section]?[indexPath.row] else { return }
 		
 		// If there was already something here, get rid of it
-		if let previousAgendaItem = block.agendaItem { DataGateway.shared.delete(previousAgendaItem) }
+		if let previousAgendaItem = block.agendaItem { DataGateway.shared.deleteBlock(previousAgendaItem) }
 		
 		// Initiate & save the new Hour Block and update the model
 		let newAgendaItem = AgendaItem(title: title)
-		DataGateway.shared.save(newAgendaItem, for: block.hour,
+		DataGateway.shared.saveBlock(newAgendaItem, for: block.hour,
 								today: indexPath.section == Day.today.rawValue)
 		blocks[indexPath.section]?[indexPath.row].agendaItem = newAgendaItem
 
 		// Finishing tasks
+		AnalyticsGateway.shared.logHourBlock(for: title)
 		copyToWatch(data: blocks[Day.today.rawValue] ?? [Block]())
         tableView.reloadRows(at: [indexPath], with: .fade)
         handleReviewRequest()
@@ -91,7 +92,7 @@ extension ScheduleViewController {
 		guard let block = blocks[indexPath.section]?[indexPath.row] else { return }
 		
 		// Delete and update the model
-		DataGateway.shared.delete(block.agendaItem!)
+		DataGateway.shared.deleteBlock(block.agendaItem!)
 		NotificationsGateway.shared.removeNotification(for: block)
 		blocks[indexPath.section]?[indexPath.row].agendaItem = nil
 		
@@ -123,6 +124,7 @@ extension ScheduleViewController {
 		
 		NotificationsGateway.shared.addNotification(for: block, with: timeOffset, today: true, completion: { (success) in
 			if success {
+				AnalyticsGateway.shared.logReminder(for: timeOffset)
 				DispatchQueue.main.async { UINotificationFeedbackGenerator().notificationOccurred(.success) }
 			} else {
 				DispatchQueue.main.async { UINotificationFeedbackGenerator().notificationOccurred(.error) }
@@ -213,11 +215,11 @@ extension ScheduleViewController: TableViewReorderDelegate {
 		guard let destinationBlock = blocks[finalDestinationIndexPath.section]?[finalDestinationIndexPath.row] else { return }
 		
 		if let agendaItem = sourceBlock.agendaItem {
-			DataGateway.shared.delete(agendaItem)
+			DataGateway.shared.deleteBlock(agendaItem)
 			blocks[initialSourceIndexPath.section]?[initialSourceIndexPath.row].agendaItem = nil
 			
 			blocks[finalDestinationIndexPath.section]?[finalDestinationIndexPath.row].agendaItem = agendaItem
-			DataGateway.shared.save(agendaItem, for: destinationBlock.hour, today: initialSourceIndexPath.section == Day.today.rawValue)
+			DataGateway.shared.saveBlock(agendaItem, for: destinationBlock.hour, today: initialSourceIndexPath.section == Day.today.rawValue)
 		}
 		
 		UINotificationFeedbackGenerator().notificationOccurred(.success)
@@ -387,30 +389,15 @@ extension ScheduleViewController {
     
     func presentWhatsNew() {
         let whatsNew = WhatsNew(
-            title: "What's New in Version 1.3",
+            title: "What's New in Version 1.3.1",
             items: [
                 WhatsNew.Item(
-                    title: "iMessage App",
-                    subtitle: "Let your friends and family know what you're up to in just a tap 💬",
+                    title: "Morning Has Broken",
+                    subtitle: "Set yourself a morning notification to remind you to plan your day ☀️",
                     image: nil
 				),
 				WhatsNew.Item(
-					title: "New Languages",
-					subtitle: "Spanish and French are now supported thanks to Irene Arribas, Eve Machin & Sophie Corrigal 🇪🇸🇫🇷",
-					image: nil
-				),
-				WhatsNew.Item(
-					title: "Icon Improvements",
-					subtitle: "4 new icons, see if you can spot them! In addition, automatic icon generation is now 2x as accurate! 🎨",
-					image: nil
-				),
-                WhatsNew.Item(
-                    title: "Stability & Performance",
-                    subtitle: "A lot of things have been rewritten from the ground up to make your Hour Blocks a lot more responsive & reliable- including an offline mode! ⚡️",
-                    image: nil
-                ),
-				WhatsNew.Item(
-					title: "Minor Improvements",
+					title: "Minor Improvements & Fixes",
 					subtitle: "The ability to filter night time hours is here, along with a whole host of fixes 🐞",
 					image: nil
 				)
