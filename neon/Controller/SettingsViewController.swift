@@ -43,7 +43,7 @@ class SettingsViewController: UIViewController, Storyboarded {
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
-		return 4
+		return 3
 	}
 	
 	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -63,8 +63,6 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 			sectionHeader.text = AppStrings.Settings.other
 		} else if section == SettingsSection.feedback.rawValue {
 			sectionHeader.text = AppStrings.Settings.feedback
-		} else if section == SettingsSection.about.rawValue {
-			sectionHeader.text = AppStrings.Settings.about
 		}
 		
 		sectionHeaderView.addSubview(sectionHeader)
@@ -161,5 +159,5 @@ extension SettingsViewController: CalendarSettingDelegate, OtherSettingDelegate 
 
 enum SettingsSection: Int {
 	
-	case calendar = 0, other = 1, feedback = 2, about = 3
+	case calendar = 0, other = 1, feedback = 2
 }

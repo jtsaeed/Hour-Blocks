@@ -398,7 +398,7 @@ extension ScheduleViewController {
 				),
 				WhatsNew.Item(
 					title: "Minor Improvements & Fixes",
-					subtitle: "The ability to filter night time hours is here, along with a whole host of fixes 🐞",
+					subtitle: "A good few of these littered around 🐞",
 					image: nil
 				)
             ]

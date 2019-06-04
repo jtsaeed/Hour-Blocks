@@ -228,6 +228,19 @@ extension DataGateway {
 		}
 	}
 	
+	func toggleMorningReminder(value: Bool) {
+		UserDefaults.standard.set(value, forKey: "morningReminder")
+		UserDefaults.standard.synchronize()
+	}
+	
+	func getMorningReminder() -> Bool {
+		if let toggled = UserDefaults.standard.object(forKey: "morningReminder") as? Bool {
+			return toggled
+		} else {
+			return false
+		}
+	}
+	
 	func saveEnabledCalendars(_ calendars: [String: Bool]) {
 		UserDefaults.standard.set(calendars, forKey: "enabledCalendars")
 		UserDefaults.standard.synchronize()
