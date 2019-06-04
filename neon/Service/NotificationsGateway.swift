@@ -16,6 +16,28 @@ class NotificationsGateway {
 	func setMorningNotification(on: Bool) {
 		
 	}
+	
+	private func createMorningNotification(completion: @escaping (_ success: Bool) -> ()) {
+		let content = UNMutableNotificationContent()
+		content.title = "Good morning! 😁"
+		content.body = "Here's your daily reminder to organise your day ☀️"
+		content.sound = UNNotificationSound.init(named: UNNotificationSoundName("notification.aif"))
+		
+		let date = Calendar.current.date(bySettingHour: 9, minute: 0, second: 0, of: Date())!
+		
+		let dateTrigger = Calendar.current.dateComponents([.hour, .minute, .second], from: date)
+		let trigger = UNCalendarNotificationTrigger(dateMatching: dateTrigger, repeats: true)
+		
+		let request = UNNotificationRequest(identifier: "morningNotification", content: content, trigger: trigger)
+		
+		UNUserNotificationCenter.current().add(request) { error in
+			completion(error == nil)
+		}
+	}
+	
+	private func removeMorningNotification() {
+		UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["morningNotification"])
+	}
     
 	func addNotification(for block: Block, with timeOffset: Int, today: Bool, completion: @escaping (_ success: Bool) -> ()) {
         UNUserNotificationCenter.current().getNotificationSettings(completionHandler: { (settings) in

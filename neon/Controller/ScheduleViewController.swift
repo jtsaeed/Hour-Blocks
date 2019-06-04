@@ -25,10 +25,6 @@ class ScheduleViewController: UITableViewController, Storyboarded {
 	var blocks = [Int: [Block]]() {
 		didSet {
 			blocks[Day.today.rawValue] = blocks[Day.today.rawValue]?.filter { $0.hour >= Calendar.current.component(.hour, from: Date()) }
-			
-			if !DataGateway.shared.getNightHours() {
-				blocks[Day.tomorrow.rawValue] = blocks[Day.tomorrow.rawValue]?.filter({ $0.hour >= 6 })
-			}
 		}
 	}
 
@@ -64,6 +60,12 @@ extension ScheduleViewController {
     
     @objc func loadBlocks() {
 		self.blocks = DataGateway.shared.loadBlocks()
+		
+		if !DataGateway.shared.getNightHours() {
+			blocks[Day.today.rawValue] = blocks[Day.today.rawValue]?.filter({ $0.hour >= 6 })
+			blocks[Day.tomorrow.rawValue] = blocks[Day.tomorrow.rawValue]?.filter({ $0.hour >= 6 })
+		}
+		
 		DispatchQueue.main.async { self.tableView.reloadData() }
     }
     
@@ -393,7 +395,7 @@ extension ScheduleViewController {
             items: [
 				WhatsNew.Item(
 					title: "Minor Improvements & Fixes",
-					subtitle: "Reminders can now be set for tomorrow, the empty 'about' section is gone, the night time hours toggle now works during those hours and many more 🐞",
+					subtitle: "A whole host of little improvements and bug fixes all around the app 🐞",
 					image: nil
 				)
             ]
