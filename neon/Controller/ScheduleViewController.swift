@@ -119,10 +119,10 @@ extension ScheduleViewController {
 		}
     }
     
-    func addReminder(for indexPath: IndexPath, timeOffset: Int) {
+	func addReminder(for indexPath: IndexPath, timeOffset: Int, today: Bool) {
 		guard let block = blocks[indexPath.section]?[indexPath.row] else { return }
 		
-		NotificationsGateway.shared.addNotification(for: block, with: timeOffset, today: true, completion: { (success) in
+		NotificationsGateway.shared.addNotification(for: block, with: timeOffset, today: today, completion: { (success) in
 			if success {
 				AnalyticsGateway.shared.logReminder(for: timeOffset)
 				DispatchQueue.main.async { UINotificationFeedbackGenerator().notificationOccurred(.success) }
@@ -298,7 +298,7 @@ extension ScheduleViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate 
                 self.setStatusBarBackground(as: .white)
             }))
 			
-			if indexPath.section == Day.today.rawValue {
+//			if indexPath.section == Day.today.rawValue {
             	hasReminderSet(at: indexPath) { (result) in
                 	if result == true {
                     	actionSheet.addAction(UIAlertAction(title: AppStrings.Schedule.removeReminder, style: .destructive, handler: { action in
@@ -307,11 +307,11 @@ extension ScheduleViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate 
                     	}))
                 	} else {
                     	actionSheet.addAction(UIAlertAction(title: AppStrings.Schedule.setReminder, style: .default, handler: { action in
-                        	self.showReminderOptionsDialog(for: indexPath)
+							self.showReminderOptionsDialog(for: indexPath, today: indexPath.section == Day.today.rawValue)
                     	}))
                 	}
             	}
-			}
+//			}
         }
         actionSheet.addAction(UIAlertAction(title: AppStrings.cancel, style: .cancel, handler: { action in
             self.setStatusBarBackground(as: .white)
@@ -327,23 +327,23 @@ extension ScheduleViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate 
         present(actionSheet, animated: true, completion: nil)
     }
     
-    func showReminderOptionsDialog(for indexPath: IndexPath) {
+	func showReminderOptionsDialog(for indexPath: IndexPath, today: Bool) {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         actionSheet.addAction(UIAlertAction(title: String(format: AppStrings.Schedule.timeBeforeReminder, 60), style: .default, handler: { action in
-            self.addReminder(for: indexPath, timeOffset: 60)
+			self.addReminder(for: indexPath, timeOffset: 60, today: today)
             self.setStatusBarBackground(as: .white)
         }))
         actionSheet.addAction(UIAlertAction(title: String(format: AppStrings.Schedule.timeBeforeReminder, 30), style: .default, handler: { action in
-            self.addReminder(for: indexPath, timeOffset: 30)
+            self.addReminder(for: indexPath, timeOffset: 30, today: today)
             self.setStatusBarBackground(as: .white)
         }))
         actionSheet.addAction(UIAlertAction(title: String(format: AppStrings.Schedule.timeBeforeReminder, 15), style: .default, handler: { action in
-            self.addReminder(for: indexPath, timeOffset: 15)
+            self.addReminder(for: indexPath, timeOffset: 15, today: today)
             self.setStatusBarBackground(as: .white)
         }))
         actionSheet.addAction(UIAlertAction(title: String(format: AppStrings.Schedule.timeBeforeReminder, 5), style: .default, handler: { action in
-            self.addReminder(for: indexPath, timeOffset: 5)
+            self.addReminder(for: indexPath, timeOffset: 5, today: today)
             self.setStatusBarBackground(as: .white)
         }))
         actionSheet.addAction(UIAlertAction(title: AppStrings.cancel, style: .cancel, handler: { action in
@@ -391,14 +391,9 @@ extension ScheduleViewController {
         let whatsNew = WhatsNew(
             title: "What's New in Version 1.3.1",
             items: [
-                WhatsNew.Item(
-                    title: "Morning Has Broken",
-                    subtitle: "Set yourself a morning notification to remind you to plan your day ☀️",
-                    image: nil
-				),
 				WhatsNew.Item(
 					title: "Minor Improvements & Fixes",
-					subtitle: "A good few of these littered around 🐞",
+					subtitle: "Reminders can now be set for tomorrow, the empty 'about' section is gone, the night time hours toggle now works during those hours and many more 🐞",
 					image: nil
 				)
             ]

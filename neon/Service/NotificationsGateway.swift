@@ -12,6 +12,10 @@ import UserNotifications
 class NotificationsGateway {
     
     static let shared = NotificationsGateway()
+	
+	func setMorningNotification(on: Bool) {
+		
+	}
     
 	func addNotification(for block: Block, with timeOffset: Int, today: Bool, completion: @escaping (_ success: Bool) -> ()) {
         UNUserNotificationCenter.current().getNotificationSettings(completionHandler: { (settings) in
@@ -59,7 +63,9 @@ class NotificationsGateway {
         var date = Calendar.current.date(bySettingHour: block.hour, minute: 0, second: 0, of: Date())!
 		date = Calendar.current.date(byAdding: .minute, value: -timeOffset, to: date)!
 		
-        let dateTrigger = Calendar.current.dateComponents([.hour, .minute, .second], from: date)
+		if !today { date = Calendar.current.date(byAdding: .day, value: 1, to: date)! }
+		
+        let dateTrigger = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateTrigger, repeats: false)
         
         let request = UNNotificationRequest(identifier: block.agendaItem!.id, content: content, trigger: trigger)
