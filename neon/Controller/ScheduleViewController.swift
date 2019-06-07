@@ -60,12 +60,12 @@ extension ScheduleViewController {
     
     @objc func loadBlocks() {
 		self.blocks = DataGateway.shared.loadBlocks()
-		
-		if !DataGateway.shared.getNightHours() {
-			blocks[Day.today.rawValue] = blocks[Day.today.rawValue]?.filter({ $0.hour >= 6 })
-			blocks[Day.tomorrow.rawValue] = blocks[Day.tomorrow.rawValue]?.filter({ $0.hour >= 6 })
-		}
-		
+        
+        if !DataGateway.shared.getNightHours() {
+            blocks[Day.today.rawValue] = blocks[Day.today.rawValue]?.filter({ $0.hour >= 6 })
+            blocks[Day.tomorrow.rawValue] = blocks[Day.tomorrow.rawValue]?.filter({ $0.hour >= 6 })
+        }
+        
 		DispatchQueue.main.async { self.tableView.reloadData() }
     }
     
@@ -83,7 +83,7 @@ extension ScheduleViewController {
 		blocks[indexPath.section]?[indexPath.row].agendaItem = newAgendaItem
 
 		// Finishing tasks
-		AnalyticsGateway.shared.logHourBlock(for: title)
+        AnalyticsGateway.shared.logHourBlock(for: title)
 		copyToWatch(data: blocks[Day.today.rawValue] ?? [Block]())
         tableView.reloadRows(at: [indexPath], with: .fade)
         handleReviewRequest()
@@ -121,12 +121,12 @@ extension ScheduleViewController {
 		}
     }
     
-	func addReminder(for indexPath: IndexPath, timeOffset: Int, today: Bool) {
+    func addReminder(for indexPath: IndexPath, timeOffset: Int, today: Bool) {
 		guard let block = blocks[indexPath.section]?[indexPath.row] else { return }
 		
 		NotificationsGateway.shared.addNotification(for: block, with: timeOffset, today: today, completion: { (success) in
 			if success {
-				AnalyticsGateway.shared.logReminder(for: timeOffset)
+                AnalyticsGateway.shared.logReminder(for: timeOffset)
 				DispatchQueue.main.async { UINotificationFeedbackGenerator().notificationOccurred(.success) }
 			} else {
 				DispatchQueue.main.async { UINotificationFeedbackGenerator().notificationOccurred(.error) }
@@ -300,7 +300,7 @@ extension ScheduleViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate 
                 self.setStatusBarBackground(as: .white)
             }))
 			
-//			if indexPath.section == Day.today.rawValue {
+//            if indexPath.section == Day.today.rawValue {
             	hasReminderSet(at: indexPath) { (result) in
                 	if result == true {
                     	actionSheet.addAction(UIAlertAction(title: AppStrings.Schedule.removeReminder, style: .destructive, handler: { action in
@@ -309,11 +309,11 @@ extension ScheduleViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate 
                     	}))
                 	} else {
                     	actionSheet.addAction(UIAlertAction(title: AppStrings.Schedule.setReminder, style: .default, handler: { action in
-							self.showReminderOptionsDialog(for: indexPath, today: indexPath.section == Day.today.rawValue)
+                            self.showReminderOptionsDialog(for: indexPath, today: indexPath.section == Day.today.rawValue)
                     	}))
                 	}
             	}
-//			}
+//            }
         }
         actionSheet.addAction(UIAlertAction(title: AppStrings.cancel, style: .cancel, handler: { action in
             self.setStatusBarBackground(as: .white)
@@ -329,11 +329,11 @@ extension ScheduleViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate 
         present(actionSheet, animated: true, completion: nil)
     }
     
-	func showReminderOptionsDialog(for indexPath: IndexPath, today: Bool) {
+    func showReminderOptionsDialog(for indexPath: IndexPath, today: Bool) {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         actionSheet.addAction(UIAlertAction(title: String(format: AppStrings.Schedule.timeBeforeReminder, 60), style: .default, handler: { action in
-			self.addReminder(for: indexPath, timeOffset: 60, today: today)
+            self.addReminder(for: indexPath, timeOffset: 60, today: today)
             self.setStatusBarBackground(as: .white)
         }))
         actionSheet.addAction(UIAlertAction(title: String(format: AppStrings.Schedule.timeBeforeReminder, 30), style: .default, handler: { action in
@@ -393,11 +393,11 @@ extension ScheduleViewController {
         let whatsNew = WhatsNew(
             title: "What's New in Version 1.3.1",
             items: [
-				WhatsNew.Item(
-					title: "Minor Improvements & Fixes",
-					subtitle: "A whole host of little improvements and bug fixes all around the app 🐞",
-					image: nil
-				)
+                WhatsNew.Item(
+                    title: "Minor Improvements & Fixes",
+                    subtitle: "A whole host of little improvements and bug fixes all around the app 🐞",
+                    image: nil
+				),
             ]
         )
         var configuration = WhatsNewViewController.Configuration()

@@ -21,7 +21,7 @@ class ToDoViewController: UIViewController, Storyboarded {
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
-		items.append(ToDoItem(id: nil, title: "Hire a plumber", priority: .high))
+        items.append(ToDoItem(id: nil, title: "Hire a plumber", priority: .high))
 		items.append(ToDoItem(id: nil, title: "Sort Charlie's room", priority: .low))
 		items.append(ToDoItem(id: nil, title: "Redesign website", priority: .medium))
 		items.append(ToDoItem(id: nil, title: "Export clips for Illusions", priority: .medium))

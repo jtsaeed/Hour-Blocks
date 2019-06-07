@@ -11,6 +11,7 @@ target 'neon' do
   pod 'Toaster'
   pod 'SwiftReorder'
   pod 'Hero'
+  pod 'Firebase/Core'
 
   target 'neonTests' do
     inherit! :search_paths

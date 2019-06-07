@@ -10,15 +10,15 @@ import Foundation
 
 struct ToDoItem: Comparable {
 	
-	var id: String
+    var id: String
 	let title: String
 	let priority: ToDoPriority
-	
-	init(id: String?, title: String, priority: ToDoPriority) {
-		self.id = id ?? UUID().uuidString
-		self.title = title
-		self.priority = priority
-	}
+    
+    init(id: String?, title: String, priority: ToDoPriority) {
+        self.id = id ?? UUID().uuidString
+        self.title = title
+        self.priority = priority
+    }
 	
 	static func < (lhs: ToDoItem, rhs: ToDoItem) -> Bool {
 		if lhs.priority == .none && (rhs.priority == .low || rhs.priority == .medium || rhs.priority == .high) {

@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 	
-	/*
+    /*
 	func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
 		guard var components = URLComponents(url: url, resolvingAgainstBaseURL: true) else { return false }
 		
@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		return false
 	}
-*/
+    */
 	
 	private func coordinatorConfiguration() {
 		coordinator = AppCoordinator()
