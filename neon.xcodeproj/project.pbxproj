@@ -59,6 +59,7 @@
 		2381FD542291DCE2002DE3A0 /* ScheduleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2381FD532291DCE2002DE3A0 /* ScheduleCoordinator.swift */; };
 		2381FD562291DCEC002DE3A0 /* ToDoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2381FD552291DCEC002DE3A0 /* ToDoCoordinator.swift */; };
 		2381FD582291DCF5002DE3A0 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2381FD572291DCF5002DE3A0 /* SettingsCoordinator.swift */; };
+		238A9DE422AAE2B3006CDAEB /* EditAgendaAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238A9DE322AAE2B3006CDAEB /* EditAgendaAlertViewController.swift */; };
 		2395A94E224AE1750007D6F2 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2395A94D224AE1750007D6F2 /* NotificationCenter.framework */; };
 		2395A951224AE1750007D6F2 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2395A950224AE1750007D6F2 /* TodayViewController.swift */; };
 		2395A954224AE1750007D6F2 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2395A952224AE1750007D6F2 /* MainInterface.storyboard */; };
@@ -81,6 +82,7 @@
 		23D41E6E222412FF00D909FD /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D41E6D222412FF00D909FD /* SectionHeaderView.swift */; };
 		23D642FC229B0B3C001E240F /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D642FB229B0B3C001E240F /* AppStrings.swift */; };
 		23D642FD229B1EDA001E240F /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D642FB229B0B3C001E240F /* AppStrings.swift */; };
+		23D9859922AA994600F0C9F7 /* AddToDoAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D9859822AA994600F0C9F7 /* AddToDoAlertViewController.swift */; };
 		23E45BE2224BA3A9002D01AC /* NotificationsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E45BE1224BA3A9002D01AC /* NotificationsGateway.swift */; };
 		23E8A93C228D587C0046C699 /* CalendarSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E8A93B228D587C0046C699 /* CalendarSettingCell.swift */; };
 		23FAE4782288E549001D9823 /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FAE4772288E549001D9823 /* ToDoViewController.swift */; };
@@ -231,6 +233,7 @@
 		2381FD532291DCE2002DE3A0 /* ScheduleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCoordinator.swift; sourceTree = "<group>"; };
 		2381FD552291DCEC002DE3A0 /* ToDoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCoordinator.swift; sourceTree = "<group>"; };
 		2381FD572291DCF5002DE3A0 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		238A9DE322AAE2B3006CDAEB /* EditAgendaAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAgendaAlertViewController.swift; sourceTree = "<group>"; };
 		238EA767223EA0D900981E98 /* neon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = neon.entitlements; sourceTree = "<group>"; };
 		2395A94C224AE1750007D6F2 /* neonToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = neonToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2395A94D224AE1750007D6F2 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
@@ -256,6 +259,7 @@
 		23D41E6B2224127800D909FD /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		23D41E6D222412FF00D909FD /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		23D642FB229B0B3C001E240F /* AppStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStrings.swift; sourceTree = "<group>"; };
+		23D9859822AA994600F0C9F7 /* AddToDoAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoAlertViewController.swift; sourceTree = "<group>"; };
 		23E45BE1224BA3A9002D01AC /* NotificationsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsGateway.swift; sourceTree = "<group>"; };
 		23E7851322AA753100A9650F /* notification.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = notification.aif; sourceTree = "<group>"; };
 		23E8A93B228D587C0046C699 /* CalendarSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSettingCell.swift; sourceTree = "<group>"; };
@@ -535,6 +539,7 @@
 				231898DC221D92F1005766AF /* AddAgendAlertViewController.swift */,
 				23D41E6B2224127800D909FD /* SectionHeaderView.xib */,
 				23D41E6D222412FF00D909FD /* SectionHeaderView.swift */,
+				238A9DE322AAE2B3006CDAEB /* EditAgendaAlertViewController.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -543,6 +548,7 @@
 			isa = PBXGroup;
 			children = (
 				23FAE47B2288EF90001D9823 /* ToDoBlockCell.swift */,
+				23D9859822AA994600F0C9F7 /* AddToDoAlertViewController.swift */,
 			);
 			path = "To Do";
 			sourceTree = "<group>";
@@ -1031,10 +1037,12 @@
 				232ED4E0228C93A4008FC4A0 /* AnalyticsGateway.swift in Sources */,
 				2381FD542291DCE2002DE3A0 /* ScheduleCoordinator.swift in Sources */,
 				2338BEEF220A78FF004F288F /* HourBlockCell.swift in Sources */,
+				23D9859922AA994600F0C9F7 /* AddToDoAlertViewController.swift in Sources */,
 				23C3FBAC228D48E800D20F21 /* SettingsViewController.swift in Sources */,
 				2381FD562291DCEC002DE3A0 /* ToDoCoordinator.swift in Sources */,
 				2338BEED220A78C5004F288F /* UIViewX.swift in Sources */,
 				23D642FC229B0B3C001E240F /* AppStrings.swift in Sources */,
+				238A9DE422AAE2B3006CDAEB /* EditAgendaAlertViewController.swift in Sources */,
 				234C1A0B220C8F9900344316 /* TodayHeaderCell.swift in Sources */,
 				2381FD512291DA05002DE3A0 /* AppCoordinator.swift in Sources */,
 				23FAE47C2288EF90001D9823 /* ToDoBlockCell.swift in Sources */,

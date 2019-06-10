@@ -274,10 +274,6 @@ extension ScheduleViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate 
         setStatusBarBackground(as: .clear)
         present(alert, animated: true, completion: nil)
     }
-	
-	func addPredictedBlock(title: String, indexPath: IndexPath) {
-		addBlock(for: indexPath, with: title)
-	}
     
     func doneButtonTapped(textFieldValue: String, indexPath: IndexPath) {
         addBlock(for: indexPath, with: textFieldValue)

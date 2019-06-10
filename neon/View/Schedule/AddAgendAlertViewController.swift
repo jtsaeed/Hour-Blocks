@@ -91,7 +91,6 @@ extension AddAgendAlertViewController {
 
 extension AddAgendAlertViewController {
 	
-	
 	func handleDone() {
 		if !(titleTextField.text?.isEmpty)! {
 			UINotificationFeedbackGenerator().notificationOccurred(.success)

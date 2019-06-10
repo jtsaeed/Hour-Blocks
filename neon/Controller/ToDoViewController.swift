@@ -12,29 +12,53 @@ class ToDoViewController: UIViewController, Storyboarded {
 	
 	weak var coordinator: ToDoCoordinator?
 	
-	var items = [ToDoItem]() {
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var itemsLabel: UILabel!
+    
+    var items = [ToDoItem]() {
 		didSet {
 			items = items.sorted().reversed()
+            itemsLabel.text = "\(items.count) ITEMS"
 		}
 	}
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
-        items.append(ToDoItem(id: nil, title: "Hire a plumber", priority: .high))
-		items.append(ToDoItem(id: nil, title: "Sort Charlie's room", priority: .low))
-		items.append(ToDoItem(id: nil, title: "Redesign website", priority: .medium))
-		items.append(ToDoItem(id: nil, title: "Export clips for Illusions", priority: .medium))
-		items.append(ToDoItem(id: nil, title: "Buy interview prep books", priority: .low))
-		items.append(ToDoItem(id: nil, title: "Edit New Orleans vlog", priority: .none))
-		items.append(ToDoItem(id: nil, title: "Write internship blog post", priority: .medium))
-		items.append(ToDoItem(id: nil, title: "Reconfirm Prime student", priority: .high))
+        items = DataGateway.shared.loadToDos()
+        DispatchQueue.main.async { self.collectionView.reloadData() }
     }
 	
-	@IBAction func swipedLeft(_ sender: Any) {
+    @IBAction func addButtonPressed(_ sender: Any) {
+        showAddToDoDialog()
+    }
+    
+    @IBAction func swipedLeft(_ sender: Any) {
 		tabBarController?.selectedIndex = 1
 	}
 }
+
+// MARK: - Functionality
+
+extension ToDoViewController {
+    
+    func addToDoItem(title: String, priority: ToDoPriority) {
+        let toDoItem = ToDoItem(id: nil, title: title, priority: priority)
+        items.append(toDoItem)
+        DataGateway.shared.saveToDo(item: toDoItem)
+        
+        DispatchQueue.main.async { self.collectionView.reloadData() }
+    }
+    
+    func removeToDoItem(at index: Int) {
+        DataGateway.shared.deleteToDo(item: items[index])
+        items.remove(at: index)
+        
+        DispatchQueue.main.async { self.collectionView.reloadData() }
+    }
+}
+
+// MARK: - Collection View
 
 extension ToDoViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 	
@@ -47,5 +71,62 @@ extension ToDoViewController: UICollectionViewDataSource, UICollectionViewDelega
 		cell.build(with: items[indexPath.row])
 		return cell
 	}
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        showToDoOptionsDialog(for: indexPath.row)
+    }
 }
 
+// MARK: - Dialogs
+
+extension ToDoViewController: AddToDoDelegate {
+    
+    func showToDoOptionsDialog(for index: Int) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Edit", style: .default, handler: { (action) in
+            // TODO Edit
+        }))
+        alert.addAction(UIAlertAction(title: "Clear", style: .destructive, handler: { (action) in
+            self.removeToDoItem(at: index)
+        }))
+        
+        setStatusBarBackground(as: .clear)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func showAddToDoDialog() {
+        let alert = self.storyboard?.instantiateViewController(withIdentifier: "AddToDoAlert") as! AddToDoAlertViewController
+        alert.providesPresentationContextTransitionStyle = true
+        alert.definesPresentationContext = true
+        alert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        alert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        alert.delegate = self
+        
+        setStatusBarBackground(as: .clear)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func doneButtonTapped(textFieldValue: String, priority: ToDoPriority) {
+        self.setStatusBarBackground(as: .white)
+        addToDoItem(title: textFieldValue, priority: priority)
+    }
+    
+    func cancelButtonTapped() {
+        setStatusBarBackground(as: .white)
+    }
+}
+
+// MARK: - UI
+
+extension ToDoViewController {
+    
+    func setStatusBarBackground(as color: UIColor) {
+        guard let statusBarView = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else {
+            return
+        }
+        UIView.animate(withDuration: 0.15) {
+            statusBarView.backgroundColor = color
+        }
+    }
+}
