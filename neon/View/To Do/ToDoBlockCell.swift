@@ -18,7 +18,7 @@ class ToDoBlockCell: UICollectionViewCell {
 		titleLabel.text = toDoItem.title
 		
 		switch toDoItem.priority {
-			case .none: priorityLabel.textColor = UIColor(named: "gray")
+			case .none: priorityLabel.textColor = UIColor(named: "noPriority")
 			case .high: priorityLabel.textColor = UIColor(named: "highPriority")
 			case .medium: priorityLabel.textColor = UIColor(named: "medPriority")
 			case .low: priorityLabel.textColor = UIColor(named: "lowPriority")

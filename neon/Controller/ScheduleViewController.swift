@@ -52,6 +52,10 @@ class ScheduleViewController: UITableViewController, Storyboarded {
 	@IBAction func swipedLeft(_ sender: Any) {
 		coordinator?.swipeToSettings()
 	}
+    
+    @IBAction func swipedRight(_ sender: Any) {
+        coordinator?.swipeToToDo()
+    }
 }
 
 // MARK: - Functionality
@@ -295,21 +299,18 @@ extension ScheduleViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate 
                 self.removeBlock(for: indexPath)
                 self.setStatusBarBackground(as: .white)
             }))
-			
-//            if indexPath.section == Day.today.rawValue {
-            	hasReminderSet(at: indexPath) { (result) in
-                	if result == true {
-                    	actionSheet.addAction(UIAlertAction(title: AppStrings.Schedule.removeReminder, style: .destructive, handler: { action in
-                	        self.removeReminder(for: indexPath)
-                    	    self.setStatusBarBackground(as: .white)
-                    	}))
-                	} else {
-                    	actionSheet.addAction(UIAlertAction(title: AppStrings.Schedule.setReminder, style: .default, handler: { action in
-                            self.showReminderOptionsDialog(for: indexPath, today: indexPath.section == Day.today.rawValue)
-                    	}))
-                	}
-            	}
-//            }
+            hasReminderSet(at: indexPath) { (result) in
+                if result == true {
+                    actionSheet.addAction(UIAlertAction(title: AppStrings.Schedule.removeReminder, style: .destructive, handler: { action in
+                        self.removeReminder(for: indexPath)
+                        self.setStatusBarBackground(as: .white)
+                    }))
+                } else {
+                    actionSheet.addAction(UIAlertAction(title: AppStrings.Schedule.setReminder, style: .default, handler: { action in
+                        self.showReminderOptionsDialog(for: indexPath, today: indexPath.section == Day.today.rawValue)
+                    }))
+                }
+            }
         }
         actionSheet.addAction(UIAlertAction(title: AppStrings.cancel, style: .cancel, handler: { action in
             self.setStatusBarBackground(as: .white)
@@ -387,13 +388,23 @@ extension ScheduleViewController {
     
     func presentWhatsNew() {
         let whatsNew = WhatsNew(
-            title: "What's New in Version 1.3.1",
+            title: "What's New in Version 2.0",
             items: [
                 WhatsNew.Item(
-                    title: "Minor Improvements & Fixes",
-                    subtitle: "A whole host of little improvements and bug fixes all around the app 🐞",
+                    title: "To Do List",
+                    subtitle: "Non-timed, never-expiring to-do list items- just a swipe away! ✅",
                     image: nil
 				),
+                WhatsNew.Item(
+                    title: "Siri Support",
+                    subtitle: "Try asking Siri to 'add grocery shopping to my to do list in Hour Blocks' 🎤",
+                    image: nil
+                ),
+                WhatsNew.Item(
+                    title: "Siri Support",
+                    subtitle: "Try asking Siri to 'add grocery shopping to my to do list in Hour Blocks' 🎤",
+                    image: nil
+                ),
             ]
         )
         var configuration = WhatsNewViewController.Configuration()

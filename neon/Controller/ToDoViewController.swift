@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Intents
 
 class ToDoViewController: UIViewController, Storyboarded {
 	
@@ -24,9 +25,25 @@ class ToDoViewController: UIViewController, Storyboarded {
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
-		
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         items = DataGateway.shared.loadToDos()
         DispatchQueue.main.async { self.collectionView.reloadData() }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        INPreferences.requestSiriAuthorization { status in
+            if status == .authorized {
+                print("Hey, Siri!")
+            } else {
+                print("Nay, Siri!")
+            }
+        }
     }
 	
     @IBAction func addButtonPressed(_ sender: Any) {

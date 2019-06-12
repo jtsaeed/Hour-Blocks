@@ -220,7 +220,11 @@
                     </userDefinedRuntimeAttributes>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dfw-wy-1Tl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="EMj-bZ-emP" userLabel="Right Swipe Gesture Recognizer"/>
+                <swipeGestureRecognizer direction="right" id="EMj-bZ-emP" userLabel="Right Swipe Gesture Recognizer">
+                    <connections>
+                        <action selector="swipedRight:" destination="63b-M3-lej" id="6Vw-lN-rPd"/>
+                    </connections>
+                </swipeGestureRecognizer>
                 <swipeGestureRecognizer direction="left" id="mBA-sa-hmd" userLabel="Left Swipe Gesture Recognizer">
                     <connections>
                         <action selector="swipedLeft:" destination="63b-M3-lej" id="Ghr-83-QOj"/>
@@ -799,10 +803,10 @@
                                 <rect key="frame" x="40" y="138" width="295" height="320"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="Mjl-OJ-Qlx">
-                                        <rect key="frame" x="6" y="29" width="283" height="262"/>
+                                        <rect key="frame" x="2" y="29" width="291" height="262"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="fuE-es-3Vd" userLabel="Title">
-                                                <rect key="frame" x="26" y="0.0" width="231" height="84"/>
+                                                <rect key="frame" x="30" y="0.0" width="231" height="84"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's on your to do list?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RJ4-if-xZm">
                                                         <rect key="frame" x="0.0" y="0.0" width="231" height="24"/>
@@ -838,16 +842,16 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hJ0-uJ-cYI" userLabel="Priority">
-                                                <rect key="frame" x="8" y="116" width="267" height="70"/>
+                                                <rect key="frame" x="8" y="116" width="275" height="70"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No priority" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pkT-kl-b5t" userLabel="Priority Label">
-                                                        <rect key="frame" x="0.0" y="0.0" width="267" height="24"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="275" height="24"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="4Kp-0n-MUr">
-                                                        <rect key="frame" x="-2" y="40" width="271" height="31"/>
+                                                        <rect key="frame" x="-2" y="40" width="279" height="31"/>
                                                         <connections>
                                                             <action selector="prioritySliderPressed:" destination="lyG-nn-01Y" eventType="valueChanged" id="ezw-8X-wM7"/>
                                                         </connections>
@@ -855,7 +859,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Tk3-Cq-Fwj" userLabel="Buttons">
-                                                <rect key="frame" x="37.666666666666686" y="218" width="208" height="44"/>
+                                                <rect key="frame" x="41.666666666666686" y="218" width="208" height="44"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZ2-pb-dSe" customClass="UIButtonX" customModule="neon" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="96" height="44"/>
@@ -942,6 +946,7 @@
                     </view>
                     <connections>
                         <outlet property="alertView" destination="zZW-4Y-ZAm" id="zLN-at-BQE"/>
+                        <outlet property="bottomInset" destination="BpJ-3a-Y9y" id="HWp-TJ-80X"/>
                         <outlet property="cancelButton" destination="MZ2-pb-dSe" id="GiI-B0-SYp"/>
                         <outlet property="doneButton" destination="VXZ-oN-6W8" id="SC6-Bd-0Or"/>
                         <outlet property="priorityLabel" destination="pkT-kl-b5t" id="m1h-YU-nEm"/>

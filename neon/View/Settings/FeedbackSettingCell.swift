@@ -18,7 +18,7 @@ class FeedbackSettingCell: UITableViewCell, UITextViewDelegate {
 	func build() {
 		feedbackField.textContainerInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
 		feedbackField.delegate = self
-		feedbackField.textColor = UIColor(named: "lightGray")!
+		feedbackField.textColor = UIColor(named: "gray")!.withAlphaComponent(0.5)
 		feedbackField.text = AppStrings.Settings.feedbackPlaceholder
 		
 		submitButton.setTitle(AppStrings.Settings.feedbackSubmit, for: .normal)

@@ -12,6 +12,7 @@ class AddToDoAlertViewController: UIViewController {
     
     var delegate: AddToDoDelegate?
 
+    @IBOutlet weak var bottomInset: NSLayoutConstraint!
     @IBOutlet weak var alertView: UIViewX!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var priorityLabel: UILabel!
@@ -36,19 +37,19 @@ class AddToDoAlertViewController: UIViewController {
     
     @IBAction func prioritySliderPressed(_ sender: Any) {
         if prioritySlider.value >= 0 && prioritySlider.value < 0.25 {
-            prioritySlider.minimumTrackTintColor = .gray
+            prioritySlider.minimumTrackTintColor = UIColor(named: "noPriority")!
             priorityLabel.text = "No priority"
             priority = .none
         } else if prioritySlider.value >= 0.25 && prioritySlider.value < 0.5 {
-            prioritySlider.minimumTrackTintColor = .yellow
+            prioritySlider.minimumTrackTintColor = UIColor(named: "lowPriority")!
             priorityLabel.text = "Low priority"
             priority = .low
         } else if prioritySlider.value >= 0.5 && prioritySlider.value < 0.75 {
-            prioritySlider.minimumTrackTintColor = .orange
+            prioritySlider.minimumTrackTintColor = UIColor(named: "medPriority")!
             priorityLabel.text = "Medium priority"
             priority = .medium
         } else {
-            prioritySlider.minimumTrackTintColor = .red
+            prioritySlider.minimumTrackTintColor = UIColor(named: "highPriority")!
             priorityLabel.text = "High priority"
             priority = .high
         }
