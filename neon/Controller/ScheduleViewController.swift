@@ -401,10 +401,15 @@ extension ScheduleViewController {
                     image: nil
                 ),
                 WhatsNew.Item(
-                    title: "Siri Support",
-                    subtitle: "Try asking Siri to 'add grocery shopping to my to do list in Hour Blocks' 🎤",
+                    title: "Sharing is Really Caring",
+                    subtitle: "Share your Hour Blocks to your friends directly from the app so they can tap and add it to their day! 🤗",
                     image: nil
                 ),
+                WhatsNew.Item(
+                    title: "So Much More",
+                    subtitle: "There's so many improvements and fixes all around the app, see if you can spot them! 😱",
+                    image: nil
+                )
             ]
         )
         var configuration = WhatsNewViewController.Configuration()

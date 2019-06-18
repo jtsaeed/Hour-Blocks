@@ -13,7 +13,8 @@ class ToDoViewController: UIViewController, Storyboarded {
 	
 	weak var coordinator: ToDoCoordinator?
 	
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var tableView: UITableView!
+    
     @IBOutlet weak var itemsLabel: UILabel!
     
     var items = [ToDoItem]() {
@@ -31,19 +32,13 @@ class ToDoViewController: UIViewController, Storyboarded {
         super.viewWillAppear(animated)
         
         items = DataGateway.shared.loadToDos()
-        DispatchQueue.main.async { self.collectionView.reloadData() }
+        DispatchQueue.main.async { self.tableView.reloadData() }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        INPreferences.requestSiriAuthorization { status in
-            if status == .authorized {
-                print("Hey, Siri!")
-            } else {
-                print("Nay, Siri!")
-            }
-        }
+        INPreferences.requestSiriAuthorization { status in }
     }
 	
     @IBAction func addButtonPressed(_ sender: Any) {
@@ -64,33 +59,37 @@ extension ToDoViewController {
         items.append(toDoItem)
         DataGateway.shared.saveToDo(item: toDoItem)
         
-        DispatchQueue.main.async { self.collectionView.reloadData() }
+        if let index = items.firstIndex(of: toDoItem) {
+            tableView.insertRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+        } else {
+            DispatchQueue.main.async { self.tableView.reloadData() }
+        }
     }
     
     func removeToDoItem(at index: Int) {
         DataGateway.shared.deleteToDo(item: items[index])
         items.remove(at: index)
         
-        DispatchQueue.main.async { self.collectionView.reloadData() }
+        self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
     }
 }
 
 // MARK: - Collection View
 
-extension ToDoViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-	
-	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return items.count
-	}
-	
-	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "toDoBlockCell", for: indexPath) as? ToDoBlockCell else { return UICollectionViewCell() }
-		cell.build(with: items[indexPath.row])
-		return cell
-	}
+extension ToDoViewController: UITableViewDataSource, UITableViewDelegate {
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        showToDoOptionsDialog(for: indexPath.row)
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "toDoBlockCell", for: indexPath) as? ToDoBlockCell else { return UITableViewCell() }
+        cell.build(with: items[indexPath.row])
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        DispatchQueue.main.async { self.showToDoOptionsDialog(for: indexPath.row) }
     }
 }
 

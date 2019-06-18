@@ -93,6 +93,7 @@
 		23D642FC229B0B3C001E240F /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D642FB229B0B3C001E240F /* AppStrings.swift */; };
 		23D642FD229B1EDA001E240F /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D642FB229B0B3C001E240F /* AppStrings.swift */; };
 		23D9859922AA994600F0C9F7 /* AddToDoAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D9859822AA994600F0C9F7 /* AddToDoAlertViewController.swift */; };
+		23DB0A5622B296BD00C448F1 /* AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23DB0A5822B296BD00C448F1 /* AppIntentVocabulary.plist */; };
 		23E45BE2224BA3A9002D01AC /* NotificationsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E45BE1224BA3A9002D01AC /* NotificationsGateway.swift */; };
 		23E8A93C228D587C0046C699 /* CalendarSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E8A93B228D587C0046C699 /* CalendarSettingCell.swift */; };
 		23FAE4782288E549001D9823 /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FAE4772288E549001D9823 /* ToDoViewController.swift */; };
@@ -283,6 +284,9 @@
 		23D41E6D222412FF00D909FD /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		23D642FB229B0B3C001E240F /* AppStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStrings.swift; sourceTree = "<group>"; };
 		23D9859822AA994600F0C9F7 /* AddToDoAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoAlertViewController.swift; sourceTree = "<group>"; };
+		23DB0A5722B296BD00C448F1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		23DB0A5922B296C200C448F1 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = es; path = es.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		23DB0A5A22B296C400C448F1 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = fr; path = fr.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
 		23E45BE1224BA3A9002D01AC /* NotificationsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsGateway.swift; sourceTree = "<group>"; };
 		23E7851322AA753100A9650F /* notification.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = notification.aif; sourceTree = "<group>"; };
 		23E8A93B228D587C0046C699 /* CalendarSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSettingCell.swift; sourceTree = "<group>"; };
@@ -492,6 +496,7 @@
 				23356ED42256676E00541A60 /* GoogleService-Info.plist */,
 				23E7851322AA753100A9650F /* notification.aif */,
 				238EA767223EA0D900981E98 /* neon.entitlements */,
+				23DB0A5822B296BD00C448F1 /* AppIntentVocabulary.plist */,
 			);
 			path = neon;
 			sourceTree = "<group>";
@@ -829,7 +834,7 @@
 								enabled = 1;
 							};
 							com.apple.SafariKeychain = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Siri = {
 								enabled = 1;
@@ -929,6 +934,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23DB0A5622B296BD00C448F1 /* AppIntentVocabulary.plist in Resources */,
 				23D41E6C2224127800D909FD /* SectionHeaderView.xib in Resources */,
 				2338BEC9220A7841004F288F /* LaunchScreen.storyboard in Resources */,
 				2338BEC6220A7841004F288F /* Assets.xcassets in Resources */,
@@ -1291,6 +1297,16 @@
 				2395A968224AE78C0007D6F2 /* Base */,
 			);
 			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+		23DB0A5822B296BD00C448F1 /* AppIntentVocabulary.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				23DB0A5722B296BD00C448F1 /* en */,
+				23DB0A5922B296C200C448F1 /* es */,
+				23DB0A5A22B296C400C448F1 /* fr */,
+			);
+			name = AppIntentVocabulary.plist;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

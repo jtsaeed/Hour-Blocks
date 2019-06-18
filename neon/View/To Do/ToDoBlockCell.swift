@@ -8,11 +8,11 @@
 
 import UIKit
 
-class ToDoBlockCell: UICollectionViewCell {
-	
-	@IBOutlet weak var priorityLabel: UILabel!
-	@IBOutlet weak var titleLabel: UILabel!
-	
+class ToDoBlockCell: UITableViewCell {
+    
+    @IBOutlet weak var priorityLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    
 	func build(with toDoItem: ToDoItem) {
 		priorityLabel.text = toDoItem.priority.rawValue
 		titleLabel.text = toDoItem.title
