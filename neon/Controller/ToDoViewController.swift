@@ -42,7 +42,7 @@ class ToDoViewController: UIViewController, Storyboarded {
     }
 	
     @IBAction func addButtonPressed(_ sender: Any) {
-        showAddToDoDialog()
+        showAddToDoDialog(index: nil)
     }
     
     @IBAction func swipedLeft(_ sender: Any) {
@@ -101,7 +101,7 @@ extension ToDoViewController: AddToDoDelegate {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Edit", style: .default, handler: { (action) in
-            // TODO Edit
+            self.showAddToDoDialog(index: index)
         }))
         alert.addAction(UIAlertAction(title: "Clear", style: .destructive, handler: { (action) in
             self.removeToDoItem(at: index)
@@ -116,20 +116,26 @@ extension ToDoViewController: AddToDoDelegate {
         present(alert, animated: true, completion: nil)
     }
     
-    func showAddToDoDialog() {
+    func showAddToDoDialog(index: Int?) {
         let alert = self.storyboard?.instantiateViewController(withIdentifier: "AddToDoAlert") as! AddToDoAlertViewController
         alert.providesPresentationContextTransitionStyle = true
         alert.definesPresentationContext = true
         alert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         alert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         alert.delegate = self
+        alert.index = index
+        if index != nil {
+            alert.editingTitle = items[index!].title
+            alert.priority = items[index!].priority
+        }
         
         setStatusBarBackground(as: .clear)
         present(alert, animated: true, completion: nil)
     }
     
-    func doneButtonTapped(textFieldValue: String, priority: ToDoPriority) {
+    func doneButtonTapped(index: Int?, textFieldValue: String, priority: ToDoPriority) {
         self.setStatusBarBackground(as: .white)
+        if index != nil { removeToDoItem(at: index!) }
         addToDoItem(title: textFieldValue, priority: priority)
     }
     
