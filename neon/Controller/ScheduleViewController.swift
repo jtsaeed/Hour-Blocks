@@ -289,7 +289,7 @@ extension ScheduleViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate 
     }
     
     func showAgendaOptionsDialog(for block: Block, at indexPath: IndexPath) {
-        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let actionSheet = UIAlertController(title: "Tip: Hold a block to drag and drop it if you need to rearrange your schedule", message: nil, preferredStyle: .actionSheet)
         
         actionSheet.addAction(UIAlertAction(title: AppStrings.Schedule.edit, style: .default, handler: { action in
             self.showAddAgendaDialog(for: block, at: indexPath)

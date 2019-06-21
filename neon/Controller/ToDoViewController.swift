@@ -106,6 +106,11 @@ extension ToDoViewController: AddToDoDelegate {
         alert.addAction(UIAlertAction(title: "Clear", style: .destructive, handler: { (action) in
             self.removeToDoItem(at: index)
         }))
+        alert.addAction(UIAlertAction(title: "Add to Current Hour Block", style: .default, handler: { (action) in
+            DataGateway.shared.saveBlock(AgendaItem(title: self.items[index].title),
+                                                    for: Calendar.current.component(.hour, from: Date()),
+                                                    today: true)
+        }))
         
         setStatusBarBackground(as: .clear)
         present(alert, animated: true, completion: nil)
