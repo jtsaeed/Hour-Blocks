@@ -277,6 +277,7 @@ extension ScheduleViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate 
         
         setStatusBarBackground(as: .clear)
         present(alert, animated: true, completion: nil)
+//        coordinator?.presentAddBlockController()
     }
     
     func doneButtonTapped(textFieldValue: String, indexPath: IndexPath) {

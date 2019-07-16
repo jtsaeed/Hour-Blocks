@@ -58,6 +58,7 @@
 		234C1A09220C8E9D00344316 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C1A08220C8E9D00344316 /* Date+Ext.swift */; };
 		234C1A0B220C8F9900344316 /* TodayHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C1A0A220C8F9900344316 /* TodayHeaderCell.swift */; };
 		2355CBE9229B2B3C00EA4D46 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2355CBEB229B2B3C00EA4D46 /* Localizable.strings */; };
+		235D324C22C91F8500AF3605 /* AddBlockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235D324B22C91F8500AF3605 /* AddBlockViewController.swift */; };
 		23693201229D842B00B0C635 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2355CBEB229B2B3C00EA4D46 /* Localizable.strings */; };
 		23693202229D842C00B0C635 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2355CBEB229B2B3C00EA4D46 /* Localizable.strings */; };
 		23693204229D8D3100B0C635 /* OtherSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23693203229D8D3100B0C635 /* OtherSettingCell.swift */; };
@@ -248,6 +249,7 @@
 		234C1A0A220C8F9900344316 /* TodayHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayHeaderCell.swift; sourceTree = "<group>"; };
 		2355CBEA229B2B3C00EA4D46 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2355CBEC229B2B4800EA4D46 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		235D324B22C91F8500AF3605 /* AddBlockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddBlockViewController.swift; path = neon/AddBlockViewController.swift; sourceTree = SOURCE_ROOT; };
 		23693200229D54A000B0C635 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		23693203229D8D3100B0C635 /* OtherSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSettingCell.swift; sourceTree = "<group>"; };
 		237FFC2E224B8D84000A02C0 /* AgendaCardRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaCardRowController.swift; sourceTree = "<group>"; };
@@ -588,6 +590,7 @@
 				23D41E6B2224127800D909FD /* SectionHeaderView.xib */,
 				23D41E6D222412FF00D909FD /* SectionHeaderView.swift */,
 				238A9DE322AAE2B3006CDAEB /* EditAgendaAlertViewController.swift */,
+				235D324B22C91F8500AF3605 /* AddBlockViewController.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -1133,6 +1136,7 @@
 				23FAE47A2288E7BC001D9823 /* ToDoItem.swift in Sources */,
 				231392A922666FC400DB0ABF /* DataGateway.swift in Sources */,
 				2338BEC4220A7840004F288F /* neon.xcdatamodeld in Sources */,
+				235D324C22C91F8500AF3605 /* AddBlockViewController.swift in Sources */,
 				232ED4E0228C93A4008FC4A0 /* AnalyticsGateway.swift in Sources */,
 				2381FD542291DCE2002DE3A0 /* ScheduleCoordinator.swift in Sources */,
 				2338BEEF220A78FF004F288F /* HourBlockCell.swift in Sources */,
@@ -1318,6 +1322,7 @@
 				CODE_SIGN_ENTITLEMENTS = neonSiri/neonSiri.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neonSiri/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1326,6 +1331,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.neonSiri;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1340,6 +1346,7 @@
 				CODE_SIGN_ENTITLEMENTS = neonSiri/neonSiri.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neonSiri/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1348,6 +1355,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.neonSiri;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1362,6 +1370,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				CODE_SIGN_ENTITLEMENTS = neonMessage/neonMessage.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neonMessage/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1370,6 +1379,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.neonMessage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1384,6 +1394,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				CODE_SIGN_ENTITLEMENTS = neonMessage/neonMessage.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neonMessage/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1392,6 +1403,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.neonMessage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1527,6 +1539,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1534,6 +1547,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1551,6 +1565,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1558,6 +1573,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1657,6 +1673,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = neonToday/neonToday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neonToday/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1665,6 +1682,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.neonToday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1678,6 +1696,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = neonToday/neonToday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neonToday/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1686,6 +1705,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.neonToday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1700,6 +1720,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "neonWatch Extension/neonWatch Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = "neonWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1707,6 +1728,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -1723,6 +1745,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "neonWatch Extension/neonWatch Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = "neonWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1730,6 +1753,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -1746,9 +1770,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				IBSC_MODULE = neonWatch_Extension;
 				INFOPLIST_FILE = neonWatch/Info.plist;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1765,9 +1791,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				IBSC_MODULE = neonWatch_Extension;
 				INFOPLIST_FILE = neonWatch/Info.plist;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
