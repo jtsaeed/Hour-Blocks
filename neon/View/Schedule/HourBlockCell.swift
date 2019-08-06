@@ -16,7 +16,7 @@ class HourBlockCell: UITableViewCell {
     
     func build(with agendaItem: AgendaItem, for hour: Int) {
         time.text = hour.getFormattedHour()
-        title.text = agendaItem.title.capitalized
+        title.text = agendaItem.title.agendaCapitalisation()
         icon.image = UIImage(named: agendaItem.icon)?.withRenderingMode(.alwaysTemplate)
     }
 

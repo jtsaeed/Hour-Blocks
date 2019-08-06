@@ -15,7 +15,7 @@ class ToDoBlockCell: UITableViewCell {
     
 	func build(with toDoItem: ToDoItem) {
 		priorityLabel.text = toDoItem.priority.rawValue
-		titleLabel.text = toDoItem.title.capitalized
+		titleLabel.text = toDoItem.title.agendaCapitalisation()
 		
 		switch toDoItem.priority {
 			case .none: priorityLabel.textColor = UIColor(named: "noPriority")

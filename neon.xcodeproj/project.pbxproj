@@ -86,6 +86,7 @@
 		23A32F1E22F9928200766362 /* IconClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 23A32F1C22F9926700766362 /* IconClassifier.mlmodel */; };
 		23A32F1F22F9928300766362 /* IconClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 23A32F1C22F9926700766362 /* IconClassifier.mlmodel */; };
 		23A32F2022F9928400766362 /* IconClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 23A32F1C22F9926700766362 /* IconClassifier.mlmodel */; };
+		23A32F2222F9931100766362 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A32F2122F9931100766362 /* String+Ext.swift */; };
 		23B63CE1222491050026B9C2 /* CalendarGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B63CE0222491050026B9C2 /* CalendarGateway.swift */; };
 		23C3FBAC228D48E800D20F21 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C3FBAB228D48E800D20F21 /* SettingsViewController.swift */; };
 		23C4D6692296A44F00A96C10 /* DataGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231392A822666FC400DB0ABF /* DataGateway.swift */; };
@@ -280,6 +281,7 @@
 		2395A97F224AE78E0007D6F2 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		2395A98B224AEABE0007D6F2 /* AgendaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaItem.swift; sourceTree = "<group>"; };
 		23A32F1C22F9926700766362 /* IconClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = IconClassifier.mlmodel; sourceTree = "<group>"; };
+		23A32F2122F9931100766362 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		23B63CE0222491050026B9C2 /* CalendarGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGateway.swift; sourceTree = "<group>"; };
 		23C3FBAB228D48E800D20F21 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		23D41E6B2224127800D909FD /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
@@ -423,6 +425,7 @@
 			children = (
 				23074FC9220B4B5700B64762 /* Int+Ext.swift */,
 				234C1A08220C8E9D00344316 /* Date+Ext.swift */,
+				23A32F2122F9931100766362 /* String+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1149,6 +1152,7 @@
 				238A9DE422AAE2B3006CDAEB /* EditAgendaAlertViewController.swift in Sources */,
 				234C1A0B220C8F9900344316 /* TodayHeaderCell.swift in Sources */,
 				2381FD512291DA05002DE3A0 /* AppCoordinator.swift in Sources */,
+				23A32F2222F9931100766362 /* String+Ext.swift in Sources */,
 				23FAE47C2288EF90001D9823 /* ToDoBlockCell.swift in Sources */,
 				2338BEBE220A7840004F288F /* ScheduleViewController.swift in Sources */,
 				23074FCE220B53AB00B64762 /* UIButtonX.swift in Sources */,
