@@ -394,10 +394,10 @@ extension ScheduleViewController {
     
     func presentWhatsNew() {
         let whatsNew = WhatsNew(
-            title: "What's New in Version 2.0",
+            title: "What's New in Version 2.0.1",
             items: [
                 WhatsNew.Item(
-                    title: "To Do List",
+                    title: "Minor Improvements",
                     subtitle: "Non-timed, never-expiring to-do list items- just a swipe away! ✅",
                     image: nil
 				),
