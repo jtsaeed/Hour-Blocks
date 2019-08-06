@@ -154,7 +154,7 @@ extension ScheduleViewController {
 
 // MARK: - Table View
 
-extension ScheduleViewController: TableViewReorderDelegate {
+extension ScheduleViewController {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 112
@@ -204,6 +204,7 @@ extension ScheduleViewController: TableViewReorderDelegate {
 		}
     }
 	
+    /*
 	func tableView(_ tableView: UITableView, reorderRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) { }
 	
 	func tableView(_ tableView: UITableView, canReorderRowAt indexPath: IndexPath) -> Bool {
@@ -217,6 +218,7 @@ extension ScheduleViewController: TableViewReorderDelegate {
 	}
 	
 	func tableViewDidFinishReordering(_ tableView: UITableView, from initialSourceIndexPath: IndexPath, to finalDestinationIndexPath: IndexPath) {
+        
 		guard let sourceBlock = blocks[initialSourceIndexPath.section]?[initialSourceIndexPath.row] else { return }
 		guard let destinationBlock = blocks[finalDestinationIndexPath.section]?[finalDestinationIndexPath.row] else { return }
 		
@@ -244,6 +246,7 @@ extension ScheduleViewController: TableViewReorderDelegate {
 			return proposedDestinationIndexPath
 		}
 	}
+ */
     
     func buildAgendaCell(with agendaItem: AgendaItem, for hour: Int) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "hourBlockCell") as? HourBlockCell else { return UITableViewCell() }
@@ -372,10 +375,12 @@ extension ScheduleViewController {
     
     func setupTableView() {
         tableView.frame = .zero
+        /*
 		tableView.reorder.delegate = self
 		tableView.reorder.cellScale = 1.05
 		tableView.reorder.shadowOpacity = 0
 		tableView.reorder.shadowRadius = 0
+ */
     }
     
     func setStatusBarBackground(as color: UIColor) {
