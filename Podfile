@@ -6,8 +6,6 @@ target 'neon' do
   use_frameworks!
 
   # Pods for neon
-  pod 'WhatsNewKit'
-  pod 'IQKeyboardManagerSwift'
   pod 'Firebase/Core'
 
   target 'neonTests' do

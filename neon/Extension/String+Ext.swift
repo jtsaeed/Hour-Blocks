@@ -10,7 +10,7 @@ import Foundation
 
 extension String {
     
-    func agendaCapitalisation() -> String {
+    func neonCapitalisation() -> String {
         let tempTitle = self.split(separator: " ")
         var finalTitle = ""
         
