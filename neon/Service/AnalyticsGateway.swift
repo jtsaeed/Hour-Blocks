@@ -17,6 +17,10 @@ class AnalyticsGateway {
 	func logHourBlock(for title: String) {
 		Analytics.logEvent("hourBlock", parameters: ["title": title])
 	}
+    
+    func logToDo(for title: String) {
+        Analytics.logEvent("toDo", parameters: ["title": title])
+    }
 	
 	func logFeedback(with text: String) {
 		Analytics.logEvent("feedback", parameters: ["feedback": text])

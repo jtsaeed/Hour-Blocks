@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Hero
 
 class AppCoordinator: Coordinator {
 	
@@ -22,10 +21,9 @@ class AppCoordinator: Coordinator {
 		// Construct nav bar
 		self.navigationController = UINavigationController()
 		self.tabBarController = UITabBarController()
-		self.tabBarController.tabBar.backgroundColor = UIColor(named: "mainLight")
-		self.tabBarController.tabBar.tintColor = UIColor(named: "main")
-		self.tabBarController.hero.isEnabled = true
-		self.tabBarController.hero.modalAnimationTypeString = "swipe"
+        self.tabBarController.tabBar.isTranslucent = false
+        self.tabBarController.tabBar.barTintColor = UIColor(named: "cardBacking")
+		self.tabBarController.tabBar.tintColor = UIColor(named: "primary")
 		
 		// Initialise schedule tab
 		self.toDoCoordinator = ToDoCoordinator()

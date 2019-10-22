@@ -19,12 +19,12 @@ class HourBlockCell: UITableViewCell {
 		
 		if let agendaItem = possibleAgendaItem {
 			title.text = agendaItem.title.capitalized
-			title.textColor = .black
+            title.textColor = UIColor(named: "title")!
 			icon.isHidden = false
 			icon.image = UIImage(named: agendaItem.icon)?.withRenderingMode(.alwaysTemplate)
 		} else {
 			title.text = "Empty"
-			title.textColor = UIColor(named: "gray")!
+			title.textColor = UIColor(named: "subtitle")!
 			icon.isHidden = true
 		}
 	}

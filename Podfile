@@ -8,9 +8,6 @@ target 'neon' do
   # Pods for neon
   pod 'WhatsNewKit'
   pod 'IQKeyboardManagerSwift'
-  pod 'Toaster'
-  pod 'SwiftReorder'
-  pod 'Hero'
   pod 'Firebase/Core'
 
   target 'neonTests' do

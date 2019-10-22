@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -47,7 +47,6 @@
 		233D156F2296A51D00EE56EC /* CalendarGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B63CE0222491050026B9C2 /* CalendarGateway.swift */; };
 		233D15712296A67A00EE56EC /* DataGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231392A822666FC400DB0ABF /* DataGateway.swift */; };
 		233D15722296A67C00EE56EC /* CalendarGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B63CE0222491050026B9C2 /* CalendarGateway.swift */; };
-		233D15752296AB8700EE56EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2338BEC5220A7841004F288F /* Assets.xcassets */; };
 		233D15782296AC3800EE56EC /* AgendaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23074FC7220B4A5D00B64762 /* AgendaItem.swift */; };
 		233D15792296AC3900EE56EC /* AgendaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23074FC7220B4A5D00B64762 /* AgendaItem.swift */; };
 		233D157A2296AC4B00EE56EC /* UIViewX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEEC220A78C5004F288F /* UIViewX.swift */; };
@@ -55,7 +54,6 @@
 		234C1A09220C8E9D00344316 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C1A08220C8E9D00344316 /* Date+Ext.swift */; };
 		234C1A0B220C8F9900344316 /* TodayHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C1A0A220C8F9900344316 /* TodayHeaderCell.swift */; };
 		2355CBE9229B2B3C00EA4D46 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2355CBEB229B2B3C00EA4D46 /* Localizable.strings */; };
-		235D324C22C91F8500AF3605 /* AddBlockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235D324B22C91F8500AF3605 /* AddBlockViewController.swift */; };
 		23693201229D842B00B0C635 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2355CBEB229B2B3C00EA4D46 /* Localizable.strings */; };
 		23693202229D842C00B0C635 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2355CBEB229B2B3C00EA4D46 /* Localizable.strings */; };
 		23693204229D8D3100B0C635 /* OtherSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23693203229D8D3100B0C635 /* OtherSettingCell.swift */; };
@@ -90,6 +88,7 @@
 		23B63CE1222491050026B9C2 /* CalendarGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B63CE0222491050026B9C2 /* CalendarGateway.swift */; };
 		23C3FBAC228D48E800D20F21 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C3FBAB228D48E800D20F21 /* SettingsViewController.swift */; };
 		23C4D6692296A44F00A96C10 /* DataGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231392A822666FC400DB0ABF /* DataGateway.swift */; };
+		23C76CCE2318279B004D5F26 /* UIApplication+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C76CCD2318279B004D5F26 /* UIApplication+Ext.swift */; };
 		23D41E6C2224127800D909FD /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D41E6B2224127800D909FD /* SectionHeaderView.xib */; };
 		23D41E6E222412FF00D909FD /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D41E6D222412FF00D909FD /* SectionHeaderView.swift */; };
 		23D642FC229B0B3C001E240F /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D642FB229B0B3C001E240F /* AppStrings.swift */; };
@@ -121,13 +120,6 @@
 			remoteGlobalIDString = 2395A964224AE78C0007D6F2;
 			remoteInfo = neonWatch;
 		};
-		231728982291777A007DBF8B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2338BEB0220A7840004F288F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2317288B22917778007DBF8B;
-			remoteInfo = neonMessage;
-		};
 		2338BED0220A7841004F288F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2338BEB0220A7840004F288F /* Project object */;
@@ -141,6 +133,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2338BEB7220A7840004F288F;
 			remoteInfo = neon;
+		};
+		23836946232FDB33002558ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2338BEB0220A7840004F288F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2317288B22917778007DBF8B;
+			remoteInfo = neonMessage;
 		};
 		2395A956224AE1750007D6F2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -250,7 +249,6 @@
 		234C1A0A220C8F9900344316 /* TodayHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayHeaderCell.swift; sourceTree = "<group>"; };
 		2355CBEA229B2B3C00EA4D46 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2355CBEC229B2B4800EA4D46 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		235D324B22C91F8500AF3605 /* AddBlockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddBlockViewController.swift; path = neon/AddBlockViewController.swift; sourceTree = SOURCE_ROOT; };
 		23693200229D54A000B0C635 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		23693203229D8D3100B0C635 /* OtherSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSettingCell.swift; sourceTree = "<group>"; };
 		237FFC2E224B8D84000A02C0 /* AgendaCardRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaCardRowController.swift; sourceTree = "<group>"; };
@@ -284,6 +282,7 @@
 		23A32F2122F9931100766362 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		23B63CE0222491050026B9C2 /* CalendarGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGateway.swift; sourceTree = "<group>"; };
 		23C3FBAB228D48E800D20F21 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		23C76CCD2318279B004D5F26 /* UIApplication+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Ext.swift"; sourceTree = "<group>"; };
 		23D41E6B2224127800D909FD /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		23D41E6D222412FF00D909FD /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		23D642FB229B0B3C001E240F /* AppStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStrings.swift; sourceTree = "<group>"; };
@@ -426,6 +425,7 @@
 				23074FC9220B4B5700B64762 /* Int+Ext.swift */,
 				234C1A08220C8E9D00344316 /* Date+Ext.swift */,
 				23A32F2122F9931100766362 /* String+Ext.swift */,
+				23C76CCD2318279B004D5F26 /* UIApplication+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -593,7 +593,6 @@
 				23D41E6B2224127800D909FD /* SectionHeaderView.xib */,
 				23D41E6D222412FF00D909FD /* SectionHeaderView.swift */,
 				238A9DE322AAE2B3006CDAEB /* EditAgendaAlertViewController.swift */,
-				235D324B22C91F8500AF3605 /* AddBlockViewController.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -695,9 +694,9 @@
 			buildRules = (
 			);
 			dependencies = (
+				23836947232FDB33002558ED /* PBXTargetDependency */,
 				23020E2E2273AC6200B03C8E /* PBXTargetDependency */,
 				2395A957224AE1750007D6F2 /* PBXTargetDependency */,
-				231728992291777A007DBF8B /* PBXTargetDependency */,
 				2301F74E22B1138B0018BE3F /* PBXTargetDependency */,
 			);
 			name = neon;
@@ -931,7 +930,6 @@
 			files = (
 				231728962291777A007DBF8B /* Assets.xcassets in Resources */,
 				23693202229D842C00B0C635 /* Localizable.strings in Resources */,
-				233D15752296AB8700EE56EC /* Assets.xcassets in Resources */,
 				2317289422917778007DBF8B /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -999,32 +997,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-neon/Pods-neon-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
-				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftReorder/SwiftReorder.framework",
-				"${BUILT_PRODUCTS_DIR}/Toaster/Toaster.framework",
-				"${BUILT_PRODUCTS_DIR}/WhatsNewKit/WhatsNewKit.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-neon/Pods-neon-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftReorder.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toaster.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WhatsNewKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-neon/Pods-neon-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-neon/Pods-neon-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-neon/Pods-neon-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7C8B58ECED1F9FF1006E3FB1 /* [CP] Check Pods Manifest.lock */ = {
@@ -1139,7 +1120,6 @@
 				23FAE47A2288E7BC001D9823 /* ToDoItem.swift in Sources */,
 				231392A922666FC400DB0ABF /* DataGateway.swift in Sources */,
 				2338BEC4220A7840004F288F /* neon.xcdatamodeld in Sources */,
-				235D324C22C91F8500AF3605 /* AddBlockViewController.swift in Sources */,
 				232ED4E0228C93A4008FC4A0 /* AnalyticsGateway.swift in Sources */,
 				2381FD542291DCE2002DE3A0 /* ScheduleCoordinator.swift in Sources */,
 				2338BEEF220A78FF004F288F /* HourBlockCell.swift in Sources */,
@@ -1151,6 +1131,7 @@
 				23D642FC229B0B3C001E240F /* AppStrings.swift in Sources */,
 				238A9DE422AAE2B3006CDAEB /* EditAgendaAlertViewController.swift in Sources */,
 				234C1A0B220C8F9900344316 /* TodayHeaderCell.swift in Sources */,
+				23C76CCE2318279B004D5F26 /* UIApplication+Ext.swift in Sources */,
 				2381FD512291DA05002DE3A0 /* AppCoordinator.swift in Sources */,
 				23A32F2222F9931100766362 /* String+Ext.swift in Sources */,
 				23FAE47C2288EF90001D9823 /* ToDoBlockCell.swift in Sources */,
@@ -1229,11 +1210,6 @@
 			target = 2395A964224AE78C0007D6F2 /* neonWatch */;
 			targetProxy = 23020E2D2273AC6200B03C8E /* PBXContainerItemProxy */;
 		};
-		231728992291777A007DBF8B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2317288B22917778007DBF8B /* neonMessage */;
-			targetProxy = 231728982291777A007DBF8B /* PBXContainerItemProxy */;
-		};
 		2338BED1220A7841004F288F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2338BEB7220A7840004F288F /* neon */;
@@ -1243,6 +1219,11 @@
 			isa = PBXTargetDependency;
 			target = 2338BEB7220A7840004F288F /* neon */;
 			targetProxy = 2338BEDB220A7841004F288F /* PBXContainerItemProxy */;
+		};
+		23836947232FDB33002558ED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2317288B22917778007DBF8B /* neonMessage */;
+			targetProxy = 23836946232FDB33002558ED /* PBXContainerItemProxy */;
 		};
 		2395A957224AE1750007D6F2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1326,7 +1307,7 @@
 				CODE_SIGN_ENTITLEMENTS = neonSiri/neonSiri.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neonSiri/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1335,7 +1316,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.neonSiri;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1350,7 +1331,7 @@
 				CODE_SIGN_ENTITLEMENTS = neonSiri/neonSiri.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neonSiri/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1359,7 +1340,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.neonSiri;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1371,10 +1352,10 @@
 		2317289C2291777A007DBF8B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = neonMessage/neonMessage.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neonMessage/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1383,7 +1364,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.neonMessage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1395,10 +1376,10 @@
 		2317289D2291777A007DBF8B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = neonMessage/neonMessage.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neonMessage/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1407,7 +1388,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.neonMessage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1543,7 +1524,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1551,7 +1532,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1569,7 +1550,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1577,7 +1558,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1677,7 +1658,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = neonToday/neonToday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neonToday/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1686,7 +1667,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.neonToday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1700,7 +1681,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = neonToday/neonToday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neonToday/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1709,7 +1690,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.neonToday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1724,7 +1705,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "neonWatch Extension/neonWatch Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = "neonWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1732,7 +1713,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -1749,7 +1730,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "neonWatch Extension/neonWatch Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = "neonWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1757,7 +1738,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -1774,11 +1755,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				IBSC_MODULE = neonWatch_Extension;
 				INFOPLIST_FILE = neonWatch/Info.plist;
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1795,11 +1776,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				IBSC_MODULE = neonWatch_Extension;
 				INFOPLIST_FILE = neonWatch/Info.plist;
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;

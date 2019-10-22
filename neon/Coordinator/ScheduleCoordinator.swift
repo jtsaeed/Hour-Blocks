@@ -24,11 +24,6 @@ class ScheduleCoordinator: Coordinator {
 		vc.coordinator = self
 		navigationController.pushViewController(vc, animated: false)
 	}
-    
-    func presentAddBlockController() {
-        let vc = AddBlockViewController.instantiate()
-        navigationController.present(vc, animated: true, completion: nil)
-    }
 	
 	func swipeToToDo() {
 		appCoordinator?.swipeToToDo()

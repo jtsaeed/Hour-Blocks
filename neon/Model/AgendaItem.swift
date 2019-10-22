@@ -39,6 +39,8 @@ struct AgendaItem {
 		} else {
 			if let icon = generateLegacyIcon() { self.icon = icon }
 		}
+        
+        if let icon = generateEasterEggIcon() { self.icon = icon }
     }
 	
 	@available(iOS 12.0, *)
@@ -103,6 +105,20 @@ struct AgendaItem {
         }
         
         return false
+    }
+    
+    func generateEasterEggIcon() -> String? {
+        if title == "smoke trees" {
+            return "couch"
+        } else if title == "get thicc" {
+            return "gym"
+        } else if title == "hang out with emma" {
+            return "love"
+        } else if title == "hang out with jahan" {
+            return "code"
+        } else {
+            return nil
+        }
     }
 }
 

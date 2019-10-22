@@ -59,6 +59,8 @@ extension ToDoViewController {
         items.append(toDoItem)
         DataGateway.shared.saveToDo(item: toDoItem)
         
+        AnalyticsGateway.shared.logToDo(for: title)
+        
         if let index = items.firstIndex(of: toDoItem) {
             tableView.insertRows(at: [IndexPath(row: index, section: 0)], with: .fade)
         } else {
@@ -143,10 +145,11 @@ extension ToDoViewController: AddToDoDelegate {
         self.setStatusBarBackground(as: .white)
         if index != nil { removeToDoItem(at: index!) }
         addToDoItem(title: textFieldValue, priority: priority)
+        setStatusBarBackground(as: UIColor(named: "background")!)
     }
     
     func cancelButtonTapped() {
-        setStatusBarBackground(as: .white)
+        setStatusBarBackground(as: UIColor(named: "background")!)
     }
 }
 
@@ -155,11 +158,16 @@ extension ToDoViewController: AddToDoDelegate {
 extension ToDoViewController {
     
     func setStatusBarBackground(as color: UIColor) {
-        guard let statusBarView = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else {
-            return
-        }
         UIView.animate(withDuration: 0.15) {
-            statusBarView.backgroundColor = color
+            if #available(iOS 13.0, *) {
+                if color == .clear && self.traitCollection.userInterfaceStyle == .dark {
+                    UIApplication.shared.statusBarUIView?.backgroundColor = .black
+                } else {
+                    UIApplication.shared.statusBarUIView?.backgroundColor = color
+                }
+            } else {
+                UIApplication.shared.statusBarUIView?.backgroundColor = color
+            }
         }
     }
 }

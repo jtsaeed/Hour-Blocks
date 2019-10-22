@@ -11,49 +11,10 @@ import IQKeyboardManagerSwift
 
 class FeedbackSettingCell: UITableViewCell, UITextViewDelegate {
 
-	@IBOutlet weak var feedbackField: UITextViewX!
-	@IBOutlet weak var submitButton: UIButtonX!
 	@IBOutlet weak var twitterButton: UIButtonX!
 	
 	func build() {
-		feedbackField.textContainerInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
-		feedbackField.delegate = self
-		feedbackField.textColor = UIColor(named: "gray")!.withAlphaComponent(0.5)
-		feedbackField.text = AppStrings.Settings.feedbackPlaceholder
-		
-		submitButton.setTitle(AppStrings.Settings.feedbackSubmit, for: .normal)
-		submitButton.setTitle(AppStrings.Settings.thankYou, for: .disabled)
-		submitButton.setTitleColor(UIColor(named: "gray"), for: .disabled)
-		
 		twitterButton.setTitle(AppStrings.Settings.twitter, for: .normal)
-	}
-
-	func textViewDidBeginEditing(_ textView: UITextView) {
-		IQKeyboardManager.shared.enable = true
-		
-		if feedbackField.textColor == UIColor(named: "lightGray") {
-			feedbackField.text = nil
-			feedbackField.textColor = UIColor.black
-		}
-	}
-	
-	func textViewDidEndEditing(_ textView: UITextView) {
-		if feedbackField.text.isEmpty {
-			feedbackField.text = AppStrings.Settings.feedbackPlaceholder
-			feedbackField.textColor = UIColor(named: "lightGray")
-		}
-	}
-	
-	@IBAction func submitPressed(_ sender: Any) {
-		if !feedbackField.text.isEmpty {
-			UIImpactFeedbackGenerator().impactOccurred()
-			IQKeyboardManager.shared.enable = false
-			AnalyticsGateway.shared.logFeedback(with: feedbackField.text)
-			submitButton.isEnabled = false
-			submitButton.backgroundColor = UIColor(named: "mainLight")
-			feedbackField.isHidden = true
-			feedbackField.text = ""
-		}
 	}
 	
 	@IBAction func followTwitterPressed(_ sender: Any) {

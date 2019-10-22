@@ -12,9 +12,7 @@ import StoreKit
 import WhatsNewKit
 import UserNotifications
 import Intents
-import Toaster
 import WatchConnectivity
-import SwiftReorder
 
 class ScheduleViewController: UITableViewController, Storyboarded {
 	
@@ -163,6 +161,7 @@ extension ScheduleViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let sectionHeader = Bundle.main.loadNibNamed("SectionHeaderView", owner: self, options: nil)?.first as? SectionHeaderView else { return UIView() }
         sectionHeader.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 112)
+        sectionHeader.backgroundColor = UIColor(named: "background")
         
         if section == Day.today.rawValue {
             sectionHeader.build(for: .today)
@@ -193,8 +192,6 @@ extension ScheduleViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		if let spacer = tableView.reorder.spacerCell(for: indexPath) { return spacer }
-		
 		guard let block = blocks[indexPath.section]?[indexPath.row] else { return UITableViewCell() }
 		
 		if let agendaItem = block.agendaItem {
@@ -203,50 +200,6 @@ extension ScheduleViewController {
 			return buildEmptyCell(for: block.hour, at: indexPath)
 		}
     }
-	
-    /*
-	func tableView(_ tableView: UITableView, reorderRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) { }
-	
-	func tableView(_ tableView: UITableView, canReorderRowAt indexPath: IndexPath) -> Bool {
-		guard let block = blocks[indexPath.section]?[indexPath.row] else { return false }
-		
-		return block.agendaItem != nil
-	}
-	
-	func tableViewDidBeginReordering(_ tableView: UITableView, at indexPath: IndexPath) {
-		UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-	}
-	
-	func tableViewDidFinishReordering(_ tableView: UITableView, from initialSourceIndexPath: IndexPath, to finalDestinationIndexPath: IndexPath) {
-        
-		guard let sourceBlock = blocks[initialSourceIndexPath.section]?[initialSourceIndexPath.row] else { return }
-		guard let destinationBlock = blocks[finalDestinationIndexPath.section]?[finalDestinationIndexPath.row] else { return }
-		
-		if let agendaItem = sourceBlock.agendaItem {
-			DataGateway.shared.deleteBlock(agendaItem)
-			blocks[initialSourceIndexPath.section]?[initialSourceIndexPath.row].agendaItem = nil
-			
-			blocks[finalDestinationIndexPath.section]?[finalDestinationIndexPath.row].agendaItem = agendaItem
-			DataGateway.shared.saveBlock(agendaItem, for: destinationBlock.hour, today: initialSourceIndexPath.section == Day.today.rawValue)
-		}
-		
-		UINotificationFeedbackGenerator().notificationOccurred(.success)
-		tableView.reloadData()
-	}
-	
-	func tableView(_ tableView: UITableView, targetIndexPathForReorderFromRowAt sourceIndexPath: IndexPath, to proposedDestinationIndexPath: IndexPath) -> IndexPath {
-		if sourceIndexPath.section == Day.today.rawValue &&
-			proposedDestinationIndexPath.section == Day.tomorrow.rawValue {
-			let lastRowOfToday = tableView.numberOfRows(inSection: Day.today.rawValue) - 1
-			return IndexPath(row: lastRowOfToday, section: Day.today.rawValue)
-		} else if sourceIndexPath.section == Day.tomorrow.rawValue &&
-			proposedDestinationIndexPath.section == Day.today.rawValue {
-			return IndexPath(row: 0, section: Day.tomorrow.rawValue)
-		} else {
-			return proposedDestinationIndexPath
-		}
-	}
- */
     
     func buildAgendaCell(with agendaItem: AgendaItem, for hour: Int) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "hourBlockCell") as? HourBlockCell else { return UITableViewCell() }
@@ -280,20 +233,19 @@ extension ScheduleViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate 
         
         setStatusBarBackground(as: .clear)
         present(alert, animated: true, completion: nil)
-//        coordinator?.presentAddBlockController()
     }
     
     func doneButtonTapped(textFieldValue: String, indexPath: IndexPath) {
         addBlock(for: indexPath, with: textFieldValue)
-        setStatusBarBackground(as: .white)
+        setStatusBarBackground(as: UIColor(named: "background")!)
     }
     
     func cancelButtonTapped() {
-        setStatusBarBackground(as: .white)
+        setStatusBarBackground(as: UIColor(named: "background")!)
     }
     
     func showAgendaOptionsDialog(for block: Block, at indexPath: IndexPath) {
-        let actionSheet = UIAlertController(title: "Tip: Hold a block to drag and drop it if you need to rearrange your schedule", message: nil, preferredStyle: .actionSheet)
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         actionSheet.addAction(UIAlertAction(title: AppStrings.Schedule.edit, style: .default, handler: { action in
             self.showAddAgendaDialog(for: block, at: indexPath)
@@ -301,23 +253,25 @@ extension ScheduleViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate 
         if (!isCalendarEvent(at: indexPath)) {
             actionSheet.addAction(UIAlertAction(title: AppStrings.Schedule.clear, style: .destructive, handler: { action in
                 self.removeBlock(for: indexPath)
-                self.setStatusBarBackground(as: .white)
+                self.setStatusBarBackground(as: UIColor(named: "background")!)
             }))
             hasReminderSet(at: indexPath) { (result) in
-                if result == true {
-                    actionSheet.addAction(UIAlertAction(title: AppStrings.Schedule.removeReminder, style: .destructive, handler: { action in
-                        self.removeReminder(for: indexPath)
-                        self.setStatusBarBackground(as: .white)
-                    }))
-                } else {
-                    actionSheet.addAction(UIAlertAction(title: AppStrings.Schedule.setReminder, style: .default, handler: { action in
-                        self.showReminderOptionsDialog(for: indexPath, today: indexPath.section == Day.today.rawValue)
-                    }))
+                DispatchQueue.main.async {
+                    if result == true {
+                        actionSheet.addAction(UIAlertAction(title: AppStrings.Schedule.removeReminder, style: .destructive, handler: { action in
+                            self.removeReminder(for: indexPath)
+                            self.setStatusBarBackground(as: UIColor(named: "background")!)
+                        }))
+                    } else {
+                        actionSheet.addAction(UIAlertAction(title: AppStrings.Schedule.setReminder, style: .default, handler: { action in
+                            self.showReminderOptionsDialog(for: indexPath, today: indexPath.section == Day.today.rawValue)
+                        }))
+                    }
                 }
             }
         }
         actionSheet.addAction(UIAlertAction(title: AppStrings.cancel, style: .cancel, handler: { action in
-            self.setStatusBarBackground(as: .white)
+            self.setStatusBarBackground(as: UIColor(named: "background")!)
         }))
         
         if let popoverController = actionSheet.popoverPresentationController {
@@ -335,22 +289,22 @@ extension ScheduleViewController: AddAgendaDelegate, AddAgendaAlertViewDelegate 
         
         actionSheet.addAction(UIAlertAction(title: String(format: AppStrings.Schedule.timeBeforeReminder, 60), style: .default, handler: { action in
             self.addReminder(for: indexPath, timeOffset: 60, today: today)
-            self.setStatusBarBackground(as: .white)
+            self.setStatusBarBackground(as: UIColor(named: "background")!)
         }))
         actionSheet.addAction(UIAlertAction(title: String(format: AppStrings.Schedule.timeBeforeReminder, 30), style: .default, handler: { action in
             self.addReminder(for: indexPath, timeOffset: 30, today: today)
-            self.setStatusBarBackground(as: .white)
+            self.setStatusBarBackground(as: UIColor(named: "background")!)
         }))
         actionSheet.addAction(UIAlertAction(title: String(format: AppStrings.Schedule.timeBeforeReminder, 15), style: .default, handler: { action in
             self.addReminder(for: indexPath, timeOffset: 15, today: today)
-            self.setStatusBarBackground(as: .white)
+            self.setStatusBarBackground(as: UIColor(named: "background")!)
         }))
         actionSheet.addAction(UIAlertAction(title: String(format: AppStrings.Schedule.timeBeforeReminder, 5), style: .default, handler: { action in
             self.addReminder(for: indexPath, timeOffset: 5, today: today)
-            self.setStatusBarBackground(as: .white)
+            self.setStatusBarBackground(as: UIColor(named: "background")!)
         }))
         actionSheet.addAction(UIAlertAction(title: AppStrings.cancel, style: .cancel, handler: { action in
-            self.setStatusBarBackground(as: .white)
+            self.setStatusBarBackground(as: UIColor(named: "background")!)
         }))
         
         if let popoverController = actionSheet.popoverPresentationController {
@@ -370,51 +324,45 @@ extension ScheduleViewController {
     
     func initialiseUI() {
         setupTableView()
-        setStatusBarBackground(as: .white)
+        setStatusBarBackground(as: UIColor(named: "background")!)
     }
     
     func setupTableView() {
         tableView.frame = .zero
-        /*
-		tableView.reorder.delegate = self
-		tableView.reorder.cellScale = 1.05
-		tableView.reorder.shadowOpacity = 0
-		tableView.reorder.shadowRadius = 0
- */
     }
     
     func setStatusBarBackground(as color: UIColor) {
-        guard let statusBarView = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else {
-            return
-        }
         UIView.animate(withDuration: 0.15) {
-            statusBarView.backgroundColor = color
+            if #available(iOS 13.0, *) {
+                if color == .clear && self.traitCollection.userInterfaceStyle == .dark {
+                    UIApplication.shared.statusBarUIView?.backgroundColor = .black
+                } else {
+                    UIApplication.shared.statusBarUIView?.backgroundColor = color
+                }
+            } else {
+                UIApplication.shared.statusBarUIView?.backgroundColor = color
+            }
         }
     }
     
     func presentWhatsNew() {
         let whatsNew = WhatsNew(
-            title: "What's New in Version 2.0.1",
+            title: "What's New in Version 2.1",
             items: [
                 WhatsNew.Item(
-                    title: "Minor Improvements",
-                    subtitle: "Non-timed, never-expiring to-do list items- just a swipe away! ✅",
-                    image: nil
-				),
-                WhatsNew.Item(
-                    title: "Siri Support",
-                    subtitle: "Try asking Siri to 'add grocery shopping to my to do list in Hour Blocks' 🎤",
+                    title: "Dark Mode",
+                    subtitle: "For those running the newly released iOS 13, Hour Blocks now supports dark mode 🌚",
                     image: nil
                 ),
                 WhatsNew.Item(
-                    title: "So Much More",
-                    subtitle: "There's so many improvements and fixes all around the app, see if you can spot them! 😱",
+                    title: "Minor Improvements",
+                    subtitle: "Little changes here and there, along with some bug fixes 🐞",
                     image: nil
-                )
+				)
             ]
         )
         var configuration = WhatsNewViewController.Configuration()
-        configuration.completionButton.backgroundColor = UIColor(named: "main")!
+        configuration.completionButton.backgroundColor = UIColor(named: "primary")!
         configuration.completionButton.title = "Let's go!"
         configuration.completionButton.hapticFeedback = .impact(.light)
         let whatsNewVC = WhatsNewViewController(whatsNew: whatsNew, configuration: configuration)

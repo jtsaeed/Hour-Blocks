@@ -52,7 +52,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		let sectionHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 48))
-		sectionHeaderView.backgroundColor = .white
+		sectionHeaderView.backgroundColor = UIColor(named: "background")
 		
 		let sectionHeader = UILabel(frame: CGRect(x: 32, y: 0, width: tableView.bounds.width - 32, height: 48))
 		sectionHeader.font = UIFont.boldSystemFont(ofSize: 24)
@@ -86,7 +86,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 			indexPath.section == SettingsSection.other.rawValue {
 			return 38
 		} else if indexPath.section == SettingsSection.feedback.rawValue {
-			return 240
+			return 64
 		} else {
 			return 0
 		}
