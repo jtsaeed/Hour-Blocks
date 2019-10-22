@@ -24,6 +24,7 @@
 		2304FA35235F306B006DA688 /* FutureCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA34235F306B006DA688 /* FutureCard.swift */; };
 		2304FA37235F3153006DA688 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA36235F3153006DA688 /* ToDoItem.swift */; };
 		2304FA39235F315F006DA688 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA38235F315F006DA688 /* SettingsView.swift */; };
+		2304FA3B235F39E4006DA688 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2304FA3A235F39E4006DA688 /* LaunchScreen.storyboard */; };
 		23074FC8220B4A5D00B64762 /* AgendaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23074FC7220B4A5D00B64762 /* AgendaItem.swift */; };
 		23074FCA220B4B5700B64762 /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23074FC9220B4B5700B64762 /* Int+Ext.swift */; };
 		231392A922666FC400DB0ABF /* DataGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231392A822666FC400DB0ABF /* DataGateway.swift */; };
@@ -149,6 +150,7 @@
 		2304FA34235F306B006DA688 /* FutureCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureCard.swift; sourceTree = "<group>"; };
 		2304FA36235F3153006DA688 /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 		2304FA38235F315F006DA688 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		2304FA3A235F39E4006DA688 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		23074FC7220B4A5D00B64762 /* AgendaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaItem.swift; sourceTree = "<group>"; };
 		23074FC9220B4B5700B64762 /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
 		231392A822666FC400DB0ABF /* DataGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataGateway.swift; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 				23074FC5220B425D00B64762 /* Extension */,
 				23074FC2220B424E00B64762 /* Model */,
 				2338BEC5220A7841004F288F /* Assets.xcassets */,
+				2304FA3A235F39E4006DA688 /* LaunchScreen.storyboard */,
 				2338BECA220A7841004F288F /* Info.plist */,
 				23356ED42256676E00541A60 /* GoogleService-Info.plist */,
 				23E7851322AA753100A9650F /* notification.aif */,
@@ -647,6 +650,7 @@
 				23DB0A5622B296BD00C448F1 /* AppIntentVocabulary.plist in Resources */,
 				2338BEC6220A7841004F288F /* Assets.xcassets in Resources */,
 				2355CBE9229B2B3C00EA4D46 /* Localizable.strings in Resources */,
+				2304FA3B235F39E4006DA688 /* LaunchScreen.storyboard in Resources */,
 				23356ED52256676E00541A60 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
