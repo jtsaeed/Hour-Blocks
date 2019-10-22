@@ -12,7 +12,7 @@ struct SettingsView: View {
     
     var body: some View {
         List {
-            Section(header: Header(title: "Settings", subtitle: "3.0 BETA 1")) {
+            Section(header: Header(title: "Settings", subtitle: "3.0 BETA 2")) {
                 SettingsCard(title: "Permissions", subtitle: "Take control of", icon: "settings_permissions")
                 SettingsCard(title: "Calendars", subtitle: "Take control of", icon: "settings_calendars")
                 SettingsCard(title: "Other Stuff", subtitle: "Take control of", icon: "settings_other")

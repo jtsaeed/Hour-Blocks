@@ -51,7 +51,6 @@ struct ScheduleView: View {
                         }
                 }
             }
-            Rectangle().foregroundColor(Color.white).frame(height: 4)
         }
     }
     

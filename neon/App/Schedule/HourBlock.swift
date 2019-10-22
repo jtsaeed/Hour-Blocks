@@ -82,6 +82,7 @@ class HourBlocksStore: ObservableObject {
         initialiseBlocks()
         loadCalenderBlocks()
         loadBlocks()
+        loadFutureBlocks()
     }
     
     private func initialiseBlocks() {
@@ -112,9 +113,15 @@ class HourBlocksStore: ObservableObject {
     
     private func loadBlocks() {
         for entity in DataGateway.shared.getHourBlockEntities() {
-            let block = HourBlock(fromEntity: entity)
-            todaysBlocks[(block.hour * 4) + block.minute.rawValue] = block
+            if Calendar.current.isDateInToday(entity.day!) {
+                let block = HourBlock(fromEntity: entity)
+                todaysBlocks[(block.hour * 4) + block.minute.rawValue] = block
+            }
         }
+    }
+    
+    private func loadFutureBlocks() {
+        
     }
     
     func setTodayBlock(for hour: Int, _ minute: BlockMinute, with title: String) {
@@ -130,6 +137,9 @@ class HourBlocksStore: ObservableObject {
     }
     
     func addFutureBlock(for date: Date, _ hour: Int, _ minute: BlockMinute = .oclock, with title: String) {
-        futureBlocks.append(HourBlock(day: date, hour: hour, minute: minute, title: title))
+        let block = HourBlock(day: date, hour: hour, minute: minute, title: title)
+        
+        futureBlocks.append(block)
+        DataGateway.shared.saveHourBlock(block: block)
     }
 }

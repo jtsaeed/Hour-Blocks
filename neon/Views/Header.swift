@@ -29,7 +29,7 @@ struct Header: View {
                 .padding(.leading, 32)
         }
         .frame(width: UIScreen.main.bounds.width, height: 112, alignment: .leading)
-        .background(Color.white)
+        .background(Color("background"))
     }
 }
 
