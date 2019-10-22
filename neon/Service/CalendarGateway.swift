@@ -15,8 +15,7 @@ class CalendarGateway {
     
     let eventStore = EKEventStore()
 	
-	var todaysAllDayEvent: ImportedCalendarEvent?
-	var tomorrowsAllDayEvent: ImportedCalendarEvent?
+	var allDayEvent: ImportedCalendarEvent?
     
     func hasPermission() -> Bool {
         let status = EKEventStore.authorizationStatus(for: EKEntityType.event)
@@ -40,29 +39,14 @@ class CalendarGateway {
 		return importEvents(with: eventsPredicate, today: true)
     }
     
-    func importTomorrowsEvents() -> [ImportedCalendarEvent] {
-        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
-        let tomorrowStart = Calendar.current.date(bySetting: .hour, value: 0, of: Date())
-        let tomorrowEnd = Calendar.current.date(bySetting: .hour, value: 23, of: tomorrow)
-        let eventsPredicate = eventStore.predicateForEvents(withStart: tomorrowStart!, end: tomorrowEnd!, calendars: getAllCalendars())
-        
-		return importEvents(with: eventsPredicate, today: false)
-    }
-    
 	func importEvents(with predicate: NSPredicate, today: Bool) -> [ImportedCalendarEvent] {
         var importedCalendarEvents = [ImportedCalendarEvent]()
-		if today { todaysAllDayEvent = nil }
-		if !today { tomorrowsAllDayEvent = nil }
 		
         for storedEvent in eventStore.events(matching: predicate) {
-            let importedCalendarEvent = ImportedCalendarEvent(from: storedEvent, today: today)
+            let importedCalendarEvent = ImportedCalendarEvent(from: storedEvent)
             
             if (isAllDay(event: importedCalendarEvent)) {
-				if today {
-					todaysAllDayEvent = importedCalendarEvent
-				} else {
-					tomorrowsAllDayEvent = importedCalendarEvent
-				}
+                allDayEvent = importedCalendarEvent
 			} else {
 				importedCalendarEvents.append(importedCalendarEvent)
 			}
@@ -96,48 +80,56 @@ class CalendarGateway {
 	}
     
     func isAllDay(event: ImportedCalendarEvent) -> Bool {
-        return event.startTime == 0 && event.endTime == 23
+        return event.startingHour == 0 && event.endingHour == 23
     }
 }
 
 struct ImportedCalendarEvent {
     
     let title: String
-    var startTime: Int
-    var endTime: Int
     
-	init(from event: EKEvent, today: Bool) {
+    var startingHour: Int
+    var endingHour: Int
+    
+    var startingMinute: Int
+    var endingMinute: Int
+    
+	init(from event: EKEvent) {
         title = event.title
-		startTime = Calendar.current.component(.hour, from: event.startDate)
-		endTime = Calendar.current.component(.hour, from: event.endDate)
+        
+		startingHour = Calendar.current.component(.hour, from: event.startDate)
+		endingHour = Calendar.current.component(.hour, from: event.endDate)
+        
+        startingMinute = Calendar.current.component(.minute, from: event.startDate)
+        endingMinute = Calendar.current.component(.minute, from: event.endDate)
 		
-		if today {
-			if endTime <= Calendar.current.component(.hour, from: Date()) {
-				startTime = 0
-				endTime = 0
-			} else if startTime > Calendar.current.component(.hour, from: event.endDate) {
-				endTime = 23
-			} else if startTime == Calendar.current.component(.hour, from: event.endDate) {
-            	endTime = startTime
-			} else {
-				if Calendar.current.component(.minute, from: event.endDate) == 0 {
-					endTime = Calendar.current.component(.hour, from: event.endDate) - 1
-				} else {
-            		endTime = Calendar.current.component(.hour, from: event.endDate)
-				}
-        	}
-		} else {
-			if startTime > Calendar.current.component(.hour, from: event.endDate) {
-				startTime = 0
-			} else if startTime == Calendar.current.component(.hour, from: event.endDate) {
-				endTime = startTime
-			} else {
-				if Calendar.current.component(.minute, from: event.endDate) == 0 {
-					endTime = Calendar.current.component(.hour, from: event.endDate) - 1
-				} else {
-					endTime = Calendar.current.component(.hour, from: event.endDate)
-				}
-			}
-		}
+        // Calibrate hours
+        if endingHour <= Calendar.current.component(.hour, from: Date()) {
+            startingHour = 0
+            endingHour = 0
+        } else if startingHour > Calendar.current.component(.hour, from: event.endDate) {
+            endingHour = 23
+        } else if startingHour == Calendar.current.component(.hour, from: event.endDate) {
+            endingHour = startingHour
+        } else {
+            if Calendar.current.component(.minute, from: event.endDate) == 0 {
+                endingHour = Calendar.current.component(.hour, from: event.endDate) - 1
+            } else {
+                endingHour = Calendar.current.component(.hour, from: event.endDate)
+            }
+        }
+        
+        /*
+        // Calibrate minutes
+        if startingMinute
+        
+        if endingMinute > 0 && endingMinute < 15 {
+            endingMinute = 15
+        } else if endingMinute > 15 && endingMinute <= 30 {
+            
+        } else if endingMinute > 30 && endingMinute <= 45 {
+            
+        }
+ */
     }
 }

@@ -13,6 +13,7 @@ class NotificationsGateway {
     
     static let shared = NotificationsGateway()
     
+    /*
 	func addNotification(for block: Block, with timeOffset: Int, today: Bool, completion: @escaping (_ success: Bool) -> ()) {
         UNUserNotificationCenter.current().getNotificationSettings(completionHandler: { (settings) in
             if settings.authorizationStatus == .notDetermined || settings.authorizationStatus == .denied {
@@ -69,4 +70,5 @@ class NotificationsGateway {
             completion(error == nil)
         }
     }
+ */
 }

@@ -79,13 +79,38 @@ class HourBlocksStore: ObservableObject {
     @Published var futureBlocks = [HourBlock]()
     
     init() {
+        initialiseBlocks()
+        loadCalenderBlocks()
+        loadBlocks()
+    }
+    
+    private func initialiseBlocks() {
         for hour in 0...24 {
             todaysBlocks.append(HourBlock(day: Date(), hour: hour, minute: .oclock, title: nil))
             todaysBlocks.append(HourBlock(day: Date(), hour: hour, minute: .fifteen, title: nil))
             todaysBlocks.append(HourBlock(day: Date(), hour: hour, minute: .halfPast, title: nil))
             todaysBlocks.append(HourBlock(day: Date(), hour: hour, minute: .fourtyFive, title: nil))
         }
-        
+    }
+    
+    private func loadCalenderBlocks() {
+        if CalendarGateway.shared.hasPermission() {
+            for event in CalendarGateway.shared.importTodaysEvents() {
+                for i in event.startingHour...event.endingHour {
+                    let block1 = HourBlock(day: Date(), hour: i, minute: .oclock, title: event.title)
+                    todaysBlocks[(block1.hour * 4)] = block1
+                    let block2 = HourBlock(day: Date(), hour: i, minute: .fifteen, title: event.title)
+                    todaysBlocks[(block2.hour * 4) + 1] = block2
+                    let block3 = HourBlock(day: Date(), hour: i, minute: .halfPast, title: event.title)
+                    todaysBlocks[(block3.hour * 4) + 2] = block3
+                    let block4 = HourBlock(day: Date(), hour: i, minute: .fourtyFive, title: event.title)
+                    todaysBlocks[(block4.hour * 4) + 3] = block4
+                }
+            }
+        }
+    }
+    
+    private func loadBlocks() {
         for entity in DataGateway.shared.getHourBlockEntities() {
             let block = HourBlock(fromEntity: entity)
             todaysBlocks[(block.hour * 4) + block.minute.rawValue] = block

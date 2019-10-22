@@ -15,6 +15,10 @@ struct ScheduleView: View {
     @State var showBlocks = 0
     @State var isNewFutureBlockPresented = false
     
+    init() {
+        CalendarGateway.shared.handlePermissions()
+    }
+    
     var body: some View {
         List {
             Section(header: TodayHeader(showBlocks: $showBlocks, showBlockTogglePressed: {
