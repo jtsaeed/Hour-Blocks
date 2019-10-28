@@ -21,9 +21,7 @@ struct ScheduleView: View {
     
     var body: some View {
         List {
-            Section(header: TodayHeader(showBlocks: $showBlocks, showBlockTogglePressed: {
-                self.cycleShowBlocks()
-            })) {
+            Section(header: TodayHeader()) {
                 ForEach(blocks.todaysBlocks.filter { $0.hour >= Calendar.current.component(.hour, from: Date()) && showQuarterBlocks(minute: $0.minute) }, id: \.self) { block in
                     TodayCard(currentBlock: block, didAddBlock: { title in
                         self.blocks.setTodayBlock(for: block.hour, block.minute, with: title)
@@ -32,35 +30,31 @@ struct ScheduleView: View {
                     }).environmentObject(self.blocks)
                 }
             }
-            Section(header: FutureHeader(futureBlockAdded: { (title, date) in self.blocks.addFutureBlock(for: date, 0, .oclock, with: title)})) {
-                ForEach(blocks.futureBlocks, id: \.self) { block in
-                    FutureCard(currentBlock: block)
-                        .contextMenu {
-                            Button(action: {
-                                // TODO: Rename
-                            }) {
-                                Text("Rename")
-                                Image(systemName: "pencil")
+            Section(header: FutureHeader(addButtonDisabled: blocks.futureBlocks.isEmpty, futureBlockAdded: { title, date in self.blocks.addFutureBlock(for: date, 0, .oclock, with: title)})) {
+                if blocks.futureBlocks.isEmpty {
+                    EmptyFutureCard { title, date in
+                        self.blocks.addFutureBlock(for: date, 0, .oclock, with: title)
+                    }
+                } else {
+                    ForEach(blocks.futureBlocks, id: \.self) { block in
+                        FutureCard(currentBlock: block)
+                            .contextMenu {
+                                Button(action: {
+                                    // TODO: Rename
+                                }) {
+                                    Text("Rename")
+                                    Image(systemName: "pencil")
+                                }
+                                Button(action: {
+                                    // TODO: Clear
+                                }) {
+                                    Text("Clear")
+                                    Image(systemName: "trash")
+                                }
                             }
-                            Button(action: {
-                                // TODO: Clear
-                            }) {
-                                Text("Clear")
-                                Image(systemName: "trash")
-                            }
-                        }
+                    }
                 }
             }
-        }
-    }
-    
-    func cycleShowBlocks() {
-        if showBlocks == 0 {
-            showBlocks = 1
-        } else if showBlocks == 1 {
-            showBlocks = 2
-        } else if showBlocks == 2 {
-            showBlocks = 0
         }
     }
     

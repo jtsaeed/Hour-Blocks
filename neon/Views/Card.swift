@@ -17,6 +17,73 @@ struct Card: View {
     }
 }
 
+struct SoftCard: View {
+    
+    var cornerRadius: CGFloat
+    
+    var body: some View {
+        RoundedRectangle(cornerRadius: cornerRadius)
+            .foregroundColor(Color("cardBacking"))
+            .shadow(color: Color(white: 0).opacity(0.1), radius: 4, x: 0, y: 2)
+    }
+}
+
+struct EmptyListCard: View {
+    
+    var body: some View {
+        ZStack {
+            Card()
+            HStack {
+                CardLabels(title: "Empty",
+                            subtitle: "Currently",
+                            titleColor: Color("subtitle"))
+                Spacer()
+                Image("add_button")
+            }.padding(EdgeInsets(top: 18, leading: 22, bottom: 18, trailing: 24))
+        }.padding(EdgeInsets(top: 6, leading: 8, bottom: 6, trailing: 8))
+    }
+}
+
+struct EmptyFutureCard: View {
+    
+    @State var isPresented = false
+    
+    var futureBlockAdded: (String, Date) -> ()
+    
+    var body: some View {
+        EmptyListCard()
+            .onTapGesture {
+                UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                self.isPresented.toggle()
+            }
+            .sheet(isPresented: $isPresented, content: {
+                NewFutureBlockView(isPresented: self.$isPresented, didAddBlock: { (title, date) in
+                    self.futureBlockAdded(title, date)
+                })
+            })
+    }
+}
+
+struct EmptyToDoCard: View {
+    
+    @State var isPresented = false
+    
+    var toDoItemAdded: (String, ToDoPriority) -> ()
+    
+    var body: some View {
+        EmptyListCard()
+            .onTapGesture {
+                UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                self.isPresented.toggle()
+            }
+            .sheet(isPresented: $isPresented, content: {
+                NewToDoItemView(isPresented: self.$isPresented, didAddToDoItem: { title, priority in
+                    self.toDoItemAdded(title, priority)
+                })
+            })
+    }
+}
+
 struct CardLabels: View {
     
     let title: String
@@ -27,7 +94,7 @@ struct CardLabels: View {
     
     var body: some View {
         VStack(alignment: alignment, spacing: 4) {
-            Text(subtitle)
+            Text(subtitle.uppercased())
                 .font(.system(size: 14, weight: .semibold, design: .default))
                 .foregroundColor(Color("subtitle"))
             Text(title.neonCapitalisation())

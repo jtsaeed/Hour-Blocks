@@ -18,7 +18,7 @@ extension Int {
         } else if self == 12 {
             return "\(self)PM"
         } else {
-            return "\(self - 12)PM"
+            return "\(self - 12)AM"
         }
     }
     

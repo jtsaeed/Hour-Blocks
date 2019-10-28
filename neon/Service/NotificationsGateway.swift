@@ -13,8 +13,7 @@ class NotificationsGateway {
     
     static let shared = NotificationsGateway()
     
-    /*
-	func addNotification(for block: Block, with timeOffset: Int, today: Bool, completion: @escaping (_ success: Bool) -> ()) {
+	func addNotification(for block: HourBlock, with timeOffset: Int, today: Bool, completion: @escaping (_ success: Bool) -> ()) {
         UNUserNotificationCenter.current().getNotificationSettings(completionHandler: { (settings) in
             if settings.authorizationStatus == .notDetermined || settings.authorizationStatus == .denied {
                 UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: { (result, error) in
@@ -34,14 +33,14 @@ class NotificationsGateway {
         })
     }
     
-    func removeNotification(for block: Block) {
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [block.agendaItem!.id])
+    func removeNotification(for block: HourBlock) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [block.identifier])
     }
     
-    func hasPendingNotification(for block: Block, completion: @escaping (_ result: Bool) -> ()) {
+    func hasPendingNotification(for block: HourBlock, completion: @escaping (_ result: Bool) -> ()) {
         UNUserNotificationCenter.current().getPendingNotificationRequests { (requests) in
             for request in requests {
-                if request.identifier == block.agendaItem!.id {
+                if request.identifier == block.identifier {
                     completion(true)
                     return
                 }
@@ -51,10 +50,10 @@ class NotificationsGateway {
         }
     }
     
-	private func createNotification(for block: Block, with timeOffset: Int, today: Bool, completion: @escaping (_ success: Bool) -> ()) {
+	private func createNotification(for block: HourBlock, with timeOffset: Int, today: Bool, completion: @escaping (_ success: Bool) -> ()) {
         let content = UNMutableNotificationContent()
         content.title = "Upcoming Hour Block"
-        content.body = "You have \(block.agendaItem!.title.lowercased()) coming up at \(block.hour.getFormattedHour())"
+        content.body = "You have \(block.title!.lowercased()) coming up at \(block.hour.getFormattedHour())"
         content.sound = UNNotificationSound.init(named: UNNotificationSoundName("notification.aif"))
 		
         var date = Calendar.current.date(bySettingHour: block.hour, minute: 0, second: 0, of: Date())!
@@ -64,11 +63,10 @@ class NotificationsGateway {
         let dateTrigger = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateTrigger, repeats: false)
         
-        let request = UNNotificationRequest(identifier: block.agendaItem!.id, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: block.identifier, content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request) { error in
             completion(error == nil)
         }
     }
- */
 }

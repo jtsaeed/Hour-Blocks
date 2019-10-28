@@ -35,35 +35,8 @@ struct Header: View {
 
 struct TodayHeader: View {
     
-    @Binding var showBlocks: Int
-    
-    var showBlockTogglePressed: () -> ()
-    
     var body: some View {
-        ZStack(alignment: .trailing) {
-            Header(title: "Today", subtitle: Date().getFormattedDate())
-            
-            Button(action: {
-                UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                self.showBlockTogglePressed()
-            }, label: {
-                Image(getShowBlocksIcon()).animation(.linear)
-            })
-            .padding(.top, 32)
-            .padding(.trailing, 48)
-        }
-    }
-    
-    func getShowBlocksIcon() -> String {
-        if showBlocks == 0 {
-            return "showHours"
-        } else if showBlocks == 1 {
-            return "showHalf"
-        } else if showBlocks == 2 {
-            return "showQuarter"
-        } else {
-            return ""
-        }
+        Header(title: "Today", subtitle: Date().getFormattedDate())
     }
 }
 
@@ -71,25 +44,29 @@ struct FutureHeader: View {
     
     @State var isPresented = false
     
+    var addButtonDisabled: Bool
+    
     var futureBlockAdded: (String, Date) -> ()
     
     var body: some View {
         ZStack(alignment: .trailing) {
             Header(title: "The Future", subtitle: "A sneak peak into")
         
-            Button(action: {
-                UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                self.isPresented.toggle()
-            }, label: {
-                Image("add_button")
-            })
-            .padding(.top, 32)
-            .padding(.trailing, 47)
-            .sheet(isPresented: $isPresented, content: {
-                NewFutureBlockView(isPresented: self.$isPresented, didAddBlock: { (title, date) in
-                    self.futureBlockAdded(title, date)
+            if !addButtonDisabled {
+                Button(action: {
+                    UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                    self.isPresented.toggle()
+                }, label: {
+                    Image("add_button")
                 })
-            })
+                .padding(.top, 32)
+                .padding(.trailing, 47)
+                .sheet(isPresented: $isPresented, content: {
+                    NewFutureBlockView(isPresented: self.$isPresented, didAddBlock: { (title, date) in
+                        self.futureBlockAdded(title, date)
+                    })
+                })
+            }
         }
     }
 }
@@ -125,6 +102,7 @@ struct ToDoHeader: View {
     
     @State var isPresented = false
     
+    var addButtonDisabled: Bool
     var items: Int
     
     var toDoItemAdded: (String, ToDoPriority) -> ()
@@ -133,19 +111,21 @@ struct ToDoHeader: View {
         ZStack(alignment: .trailing) {
             Header(title: "To Do List", subtitle: "\(items) \(items == 1 ? "item" : "items")")
             
-            Button(action: {
-                UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                self.isPresented.toggle()
-            }, label: {
-                Image("add_button")
-            })
-            .padding(.top, 32)
-            .padding(.trailing, 47)
-            .sheet(isPresented: $isPresented, content: {
-                NewToDoItemView(isPresented: self.$isPresented, didAddToDoItem: { title, priority in
-                    self.toDoItemAdded(title, priority)
+            if !addButtonDisabled {
+                Button(action: {
+                    UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                    self.isPresented.toggle()
+                }, label: {
+                    Image("add_button")
                 })
-            })
+                .padding(.top, 32)
+                .padding(.trailing, 47)
+                .sheet(isPresented: $isPresented, content: {
+                    NewToDoItemView(isPresented: self.$isPresented, didAddToDoItem: { title, priority in
+                        self.toDoItemAdded(title, priority)
+                    })
+                })
+            }
         }
     }
 }

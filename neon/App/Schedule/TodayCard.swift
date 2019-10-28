@@ -64,7 +64,7 @@ struct TodayCard: View {
                             }
                         }
                 } else {
-                    ScheduleCardAddButton(block: currentBlock, didAddBlock: { title in
+                    TodayCardAddButton(block: currentBlock, didAddBlock: { title in
                         self.blocks.setTodayBlock(for: self.currentBlock.hour, self.currentBlock.minute, with: title)
                     })
                 }
@@ -73,7 +73,7 @@ struct TodayCard: View {
     }
 }
 
-struct ScheduleCardAddButton: View {
+struct TodayCardAddButton: View {
     
     @State var isPresented = false
     

@@ -17,32 +17,39 @@ struct ToDoListView: View {
     
     var body: some View {
         List {
-            Section(header: ToDoHeader(items: store.toDoItems.count, toDoItemAdded: { title, priority in self.store.addToDoItem(with: title, priority) })) {
-                ForEach(store.toDoItems, id: \.self) { toDoItem in
-                    ToDoCard(currentToDoItem: toDoItem)
-                        .contextMenu {
-                            Button(action: {
-                                self.isAddToBlockPresented.toggle()
-                            }) {
-                                Text("Add to Block")
-                                Image(systemName: "plus")
+            Section(header: ToDoHeader(addButtonDisabled: store.toDoItems.isEmpty, items: store.toDoItems.count, toDoItemAdded: { title, priority in self.store.addToDoItem(with: title, priority) })) {
+                if (store.toDoItems.isEmpty) {
+                    EmptyToDoCard { title, priority in
+                        self.store.addToDoItem(with: title, priority)
+                    }
+                } else {
+                    ForEach(store.toDoItems, id: \.self) { toDoItem in
+                        ToDoCard(currentToDoItem: toDoItem)
+                            .contextMenu {
+                                Button(action: {
+                                    self.isAddToBlockPresented.toggle()
+                                }) {
+                                    Text("Add to Block")
+                                    Image(systemName: "plus")
+                                }
+                                .sheet(isPresented: self.$isAddToBlockPresented, content: {
+                                    AddToBlockSheet(isPresented: self.$isAddToBlockPresented, title: toDoItem.title, didAddToBlock: { title, hour, minute in self.blocks.setTodayBlock(for: hour, minute, with: title) }).environmentObject(self.blocks)
+                                })
+                                Button(action: {
+                                    // TODO: Edit
+                                }) {
+                                    Text("Edit")
+                                    Image(systemName: "pencil")
+                                }
+                                Button(action: {
+                                    self.store.removeToDoItem(toDo: toDoItem)
+                                }) {
+                                    Text("Clear")
+                                    Image(systemName: "trash")
+                                }
                             }
-                            .sheet(isPresented: self.$isAddToBlockPresented, content: {
-                                AddToBlockSheet(isPresented: self.$isAddToBlockPresented, title: toDoItem.title, didAddToBlock: { title, hour, minute in self.blocks.setTodayBlock(for: hour, minute, with: title) }).environmentObject(self.blocks)
-                            })
-                            Button(action: {
-                                // TODO: Edit
-                            }) {
-                                Text("Edit")
-                                Image(systemName: "pencil")
-                            }
-                            Button(action: {
-                                self.store.removeToDoItem(toDo: toDoItem)
-                            }) {
-                                Text("Clear")
-                                Image(systemName: "trash")
-                            }
-                        }
+                        
+                    }
                 }
             }
         }
