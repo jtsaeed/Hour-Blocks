@@ -65,7 +65,7 @@ struct SuggestionCard: View {
         ZStack {
             Card()
             HStack {
-                CardLabels(title: suggestedDomain.suggestionTitle.capitalized,
+                CardLabels(title: suggestedDomain.suggestionTitle,
                            subtitle: reason.uppercased())
                 Spacer()
                 Image("add_button")

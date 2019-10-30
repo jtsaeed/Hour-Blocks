@@ -10,6 +10,8 @@ import SwiftUI
 
 struct SettingsView: View {
     
+    @State var isCalendarsPresented = false
+    
     var body: some View {
         List {
             Section(header: Header(title: "Settings", subtitle: "3.0 BETA 2")) {
@@ -18,8 +20,17 @@ struct SettingsView: View {
                         self.openPermissionsSettings()
                     }
                 SettingsCard(title: "Calendars", subtitle: "Take control of", icon: "settings_calendars")
+                    .onTapGesture {
+                        self.isCalendarsPresented.toggle()
+                    }
+                    .sheet(isPresented: $isCalendarsPresented, content: {
+                        CalendarSettingsView()
+                    })
                 SettingsCard(title: "Other Stuff", subtitle: "Take control of", icon: "settings_other")
                 SettingsCard(title: "Twitter", subtitle: "Follow me on", icon: "settings_twitter")
+                    .onTapGesture {
+                        self.openTwitter()
+                    }
             }
         }
     }

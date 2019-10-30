@@ -2,7 +2,7 @@
 //  String+Ext.swift
 //  neon
 //
-//  Created by James Saeed on 06/08/2019.
+//  Created by James Saeed on 30/10/2019.
 //  Copyright © 2019 James Saeed. All rights reserved.
 //
 
@@ -10,20 +10,11 @@ import Foundation
 
 extension String {
     
-    func neonCapitalisation() -> String {
-        let tempTitle = self.split(separator: " ")
-        var finalTitle = ""
+    func smartCapitalization() {
+        let words = self.lowercased().components(separatedBy: " ")
         
-        for word in tempTitle {
-            if word == "to" || word == "and" || word == "with" || word == "for" || word == "a" || word == "at" || word == "in" {
-                finalTitle += (word + " ")
-            } else {
-                finalTitle += (word.capitalized + " ")
-            }
+        for word in words {
+            
         }
-        
-        finalTitle.removeLast()
-        
-        return finalTitle
     }
 }

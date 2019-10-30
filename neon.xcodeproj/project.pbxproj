@@ -48,8 +48,10 @@
 		2395A97B224AE78D0007D6F2 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2395A97A224AE78D0007D6F2 /* NotificationController.swift */; };
 		2395A97D224AE78E0007D6F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2395A97C224AE78E0007D6F2 /* Assets.xcassets */; };
 		2395A98C224AEABE0007D6F2 /* AgendaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2395A98B224AEABE0007D6F2 /* AgendaItem.swift */; };
-		23A32F2222F9931100766362 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A32F2122F9931100766362 /* String+Ext.swift */; };
 		23B63CE1222491050026B9C2 /* CalendarGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B63CE0222491050026B9C2 /* CalendarGateway.swift */; };
+		23C53D7D2369E01900BA4378 /* CalendarSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C53D7C2369E01900BA4378 /* CalendarSettingsView.swift */; };
+		23C53D7F2369E02400BA4378 /* OtherSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C53D7E2369E02400BA4378 /* OtherSettingsView.swift */; };
+		23C53D812369E62800BA4378 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C53D802369E62800BA4378 /* String+Ext.swift */; };
 		23DB0A5622B296BD00C448F1 /* AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23DB0A5822B296BD00C448F1 /* AppIntentVocabulary.plist */; };
 		23E45BE2224BA3A9002D01AC /* NotificationsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E45BE1224BA3A9002D01AC /* NotificationsGateway.swift */; };
 		61B305ACEAA2B4F72109821D /* Pods_neon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BA23B93EB57D0A9C87A3846 /* Pods_neon.framework */; };
@@ -188,8 +190,10 @@
 		2395A97E224AE78E0007D6F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2395A97F224AE78E0007D6F2 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		2395A98B224AEABE0007D6F2 /* AgendaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaItem.swift; sourceTree = "<group>"; };
-		23A32F2122F9931100766362 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		23B63CE0222491050026B9C2 /* CalendarGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGateway.swift; sourceTree = "<group>"; };
+		23C53D7C2369E01900BA4378 /* CalendarSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSettingsView.swift; sourceTree = "<group>"; };
+		23C53D7E2369E02400BA4378 /* OtherSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSettingsView.swift; sourceTree = "<group>"; };
+		23C53D802369E62800BA4378 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		23DB0A5722B296BD00C448F1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
 		23DB0A5922B296C200C448F1 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = es; path = es.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
 		23DB0A5A22B296C400C448F1 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = fr; path = fr.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
@@ -291,6 +295,8 @@
 			isa = PBXGroup;
 			children = (
 				2304FA38235F315F006DA688 /* SettingsView.swift */,
+				23C53D7C2369E01900BA4378 /* CalendarSettingsView.swift */,
+				23C53D7E2369E02400BA4378 /* OtherSettingsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -311,8 +317,8 @@
 			children = (
 				23074FC9220B4B5700B64762 /* Int+Ext.swift */,
 				234C1A08220C8E9D00344316 /* Date+Ext.swift */,
-				23A32F2122F9931100766362 /* String+Ext.swift */,
 				2304FA30235F304C006DA688 /* NSManagedObjectContext+Ext.swift */,
+				23C53D802369E62800BA4378 /* String+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -771,6 +777,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23C53D7F2369E02400BA4378 /* OtherSettingsView.swift in Sources */,
 				2304FA29235F3000006DA688 /* Header.swift in Sources */,
 				2304FA2D235F301A006DA688 /* AddToBlockSheet.swift in Sources */,
 				231392A922666FC400DB0ABF /* DataGateway.swift in Sources */,
@@ -782,16 +789,17 @@
 				2304FA35235F306B006DA688 /* FutureCard.swift in Sources */,
 				2304FA27235F2FF2006DA688 /* NewSheet.swift in Sources */,
 				2304FA37235F3153006DA688 /* ToDoItem.swift in Sources */,
-				23A32F2222F9931100766362 /* String+Ext.swift in Sources */,
 				2304FA39235F315F006DA688 /* SettingsView.swift in Sources */,
 				2304FA1F235F2F28006DA688 /* DomainsGateway.swift in Sources */,
 				2304FA14235F29ED006DA688 /* SceneDelegate.swift in Sources */,
 				23074FCA220B4B5700B64762 /* Int+Ext.swift in Sources */,
 				2304FA17235F2A2A006DA688 /* ContentView.swift in Sources */,
 				2304FA31235F304C006DA688 /* NSManagedObjectContext+Ext.swift in Sources */,
+				23C53D7D2369E01900BA4378 /* CalendarSettingsView.swift in Sources */,
 				2338BEBC220A7840004F288F /* AppDelegate.swift in Sources */,
 				2304FA33235F305F006DA688 /* TodayCard.swift in Sources */,
 				23B63CE1222491050026B9C2 /* CalendarGateway.swift in Sources */,
+				23C53D812369E62800BA4378 /* String+Ext.swift in Sources */,
 				23E45BE2224BA3A9002D01AC /* NotificationsGateway.swift in Sources */,
 				2304FA1D235F2D3B006DA688 /* HourBlock.swift in Sources */,
 				234C1A09220C8E9D00344316 /* Date+Ext.swift in Sources */,

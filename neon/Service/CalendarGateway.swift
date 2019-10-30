@@ -45,8 +45,6 @@ class CalendarGateway {
         for storedEvent in eventStore.events(matching: predicate) {
             let importedCalendarEvent = ImportedCalendarEvent(from: storedEvent)
             
-            print("Found \(importedCalendarEvent.title)")
-            
             if (isAllDay(event: importedCalendarEvent)) {
                 allDayEvent = importedCalendarEvent
 			} else {

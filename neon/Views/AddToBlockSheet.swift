@@ -75,7 +75,7 @@ struct AddToBlockCard: View {
         ZStack {
             Card()
             HStack {
-                CardLabels(title: currentBlock.title?.capitalized ?? "Empty",
+                CardLabels(title: currentBlock.title ?? "Empty",
                            subtitle: currentBlock.formattedTime,
                            titleColor: currentBlock.title != nil ? Color("title") : Color("subtitle"))
                 Spacer()
