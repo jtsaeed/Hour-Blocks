@@ -35,8 +35,10 @@ struct Header: View {
 
 struct TodayHeader: View {
     
+    @Binding var allDayEvent: String
+    
     var body: some View {
-        Header(title: "Today", subtitle: Date().getFormattedDate())
+        Header(title: "Today", subtitle: allDayEvent != "" ? allDayEvent : Date().getFormattedDate())
     }
 }
 

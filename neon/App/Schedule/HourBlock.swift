@@ -78,9 +78,12 @@ class HourBlocksStore: ObservableObject {
     @Published var todaysBlocks = [HourBlock]()
     @Published var futureBlocks = [HourBlock]()
     
+    @Published var allDayEvent = ""
+    
     init() {
         initialiseBlocks()
         loadCalenderBlocks()
+        loadAllDayEvent()
         loadBlocks()
         loadFutureBlocks()
     }
@@ -109,6 +112,10 @@ class HourBlocksStore: ObservableObject {
                 }
             }
         }
+    }
+    
+    private func loadAllDayEvent() {
+        allDayEvent = CalendarGateway.shared.allDayEvent?.title ?? ""
     }
     
     private func loadBlocks() {

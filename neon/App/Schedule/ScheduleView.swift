@@ -21,7 +21,7 @@ struct ScheduleView: View {
     
     var body: some View {
         List {
-            Section(header: TodayHeader()) {
+            Section(header: TodayHeader(allDayEvent: $blocks.allDayEvent)) {
                 ForEach(blocks.todaysBlocks.filter { $0.hour >= Calendar.current.component(.hour, from: Date()) && showQuarterBlocks(minute: $0.minute) }, id: \.self) { block in
                     TodayCard(currentBlock: block, didAddBlock: { title in
                         self.blocks.setTodayBlock(for: block.hour, block.minute, with: title)
