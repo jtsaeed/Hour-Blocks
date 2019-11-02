@@ -10,11 +10,18 @@ import Foundation
 
 extension String {
     
-    func smartCapitalization() {
+    func smartCapitalization() -> String {
+        var title = ""
         let words = self.lowercased().components(separatedBy: " ")
         
         for word in words {
-            
+            if word == "to" || word == "and" || word == "with" || word == "for" || word == "a" || word == "at" || word == "in" || word.hasPrefix("1") || word.hasPrefix("2") || word.hasPrefix("3") || word.hasPrefix("4") || word.hasPrefix("5") || word.hasPrefix("6") || word.hasPrefix("7") || word.hasPrefix("8") || word.hasPrefix("9") || word.hasPrefix("0") {
+                title += (word + " ")
+            } else {
+                title += (word.capitalized + " ")
+            }
         }
+        
+        return title
     }
 }

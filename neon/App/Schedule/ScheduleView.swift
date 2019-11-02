@@ -38,20 +38,6 @@ struct ScheduleView: View {
                 } else {
                     ForEach(blocks.futureBlocks, id: \.self) { block in
                         FutureCard(currentBlock: block)
-                            .contextMenu {
-                                Button(action: {
-                                    // TODO: Rename
-                                }) {
-                                    Text("Rename")
-                                    Image(systemName: "pencil")
-                                }
-                                Button(action: {
-                                    // TODO: Clear
-                                }) {
-                                    Text("Clear")
-                                    Image(systemName: "trash")
-                                }
-                            }
                     }
                 }
             }

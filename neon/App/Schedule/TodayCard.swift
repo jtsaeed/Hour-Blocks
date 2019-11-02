@@ -24,9 +24,7 @@ struct TodayCard: View {
         ZStack {
             Card()
             HStack {
-                CardLabels(title: currentBlock.title ?? "Empty",
-                           subtitle: currentBlock.formattedTime,
-                           titleColor: currentBlock.title != nil ? Color("title") : Color("subtitle"))
+                TodayCardLabels(currentBlock: currentBlock)
                 Spacer()
                 if currentBlock.title != nil {
                     CardIcon(iconName: currentBlock.domain?.iconName ?? "default")
@@ -51,9 +49,28 @@ struct TodayCard: View {
                                 DuplicateBlockSheet(isPresented: self.$isDuplicatePresented, title: self.currentBlock.title!).environmentObject(self.blocks)
                             })
                             Button(action: {
-                                // TODO: Set a Reminder
+                                if self.currentBlock.hasReminder {
+                                    NotificationsGateway.shared.removeNotification(for: self.currentBlock)
+                                    DispatchQueue.main.async {
+                                        self.blocks.setReminder(false, for: self.currentBlock)
+                                    }
+                                    UINotificationFeedbackGenerator().notificationOccurred(.success)
+                                } else {
+                                    NotificationsGateway.shared.addNotification(for: self.currentBlock, with: 15, completion: { success in
+                                        if success {
+                                            DispatchQueue.main.async {
+                                                self.blocks.setReminder(true, for: self.currentBlock)
+                                            }
+                                            UINotificationFeedbackGenerator().notificationOccurred(.success)
+                                        } else {
+                                            UINotificationFeedbackGenerator().notificationOccurred(.error)
+                                        }
+                                    })
+                                }
+                                
+                                print(self.currentBlock.hasReminder)
                             }) {
-                                Text("Set a Reminder")
+                                Text(currentBlock.hasReminder ? "Remove Reminder" : "Set a Reminder")
                                 Image(systemName: "alarm")
                             }
                             Button(action: {
@@ -92,5 +109,24 @@ struct TodayCardAddButton: View {
             NewBlockView(isPresented: self.$isPresented, formattedTime: self.block.formattedTime, didAddBlock: { title in self.didAddBlock(title)
             })
         })
+    }
+}
+
+struct TodayCardLabels: View {
+    
+    let currentBlock: HourBlock
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            HStack {
+            Text(currentBlock.formattedTime.uppercased())
+                .font(.system(size: 14, weight: .semibold, design: .default))
+                .foregroundColor(Color("subtitle"))
+            }
+            Text(currentBlock.title?.smartCapitalization() ?? "Empty")
+                .font(.system(size: 24, weight: .bold, design: .rounded))
+                .foregroundColor(currentBlock.title != nil ? Color("title") : Color("subtitle"))
+                .lineLimit(1)
+        }
     }
 }

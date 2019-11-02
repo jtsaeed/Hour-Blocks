@@ -97,7 +97,7 @@ struct CardLabels: View {
             Text(subtitle.uppercased())
                 .font(.system(size: 14, weight: .semibold, design: .default))
                 .foregroundColor(Color("subtitle"))
-            Text(title.capitalized)
+            Text(title.smartCapitalization())
                 .font(.system(size: 24, weight: .bold, design: .rounded))
                 .foregroundColor(titleColor)
                 .lineLimit(1)

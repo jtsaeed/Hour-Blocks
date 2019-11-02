@@ -19,6 +19,7 @@ struct HourBlock: Hashable {
     
     let title: String?
     let domain: BlockDomain?
+    var hasReminder = false
     
     init(day: Date, hour: Int, minute: BlockMinute, title: String?) {
         self.identifier = UUID().uuidString
@@ -148,5 +149,13 @@ class HourBlocksStore: ObservableObject {
         
         futureBlocks.append(block)
         DataGateway.shared.saveHourBlock(block: block)
+    }
+    
+    func setReminder(_ status: Bool, for block: HourBlock) {
+        for i in 0 ..< todaysBlocks.count {
+            if (block.identifier == todaysBlocks[i].identifier) {
+                todaysBlocks[i].hasReminder = status
+            }
+        }
     }
 }
