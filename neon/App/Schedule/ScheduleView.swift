@@ -37,7 +37,9 @@ struct ScheduleView: View {
                     }
                 } else {
                     ForEach(blocks.futureBlocks, id: \.self) { block in
-                        FutureCard(currentBlock: block)
+                        FutureCard(currentBlock: block, didRemoveBlock: {
+                            self.blocks.removeFutureBlock(for: block)
+                        })
                     }
                 }
             }

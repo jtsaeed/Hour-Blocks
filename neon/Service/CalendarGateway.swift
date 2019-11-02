@@ -34,7 +34,7 @@ class CalendarGateway {
         let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
         let todayStart = Calendar.current.date(bySetting: .hour, value: 0, of: yesterday)
         let todayEnd = Calendar.current.date(bySetting: .hour, value: 23, of: Date())
-        let eventsPredicate = eventStore.predicateForEvents(withStart: todayStart!, end: todayEnd!, calendars: getAllCalendars())
+        let eventsPredicate = eventStore.predicateForEvents(withStart: todayStart!, end: todayEnd!, calendars: getEnabledCalendars())
         
 		return importEvents(with: eventsPredicate, today: true)
     }
@@ -55,12 +55,12 @@ class CalendarGateway {
         return importedCalendarEvents
     }
 	
-    /*
 	private func getEnabledCalendars() -> [EKCalendar] {
 		var enabledCalendars = [EKCalendar]()
 		
 		if let loadedEnabledCalenders = DataGateway.shared.loadEnabledCalendars() {
 			for loadedEnabledCalender in loadedEnabledCalenders {
+                print("\(loadedEnabledCalender.key) for \(loadedEnabledCalender.value)")
 				if loadedEnabledCalender.value == true {
 					if let enabledCalendar = eventStore.calendar(withIdentifier: loadedEnabledCalender.key) {
 						enabledCalendars.append(enabledCalendar)
@@ -73,7 +73,6 @@ class CalendarGateway {
 			return eventStore.calendars(for: EKEntityType.event)
 		}
 	}
- */
 	
 	func getAllCalendars() -> [EKCalendar] {
 		return eventStore.calendars(for: .event)

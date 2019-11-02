@@ -12,6 +12,8 @@ struct FutureCard: View {
     
     let currentBlock: HourBlock
     
+    var didRemoveBlock: () -> ()
+    
     var body: some View {
         ZStack {
             Card()
@@ -28,7 +30,7 @@ struct FutureCard: View {
                             Image(systemName: "pencil")
                         }
                         Button(action: {
-                            // TODO: Clear
+                            self.didRemoveBlock()
                         }) {
                             Text("Clear")
                             Image(systemName: "trash")

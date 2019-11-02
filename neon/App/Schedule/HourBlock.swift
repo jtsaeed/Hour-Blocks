@@ -86,11 +86,10 @@ class HourBlocksStore: ObservableObject {
         loadCalenderBlocks()
         loadAllDayEvent()
         loadBlocks()
-        loadFutureBlocks()
     }
     
     private func initialiseBlocks() {
-        for hour in 0...24 {
+        for hour in 0...23 {
             todaysBlocks.append(HourBlock(day: Date(), hour: hour, minute: .oclock, title: nil))
             todaysBlocks.append(HourBlock(day: Date(), hour: hour, minute: .fifteen, title: nil))
             todaysBlocks.append(HourBlock(day: Date(), hour: hour, minute: .halfPast, title: nil))
@@ -121,15 +120,16 @@ class HourBlocksStore: ObservableObject {
     
     private func loadBlocks() {
         for entity in DataGateway.shared.getHourBlockEntities() {
-            if Calendar.current.isDateInToday(entity.day!) {
-                let block = HourBlock(fromEntity: entity)
+            let block = HourBlock(fromEntity: entity)
+            
+            if Calendar.current.isDateInToday(block.day) {
                 todaysBlocks[(block.hour * 4) + block.minute.rawValue] = block
+            } else if block.day < Date() {
+                DataGateway.shared.deleteHourBlock(block: block)
+            } else {
+                futureBlocks.append(block)
             }
         }
-    }
-    
-    private func loadFutureBlocks() {
-        
     }
     
     func setTodayBlock(for hour: Int, _ minute: BlockMinute, with title: String) {
@@ -149,6 +149,16 @@ class HourBlocksStore: ObservableObject {
         
         futureBlocks.append(block)
         DataGateway.shared.saveHourBlock(block: block)
+    }
+    
+    func removeFutureBlock(for block: HourBlock) {
+        for i in 0 ..< futureBlocks.count {
+            if futureBlocks[i].identifier == block.identifier {
+                DataGateway.shared.deleteHourBlock(block: block)
+                futureBlocks.remove(at: i)
+                break
+            }
+        }
     }
     
     func setReminder(_ status: Bool, for block: HourBlock) {

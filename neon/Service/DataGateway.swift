@@ -22,19 +22,6 @@ class DataGateway {
     let currentVersion = 3.07
 }
 
-// MARK: - Version
-
-extension DataGateway {
-    
-    func isNewVersion() -> Bool {
-        let userVersion = UserDefaults.standard.double(forKey: "currentVersion")
-        
-        UserDefaults.standard.set(currentVersion, forKey: "currentVersion")
-        
-        return userVersion < currentVersion
-    }
-}
-
 // MARK: - Blocks
 
 extension DataGateway {
@@ -128,5 +115,28 @@ extension DataGateway {
                 return
             }
         }
+    }
+}
+
+// MARK: - Misc
+
+extension DataGateway {
+    
+    func isNewVersion() -> Bool {
+        let userVersion = UserDefaults.standard.double(forKey: "currentVersion")
+        
+        UserDefaults.standard.set(currentVersion, forKey: "currentVersion")
+        UserDefaults.standard.synchronize()
+        
+        return userVersion < currentVersion
+    }
+    
+    func saveEnabledCalendars(_ calendars: [String: Bool]) {
+        UserDefaults.standard.set(calendars, forKey: "enabledCalendars")
+        UserDefaults.standard.synchronize()
+    }
+    
+    func loadEnabledCalendars() -> [String: Bool]? {
+        return UserDefaults.standard.dictionary(forKey: "enabledCalendars") as? [String: Bool]
     }
 }
