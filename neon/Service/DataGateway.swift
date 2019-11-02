@@ -18,9 +18,24 @@ class DataGateway {
     init(_ managedObjectContext: NSManagedObjectContext) {
         self.managedObjectContext = managedObjectContext
     }
+    
+    let currentVersion = 3.07
 }
 
-// MARK: Blocks
+// MARK: - Version
+
+extension DataGateway {
+    
+    func isNewVersion() -> Bool {
+        let userVersion = UserDefaults.standard.double(forKey: "currentVersion")
+        
+        UserDefaults.standard.set(currentVersion, forKey: "currentVersion")
+        
+        return userVersion < currentVersion
+    }
+}
+
+// MARK: - Blocks
 
 extension DataGateway {
     
@@ -68,7 +83,7 @@ extension DataGateway {
     }
 }
 
-// MARK: To DO
+// MARK: - To DO
 
 extension DataGateway {
     

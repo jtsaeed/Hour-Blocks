@@ -56,7 +56,7 @@ struct TodayCard: View {
                                     }
                                     UINotificationFeedbackGenerator().notificationOccurred(.success)
                                 } else {
-                                    NotificationsGateway.shared.addNotification(for: self.currentBlock, with: 15, completion: { success in
+                                    NotificationsGateway.shared.addNotification(for: self.currentBlock, with: 5, completion: { success in
                                         if success {
                                             DispatchQueue.main.async {
                                                 self.blocks.setReminder(true, for: self.currentBlock)
@@ -118,10 +118,16 @@ struct TodayCardLabels: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            HStack {
-            Text(currentBlock.formattedTime.uppercased())
-                .font(.system(size: 14, weight: .semibold, design: .default))
-                .foregroundColor(Color("subtitle"))
+            HStack(spacing: 8) {
+                if currentBlock.hasReminder {
+                    Circle()
+                        .frame(width: 8, height: 8)
+                        .foregroundColor(Color("primary"))
+                        .opacity(0.5)
+                }
+                Text(currentBlock.formattedTime.uppercased())
+                    .font(.system(size: 14, weight: .semibold, design: .default))
+                    .foregroundColor(Color("subtitle"))
             }
             Text(currentBlock.title?.smartCapitalization() ?? "Empty")
                 .font(.system(size: 24, weight: .bold, design: .rounded))

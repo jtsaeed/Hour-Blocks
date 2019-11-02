@@ -18,6 +18,8 @@ struct ContentView: View {
     
     @State private var selection = 0
     
+    @State var showWhatsNew = false
+    
     init() {
         UITableView.appearance().separatorColor = .clear
         UITableView.appearance().allowsSelection = false
@@ -32,6 +34,12 @@ struct ContentView: View {
                     Image(systemName: "calendar")
                     Text("Schedule")
                 }
+                .onAppear(perform: {
+                    self.showWhatsNew = DataGateway.shared.isNewVersion()
+                })
+                .sheet(isPresented: $showWhatsNew, content: {
+                    WhatsNewView(showWhatsNew: self.$showWhatsNew)
+                })
                 .tag(0)
             ToDoListView()
                 .tabItem {
