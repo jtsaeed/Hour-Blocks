@@ -111,6 +111,16 @@ class HourBlocksStore: ObservableObject {
                     todaysBlocks[(block4.hour * 4) + 3] = block4
                 }
             }
+            
+            DispatchQueue.global(qos: .background).async {
+                for event in CalendarGateway.shared.importFutureEvents() {
+                    let block = HourBlock(day: event.startDate, hour: 0, minute: .oclock, title: event.title)
+                    DispatchQueue.main.async {
+                        self.futureBlocks.append(block)
+                    }
+                }
+            }
+            
         }
     }
     
@@ -152,13 +162,8 @@ class HourBlocksStore: ObservableObject {
     }
     
     func removeFutureBlock(for block: HourBlock) {
-        for i in 0 ..< futureBlocks.count {
-            if futureBlocks[i].identifier == block.identifier {
-                DataGateway.shared.deleteHourBlock(block: block)
-                futureBlocks.remove(at: i)
-                break
-            }
-        }
+        futureBlocks.removeAll { $0.identifier == block.identifier }
+        DataGateway.shared.deleteHourBlock(block: block)
     }
     
     func setReminder(_ status: Bool, for block: HourBlock) {

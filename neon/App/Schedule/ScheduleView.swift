@@ -36,7 +36,7 @@ struct ScheduleView: View {
                         self.blocks.addFutureBlock(for: date, 0, .oclock, with: title)
                     }
                 } else {
-                    ForEach(blocks.futureBlocks, id: \.self) { block in
+                    ForEach(blocks.futureBlocks.sorted { $0.day < $1.day }, id: \.self) { block in
                         FutureCard(currentBlock: block, didRemoveBlock: {
                             self.blocks.removeFutureBlock(for: block)
                         })

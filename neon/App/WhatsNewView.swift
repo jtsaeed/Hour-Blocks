@@ -19,7 +19,8 @@ struct WhatsNewView: View {
             
             VStack(alignment: .leading, spacing: 16) {
                 WhatsNewItem(title: "Reminders are back  ⏰", content: "With a sexy indicator too. Just bare in mind that the default atm is 10 mins, will add a global setting later.")
-                WhatsNewItem(title: "Calendar tweaks  🗓", content: "All day events work again and you can once again select specific calendars in settings")
+                WhatsNewItem(title: "The Future saves  🔮", content: "Blocks you add in The Future now save, and can be deleted wooooo")
+                WhatsNewItem(title: "Calendar tweaks  🗓", content: "All day events work again and sync with The Future but the calendar settings don't work yet!")
             }
             
             Spacer()

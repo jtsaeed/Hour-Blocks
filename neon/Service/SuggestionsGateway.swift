@@ -26,10 +26,3 @@ struct Suggestion {
     var title: String
     var reason: String
 }
-
-enum SuggestionReason: String {
-    
-    case popular = "popular"
-    case frequentlyAdded = "frequently added"
-    case fromReminders = "from reminders"
-}

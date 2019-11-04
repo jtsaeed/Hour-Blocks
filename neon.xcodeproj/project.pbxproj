@@ -39,6 +39,7 @@
 		2338BED4220A7841004F288F /* neonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338BED3220A7841004F288F /* neonTests.swift */; };
 		2338BEDF220A7841004F288F /* neonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEDE220A7841004F288F /* neonUITests.swift */; };
 		234C1A09220C8E9D00344316 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C1A08220C8E9D00344316 /* Date+Ext.swift */; };
+		2373C1FF237036B500237763 /* SuggestionsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2373C1FE237036B500237763 /* SuggestionsStore.swift */; };
 		237FFC30224B8FAA000A02C0 /* AgendaCardRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237FFC2E224B8D84000A02C0 /* AgendaCardRowController.swift */; };
 		2395A969224AE78C0007D6F2 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2395A967224AE78C0007D6F2 /* Interface.storyboard */; };
 		2395A96B224AE78D0007D6F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2395A96A224AE78D0007D6F2 /* Assets.xcassets */; };
@@ -175,6 +176,7 @@
 		2338BEDE220A7841004F288F /* neonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = neonUITests.swift; sourceTree = "<group>"; };
 		2338BEE0220A7841004F288F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		234C1A08220C8E9D00344316 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		2373C1FE237036B500237763 /* SuggestionsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsStore.swift; sourceTree = "<group>"; };
 		237FFC2E224B8D84000A02C0 /* AgendaCardRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaCardRowController.swift; sourceTree = "<group>"; };
 		237FFC31224B909A000A02C0 /* neonWatch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "neonWatch Extension.entitlements"; sourceTree = "<group>"; };
 		238EA767223EA0D900981E98 /* neon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = neon.entitlements; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 				2304FA20235F2F99006DA688 /* ScheduleView.swift */,
 				2304FA32235F305F006DA688 /* TodayCard.swift */,
 				2304FA34235F306B006DA688 /* FutureCard.swift */,
+				2373C1FE237036B500237763 /* SuggestionsStore.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -801,6 +804,7 @@
 				2304FA31235F304C006DA688 /* NSManagedObjectContext+Ext.swift in Sources */,
 				23C53D7D2369E01900BA4378 /* CalendarSettingsView.swift in Sources */,
 				2338BEBC220A7840004F288F /* AppDelegate.swift in Sources */,
+				2373C1FF237036B500237763 /* SuggestionsStore.swift in Sources */,
 				2304FA33235F305F006DA688 /* TodayCard.swift in Sources */,
 				23B63CE1222491050026B9C2 /* CalendarGateway.swift in Sources */,
 				23C53D812369E62800BA4378 /* String+Ext.swift in Sources */,

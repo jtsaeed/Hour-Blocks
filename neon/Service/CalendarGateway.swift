@@ -31,28 +31,32 @@ class CalendarGateway {
     }
     
     func importTodaysEvents() -> [ImportedCalendarEvent] {
+        var importedCalendarEvents = [ImportedCalendarEvent]()
+        
         let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
         let todayStart = Calendar.current.date(bySetting: .hour, value: 0, of: yesterday)
         let todayEnd = Calendar.current.date(bySetting: .hour, value: 23, of: Date())
-        let eventsPredicate = eventStore.predicateForEvents(withStart: todayStart!, end: todayEnd!, calendars: getEnabledCalendars())
+        let eventsPredicate = eventStore.predicateForEvents(withStart: todayStart!, end: todayEnd!, calendars: getAllCalendars())
         
-		return importEvents(with: eventsPredicate, today: true)
-    }
-    
-	func importEvents(with predicate: NSPredicate, today: Bool) -> [ImportedCalendarEvent] {
-        var importedCalendarEvents = [ImportedCalendarEvent]()
-		
-        for storedEvent in eventStore.events(matching: predicate) {
+        for storedEvent in eventStore.events(matching: eventsPredicate) {
             let importedCalendarEvent = ImportedCalendarEvent(from: storedEvent)
             
-            if (isAllDay(event: importedCalendarEvent)) {
+            if (storedEvent.isAllDay) {
                 allDayEvent = importedCalendarEvent
-			} else {
-				importedCalendarEvents.append(importedCalendarEvent)
-			}
+            } else {
+                importedCalendarEvents.append(importedCalendarEvent)
+            }
         }
         
         return importedCalendarEvents
+    }
+    
+    func importFutureEvents() -> [EKEvent] {
+        let todayEnd = Calendar.current.date(bySetting: .hour, value: 23, of: Date())
+        let yearEnd = Calendar.current.date(byAdding: .day, value: 7, to: todayEnd!)
+        let eventsPredicate = eventStore.predicateForEvents(withStart: todayEnd!, end: yearEnd!, calendars: getAllCalendars())
+        
+        return eventStore.events(matching: eventsPredicate)
     }
 	
 	private func getEnabledCalendars() -> [EKCalendar] {
@@ -77,15 +81,12 @@ class CalendarGateway {
 	func getAllCalendars() -> [EKCalendar] {
 		return eventStore.calendars(for: .event)
 	}
-    
-    func isAllDay(event: ImportedCalendarEvent) -> Bool {
-        return event.startingHour == 0 && event.endingHour == 23
-    }
 }
 
 struct ImportedCalendarEvent {
     
     let title: String
+    let date: Date
     
     var startingHour: Int
     var endingHour: Int
@@ -95,6 +96,7 @@ struct ImportedCalendarEvent {
     
 	init(from event: EKEvent) {
         title = event.title
+        date = event.startDate
         
 		startingHour = Calendar.current.component(.hour, from: event.startDate)
 		endingHour = Calendar.current.component(.hour, from: event.endDate)

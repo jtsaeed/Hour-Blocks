@@ -90,7 +90,7 @@ struct NewFutureBlockView: View {
     
     var dateClosedRange: ClosedRange<Date> {
         let min = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
-        let max = Calendar.current.date(byAdding: .year, value: 1, to: Date())!
+        let max = Calendar.current.date(byAdding: .day, value: 8, to: Date())!
         return min...max
     }
     

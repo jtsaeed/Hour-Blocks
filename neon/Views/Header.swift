@@ -52,7 +52,7 @@ struct FutureHeader: View {
     
     var body: some View {
         ZStack(alignment: .trailing) {
-            Header(title: "The Future", subtitle: "A sneak peak into")
+            Header(title: "The Future", subtitle: "A week into")
         
             if !addButtonDisabled {
                 Button(action: {

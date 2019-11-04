@@ -130,7 +130,7 @@ struct TodayCardLabels: View {
                     .foregroundColor(Color("subtitle"))
             }
             Text(currentBlock.title?.smartCapitalization() ?? "Empty")
-                .font(.system(size: 24, weight: .bold, design: .rounded))
+                .font(.system(size: 22, weight: .bold, design: .rounded))
                 .foregroundColor(currentBlock.title != nil ? Color("title") : Color("subtitle"))
                 .lineLimit(1)
         }
