@@ -18,7 +18,7 @@ struct HourBlock: Hashable {
     let minute: BlockMinute
     
     let title: String?
-    let domain: BlockDomain?
+    var domain: BlockDomain?
     var hasReminder = false
     
     init(day: Date, hour: Int, minute: BlockMinute, title: String?) {
@@ -112,15 +112,12 @@ class HourBlocksStore: ObservableObject {
                 }
             }
             
-            DispatchQueue.global(qos: .background).async {
-                for event in CalendarGateway.shared.importFutureEvents() {
-                    let block = HourBlock(day: event.startDate, hour: 0, minute: .oclock, title: event.title)
-                    DispatchQueue.main.async {
-                        self.futureBlocks.append(block)
-                    }
-                }
+            for event in CalendarGateway.shared.importFutureEvents() {
+                var block = HourBlock(day: event.startDate, hour: 0, minute: .oclock, title: event.title)
+                block.domain = DomainsGateway.shared.calendar
+                
+                self.futureBlocks.append(block)
             }
-            
         }
     }
     

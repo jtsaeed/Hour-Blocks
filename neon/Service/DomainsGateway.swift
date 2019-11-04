@@ -13,6 +13,8 @@ class DomainsGateway {
     
     static let shared = DomainsGateway()
     
+    let calendar = BlockDomain(keyWord: "", iconName: "calendar", suggestionTitle: "")
+    
     let wake = BlockDomain(keyWord: "wake", iconName: "alarm", suggestionTitle: "wake up")
     
     let read = BlockDomain(keyWord: "read", iconName: "chrome_reader", suggestionTitle: "read")
