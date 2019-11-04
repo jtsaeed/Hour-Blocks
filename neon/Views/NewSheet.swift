@@ -45,6 +45,7 @@ struct NewBlockView: View {
                 Text("Add")
             }))
         }.accentColor(Color("primary"))
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     func addBlock(with title: String) {
@@ -114,6 +115,7 @@ struct NewFutureBlockView: View {
                 Text("Add")
             }))
         }.accentColor(Color("primary"))
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
@@ -153,6 +155,7 @@ struct NewToDoItemView: View {
                 Text("Add")
             }))
         }.accentColor(Color("primary"))
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

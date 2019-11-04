@@ -35,6 +35,7 @@ struct AddToBlockSheet: View {
                 Text("Cancel")
             }))
         }.accentColor(Color("primary"))
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
