@@ -30,13 +30,14 @@ struct TodayCard: View {
                     CardIcon(iconName: currentBlock.domain?.iconName ?? "default")
                         .contextMenu {
                             Button(action: {
+                                self.blocks.currentTitle = self.currentBlock.title!
                                 self.isRenamePresented.toggle()
                             }) {
                                 Text("Rename")
                                 Image(systemName: "pencil")
                             }
                             .sheet(isPresented: $isRenamePresented, content: {
-                                NewBlockView(isPresented: self.$isRenamePresented, formattedTime: self.currentBlock.formattedTime, didAddBlock: { title in self.didAddBlock(title)
+                                NewBlockView(isPresented: self.$isRenamePresented, title: self.$blocks.currentTitle, formattedTime: self.currentBlock.formattedTime, didAddBlock: { title in self.didAddBlock(title)
                                 })
                             })
                             Button(action: {
@@ -93,6 +94,7 @@ struct TodayCard: View {
 struct TodayCardAddButton: View {
     
     @State var isPresented = false
+    @State var title = ""
     
     let block: HourBlock
     
@@ -106,7 +108,7 @@ struct TodayCardAddButton: View {
             Image("add_button")
         })
         .sheet(isPresented: $isPresented, content: {
-            NewBlockView(isPresented: self.$isPresented, formattedTime: self.block.formattedTime, didAddBlock: { title in self.didAddBlock(title)
+            NewBlockView(isPresented: self.$isPresented, title: self.$title, formattedTime: self.block.formattedTime, didAddBlock: { title in self.didAddBlock(title)
             })
         })
     }

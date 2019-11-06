@@ -13,8 +13,7 @@ import SwiftUI
 struct NewBlockView: View {
     
     @Binding var isPresented: Bool
-    
-    @State var title = ""
+    @Binding var title: String
     
     let formattedTime: String
     

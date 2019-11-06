@@ -79,6 +79,7 @@ class HourBlocksStore: ObservableObject {
     @Published var todaysBlocks = [HourBlock]()
     @Published var futureBlocks = [HourBlock]()
     
+    @Published var currentTitle = ""
     @Published var allDayEvent = ""
     
     init() {
