@@ -12,9 +12,8 @@ import CoreData
 struct ContentView: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
-    @FetchRequest(entity: HourBlockEntity.entity(), sortDescriptors: []) var pulledBlocks: FetchedResults<HourBlockEntity>
-    
     @EnvironmentObject var blocks: HourBlocksStore
+    @EnvironmentObject var settings: SettingsStore
     
     @State private var selection = 0
     

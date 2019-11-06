@@ -11,40 +11,20 @@ import EventKit
 
 struct CalendarSettingsView: View {
     
-    @State var enabledCalendars: [String: Bool]?
-    
-    init() {
-        enabledCalendars = DataGateway.shared.loadEnabledCalendars()
-    }
+    @EnvironmentObject var blocks: HourBlocksStore
+    @EnvironmentObject var settings: SettingsStore
     
     var body: some View {
         NavigationView {
             List {
                 ForEach(CalendarGateway.shared.getAllCalendars().sorted(by: { $0.title < $1.title }), id: \.self) { calendar in
-                    CalendarCard(isEnabled: self.enabledCalendars?[calendar.calendarIdentifier] ?? true, name: calendar.title, didToggle: { status in
-                        self.toggleCalendar(for: calendar.calendarIdentifier, to: status)
+                    CalendarCard(isEnabled: self.settings.enabledCalendars[calendar.calendarIdentifier]!, name: calendar.title, didToggle: { status in
+                        self.settings.toggleCalendar(for: calendar.calendarIdentifier, to: status)
+                        self.blocks.reloadCalendarBlocks()
                     })
                 }
             }
             .navigationBarTitle("Calendars")
-        }
-    }
-    
-    private func toggleCalendar(for identifier: String, to status: Bool) {
-        if enabledCalendars == nil {
-            initialiseEnabledCalendars()
-        }
-        
-        enabledCalendars?[identifier] = status
-        
-        DataGateway.shared.saveEnabledCalendars(enabledCalendars!)
-    }
-    
-    private func initialiseEnabledCalendars() {
-        enabledCalendars = [String: Bool]()
-            
-        for calendar in CalendarGateway.shared.getAllCalendars() {
-            enabledCalendars?[calendar.calendarIdentifier] = true
         }
     }
 }
@@ -68,7 +48,7 @@ struct CalendarCard: View {
                 Toggle(isOn: $isEnabled) {
                     Text("")
                 }.onTapGesture {
-                    self.didToggle(self.isEnabled)
+                    self.didToggle(!self.isEnabled)
                 }
             }.padding(EdgeInsets(top: 18, leading: 22, bottom: 18, trailing: 24))
         }.padding(EdgeInsets(top: 6, leading: 8, bottom: 6, trailing: 8))

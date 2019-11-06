@@ -10,6 +10,9 @@ import SwiftUI
 
 struct SettingsView: View {
     
+    @EnvironmentObject var blocks: HourBlocksStore
+    @EnvironmentObject var settings: SettingsStore
+    
     @State var isCalendarsPresented = false
     
     var body: some View {
@@ -25,6 +28,8 @@ struct SettingsView: View {
                     }
                     .sheet(isPresented: $isCalendarsPresented, content: {
                         CalendarSettingsView()
+                            .environmentObject(self.blocks)
+                            .environmentObject(self.settings)
                     })
                 SettingsCard(title: "Other Stuff", subtitle: "Take control of", icon: "settings_other")
                 SettingsCard(title: "Twitter", subtitle: "Follow me on", icon: "settings_twitter")

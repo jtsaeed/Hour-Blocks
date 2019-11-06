@@ -36,7 +36,7 @@ class CalendarGateway {
         let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
         let todayStart = Calendar.current.date(bySetting: .hour, value: 0, of: yesterday)
         let todayEnd = Calendar.current.date(bySetting: .hour, value: 23, of: Date())
-        let eventsPredicate = eventStore.predicateForEvents(withStart: todayStart!, end: todayEnd!, calendars: getAllCalendars())
+        let eventsPredicate = eventStore.predicateForEvents(withStart: todayStart!, end: todayEnd!, calendars: getEnabledCalendars())
         
         for storedEvent in eventStore.events(matching: eventsPredicate) {
             let importedCalendarEvent = ImportedCalendarEvent(from: storedEvent)
@@ -53,8 +53,8 @@ class CalendarGateway {
     
     func importFutureEvents() -> [EKEvent] {
         let todayEnd = Calendar.current.date(bySetting: .hour, value: 23, of: Date())
-        let yearEnd = Calendar.current.date(byAdding: .day, value: 7, to: todayEnd!)
-        let eventsPredicate = eventStore.predicateForEvents(withStart: todayEnd!, end: yearEnd!, calendars: getAllCalendars())
+        let yearEnd = Calendar.current.date(byAdding: .month, value: 1, to: todayEnd!)
+        let eventsPredicate = eventStore.predicateForEvents(withStart: todayEnd!, end: yearEnd!, calendars: getEnabledCalendars())
         
         return eventStore.events(matching: eventsPredicate)
     }
@@ -62,20 +62,15 @@ class CalendarGateway {
 	private func getEnabledCalendars() -> [EKCalendar] {
 		var enabledCalendars = [EKCalendar]()
 		
-		if let loadedEnabledCalenders = DataGateway.shared.loadEnabledCalendars() {
-			for loadedEnabledCalender in loadedEnabledCalenders {
-                print("\(loadedEnabledCalender.key) for \(loadedEnabledCalender.value)")
-				if loadedEnabledCalender.value == true {
-					if let enabledCalendar = eventStore.calendar(withIdentifier: loadedEnabledCalender.key) {
-						enabledCalendars.append(enabledCalendar)
-					}
-				}
-			}
-			
-			return enabledCalendars
-		} else {
-			return eventStore.calendars(for: EKEntityType.event)
-		}
+        for loadedEnabledCalender in DataGateway.shared.loadEnabledCalendars() {
+            if loadedEnabledCalender.value == true {
+                if let enabledCalendar = eventStore.calendar(withIdentifier: loadedEnabledCalender.key) {
+                    enabledCalendars.append(enabledCalendar)
+                }
+            }
+        }
+        
+        return enabledCalendars
 	}
 	
 	func getAllCalendars() -> [EKCalendar] {

@@ -113,11 +113,17 @@ class HourBlocksStore: ObservableObject {
                 }
             }
             
-            for event in CalendarGateway.shared.importFutureEvents() {
-                var block = HourBlock(day: event.startDate, hour: 0, minute: .oclock, title: event.title)
-                block.domain = DomainsGateway.shared.calendar
+            DispatchQueue.global(qos: .userInteractive).async {
+                let blocks: [HourBlock] = CalendarGateway.shared.importFutureEvents().map { event in
+                    var block = HourBlock(day: event.startDate, hour: 0, minute: .oclock, title: event.title)
+                    block.domain = DomainsGateway.shared.calendar
+                    
+                    return block
+                }
                 
-                self.futureBlocks.append(block)
+                DispatchQueue.main.async {
+                    self.futureBlocks.append(contentsOf: blocks)
+                }
             }
         }
     }
@@ -136,6 +142,22 @@ class HourBlocksStore: ObservableObject {
                 DataGateway.shared.deleteHourBlock(block: block)
             } else {
                 futureBlocks.append(block)
+            }
+        }
+    }
+    
+    func reloadCalendarBlocks() {
+        futureBlocks.removeAll()
+        
+        loadCalenderBlocks()
+        
+        DispatchQueue.global(qos: .userInteractive).async {
+            for entity in DataGateway.shared.getHourBlockEntities() {
+                let block = HourBlock(fromEntity: entity)
+                
+                if !(Calendar.current.isDateInToday(block.day) || block.day < Date()) {
+                    DispatchQueue.main.async { self.futureBlocks.append(block) }
+                }
             }
         }
     }

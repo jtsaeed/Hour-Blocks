@@ -131,12 +131,17 @@ extension DataGateway {
         return userVersion < currentVersion
     }
     
-    func saveEnabledCalendars(_ calendars: [String: Bool]) {
-        UserDefaults.standard.set(calendars, forKey: "enabledCalendars")
-        UserDefaults.standard.synchronize()
-    }
-    
-    func loadEnabledCalendars() -> [String: Bool]? {
-        return UserDefaults.standard.dictionary(forKey: "enabledCalendars") as? [String: Bool]
+    func loadEnabledCalendars() -> [String: Bool] {
+        if let enabledCalendars = UserDefaults.standard.dictionary(forKey: "enabledCalendars") as? [String: Bool] {
+            return enabledCalendars
+        } else {
+            var calendars = [String: Bool]()
+                
+            for calendar in CalendarGateway.shared.getAllCalendars() {
+                calendars[calendar.calendarIdentifier] = true
+            }
+            
+            return calendars
+        }
     }
 }

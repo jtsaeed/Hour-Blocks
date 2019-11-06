@@ -15,7 +15,7 @@ struct SuggestionsGateway {
     func getSuggestions(for hour: Int) -> [Suggestion] {
         var suggestions = [Suggestion]()
         
-        suggestions.append(Suggestion(title: "Have dinner", reason: "popular"))
+        suggestions.append(Suggestion(title: "go to the gym", reason: "popular"))
         
         return suggestions
     }

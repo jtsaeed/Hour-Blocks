@@ -53,6 +53,7 @@
 		23C53D7D2369E01900BA4378 /* CalendarSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C53D7C2369E01900BA4378 /* CalendarSettingsView.swift */; };
 		23C53D7F2369E02400BA4378 /* OtherSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C53D7E2369E02400BA4378 /* OtherSettingsView.swift */; };
 		23C53D812369E62800BA4378 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C53D802369E62800BA4378 /* String+Ext.swift */; };
+		23C6F8812372DCB200E53286 /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6F8802372DCB200E53286 /* SettingsStore.swift */; };
 		23DB0A5622B296BD00C448F1 /* AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23DB0A5822B296BD00C448F1 /* AppIntentVocabulary.plist */; };
 		23E45BE2224BA3A9002D01AC /* NotificationsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E45BE1224BA3A9002D01AC /* NotificationsGateway.swift */; };
 		23E82155236DB57A004E6F15 /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E82154236DB57A004E6F15 /* WhatsNewView.swift */; };
@@ -197,6 +198,7 @@
 		23C53D7C2369E01900BA4378 /* CalendarSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSettingsView.swift; sourceTree = "<group>"; };
 		23C53D7E2369E02400BA4378 /* OtherSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSettingsView.swift; sourceTree = "<group>"; };
 		23C53D802369E62800BA4378 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		23C6F8802372DCB200E53286 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
 		23DB0A5722B296BD00C448F1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
 		23DB0A5922B296C200C448F1 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = es; path = es.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
 		23DB0A5A22B296C400C448F1 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = fr; path = fr.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 				2304FA38235F315F006DA688 /* SettingsView.swift */,
 				23C53D7C2369E01900BA4378 /* CalendarSettingsView.swift */,
 				23C53D7E2369E02400BA4378 /* OtherSettingsView.swift */,
+				23C6F8802372DCB200E53286 /* SettingsStore.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -794,6 +797,7 @@
 				232ED4E0228C93A4008FC4A0 /* AnalyticsGateway.swift in Sources */,
 				2304FA2F235F3030006DA688 /* SuggestionsGateway.swift in Sources */,
 				2304FA35235F306B006DA688 /* FutureCard.swift in Sources */,
+				23C6F8812372DCB200E53286 /* SettingsStore.swift in Sources */,
 				2304FA27235F2FF2006DA688 /* NewSheet.swift in Sources */,
 				2304FA37235F3153006DA688 /* ToDoItem.swift in Sources */,
 				2304FA39235F315F006DA688 /* SettingsView.swift in Sources */,

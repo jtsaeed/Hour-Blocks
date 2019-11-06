@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-// MARK: New Block View
+// MARK: - New Block View
 
 struct NewBlockView: View {
     
@@ -27,7 +27,7 @@ struct NewBlockView: View {
                     .font(.system(size: 28, weight: .semibold, design: .default))
                     .padding(.leading, 24)
                 List {
-                    SuggestionCard(suggestedDomain: DomainsGateway.shared.dinner, reason: "popular", didAddBlock: { title in
+                    SuggestionCard(suggestedDomain: DomainsGateway.shared.gym, reason: "popular", didAddBlock: { title in
                         self.addBlock(with: title)
                     })
                 }
@@ -77,7 +77,7 @@ struct SuggestionCard: View {
     }
 }
 
-// MARK: New Future Block View
+// MARK: - New Future Block View
 
 struct NewFutureBlockView: View {
     
@@ -90,7 +90,7 @@ struct NewFutureBlockView: View {
     
     var dateClosedRange: ClosedRange<Date> {
         let min = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
-        let max = Calendar.current.date(byAdding: .day, value: 8, to: Date())!
+        let max = Calendar.current.date(byAdding: .month, value: 1, to: Date())!
         return min...max
     }
     
