@@ -39,7 +39,11 @@ struct NewBlockView: View {
             }, label: {
                 Text("Cancel")
             }), trailing: Button(action: {
-                self.addBlock(with: self.title)
+                if self.title.isEmpty {
+                    UINotificationFeedbackGenerator().notificationOccurred(.error)
+                } else {
+                    self.addBlock(with: self.title)
+                }
             }, label: {
                 Text("Add")
             }))
@@ -107,9 +111,13 @@ struct NewFutureBlockView: View {
             }, label: {
                 Text("Cancel")
             }), trailing: Button(action: {
-                UINotificationFeedbackGenerator().notificationOccurred(.success)
-                self.isPresented = false
-                self.didAddBlock(self.title, self.date)
+                if self.title.isEmpty {
+                    UINotificationFeedbackGenerator().notificationOccurred(.error)
+                } else {
+                    UINotificationFeedbackGenerator().notificationOccurred(.success)
+                    self.isPresented = false
+                    self.didAddBlock(self.title, self.date)
+                }
             }, label: {
                 Text("Add")
             }))
@@ -147,9 +155,13 @@ struct NewToDoItemView: View {
             }, label: {
                 Text("Cancel")
             }), trailing: Button(action: {
-                UINotificationFeedbackGenerator().notificationOccurred(.success)
-                self.isPresented = false
-                self.didAddToDoItem(self.title, self.priority)
+                if self.title.isEmpty {
+                    UINotificationFeedbackGenerator().notificationOccurred(.error)
+                } else {
+                    UINotificationFeedbackGenerator().notificationOccurred(.success)
+                    self.isPresented = false
+                    self.didAddToDoItem(self.title, self.priority)
+                }
             }, label: {
                 Text("Add")
             }))
@@ -171,7 +183,7 @@ struct NewTextField: View {
             TextField("Enter the title here...", text: $title)
                 .font(.system(size: 17, weight: .medium, design: .default))
                 .foregroundColor(Color.black)
-                .padding(.leading, 16)
+                .padding(.horizontal, 16)
         }.padding(24)
     }
 }
