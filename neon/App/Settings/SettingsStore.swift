@@ -17,13 +17,29 @@ class SettingsStore: ObservableObject {
         }
     }
     
+    @Published var other: [String: Int] {
+        didSet {
+            UserDefaults.standard.set(other, forKey: "otherSettings")
+        }
+    }
+    
     init() {
         enabledCalendars = DataGateway.shared.loadEnabledCalendars()
+        other = DataGateway.shared.loadOtherSettings()
     }
     
     func toggleCalendar(for identifier: String, to status: Bool) {
-        print("Toggling \(identifier) to \(status)")
-        
         enabledCalendars[identifier] = status
     }
+    
+    func set(_ settingsKey: OtherSettingsKey, to value: Int) {
+        other[settingsKey.rawValue] = value
+    }
+}
+
+enum OtherSettingsKey: String {
+    
+    case scheduleBlocksStyle = "blocksStyle"
+    case reminderTimer = "reminderTimer"
+    case autocapitalisation = "autoCaps"
 }

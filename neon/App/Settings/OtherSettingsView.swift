@@ -9,48 +9,60 @@
 import SwiftUI
 import EventKit
 
-struct CalendarSettingsView: View {
+struct OtherSettingsView: View {
     
     @EnvironmentObject var blocks: HourBlocksStore
     @EnvironmentObject var settings: SettingsStore
     
+    @State var scheduleBlocksStyleValue: Int
+    
     var body: some View {
         NavigationView {
             List {
-                ForEach(CalendarGateway.shared.getAllCalendars().sorted(by: { $0.title < $1.title }), id: \.self) { calendar in
-                    CalendarCard(isEnabled: self.settings.enabledCalendars[calendar.calendarIdentifier]!, name: calendar.title, didToggle: { status in
-                        self.settings.toggleCalendar(for: calendar.calendarIdentifier, to: status)
-                        self.blocks.reloadCalendarBlocks()
-                    })
-                }
+                OtherStuffCard(value: $scheduleBlocksStyleValue,
+                               title: "Schedule Blocks Style",
+                               description: "Change the way blocks are shown to you in the Schedule",
+                               options: ["Hour", "Half", "Quarter"])
             }
-            .navigationBarTitle("Calendars")
+            .navigationBarTitle("Other Settings")
+        }.navigationViewStyle(StackNavigationViewStyle())
+        .onDisappear {
+            self.save()
         }
+    }
+    
+    func save() {
+        settings.other[OtherSettingsKey.scheduleBlocksStyle.rawValue] = scheduleBlocksStyleValue
     }
 }
 
-struct CalendarCard: View {
+struct OtherStuffCard: View {
     
-    @State var isEnabled: Bool
+    @Binding var value: Int
     
-    let name: String
-    
-    var didToggle: (Bool) -> ()
+    let title: String
+    let description: String
+    let options: [String]
     
     var body: some View {
         ZStack {
-            SoftCard(cornerRadius: 20)
-            HStack {
-                Text(name)
-                    .lineLimit(1)
-                    .font(.system(size: 22, weight: .semibold, design: .rounded))
-                Spacer()
-                Toggle(isOn: $isEnabled) {
-                    Text("")
-                }.onTapGesture {
-                    self.didToggle(!self.isEnabled)
+            SoftCard(cornerRadius: 24)
+            VStack(spacing: 24) {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(title)
+                        .font(.system(size: 22, weight: .semibold, design: .rounded))
+                    Text(description)
+                        .font(.system(size: 17, weight: .regular, design: .default))
+                        .opacity(0.45)
                 }
-            }.padding(EdgeInsets(top: 18, leading: 22, bottom: 18, trailing: 24))
+        
+                Picker("", selection: $value) {
+                    ForEach(0 ..< options.count) { index in
+                        Text(self.options[index]).tag(index)
+                    }
+                }
+                .pickerStyle(SegmentedPickerStyle())
+            }.padding(24)
         }.padding(EdgeInsets(top: 6, leading: 8, bottom: 6, trailing: 8))
     }
 }

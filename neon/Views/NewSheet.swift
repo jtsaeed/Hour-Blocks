@@ -102,7 +102,7 @@ struct NewFutureBlockView: View {
         NavigationView {
             VStack {
                 NewTextField(title: $title)
-                DatePicker(selection: $date, in: dateClosedRange, label: { Text("") })
+                DatePicker("", selection: $date, in: dateClosedRange)
                 Spacer()
             }
             .navigationBarTitle("What's in the future?")
@@ -141,12 +141,12 @@ struct NewToDoItemView: View {
         NavigationView {
             VStack(alignment: .leading) {
                 NewTextField(title: $title)
-                Picker(selection: $priority, label: Text(""), content: {
+                Picker("", selection: $priority) {
                     Text(ToDoPriority.high.rawValue)
                     Text(ToDoPriority.medium.rawValue)
                     Text(ToDoPriority.low.rawValue)
                     Text(ToDoPriority.none.rawValue)
-                })
+                }
                 Spacer()
             }
             .navigationBarTitle("What's on your list?")

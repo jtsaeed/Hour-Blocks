@@ -144,4 +144,16 @@ extension DataGateway {
             return calendars
         }
     }
+    
+    func loadOtherSettings() -> [String: Int] {
+        if let otherSettings = UserDefaults.standard.dictionary(forKey: "otherSettings") as? [String: Int] {
+            return otherSettings
+        } else {
+            return [
+                "blocksStyle": 0,
+                "reminderTimer": 1,
+                "autoCaps": 1,
+            ]
+        }
+    }
 }

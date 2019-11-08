@@ -25,7 +25,7 @@ struct CalendarSettingsView: View {
                 }
             }
             .navigationBarTitle("Calendars")
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

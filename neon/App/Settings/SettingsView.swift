@@ -14,10 +14,11 @@ struct SettingsView: View {
     @EnvironmentObject var settings: SettingsStore
     
     @State var isCalendarsPresented = false
+    @State var isOtherStuffPresented = false
     
     var body: some View {
         List {
-            Section(header: Header(title: "Settings", subtitle: "3.0 BETA 2")) {
+            Section(header: Header(title: "Settings", subtitle: "3.0 BETA 3")) {
                 SettingsCard(title: "Permissions", subtitle: "Take control of", icon: "settings_permissions")
                     .onTapGesture {
                         self.openPermissionsSettings()
@@ -32,6 +33,14 @@ struct SettingsView: View {
                             .environmentObject(self.settings)
                     })
                 SettingsCard(title: "Other Stuff", subtitle: "Take control of", icon: "settings_other")
+                    .onTapGesture {
+                        self.isOtherStuffPresented.toggle()
+                    }
+                    .sheet(isPresented: $isOtherStuffPresented, content: {
+                        OtherSettingsView(scheduleBlocksStyleValue: self.settings.other[OtherSettingsKey.scheduleBlocksStyle.rawValue]!)
+                            .environmentObject(self.blocks)
+                            .environmentObject(self.settings)
+                    })
                 SettingsCard(title: "Twitter", subtitle: "Follow me on", icon: "settings_twitter")
                     .onTapGesture {
                         self.openTwitter()

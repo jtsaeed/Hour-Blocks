@@ -102,13 +102,17 @@ class HourBlocksStore: ObservableObject {
         if CalendarGateway.shared.hasPermission() {
             for event in CalendarGateway.shared.importTodaysEvents() {
                 for i in event.startingHour...event.endingHour {
-                    let block1 = HourBlock(day: Date(), hour: i, minute: .oclock, title: event.title)
+                    var block1 = HourBlock(day: Date(), hour: i, minute: .oclock, title: event.title)
+                    block1.domain = DomainsGateway.shared.calendar
                     todaysBlocks[(block1.hour * 4)] = block1
-                    let block2 = HourBlock(day: Date(), hour: i, minute: .fifteen, title: event.title)
+                    var block2 = HourBlock(day: Date(), hour: i, minute: .fifteen, title: event.title)
+                    block2.domain = DomainsGateway.shared.calendar
                     todaysBlocks[(block2.hour * 4) + 1] = block2
-                    let block3 = HourBlock(day: Date(), hour: i, minute: .halfPast, title: event.title)
+                    var block3 = HourBlock(day: Date(), hour: i, minute: .halfPast, title: event.title)
+                    block3.domain = DomainsGateway.shared.calendar
                     todaysBlocks[(block3.hour * 4) + 2] = block3
-                    let block4 = HourBlock(day: Date(), hour: i, minute: .fourtyFive, title: event.title)
+                    var block4 = HourBlock(day: Date(), hour: i, minute: .fourtyFive, title: event.title)
+                    block4.domain = DomainsGateway.shared.calendar
                     todaysBlocks[(block4.hour * 4) + 3] = block4
                 }
             }
