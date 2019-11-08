@@ -170,8 +170,7 @@ class HourBlocksStore: ObservableObject {
             }
             
             DispatchQueue.main.async {
-                self.futureBlocks = calendarBlocks
-                self.futureBlocks.append(contentsOf: storedBlocks)
+                self.futureBlocks = calendarBlocks + storedBlocks
             }
         }
     }

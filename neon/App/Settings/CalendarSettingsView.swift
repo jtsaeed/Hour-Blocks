@@ -19,10 +19,17 @@ struct CalendarSettingsView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(CalendarGateway.shared.getAllCalendars().sorted(by: { $0.title < $1.title }), id: \.self) { calendar in
-                    CalendarCard(isEnabled: self.settings.enabledCalendars[calendar.calendarIdentifier]!, name: calendar.title, didToggle: { status in
-                        self.settings.toggleCalendar(for: calendar.calendarIdentifier, to: status)
-                    })
+                if CalendarGateway.shared.hasPermission() {
+                    ForEach(CalendarGateway.shared.getAllCalendars().sorted(by: { $0.title < $1.title }), id: \.self) { calendar in
+                        CalendarCard(isEnabled: self.settings.enabledCalendars[calendar.calendarIdentifier]!, name: calendar.title, didToggle: { status in
+                            self.settings.toggleCalendar(for: calendar.calendarIdentifier, to: status)
+                        })
+                    }
+                } else {
+                    SettingsCard(title: "Permissions", subtitle: "Enable calendar", icon: "settings_permissions")
+                        .onTapGesture {
+                            self.openPermissionsSettings()
+                        }
                 }
             }
             .navigationBarTitle("Calendars")
@@ -30,6 +37,14 @@ struct CalendarSettingsView: View {
         .onDisappear {
             self.isPresented = false
             self.blocks.reloadFutureBlocks()
+        }
+    }
+    
+    func openPermissionsSettings() {
+        if let url = URL(string: UIApplication.openSettingsURLString) {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
         }
     }
 }
