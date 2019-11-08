@@ -142,10 +142,10 @@ struct NewToDoItemView: View {
             VStack(alignment: .leading) {
                 NewTextField(title: $title)
                 Picker("", selection: $priority) {
-                    Text(ToDoPriority.high.rawValue)
-                    Text(ToDoPriority.medium.rawValue)
-                    Text(ToDoPriority.low.rawValue)
-                    Text(ToDoPriority.none.rawValue)
+                    Text(ToDoPriority.high.rawValue).tag(ToDoPriority.high)
+                    Text(ToDoPriority.medium.rawValue).tag(ToDoPriority.medium)
+                    Text(ToDoPriority.low.rawValue).tag(ToDoPriority.low)
+                    Text(ToDoPriority.none.rawValue).tag(ToDoPriority.none)
                 }
                 Spacer()
             }

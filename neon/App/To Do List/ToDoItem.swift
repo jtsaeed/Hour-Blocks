@@ -10,7 +10,7 @@ import SwiftUI
 import Combine
 import CoreData
 
-struct ToDoItem: Hashable {
+struct ToDoItem: Hashable, Comparable {
     
     let identifier: String
     let title: String

@@ -23,7 +23,7 @@ struct ToDoListView: View {
                         self.store.addToDoItem(with: title, priority)
                     }
                 } else {
-                    ForEach(store.toDoItems, id: \.self) { toDoItem in
+                    ForEach(store.toDoItems.sorted().reversed(), id: \.self) { toDoItem in
                         ToDoCard(currentToDoItem: toDoItem)
                             .contextMenu {
                                 Button(action: {
@@ -63,9 +63,27 @@ struct ToDoCard: View {
     var body: some View {
         ZStack {
             Card()
-            CardLabels(title: currentToDoItem.title, subtitle: currentToDoItem.priority.rawValue, alignment: .center)
+            ToDoCardLabels(title: currentToDoItem.title, priority: currentToDoItem.priority)
                 .padding(EdgeInsets(top: 18, leading: 22, bottom: 18, trailing: 24))
         }.padding(EdgeInsets(top: 6, leading: 8, bottom: 6, trailing: 8))
+    }
+}
+
+struct ToDoCardLabels: View {
+    
+    let title: String
+    let priority: ToDoPriority
+    
+    var body: some View {
+        VStack(alignment: .center, spacing: 4) {
+            Text(priority.rawValue.uppercased())
+                .font(.system(size: 14, weight: .semibold, design: .default))
+                .foregroundColor(Color(priority.rawValue))
+            Text(title.smartCapitalization())
+                .font(.system(size: 22, weight: .bold, design: .rounded))
+                .foregroundColor(Color("title"))
+                .lineLimit(1)
+        }
     }
 }
 
