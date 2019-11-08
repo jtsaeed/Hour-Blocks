@@ -11,6 +11,8 @@ import EventKit
 
 struct CalendarSettingsView: View {
     
+    @Binding var isPresented: Bool
+    
     @EnvironmentObject var blocks: HourBlocksStore
     @EnvironmentObject var settings: SettingsStore
     
@@ -20,12 +22,15 @@ struct CalendarSettingsView: View {
                 ForEach(CalendarGateway.shared.getAllCalendars().sorted(by: { $0.title < $1.title }), id: \.self) { calendar in
                     CalendarCard(isEnabled: self.settings.enabledCalendars[calendar.calendarIdentifier]!, name: calendar.title, didToggle: { status in
                         self.settings.toggleCalendar(for: calendar.calendarIdentifier, to: status)
-                        self.blocks.reloadCalendarBlocks()
                     })
                 }
             }
             .navigationBarTitle("Calendars")
         }.navigationViewStyle(StackNavigationViewStyle())
+        .onDisappear {
+            self.isPresented = false
+            self.blocks.reloadFutureBlocks()
+        }
     }
 }
 

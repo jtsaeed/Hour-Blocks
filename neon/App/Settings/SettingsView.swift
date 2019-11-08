@@ -28,7 +28,7 @@ struct SettingsView: View {
                         self.isCalendarsPresented.toggle()
                     }
                     .sheet(isPresented: $isCalendarsPresented, content: {
-                        CalendarSettingsView()
+                        CalendarSettingsView(isPresented: self.$isCalendarsPresented)
                             .environmentObject(self.blocks)
                             .environmentObject(self.settings)
                     })

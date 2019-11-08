@@ -150,18 +150,28 @@ class HourBlocksStore: ObservableObject {
         }
     }
     
-    func reloadCalendarBlocks() {
-        futureBlocks.removeAll()
-        
-        loadCalenderBlocks()
-        
+    func reloadFutureBlocks() {
         DispatchQueue.global(qos: .userInteractive).async {
-            for entity in DataGateway.shared.getHourBlockEntities() {
+            let calendarBlocks: [HourBlock] = CalendarGateway.shared.importFutureEvents().map { event in
+                var block = HourBlock(day: event.startDate, hour: 0, minute: .oclock, title: event.title)
+                block.domain = DomainsGateway.shared.calendar
+                
+                return block
+            }
+            
+            let storedBlocks: [HourBlock] = DataGateway.shared.getHourBlockEntities().compactMap { entity in
                 let block = HourBlock(fromEntity: entity)
                 
-                if !(Calendar.current.isDateInToday(block.day) || block.day < Date()) {
-                    DispatchQueue.main.async { self.futureBlocks.append(block) }
+                if Calendar.current.isDateInToday(block.day) || block.day < Date() {
+                    return nil
+                } else {
+                    return block
                 }
+            }
+            
+            DispatchQueue.main.async {
+                self.futureBlocks = calendarBlocks
+                self.futureBlocks.append(contentsOf: storedBlocks)
             }
         }
     }
