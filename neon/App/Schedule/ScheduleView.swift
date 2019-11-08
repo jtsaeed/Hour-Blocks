@@ -11,8 +11,8 @@ import SwiftUI
 struct ScheduleView: View {
     
     @EnvironmentObject var blocks: HourBlocksStore
+    @EnvironmentObject var settings: SettingsStore
     
-    @State var showBlocks = 0
     @State var isNewFutureBlockPresented = false
     
     init() {
@@ -47,11 +47,13 @@ struct ScheduleView: View {
     }
     
     func showQuarterBlocks(minute: BlockMinute) -> Bool {
-        if showBlocks == 0 {
+        let scheduleBlocksStyle = settings.other[OtherSettingsKey.scheduleBlocksStyle.rawValue]!
+        
+        if scheduleBlocksStyle == 0 {
             return minute == .oclock
-        } else if showBlocks == 1 {
+        } else if scheduleBlocksStyle == 1 {
             return minute == .oclock || minute == .halfPast
-        } else if showBlocks == 2 {
+        } else if scheduleBlocksStyle == 2 {
             return true
         }
         

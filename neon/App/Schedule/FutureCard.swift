@@ -21,21 +21,25 @@ struct FutureCard: View {
                 CardLabels(title: currentBlock.title!,
                            subtitle: currentBlock.day.getFormattedDate())
                 Spacer()
-                CardIcon(iconName: currentBlock.domain?.iconName ?? "default")
-                    .contextMenu {
-                        Button(action: {
-                            // TODO: Rename
-                        }) {
-                            Text("Rename")
-                            Image(systemName: "pencil")
+                if currentBlock.domain != DomainsGateway.shared.calendar {
+                    CardIcon(iconName: currentBlock.domain?.iconName ?? "default")
+                        .contextMenu {
+                            Button(action: {
+                                // TODO: Rename
+                            }) {
+                                Text("Rename")
+                                Image(systemName: "pencil")
+                            }
+                            Button(action: {
+                                self.didRemoveBlock()
+                            }) {
+                                Text("Clear")
+                                Image(systemName: "trash")
+                            }
                         }
-                        Button(action: {
-                            self.didRemoveBlock()
-                        }) {
-                            Text("Clear")
-                            Image(systemName: "trash")
-                        }
-                    }
+                } else {
+                    CardIcon(iconName: currentBlock.domain?.iconName ?? "default")
+                }
             }.padding(EdgeInsets(top: 18, leading: 22, bottom: 18, trailing: 24))
         }.padding(EdgeInsets(top: 6, leading: 8, bottom: 6, trailing: 8))
     }

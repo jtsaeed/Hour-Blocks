@@ -11,6 +11,7 @@ import SwiftUI
 struct AddToBlockSheet: View {
     
     @EnvironmentObject var blocks: HourBlocksStore
+    @EnvironmentObject var settings: SettingsStore
     
     @Binding var isPresented: Bool
     
@@ -21,7 +22,7 @@ struct AddToBlockSheet: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(blocks.todaysBlocks.filter { $0.hour >= Calendar.current.component(.hour, from: Date()) }, id: \.self) { block in
+                ForEach(blocks.todaysBlocks.filter { $0.hour >= Calendar.current.component(.hour, from: Date()) && showQuarterBlocks(minute: $0.minute) }, id: \.self) { block in
                     AddToBlockCard(currentBlock: block, didAddToBlock: {
                         self.isPresented = false
                         self.blocks.setTodayBlock(for: block.hour, block.minute, with: self.title)
@@ -37,11 +38,26 @@ struct AddToBlockSheet: View {
         }.accentColor(Color("primary"))
         .navigationViewStyle(StackNavigationViewStyle())
     }
+    
+    func showQuarterBlocks(minute: BlockMinute) -> Bool {
+        let scheduleBlocksStyle = settings.other[OtherSettingsKey.scheduleBlocksStyle.rawValue]!
+        
+        if scheduleBlocksStyle == 0 {
+            return minute == .oclock
+        } else if scheduleBlocksStyle == 1 {
+            return minute == .oclock || minute == .halfPast
+        } else if scheduleBlocksStyle == 2 {
+            return true
+        }
+        
+        return false
+    }
 }
 
 struct DuplicateBlockSheet: View {
     
     @EnvironmentObject var blocks: HourBlocksStore
+    @EnvironmentObject var settings: SettingsStore
     
     @Binding var isPresented: Bool
     
@@ -50,7 +66,7 @@ struct DuplicateBlockSheet: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(blocks.todaysBlocks.filter { $0.hour >= Calendar.current.component(.hour, from: Date()) }, id: \.self) { block in
+                ForEach(blocks.todaysBlocks.filter { $0.hour >= Calendar.current.component(.hour, from: Date()) && showQuarterBlocks(minute: $0.minute) }, id: \.self) { block in
                     AddToBlockCard(currentBlock: block, didAddToBlock: {
                         self.blocks.setTodayBlock(for: block.hour, block.minute, with: self.title)
                     })
@@ -63,6 +79,20 @@ struct DuplicateBlockSheet: View {
                 Text("Done")
             }))
         }.accentColor(Color("primary"))
+    }
+    
+    func showQuarterBlocks(minute: BlockMinute) -> Bool {
+        let scheduleBlocksStyle = settings.other[OtherSettingsKey.scheduleBlocksStyle.rawValue]!
+        
+        if scheduleBlocksStyle == 0 {
+            return minute == .oclock
+        } else if scheduleBlocksStyle == 1 {
+            return minute == .oclock || minute == .halfPast
+        } else if scheduleBlocksStyle == 2 {
+            return true
+        }
+        
+        return false
     }
 }
 

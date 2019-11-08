@@ -11,6 +11,7 @@ import SwiftUI
 struct TodayCard: View {
     
     @EnvironmentObject var blocks: HourBlocksStore
+    @EnvironmentObject var settings: SettingsStore
     
     @State var isRenamePresented = false
     @State var isDuplicatePresented = false
@@ -27,6 +28,7 @@ struct TodayCard: View {
                 TodayCardLabels(currentBlock: currentBlock)
                 Spacer()
                 if currentBlock.title != nil {
+                    if currentBlock.domain != DomainsGateway.shared.calendar {
                     CardIcon(iconName: currentBlock.domain?.iconName ?? "default")
                         .contextMenu {
                             Button(action: {
@@ -47,7 +49,7 @@ struct TodayCard: View {
                                 Image(systemName: "doc.on.doc")
                             }
                             .sheet(isPresented: $isDuplicatePresented, content: {
-                                DuplicateBlockSheet(isPresented: self.$isDuplicatePresented, title: self.currentBlock.title!).environmentObject(self.blocks)
+                                DuplicateBlockSheet(isPresented: self.$isDuplicatePresented, title: self.currentBlock.title!).environmentObject(self.blocks).environmentObject(self.settings)
                             })
                             Button(action: {
                                 if self.currentBlock.hasReminder {
@@ -81,6 +83,9 @@ struct TodayCard: View {
                                 Image(systemName: "trash")
                             }
                         }
+                    } else {
+                        CardIcon(iconName: currentBlock.domain?.iconName ?? "default")
+                    }
                 } else {
                     TodayCardAddButton(block: currentBlock, didAddBlock: { title in
                         self.blocks.setTodayBlock(for: self.currentBlock.hour, self.currentBlock.minute, with: title)
