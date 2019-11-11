@@ -12,6 +12,8 @@ import SwiftUI
 
 struct NewBlockView: View {
     
+    @EnvironmentObject var suggestions: SuggestionsStore
+    
     @Binding var isPresented: Bool
     @Binding var title: String
     
@@ -23,13 +25,17 @@ struct NewBlockView: View {
         NavigationView {
             VStack(alignment: .leading) {
                 NewTextField(title: $title)
-                Text("Suggestions")
-                    .font(.system(size: 28, weight: .semibold, design: .default))
-                    .padding(.leading, 24)
-                List {
-                    SuggestionCard(suggestedDomain: DomainsGateway.shared.gym, reason: "popular", didAddBlock: { title in
-                        self.addBlock(with: title)
-                    })
+                if suggestions.list.count > 0 {
+                    Text("Suggestions")
+                        .font(.system(size: 28, weight: .semibold, design: .default))
+                        .padding(.leading, 24)
+                    List {
+                        ForEach(suggestions.list, id: \.self) { suggestion in
+                            SuggestionCard(suggestion: suggestion, didAddBlock: { title in
+                                self.addBlock(with: title)
+                            })
+                        }
+                    }
                 }
                 Spacer()
             }
@@ -60,8 +66,7 @@ struct NewBlockView: View {
 
 struct SuggestionCard: View {
     
-    let suggestedDomain: BlockDomain
-    let reason: String
+    let suggestion: Suggestion
     
     var didAddBlock: (String) -> ()
     
@@ -69,12 +74,12 @@ struct SuggestionCard: View {
         ZStack {
             Card()
             HStack {
-                CardLabels(title: suggestedDomain.suggestionTitle,
-                           subtitle: reason.uppercased())
+                CardLabels(title: suggestion.title,
+                           subtitle: suggestion.reason.uppercased())
                 Spacer()
                 Image("add_button")
                 .onTapGesture {
-                    self.didAddBlock(self.suggestedDomain.suggestionTitle)
+                    self.didAddBlock(self.suggestion.title)
                 }
             }.padding(EdgeInsets(top: 18, leading: 22, bottom: 18, trailing: 24))
         }.padding(EdgeInsets(top: 6, leading: 8, bottom: 6, trailing: 8))

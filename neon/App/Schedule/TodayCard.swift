@@ -11,6 +11,7 @@ import SwiftUI
 struct TodayCard: View {
     
     @EnvironmentObject var blocks: HourBlocksStore
+    @EnvironmentObject var suggestions: SuggestionsStore
     @EnvironmentObject var settings: SettingsStore
     
     @State var isRenamePresented = false
@@ -28,11 +29,12 @@ struct TodayCard: View {
                 TodayCardLabels(currentBlock: currentBlock)
                 Spacer()
                 if currentBlock.title != nil {
-                    if currentBlock.domain != DomainsGateway.shared.calendar {
+                    if currentBlock.domain != DomainsGateway.shared.domains["calendar"] {
                     CardIcon(iconName: currentBlock.domain?.iconName ?? "default")
                         .contextMenu {
                             Button(action: {
                                 self.blocks.currentTitle = self.currentBlock.title!
+                                self.suggestions.load(for: self.currentBlock.hour)
                                 self.isRenamePresented.toggle()
                             }) {
                                 Text("Rename")
@@ -40,7 +42,7 @@ struct TodayCard: View {
                             }
                             .sheet(isPresented: $isRenamePresented, content: {
                                 NewBlockView(isPresented: self.$isRenamePresented, title: self.$blocks.currentTitle, formattedTime: self.currentBlock.formattedTime, didAddBlock: { title in self.didAddBlock(title)
-                                })
+                                }).environmentObject(self.suggestions)
                             })
                             Button(action: {
                                 self.isDuplicatePresented.toggle()
@@ -70,8 +72,6 @@ struct TodayCard: View {
                                         }
                                     })
                                 }
-                                
-                                print(self.currentBlock.hasReminder)
                             }) {
                                 Text(currentBlock.hasReminder ? "Remove Reminder" : "Set a Reminder")
                                 Image(systemName: "alarm")
@@ -98,6 +98,8 @@ struct TodayCard: View {
 
 struct TodayCardAddButton: View {
     
+    @EnvironmentObject var suggestions: SuggestionsStore
+    
     @State var isPresented = false
     @State var title = ""
     
@@ -108,13 +110,14 @@ struct TodayCardAddButton: View {
     var body: some View {
         Button(action: {
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
+            self.suggestions.load(for: self.block.hour)
             self.isPresented.toggle()
         }, label: {
             Image("add_button")
         })
         .sheet(isPresented: $isPresented, content: {
             NewBlockView(isPresented: self.$isPresented, title: self.$title, formattedTime: self.block.formattedTime, didAddBlock: { title in self.didAddBlock(title)
-            })
+            }).environmentObject(self.suggestions)
         })
     }
 }

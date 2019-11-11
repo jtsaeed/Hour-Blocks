@@ -11,6 +11,7 @@ import SwiftUI
 struct ScheduleView: View {
     
     @EnvironmentObject var blocks: HourBlocksStore
+    @EnvironmentObject var suggestions: SuggestionsStore
     @EnvironmentObject var settings: SettingsStore
     
     @State var isNewFutureBlockPresented = false

@@ -13,113 +13,110 @@ class DomainsGateway {
     
     static let shared = DomainsGateway()
     
-    let calendar = BlockDomain(keyWord: "", iconName: "calendar", suggestionTitle: "")
+    var domains = [String: BlockDomain]()
     
-    let wake = BlockDomain(keyWord: "wake", iconName: "alarm", suggestionTitle: "wake up")
-    
-    let read = BlockDomain(keyWord: "read", iconName: "chrome_reader", suggestionTitle: "read")
-    let book = BlockDomain(keyWord: "book", iconName: "chrome_reader", suggestionTitle: "read book")
-    let quran = BlockDomain(keyWord: "quran", iconName: "chrome_reader", suggestionTitle: "read quran")
-    
-    let code = BlockDomain(keyWord: "code", iconName: "code", suggestionTitle: "programming")
-    
-    let commute = BlockDomain(keyWord: "commute", iconName: "commute", suggestionTitle: "commute")
-    
-    let home = BlockDomain(keyWord: "home", iconName: "home", suggestionTitle: "go home")
-    
-    let shopping = BlockDomain(keyWord: "shopping", iconName: "shopping_cart", suggestionTitle: "shopping")
-    
-    let store = BlockDomain(keyWord: "store", iconName: "store", suggestionTitle: "go to the store")
-    
-    let movie = BlockDomain(keyWord: "movie", iconName: "theaters", suggestionTitle: "watch a movie")
-    
-    let work = BlockDomain(keyWord: "work", iconName: "work", suggestionTitle: "work")
-    
-    let call = BlockDomain(keyWord: "call", iconName: "call", suggestionTitle: "phone call")
-    
-    let email = BlockDomain(keyWord: "email", iconName: "email", suggestionTitle: "emails")
-    
-    let vote = BlockDomain(keyWord: "vote", iconName: "how_to_vote", suggestionTitle: "vote")
-    
-    let write = BlockDomain(keyWord: "write", iconName: "create", suggestionTitle: "write")
-    let draw = BlockDomain(keyWord: "draw", iconName: "create", suggestionTitle: "draw")
-    
-    let shower = BlockDomain(keyWord: "shower", iconName: "waves", suggestionTitle: "have a shower")
-    
-    let swim = BlockDomain(keyWord: "swim", iconName: "pool", suggestionTitle: "swimming")
-    
-    let tv = BlockDomain(keyWord: "tv", iconName: "tv", suggestionTitle: "watch tv")
-    
-    let music = BlockDomain(keyWord: "music", iconName: "music_note", suggestionTitle: "music")
-    let guitar = BlockDomain(keyWord: "guitar", iconName: "music_note", suggestionTitle: "guitar")
-    let piano = BlockDomain(keyWord: "piano", iconName: "music_note", suggestionTitle: "piano")
-    
-    let paint = BlockDomain(keyWord: "paint", iconName: "brush", suggestionTitle: "paint")
-    
-    let design = BlockDomain(keyWord: "design", iconName: "palette", suggestionTitle: "design")
-    
-    let walk = BlockDomain(keyWord: "walk", iconName: "nature_people", suggestionTitle: "go for a walk")
-    
-    let morning = BlockDomain(keyWord: "morning", iconName: "wb_sunny", suggestionTitle: "morning routine")
-    
-    let drive = BlockDomain(keyWord: "drive", iconName: "directions_car", suggestionTitle: "drive")
-    
-    let run = BlockDomain(keyWord: "run", iconName: "directions_run", suggestionTitle: "go for a run")
-    
-    let bus = BlockDomain(keyWord: "bus", iconName: "directions_bus", suggestionTitle: "get the bus")
-    
-    let train = BlockDomain(keyWord: "train", iconName: "directions_train", suggestionTitle: "get the train")
-    
-    let flight = BlockDomain(keyWord: "flight", iconName: "flight", suggestionTitle: "flight")
-    
-    let sleep = BlockDomain(keyWord: "sleep", iconName: "hotel", suggestionTitle: "sleep")
-    let nap = BlockDomain(keyWord: "nap", iconName: "hotel", suggestionTitle: "have a nap")
-    
-    let party = BlockDomain(keyWord: "party", iconName: "local_bar", suggestionTitle: "party")
-    
-    let coffee = BlockDomain(keyWord: "coffee", iconName: "local_cafe", suggestionTitle: "have a coffee")
-    
-    let laundry = BlockDomain(keyWord: "laundry", iconName: "local_laundry", suggestionTitle: "do laundry")
-    
-    let meditate = BlockDomain(keyWord: "meditate", iconName: "local_florist", suggestionTitle: "meditate")
-    let yoga = BlockDomain(keyWord: "yoga", iconName: "local_florist", suggestionTitle: "yoga")
-    
-    let eat = BlockDomain(keyWord: "eat", iconName: "restaurant", suggestionTitle: "eat food")
-    let cook = BlockDomain(keyWord: "cook", iconName: "restaurant", suggestionTitle: "cook food")
-    let breakfast = BlockDomain(keyWord: "breakfast", iconName: "restaurant", suggestionTitle: "have breakfast")
-    let lunch = BlockDomain(keyWord: "lunch", iconName: "restaurant", suggestionTitle: "have lunch")
-    let dinner = BlockDomain(keyWord: "dinner", iconName: "restaurant", suggestionTitle: "have dinner")
-    
-    let exercise = BlockDomain(keyWord: "exercise", iconName: "fitness_center", suggestionTitle: "exercise")
-    let gym = BlockDomain(keyWord: "gym", iconName: "fitness_center", suggestionTitle: "go to the gym")
-    
-    let golf = BlockDomain(keyWord: "golf", iconName: "golf_course", suggestionTitle: "golf")
-    
-    let competition = BlockDomain(keyWord: "competition", iconName: "emoji_events", suggestionTitle: "competition")
-    
-    let meeting = BlockDomain(keyWord: "meeting", iconName: "group", suggestionTitle: "meeting")
-    
-    let school = BlockDomain(keyWord: "school", iconName: "school", suggestionTitle: "school")
-    let lecture = BlockDomain(keyWord: "lecture", iconName: "school", suggestionTitle: "class")
-    let study = BlockDomain(keyWord: "study", iconName: "school", suggestionTitle: "study")
-    let homework = BlockDomain(keyWord: "homework", iconName: "school", suggestionTitle: "homework")
-    let exam = BlockDomain(keyWord: "exam", iconName: "school", suggestionTitle: "exam")
-    
-    let baseball = BlockDomain(keyWord: "baseball", iconName: "sports_baseball", suggestionTitle: "baseball")
-    
-    let basketball = BlockDomain(keyWord: "basketball", iconName: "sports_basketball", suggestionTitle: "basketball")
-    
-    let cricket = BlockDomain(keyWord: "cricket", iconName: "sports_cricket", suggestionTitle: "cricket")
-    
-    let hockey = BlockDomain(keyWord: "hockey", iconName: "sports_hockey", suggestionTitle: "hockey")
-    
-    let rugby = BlockDomain(keyWord: "rugby", iconName: "sports_rugby", suggestionTitle: "rugby")
-    
-    let football = BlockDomain(keyWord: "football", iconName: "sports_soccer", suggestionTitle: "football")
-    
-    let tennis = BlockDomain(keyWord: "tennis", iconName: "sports_tennis", suggestionTitle: "tennis")
-    
-    let volleyball = BlockDomain(keyWord: "volleyball", iconName: "sports_volleyball", suggestionTitle: "volleyball")
+    init() {
+        domains["calendar"] = BlockDomain(key: "calendar", iconName: "calendar", suggestionTitle: "")
+        
+        domains["wake"] = BlockDomain(key: "wake", iconName: "alarm", suggestionTitle: "wake up")
+        
+        domains["read"] = BlockDomain(key: "read", iconName: "chrome_reader", suggestionTitle: "read")
+        domains["book"] = BlockDomain(key: "book", iconName: "chrome_reader", suggestionTitle: "read book")
+        domains["quran"] = BlockDomain(key: "quran", iconName: "chrome_reader", suggestionTitle: "read quran")
+        
+        domains["code"] = BlockDomain(key: "code", iconName: "code", suggestionTitle: "programming")
+        
+        domains["commute"] = BlockDomain(key: "commute", iconName: "commute", suggestionTitle: "commute")
+        
+        domains["home"] = BlockDomain(key: "home", iconName: "home", suggestionTitle: "go home")
+        
+        domains["shopping"] = BlockDomain(key: "shopping", iconName: "shopping_cart", suggestionTitle: "shopping")
+        
+        domains["store"] = BlockDomain(key: "store", iconName: "store", suggestionTitle: "go to the store")
+        
+        domains["movie"] = BlockDomain(key: "movie", iconName: "theaters", suggestionTitle: "watch a movie")
+        
+        domains["work"] = BlockDomain(key: "work", iconName: "work", suggestionTitle: "work")
+        
+        domains["call"] = BlockDomain(key: "call", iconName: "call", suggestionTitle: "phone call")
+        
+        domains["email"] = BlockDomain(key: "email", iconName: "email", suggestionTitle: "emails")
+        
+        domains["vote"] = BlockDomain(key: "vote", iconName: "how_to_vote", suggestionTitle: "vote")
+        
+        domains["write"] = BlockDomain(key: "write", iconName: "create", suggestionTitle: "write")
+        domains["draw"] = BlockDomain(key: "draw", iconName: "create", suggestionTitle: "draw")
+        
+        domains["shower"] = BlockDomain(key: "shower", iconName: "waves", suggestionTitle: "have a shower")
+        
+        domains["swim"] = BlockDomain(key: "swim", iconName: "pool", suggestionTitle: "swimming")
+        
+        domains["tv"] = BlockDomain(key: "tv", iconName: "tv", suggestionTitle: "watch tv")
+        
+        domains["music"] = BlockDomain(key: "music", iconName: "music_note", suggestionTitle: "music")
+        domains["guitar"] = BlockDomain(key: "guitar", iconName: "music_note", suggestionTitle: "guitar")
+        domains["piano"] = BlockDomain(key: "piano", iconName: "music_note", suggestionTitle: "piano")
+        
+        domains["paint"] = BlockDomain(key: "paint", iconName: "brush", suggestionTitle: "paint")
+        
+        domains["design"] = BlockDomain(key: "design", iconName: "palette", suggestionTitle: "design")
+        
+        domains["walk"] = BlockDomain(key: "walk", iconName: "nature_people", suggestionTitle: "go for a walk")
+        
+        domains["morning"] = BlockDomain(key: "morning", iconName: "wb_sunny", suggestionTitle: "morning routine")
+        
+        domains["drive"] = BlockDomain(key: "drive", iconName: "directions_car", suggestionTitle: "drive")
+        
+        domains["run"] = BlockDomain(key: "run", iconName: "directions_run", suggestionTitle: "go for a run")
+        
+        domains["bus"] = BlockDomain(key: "bus", iconName: "directions_bus", suggestionTitle: "get the bus")
+        
+        domains["train"] = BlockDomain(key: "train", iconName: "directions_train", suggestionTitle: "get the train")
+        
+        domains["flight"] = BlockDomain(key: "flight", iconName: "flight", suggestionTitle: "flight")
+        
+        domains["sleep"] = BlockDomain(key: "sleep", iconName: "hotel", suggestionTitle: "sleep")
+        domains["nap"] = BlockDomain(key: "nap", iconName: "hotel", suggestionTitle: "have a nap")
+        
+        domains["party"] = BlockDomain(key: "party", iconName: "local_bar", suggestionTitle: "party")
+        
+        domains["coffee"] = BlockDomain(key: "coffee", iconName: "local_cafe", suggestionTitle: "have a coffee")
+        
+        domains["laundry"] = BlockDomain(key: "laundry", iconName: "local_laundry", suggestionTitle: "do laundry")
+        
+        domains["meditate"] = BlockDomain(key: "meditate", iconName: "local_florist", suggestionTitle: "meditate")
+        domains["yoga"] = BlockDomain(key: "yoga", iconName: "local_florist", suggestionTitle: "yoga")
+        
+        domains["eat"] = BlockDomain(key: "eat", iconName: "restaurant", suggestionTitle: "eat food")
+        domains["cook"] = BlockDomain(key: "cook", iconName: "restaurant", suggestionTitle: "cook food")
+        domains["breakfast"] = BlockDomain(key: "breakfast", iconName: "restaurant", suggestionTitle: "have breakfast")
+        domains["lunch"] = BlockDomain(key: "lunch", iconName: "restaurant", suggestionTitle: "have lunch")
+        domains["dinner"] = BlockDomain(key: "dinner", iconName: "restaurant", suggestionTitle: "have dinner")
+        
+        domains["exercise"] = BlockDomain(key: "exercise", iconName: "fitness_center", suggestionTitle: "exercise")
+        domains["gym"] = BlockDomain(key: "gym", iconName: "fitness_center", suggestionTitle: "go to the gym")
+        
+        domains["golf"] = BlockDomain(key: "golf", iconName: "golf_course", suggestionTitle: "golf")
+        
+        domains["competition"] = BlockDomain(key: "competition", iconName: "emoji_events", suggestionTitle: "competition")
+        
+        domains["meeting"] = BlockDomain(key: "meeting", iconName: "group", suggestionTitle: "meeting")
+        
+        domains["school"] = BlockDomain(key: "school", iconName: "school", suggestionTitle: "school")
+        domains["lecture"] = BlockDomain(key: "lecture", iconName: "school", suggestionTitle: "class")
+        domains["study"] = BlockDomain(key: "study", iconName: "school", suggestionTitle: "study")
+        domains["homework"] = BlockDomain(key: "homework", iconName: "school", suggestionTitle: "homework")
+        domains["exam"] = BlockDomain(key: "exam", iconName: "school", suggestionTitle: "exam")
+        
+        domains["baseball"] = BlockDomain(key: "basbell", iconName: "sports_baseball", suggestionTitle: "baseball")
+        domains["basketball"] = BlockDomain(key: "basketball", iconName: "sports_basketball", suggestionTitle: "basketball")
+        domains["cricket"] = BlockDomain(key: "cricket", iconName: "sports_cricket", suggestionTitle: "cricket")
+        domains["hockey"] = BlockDomain(key: "hockey", iconName: "sports_hockey", suggestionTitle: "hockey")
+        domains["rugby"] = BlockDomain(key: "rugby", iconName: "sports_rugby", suggestionTitle: "rugby")
+        domains["football"] = BlockDomain(key: "football", iconName: "sports_soccer", suggestionTitle: "football")
+        domains["tennis"] = BlockDomain(key: "tennis", iconName: "sports_tennis", suggestionTitle: "tennis")
+        domains["volleyball"] = BlockDomain(key: "volleyball", iconName: "sports_volleyball", suggestionTitle: "volleyball")
+    }
     
     /// Determines the potential domain for a given Hour Block's title by evaluating the potential domain for each word within the title
     ///
@@ -145,28 +142,27 @@ class DomainsGateway {
     ///
     /// - Parameter word: The word to evaluate
     private func determineDomainRating(for word: String) -> (domain: BlockDomain, rating: Double)? {
-        let allDomains = [wake, read, book, quran, code, commute, home, shopping, store, movie, work, call, email, vote, write, draw, shower, swim, tv, music, guitar, piano, paint, design, walk, morning, drive, run, bus, train, flight, sleep, nap, party, coffee, laundry, meditate, yoga, eat, cook, breakfast, lunch, dinner, exercise, gym, golf, competition, meeting, school, lecture, study, homework, exam, baseball, basketball, cricket, hockey, rugby, football, tennis, volleyball]
         var determinedDomain: BlockDomain?
         var rating = 0.0
         
         guard let embedding = NLEmbedding.wordEmbedding(for: .english) else { return nil }
         
-        for domain in allDomains {
+        for domain in domains {
             // Check if the word directly matches the keyword of the domain in the loop
-            if domain.keyWord == word {
-                determinedDomain = domain
+            if domain.key == word {
+                determinedDomain = domain.value
                 rating = 1
                 break
             }
             
-            embedding.enumerateNeighbors(for: domain.keyWord, maximumCount: 25) { (string, distance) -> Bool in
+            embedding.enumerateNeighbors(for: domain.key, maximumCount: 25) { (string, distance) -> Bool in
                 // If a similar word was found, return the corresponding domain and the match rating
                 if string == word {
                     let tempRating = (1 - distance.magnitude).magnitude
                     
                     if tempRating > rating {
                         rating = tempRating
-                        determinedDomain = domain
+                        determinedDomain = domain.value
                     }
                 }
                 
@@ -185,7 +181,7 @@ class DomainsGateway {
 
 struct BlockDomain: Hashable {
     
-    let keyWord: String
+    let key: String
     let iconName: String
     let suggestionTitle: String
 }

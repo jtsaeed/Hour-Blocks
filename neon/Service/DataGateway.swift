@@ -70,6 +70,60 @@ extension DataGateway {
     }
 }
 
+// MARK: - Suggestions
+
+extension DataGateway {
+    
+    func getSuggestionEntities() -> [SuggestionEntity] {
+        var suggestions = [SuggestionEntity]()
+        let request: NSFetchRequest<SuggestionEntity> = SuggestionEntity.fetchRequest()
+        
+        do {
+            suggestions = try self.managedObjectContext.fetch(request)
+        } catch {
+            print("error")
+        }
+        
+        return suggestions
+    }
+    
+    func saveSuggestion(for domainKey: String, at hour: Int) {
+        print("The suggestion is trying to be saved")
+        
+        let entity = SuggestionEntity(context: self.managedObjectContext)
+        entity.domainKey = domainKey
+        entity.hour = Int64(hour)
+        entity.date = Date()
+        
+        do {
+            print("Successful save")
+            try self.managedObjectContext.save()
+        } catch {
+            print("error")
+        }
+    }
+    
+    func resetSuggestions() {
+        for entity in getHourBlockEntities() {
+            guard let identifier = entity.identifier else {
+                continue
+            }
+            
+            if block.identifier == identifier {
+                managedObjectContext.delete(entity)
+                
+                do {
+                    try managedObjectContext.save()
+                } catch {
+                    print("error")
+                }
+                
+                return
+            }
+        }
+    }
+}
+
 // MARK: - To DO
 
 extension DataGateway {

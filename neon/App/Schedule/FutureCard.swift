@@ -21,7 +21,7 @@ struct FutureCard: View {
                 CardLabels(title: currentBlock.title!,
                            subtitle: currentBlock.day.getFormattedDate())
                 Spacer()
-                if currentBlock.domain != DomainsGateway.shared.calendar {
+                if currentBlock.domain != DomainsGateway.shared.domains["calendar"] {
                     CardIcon(iconName: currentBlock.domain?.iconName ?? "default")
                         .contextMenu {
                             Button(action: {

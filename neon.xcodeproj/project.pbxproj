@@ -17,7 +17,6 @@
 		2304FA29235F3000006DA688 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA28235F3000006DA688 /* Header.swift */; };
 		2304FA2B235F300A006DA688 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA2A235F300A006DA688 /* Card.swift */; };
 		2304FA2D235F301A006DA688 /* AddToBlockSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA2C235F301A006DA688 /* AddToBlockSheet.swift */; };
-		2304FA2F235F3030006DA688 /* SuggestionsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA2E235F3030006DA688 /* SuggestionsGateway.swift */; };
 		2304FA31235F304C006DA688 /* NSManagedObjectContext+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA30235F304C006DA688 /* NSManagedObjectContext+Ext.swift */; };
 		2304FA33235F305F006DA688 /* TodayCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA32235F305F006DA688 /* TodayCard.swift */; };
 		2304FA35235F306B006DA688 /* FutureCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA34235F306B006DA688 /* FutureCard.swift */; };
@@ -113,7 +112,6 @@
 		2304FA28235F3000006DA688 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		2304FA2A235F300A006DA688 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		2304FA2C235F301A006DA688 /* AddToBlockSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToBlockSheet.swift; sourceTree = "<group>"; };
-		2304FA2E235F3030006DA688 /* SuggestionsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsGateway.swift; sourceTree = "<group>"; };
 		2304FA30235F304C006DA688 /* NSManagedObjectContext+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Ext.swift"; sourceTree = "<group>"; };
 		2304FA32235F305F006DA688 /* TodayCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCard.swift; sourceTree = "<group>"; };
 		2304FA34235F306B006DA688 /* FutureCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureCard.swift; sourceTree = "<group>"; };
@@ -276,7 +274,6 @@
 				23E45BE1224BA3A9002D01AC /* NotificationsGateway.swift */,
 				232ED4DF228C93A4008FC4A0 /* AnalyticsGateway.swift */,
 				2304FA1E235F2F28006DA688 /* DomainsGateway.swift */,
-				2304FA2E235F3030006DA688 /* SuggestionsGateway.swift */,
 				2304FA42235F4AB4006DA688 /* AudioGateway.swift */,
 			);
 			path = Service;
@@ -632,7 +629,6 @@
 				23E82155236DB57A004E6F15 /* WhatsNewView.swift in Sources */,
 				2304FA2B235F300A006DA688 /* Card.swift in Sources */,
 				232ED4E0228C93A4008FC4A0 /* AnalyticsGateway.swift in Sources */,
-				2304FA2F235F3030006DA688 /* SuggestionsGateway.swift in Sources */,
 				2304FA35235F306B006DA688 /* FutureCard.swift in Sources */,
 				23C6F8812372DCB200E53286 /* SettingsStore.swift in Sources */,
 				2304FA27235F2FF2006DA688 /* NewSheet.swift in Sources */,
