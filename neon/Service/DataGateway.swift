@@ -104,23 +104,7 @@ extension DataGateway {
     }
     
     func resetSuggestions() {
-        for entity in getHourBlockEntities() {
-            guard let identifier = entity.identifier else {
-                continue
-            }
-            
-            if block.identifier == identifier {
-                managedObjectContext.delete(entity)
-                
-                do {
-                    try managedObjectContext.save()
-                } catch {
-                    print("error")
-                }
-                
-                return
-            }
-        }
+        
     }
 }
 
@@ -177,7 +161,15 @@ extension DataGateway {
 extension DataGateway {
     
     func isNewVersion() -> Bool {
-        let userVersion = UserDefaults.standard.double(forKey: "currentVersion")
+        if let _ = UserDefaults.standard.object(forKey: "VersionOfLastRun") as? String {
+            UserDefaults.standard.removeObject(forKey: "VersionOfLastRun")
+            
+            return true
+        }
+        
+        guard let userVersion = UserDefaults.standard.object(forKey: "currentVersion") as? Double else {
+            return false
+        }
         
         UserDefaults.standard.set(currentVersion, forKey: "currentVersion")
         UserDefaults.standard.synchronize()
