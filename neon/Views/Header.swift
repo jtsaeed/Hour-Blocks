@@ -102,6 +102,9 @@ struct HabitsHeader: View {
 
 struct ToDoHeader: View {
     
+    @State var title = ""
+    @State var priority: ToDoPriority = .none
+    
     @State var isPresented = false
     
     var addButtonDisabled: Bool
@@ -123,7 +126,7 @@ struct ToDoHeader: View {
                 .padding(.top, 32)
                 .padding(.trailing, 47)
                 .sheet(isPresented: $isPresented, content: {
-                    NewToDoItemView(isPresented: self.$isPresented, didAddToDoItem: { title, priority in
+                    NewToDoItemView(isPresented: self.$isPresented, title: self.$title, priority: self.$priority, didAddToDoItem: { title, priority in
                         self.toDoItemAdded(title, priority)
                     })
                 })

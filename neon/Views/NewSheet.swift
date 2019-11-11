@@ -92,8 +92,8 @@ struct NewToDoItemView: View {
     
     @Binding var isPresented: Bool
     
-    @State var title = ""
-    @State var priority: ToDoPriority = .none
+    @Binding var title: String
+    @Binding var priority: ToDoPriority
     
     var didAddToDoItem: (String, ToDoPriority) -> ()
     

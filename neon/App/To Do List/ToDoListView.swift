@@ -13,6 +13,7 @@ struct ToDoListView: View {
     @EnvironmentObject var blocks: HourBlocksStore
     @ObservedObject var store = ToDoItemsStore()
     
+    @State var isRenamePresented = false
     @State var isAddToBlockPresented = false
     
     var body: some View {
@@ -36,11 +37,18 @@ struct ToDoListView: View {
                                     AddToBlockSheet(isPresented: self.$isAddToBlockPresented, title: toDoItem.title, didAddToBlock: { title, hour in self.blocks.setTodayBlock(for: hour, with: title) }).environmentObject(self.blocks)
                                 })
                                 Button(action: {
-                                    // TODO: Edit
+                                    self.store.currentTitle = toDoItem.title
+                                    self.store.currentPriority = toDoItem.priority
+                                    self.isRenamePresented.toggle()
                                 }) {
                                     Text("Edit")
                                     Image(systemName: "pencil")
                                 }
+                                .sheet(isPresented: self.$isRenamePresented, content: {
+                                    NewToDoItemView(isPresented: self.$isRenamePresented, title: self.$store.currentTitle, priority: self.$store.currentPriority) { title, priority in
+                                        self.store.addToDoItem(with: title, priority)
+                                    }
+                                })
                                 Button(action: {
                                     self.store.removeToDoItem(toDo: toDoItem)
                                 }) {

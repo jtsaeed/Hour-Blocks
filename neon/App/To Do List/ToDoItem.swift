@@ -52,6 +52,9 @@ class ToDoItemsStore: ObservableObject {
     
     @Published var toDoItems = [ToDoItem]()
     
+    @Published var currentTitle = ""
+    @Published var currentPriority: ToDoPriority = .none
+    
     init() {
         for entity in DataGateway.shared.getToDoEntities() {
             toDoItems.append(ToDoItem(fromEntity: entity))
