@@ -32,8 +32,14 @@ struct CalendarSettingsView: View {
                         }
                 }
             }
+            .navigationBarItems(trailing: Button(action: {
+                self.isPresented = false
+            }, label: {
+                Text("Done")
+            }))
             .navigationBarTitle("Calendars")
-        }.navigationViewStyle(StackNavigationViewStyle())
+        }.accentColor(Color("primary"))
+        .navigationViewStyle(StackNavigationViewStyle())
         .onDisappear {
             self.isPresented = false
             self.blocks.reloadTodayBlocks()
@@ -62,12 +68,10 @@ struct CalendarCard: View {
         ZStack {
             SoftCard(cornerRadius: 20)
             HStack {
-                Text(name)
+                Toggle(isOn: $isEnabled) {
+                    Text(name)
                     .lineLimit(1)
                     .font(.system(size: 22, weight: .semibold, design: .rounded))
-                Spacer()
-                Toggle(isOn: $isEnabled) {
-                    Text("")
                 }.onTapGesture {
                     self.didToggle(!self.isEnabled)
                 }

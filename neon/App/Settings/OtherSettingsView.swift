@@ -11,6 +11,8 @@ import EventKit
 
 struct OtherSettingsView: View {
     
+    @Binding var isPresented: Bool
+    
     @EnvironmentObject var blocks: HourBlocksStore
     @EnvironmentObject var settings: SettingsStore
     
@@ -24,8 +26,15 @@ struct OtherSettingsView: View {
                                description: "Change the time format used throughout Hour Blocks",
                                options: ["System", "12h", "24h"])
             }
+            .navigationBarItems(trailing: Button(action: {
+                self.isPresented = false
+            }, label: {
+                Text("Done")
+            }))
             .navigationBarTitle("Other Settings")
-        }.navigationViewStyle(StackNavigationViewStyle())
+        }
+        .accentColor(Color("primary"))
+        .navigationViewStyle(StackNavigationViewStyle())
         .onDisappear {
             self.blocks.reloadTodayBlocks()
             self.save()
