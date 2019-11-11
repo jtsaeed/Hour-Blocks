@@ -15,17 +15,15 @@ struct HourBlock: Hashable {
     let identifier: String
     let day: Date
     let hour: Int
-    let minute: BlockMinute
     
     let title: String?
     var domain: BlockDomain?
     var hasReminder = false
     
-    init(day: Date, hour: Int, minute: BlockMinute, title: String?) {
+    init(day: Date, hour: Int, title: String?) {
         self.identifier = UUID().uuidString
         self.day = day
         self.hour = hour
-        self.minute = minute
         
         self.title = title
         self.domain = DomainsGateway.shared.determineDomain(for: title)
@@ -35,7 +33,6 @@ struct HourBlock: Hashable {
         self.identifier = entity.identifier!
         self.day = entity.day!
         self.hour = Int(entity.hour)
-        self.minute = BlockMinute(rawValue: Int(entity.minute))!
         
         self.title = entity.title
         self.domain = DomainsGateway.shared.determineDomain(for: title)
@@ -43,13 +40,13 @@ struct HourBlock: Hashable {
     
     var formattedTime: String {
         if hour == 0 {
-            return "12\(minute.rawValue.getFormattedMinute())AM"
+            return "12AM"
         } else if hour < 12 {
-            return "\(hour)\(minute.rawValue.getFormattedMinute())AM"
+            return "\(hour)AM"
         } else if hour == 12 {
-            return "\(hour)\(minute.rawValue.getFormattedMinute())PM"
+            return "\(hour)PM"
         } else {
-            return "\(hour - 12)\(minute.rawValue.getFormattedMinute())PM"
+            return "\(hour - 12)PM"
         }
     }
     
@@ -60,18 +57,9 @@ struct HourBlock: Hashable {
         entity.title = title
         entity.day = day
         entity.hour = Int64(hour)
-        entity.minute = Int64(minute.rawValue)
         
         return entity
     }
-}
-
-enum BlockMinute: Int {
-    
-    case oclock = 0
-    case fifteen = 1
-    case halfPast = 2
-    case fourtyFive = 3
 }
 
 class HourBlocksStore: ObservableObject {
@@ -91,27 +79,15 @@ class HourBlocksStore: ObservableObject {
         todaysBlocks.removeAll()
         
         for hour in 0...23 {
-            todaysBlocks.append(HourBlock(day: Date(), hour: hour, minute: .oclock, title: nil))
-            todaysBlocks.append(HourBlock(day: Date(), hour: hour, minute: .fifteen, title: nil))
-            todaysBlocks.append(HourBlock(day: Date(), hour: hour, minute: .halfPast, title: nil))
-            todaysBlocks.append(HourBlock(day: Date(), hour: hour, minute: .fourtyFive, title: nil))
+            todaysBlocks.append(HourBlock(day: Date(), hour: hour, title: nil))
         }
         
         if CalendarGateway.shared.hasPermission() {
             for event in CalendarGateway.shared.importTodaysEvents() {
                 for i in event.startingHour...event.endingHour {
-                    var block1 = HourBlock(day: Date(), hour: i, minute: .oclock, title: event.title)
-                    block1.domain = DomainsGateway.shared.domains["calendar"]
-                    syncTodayBlock(block: block1)
-                    var block2 = HourBlock(day: Date(), hour: i, minute: .fifteen, title: event.title)
-                    block2.domain = DomainsGateway.shared.domains["calendar"]
-                    syncTodayBlock(block: block2)
-                    var block3 = HourBlock(day: Date(), hour: i, minute: .halfPast, title: event.title)
-                    block3.domain = DomainsGateway.shared.domains["calendar"]
-                    syncTodayBlock(block: block3)
-                    var block4 = HourBlock(day: Date(), hour: i, minute: .fourtyFive, title: event.title)
-                    block4.domain = DomainsGateway.shared.domains["calendar"]
-                    syncTodayBlock(block: block4)
+                    var block = HourBlock(day: Date(), hour: i, title: event.title)
+                    block.domain = DomainsGateway.shared.domains["calendar"]
+                    todaysBlocks[i] = block
                 }
             }
         }
@@ -120,7 +96,7 @@ class HourBlocksStore: ObservableObject {
             let block = HourBlock(fromEntity: entity)
             
             if Calendar.current.isDateInToday(block.day) {
-                syncTodayBlock(block: block)
+                todaysBlocks[block.hour] = block
             } else if block.day < Date() {
                 DataGateway.shared.deleteHourBlock(block: block)
             }
@@ -136,7 +112,7 @@ class HourBlocksStore: ObservableObject {
     func reloadFutureBlocks() {
         DispatchQueue.global(qos: .userInteractive).async {
             let calendarBlocks: [HourBlock] = CalendarGateway.shared.importFutureEvents().map { event in
-                var block = HourBlock(day: event.startDate, hour: 0, minute: .oclock, title: event.title)
+                var block = HourBlock(day: event.startDate, hour: 0, title: event.title)
                 block.domain = DomainsGateway.shared.domains["calendar"]
                 
                 return block
@@ -152,14 +128,10 @@ class HourBlocksStore: ObservableObject {
         }
     }
     
-    private func syncTodayBlock(block: HourBlock) {
-        todaysBlocks[(block.hour * 4) + block.minute.rawValue] = block
-    }
-    
-    func setTodayBlock(for hour: Int, _ minute: BlockMinute, with title: String) {
-        let block = HourBlock(day: Date(), hour: hour, minute: minute, title: title)
+    func setTodayBlock(for hour: Int, with title: String) {
+        let block = HourBlock(day: Date(), hour: hour, title: title)
         
-        syncTodayBlock(block: block)
+        todaysBlocks[hour] = block
         DataGateway.shared.saveHourBlock(block: block)
         
         if let domainKey = block.domain?.key {
@@ -167,13 +139,13 @@ class HourBlocksStore: ObservableObject {
         }
     }
     
-    func removeTodayBlock(for hour: Int, _ minute: BlockMinute = .oclock) {
-        DataGateway.shared.deleteHourBlock(block: todaysBlocks[(hour * 4) + minute.rawValue])
-        syncTodayBlock(block: HourBlock(day: Date(), hour: hour, minute: minute, title: nil))
+    func removeTodayBlock(for hour: Int) {
+        DataGateway.shared.deleteHourBlock(block: todaysBlocks[hour])
+        todaysBlocks[hour] = HourBlock(day: Date(), hour: hour, title: nil)
     }
     
-    func addFutureBlock(for date: Date, _ hour: Int, _ minute: BlockMinute = .oclock, with title: String) {
-        let block = HourBlock(day: date, hour: hour, minute: minute, title: title)
+    func addFutureBlock(for date: Date, _ hour: Int, with title: String) {
+        let block = HourBlock(day: date, hour: hour, title: title)
         
         futureBlocks.append(block)
         DataGateway.shared.saveHourBlock(block: block)

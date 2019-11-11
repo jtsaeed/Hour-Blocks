@@ -23,18 +23,18 @@ struct ScheduleView: View {
     var body: some View {
         List {
             Section(header: TodayHeader(allDayEvent: $blocks.allDayEvent)) {
-                ForEach(blocks.todaysBlocks.filter { $0.hour >= Calendar.current.component(.hour, from: Date()) && showQuarterBlocks(minute: $0.minute) }, id: \.self) { block in
+                ForEach(blocks.todaysBlocks.filter { $0.hour >= Calendar.current.component(.hour, from: Date()) }, id: \.self) { block in
                     TodayCard(currentBlock: block, didAddBlock: { title in
-                        self.blocks.setTodayBlock(for: block.hour, block.minute, with: title)
+                        self.blocks.setTodayBlock(for: block.hour, with: title)
                     }, didRemoveBlock: {
-                        self.blocks.removeTodayBlock(for: block.hour, block.minute)
+                        self.blocks.removeTodayBlock(for: block.hour)
                     }).environmentObject(self.blocks)
                 }
             }
-            Section(header: FutureHeader(addButtonDisabled: blocks.futureBlocks.isEmpty, futureBlockAdded: { title, date in self.blocks.addFutureBlock(for: date, 0, .oclock, with: title)})) {
+            Section(header: FutureHeader(addButtonDisabled: blocks.futureBlocks.isEmpty, futureBlockAdded: { title, date in self.blocks.addFutureBlock(for: date, 0, with: title)})) {
                 if blocks.futureBlocks.isEmpty {
                     EmptyFutureCard { title, date in
-                        self.blocks.addFutureBlock(for: date, 0, .oclock, with: title)
+                        self.blocks.addFutureBlock(for: date, 0, with: title)
                     }
                 } else {
                     ForEach(blocks.futureBlocks.sorted { $0.day < $1.day }, id: \.self) { block in
@@ -45,20 +45,6 @@ struct ScheduleView: View {
                 }
             }
         }
-    }
-    
-    func showQuarterBlocks(minute: BlockMinute) -> Bool {
-        let scheduleBlocksStyle = settings.other[OtherSettingsKey.scheduleBlocksStyle.rawValue]!
-        
-        if scheduleBlocksStyle == 0 {
-            return minute == .oclock
-        } else if scheduleBlocksStyle == 1 {
-            return minute == .oclock || minute == .halfPast
-        } else if scheduleBlocksStyle == 2 {
-            return true
-        }
-        
-        return false
     }
 }
 

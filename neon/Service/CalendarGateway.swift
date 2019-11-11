@@ -86,18 +86,12 @@ struct ImportedCalendarEvent {
     var startingHour: Int
     var endingHour: Int
     
-    var startingMinute: Int
-    var endingMinute: Int
-    
 	init(from event: EKEvent) {
         title = event.title
         date = event.startDate
         
 		startingHour = Calendar.current.component(.hour, from: event.startDate)
 		endingHour = Calendar.current.component(.hour, from: event.endDate)
-        
-        startingMinute = Calendar.current.component(.minute, from: event.startDate)
-        endingMinute = Calendar.current.component(.minute, from: event.endDate)
 		
         // Calibrate hours
         if endingHour <= Calendar.current.component(.hour, from: Date()) {
@@ -114,18 +108,5 @@ struct ImportedCalendarEvent {
                 endingHour = Calendar.current.component(.hour, from: event.endDate)
             }
         }
-        
-        /*
-        // Calibrate minutes
-        if startingMinute
-        
-        if endingMinute > 0 && endingMinute < 15 {
-            endingMinute = 15
-        } else if endingMinute > 15 && endingMinute <= 30 {
-            
-        } else if endingMinute > 30 && endingMinute <= 45 {
-            
-        }
- */
     }
 }

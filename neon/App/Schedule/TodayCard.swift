@@ -88,7 +88,7 @@ struct TodayCard: View {
                     }
                 } else {
                     TodayCardAddButton(block: currentBlock, didAddBlock: { title in
-                        self.blocks.setTodayBlock(for: self.currentBlock.hour, self.currentBlock.minute, with: title)
+                        self.blocks.setTodayBlock(for: self.currentBlock.hour, with: title)
                     })
                 }
             }.padding(EdgeInsets(top: 18, leading: 22, bottom: 18, trailing: 24))

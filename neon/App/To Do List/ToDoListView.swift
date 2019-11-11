@@ -33,7 +33,7 @@ struct ToDoListView: View {
                                     Image(systemName: "plus")
                                 }
                                 .sheet(isPresented: self.$isAddToBlockPresented, content: {
-                                    AddToBlockSheet(isPresented: self.$isAddToBlockPresented, title: toDoItem.title, didAddToBlock: { title, hour, minute in self.blocks.setTodayBlock(for: hour, minute, with: title) }).environmentObject(self.blocks)
+                                    AddToBlockSheet(isPresented: self.$isAddToBlockPresented, title: toDoItem.title, didAddToBlock: { title, hour in self.blocks.setTodayBlock(for: hour, with: title) }).environmentObject(self.blocks)
                                 })
                                 Button(action: {
                                     // TODO: Edit
