@@ -83,71 +83,54 @@ class HourBlocksStore: ObservableObject {
     @Published var allDayEvent = ""
     
     init() {
-        initialiseBlocks()
-        loadCalenderBlocks()
-        loadAllDayEvent()
-        loadBlocks()
+        reloadTodayBlocks()
+        reloadFutureBlocks()
     }
     
-    private func initialiseBlocks() {
+    func reloadTodayBlocks() {
+        todaysBlocks.removeAll()
+        
         for hour in 0...23 {
             todaysBlocks.append(HourBlock(day: Date(), hour: hour, minute: .oclock, title: nil))
             todaysBlocks.append(HourBlock(day: Date(), hour: hour, minute: .fifteen, title: nil))
             todaysBlocks.append(HourBlock(day: Date(), hour: hour, minute: .halfPast, title: nil))
             todaysBlocks.append(HourBlock(day: Date(), hour: hour, minute: .fourtyFive, title: nil))
         }
-    }
-    
-    private func loadCalenderBlocks() {
+        
         if CalendarGateway.shared.hasPermission() {
             for event in CalendarGateway.shared.importTodaysEvents() {
                 for i in event.startingHour...event.endingHour {
                     var block1 = HourBlock(day: Date(), hour: i, minute: .oclock, title: event.title)
                     block1.domain = DomainsGateway.shared.domains["calendar"]
-                    todaysBlocks[(block1.hour * 4)] = block1
+                    syncTodayBlock(block: block1)
                     var block2 = HourBlock(day: Date(), hour: i, minute: .fifteen, title: event.title)
                     block2.domain = DomainsGateway.shared.domains["calendar"]
-                    todaysBlocks[(block2.hour * 4) + 1] = block2
+                    syncTodayBlock(block: block2)
                     var block3 = HourBlock(day: Date(), hour: i, minute: .halfPast, title: event.title)
                     block3.domain = DomainsGateway.shared.domains["calendar"]
-                    todaysBlocks[(block3.hour * 4) + 2] = block3
+                    syncTodayBlock(block: block3)
                     var block4 = HourBlock(day: Date(), hour: i, minute: .fourtyFive, title: event.title)
                     block4.domain = DomainsGateway.shared.domains["calendar"]
-                    todaysBlocks[(block4.hour * 4) + 3] = block4
-                }
-            }
-            
-            DispatchQueue.global(qos: .userInteractive).async {
-                let blocks: [HourBlock] = CalendarGateway.shared.importFutureEvents().map { event in
-                    var block = HourBlock(day: event.startDate, hour: 0, minute: .oclock, title: event.title)
-                    block.domain = DomainsGateway.shared.domains["calendar"]
-                    
-                    return block
-                }
-                
-                DispatchQueue.main.async {
-                    self.futureBlocks.append(contentsOf: blocks)
+                    syncTodayBlock(block: block4)
                 }
             }
         }
-    }
-    
-    private func loadAllDayEvent() {
-        allDayEvent = CalendarGateway.shared.allDayEvent?.title ?? ""
-    }
-    
-    private func loadBlocks() {
+        
         for entity in DataGateway.shared.getHourBlockEntities() {
             let block = HourBlock(fromEntity: entity)
             
             if Calendar.current.isDateInToday(block.day) {
-                todaysBlocks[(block.hour * 4) + block.minute.rawValue] = block
+                syncTodayBlock(block: block)
             } else if block.day < Date() {
                 DataGateway.shared.deleteHourBlock(block: block)
-            } else {
-                futureBlocks.append(block)
             }
         }
+        
+        self.loadAllDayEvent()
+    }
+    
+    private func loadAllDayEvent() {
+        allDayEvent = CalendarGateway.shared.allDayEvent?.title ?? ""
     }
     
     func reloadFutureBlocks() {
@@ -165,15 +148,18 @@ class HourBlocksStore: ObservableObject {
             
             DispatchQueue.main.async {
                 self.futureBlocks = calendarBlocks + storedBlocks
-                self.loadAllDayEvent()
             }
         }
+    }
+    
+    private func syncTodayBlock(block: HourBlock) {
+        todaysBlocks[(block.hour * 4) + block.minute.rawValue] = block
     }
     
     func setTodayBlock(for hour: Int, _ minute: BlockMinute, with title: String) {
         let block = HourBlock(day: Date(), hour: hour, minute: minute, title: title)
         
-        todaysBlocks[(hour * 4) + minute.rawValue] = block
+        syncTodayBlock(block: block)
         DataGateway.shared.saveHourBlock(block: block)
         
         if let domainKey = block.domain?.key {
@@ -183,7 +169,7 @@ class HourBlocksStore: ObservableObject {
     
     func removeTodayBlock(for hour: Int, _ minute: BlockMinute = .oclock) {
         DataGateway.shared.deleteHourBlock(block: todaysBlocks[(hour * 4) + minute.rawValue])
-        todaysBlocks[(hour * 4) + minute.rawValue] = HourBlock(day: Date(), hour: hour, minute: minute, title: nil)
+        syncTodayBlock(block: HourBlock(day: Date(), hour: hour, minute: minute, title: nil))
     }
     
     func addFutureBlock(for date: Date, _ hour: Int, _ minute: BlockMinute = .oclock, with title: String) {

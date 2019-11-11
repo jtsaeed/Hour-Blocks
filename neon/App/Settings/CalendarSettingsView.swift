@@ -36,6 +36,7 @@ struct CalendarSettingsView: View {
         }.navigationViewStyle(StackNavigationViewStyle())
         .onDisappear {
             self.isPresented = false
+            self.blocks.reloadTodayBlocks()
             self.blocks.reloadFutureBlocks()
         }
     }
