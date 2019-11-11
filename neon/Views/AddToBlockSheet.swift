@@ -11,7 +11,6 @@ import SwiftUI
 struct AddToBlockSheet: View {
     
     @EnvironmentObject var blocks: HourBlocksStore
-    @EnvironmentObject var settings: SettingsStore
     
     @Binding var isPresented: Bool
     
@@ -43,7 +42,6 @@ struct AddToBlockSheet: View {
 struct DuplicateBlockSheet: View {
     
     @EnvironmentObject var blocks: HourBlocksStore
-    @EnvironmentObject var settings: SettingsStore
     
     @Binding var isPresented: Bool
     
@@ -65,6 +63,64 @@ struct DuplicateBlockSheet: View {
                 Text("Done")
             }))
         }.accentColor(Color("primary"))
+    }
+}
+
+// MARK: - New Future Block View
+
+struct NewFutureBlockView: View {
+    
+    @Binding var isPresented: Bool
+    
+    @State var title = ""
+    @State var date = Date()
+    
+    var didAddBlock: (String, Date) -> ()
+    
+    var dateClosedRange: ClosedRange<Date> {
+        let min = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+        let max = Calendar.current.date(byAdding: .month, value: 1, to: Date())!
+        return min...max
+    }
+    
+    var body: some View {
+        NavigationView {
+            VStack {
+                NewTextField(title: $title)
+                DatePicker("", selection: $date, in: dateClosedRange, displayedComponents: .date)
+                List {
+                    ForEach(fullDayBlocks(), id: \.self) { block in
+                        AddToBlockCard(currentBlock: block, didAddToBlock: {
+                            if self.title.isEmpty {
+                                UINotificationFeedbackGenerator().notificationOccurred(.error)
+                            } else {
+                                UINotificationFeedbackGenerator().notificationOccurred(.success)
+                                self.isPresented = false
+                                self.didAddBlock(self.title, self.date)
+                            }
+                        })
+                    }
+                }
+                Spacer()
+            }
+            .navigationBarTitle("What's in the future?")
+            .navigationBarItems(leading: Button(action: {
+                self.isPresented = false
+            }, label: {
+                Text("Cancel")
+            }))
+        }.accentColor(Color("primary"))
+        .navigationViewStyle(StackNavigationViewStyle())
+    }
+    
+    func fullDayBlocks() -> [HourBlock] {
+        var blocks = [HourBlock]()
+        
+        for i in 0...23 {
+            blocks.append(HourBlock(day: Date(), hour: i, title: nil))
+        }
+        
+        return blocks
     }
 }
 

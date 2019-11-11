@@ -39,15 +39,17 @@ struct HourBlock: Hashable {
     }
     
     var formattedTime: String {
-        if hour == 0 {
-            return "12AM"
-        } else if hour < 12 {
-            return "\(hour)AM"
-        } else if hour == 12 {
-            return "\(hour)PM"
-        } else {
-            return "\(hour - 12)PM"
+        if let format = DataGateway.shared.loadOtherSettings()[OtherSettingsKey.timeFormat.rawValue] {
+            if format == 0 {
+                return DataGateway.shared.isSystemClock12h() ? hour.get12hTime() : hour.get24hTime()
+            } else if format == 1 {
+                return hour.get12hTime()
+            } else if format == 2 {
+                return hour.get24hTime()
+            }
         }
+        
+        return hour.get12hTime()
     }
     
     @discardableResult

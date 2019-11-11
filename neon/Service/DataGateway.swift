@@ -192,14 +192,39 @@ extension DataGateway {
     }
     
     func loadOtherSettings() -> [String: Int] {
-        if let otherSettings = UserDefaults.standard.dictionary(forKey: "otherSettings") as? [String: Int] {
+        if var otherSettings = UserDefaults.standard.dictionary(forKey: "otherSettings") as? [String: Int] {
+            if otherSettings[OtherSettingsKey.timeFormat.rawValue] == nil {
+                otherSettings[OtherSettingsKey.timeFormat.rawValue] = 1
+            }
+            
+            if otherSettings[OtherSettingsKey.reminderTimer.rawValue] == nil {
+                otherSettings[OtherSettingsKey.reminderTimer.rawValue] = 1
+            }
+            
+            if otherSettings[OtherSettingsKey.autoCaps.rawValue] == nil {
+                otherSettings[OtherSettingsKey.autoCaps.rawValue] = 1
+            }
+            
             return otherSettings
         } else {
             return [
-                "blocksStyle": 0,
-                "reminderTimer": 1,
-                "autoCaps": 1,
+                OtherSettingsKey.timeFormat.rawValue: 1,
+                OtherSettingsKey.reminderTimer.rawValue: 1,
+                OtherSettingsKey.autoCaps.rawValue: 1,
             ]
         }
+    }
+    
+    func isSystemClock12h() -> Bool {
+        let formatter = DateFormatter()
+        formatter.locale = Locale.current
+        formatter.dateStyle = .none
+        formatter.timeStyle = .short
+
+        let dateString = formatter.string(from: Date())
+        let amRange = dateString.range(of: formatter.amSymbol)
+        let pmRange = dateString.range(of: formatter.pmSymbol)
+
+        return !(pmRange == nil && amRange == nil)
     }
 }

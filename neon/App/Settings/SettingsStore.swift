@@ -39,7 +39,7 @@ class SettingsStore: ObservableObject {
 
 enum OtherSettingsKey: String {
     
-    case scheduleBlocksStyle = "blocksStyle"
-    case reminderTimer = "reminderTimer"
-    case autocapitalisation = "autoCaps"
+    case timeFormat
+    case reminderTimer
+    case autoCaps
 }

@@ -14,25 +14,26 @@ struct OtherSettingsView: View {
     @EnvironmentObject var blocks: HourBlocksStore
     @EnvironmentObject var settings: SettingsStore
     
-    @State var scheduleBlocksStyleValue: Int
+    @State var timeFormatValue: Int
     
     var body: some View {
         NavigationView {
             List {
-                OtherStuffCard(value: $scheduleBlocksStyleValue,
-                               title: "Schedule Blocks Style",
-                               description: "Change the way blocks are shown to you in the Schedule",
-                               options: ["Hour", "Half", "Quarter"])
+                OtherStuffCard(value: $timeFormatValue,
+                               title: "Time Format",
+                               description: "Change the time format used throughout Hour Blocks",
+                               options: ["System", "12h", "24h"])
             }
             .navigationBarTitle("Other Settings")
         }.navigationViewStyle(StackNavigationViewStyle())
         .onDisappear {
+            self.blocks.reloadTodayBlocks()
             self.save()
         }
     }
     
     func save() {
-        settings.other[OtherSettingsKey.scheduleBlocksStyle.rawValue] = scheduleBlocksStyleValue
+        settings.other[OtherSettingsKey.timeFormat.rawValue] = timeFormatValue
     }
 }
 
@@ -47,7 +48,7 @@ struct OtherStuffCard: View {
     var body: some View {
         ZStack {
             SoftCard(cornerRadius: 24)
-            VStack(spacing: 24) {
+            VStack(alignment: .leading, spacing: 24) {
                 VStack(alignment: .leading, spacing: 8) {
                     Text(title)
                         .font(.system(size: 22, weight: .semibold, design: .rounded))

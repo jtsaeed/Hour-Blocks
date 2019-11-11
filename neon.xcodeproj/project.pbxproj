@@ -36,6 +36,7 @@
 		2338BED4220A7841004F288F /* neonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338BED3220A7841004F288F /* neonTests.swift */; };
 		2338BEDF220A7841004F288F /* neonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEDE220A7841004F288F /* neonUITests.swift */; };
 		234C1A09220C8E9D00344316 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C1A08220C8E9D00344316 /* Date+Ext.swift */; };
+		234DF2FB237A113200EB248A /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234DF2FA237A113200EB248A /* Int+Ext.swift */; };
 		2373C1FF237036B500237763 /* SuggestionsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2373C1FE237036B500237763 /* SuggestionsStore.swift */; };
 		23B63CE1222491050026B9C2 /* CalendarGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B63CE0222491050026B9C2 /* CalendarGateway.swift */; };
 		23C53D7D2369E01900BA4378 /* CalendarSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C53D7C2369E01900BA4378 /* CalendarSettingsView.swift */; };
@@ -137,6 +138,7 @@
 		2338BEDE220A7841004F288F /* neonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = neonUITests.swift; sourceTree = "<group>"; };
 		2338BEE0220A7841004F288F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		234C1A08220C8E9D00344316 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		234DF2FA237A113200EB248A /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
 		2373C1FE237036B500237763 /* SuggestionsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsStore.swift; sourceTree = "<group>"; };
 		238EA767223EA0D900981E98 /* neon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = neon.entitlements; sourceTree = "<group>"; };
 		2395A94D224AE1750007D6F2 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
@@ -259,6 +261,7 @@
 				234C1A08220C8E9D00344316 /* Date+Ext.swift */,
 				2304FA30235F304C006DA688 /* NSManagedObjectContext+Ext.swift */,
 				23C53D802369E62800BA4378 /* String+Ext.swift */,
+				234DF2FA237A113200EB248A /* Int+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -622,6 +625,7 @@
 				2304FA2D235F301A006DA688 /* AddToBlockSheet.swift in Sources */,
 				231392A922666FC400DB0ABF /* DataGateway.swift in Sources */,
 				2338BEC4220A7840004F288F /* neon.xcdatamodeld in Sources */,
+				234DF2FB237A113200EB248A /* Int+Ext.swift in Sources */,
 				2304FA21235F2F99006DA688 /* ScheduleView.swift in Sources */,
 				23E82155236DB57A004E6F15 /* WhatsNewView.swift in Sources */,
 				2304FA2B235F300A006DA688 /* Card.swift in Sources */,

@@ -37,7 +37,7 @@ struct SettingsView: View {
                         self.isOtherStuffPresented.toggle()
                     }
                     .sheet(isPresented: $isOtherStuffPresented, content: {
-                        OtherSettingsView(scheduleBlocksStyleValue: self.settings.other[OtherSettingsKey.scheduleBlocksStyle.rawValue]!)
+                        OtherSettingsView(timeFormatValue: self.settings.other[OtherSettingsKey.timeFormat.rawValue]!)
                             .environmentObject(self.blocks)
                             .environmentObject(self.settings)
                     })

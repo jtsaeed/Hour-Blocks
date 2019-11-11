@@ -86,51 +86,6 @@ struct SuggestionCard: View {
     }
 }
 
-// MARK: - New Future Block View
-
-struct NewFutureBlockView: View {
-    
-    @Binding var isPresented: Bool
-    
-    @State var title = ""
-    @State var date = Date()
-    
-    var didAddBlock: (String, Date) -> ()
-    
-    var dateClosedRange: ClosedRange<Date> {
-        let min = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
-        let max = Calendar.current.date(byAdding: .month, value: 1, to: Date())!
-        return min...max
-    }
-    
-    var body: some View {
-        NavigationView {
-            VStack {
-                NewTextField(title: $title)
-                DatePicker("", selection: $date, in: dateClosedRange)
-                Spacer()
-            }
-            .navigationBarTitle("What's in the future?")
-            .navigationBarItems(leading: Button(action: {
-                self.isPresented = false
-            }, label: {
-                Text("Cancel")
-            }), trailing: Button(action: {
-                if self.title.isEmpty {
-                    UINotificationFeedbackGenerator().notificationOccurred(.error)
-                } else {
-                    UINotificationFeedbackGenerator().notificationOccurred(.success)
-                    self.isPresented = false
-                    self.didAddBlock(self.title, self.date)
-                }
-            }, label: {
-                Text("Add")
-            }))
-        }.accentColor(Color("primary"))
-        .navigationViewStyle(StackNavigationViewStyle())
-    }
-}
-
 // MARK: New To Do Item View
 
 struct NewToDoItemView: View {
