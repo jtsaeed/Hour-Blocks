@@ -32,7 +32,7 @@ struct NewBlockView: View {
                     if suggestions.list.count > 0 {
                         ForEach(suggestions.list, id: \.self) { suggestion in
                             SuggestionCard(suggestion: suggestion, didAddBlock: { title in
-                                self.addBlock(with: title)
+                                self.addBlock(with: title, isSuggestion: true)
                             })
                         }
                     } else {
@@ -50,7 +50,7 @@ struct NewBlockView: View {
                 if self.title.isEmpty {
                     UINotificationFeedbackGenerator().notificationOccurred(.error)
                 } else {
-                    self.addBlock(with: self.title)
+                    self.addBlock(with: self.title, isSuggestion: false)
                 }
             }, label: {
                 Text("Add")
@@ -59,9 +59,15 @@ struct NewBlockView: View {
         .navigationViewStyle(StackNavigationViewStyle())
     }
     
-    func addBlock(with title: String) {
+    func addBlock(with title: String, isSuggestion: Bool) {
         UINotificationFeedbackGenerator().notificationOccurred(.success)
         isPresented = false
+        let domain = DomainsGateway.shared.determineDomain(for: title)
+        
+        AnalyticsGateway.shared.logHourBlock(for: domain?.key ?? "default",
+                                             at: formattedTime,
+                                             isSuggestion: isSuggestion)
+        
         didAddBlock(title)
     }
 }
@@ -137,6 +143,7 @@ struct NewToDoItemView: View {
                 } else {
                     UINotificationFeedbackGenerator().notificationOccurred(.success)
                     self.isPresented = false
+                    AnalyticsGateway.shared.logToDo()
                     self.didAddToDoItem(self.title, self.priority)
                 }
             }, label: {

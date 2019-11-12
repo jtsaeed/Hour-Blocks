@@ -14,19 +14,13 @@ class AnalyticsGateway {
 	
 	static let shared = AnalyticsGateway()
 	
-	func logHourBlock(for title: String) {
-		Analytics.logEvent("hourBlock", parameters: ["title": title])
+    func logHourBlock(for domainKey: String, at time: String, isSuggestion: Bool) {
+        Analytics.logEvent("hourBlock3", parameters: ["domain": domainKey,
+                                                      "time": time,
+                                                      "suggestion": isSuggestion])
 	}
     
-    func logToDo(for title: String) {
-        Analytics.logEvent("toDo", parameters: ["title": title])
+    func logToDo() {
+        Analytics.logEvent("toDo", parameters: nil)
     }
-	
-	func logFeedback(with text: String) {
-		Analytics.logEvent("feedback", parameters: ["feedback": text])
-	}
-	
-	func logReminder(for time: Int) {
-		Analytics.logEvent("reminder", parameters: ["time": time])
-	}
 }

@@ -102,10 +102,6 @@ extension DataGateway {
             print("error")
         }
     }
-    
-    func resetSuggestions() {
-        
-    }
 }
 
 // MARK: - To DO
