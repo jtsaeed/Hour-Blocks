@@ -99,14 +99,14 @@ struct NewToDoItemView: View {
     
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading) {
+            VStack(alignment: .center) {
                 NewTextField(title: $title)
-                Picker("", selection: $priority) {
+                Picker("Set a priority", selection: $priority) {
                     Text(ToDoPriority.high.rawValue).tag(ToDoPriority.high)
                     Text(ToDoPriority.medium.rawValue).tag(ToDoPriority.medium)
                     Text(ToDoPriority.low.rawValue).tag(ToDoPriority.low)
                     Text(ToDoPriority.none.rawValue).tag(ToDoPriority.none)
-                }
+                }.labelsHidden()
                 Spacer()
             }
             .navigationBarTitle("What's on your list?")

@@ -85,9 +85,10 @@ struct NewFutureBlockView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
+            VStack(alignment: .center) {
                 NewTextField(title: $title)
-                DatePicker("", selection: $date, in: dateClosedRange, displayedComponents: .date)
+                DatePicker("Choose a date", selection: $date, in: dateClosedRange, displayedComponents: .date)
+                    .labelsHidden()
                 List {
                     ForEach(fullDayBlocks(), id: \.self) { block in
                         AddToBlockCard(currentBlock: block, didAddToBlock: {
