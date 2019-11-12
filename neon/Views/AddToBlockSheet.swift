@@ -86,7 +86,7 @@ struct NewFutureBlockView: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .center) {
-                NewTextField(title: $title)
+                NewTextField(title: $title, didReturn: { title in })
                 DatePicker("Choose a date", selection: $date, in: dateClosedRange, displayedComponents: .date)
                     .labelsHidden()
                 List {

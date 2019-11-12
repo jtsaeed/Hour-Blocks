@@ -24,7 +24,13 @@ struct NewBlockView: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                NewTextField(title: $title)
+                NewTextField(title: $title, didReturn: { title in
+                    if self.title.isEmpty {
+                        UINotificationFeedbackGenerator().notificationOccurred(.error)
+                    } else {
+                        self.addBlock(with: self.title, isSuggestion: false)
+                    }
+                })
                 Text("Suggestions")
                     .font(.system(size: 28, weight: .semibold, design: .default))
                     .padding(.leading, 24)
@@ -123,7 +129,7 @@ struct NewToDoItemView: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .center) {
-                NewTextField(title: $title)
+                NewTextField(title: $title, didReturn: { title in })
                 Picker("Set a priority", selection: $priority) {
                     Text(ToDoPriority.high.rawValue).tag(ToDoPriority.high)
                     Text(ToDoPriority.medium.rawValue).tag(ToDoPriority.medium)
@@ -158,13 +164,17 @@ struct NewTextField: View {
     
     @Binding var title: String
     
+    var didReturn: (String) -> ()
+
     var body: some View {
         ZStack() {
             Rectangle()
                 .frame(height: 44)
                 .foregroundColor(Color("secondary"))
                 .cornerRadius(8)
-            TextField("Enter the title here...", text: $title)
+            TextField("Enter the title here...", text: $title) {
+                self.didReturn(self.title)
+            }
                 .font(.system(size: 17, weight: .medium, design: .default))
                 .foregroundColor(Color.black)
                 .padding(.horizontal, 16)
