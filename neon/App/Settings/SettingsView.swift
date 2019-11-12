@@ -38,7 +38,7 @@ struct SettingsView: View {
                         self.isOtherStuffPresented.toggle()
                     }
                     .sheet(isPresented: $isOtherStuffPresented, content: {
-                        OtherSettingsView(isPresented: self.$isOtherStuffPresented, timeFormatValue: self.settings.other[OtherSettingsKey.timeFormat.rawValue]!)
+                        OtherSettingsView(isPresented: self.$isOtherStuffPresented, timeFormatValue: self.settings.other[OtherSettingsKey.timeFormat.rawValue]!, reminderTimerValue: self.settings.other[OtherSettingsKey.reminderTimer.rawValue]!, autoCapsValue: self.settings.other[OtherSettingsKey.autoCaps.rawValue]!)
                             .environmentObject(self.blocks)
                             .environmentObject(self.settings)
                     })

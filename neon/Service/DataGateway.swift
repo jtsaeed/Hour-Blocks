@@ -199,7 +199,7 @@ extension DataGateway {
             }
             
             if otherSettings[OtherSettingsKey.autoCaps.rawValue] == nil {
-                otherSettings[OtherSettingsKey.autoCaps.rawValue] = 1
+                otherSettings[OtherSettingsKey.autoCaps.rawValue] = 0
             }
             
             return otherSettings
@@ -207,7 +207,7 @@ extension DataGateway {
             return [
                 OtherSettingsKey.timeFormat.rawValue: 1,
                 OtherSettingsKey.reminderTimer.rawValue: 1,
-                OtherSettingsKey.autoCaps.rawValue: 1,
+                OtherSettingsKey.autoCaps.rawValue: 0,
             ]
         }
     }

@@ -175,6 +175,7 @@ struct NewTextField: View {
             TextField("Enter the title here...", text: $title) {
                 self.didReturn(self.title)
             }
+                .autocapitalization(.none)
                 .font(.system(size: 17, weight: .medium, design: .default))
                 .foregroundColor(Color("title"))
                 .padding(.horizontal, 16)

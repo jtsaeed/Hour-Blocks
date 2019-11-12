@@ -11,6 +11,10 @@ import Foundation
 extension String {
     
     func smartCapitalization() -> String {
+        if let setting = DataGateway.shared.loadOtherSettings()[OtherSettingsKey.autoCaps.rawValue] {
+            if setting == 1 { return self }
+        }
+        
         var title = ""
         let words = self.lowercased().components(separatedBy: " ")
         

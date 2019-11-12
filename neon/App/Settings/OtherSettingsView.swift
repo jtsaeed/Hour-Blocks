@@ -17,6 +17,8 @@ struct OtherSettingsView: View {
     @EnvironmentObject var settings: SettingsStore
     
     @State var timeFormatValue: Int
+    @State var reminderTimerValue: Int
+    @State var autoCapsValue: Int
     
     var body: some View {
         NavigationView {
@@ -25,6 +27,14 @@ struct OtherSettingsView: View {
                                title: "Time Format",
                                description: "Change the time format used throughout Hour Blocks",
                                options: ["System", "12h", "24h"])
+                OtherStuffCard(value: $reminderTimerValue,
+                               title: "Reminder Timer",
+                               description: "On blocks where you have reminders set, how many minutes beforehand should they come through?",
+                               options: ["15m", "10m", "5m"])
+                OtherStuffCard(value: $autoCapsValue,
+                               title: "Autocapitalization",
+                               description: "Would you like the titles of blocks to be automatically capitalised?",
+                               options: ["Yes", "No"])
             }
             .navigationBarItems(trailing: Button(action: {
                 self.isPresented = false
@@ -43,6 +53,8 @@ struct OtherSettingsView: View {
     
     func save() {
         settings.other[OtherSettingsKey.timeFormat.rawValue] = timeFormatValue
+        settings.other[OtherSettingsKey.reminderTimer.rawValue] = reminderTimerValue
+        settings.other[OtherSettingsKey.autoCaps.rawValue] = autoCapsValue
     }
 }
 
