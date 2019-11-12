@@ -73,9 +73,9 @@ struct NewFutureBlockView: View {
     @Binding var isPresented: Bool
     
     @State var title = ""
-    @State var date = Date()
+    @State var date = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
     
-    var didAddBlock: (String, Date) -> ()
+    var didAddBlock: (String, Int, Date) -> ()
     
     var dateClosedRange: ClosedRange<Date> {
         let min = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
@@ -97,7 +97,7 @@ struct NewFutureBlockView: View {
                             } else {
                                 UINotificationFeedbackGenerator().notificationOccurred(.success)
                                 self.isPresented = false
-                                self.didAddBlock(self.title, self.date)
+                                self.didAddBlock(self.title, block.hour, self.date)
                             }
                         })
                     }

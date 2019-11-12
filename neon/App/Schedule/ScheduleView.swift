@@ -31,10 +31,10 @@ struct ScheduleView: View {
                     }).environmentObject(self.blocks)
                 }
             }
-            Section(header: FutureHeader(addButtonDisabled: blocks.futureBlocks.isEmpty, futureBlockAdded: { title, date in self.blocks.addFutureBlock(for: date, 0, with: title)})) {
+            Section(header: FutureHeader(addButtonDisabled: blocks.futureBlocks.isEmpty, futureBlockAdded: { title, hour, date in self.blocks.addFutureBlock(for: date, hour, with: title)})) {
                 if blocks.futureBlocks.isEmpty {
-                    EmptyFutureCard { title, date in
-                        self.blocks.addFutureBlock(for: date, 0, with: title)
+                    EmptyFutureCard { title, hour, date in
+                        self.blocks.addFutureBlock(for: date, hour, with: title)
                     }
                 } else {
                     ForEach(blocks.futureBlocks.sorted { $0.day < $1.day }, id: \.self) { block in

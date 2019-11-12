@@ -48,7 +48,7 @@ struct EmptyFutureCard: View {
     
     @State var isPresented = false
     
-    var futureBlockAdded: (String, Date) -> ()
+    var futureBlockAdded: (String, Int, Date) -> ()
     
     var body: some View {
         EmptyListCard()
@@ -57,8 +57,8 @@ struct EmptyFutureCard: View {
                 self.isPresented.toggle()
             }
             .sheet(isPresented: $isPresented, content: {
-                NewFutureBlockView(isPresented: self.$isPresented, didAddBlock: { (title, date) in
-                    self.futureBlockAdded(title, date)
+                NewFutureBlockView(isPresented: self.$isPresented, didAddBlock: { (title, hour, date) in
+                    self.futureBlockAdded(title, hour, date)
                 })
             })
     }

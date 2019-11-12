@@ -48,7 +48,7 @@ struct FutureHeader: View {
     
     var addButtonDisabled: Bool
     
-    var futureBlockAdded: (String, Date) -> ()
+    var futureBlockAdded: (String, Int, Date) -> ()
     
     var body: some View {
         ZStack(alignment: .trailing) {
@@ -64,8 +64,8 @@ struct FutureHeader: View {
                 .padding(.top, 32)
                 .padding(.trailing, 47)
                 .sheet(isPresented: $isPresented, content: {
-                    NewFutureBlockView(isPresented: self.$isPresented, didAddBlock: { (title, date) in
-                        self.futureBlockAdded(title, date)
+                    NewFutureBlockView(isPresented: self.$isPresented, didAddBlock: { (title, hour, date) in
+                        self.futureBlockAdded(title, hour, date)
                     })
                 })
             }
@@ -73,6 +73,7 @@ struct FutureHeader: View {
     }
 }
 
+/*
 struct HabitsHeader: View {
     
     @State var isPresented = false
@@ -92,13 +93,14 @@ struct HabitsHeader: View {
             .padding(.top, 32)
             .padding(.trailing, 47)
             .sheet(isPresented: $isPresented, content: {
-                NewFutureBlockView(isPresented: self.$isPresented, didAddBlock: { (title, date) in
+                NewFutureBlockView(isPresented: self.$isPresented, didAddBlock: { (title, hour, date) in
                     self.habitAdded(title)
                 })
             })
         }
     }
 }
+ */
 
 struct ToDoHeader: View {
     

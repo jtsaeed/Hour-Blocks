@@ -97,6 +97,8 @@ class HourBlocksStore: ObservableObject {
         for entity in DataGateway.shared.getHourBlockEntities() {
             let block = HourBlock(fromEntity: entity)
             
+            print("\(block.title!) at \(block.hour), the day is \(block.day.description)")
+            
             if Calendar.current.isDateInToday(block.day) {
                 todaysBlocks[block.hour] = block
             } else if block.day < Date() {
@@ -122,7 +124,7 @@ class HourBlocksStore: ObservableObject {
             
             let storedBlocks: [HourBlock] = DataGateway.shared.getHourBlockEntities().map { entity in
                 return HourBlock(fromEntity: entity)
-            }.filter { block in !Calendar.current.isDateInToday(block.day) || block.day > Date() }
+            }.filter { block in !Calendar.current.isDateInToday(block.day) }
             
             DispatchQueue.main.async {
                 self.futureBlocks = calendarBlocks + storedBlocks
