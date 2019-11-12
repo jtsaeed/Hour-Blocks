@@ -517,3 +517,16 @@ static NSString *const kFIRParameterLevelName NS_SWIFT_NAME(AnalyticsParameterLe
 ///     };
 /// </pre>
 static NSString *const kFIRParameterSuccess NS_SWIFT_NAME(AnalyticsParameterSuccess) = @"success";
+
+/// Indicates that the associated event should either extend the current session
+/// or start a new session if no session was active when the event was logged.
+/// Specify YES to extend the current session or to start a new session; any
+/// other value will not extend or start a session.
+/// <pre>
+///     NSDictionary *params = @{
+///       kFIRParameterExtendSession : @YES,
+///       // ...
+///     };
+/// </pre>
+static NSString *const kFIRParameterExtendSession NS_SWIFT_NAME(AnalyticsParameterExtendSession) =
+    @"extend_session";

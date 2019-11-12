@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23036F4E237B2D9000563206 /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23036F4D237B2D9000563206 /* PrivacyPolicyView.swift */; };
 		2304FA14235F29ED006DA688 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA13235F29ED006DA688 /* SceneDelegate.swift */; };
 		2304FA17235F2A2A006DA688 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA16235F2A2A006DA688 /* ContentView.swift */; };
 		2304FA1D235F2D3B006DA688 /* HourBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA1C235F2D3B006DA688 /* HourBlock.swift */; };
@@ -102,6 +103,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		23036F4D237B2D9000563206 /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 		2304FA13235F29ED006DA688 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2304FA16235F2A2A006DA688 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2304FA1C235F2D3B006DA688 /* HourBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourBlock.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				23C53D7C2369E01900BA4378 /* CalendarSettingsView.swift */,
 				23C53D7E2369E02400BA4378 /* OtherSettingsView.swift */,
 				23C6F8802372DCB200E53286 /* SettingsStore.swift */,
+				23036F4D237B2D9000563206 /* PrivacyPolicyView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -380,9 +383,9 @@
 				2338BEB5220A7840004F288F /* Frameworks */,
 				2338BEB6220A7840004F288F /* Resources */,
 				23BA59672242B0C400AE45DE /* Embed Frameworks */,
-				09348666DF0B4B3C5CAA324F /* [CP] Embed Pods Frameworks */,
 				2395A95C224AE1750007D6F2 /* Embed App Extensions */,
 				2395A98A224AE78E0007D6F2 /* Embed Watch Content */,
+				130B7DA3F58372265F672172 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -530,7 +533,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		09348666DF0B4B3C5CAA324F /* [CP] Embed Pods Frameworks */ = {
+		130B7DA3F58372265F672172 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -645,6 +648,7 @@
 				2304FA33235F305F006DA688 /* TodayCard.swift in Sources */,
 				23B63CE1222491050026B9C2 /* CalendarGateway.swift in Sources */,
 				23C53D812369E62800BA4378 /* String+Ext.swift in Sources */,
+				23036F4E237B2D9000563206 /* PrivacyPolicyView.swift in Sources */,
 				23E45BE2224BA3A9002D01AC /* NotificationsGateway.swift in Sources */,
 				2304FA1D235F2D3B006DA688 /* HourBlock.swift in Sources */,
 				234C1A09220C8E9D00344316 /* Date+Ext.swift in Sources */,
@@ -826,6 +830,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -837,6 +842,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -852,6 +858,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -863,6 +870,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -15,6 +15,7 @@ struct SettingsView: View {
     
     @State var isCalendarsPresented = false
     @State var isOtherStuffPresented = false
+    @State var isPrivacyPolicyPresented = false
     
     var body: some View {
         List {
@@ -45,6 +46,13 @@ struct SettingsView: View {
                     .onTapGesture {
                         self.openTwitter()
                     }
+                SettingsCard(title: "Privacy Policy", subtitle: "Take a look at the", icon: "settings_privacy")
+                    .onTapGesture {
+                        self.isPrivacyPolicyPresented.toggle()
+                    }
+                    .sheet(isPresented: $isPrivacyPolicyPresented, content: {
+                        PrivacyPolicyView(isPresented: self.$isPrivacyPolicyPresented)
+                    })
             }
         }
     }
