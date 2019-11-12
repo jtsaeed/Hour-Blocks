@@ -153,6 +153,10 @@ class HourBlocksStore: ObservableObject {
         
         futureBlocks.append(block)
         DataGateway.shared.saveHourBlock(block: block)
+        
+        if let domainKey = block.domain?.key {
+            DataGateway.shared.saveSuggestion(for: domainKey, at: block.hour)
+        }
     }
     
     func removeFutureBlock(for block: HourBlock) {
