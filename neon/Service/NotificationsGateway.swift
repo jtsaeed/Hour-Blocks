@@ -13,18 +13,18 @@ class NotificationsGateway {
     
     static let shared = NotificationsGateway()
     
-	func addNotification(for block: HourBlock, with timeOffset: Int, completion: @escaping (_ success: Bool) -> ()) {
+	func addNotification(for block: HourBlock, completion: @escaping (_ success: Bool) -> ()) {
         UNUserNotificationCenter.current().getNotificationSettings(completionHandler: { (settings) in
             if settings.authorizationStatus == .notDetermined || settings.authorizationStatus == .denied {
                 UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: { (result, error) in
                     if result == true {
-						self.createNotification(for: block, with: timeOffset, completion: { (success) in
+						self.createNotification(for: block, completion: { (success) in
                             completion(success)
                         })
                     }
                 })
             } else if settings.authorizationStatus == .authorized {
-				self.createNotification(for: block, with: timeOffset, completion: { (success) in
+				self.createNotification(for: block, completion: { (success) in
                     completion(success)
                 })
             } else {
@@ -50,11 +50,21 @@ class NotificationsGateway {
         }
     }
     
-	private func createNotification(for block: HourBlock, with timeOffset: Int, completion: @escaping (_ success: Bool) -> ()) {
+	private func createNotification(for block: HourBlock, completion: @escaping (_ success: Bool) -> ()) {
         let content = UNMutableNotificationContent()
         content.title = "Upcoming Hour Block"
         content.body = "You have \(block.title!.lowercased()) coming up at \(block.formattedTime)"
         content.sound = UNNotificationSound.init(named: UNNotificationSoundName("notification.aif"))
+        
+        var timeOffset = 10
+        
+        if let timeSetting = DataGateway.shared.loadOtherSettings()[OtherSettingsKey.reminderTimer.rawValue] {
+            if timeSetting == 0 {
+                timeOffset = 15
+            } else if timeSetting == 2 {
+                timeOffset = 5
+            }
+        }
 		
         var date = Calendar.current.date(bySettingHour: block.hour, minute: 0, second: 0, of: Date())!
 		date = Calendar.current.date(byAdding: .minute, value: -timeOffset, to: date)!

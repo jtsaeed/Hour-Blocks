@@ -29,7 +29,7 @@ struct OtherSettingsView: View {
                                options: ["System", "12h", "24h"])
                 OtherStuffCard(value: $reminderTimerValue,
                                title: "Reminder Timer",
-                               description: "On blocks where you have reminders set, how many minutes beforehand should they come through?",
+                               description: "The length of time before a block's reminder comes through (doesn't change reminders already set)",
                                options: ["15m", "10m", "5m"])
                 OtherStuffCard(value: $autoCapsValue,
                                title: "Autocapitalization",

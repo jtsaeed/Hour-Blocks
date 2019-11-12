@@ -61,7 +61,7 @@ struct TodayCard: View {
                                     }
                                     UINotificationFeedbackGenerator().notificationOccurred(.success)
                                 } else {
-                                    NotificationsGateway.shared.addNotification(for: self.currentBlock, with: 5, completion: { success in
+                                    NotificationsGateway.shared.addNotification(for: self.currentBlock, completion: { success in
                                         if success {
                                             DispatchQueue.main.async {
                                                 self.blocks.setReminder(true, for: self.currentBlock)
