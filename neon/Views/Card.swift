@@ -28,6 +28,8 @@ struct SoftCard: View {
     }
 }
 
+
+
 struct EmptyListCard: View {
     
     var body: some View {
