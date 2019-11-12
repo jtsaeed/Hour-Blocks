@@ -60,17 +60,7 @@ class CalendarGateway {
     }
 	
 	private func getEnabledCalendars() -> [EKCalendar] {
-		var enabledCalendars = [EKCalendar]()
-		
-        for loadedEnabledCalender in DataGateway.shared.loadEnabledCalendars() {
-            if loadedEnabledCalender.value == true {
-                if let enabledCalendar = eventStore.calendar(withIdentifier: loadedEnabledCalender.key) {
-                    enabledCalendars.append(enabledCalendar)
-                }
-            }
-        }
-        
-        return enabledCalendars
+        return DataGateway.shared.loadEnabledCalendars().filter { $0.value == true }.compactMap { eventStore.calendar(withIdentifier: $0.key) }
 	}
 	
 	func getAllCalendars() -> [EKCalendar] {

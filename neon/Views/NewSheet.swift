@@ -176,7 +176,7 @@ struct NewTextField: View {
                 self.didReturn(self.title)
             }
                 .font(.system(size: 17, weight: .medium, design: .default))
-                .foregroundColor(Color.black)
+                .foregroundColor(Color("title"))
                 .padding(.horizontal, 16)
         }.padding(24)
     }

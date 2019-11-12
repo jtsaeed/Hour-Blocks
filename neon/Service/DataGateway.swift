@@ -19,7 +19,7 @@ class DataGateway {
         self.managedObjectContext = managedObjectContext
     }
     
-    let currentVersion = 3.02
+    let currentVersion = 3.03
 }
 
 // MARK: - Blocks
@@ -164,6 +164,7 @@ extension DataGateway {
         }
         
         guard let userVersion = UserDefaults.standard.object(forKey: "currentVersion") as? Double else {
+            UserDefaults.standard.set(currentVersion, forKey: "currentVersion")
             return false
         }
         
