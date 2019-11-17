@@ -77,27 +77,33 @@ struct FutureHeader: View {
 
 struct HabitsHeader: View {
     
+    @State var title = ""
+    
     @State var isPresented = false
     
     var addButtonDisabled: Bool
     
-//    var habitAdded: (String) -> ()
+    var didAddHabit: (String) -> ()
     
     var body: some View {
         ZStack(alignment: .trailing) {
             Header(title: "Habits", subtitle: "Habits")
         
-            Button(action: {
-                UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                self.isPresented.toggle()
-            }, label: {
-                Image("add_button")
-            })
-            .padding(.top, 32)
-            .padding(.trailing, 47)
-            .sheet(isPresented: $isPresented, content: {
-                Text("New Habit!")
-            })
+            if !addButtonDisabled {
+                Button(action: {
+                    UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                    self.isPresented.toggle()
+                }, label: {
+                    Image("add_button")
+                })
+                .padding(.top, 32)
+                .padding(.trailing, 47)
+                .sheet(isPresented: $isPresented, content: {
+                    NewHabitView(isPresented: self.$isPresented, title: self.title, didAddHabit: { title in
+                        self.didAddHabit(title)
+                    })
+                })
+            }
         }
     }
 }

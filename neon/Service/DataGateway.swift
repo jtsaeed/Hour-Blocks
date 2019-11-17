@@ -104,7 +104,55 @@ extension DataGateway {
     }
 }
 
-// MARK: - To DO
+// MARK: - Habits
+
+extension DataGateway {
+    
+    func getHabitBlockEntities() -> [HabitBlockEntity] {
+        var habitBlocks = [HabitBlockEntity]()
+        let request: NSFetchRequest<HabitBlockEntity> = HabitBlockEntity.fetchRequest()
+        
+        do {
+            habitBlocks = try self.managedObjectContext.fetch(request)
+        } catch {
+            print("error")
+        }
+        
+        return habitBlocks
+    }
+    
+    func saveHabitBlock(habitBlock: HabitBlock) {
+        habitBlock.getEntity(context: self.managedObjectContext)
+        
+        do {
+            try self.managedObjectContext.save()
+        } catch {
+            print("error")
+        }
+    }
+    
+    func deleteHabitBlock(habitBlock: HabitBlock) {
+        for entity in getHabitBlockEntities() {
+            guard let identifier = entity.identifier else {
+                continue
+            }
+            
+            if habitBlock.identifier == identifier {
+                managedObjectContext.delete(entity)
+                
+                do {
+                    try managedObjectContext.save()
+                } catch {
+                    print("error")
+                }
+                
+                return
+            }
+        }
+    }
+}
+
+// MARK: - To Do
 
 extension DataGateway {
     

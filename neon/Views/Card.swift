@@ -68,6 +68,28 @@ struct EmptyFutureCard: View {
     }
 }
 
+struct EmptyHabitCard: View {
+    
+    @State var title = ""
+    
+    @State var isPresented = false
+    
+    var didAddHabit: (String) -> ()
+    
+    var body: some View {
+        EmptyListCard()
+            .onTapGesture {
+                UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                self.isPresented.toggle()
+            }
+            .sheet(isPresented: $isPresented, content: {
+                NewHabitView(isPresented: self.$isPresented, title: self.title, didAddHabit: { title in
+                    self.didAddHabit(title)
+                })
+            })
+    }
+}
+
 struct EmptyToDoCard: View {
     
     @State var title = ""

@@ -115,6 +115,49 @@ struct NoSuggestionsCard: View {
     }
 }
 
+// MARK: New Habit
+
+struct NewHabitView: View {
+    
+    @Binding var isPresented: Bool
+    
+    @State var title: String
+    
+    var didAddHabit: (String) -> ()
+    
+    var body: some View {
+        NavigationView {
+            VStack(alignment: .center) {
+                NewTextField(title: $title, didReturn: { title in
+                    if self.title.isEmpty {
+                        UINotificationFeedbackGenerator().notificationOccurred(.error)
+                    } else {
+                        self.isPresented = false
+                        self.didAddHabit(self.title)
+                    }
+                })
+                Spacer()
+            }
+            .navigationBarTitle("Add a new habit")
+            .navigationBarItems(leading: Button(action: {
+                self.isPresented = false
+            }, label: {
+                Text("Cancel")
+            }), trailing: Button(action: {
+                if self.title.isEmpty {
+                    UINotificationFeedbackGenerator().notificationOccurred(.error)
+                } else {
+                    self.isPresented = false
+                    self.didAddHabit(self.title)
+                }
+            }, label: {
+                Text("Add")
+            }))
+        }.accentColor(Color("primary"))
+        .navigationViewStyle(StackNavigationViewStyle())
+    }
+}
+
 // MARK: New To Do Item View
 
 struct NewToDoItemView: View {
@@ -151,6 +194,7 @@ struct NewToDoItemView: View {
                     self.isPresented = false
                     AnalyticsGateway.shared.logToDo()
                     self.didAddToDoItem(self.title, self.priority)
+                    self.title = ""
                 }
             }, label: {
                 Text("Add")
