@@ -25,7 +25,7 @@ struct WhatsNewView: View {
             }
             
             Spacer()
-            WhatsNewDismissButton()
+            ActionButton(title: "Let's go!")
                 .onTapGesture {
                     UIImpactFeedbackGenerator(style: .light).impactOccurred()
                     self.showWhatsNew = false
@@ -56,20 +56,6 @@ struct WhatsNewItem: View {
                 .font(.system(size: 20, weight: .semibold, design: .rounded))
             Text(content)
                 .font(.system(size: 17, weight: .regular, design: .default))
-        }
-    }
-}
-
-struct WhatsNewDismissButton: View {
-    
-    var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 12)
-                .foregroundColor(Color("primary"))
-                .frame(height: 48)
-            Text("Let's go!")
-                .font(.system(size: 17, weight: .semibold, design: .default))
-                .foregroundColor(.white)
         }
     }
 }

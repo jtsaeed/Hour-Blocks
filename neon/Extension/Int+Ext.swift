@@ -26,7 +26,7 @@ extension Int {
         if self >= 10 {
             return "\(self):00"
         } else {
-            return "\(self)0:00"
+            return "0\(self):00"
         }
     }
 }

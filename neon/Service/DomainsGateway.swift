@@ -16,7 +16,7 @@ class DomainsGateway {
     var domains = [String: BlockDomain]()
     
     init() {
-        domains["calendar"] = BlockDomain(key: "calendar", iconName: "calendar", suggestionTitle: "")
+        domains["calendar"] = BlockDomain(key: "calendar", iconName: "calendar_item", suggestionTitle: "")
         
         domains["wake"] = BlockDomain(key: "wake", iconName: "alarm", suggestionTitle: "wake up")
         

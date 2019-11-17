@@ -31,6 +31,9 @@
 		231392A922666FC400DB0ABF /* DataGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231392A822666FC400DB0ABF /* DataGateway.swift */; };
 		232ED4E0228C93A4008FC4A0 /* AnalyticsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232ED4DF228C93A4008FC4A0 /* AnalyticsGateway.swift */; };
 		23356ED52256676E00541A60 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23356ED42256676E00541A60 /* GoogleService-Info.plist */; };
+		2336981B238187C2006ACD1E /* HabitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336981A238187C2006ACD1E /* HabitsView.swift */; };
+		2336981D23818A0B006ACD1E /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336981C23818A0B006ACD1E /* Habit.swift */; };
+		2336981F23818D52006ACD1E /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336981E23818D52006ACD1E /* ActionButton.swift */; };
 		2338BEBC220A7840004F288F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEBB220A7840004F288F /* AppDelegate.swift */; };
 		2338BEC4220A7840004F288F /* neon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEC2220A7840004F288F /* neon.xcdatamodeld */; };
 		2338BEC6220A7841004F288F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2338BEC5220A7841004F288F /* Assets.xcassets */; };
@@ -128,6 +131,9 @@
 		2317288D22917778007DBF8B /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
 		232ED4DF228C93A4008FC4A0 /* AnalyticsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsGateway.swift; sourceTree = "<group>"; };
 		23356ED42256676E00541A60 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2336981A238187C2006ACD1E /* HabitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsView.swift; sourceTree = "<group>"; };
+		2336981C23818A0B006ACD1E /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
+		2336981E23818D52006ACD1E /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		2338BEB8220A7840004F288F /* neon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = neon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2338BEBB220A7840004F288F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2338BEC3220A7840004F288F /* neon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = neon.xcdatamodel; sourceTree = "<group>"; };
@@ -222,6 +228,8 @@
 		2304FA19235F2A45006DA688 /* Habits */ = {
 			isa = PBXGroup;
 			children = (
+				2336981A238187C2006ACD1E /* HabitsView.swift */,
+				2336981C23818A0B006ACD1E /* Habit.swift */,
 			);
 			path = Habits;
 			sourceTree = "<group>";
@@ -254,6 +262,7 @@
 				2304FA28235F3000006DA688 /* Header.swift */,
 				2304FA2A235F300A006DA688 /* Card.swift */,
 				2304FA2C235F301A006DA688 /* AddToBlockSheet.swift */,
+				2336981E23818D52006ACD1E /* ActionButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -624,16 +633,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				23C53D7F2369E02400BA4378 /* OtherSettingsView.swift in Sources */,
+				2336981B238187C2006ACD1E /* HabitsView.swift in Sources */,
 				2304FA29235F3000006DA688 /* Header.swift in Sources */,
 				2304FA2D235F301A006DA688 /* AddToBlockSheet.swift in Sources */,
 				231392A922666FC400DB0ABF /* DataGateway.swift in Sources */,
 				2338BEC4220A7840004F288F /* neon.xcdatamodeld in Sources */,
 				234DF2FB237A113200EB248A /* Int+Ext.swift in Sources */,
+				2336981F23818D52006ACD1E /* ActionButton.swift in Sources */,
 				2304FA21235F2F99006DA688 /* ScheduleView.swift in Sources */,
 				23E82155236DB57A004E6F15 /* WhatsNewView.swift in Sources */,
 				2304FA2B235F300A006DA688 /* Card.swift in Sources */,
 				232ED4E0228C93A4008FC4A0 /* AnalyticsGateway.swift in Sources */,
 				2304FA35235F306B006DA688 /* FutureCard.swift in Sources */,
+				2336981D23818A0B006ACD1E /* Habit.swift in Sources */,
 				23C6F8812372DCB200E53286 /* SettingsStore.swift in Sources */,
 				2304FA27235F2FF2006DA688 /* NewSheet.swift in Sources */,
 				2304FA37235F3153006DA688 /* ToDoItem.swift in Sources */,

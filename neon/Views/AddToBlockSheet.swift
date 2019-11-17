@@ -89,19 +89,12 @@ struct NewFutureBlockView: View {
                 NewTextField(title: $title, didReturn: { title in })
                 DatePicker("Choose a date", selection: $date, in: dateClosedRange, displayedComponents: .date)
                     .labelsHidden()
-                List {
-                    ForEach(fullDayBlocks(), id: \.self) { block in
-                        AddToBlockCard(currentBlock: block, didAddToBlock: {
-                            if self.title.isEmpty {
-                                UINotificationFeedbackGenerator().notificationOccurred(.error)
-                            } else {
-                                UINotificationFeedbackGenerator().notificationOccurred(.success)
-                                self.isPresented = false
-                                self.didAddBlock(self.title, block.hour, self.date)
-                            }
-                        })
-                    }
-                }
+                NavigationLink(destination: AddFutureBlockView(title: title, date: date, didAddBlock: { title, hour, date in
+                    self.didAddBlock(title, hour, date)
+                    self.isPresented = false
+                }), label: {
+                    ActionButton(title: "Choose an hour").padding(32)
+                })
                 Spacer()
             }
             .navigationBarTitle("What's in the future?")
@@ -112,6 +105,40 @@ struct NewFutureBlockView: View {
             }))
         }.accentColor(Color("primary"))
         .navigationViewStyle(StackNavigationViewStyle())
+    }
+    
+    func fullDayBlocks() -> [HourBlock] {
+        var blocks = [HourBlock]()
+        
+        for i in 0...23 {
+            blocks.append(HourBlock(day: Date(), hour: i, title: nil))
+        }
+        
+        return blocks
+    }
+}
+
+struct AddFutureBlockView: View {
+    
+    let title: String
+    let date: Date
+    
+    var didAddBlock: (String, Int, Date) -> ()
+    
+    var body: some View {
+        List {
+            ForEach(fullDayBlocks(), id: \.self) { block in
+                AddToBlockCard(currentBlock: block, didAddToBlock: {
+                    if self.title.isEmpty {
+                        UINotificationFeedbackGenerator().notificationOccurred(.error)
+                    } else {
+                        UINotificationFeedbackGenerator().notificationOccurred(.success)
+//                        self.isPresented = false
+                        self.didAddBlock(self.title, block.hour, self.date)
+                    }
+                })
+            }
+        }
     }
     
     func fullDayBlocks() -> [HourBlock] {

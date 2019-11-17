@@ -70,6 +70,9 @@ class HourBlocksStore: ObservableObject {
     @Published var futureBlocks = [HourBlock]()
     
     @Published var currentTitle = ""
+    @Published var currentFutureTitle = ""
+    @Published var currentFutureDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+    
     @Published var allDayEvent = ""
     
     init() {

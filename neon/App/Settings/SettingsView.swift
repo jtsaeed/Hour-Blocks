@@ -19,7 +19,7 @@ struct SettingsView: View {
     
     var body: some View {
         List {
-            Section(header: Header(title: "Settings", subtitle: "3.0 BETA 3")) {
+            Section(header: Header(title: "Settings", subtitle: "3.0 BETA 4")) {
                 SettingsCard(title: "Permissions", subtitle: "Take control of", icon: "settings_permissions")
                     .onTapGesture {
                         self.openPermissionsSettings()

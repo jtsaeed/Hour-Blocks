@@ -48,6 +48,8 @@ struct EmptyListCard: View {
 
 struct EmptyFutureCard: View {
     
+    @State var title = ""
+    
     @State var isPresented = false
     
     var futureBlockAdded: (String, Int, Date) -> ()

@@ -10,6 +10,10 @@ import SwiftUI
 
 struct FutureCard: View {
     
+    @EnvironmentObject var blocks: HourBlocksStore
+    
+    @State var isEditPresented = false
+    
     let currentBlock: HourBlock
     
     var didRemoveBlock: () -> ()
@@ -24,12 +28,6 @@ struct FutureCard: View {
                 if currentBlock.domain != DomainsGateway.shared.domains["calendar"] {
                     CardIcon(iconName: currentBlock.domain?.iconName ?? "default")
                         .contextMenu {
-                            Button(action: {
-                                // TODO: Rename
-                            }) {
-                                Text("Rename")
-                                Image(systemName: "pencil")
-                            }
                             Button(action: {
                                 self.didRemoveBlock()
                             }) {
