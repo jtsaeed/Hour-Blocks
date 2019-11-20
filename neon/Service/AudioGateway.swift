@@ -13,22 +13,16 @@ class AudioGateway {
     
     static let shared = AudioGateway()
 
-    var player: AVAudioPlayer?
+    var player: AVAudioPlayer!
 
     func playSFX(_ sfx: SoundEffect) {
-        guard let url = Bundle.main.url(forResource: sfx.rawValue, withExtension: "mp3") else { return }
-
-        do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
-            try AVAudioSession.sharedInstance().setActive(true)
-            
-            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
-            
-            if let player = player {
+        if let path = Bundle.main.path(forResource: sfx.rawValue, ofType: "mp3") {
+            do {
+                player = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
                 player.play()
+            } catch {
+                print("Could not find file")
             }
-        } catch let error {
-            print(error.localizedDescription)
         }
     }
 }

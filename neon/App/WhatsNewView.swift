@@ -21,7 +21,6 @@ struct WhatsNewView: View {
                 WhatsNewItem(title: "A fresh coat of paint  🎨", content: "Brand new icons, a new font and redesigned interfaces- everything’s just brand new! And it's all synced across iCloud!")
                 WhatsNewItem(title: "Look into the future  👀", content: "Take a sneak peak at blocks up to a month into the future")
                 WhatsNewItem(title: "Instant suggestions  ⚡️", content: "Get suggested blocks based on what you've previously added- they're lightning fast!")
-                WhatsNewItem(title: "Still early days  ☀️", content: "There's plenty of stuff that doesn't work yet but also plenty to come!")
             }
             
             Spacer()

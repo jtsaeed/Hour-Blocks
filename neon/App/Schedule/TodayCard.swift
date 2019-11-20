@@ -136,13 +136,12 @@ struct TodayCardLabels: View {
                         .opacity(0.5)
                 }
                 Text(currentBlock.formattedTime.uppercased())
-                    .font(.system(size: 14, weight: .semibold, design: .default))
+                    .modifier(CardSubtitleLabel())
                     .foregroundColor(Color("subtitle"))
             }
             Text(currentBlock.title?.smartCapitalization() ?? "Empty")
-                .font(.system(size: 22, weight: .bold, design: .rounded))
+                .modifier(CardTitleLabel())
                 .foregroundColor(currentBlock.title != nil ? Color("title") : Color("subtitle"))
-                .lineLimit(1)
         }
     }
 }

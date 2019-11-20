@@ -133,7 +133,7 @@ struct AddFutureBlockView: View {
                         UINotificationFeedbackGenerator().notificationOccurred(.error)
                     } else {
                         UINotificationFeedbackGenerator().notificationOccurred(.success)
-//                        self.isPresented = false
+                        AudioGateway.shared.playSFX(.addBlock)
                         self.didAddBlock(self.title, block.hour, self.date)
                     }
                 })

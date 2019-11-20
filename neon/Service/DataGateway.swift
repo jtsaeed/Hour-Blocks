@@ -19,7 +19,7 @@ class DataGateway {
         self.managedObjectContext = managedObjectContext
     }
     
-    let currentVersion = 3.03
+    let currentVersion = 3.0
 }
 
 // MARK: - Blocks
@@ -88,15 +88,12 @@ extension DataGateway {
     }
     
     func saveSuggestion(for domainKey: String, at hour: Int) {
-        print("The suggestion is trying to be saved")
-        
         let entity = SuggestionEntity(context: self.managedObjectContext)
         entity.domainKey = domainKey
         entity.hour = Int64(hour)
         entity.date = Date()
         
         do {
-            print("Successful save")
             try self.managedObjectContext.save()
         } catch {
             print("error")

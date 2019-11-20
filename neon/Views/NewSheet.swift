@@ -67,6 +67,7 @@ struct NewBlockView: View {
     
     func addBlock(with title: String, isSuggestion: Bool) {
         UINotificationFeedbackGenerator().notificationOccurred(.success)
+        AudioGateway.shared.playSFX(.addBlock)
         isPresented = false
         let domain = DomainsGateway.shared.determineDomain(for: title)
         
@@ -191,6 +192,7 @@ struct NewToDoItemView: View {
                     UINotificationFeedbackGenerator().notificationOccurred(.error)
                 } else {
                     UINotificationFeedbackGenerator().notificationOccurred(.success)
+                    AudioGateway.shared.playSFX(.addBlock)
                     self.isPresented = false
                     AnalyticsGateway.shared.logToDo()
                     self.didAddToDoItem(self.title, self.priority)

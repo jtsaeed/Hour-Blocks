@@ -18,7 +18,7 @@ struct PrivacyPolicyView: View {
                 VStack(alignment: .leading, spacing: 16) {
                     PrivacyPolicyItem(title: "Your personal data is safe 🔐", content: "Personal identifiers such as name and address aren't even asked for by Hour Blocks- we simply don't need that from you")
                     PrivacyPolicyItem(title: "On-device learning 📱", content: "Learning data for suggested blocks are generated on-device, meaning we're not spying on your habits in order to power suggestions")
-                    PrivacyPolicyItem(title: "So what do we collect? 🤔", content: "In order to improve aspects of Hour Blocks such as icon generation, we collect just simply the 'category' of a block you add- and it's completely anonymized, so it can't be traced back to you")
+                    PrivacyPolicyItem(title: "So what do we collect? 🤔", content: "In order to improve certain aspects of Hour Blocks such as icon generation, we collect just simply the 'category' of a block you add- and it's completely anonymized, so it can't be traced back to you")
                 }
                 Spacer()
                 FullPolicyButton()

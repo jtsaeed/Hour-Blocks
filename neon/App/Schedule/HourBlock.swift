@@ -81,35 +81,38 @@ class HourBlocksStore: ObservableObject {
     }
     
     func reloadTodayBlocks() {
-        todaysBlocks.removeAll()
-        
-        for hour in 0...23 {
-            todaysBlocks.append(HourBlock(day: Date(), hour: hour, title: nil))
-        }
-        
-        if CalendarGateway.shared.hasPermission() {
-            for event in CalendarGateway.shared.importTodaysEvents() {
-                for i in event.startingHour...event.endingHour {
-                    var block = HourBlock(day: Date(), hour: i, title: event.title)
-                    block.domain = DomainsGateway.shared.domains["calendar"]
-                    todaysBlocks[i] = block
+        DispatchQueue.global(qos: .userInteractive).async {
+            var loadedTodayBlocks = [HourBlock]()
+            
+            for hour in 0...23 {
+                loadedTodayBlocks.append(HourBlock(day: Date(), hour: hour, title: nil))
+            }
+            
+            if CalendarGateway.shared.hasPermission() {
+                for event in CalendarGateway.shared.importTodaysEvents() {
+                    for i in event.startingHour...event.endingHour {
+                        var block = HourBlock(day: Date(), hour: i, title: event.title)
+                        block.domain = DomainsGateway.shared.domains["calendar"]
+                        loadedTodayBlocks[i] = block
+                    }
                 }
             }
-        }
+            
+            for entity in DataGateway.shared.getHourBlockEntities() {
+                let block = HourBlock(fromEntity: entity)
+                
+                if Calendar.current.isDateInToday(block.day) {
+                    loadedTodayBlocks[block.hour] = block
+                } else if block.day < Date() {
+                    DataGateway.shared.deleteHourBlock(block: block)
+                }
+            }
         
-        for entity in DataGateway.shared.getHourBlockEntities() {
-            let block = HourBlock(fromEntity: entity)
-            
-            print("\(block.title!) at \(block.hour), the day is \(block.day.description)")
-            
-            if Calendar.current.isDateInToday(block.day) {
-                todaysBlocks[block.hour] = block
-            } else if block.day < Date() {
-                DataGateway.shared.deleteHourBlock(block: block)
+            DispatchQueue.main.async {
+                self.todaysBlocks = loadedTodayBlocks
+                self.loadAllDayEvent()
             }
         }
-        
-        self.loadAllDayEvent()
     }
     
     private func loadAllDayEvent() {

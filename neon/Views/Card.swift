@@ -17,6 +17,20 @@ struct Card: View {
     }
 }
 
+struct CardSubtitleLabel: ViewModifier {
+    
+    func body(content: Content) -> some View {
+        content.font(.system(size: 14, weight: .semibold, design: .default))
+    }
+}
+
+struct CardTitleLabel: ViewModifier {
+    
+    func body(content: Content) -> some View {
+        content.font(.system(size: 22, weight: .bold, design: .rounded)).lineLimit(1)
+    }
+}
+
 struct SoftCard: View {
     
     var cornerRadius: CGFloat
@@ -27,8 +41,6 @@ struct SoftCard: View {
             .shadow(color: Color(white: 0).opacity(0.1), radius: 4, x: 0, y: 2)
     }
 }
-
-
 
 struct EmptyListCard: View {
     
@@ -124,12 +136,11 @@ struct CardLabels: View {
     var body: some View {
         VStack(alignment: alignment, spacing: 4) {
             Text(subtitle.uppercased())
-                .font(.system(size: 14, weight: .semibold, design: .default))
+                .modifier(CardSubtitleLabel())
                 .foregroundColor(Color("subtitle"))
             Text(title.smartCapitalization())
-                .font(.system(size: 22, weight: .bold, design: .rounded))
+                .modifier(CardTitleLabel())
                 .foregroundColor(titleColor)
-                .lineLimit(1)
         }
     }
 }

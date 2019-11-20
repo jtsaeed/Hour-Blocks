@@ -40,24 +40,18 @@ struct ContentView: View {
                     WhatsNewView(showWhatsNew: self.$showWhatsNew)
                 })
                 .tag(0)
-            HabitsView()
-                .tabItem {
-                    Image(systemName: "bolt")
-                    Text("Habits")
-                }
-                .tag(1)
             ToDoListView()
                 .tabItem {
                     Image(systemName: "list.bullet")
                     Text("To Do")
                 }
-                .tag(2)
+                .tag(1)
             SettingsView()
                 .tabItem {
                     Image(systemName: "gear")
                     Text("Settings")
                 }
-                .tag(3)
+                .tag(2)
         }.accentColor(Color("primary"))
     }
 }
