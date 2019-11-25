@@ -52,6 +52,8 @@ struct DuplicateBlockSheet: View {
             List {
                 ForEach(blocks.todaysBlocks.filter { $0.hour >= Calendar.current.component(.hour, from: Date()) }, id: \.self) { block in
                     AddToBlockCard(currentBlock: block, didAddToBlock: {
+                        UIImpactFeedbackGenerator(style: .heavy).impactOccurred(intensity: 0.75)
+                        AudioGateway.shared.playSFX(.addBlock)
                         self.blocks.setTodayBlock(for: block.hour, with: self.title)
                     })
                 }
@@ -132,13 +134,13 @@ struct AddFutureBlockView: View {
                     if self.title.isEmpty {
                         UINotificationFeedbackGenerator().notificationOccurred(.error)
                     } else {
-                        UINotificationFeedbackGenerator().notificationOccurred(.success)
+                        UIImpactFeedbackGenerator(style: .heavy).impactOccurred(intensity: 0.75)
                         AudioGateway.shared.playSFX(.addBlock)
                         self.didAddBlock(self.title, block.hour, self.date)
                     }
                 })
             }
-        }
+        }.navigationBarTitle("Choose an hour")
     }
     
     func fullDayBlocks() -> [HourBlock] {

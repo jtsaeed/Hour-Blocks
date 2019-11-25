@@ -71,7 +71,7 @@ class DomainsGateway {
         
         domains["bus"] = BlockDomain(key: "bus", iconName: "directions_bus", suggestionTitle: "get the bus")
         
-        domains["train"] = BlockDomain(key: "train", iconName: "directions_train", suggestionTitle: "get the train")
+        domains["train"] = BlockDomain(key: "train", iconName: "directions_subway", suggestionTitle: "get the train")
         
         domains["flight"] = BlockDomain(key: "flight", iconName: "flight", suggestionTitle: "flight")
         

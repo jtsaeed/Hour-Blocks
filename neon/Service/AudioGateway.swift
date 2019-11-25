@@ -16,7 +16,7 @@ class AudioGateway {
     var player: AVAudioPlayer!
 
     func playSFX(_ sfx: SoundEffect) {
-        if let path = Bundle.main.path(forResource: sfx.rawValue, ofType: "mp3") {
+        if let path = Bundle.main.path(forResource: sfx.rawValue, ofType: "aif") {
             do {
                 player = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
                 player.play()
@@ -30,6 +30,4 @@ class AudioGateway {
 enum SoundEffect: String {
     
     case addBlock = "add_block"
-    case removeBlock = "remove_block"
-    case toggleBlocks = "toggle_blocks"
 }
