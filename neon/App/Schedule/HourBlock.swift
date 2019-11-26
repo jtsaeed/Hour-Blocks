@@ -19,6 +19,7 @@ struct HourBlock: Hashable {
     let title: String?
     var domain: BlockDomain?
     var hasReminder = false
+    var isSubBlock = false
     
     init(day: Date, hour: Int, title: String?) {
         self.identifier = UUID().uuidString
@@ -36,6 +37,7 @@ struct HourBlock: Hashable {
         
         self.title = entity.title
         self.domain = DomainsGateway.shared.determineDomain(for: title)
+        self.isSubBlock = entity.isSubBlock
     }
     
     var formattedTime: String {
@@ -59,6 +61,7 @@ struct HourBlock: Hashable {
         entity.title = title
         entity.day = day
         entity.hour = Int64(hour)
+        entity.isSubBlock = isSubBlock
         
         return entity
     }
@@ -67,10 +70,10 @@ struct HourBlock: Hashable {
 class HourBlocksStore: ObservableObject {
     
     @Published var todaysBlocks = [HourBlock]()
-    @Published var futureBlocks = [HourBlock]()
     @Published var subBlocks = [Int: [HourBlock]]()
-    
     @Published var currentTitle = ""
+    
+    @Published var futureBlocks = [HourBlock]()
     @Published var currentFutureTitle = ""
     @Published var currentFutureDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
     
@@ -84,6 +87,7 @@ class HourBlocksStore: ObservableObject {
     func reloadTodayBlocks() {
         DispatchQueue.global(qos: .userInteractive).async {
             var loadedTodayBlocks = [HourBlock]()
+            var loadedSubBlocks = [Int: [HourBlock]]()
             
             for hour in 0...23 {
                 loadedTodayBlocks.append(HourBlock(day: Date(), hour: hour, title: nil))
@@ -103,7 +107,14 @@ class HourBlocksStore: ObservableObject {
                 let block = HourBlock(fromEntity: entity)
                 
                 if Calendar.current.isDateInToday(block.day) {
-                    loadedTodayBlocks[block.hour] = block
+                    if block.isSubBlock {
+                        
+                        if loadedSubBlocks[block.hour] == nil { loadedSubBlocks[block.hour] = [HourBlock]() }
+                        
+                        loadedSubBlocks[block.hour]?.append(block)
+                    } else {
+                        loadedTodayBlocks[block.hour] = block
+                    }
                 } else if block.day < Date() {
                     DataGateway.shared.deleteHourBlock(block: block)
                 }
@@ -111,6 +122,7 @@ class HourBlocksStore: ObservableObject {
         
             DispatchQueue.main.async {
                 self.todaysBlocks = loadedTodayBlocks
+                self.subBlocks = loadedSubBlocks
                 self.loadAllDayEvent()
             }
         }
@@ -148,17 +160,18 @@ class HourBlocksStore: ObservableObject {
     }
     
     func addSubBlock(for hour: Int, with title: String) {
-        let block = HourBlock(day: Date(), hour: hour, title: title)
+        var block = HourBlock(day: Date(), hour: hour, title: title)
+        block.isSubBlock = true
         
         if subBlocks[hour] == nil { subBlocks[hour] = [HourBlock]() }
         
         subBlocks[hour]?.append(block)
-//        DataGateway.shared.save
+        DataGateway.shared.saveHourBlock(block: block)
     }
     
     func removeSubBlock(for block: HourBlock) {
         subBlocks[block.hour]?.removeAll(where: { $0.identifier == block.identifier })
-//        DataGateway.shared.delete
+        DataGateway.shared.deleteHourBlock(block: block)
     }
     
     func setTodayBlock(for hour: Int, with title: String) {

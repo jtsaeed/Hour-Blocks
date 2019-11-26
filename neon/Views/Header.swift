@@ -88,7 +88,7 @@ struct SubBlocksHeader: View {
     
     var body: some View {
         ZStack(alignment: .trailing) {
-            Header(title: currentHourBlock.formattedTime, subtitle: Date().getFormattedDate())
+            Header(title: currentHourBlock.formattedTime.lowercased(), subtitle: Date().getFormattedDate())
         
             if !addButtonDisabled {
                 Button(action: {

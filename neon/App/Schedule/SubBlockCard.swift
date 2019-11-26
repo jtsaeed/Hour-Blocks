@@ -44,7 +44,7 @@ struct SubBlockCardContextMenu: View {
     }
     
     func clear() {
-        store.removeFutureBlock(for: currentBlock)
+        store.removeSubBlock(for: currentBlock)
     }
 }
 
