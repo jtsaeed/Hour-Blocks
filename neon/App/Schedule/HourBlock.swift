@@ -68,6 +68,7 @@ class HourBlocksStore: ObservableObject {
     
     @Published var todaysBlocks = [HourBlock]()
     @Published var futureBlocks = [HourBlock]()
+    @Published var subBlocks = [Int: [HourBlock]]()
     
     @Published var currentTitle = ""
     @Published var currentFutureTitle = ""
@@ -136,6 +137,15 @@ class HourBlocksStore: ObservableObject {
                 self.futureBlocks = calendarBlocks + storedBlocks
             }
         }
+    }
+    
+    func addSubBlock(for hour: Int, with title: String) {
+        let block = HourBlock(day: Date(), hour: hour, title: title)
+        
+        if subBlocks[hour] == nil { subBlocks[hour] = [HourBlock]() }
+        
+        subBlocks[hour]?.append(block)
+//        DataGateway.shared.save
     }
     
     func setTodayBlock(for hour: Int, with title: String) {

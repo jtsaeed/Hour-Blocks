@@ -44,13 +44,13 @@ struct TodayHeader: View {
 
 struct FutureHeader: View {
     
+    @EnvironmentObject var store: HourBlocksStore
+    
     @State var title = ""
     
     @State var isPresented = false
     
     var addButtonDisabled: Bool
-    
-    var futureBlockAdded: (String, Int, Date) -> ()
     
     var body: some View {
         ZStack(alignment: .trailing) {
@@ -66,9 +66,8 @@ struct FutureHeader: View {
                 .padding(.top, 32)
                 .padding(.trailing, 47)
                 .sheet(isPresented: $isPresented, content: {
-                    NewFutureBlockView(isPresented: self.$isPresented, didAddBlock: { (title, hour, date) in
-                        self.futureBlockAdded(title, hour, date)
-                    })
+                    NewFutureBlockView(isPresented: self.$isPresented)
+                        .environmentObject(self.store)
                 })
             }
         }
@@ -110,6 +109,8 @@ struct HabitsHeader: View {
 
 struct ToDoHeader: View {
     
+    @EnvironmentObject var store: ToDoItemsStore
+    
     @State var title = ""
     @State var priority: ToDoPriority = .none
     
@@ -117,8 +118,6 @@ struct ToDoHeader: View {
     
     var addButtonDisabled: Bool
     var items: Int
-    
-    var toDoItemAdded: (String, ToDoPriority) -> ()
     
     var body: some View {
         ZStack(alignment: .trailing) {
@@ -134,9 +133,8 @@ struct ToDoHeader: View {
                 .padding(.top, 32)
                 .padding(.trailing, 47)
                 .sheet(isPresented: $isPresented, content: {
-                    NewToDoItemView(isPresented: self.$isPresented, title: self.$title, priority: self.$priority, didAddToDoItem: { title, priority in
-                        self.toDoItemAdded(title, priority)
-                    })
+                    NewToDoItemView(isPresented: self.$isPresented, title: self.$title, priority: self.$priority)
+                        .environmentObject(self.store)
                 })
             }
         }

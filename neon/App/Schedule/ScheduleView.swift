@@ -21,37 +21,26 @@ struct ScheduleView: View {
     }
     
     var body: some View {
-        List {
-            Section(header: TodayHeader(allDayEvent: $blocks.allDayEvent)) {
-                ForEach(blocks.todaysBlocks.filter { $0.hour >= Calendar.current.component(.hour, from: Date()) }, id: \.self) { block in
-                    TodayCard(currentBlock: block, didAddBlock: { title in
-                        self.blocks.setTodayBlock(for: block.hour, with: title)
-                    }, didRemoveBlock: {
-                        self.blocks.removeTodayBlock(for: block.hour)
-                    }).environmentObject(self.blocks)
-                }
-            }
-            Section(header: FutureHeader(addButtonDisabled: blocks.futureBlocks.isEmpty, futureBlockAdded: { title, hour, date in self.blocks.addFutureBlock(for: date, hour, with: title)})) {
-                if blocks.futureBlocks.isEmpty {
-                    EmptyFutureCard { title, hour, date in
-                        self.blocks.addFutureBlock(for: date, hour, with: title)
+        NavigationView {
+            List {
+                Section(header: TodayHeader(allDayEvent: $blocks.allDayEvent)) {
+                    ForEach(blocks.todaysBlocks.filter { $0.hour >= Calendar.current.component(.hour, from: Date()) }, id: \.self) { block in
+                        TodayCard(currentBlock: block)
+                            .environmentObject(self.blocks)
                     }
-                } else {
-                    ForEach(blocks.futureBlocks.sorted { $0.day < $1.day }, id: \.self) { block in
-                        FutureCard(currentBlock: block, didRemoveBlock: {
-                            self.blocks.removeFutureBlock(for: block)
-                        })
+                }
+                Section(header: FutureHeader(addButtonDisabled: blocks.futureBlocks.isEmpty)) {
+                    if blocks.futureBlocks.isEmpty {
+                        EmptyFutureCard()
+                    } else {
+                        ForEach(blocks.futureBlocks.sorted { $0.day < $1.day }, id: \.self) { block in
+                            FutureCard(currentBlock: block)
+                        }
                     }
                 }
             }
+            .navigationBarTitle("Today")
+            .navigationBarHidden(true)
         }
     }
 }
-
-#if DEBUG
-struct ScheduleView_Previews : PreviewProvider {
-    static var previews: some View {
-        ScheduleView()
-    }
-}
-#endif

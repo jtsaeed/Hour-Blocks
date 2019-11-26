@@ -8,14 +8,20 @@
 
 import Foundation
 import AVFoundation
+import SwiftUI
 
-class AudioGateway {
+class HapticsGateway {
     
-    static let shared = AudioGateway()
+    static let shared = HapticsGateway()
 
     var player: AVAudioPlayer!
+    
+    func triggerAddBlockHaptic() {
+        UIImpactFeedbackGenerator(style: .heavy).impactOccurred(intensity: 0.75)
+        triggerHaptic(for: .addBlock)
+    }
 
-    func playSFX(_ sfx: SoundEffect) {
+    private func triggerHaptic(for sfx: SoundEffect) {
         if let path = Bundle.main.path(forResource: sfx.rawValue, ofType: "aif") {
             do {
                 player = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))

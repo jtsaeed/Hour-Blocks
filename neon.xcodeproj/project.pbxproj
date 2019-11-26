@@ -24,7 +24,7 @@
 		2304FA37235F3153006DA688 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA36235F3153006DA688 /* ToDoItem.swift */; };
 		2304FA39235F315F006DA688 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA38235F315F006DA688 /* SettingsView.swift */; };
 		2304FA3B235F39E4006DA688 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2304FA3A235F39E4006DA688 /* LaunchScreen.storyboard */; };
-		2304FA43235F4AB4006DA688 /* AudioGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA42235F4AB4006DA688 /* AudioGateway.swift */; };
+		2304FA43235F4AB4006DA688 /* HapticsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA42235F4AB4006DA688 /* HapticsGateway.swift */; };
 		231392A922666FC400DB0ABF /* DataGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231392A822666FC400DB0ABF /* DataGateway.swift */; };
 		232ED4E0228C93A4008FC4A0 /* AnalyticsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232ED4DF228C93A4008FC4A0 /* AnalyticsGateway.swift */; };
 		23356ED52256676E00541A60 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23356ED42256676E00541A60 /* GoogleService-Info.plist */; };
@@ -50,6 +50,8 @@
 		61B305ACEAA2B4F72109821D /* Pods_neon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BA23B93EB57D0A9C87A3846 /* Pods_neon.framework */; };
 		7A629DAB238C059300C186B1 /* notification.aif in Resources */ = {isa = PBXBuildFile; fileRef = 23E7851322AA753100A9650F /* notification.aif */; };
 		7A629DB5238C0C0C00C186B1 /* add_block.aif in Resources */ = {isa = PBXBuildFile; fileRef = 7A629DB4238C0C0C00C186B1 /* add_block.aif */; };
+		7A735E49238CFEF400FE4D32 /* SubBlocksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E48238CFEF400FE4D32 /* SubBlocksView.swift */; };
+		7A735E4B238D16A300FE4D32 /* ToDoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E4A238D16A300FE4D32 /* ToDoCard.swift */; };
 		B658B761255B945710FC2F42 /* Pods_neonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9076E2F3ADB2E623D12BBF3D /* Pods_neonTests.framework */; };
 		B912B77E89CBF0E08ECEB8A2 /* Pods_neonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F07358A92310DC9C6BA03B89 /* Pods_neonUITests.framework */; };
 /* End PBXBuildFile section */
@@ -122,7 +124,7 @@
 		2304FA36235F3153006DA688 /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 		2304FA38235F315F006DA688 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2304FA3A235F39E4006DA688 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		2304FA42235F4AB4006DA688 /* AudioGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioGateway.swift; sourceTree = "<group>"; };
+		2304FA42235F4AB4006DA688 /* HapticsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsGateway.swift; sourceTree = "<group>"; };
 		231392A822666FC400DB0ABF /* DataGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataGateway.swift; sourceTree = "<group>"; };
 		2317288D22917778007DBF8B /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
 		232ED4DF228C93A4008FC4A0 /* AnalyticsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsGateway.swift; sourceTree = "<group>"; };
@@ -161,6 +163,8 @@
 		390CCC3E80133F37FB4A2306 /* Pods-neonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neonTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-neonTests/Pods-neonTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6B9A0107CCBF37CCAA2CAAD3 /* Pods-neonUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neonUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-neonUITests/Pods-neonUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7A629DB4238C0C0C00C186B1 /* add_block.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = add_block.aif; sourceTree = "<group>"; };
+		7A735E48238CFEF400FE4D32 /* SubBlocksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubBlocksView.swift; sourceTree = "<group>"; };
+		7A735E4A238D16A300FE4D32 /* ToDoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCard.swift; sourceTree = "<group>"; };
 		8BA23B93EB57D0A9C87A3846 /* Pods_neon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_neon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9076E2F3ADB2E623D12BBF3D /* Pods_neonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_neonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3593EBEBDFB2F7E14F71C3D /* Pods-neon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-neon/Pods-neon.debug.xcconfig"; sourceTree = "<group>"; };
@@ -218,6 +222,7 @@
 				2304FA32235F305F006DA688 /* TodayCard.swift */,
 				2304FA34235F306B006DA688 /* FutureCard.swift */,
 				2373C1FE237036B500237763 /* SuggestionsStore.swift */,
+				7A735E48238CFEF400FE4D32 /* SubBlocksView.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -236,6 +241,7 @@
 			children = (
 				2304FA22235F2FB7006DA688 /* ToDoListView.swift */,
 				2304FA36235F3153006DA688 /* ToDoItem.swift */,
+				7A735E4A238D16A300FE4D32 /* ToDoCard.swift */,
 			);
 			path = "To Do List";
 			sourceTree = "<group>";
@@ -283,7 +289,7 @@
 				23E45BE1224BA3A9002D01AC /* NotificationsGateway.swift */,
 				232ED4DF228C93A4008FC4A0 /* AnalyticsGateway.swift */,
 				2304FA1E235F2F28006DA688 /* DomainsGateway.swift */,
-				2304FA42235F4AB4006DA688 /* AudioGateway.swift */,
+				2304FA42235F4AB4006DA688 /* HapticsGateway.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -639,10 +645,12 @@
 				2304FA2B235F300A006DA688 /* Card.swift in Sources */,
 				232ED4E0228C93A4008FC4A0 /* AnalyticsGateway.swift in Sources */,
 				2304FA35235F306B006DA688 /* FutureCard.swift in Sources */,
+				7A735E4B238D16A300FE4D32 /* ToDoCard.swift in Sources */,
 				2336981D23818A0B006ACD1E /* HabitBlock.swift in Sources */,
 				23C6F8812372DCB200E53286 /* SettingsStore.swift in Sources */,
 				2304FA27235F2FF2006DA688 /* NewSheet.swift in Sources */,
 				2304FA37235F3153006DA688 /* ToDoItem.swift in Sources */,
+				7A735E49238CFEF400FE4D32 /* SubBlocksView.swift in Sources */,
 				2304FA39235F315F006DA688 /* SettingsView.swift in Sources */,
 				2304FA1F235F2F28006DA688 /* DomainsGateway.swift in Sources */,
 				2304FA14235F29ED006DA688 /* SceneDelegate.swift in Sources */,
@@ -659,7 +667,7 @@
 				2304FA1D235F2D3B006DA688 /* HourBlock.swift in Sources */,
 				234C1A09220C8E9D00344316 /* Date+Ext.swift in Sources */,
 				2304FA23235F2FB7006DA688 /* ToDoListView.swift in Sources */,
-				2304FA43235F4AB4006DA688 /* AudioGateway.swift in Sources */,
+				2304FA43235F4AB4006DA688 /* HapticsGateway.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

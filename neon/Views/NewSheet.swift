@@ -12,33 +12,28 @@ import SwiftUI
 
 struct NewBlockView: View {
     
-    @EnvironmentObject var suggestions: SuggestionsStore
+    @EnvironmentObject var blocksStore: HourBlocksStore
+    @EnvironmentObject var suggestionsStore: SuggestionsStore
     
     @Binding var isPresented: Bool
     @Binding var title: String
     
-    let formattedTime: String
-    
-    var didAddBlock: (String) -> ()
+    let currentBlock: HourBlock
     
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
                 NewTextField(title: $title, didReturn: { title in
-                    if self.title.isEmpty {
-                        UINotificationFeedbackGenerator().notificationOccurred(.error)
-                    } else {
-                        self.addBlock(with: self.title, isSuggestion: false)
-                    }
+                    self.addBlock(isSuggestion: false)
                 })
                 Text("Suggestions")
                     .font(.system(size: 28, weight: .semibold, design: .default))
                     .padding(.leading, 24)
                 List {
-                    if suggestions.list.count > 0 {
-                        ForEach(suggestions.list, id: \.self) { suggestion in
+                    if suggestionsStore.list.count > 0 {
+                        ForEach(suggestionsStore.list, id: \.self) { suggestion in
                             SuggestionCard(suggestion: suggestion, didAddBlock: { title in
-                                self.addBlock(with: title, isSuggestion: true)
+                                self.addBlock(isSuggestion: true)
                             })
                         }
                     } else {
@@ -47,17 +42,13 @@ struct NewBlockView: View {
                 }
                 Spacer()
             }
-            .navigationBarTitle(formattedTime.lowercased())
+            .navigationBarTitle(currentBlock.formattedTime.lowercased())
             .navigationBarItems(leading: Button(action: {
                 self.isPresented = false
             }, label: {
                 Text("Cancel")
             }), trailing: Button(action: {
-                if self.title.isEmpty {
-                    UINotificationFeedbackGenerator().notificationOccurred(.error)
-                } else {
-                    self.addBlock(with: self.title, isSuggestion: false)
-                }
+                self.addBlock(isSuggestion: false)
             }, label: {
                 Text("Add")
             }))
@@ -65,17 +56,19 @@ struct NewBlockView: View {
         .navigationViewStyle(StackNavigationViewStyle())
     }
     
-    func addBlock(with title: String, isSuggestion: Bool) {
-        UIImpactFeedbackGenerator(style: .heavy).impactOccurred(intensity: 0.75)
-        AudioGateway.shared.playSFX(.addBlock)
-        isPresented = false
-        let domain = DomainsGateway.shared.determineDomain(for: title)
-        
-        AnalyticsGateway.shared.logHourBlock(for: domain?.key ?? "default",
-                                             at: formattedTime,
-                                             isSuggestion: isSuggestion)
-        
-        didAddBlock(title)
+    func addBlock(isSuggestion: Bool) {
+        if self.title.isEmpty && !isSuggestion {
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
+        } else {
+            HapticsGateway.shared.triggerAddBlockHaptic()
+            AnalyticsGateway.shared.logHourBlock(for: DomainsGateway.shared.determineDomain(for: title)?.key ?? "default",
+                                                 at: currentBlock.formattedTime,
+                                                 isSuggestion: isSuggestion)
+            blocksStore.setTodayBlock(for: currentBlock.hour, with: title)
+            
+            isPresented = false
+            title = ""
+        }
     }
 }
 
@@ -163,12 +156,12 @@ struct NewHabitView: View {
 
 struct NewToDoItemView: View {
     
+    @EnvironmentObject var store: ToDoItemsStore
+    
     @Binding var isPresented: Bool
     
     @Binding var title: String
     @Binding var priority: ToDoPriority
-    
-    var didAddToDoItem: (String, ToDoPriority) -> ()
     
     var body: some View {
         NavigationView {
@@ -188,21 +181,25 @@ struct NewToDoItemView: View {
             }, label: {
                 Text("Cancel")
             }), trailing: Button(action: {
-                if self.title.isEmpty {
-                    UINotificationFeedbackGenerator().notificationOccurred(.error)
-                } else {
-                    UIImpactFeedbackGenerator(style: .heavy).impactOccurred(intensity: 0.75)
-                    AudioGateway.shared.playSFX(.addBlock)
-                    self.isPresented = false
-                    AnalyticsGateway.shared.logToDo()
-                    self.didAddToDoItem(self.title, self.priority)
-                    self.title = ""
-                }
+                self.addToDoItem()
             }, label: {
                 Text("Add")
             }))
         }.accentColor(Color("primary"))
         .navigationViewStyle(StackNavigationViewStyle())
+    }
+    
+    func addToDoItem() {
+        if self.title.isEmpty {
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
+        } else {
+            HapticsGateway.shared.triggerAddBlockHaptic()
+            AnalyticsGateway.shared.logToDo()
+            store.addToDoItem(with: title, priority)
+            
+            isPresented = false
+            title = ""
+        }
     }
 }
 

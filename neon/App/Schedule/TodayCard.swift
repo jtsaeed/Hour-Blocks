@@ -10,17 +10,7 @@ import SwiftUI
 
 struct TodayCard: View {
     
-    @EnvironmentObject var blocks: HourBlocksStore
-    @EnvironmentObject var suggestions: SuggestionsStore
-    @EnvironmentObject var settings: SettingsStore
-    
-    @State var isRenamePresented = false
-    @State var isDuplicatePresented = false
-    
     let currentBlock: HourBlock
-    
-    var didAddBlock: (String) -> ()
-    var didRemoveBlock: () -> ()
     
     var body: some View {
         ZStack {
@@ -30,94 +20,124 @@ struct TodayCard: View {
                 Spacer()
                 if currentBlock.title != nil {
                     if currentBlock.domain != DomainsGateway.shared.domains["calendar"] {
-                    CardIcon(iconName: currentBlock.domain?.iconName ?? "default")
-                        .contextMenu {
-                            Button(action: {
-                                self.blocks.currentTitle = self.currentBlock.title!
-                                self.suggestions.load(for: self.currentBlock.hour)
-                                self.isRenamePresented.toggle()
-                            }) {
-                                Text("Rename")
-                                Image(systemName: "pencil")
-                            }
-                            .sheet(isPresented: $isRenamePresented, content: {
-                                NewBlockView(isPresented: self.$isRenamePresented, title: self.$blocks.currentTitle, formattedTime: self.currentBlock.formattedTime, didAddBlock: { title in self.didAddBlock(title)
-                                }).environmentObject(self.suggestions)
-                            })
-                            Button(action: {
-                                self.isDuplicatePresented.toggle()
-                            }) {
-                                Text("Duplicate")
-                                Image(systemName: "doc.on.doc")
-                            }
-                            .sheet(isPresented: $isDuplicatePresented, content: {
-                                DuplicateBlockSheet(isPresented: self.$isDuplicatePresented, title: self.currentBlock.title!).environmentObject(self.blocks).environmentObject(self.settings)
-                            })
-                            Button(action: {
-                                if self.currentBlock.hasReminder {
-                                    NotificationsGateway.shared.removeNotification(for: self.currentBlock)
-                                    DispatchQueue.main.async {
-                                        self.blocks.setReminder(false, for: self.currentBlock)
-                                    }
-                                    UINotificationFeedbackGenerator().notificationOccurred(.success)
-                                } else {
-                                    NotificationsGateway.shared.addNotification(for: self.currentBlock, completion: { success in
-                                        if success {
-                                            DispatchQueue.main.async {
-                                                self.blocks.setReminder(true, for: self.currentBlock)
-                                            }
-                                            UINotificationFeedbackGenerator().notificationOccurred(.success)
-                                        } else {
-                                            UINotificationFeedbackGenerator().notificationOccurred(.error)
-                                        }
-                                    })
-                                }
-                            }) {
-                                Text(currentBlock.hasReminder ? "Remove Reminder" : "Set a Reminder")
-                                Image(systemName: "alarm")
-                            }
-                            Button(action: {
-                                self.didRemoveBlock()
-                            }) {
-                                Text("Clear")
-                                Image(systemName: "trash")
-                            }
+                        ZStack {
+                            CardIcon(iconName: currentBlock.domain?.iconName ?? "default")
+                                .contextMenu { TodayCardContextMenu(currentBlock: currentBlock) }
+                            NavigationLink(destination: SubBlocksView(currentHourBlock: currentBlock)) {
+                                EmptyView()
+                            }.frame(width: 0)
                         }
                     } else {
-                        CardIcon(iconName: currentBlock.domain?.iconName ?? "default")
+                        CardIcon(iconName: "calendar")
                     }
                 } else {
-                    TodayCardAddButton(block: currentBlock, didAddBlock: { title in
-                        self.blocks.setTodayBlock(for: self.currentBlock.hour, with: title)
-                    })
+                    TodayCardAddButton(block: currentBlock)
                 }
-            }.padding(EdgeInsets(top: 18, leading: 22, bottom: 18, trailing: 24))
-        }.padding(EdgeInsets(top: 6, leading: 8, bottom: 6, trailing: 8))
+            }.modifier(CardContentPadding())
+        }.modifier(CardPadding())
+    }
+}
+
+struct TodayCardContextMenu: View {
+    
+    @EnvironmentObject var blocks: HourBlocksStore
+    @EnvironmentObject var suggestions: SuggestionsStore
+    @EnvironmentObject var settings: SettingsStore
+    
+    @State var isRenamePresented = false
+    @State var isDuplicatePresented = false
+    
+    let currentBlock: HourBlock
+    
+    var body: some View {
+        VStack {
+            Button(action: {
+                self.rename()
+            }) {
+                Text("Rename")
+                Image(systemName: "pencil")
+            }
+            .sheet(isPresented: $isRenamePresented, content: {
+                NewBlockView(isPresented: self.$isRenamePresented, title: self.$blocks.currentTitle, currentBlock: self.currentBlock)
+                    .environmentObject(self.blocks)
+                    .environmentObject(self.suggestions)
+            })
+            Button(action: {
+                self.duplicate()
+            }) {
+                Text("Duplicate")
+                Image(systemName: "doc.on.doc")
+            }
+            .sheet(isPresented: $isDuplicatePresented, content: {
+                DuplicateBlockSheet(isPresented: self.$isDuplicatePresented, title: self.currentBlock.title!)
+                    .environmentObject(self.blocks)
+                    .environmentObject(self.settings)
+            })
+            Button(action: {
+                self.reminderAction()
+            }) {
+                Text(currentBlock.hasReminder ? "Remove Reminder" : "Set a Reminder")
+                Image(systemName: "alarm")
+            }
+            Button(action: {
+                self.blocks.removeTodayBlock(for: self.currentBlock.hour)
+            }) {
+                Text("Clear")
+                Image(systemName: "trash")
+            }
+        }
+    }
+    
+    func rename() {
+        blocks.currentTitle = currentBlock.title!
+        suggestions.load(for: currentBlock.hour)
+        isRenamePresented.toggle()
+    }
+    
+    func duplicate() {
+        isDuplicatePresented.toggle()
+    }
+    
+    func reminderAction() {
+        if currentBlock.hasReminder {
+            NotificationsGateway.shared.removeNotification(for: currentBlock)
+            DispatchQueue.main.async { self.blocks.setReminder(false, for: self.currentBlock) }
+            UINotificationFeedbackGenerator().notificationOccurred(.success)
+        } else {
+            NotificationsGateway.shared.addNotification(for: currentBlock, completion: { success in
+                if success {
+                    DispatchQueue.main.async { self.blocks.setReminder(true, for: self.currentBlock) }
+                    UINotificationFeedbackGenerator().notificationOccurred(.success)
+                } else {
+                    UINotificationFeedbackGenerator().notificationOccurred(.error)
+                }
+            })
+        }
     }
 }
 
 struct TodayCardAddButton: View {
     
-    @EnvironmentObject var suggestions: SuggestionsStore
+    @EnvironmentObject var blocksStore: HourBlocksStore
+    @EnvironmentObject var suggestionsStore: SuggestionsStore
     
     @State var isPresented = false
     @State var title = ""
     
     let block: HourBlock
     
-    var didAddBlock: (String) -> ()
-    
     var body: some View {
         Button(action: {
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
-            self.suggestions.load(for: self.block.hour)
+            self.suggestionsStore.load(for: self.block.hour)
             self.isPresented.toggle()
         }, label: {
             Image("add_button")
         })
         .sheet(isPresented: $isPresented, content: {
-            NewBlockView(isPresented: self.$isPresented, title: self.$title, formattedTime: self.block.formattedTime, didAddBlock: { title in self.didAddBlock(title)
-            }).environmentObject(self.suggestions)
+            NewBlockView(isPresented: self.$isPresented, title: self.$title, currentBlock: self.block)
+                .environmentObject(self.blocksStore)
+                .environmentObject(self.suggestionsStore)
         })
     }
 }

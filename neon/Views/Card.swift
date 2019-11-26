@@ -31,6 +31,20 @@ struct CardTitleLabel: ViewModifier {
     }
 }
 
+struct CardContentPadding: ViewModifier {
+    
+    func body(content: Content) -> some View {
+        content.padding(EdgeInsets(top: 18, leading: 22, bottom: 18, trailing: 24))
+    }
+}
+
+struct CardPadding: ViewModifier {
+    
+    func body(content: Content) -> some View {
+        content.padding(EdgeInsets(top: 6, leading: 8, bottom: 6, trailing: 8))
+    }
+}
+
 struct SoftCard: View {
     
     var cornerRadius: CGFloat
@@ -53,18 +67,18 @@ struct EmptyListCard: View {
                             titleColor: Color("subtitle"))
                 Spacer()
                 Image("add_button")
-            }.padding(EdgeInsets(top: 18, leading: 22, bottom: 18, trailing: 24))
-        }.padding(EdgeInsets(top: 6, leading: 8, bottom: 6, trailing: 8))
+            }.modifier(CardContentPadding())
+        }.modifier(CardPadding())
     }
 }
 
 struct EmptyFutureCard: View {
     
+    @EnvironmentObject var store: HourBlocksStore
+    
     @State var title = ""
     
     @State var isPresented = false
-    
-    var futureBlockAdded: (String, Int, Date) -> ()
     
     var body: some View {
         EmptyListCard()
@@ -73,9 +87,8 @@ struct EmptyFutureCard: View {
                 self.isPresented.toggle()
             }
             .sheet(isPresented: $isPresented, content: {
-                NewFutureBlockView(isPresented: self.$isPresented, didAddBlock: { (title, hour, date) in
-                    self.futureBlockAdded(title, hour, date)
-                })
+                NewFutureBlockView(isPresented: self.$isPresented)
+                    .environmentObject(self.store)
             })
     }
 }
@@ -104,12 +117,12 @@ struct EmptyHabitCard: View {
 
 struct EmptyToDoCard: View {
     
+    @EnvironmentObject var store: ToDoItemsStore
+    
     @State var title = ""
     @State var priority: ToDoPriority = .none
     
     @State var isPresented = false
-    
-    var toDoItemAdded: (String, ToDoPriority) -> ()
     
     var body: some View {
         EmptyListCard()
@@ -118,9 +131,8 @@ struct EmptyToDoCard: View {
                 self.isPresented.toggle()
             }
             .sheet(isPresented: $isPresented, content: {
-                NewToDoItemView(isPresented: self.$isPresented, title: self.$title, priority: self.$priority, didAddToDoItem: { title, priority in
-                    self.toDoItemAdded(title, priority)
-                })
+                NewToDoItemView(isPresented: self.$isPresented, title: self.$title, priority: self.$priority)
+                    .environmentObject(self.store)
             })
     }
 }
@@ -131,13 +143,14 @@ struct CardLabels: View {
     let subtitle: String
     
     var titleColor = Color("title")
+    var subtitleColor = Color("subtitle")
     var alignment: HorizontalAlignment = .leading
     
     var body: some View {
         VStack(alignment: alignment, spacing: 4) {
             Text(subtitle.uppercased())
                 .modifier(CardSubtitleLabel())
-                .foregroundColor(Color("subtitle"))
+                .foregroundColor(subtitleColor)
             Text(title.smartCapitalization())
                 .modifier(CardTitleLabel())
                 .foregroundColor(titleColor)

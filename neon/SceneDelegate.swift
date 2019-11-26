@@ -27,6 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let contentView = ContentView()
                 .environmentObject(HourBlocksStore())
                 .environmentObject(SuggestionsStore())
+                .environmentObject(ToDoItemsStore())
                 .environmentObject(SettingsStore())
                 .environment(\.managedObjectContext, managedObjectContext)
             

@@ -10,13 +10,7 @@ import SwiftUI
 
 struct FutureCard: View {
     
-    @EnvironmentObject var blocks: HourBlocksStore
-    
-    @State var isEditPresented = false
-    
     let currentBlock: HourBlock
-    
-    var didRemoveBlock: () -> ()
     
     var body: some View {
         ZStack {
@@ -27,18 +21,33 @@ struct FutureCard: View {
                 Spacer()
                 if currentBlock.domain != DomainsGateway.shared.domains["calendar"] {
                     CardIcon(iconName: currentBlock.domain?.iconName ?? "default")
-                        .contextMenu {
-                            Button(action: {
-                                self.didRemoveBlock()
-                            }) {
-                                Text("Clear")
-                                Image(systemName: "trash")
-                            }
-                        }
+                        .contextMenu { FutureCardContextMenu(currentBlock: currentBlock) }
                 } else {
-                    CardIcon(iconName: currentBlock.domain?.iconName ?? "default")
+                    CardIcon(iconName: "calendar")
                 }
-            }.padding(EdgeInsets(top: 18, leading: 22, bottom: 18, trailing: 24))
-        }.padding(EdgeInsets(top: 6, leading: 8, bottom: 6, trailing: 8))
+            }.modifier(CardContentPadding())
+        }.modifier(CardPadding())
+    }
+}
+
+struct FutureCardContextMenu: View {
+    
+    @EnvironmentObject var blocks: HourBlocksStore
+    
+    let currentBlock: HourBlock
+    
+    var body: some View {
+        VStack {
+            Button(action: {
+                self.clear()
+            }) {
+                Text("Clear")
+                Image(systemName: "trash")
+            }
+        }
+    }
+    
+    func clear() {
+        blocks.removeFutureBlock(for: currentBlock)
     }
 }
