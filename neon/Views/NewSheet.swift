@@ -19,6 +19,7 @@ struct NewBlockView: View {
     @Binding var title: String
     
     let currentBlock: HourBlock
+    var isSubBlock: Bool = false
     
     var body: some View {
         NavigationView {
@@ -64,7 +65,11 @@ struct NewBlockView: View {
             AnalyticsGateway.shared.logHourBlock(for: DomainsGateway.shared.determineDomain(for: title)?.key ?? "default",
                                                  at: currentBlock.formattedTime,
                                                  isSuggestion: isSuggestion)
-            blocksStore.setTodayBlock(for: currentBlock.hour, with: title)
+            if isSubBlock {
+                blocksStore.addSubBlock(for: currentBlock.hour, with: title)
+            } else {
+                blocksStore.setTodayBlock(for: currentBlock.hour, with: title)
+            }
             
             isPresented = false
             title = ""

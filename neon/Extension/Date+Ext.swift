@@ -11,6 +11,10 @@ import Foundation
 extension Date {
     
     func getFormattedDate() -> String {
+        if Calendar.current.isDateInTomorrow(self) {
+            return "Tomorrow"
+        }
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E d MMM"
         

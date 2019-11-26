@@ -72,27 +72,6 @@ struct EmptyListCard: View {
     }
 }
 
-struct EmptyFutureCard: View {
-    
-    @EnvironmentObject var store: HourBlocksStore
-    
-    @State var title = ""
-    
-    @State var isPresented = false
-    
-    var body: some View {
-        EmptyListCard()
-            .onTapGesture {
-                UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                self.isPresented.toggle()
-            }
-            .sheet(isPresented: $isPresented, content: {
-                NewFutureBlockView(isPresented: self.$isPresented)
-                    .environmentObject(self.store)
-            })
-    }
-}
-
 struct EmptyHabitCard: View {
     
     @State var title = ""
@@ -111,28 +90,6 @@ struct EmptyHabitCard: View {
                 NewHabitView(isPresented: self.$isPresented, title: self.title, didAddHabit: { title in
                     self.didAddHabit(title)
                 })
-            })
-    }
-}
-
-struct EmptyToDoCard: View {
-    
-    @EnvironmentObject var store: ToDoItemsStore
-    
-    @State var title = ""
-    @State var priority: ToDoPriority = .none
-    
-    @State var isPresented = false
-    
-    var body: some View {
-        EmptyListCard()
-            .onTapGesture {
-                UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                self.isPresented.toggle()
-            }
-            .sheet(isPresented: $isPresented, content: {
-                NewToDoItemView(isPresented: self.$isPresented, title: self.$title, priority: self.$priority)
-                    .environmentObject(self.store)
             })
     }
 }

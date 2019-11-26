@@ -80,3 +80,25 @@ struct ToDoContextMenu: View {
         toDoItemsStore.removeToDoItem(toDo: currentToDoItem)
     }
 }
+
+struct EmptyToDoCard: View {
+    
+    @EnvironmentObject var store: ToDoItemsStore
+    
+    @State var title = ""
+    @State var priority: ToDoPriority = .none
+    
+    @State var isPresented = false
+    
+    var body: some View {
+        EmptyListCard()
+            .onTapGesture {
+                UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                self.isPresented.toggle()
+            }
+            .sheet(isPresented: $isPresented, content: {
+                NewToDoItemView(isPresented: self.$isPresented, title: self.$title, priority: self.$priority)
+                    .environmentObject(self.store)
+            })
+    }
+}

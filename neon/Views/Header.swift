@@ -74,6 +74,41 @@ struct FutureHeader: View {
     }
 }
 
+struct SubBlocksHeader: View {
+    
+    @EnvironmentObject var blocksStore: HourBlocksStore
+    @EnvironmentObject var suggestionsStore: SuggestionsStore
+    
+    @State var title = ""
+    
+    @State var isPresented = false
+    
+    var addButtonDisabled: Bool
+    let currentHourBlock: HourBlock
+    
+    var body: some View {
+        ZStack(alignment: .trailing) {
+            Header(title: currentHourBlock.formattedTime, subtitle: Date().getFormattedDate())
+        
+            if !addButtonDisabled {
+                Button(action: {
+                    UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                    self.isPresented.toggle()
+                }, label: {
+                    Image("add_button")
+                })
+                .padding(.top, 32)
+                .padding(.trailing, 47)
+                .sheet(isPresented: $isPresented, content: {
+                    NewBlockView(isPresented: self.$isPresented, title: self.$title, currentBlock: self.currentHourBlock, isSubBlock: true)
+                    .environmentObject(self.blocksStore)
+                    .environmentObject(self.suggestionsStore)
+                })
+            }
+        }
+    }
+}
+
 struct HabitsHeader: View {
     
     @State var title = ""

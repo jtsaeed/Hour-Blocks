@@ -1,36 +1,32 @@
 //
-//  FutureCard.swift
-//  neon3
+//  SubBlockCard.swift
+//  neon
 //
-//  Created by James Saeed on 03/10/2019.
+//  Created by James Saeed on 26/11/2019.
 //  Copyright © 2019 James Saeed. All rights reserved.
 //
 
 import SwiftUI
 
-struct FutureCard: View {
+struct SubBlockCard: View {
     
-    let currentBlock: HourBlock
+    let currentHourBlock: HourBlock
+    let currentSubBlock: HourBlock
     
     var body: some View {
         ZStack {
             Card()
             HStack {
-                CardLabels(title: currentBlock.title!,
-                           subtitle: currentBlock.day.getFormattedDate())
+                CardLabels(title: currentSubBlock.title!, subtitle: currentHourBlock.title!)
                 Spacer()
-                if currentBlock.domain != DomainsGateway.shared.domains["calendar"] {
-                    CardIcon(iconName: currentBlock.domain?.iconName ?? "default")
-                        .contextMenu { FutureCardContextMenu(currentBlock: currentBlock) }
-                } else {
-                    CardIcon(iconName: "calendar_item")
-                }
+                CardIcon(iconName: currentSubBlock.domain?.iconName ?? "default")
             }.modifier(CardContentPadding())
         }.modifier(CardPadding())
+        .contextMenu { SubBlockCardContextMenu(currentBlock: currentSubBlock) }
     }
 }
 
-struct FutureCardContextMenu: View {
+struct SubBlockCardContextMenu: View {
     
     @EnvironmentObject var store: HourBlocksStore
     
@@ -52,13 +48,16 @@ struct FutureCardContextMenu: View {
     }
 }
 
-struct EmptyFutureCard: View {
+struct EmptySubBlockCard: View {
     
-    @EnvironmentObject var store: HourBlocksStore
+    @EnvironmentObject var blocksStore: HourBlocksStore
+    @EnvironmentObject var suggestionsStore: SuggestionsStore
     
     @State var title = ""
     
     @State var isPresented = false
+    
+    let currentHourBlock: HourBlock
     
     var body: some View {
         EmptyListCard()
@@ -67,8 +66,9 @@ struct EmptyFutureCard: View {
                 self.isPresented.toggle()
             }
             .sheet(isPresented: $isPresented, content: {
-                NewFutureBlockView(isPresented: self.$isPresented)
-                    .environmentObject(self.store)
+                NewBlockView(isPresented: self.$isPresented, title: self.$title, currentBlock: self.currentHourBlock, isSubBlock: true)
+                    .environmentObject(self.blocksStore)
+                    .environmentObject(self.suggestionsStore)
             })
     }
 }

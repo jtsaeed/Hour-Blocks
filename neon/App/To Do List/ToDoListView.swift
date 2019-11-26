@@ -19,7 +19,7 @@ struct ToDoListView: View {
                 if store.toDoItems.isEmpty {
                     EmptyToDoCard()
                 } else {
-                    ForEach(store.toDoItems.sorted().reversed(), id: \.self) { toDoItem in
+                    ForEach(store.toDoItems.sorted(), id: \.self) { toDoItem in
                         ToDoCard(currentToDoItem: toDoItem)
                     }
                 }

@@ -37,13 +37,13 @@ struct ToDoItem: Hashable, Comparable {
     
     static func < (lhs: ToDoItem, rhs: ToDoItem) -> Bool {
         if lhs.priority == .none && (rhs.priority == .low || rhs.priority == .medium || rhs.priority == .high) {
-            return true
-        } else if lhs.priority == .low && (rhs.priority == .medium || rhs.priority == .high) {
-            return true
-        } else if lhs.priority == .medium && rhs.priority == .high {
-            return true
-        } else {
             return false
+        } else if lhs.priority == .low && (rhs.priority == .medium || rhs.priority == .high) {
+            return false
+        } else if lhs.priority == .medium && rhs.priority == .high {
+            return false
+        } else {
+            return true
         }
     }
 }

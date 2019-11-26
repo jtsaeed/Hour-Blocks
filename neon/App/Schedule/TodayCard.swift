@@ -28,7 +28,7 @@ struct TodayCard: View {
                             }.frame(width: 0)
                         }
                     } else {
-                        CardIcon(iconName: "calendar")
+                        CardIcon(iconName: "calendar_item")
                     }
                 } else {
                     TodayCardAddButton(block: currentBlock)

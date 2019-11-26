@@ -10,11 +10,25 @@ import SwiftUI
 
 struct SubBlocksView: View {
     
+    @EnvironmentObject var store: HourBlocksStore
+    
     let currentHourBlock: HourBlock
     
     var body: some View {
-        NavigationView {
-            Header(title: currentHourBlock.formattedTime, subtitle: Date().getFormattedDate())
-        }.accentColor(Color("primary"))
+//        NavigationView {
+            List {
+                Section(header: SubBlocksHeader(addButtonDisabled: store.isSubBlocksEmpty(for: currentHourBlock.hour), currentHourBlock: currentHourBlock)) {
+                    if store.isSubBlocksEmpty(for: currentHourBlock.hour) {
+                        EmptySubBlockCard(currentHourBlock: currentHourBlock)
+                    } else {
+                        ForEach(store.subBlocks[currentHourBlock.hour]!, id: \.self) { currentSubBlock in
+                            SubBlockCard(currentHourBlock: self.currentHourBlock, currentSubBlock: currentSubBlock)
+                        }
+                    }
+                }
+            }
+//            .navigationBarTitle("Test")
+//            .navigationBarHidden(true)
+//        }.accentColor(Color("primary"))
     }
 }

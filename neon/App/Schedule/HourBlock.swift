@@ -139,6 +139,14 @@ class HourBlocksStore: ObservableObject {
         }
     }
     
+    func isSubBlocksEmpty(for hour: Int) -> Bool {
+        if subBlocks[hour] == nil {
+            return true
+        } else {
+            return subBlocks[hour]!.isEmpty
+        }
+    }
+    
     func addSubBlock(for hour: Int, with title: String) {
         let block = HourBlock(day: Date(), hour: hour, title: title)
         
@@ -146,6 +154,11 @@ class HourBlocksStore: ObservableObject {
         
         subBlocks[hour]?.append(block)
 //        DataGateway.shared.save
+    }
+    
+    func removeSubBlock(for block: HourBlock) {
+        subBlocks[block.hour]?.removeAll(where: { $0.identifier == block.identifier })
+//        DataGateway.shared.delete
     }
     
     func setTodayBlock(for hour: Int, with title: String) {
