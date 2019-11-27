@@ -21,7 +21,7 @@ struct TodayCard: View {
                 if currentBlock.title != nil {
                     if currentBlock.domain != DomainsGateway.shared.domains["calendar"] {
                         ZStack {
-                            CardIcon(iconName: currentBlock.domain?.iconName ?? "default")
+                            CardIcon(iconName: currentBlock.iconName)
                                 .contextMenu { TodayCardContextMenu(currentBlock: currentBlock) }
                             NavigationLink(destination: SubBlocksView(currentHourBlock: currentBlock)) {
                                 EmptyView()
@@ -45,6 +45,7 @@ struct TodayCardContextMenu: View {
     @EnvironmentObject var settings: SettingsStore
     
     @State var isRenamePresented = false
+    @State var isIconPickerPresented = false
     @State var isDuplicatePresented = false
     
     let currentBlock: HourBlock
@@ -61,6 +62,16 @@ struct TodayCardContextMenu: View {
                 NewBlockView(isPresented: self.$isRenamePresented, title: self.$blocks.currentTitle, currentBlock: self.currentBlock)
                     .environmentObject(self.blocks)
                     .environmentObject(self.suggestions)
+            })
+            Button(action: {
+                self.changeIcon()
+            }) {
+                Text("Change Icon")
+                Image(systemName: "pencil")
+            }
+            .sheet(isPresented: $isIconPickerPresented, content: {
+                IconPicker(isPresented: self.$isIconPickerPresented, currentBlock: self.currentBlock)
+                    .environmentObject(self.blocks)
             })
             Button(action: {
                 self.duplicate()
@@ -92,6 +103,10 @@ struct TodayCardContextMenu: View {
         blocks.currentTitle = currentBlock.title!
         suggestions.load(for: currentBlock.hour)
         isRenamePresented.toggle()
+    }
+    
+    func changeIcon() {
+        isIconPickerPresented.toggle()
     }
     
     func duplicate() {

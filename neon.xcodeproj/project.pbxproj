@@ -53,6 +53,8 @@
 		7A735E49238CFEF400FE4D32 /* SubBlocksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E48238CFEF400FE4D32 /* SubBlocksView.swift */; };
 		7A735E4B238D16A300FE4D32 /* ToDoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E4A238D16A300FE4D32 /* ToDoCard.swift */; };
 		7A735E4D238D2ED400FE4D32 /* SubBlockCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E4C238D2ED400FE4D32 /* SubBlockCard.swift */; };
+		7A735E4F238D591C00FE4D32 /* IconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E4E238D591C00FE4D32 /* IconPicker.swift */; };
+		7A735E51238D6E5A00FE4D32 /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E50238D6E5A00FE4D32 /* Array+Ext.swift */; };
 		B658B761255B945710FC2F42 /* Pods_neonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9076E2F3ADB2E623D12BBF3D /* Pods_neonTests.framework */; };
 		B912B77E89CBF0E08ECEB8A2 /* Pods_neonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F07358A92310DC9C6BA03B89 /* Pods_neonUITests.framework */; };
 /* End PBXBuildFile section */
@@ -167,6 +169,8 @@
 		7A735E48238CFEF400FE4D32 /* SubBlocksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubBlocksView.swift; sourceTree = "<group>"; };
 		7A735E4A238D16A300FE4D32 /* ToDoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCard.swift; sourceTree = "<group>"; };
 		7A735E4C238D2ED400FE4D32 /* SubBlockCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubBlockCard.swift; sourceTree = "<group>"; };
+		7A735E4E238D591C00FE4D32 /* IconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPicker.swift; sourceTree = "<group>"; };
+		7A735E50238D6E5A00FE4D32 /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 		8BA23B93EB57D0A9C87A3846 /* Pods_neon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_neon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9076E2F3ADB2E623D12BBF3D /* Pods_neonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_neonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3593EBEBDFB2F7E14F71C3D /* Pods-neon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-neon/Pods-neon.debug.xcconfig"; sourceTree = "<group>"; };
@@ -269,6 +273,7 @@
 				2304FA2A235F300A006DA688 /* Card.swift */,
 				2304FA2C235F301A006DA688 /* AddToBlockSheet.swift */,
 				2336981E23818D52006ACD1E /* ActionButton.swift */,
+				7A735E4E238D591C00FE4D32 /* IconPicker.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -280,6 +285,7 @@
 				2304FA30235F304C006DA688 /* NSManagedObjectContext+Ext.swift */,
 				23C53D802369E62800BA4378 /* String+Ext.swift */,
 				234DF2FA237A113200EB248A /* Int+Ext.swift */,
+				7A735E50238D6E5A00FE4D32 /* Array+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -659,8 +665,10 @@
 				2304FA14235F29ED006DA688 /* SceneDelegate.swift in Sources */,
 				2304FA17235F2A2A006DA688 /* ContentView.swift in Sources */,
 				2304FA31235F304C006DA688 /* NSManagedObjectContext+Ext.swift in Sources */,
+				7A735E4F238D591C00FE4D32 /* IconPicker.swift in Sources */,
 				23C53D7D2369E01900BA4378 /* CalendarSettingsView.swift in Sources */,
 				2338BEBC220A7840004F288F /* AppDelegate.swift in Sources */,
+				7A735E51238D6E5A00FE4D32 /* Array+Ext.swift in Sources */,
 				2373C1FF237036B500237763 /* SuggestionsStore.swift in Sources */,
 				2304FA33235F305F006DA688 /* TodayCard.swift in Sources */,
 				23B63CE1222491050026B9C2 /* CalendarGateway.swift in Sources */,

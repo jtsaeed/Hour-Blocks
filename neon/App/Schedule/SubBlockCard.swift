@@ -19,7 +19,7 @@ struct SubBlockCard: View {
             HStack {
                 CardLabels(title: currentSubBlock.title!, subtitle: currentHourBlock.title!)
                 Spacer()
-                CardIcon(iconName: currentSubBlock.domain?.iconName ?? "default")
+                CardIcon(iconName: currentSubBlock.iconName)
             }.modifier(CardContentPadding())
         }.modifier(CardPadding())
         .contextMenu { SubBlockCardContextMenu(currentBlock: currentSubBlock) }

@@ -33,8 +33,9 @@ class SuggestionsStore: ObservableObject {
                 return Suggestion(title: DomainsGateway.shared.domains[frequencies.key]!.suggestionTitle, reason: "Frequently Added", score: frequencies.value)
             }
             .sorted { $0.score > $1.score }
+//            .prefix(upTo: 3)
             
-            DispatchQueue.main.async { self.list = suggestions }
+            DispatchQueue.main.async { self.list = Array(suggestions) }
         }
     }
 }

@@ -18,6 +18,8 @@ struct HourBlock: Hashable {
     
     let title: String?
     var domain: BlockDomain?
+    var iconOverride: String?
+    
     var hasReminder = false
     var isSubBlock = false
     
@@ -37,6 +39,8 @@ struct HourBlock: Hashable {
         
         self.title = entity.title
         self.domain = DomainsGateway.shared.determineDomain(for: title)
+        self.iconOverride = entity.iconOverride
+        
         self.isSubBlock = entity.isSubBlock
     }
     
@@ -54,6 +58,14 @@ struct HourBlock: Hashable {
         return hour.get12hTime()
     }
     
+    var iconName: String {
+        if let icon = iconOverride {
+            return icon
+        } else {
+            return domain?.iconName ?? "default"
+        }
+    }
+    
     @discardableResult
     func getEntity(context: NSManagedObjectContext) -> HourBlockEntity {
         let entity = HourBlockEntity(context: context)
@@ -62,6 +74,7 @@ struct HourBlock: Hashable {
         entity.day = day
         entity.hour = Int64(hour)
         entity.isSubBlock = isSubBlock
+        entity.iconOverride = iconOverride
         
         return entity
     }
@@ -183,6 +196,11 @@ class HourBlocksStore: ObservableObject {
         if let domainKey = block.domain?.key {
             DataGateway.shared.saveSuggestion(for: domainKey, at: block.hour)
         }
+    }
+    
+    func setTodayBlock(_ block: HourBlock) {
+        todaysBlocks[block.hour] = block
+        DataGateway.shared.saveHourBlock(block: block)
     }
     
     func removeTodayBlock(for hour: Int) {
