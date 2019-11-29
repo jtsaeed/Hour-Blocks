@@ -44,12 +44,10 @@
 		23C53D7F2369E02400BA4378 /* OtherSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C53D7E2369E02400BA4378 /* OtherSettingsView.swift */; };
 		23C53D812369E62800BA4378 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C53D802369E62800BA4378 /* String+Ext.swift */; };
 		23C6F8812372DCB200E53286 /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6F8802372DCB200E53286 /* SettingsStore.swift */; };
-		23DB0A5622B296BD00C448F1 /* AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23DB0A5822B296BD00C448F1 /* AppIntentVocabulary.plist */; };
 		23E45BE2224BA3A9002D01AC /* NotificationsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E45BE1224BA3A9002D01AC /* NotificationsGateway.swift */; };
 		23E82155236DB57A004E6F15 /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E82154236DB57A004E6F15 /* WhatsNewView.swift */; };
 		61B305ACEAA2B4F72109821D /* Pods_neon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BA23B93EB57D0A9C87A3846 /* Pods_neon.framework */; };
 		7A629DAB238C059300C186B1 /* notification.aif in Resources */ = {isa = PBXBuildFile; fileRef = 23E7851322AA753100A9650F /* notification.aif */; };
-		7A629DB5238C0C0C00C186B1 /* add_block.aif in Resources */ = {isa = PBXBuildFile; fileRef = 7A629DB4238C0C0C00C186B1 /* add_block.aif */; };
 		7A735E49238CFEF400FE4D32 /* SubBlocksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E48238CFEF400FE4D32 /* SubBlocksView.swift */; };
 		7A735E4B238D16A300FE4D32 /* ToDoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E4A238D16A300FE4D32 /* ToDoCard.swift */; };
 		7A735E4D238D2ED400FE4D32 /* SubBlockCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E4C238D2ED400FE4D32 /* SubBlockCard.swift */; };
@@ -156,16 +154,12 @@
 		23C53D7E2369E02400BA4378 /* OtherSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSettingsView.swift; sourceTree = "<group>"; };
 		23C53D802369E62800BA4378 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		23C6F8802372DCB200E53286 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
-		23DB0A5722B296BD00C448F1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
-		23DB0A5922B296C200C448F1 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = es; path = es.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
-		23DB0A5A22B296C400C448F1 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = fr; path = fr.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
 		23E45BE1224BA3A9002D01AC /* NotificationsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsGateway.swift; sourceTree = "<group>"; };
 		23E7851322AA753100A9650F /* notification.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = notification.aif; sourceTree = "<group>"; };
 		23E82154236DB57A004E6F15 /* WhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewView.swift; sourceTree = "<group>"; };
 		3090C3879864096A7AB572CC /* Pods-neon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neon.release.xcconfig"; path = "Pods/Target Support Files/Pods-neon/Pods-neon.release.xcconfig"; sourceTree = "<group>"; };
 		390CCC3E80133F37FB4A2306 /* Pods-neonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neonTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-neonTests/Pods-neonTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6B9A0107CCBF37CCAA2CAAD3 /* Pods-neonUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neonUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-neonUITests/Pods-neonUITests.release.xcconfig"; sourceTree = "<group>"; };
-		7A629DB4238C0C0C00C186B1 /* add_block.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = add_block.aif; sourceTree = "<group>"; };
 		7A735E48238CFEF400FE4D32 /* SubBlocksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubBlocksView.swift; sourceTree = "<group>"; };
 		7A735E4A238D16A300FE4D32 /* ToDoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCard.swift; sourceTree = "<group>"; };
 		7A735E4C238D2ED400FE4D32 /* SubBlockCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubBlockCard.swift; sourceTree = "<group>"; };
@@ -339,10 +333,8 @@
 				2304FA3A235F39E4006DA688 /* LaunchScreen.storyboard */,
 				2338BECA220A7841004F288F /* Info.plist */,
 				23356ED42256676E00541A60 /* GoogleService-Info.plist */,
-				7A629DB4238C0C0C00C186B1 /* add_block.aif */,
 				23E7851322AA753100A9650F /* notification.aif */,
 				238EA767223EA0D900981E98 /* neon.entitlements */,
-				23DB0A5822B296BD00C448F1 /* AppIntentVocabulary.plist */,
 			);
 			path = neon;
 			sourceTree = "<group>";
@@ -525,10 +517,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23DB0A5622B296BD00C448F1 /* AppIntentVocabulary.plist in Resources */,
 				7A629DAB238C059300C186B1 /* notification.aif in Resources */,
 				2338BEC6220A7841004F288F /* Assets.xcassets in Resources */,
-				7A629DB5238C0C0C00C186B1 /* add_block.aif in Resources */,
 				2304FA3B235F39E4006DA688 /* LaunchScreen.storyboard in Resources */,
 				23356ED52256676E00541A60 /* GoogleService-Info.plist in Resources */,
 			);
@@ -713,19 +703,6 @@
 			targetProxy = 2338BEDB220A7841004F288F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		23DB0A5822B296BD00C448F1 /* AppIntentVocabulary.plist */ = {
-			isa = PBXVariantGroup;
-			children = (
-				23DB0A5722B296BD00C448F1 /* en */,
-				23DB0A5922B296C200C448F1 /* es */,
-				23DB0A5A22B296C400C448F1 /* fr */,
-			);
-			name = AppIntentVocabulary.plist;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		2338BEE1220A7841004F288F /* Debug */ = {

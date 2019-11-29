@@ -34,6 +34,7 @@ struct NewBlockView: View {
                     if suggestionsStore.list.count > 0 {
                         ForEach(suggestionsStore.list, id: \.self) { suggestion in
                             SuggestionCard(suggestion: suggestion, didAddBlock: { title in
+                                self.title = suggestion.title
                                 self.addBlock(isSuggestion: true)
                             })
                         }
