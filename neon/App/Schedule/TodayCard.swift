@@ -23,9 +23,11 @@ struct TodayCard: View {
                         ZStack {
                             CardIcon(iconName: currentBlock.iconName)
                                 .contextMenu { TodayCardContextMenu(currentBlock: currentBlock) }
+                            /*
                             NavigationLink(destination: SubBlocksView(currentHourBlock: currentBlock)) {
                                 EmptyView()
                             }.frame(width: 0)
+                            */
                         }
                     } else {
                         CardIcon(iconName: "calendar_item")

@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import StoreKit
 
 // MARK: - New Block View
 
@@ -74,6 +75,14 @@ struct NewBlockView: View {
             
             isPresented = false
             title = ""
+            
+            handleReviewRequest()
+        }
+    }
+    
+    func handleReviewRequest() {
+        if DataGateway.shared.getTotalBlockCount() == 10 {
+            SKStoreReviewController.requestReview()
         }
     }
 }
@@ -219,7 +228,7 @@ struct NewTextField: View {
         ZStack() {
             Rectangle()
                 .frame(height: 44)
-                .foregroundColor(Color("secondary"))
+                .foregroundColor(Color("primaryLight"))
                 .cornerRadius(8)
             TextField("Enter the title here...", text: $title) {
                 self.didReturn(self.title)

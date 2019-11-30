@@ -219,6 +219,25 @@ extension DataGateway {
         return userVersion < currentVersion
     }
     
+    func getTotalBlockCount() -> Int {
+        guard let totalAgendaCount = UserDefaults.standard.object(forKey: "totalBlockCount") as? Int else {
+            return 0
+        }
+        return totalAgendaCount
+    }
+    
+    func incrementTotalBlockCount() {
+        let totalAgendaCount = UserDefaults.standard.object(forKey: "totalBlockCount") as? Int
+        
+        if totalAgendaCount == nil {
+            UserDefaults.standard.set(1, forKey: "totalBlockCount")
+        } else {
+            UserDefaults.standard.set(totalAgendaCount! + 1, forKey: "totalBlockCount")
+        }
+        
+        UserDefaults.standard.synchronize()
+    }
+    
     func loadEnabledCalendars() -> [String: Bool] {
         if let enabledCalendars = UserDefaults.standard.dictionary(forKey: "enabledCalendars") as? [String: Bool] {
             return enabledCalendars

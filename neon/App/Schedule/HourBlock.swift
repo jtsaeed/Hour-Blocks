@@ -189,9 +189,7 @@ class HourBlocksStore: ObservableObject {
     
     func setTodayBlock(for hour: Int, with title: String) {
         let block = HourBlock(day: Date(), hour: hour, title: title)
-        
-        todaysBlocks[hour] = block
-        DataGateway.shared.saveHourBlock(block: block)
+        setTodayBlock(block)
         
         if let domainKey = block.domain?.key {
             DataGateway.shared.saveSuggestion(for: domainKey, at: block.hour)
@@ -201,6 +199,7 @@ class HourBlocksStore: ObservableObject {
     func setTodayBlock(_ block: HourBlock) {
         todaysBlocks[block.hour] = block
         DataGateway.shared.saveHourBlock(block: block)
+        DataGateway.shared.incrementTotalBlockCount()
     }
     
     func removeTodayBlock(for hour: Int) {
@@ -213,6 +212,7 @@ class HourBlocksStore: ObservableObject {
         
         futureBlocks.append(block)
         DataGateway.shared.saveHourBlock(block: block)
+        DataGateway.shared.incrementTotalBlockCount()
         
         if let domainKey = block.domain?.key {
             DataGateway.shared.saveSuggestion(for: domainKey, at: block.hour)

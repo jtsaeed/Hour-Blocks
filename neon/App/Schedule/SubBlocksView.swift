@@ -15,7 +15,6 @@ struct SubBlocksView: View {
     let currentHourBlock: HourBlock
     
     var body: some View {
-//        NavigationView {
             List {
                 Section(header: SubBlocksHeader(addButtonDisabled: store.isSubBlocksEmpty(for: currentHourBlock.hour), currentHourBlock: currentHourBlock)) {
                     if store.isSubBlocksEmpty(for: currentHourBlock.hour) {
@@ -26,9 +25,6 @@ struct SubBlocksView: View {
                         }
                     }
                 }
-            }
-//            .navigationBarTitle("Test")
-//            .navigationBarHidden(true)
-//        }.accentColor(Color("primary"))
+        }.navigationBarHidden(true)
     }
 }
