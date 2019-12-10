@@ -47,7 +47,7 @@ struct ToDoContextMenu: View {
                 AddToBlockSheet(isPresented: self.$isAddToBlockPresented, title: self.currentToDoItem.title)
                     .environmentObject(self.blocksStore)
             })
-            
+            /*
             Button(action: {
                 self.edit()
             }) {
@@ -55,8 +55,10 @@ struct ToDoContextMenu: View {
                 Image(systemName: "pencil")
             }
             .sheet(isPresented: self.$isRenamePresented, content: {
-                NewToDoItemView(isPresented: self.$isRenamePresented, title: self.$toDoItemsStore.currentTitle, priority: self.$toDoItemsStore.currentPriority).environmentObject(self.toDoItemsStore)
+                NewToDoItemView(isPresented: self.$isRenamePresented, title: self.$toDoItemsStore.currentTitle, priority: self.$toDoItemsStore.currentPriority)
+                    .environmentObject(self.toDoItemsStore)
             })
+            */
             Button(action: {
                 self.clear()
             }) {

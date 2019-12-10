@@ -25,7 +25,7 @@ struct NewBlockView: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                NewTextField(title: $title, didReturn: { title in
+                NewTextField(title: $title, color: isSubBlock ? Color("secondaryLight") : Color("primaryLight") ,didReturn: { title in
                     self.addBlock(isSuggestion: false)
                 })
                 Text("Suggestions")
@@ -55,7 +55,7 @@ struct NewBlockView: View {
             }, label: {
                 Text("Add")
             }))
-        }.accentColor(Color("primary"))
+        }.accentColor(Color(isSubBlock ? "secondary" : "primary"))
         .navigationViewStyle(StackNavigationViewStyle())
     }
     
@@ -66,7 +66,7 @@ struct NewBlockView: View {
             HapticsGateway.shared.triggerAddBlockHaptic()
             AnalyticsGateway.shared.logHourBlock(for: DomainsGateway.shared.determineDomain(for: title)?.key ?? "default",
                                                  at: currentBlock.formattedTime,
-                                                 isSuggestion: isSuggestion)
+                                                 isSuggestion: isSuggestion.description)
             if isSubBlock {
                 blocksStore.addSubBlock(for: currentBlock.hour, with: title)
             } else {
@@ -222,13 +222,15 @@ struct NewTextField: View {
     
     @Binding var title: String
     
+    var color: Color = Color("primaryLight")
+    
     var didReturn: (String) -> ()
 
     var body: some View {
         ZStack() {
             Rectangle()
                 .frame(height: 44)
-                .foregroundColor(Color("primaryLight"))
+                .foregroundColor(color)
                 .cornerRadius(8)
             TextField("Enter the title here...", text: $title) {
                 self.didReturn(self.title)

@@ -14,19 +14,16 @@ struct ScheduleView: View {
     @EnvironmentObject var suggestions: SuggestionsStore
     @EnvironmentObject var settings: SettingsStore
     
-    @State var isNewFutureBlockPresented = false
+    @State var currentHour = Calendar.current.component(.hour, from: Date())
     
-    init() {
-        CalendarGateway.shared.handlePermissions()
-    }
+    @State var isNewFutureBlockPresented = false
     
     var body: some View {
         NavigationView {
             List {
                 Section(header: TodayHeader(allDayEvent: $blocks.allDayEvent)) {
-                    ForEach(blocks.todaysBlocks.filter { $0.hour >= Calendar.current.component(.hour, from: Date()) }, id: \.self) { block in
-                        TodayCard(currentBlock: block)
-                            .environmentObject(self.blocks)
+                    ForEach(blocks.todaysBlocks.filter { $0.hour >=  currentHour }, id: \.self) { block in
+                        TodayCard(currentBlock: block).environmentObject(self.blocks)
                     }
                 }
                 Section(header: FutureHeader(addButtonDisabled: blocks.futureBlocks.isEmpty)) {
@@ -39,8 +36,17 @@ struct ScheduleView: View {
                     }
                 }
             }
-            .navigationBarTitle("Today")
+            .navigationBarTitle("Schedule")
             .navigationBarHidden(true)
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
+        .onAppear {
+            CalendarGateway.shared.handlePermissions {
+                self.blocks.reloadTodayBlocks()
+                self.blocks.reloadFutureBlocks()
+            }
+            
+            self.currentHour = Calendar.current.component(.hour, from: Date())
         }
     }
 }

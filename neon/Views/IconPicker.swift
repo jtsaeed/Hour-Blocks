@@ -22,7 +22,7 @@ struct IconPicker: View {
         "Sports": ["emoji_events", "fitness_center", "golf_course", "pool", "sports_baseball", "sports_basketball",
                     "sports_cricket", "sports_hockey", "sports_rugby", "sports_soccer", "sports_tennis", "sports_volleyball"],
         "Travel": ["commute", "directions_bus", "directions_car", "directions_run", "directions_subway", "flight", "hotel"],
-        "Work": ["alarm", "call", "chrome_reader", "code", "create", "email", "group", "education", "work"],
+        "Work": ["alarm", "call", "chrome_reader", "code", "create", "email", "group", "school", "work"],
         "Other": ["home", "how_to_vote", "local_florist", "local_laundry", "tv", "waves", "wb_sunny"]
     ]
     
@@ -31,7 +31,7 @@ struct IconPicker: View {
             IconChoiceList(isPresented: $isPresented, currentBlock: currentBlock, icons: icons)
             .navigationBarTitle("Choose an icon")
             .navigationBarItems(leading: Button(action: {
-                print("pressed")
+                self.isPresented = false
             }, label: {
                 Text("Cancel")
             }))

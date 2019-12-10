@@ -28,12 +28,39 @@ struct SubBlockCard: View {
 
 struct SubBlockCardContextMenu: View {
     
-    @EnvironmentObject var store: HourBlocksStore
+    @EnvironmentObject var blocks: HourBlocksStore
+    @EnvironmentObject var suggestions: SuggestionsStore
+    
+    @State var isRenamePresented = false
+    @State var isIconPickerPresented = false
     
     let currentBlock: HourBlock
     
     var body: some View {
         VStack {
+            /*
+            Button(action: {
+                self.rename()
+            }) {
+                Text("Rename")
+                Image(systemName: "pencil")
+            }
+            .sheet(isPresented: $isRenamePresented, content: {
+                NewBlockView(isPresented: self.$isRenamePresented, title: self.$blocks.currentTitle, currentBlock: self.currentBlock)
+                    .environmentObject(self.blocks)
+                    .environmentObject(self.suggestions)
+            })
+            Button(action: {
+                self.changeIcon()
+            }) {
+                Text("Change Icon")
+                Image(systemName: "pencil")
+            }
+            .sheet(isPresented: $isIconPickerPresented, content: {
+                IconPicker(isPresented: self.$isIconPickerPresented, currentBlock: self.currentBlock)
+                    .environmentObject(self.blocks)
+            })
+ */
             Button(action: {
                 self.clear()
             }) {
@@ -43,8 +70,18 @@ struct SubBlockCardContextMenu: View {
         }
     }
     
+    func rename() {
+        blocks.currentTitle = currentBlock.title!
+        suggestions.load(for: currentBlock.hour)
+        isRenamePresented.toggle()
+    }
+    
+    func changeIcon() {
+        isIconPickerPresented.toggle()
+    }
+    
     func clear() {
-        store.removeSubBlock(for: currentBlock)
+        blocks.removeSubBlock(for: currentBlock)
     }
 }
 
@@ -60,15 +97,29 @@ struct EmptySubBlockCard: View {
     let currentHourBlock: HourBlock
     
     var body: some View {
-        EmptyListCard()
+        ZStack {
+            Card()
+            HStack {
+                CardLabels(title: "Sub Block",
+                            subtitle: "Add a new",
+                            titleColor: Color("subtitle"))
+                Spacer()
+                Image("pro_add_button")
+                .sheet(isPresented: $isPresented, content: {
+                    if DataGateway.shared.isPro() {
+                        NewBlockView(isPresented: self.$isPresented, title: self.$title, currentBlock: self.currentHourBlock, isSubBlock: true)
+                        .environmentObject(self.blocksStore)
+                        .environmentObject(self.suggestionsStore)
+                    } else {
+                        ProPurchaseView(showPurchasePro: self.$isPresented)
+                    }
+                    
+                })
+            }.modifier(CardContentPadding())
             .onTapGesture {
                 UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                self.isPresented.toggle()
+                self.isPresented = true
             }
-            .sheet(isPresented: $isPresented, content: {
-                NewBlockView(isPresented: self.$isPresented, title: self.$title, currentBlock: self.currentHourBlock, isSubBlock: true)
-                    .environmentObject(self.blocksStore)
-                    .environmentObject(self.suggestionsStore)
-            })
+        }.modifier(CardPadding())
     }
 }

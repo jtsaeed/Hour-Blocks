@@ -35,6 +35,7 @@ struct ContentView: View {
                 }
                 .onAppear(perform: {
                     self.showWhatsNew = DataGateway.shared.isNewVersion()
+//                    self.showWhatsNew = true
                 })
                 .sheet(isPresented: $showWhatsNew, content: {
                     WhatsNewView(showWhatsNew: self.$showWhatsNew)

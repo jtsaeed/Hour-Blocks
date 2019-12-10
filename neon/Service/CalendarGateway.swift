@@ -13,7 +13,7 @@ class CalendarGateway {
     
     static let shared = CalendarGateway()
     
-    let eventStore = EKEventStore()
+    var eventStore = EKEventStore()
 	
 	var allDayEvent: ImportedCalendarEvent?
     
@@ -22,11 +22,14 @@ class CalendarGateway {
         return status == EKAuthorizationStatus.authorized
     }
     
-    func handlePermissions() {
+    func handlePermissions(completion: @escaping () -> ()) {
         let status = EKEventStore.authorizationStatus(for: EKEntityType.event)
         
         if status == EKAuthorizationStatus.notDetermined {
-            eventStore.requestAccess(to: .event) { (granted, error) in }
+            eventStore.requestAccess(to: .event) { granted, error in
+                self.eventStore = EKEventStore()
+                completion()
+            }
         }
     }
     

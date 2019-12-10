@@ -47,12 +47,15 @@
 		23E45BE2224BA3A9002D01AC /* NotificationsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E45BE1224BA3A9002D01AC /* NotificationsGateway.swift */; };
 		23E82155236DB57A004E6F15 /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E82154236DB57A004E6F15 /* WhatsNewView.swift */; };
 		61B305ACEAA2B4F72109821D /* Pods_neon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BA23B93EB57D0A9C87A3846 /* Pods_neon.framework */; };
+		7A0CEDDA239C05CA00CB32BF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0CEDD9239C05CA00CB32BF /* StoreKit.framework */; };
+		7A4E738423A01819008036ED /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4E738323A01819008036ED /* CloudKit.framework */; };
 		7A629DAB238C059300C186B1 /* notification.aif in Resources */ = {isa = PBXBuildFile; fileRef = 23E7851322AA753100A9650F /* notification.aif */; };
 		7A735E49238CFEF400FE4D32 /* SubBlocksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E48238CFEF400FE4D32 /* SubBlocksView.swift */; };
 		7A735E4B238D16A300FE4D32 /* ToDoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E4A238D16A300FE4D32 /* ToDoCard.swift */; };
 		7A735E4D238D2ED400FE4D32 /* SubBlockCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E4C238D2ED400FE4D32 /* SubBlockCard.swift */; };
 		7A735E4F238D591C00FE4D32 /* IconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E4E238D591C00FE4D32 /* IconPicker.swift */; };
 		7A735E51238D6E5A00FE4D32 /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E50238D6E5A00FE4D32 /* Array+Ext.swift */; };
+		7AEAEE9F239AC723007DE056 /* ProPurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEAEE9E239AC723007DE056 /* ProPurchaseView.swift */; };
 		B658B761255B945710FC2F42 /* Pods_neonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9076E2F3ADB2E623D12BBF3D /* Pods_neonTests.framework */; };
 		B912B77E89CBF0E08ECEB8A2 /* Pods_neonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F07358A92310DC9C6BA03B89 /* Pods_neonUITests.framework */; };
 /* End PBXBuildFile section */
@@ -160,11 +163,14 @@
 		3090C3879864096A7AB572CC /* Pods-neon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neon.release.xcconfig"; path = "Pods/Target Support Files/Pods-neon/Pods-neon.release.xcconfig"; sourceTree = "<group>"; };
 		390CCC3E80133F37FB4A2306 /* Pods-neonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neonTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-neonTests/Pods-neonTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6B9A0107CCBF37CCAA2CAAD3 /* Pods-neonUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neonUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-neonUITests/Pods-neonUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7A0CEDD9239C05CA00CB32BF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		7A4E738323A01819008036ED /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		7A735E48238CFEF400FE4D32 /* SubBlocksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubBlocksView.swift; sourceTree = "<group>"; };
 		7A735E4A238D16A300FE4D32 /* ToDoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCard.swift; sourceTree = "<group>"; };
 		7A735E4C238D2ED400FE4D32 /* SubBlockCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubBlockCard.swift; sourceTree = "<group>"; };
 		7A735E4E238D591C00FE4D32 /* IconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPicker.swift; sourceTree = "<group>"; };
 		7A735E50238D6E5A00FE4D32 /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
+		7AEAEE9E239AC723007DE056 /* ProPurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProPurchaseView.swift; sourceTree = "<group>"; };
 		8BA23B93EB57D0A9C87A3846 /* Pods_neon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_neon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9076E2F3ADB2E623D12BBF3D /* Pods_neonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_neonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3593EBEBDFB2F7E14F71C3D /* Pods-neon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-neon/Pods-neon.debug.xcconfig"; sourceTree = "<group>"; };
@@ -178,6 +184,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A4E738423A01819008036ED /* CloudKit.framework in Frameworks */,
+				7A0CEDDA239C05CA00CB32BF /* StoreKit.framework in Frameworks */,
 				61B305ACEAA2B4F72109821D /* Pods_neon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -209,7 +217,6 @@
 				2304FA19235F2A45006DA688 /* Habits */,
 				2304FA18235F2A3E006DA688 /* Schedule */,
 				2304FA16235F2A2A006DA688 /* ContentView.swift */,
-				23E82154236DB57A004E6F15 /* WhatsNewView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -268,6 +275,8 @@
 				2304FA2C235F301A006DA688 /* AddToBlockSheet.swift */,
 				2336981E23818D52006ACD1E /* ActionButton.swift */,
 				7A735E4E238D591C00FE4D32 /* IconPicker.swift */,
+				23E82154236DB57A004E6F15 /* WhatsNewView.swift */,
+				7AEAEE9E239AC723007DE056 /* ProPurchaseView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -373,6 +382,8 @@
 		CBE1FB35023C3D4B2AC08158 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7A4E738323A01819008036ED /* CloudKit.framework */,
+				7A0CEDD9239C05CA00CB32BF /* StoreKit.framework */,
 				8BA23B93EB57D0A9C87A3846 /* Pods_neon.framework */,
 				9076E2F3ADB2E623D12BBF3D /* Pods_neonTests.framework */,
 				F07358A92310DC9C6BA03B89 /* Pods_neonUITests.framework */,
@@ -403,6 +414,8 @@
 			dependencies = (
 			);
 			name = neon;
+			packageProductDependencies = (
+			);
 			productName = neon;
 			productReference = 2338BEB8220A7840004F288F /* neon.app */;
 			productType = "com.apple.product-type.application";
@@ -451,7 +464,7 @@
 		2338BEB0220A7840004F288F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1020;
+				LastSwiftUpdateCheck = 1120;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "James Saeed";
 				TargetAttributes = {
@@ -501,6 +514,8 @@
 				fr,
 			);
 			mainGroup = 2338BEAF220A7840004F288F;
+			packageReferences = (
+			);
 			productRefGroup = 2338BEB9220A7840004F288F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -662,6 +677,7 @@
 				2373C1FF237036B500237763 /* SuggestionsStore.swift in Sources */,
 				2304FA33235F305F006DA688 /* TodayCard.swift in Sources */,
 				23B63CE1222491050026B9C2 /* CalendarGateway.swift in Sources */,
+				7AEAEE9F239AC723007DE056 /* ProPurchaseView.swift in Sources */,
 				23C53D812369E62800BA4378 /* String+Ext.swift in Sources */,
 				7A735E4D238D2ED400FE4D32 /* SubBlockCard.swift in Sources */,
 				23036F4E237B2D9000563206 /* PrivacyPolicyView.swift in Sources */,
@@ -832,7 +848,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -840,7 +856,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -859,7 +875,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -867,7 +883,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

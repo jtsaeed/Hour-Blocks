@@ -205,6 +205,7 @@ class HourBlocksStore: ObservableObject {
     func removeTodayBlock(for hour: Int) {
         DataGateway.shared.deleteHourBlock(block: todaysBlocks[hour])
         todaysBlocks[hour] = HourBlock(day: Date(), hour: hour, title: nil)
+        subBlocks[hour]?.removeAll()
     }
     
     func addFutureBlock(for date: Date, _ hour: Int, with title: String) {

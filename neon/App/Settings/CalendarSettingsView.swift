@@ -21,7 +21,7 @@ struct CalendarSettingsView: View {
             List {
                 if CalendarGateway.shared.hasPermission() {
                     ForEach(CalendarGateway.shared.getAllCalendars().sorted(by: { $0.title < $1.title }), id: \.self) { calendar in
-                        CalendarCard(isEnabled: self.settings.enabledCalendars[calendar.calendarIdentifier]!, name: calendar.title, didToggle: { status in
+                        CalendarCard(isEnabled: self.settings.enabledCalendars[calendar.calendarIdentifier] ?? true, name: calendar.title, didToggle: { status in
                             self.settings.toggleCalendar(for: calendar.calendarIdentifier, to: status)
                         })
                     }
@@ -65,17 +65,20 @@ struct CalendarCard: View {
     var didToggle: (Bool) -> ()
     
     var body: some View {
-        ZStack {
-            SoftCard(cornerRadius: 20)
-            HStack {
-                Toggle(isOn: $isEnabled) {
-                    Text(name)
-                    .lineLimit(1)
-                    .font(.system(size: 22, weight: .semibold, design: .rounded))
-                }.onTapGesture {
-                    self.didToggle(!self.isEnabled)
-                }
-            }.padding(EdgeInsets(top: 18, leading: 22, bottom: 18, trailing: 24))
-        }.padding(EdgeInsets(top: 6, leading: 8, bottom: 6, trailing: 8))
+        VStack(alignment: .center) {
+            Toggle(isOn: $isEnabled) {
+                Text(name)
+                .lineLimit(1)
+                .font(.system(size: 20, weight: .semibold, design: .rounded))
+            }.onTapGesture {
+                self.didToggle(!self.isEnabled)
+            }
+            
+            Rectangle()
+                .frame(height: 2)
+                .foregroundColor(Color("title"))
+                .opacity(0.05)
+                .padding(.vertical, 4)
+        }.padding(.horizontal, 16)
     }
 }

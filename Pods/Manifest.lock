@@ -62,9 +62,11 @@ PODS:
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
+  - SwiftyStoreKit (0.15.0)
 
 DEPENDENCIES:
   - Firebase/Core
+  - SwiftyStoreKit
 
 SPEC REPOS:
   trunk:
@@ -79,6 +81,7 @@ SPEC REPOS:
     - GoogleDataTransportCCTSupport
     - GoogleUtilities
     - nanopb
+    - SwiftyStoreKit
 
 SPEC CHECKSUMS:
   Firebase: da031bc7012374e3bed17a6731b89327b29863b9
@@ -92,7 +95,8 @@ SPEC CHECKSUMS:
   GoogleDataTransportCCTSupport: f6ab1962e9dc05ab1fb938b795e5b310209edeec
   GoogleUtilities: f895fde57977df4e0233edda0dbeac490e3703b6
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  SwiftyStoreKit: 033d06b6f87955405d3f844a18a7687c2438592a
 
-PODFILE CHECKSUM: a3b36398c37052860373516b4c746524659dde0a
+PODFILE CHECKSUM: 31de1c624431e5122fd4cab70a61633874dfd647
 
 COCOAPODS: 1.8.4

@@ -23,11 +23,11 @@ struct TodayCard: View {
                         ZStack {
                             CardIcon(iconName: currentBlock.iconName)
                                 .contextMenu { TodayCardContextMenu(currentBlock: currentBlock) }
-                            /*
+                            
                             NavigationLink(destination: SubBlocksView(currentHourBlock: currentBlock)) {
                                 EmptyView()
                             }.frame(width: 0)
-                            */
+                            
                         }
                     } else {
                         CardIcon(iconName: "calendar_item")
@@ -161,6 +161,8 @@ struct TodayCardAddButton: View {
 
 struct TodayCardLabels: View {
     
+    @EnvironmentObject var store: HourBlocksStore
+    
     let currentBlock: HourBlock
     
     var body: some View {
@@ -170,6 +172,12 @@ struct TodayCardLabels: View {
                     Circle()
                         .frame(width: 8, height: 8)
                         .foregroundColor(Color("primary"))
+                        .opacity(0.5)
+                }
+                if (store.subBlocks[currentBlock.hour]?.count ?? 0) > 0 {
+                    Circle()
+                        .frame(width: 8, height: 8)
+                        .foregroundColor(Color("secondary"))
                         .opacity(0.5)
                 }
                 Text(currentBlock.formattedTime.uppercased())

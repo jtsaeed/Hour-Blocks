@@ -14,16 +14,20 @@ struct WhatsNewView: View {
     
     var body: some View {
         VStack {
-            WhatsNewHeader(title: "What's new in Hour Blocks 3.0")
-                .padding(.bottom, 40)
+            WhatsNewHeader(title: "What's new in Hour Blocks 3.2")
+                .padding(.bottom, 24)
             
             VStack(alignment: .leading, spacing: 16) {
-                WhatsNewItem(title: "A fresh coat of paint  🎨", content: "Brand new icons, a new font and redesigned interfaces- everything’s just brand new! And it's all synced across iCloud!")
-                WhatsNewItem(title: "Look into the future  👀", content: "Take a sneak peak at blocks up to a month into the future")
-                WhatsNewItem(title: "Instant suggestions  ⚡️", content: "Get suggested blocks based on what you've previously added- they're lightning fast!")
+                WhatsNewItem(title: "Sub Blocks 💪",
+                             content: "With Hour Blocks Pro, you can add as many Sub Blocks as you want to an Hour Block for maximum productivity!")
+                WhatsNewItem(title: "iCloud Sync ☁️",
+                             content: "Now all of your Hour Blocks data automatically syncs across all of your devices through iCloud")
+                WhatsNewItem(title: "Minor Changes ✨",
+                             content: "Touched up some stuff here and there & fixed some bugs")
             }
             
             Spacer()
+            
             ActionButton(title: "Let's go!")
                 .onTapGesture {
                     UIImpactFeedbackGenerator(style: .light).impactOccurred()

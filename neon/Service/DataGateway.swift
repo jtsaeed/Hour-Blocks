@@ -19,7 +19,7 @@ class DataGateway {
         self.managedObjectContext = managedObjectContext
     }
     
-    let currentVersion = 3.0
+    let currentVersion = 3.2
 }
 
 // MARK: - Blocks
@@ -217,6 +217,25 @@ extension DataGateway {
         UserDefaults.standard.synchronize()
         
         return userVersion < currentVersion
+    }
+    
+    func isPro() -> Bool {
+        guard let isPro = UserDefaults.standard.object(forKey: "isPro") as? Bool else {
+            UserDefaults.standard.set(false, forKey: "isPro")
+            return false
+        }
+        
+        return isPro
+    }
+    
+    func disablePro() {
+        UserDefaults.standard.set(false, forKey: "isPro")
+        UserDefaults.standard.synchronize()
+    }
+    
+    func enablePro() {
+        UserDefaults.standard.set(true, forKey: "isPro")
+        UserDefaults.standard.synchronize()
     }
     
     func getTotalBlockCount() -> Int {

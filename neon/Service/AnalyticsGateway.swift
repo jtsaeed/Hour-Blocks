@@ -13,7 +13,7 @@ class AnalyticsGateway {
 	
 	static let shared = AnalyticsGateway()
 	
-    func logHourBlock(for domainKey: String, at time: String, isSuggestion: Bool) {
+    func logHourBlock(for domainKey: String, at time: String, isSuggestion: String) {
         Analytics.logEvent("hourBlock3", parameters: ["domain": domainKey,
                                                       "time": time,
                                                       "suggestion": isSuggestion])
