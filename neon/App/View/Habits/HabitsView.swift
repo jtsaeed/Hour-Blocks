@@ -22,7 +22,11 @@ struct HabitsView: View {
                 }
                 EmptyHabitCard(viewModel: viewModel)
             }
-        }
+        }.onAppear(perform: refreshHabitBlocks)
+    }
+    
+    func refreshHabitBlocks() {
+        viewModel.refreshHabitBlocks()
     }
 }
 

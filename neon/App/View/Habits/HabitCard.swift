@@ -38,6 +38,7 @@ struct HabitCardContextMenu: View {
     let currentHabit: HabitBlock
     
     @State var isAddToBlockPresented = false
+    @State var isDeleteWarningPresented = false
     
     var body: some View {
         VStack {
@@ -56,8 +57,14 @@ struct HabitCardContextMenu: View {
                 })
             }
             Button(action: clear) {
-                Text("Clear")
+                Text("Delete")
                 Image(systemName: "trash")
+            }
+            .alert(isPresented: $isDeleteWarningPresented) {
+                Alert(title: Text("Delete \(currentHabit.title.lowercased())"),
+                      message: Text("Are you sure you'd like to delete this habit"),
+                      primaryButton: .destructive(Text("Yes"), action: confirmClear),
+                      secondaryButton: .cancel(Text("No, wait!")))
             }
         }
     }
@@ -73,6 +80,11 @@ struct HabitCardContextMenu: View {
     }
     
     func clear() {
+        isDeleteWarningPresented = true
+    }
+    
+    func confirmClear() {
+        HapticsGateway.shared.triggerClearBlockHaptic()
         viewModel.removeHabitBlock(habitBlock: currentHabit)
     }
 }

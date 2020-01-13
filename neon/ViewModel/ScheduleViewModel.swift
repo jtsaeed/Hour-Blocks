@@ -45,7 +45,7 @@ class ScheduleViewModel: ObservableObject {
             }
             
             for entity in DataGateway.shared.getHourBlockEntities() {
-                let block = HourBlock(fromEntity: entity)
+                guard let block = HourBlock(fromEntity: entity) else { continue }
                 
                 if Calendar.current.isDateInToday(block.day) {
                     if block.isSubBlock {
@@ -82,7 +82,7 @@ class ScheduleViewModel: ObservableObject {
                 return block
             }
             
-            let storedBlocks: [HourBlock] = DataGateway.shared.getHourBlockEntities().map { entity in
+            let storedBlocks: [HourBlock] = DataGateway.shared.getHourBlockEntities().compactMap { entity in
                 return HourBlock(fromEntity: entity)
             }.filter { block in !Calendar.current.isDateInToday(block.day) }
             

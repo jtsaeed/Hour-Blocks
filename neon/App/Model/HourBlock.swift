@@ -32,11 +32,12 @@ struct HourBlock: Hashable {
         self.domain = DomainsGateway.shared.determineDomain(for: title)
     }
     
-    init(fromEntity entity: HourBlockEntity) {
-        self.identifier = entity.identifier!
+    init?(fromEntity entity: HourBlockEntity) {
+        guard let entityIdentifier = entity.identifier else { return nil }
+        
+        self.identifier = entityIdentifier
         self.day = entity.day!
         self.hour = Int(entity.hour)
-        
         self.title = entity.title
         self.domain = DomainsGateway.shared.determineDomain(for: title)
         self.iconOverride = entity.iconOverride

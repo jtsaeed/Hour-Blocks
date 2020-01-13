@@ -20,11 +20,13 @@ struct ProPurchaseView: View {
     var body: some View {
         VStack {
             WhatsNewHeader(title: "Hour Blocks Pro")
-                .padding(.bottom, 32)
-            
+                .padding(.vertical, 40)
+                
             VStack(alignment: .leading, spacing: 16) {
                 WhatsNewItem(title: "Sub Blocks 💪",
                              content: "Add as many Sub Blocks as you want to an Hour Block for maximum productivity")
+                WhatsNewItem(title: "Unlimited Habits 🔥",
+                             content: "Break the 3 habits limit and keep those streaks going for an unlimited amount of habits")
                 WhatsNewItem(title: "Support The App ❤️",
                              content: "Help guarantee future updates with features that wouldn't otherwise be possible, especially for Pro users!")
             }
@@ -46,7 +48,8 @@ struct ProPurchaseView: View {
             } else {
                 ActivityIndicator(isAnimating: $isLoading)
             }
-        }.padding(40)
+        }.padding(.horizontal, 40)
+        .padding(.bottom, 16)
         .alert(isPresented: $showErrorAlert) {
             Alert(title: Text("Error"), message: Text(errorAlertText), dismissButton: .default(Text("OK")))
         }

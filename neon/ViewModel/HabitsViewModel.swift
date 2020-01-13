@@ -12,10 +12,12 @@ class HabitsViewModel: ObservableObject {
     
     @Published var habits = [HabitBlock]()
     
-    init() {
-        for entity in DataGateway.shared.getHabitBlockEntities() {
-            habits.append(HabitBlock(fromEntity: entity))
+    func refreshHabitBlocks() {
+        let loadedHabitBlocks = DataGateway.shared.getHabitBlockEntities().compactMap { habitBlockEntity in
+            return HabitBlock(fromEntity: habitBlockEntity)
         }
+        
+        DispatchQueue.main.async { self.habits = loadedHabitBlocks }
     }
     
     func addHabitBlock(with title: String) {
@@ -31,8 +33,6 @@ class HabitsViewModel: ObservableObject {
     }
     
     func completeHabitBlock(habitBlock: HabitBlock) {
-        print("The VM function was called")
-        
         removeHabitBlock(habitBlock: habitBlock)
         
         var completedHabitBlock = habitBlock

@@ -122,6 +122,7 @@ struct TodayCardContextMenu: View {
     }
     
     func clear() {
+        HapticsGateway.shared.triggerClearBlockHaptic()
         viewModel.removeTodayBlock(for: currentBlock.hour)
     }
 }

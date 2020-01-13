@@ -44,6 +44,11 @@ struct ScheduleView: View {
     }
     
     func updateCurrentHour() {
+        CalendarGateway.shared.handlePermissions {
+            self.viewModel.reloadTodayBlocks()
+            self.viewModel.reloadFutureBlocks()
+        }
+        
         currentHour = Calendar.current.component(.hour, from: Date())
     }
 }

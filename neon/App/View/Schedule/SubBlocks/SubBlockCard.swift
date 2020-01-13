@@ -61,10 +61,8 @@ struct SubBlockCardContextMenu: View {
                     .environmentObject(self.blocks)
             })
  */
-            Button(action: {
-                self.clear()
-            }) {
-                Text("Clear")
+            Button(action: clear) {
+                Text("Delete")
                 Image(systemName: "trash")
             }
         }
@@ -81,6 +79,7 @@ struct SubBlockCardContextMenu: View {
     }
     
     func clear() {
+        HapticsGateway.shared.triggerClearBlockHaptic()
         viewModel.removeSubBlock(for: currentBlock)
     }
 }

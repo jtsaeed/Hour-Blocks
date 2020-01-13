@@ -200,17 +200,26 @@ private struct AddToBlockAddButton: View {
     var didAddToBlock: () -> ()
     var didAddToSubBlock: () -> ()
     
+    @State var isPresented = false
+    
     var body: some View {
         Button(action: add, label: {
             Image(subBlock ? "pro_add_button" : "add_button")
         })
+        .sheet(isPresented: $isPresented) {
+            ProPurchaseView(showPurchasePro: self.$isPresented)
+        }
     }
     
     func add() {
         HapticsGateway.shared.triggerAddBlockHaptic()
         
         if subBlock {
-            self.didAddToSubBlock()
+            if DataGateway.shared.isPro() {
+                self.didAddToSubBlock()
+            } else {
+                isPresented = true
+            }
         } else {
             self.didAddToBlock()
         }

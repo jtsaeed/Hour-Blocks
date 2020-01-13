@@ -34,29 +34,21 @@ struct HabitBlock: Hashable {
         self.completedToday = false
     }
     
-    mutating func complete() {
-        streak = streak + 1
-        lastDay = Date()
-        completedToday = true
-    }
-    
-    mutating func refresh() {
-        let lastDayComponent = Calendar.current.component(.day, from: lastDay)
-        let currentDayComponent = Calendar.current.component(.day, from: Date())
+    init?(fromEntity entity: HabitBlockEntity) {
+        guard let entityIdentifier = entity.identifier else { return nil }
+        self.identifier = entityIdentifier
         
-        if (currentDayComponent - lastDayComponent) > 1 {
-            streak = 0
-            completedToday = false
-        }
-    }
-    
-    init(fromEntity entity: HabitBlockEntity) {
-        self.identifier = entity.identifier!
+        guard let entityTitle = entity.title else { return nil }
+        self.title = entityTitle
         
-        self.title = entity.title!
         self.streak = Int(entity.streak)
-        self.lastDay = entity.lastDay!
+        
+        guard let entityLastDay = entity.lastDay else { return nil }
+        self.lastDay = entityLastDay
+        
         self.completedToday = entity.completedToday
+        
+        refresh()
     }
     
     @discardableResult
@@ -69,5 +61,24 @@ struct HabitBlock: Hashable {
         entity.completedToday = completedToday
         
         return entity
+    }
+    
+    mutating func complete() {
+        streak = streak + 1
+        lastDay = Date()
+        completedToday = true
+    }
+    
+    mutating func refresh() {
+        let lastDayComponent = Calendar.current.component(.day, from: lastDay)
+        let currentDayComponent = Calendar.current.component(.day, from: Date())
+        
+        if (currentDayComponent - lastDayComponent) > 0 {
+            completedToday = false
+        }
+        
+        if (currentDayComponent - lastDayComponent) > 1 {
+            streak = 0
+        }
     }
 }

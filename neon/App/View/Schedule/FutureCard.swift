@@ -45,6 +45,7 @@ struct FutureCardContextMenu: View {
     }
     
     func clear() {
+        HapticsGateway.shared.triggerClearBlockHaptic()
         viewModel.removeFutureBlock(for: currentBlock)
     }
 }
