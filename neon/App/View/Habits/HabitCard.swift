@@ -46,7 +46,6 @@ struct HabitCardContextMenu: View {
                     Text("Complete")
                     Image(systemName: "checkmark.circle")
                 }
-            } else {
                 Button(action: addToBlock) {
                     Text("Add to Block")
                     Image(systemName: "plus")

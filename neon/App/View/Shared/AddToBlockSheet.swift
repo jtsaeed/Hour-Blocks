@@ -22,13 +22,13 @@ struct AddToBlockSheet: View {
                 ForEach(viewModel.todaysBlocks.filter { $0.hour >= Calendar.current.component(.hour, from: Date()) }, id: \.self) { block in
                     AddToBlockCard(currentBlock: block, didAddToBlock: {
                         self.addBlock(for: block.hour)
+                    }, didAddToSubBlock: {
+                        self.addSubBlock(for: block.hour)
                     })
                 }
             }
             .navigationBarTitle("Add to block")
-            .navigationBarItems(leading: Button(action: {
-                self.isPresented = false
-            }, label: {
+            .navigationBarItems(leading: Button(action: dismissSheet, label: {
                 Text("Cancel")
             }))
         }.accentColor(Color("primary"))
@@ -39,6 +39,17 @@ struct AddToBlockSheet: View {
         HapticsGateway.shared.triggerAddBlockHaptic()
         viewModel.setTodayBlock(for: hour, with: self.title)
         
+        dismissSheet()
+    }
+    
+    func addSubBlock(for hour: Int) {
+        HapticsGateway.shared.triggerAddBlockHaptic()
+        viewModel.addSubBlock(for: hour, with: self.title)
+        
+        dismissSheet()
+    }
+    
+    func dismissSheet() {
         isPresented = false
     }
 }
@@ -57,13 +68,13 @@ struct DuplicateBlockSheet: View {
                 ForEach(viewModel.todaysBlocks.filter { $0.hour >= Calendar.current.component(.hour, from: Date()) }, id: \.self) { block in
                     AddToBlockCard(currentBlock: block, didAddToBlock: {
                         self.addBlock(for: block.hour)
+                    }, didAddToSubBlock: {
+                        self.addSubBlock(for: block.hour)
                     })
                 }
             }
             .navigationBarTitle("Add to block")
-            .navigationBarItems(trailing: Button(action: {
-                self.isPresented = false
-            }, label: {
+            .navigationBarItems(trailing: Button(action: dismissSheet, label: {
                 Text("Done")
             }))
         }.accentColor(Color("primary"))
@@ -72,6 +83,15 @@ struct DuplicateBlockSheet: View {
     func addBlock(for hour: Int) {
         HapticsGateway.shared.triggerAddBlockHaptic()
         viewModel.setTodayBlock(for: hour, with: self.title)
+    }
+    
+    func addSubBlock(for hour: Int) {
+        HapticsGateway.shared.triggerAddBlockHaptic()
+        viewModel.addSubBlock(for: hour, with: self.title)
+    }
+    
+    func dismissSheet() {
+        self.isPresented = false
     }
 }
 
@@ -136,7 +156,7 @@ struct AddFutureBlockView: View {
             ForEach(fullDayBlocks(), id: \.self) { block in
                 AddToBlockCard(currentBlock: block, didAddToBlock: {
                     self.didAddBlock(block.hour)
-                })
+                }, didAddToSubBlock: {})
             }
         }.navigationBarTitle("Choose an hour")
     }
@@ -157,6 +177,7 @@ struct AddToBlockCard: View {
     let currentBlock: HourBlock
     
     var didAddToBlock: () -> ()
+    var didAddToSubBlock: () -> ()
     
     var body: some View {
         Card {
@@ -165,28 +186,33 @@ struct AddToBlockCard: View {
                            subtitle: self.currentBlock.formattedTime,
                            titleColor: self.currentBlock.title != nil ? Color("title") : Color("subtitle"))
                 Spacer()
-                if self.currentBlock.title != nil {
-                    CardIcon(iconName: self.currentBlock.domain?.iconName ?? "default")
-                } else {
-                    AddToBlockAddButton(didAddToBlock: { self.didAddToBlock() })
-                }
+                AddToBlockAddButton(subBlock: self.currentBlock.title != nil,
+                                    didAddToBlock: self.didAddToBlock,
+                                    didAddToSubBlock: self.didAddToSubBlock)
             }
         }
     }
 }
 
-struct AddToBlockAddButton: View {
+private struct AddToBlockAddButton: View {
     
+    let subBlock: Bool
     var didAddToBlock: () -> ()
+    var didAddToSubBlock: () -> ()
     
     var body: some View {
         Button(action: add, label: {
-            Image("add_button")
+            Image(subBlock ? "pro_add_button" : "add_button")
         })
     }
     
     func add() {
-        UIImpactFeedbackGenerator(style: .light).impactOccurred()
-        self.didAddToBlock()
+        HapticsGateway.shared.triggerAddBlockHaptic()
+        
+        if subBlock {
+            self.didAddToSubBlock()
+        } else {
+            self.didAddToBlock()
+        }
     }
 }
