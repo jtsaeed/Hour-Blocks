@@ -13,21 +13,18 @@ struct ToDoCard: View {
     let currentToDoItem: ToDoItem
     
     var body: some View {
-        ZStack {
-            Card()
-            CardLabels(title: currentToDoItem.title,
-                       subtitle: currentToDoItem.priority.rawValue,
-                       subtitleColor: Color(currentToDoItem.priority.rawValue),
+        Card {
+            CardLabels(title: self.currentToDoItem.title,
+                       subtitle: self.currentToDoItem.priority.rawValue,
+                       subtitleColor: Color(self.currentToDoItem.priority.rawValue),
                        alignment: .center)
-            .modifier(CardContentPadding())
-        }.modifier(CardPadding())
-        .contextMenu { ToDoContextMenu(currentToDoItem: currentToDoItem) }
+        }.contextMenu { ToDoContextMenu(currentToDoItem: currentToDoItem) }
     }
 }
 
 struct ToDoContextMenu: View {
     
-    @EnvironmentObject var blocksStore: HourBlocksStore
+    @EnvironmentObject var blocksStore: ScheduleViewModel
     @EnvironmentObject var toDoItemsStore: ToDoItemsStore
     
     let currentToDoItem: ToDoItem

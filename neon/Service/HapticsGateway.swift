@@ -17,4 +17,8 @@ class HapticsGateway {
     func triggerAddBlockHaptic() {
         UIImpactFeedbackGenerator(style: .heavy).impactOccurred(intensity: 0.75)
     }
+    
+    func triggerCompletionHaptic() {
+        UINotificationFeedbackGenerator().notificationOccurred(.success)
+    }
 }

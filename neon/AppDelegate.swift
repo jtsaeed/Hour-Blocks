@@ -35,10 +35,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
         }
-        
+
+        #if os(iOS)
         SwiftyStoreKit.shouldAddStorePaymentHandler = { payment, product in
             return true
         }
+        #endif
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

@@ -28,7 +28,6 @@
 		231392A922666FC400DB0ABF /* DataGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231392A822666FC400DB0ABF /* DataGateway.swift */; };
 		232ED4E0228C93A4008FC4A0 /* AnalyticsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232ED4DF228C93A4008FC4A0 /* AnalyticsGateway.swift */; };
 		23356ED52256676E00541A60 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23356ED42256676E00541A60 /* GoogleService-Info.plist */; };
-		2336981B238187C2006ACD1E /* HabitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336981A238187C2006ACD1E /* HabitsView.swift */; };
 		2336981D23818A0B006ACD1E /* HabitBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336981C23818A0B006ACD1E /* HabitBlock.swift */; };
 		2336981F23818D52006ACD1E /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336981E23818D52006ACD1E /* ActionButton.swift */; };
 		2338BEBC220A7840004F288F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEBB220A7840004F288F /* AppDelegate.swift */; };
@@ -38,7 +37,7 @@
 		2338BEDF220A7841004F288F /* neonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEDE220A7841004F288F /* neonUITests.swift */; };
 		234C1A09220C8E9D00344316 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C1A08220C8E9D00344316 /* Date+Ext.swift */; };
 		234DF2FB237A113200EB248A /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234DF2FA237A113200EB248A /* Int+Ext.swift */; };
-		2373C1FF237036B500237763 /* SuggestionsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2373C1FE237036B500237763 /* SuggestionsStore.swift */; };
+		2373C1FF237036B500237763 /* SuggestionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2373C1FE237036B500237763 /* SuggestionsViewModel.swift */; };
 		23B63CE1222491050026B9C2 /* CalendarGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B63CE0222491050026B9C2 /* CalendarGateway.swift */; };
 		23C53D7D2369E01900BA4378 /* CalendarSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C53D7C2369E01900BA4378 /* CalendarSettingsView.swift */; };
 		23C53D7F2369E02400BA4378 /* OtherSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C53D7E2369E02400BA4378 /* OtherSettingsView.swift */; };
@@ -48,14 +47,20 @@
 		23E82155236DB57A004E6F15 /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E82154236DB57A004E6F15 /* WhatsNewView.swift */; };
 		61B305ACEAA2B4F72109821D /* Pods_neon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BA23B93EB57D0A9C87A3846 /* Pods_neon.framework */; };
 		7A0CEDDA239C05CA00CB32BF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0CEDD9239C05CA00CB32BF /* StoreKit.framework */; };
+		7A134DE123CB530D00127C71 /* HabitCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A134DE023CB530D00127C71 /* HabitCard.swift */; };
 		7A4E738423A01819008036ED /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4E738323A01819008036ED /* CloudKit.framework */; };
 		7A629DAB238C059300C186B1 /* notification.aif in Resources */ = {isa = PBXBuildFile; fileRef = 23E7851322AA753100A9650F /* notification.aif */; };
+		7A72991023CBF67E008ED7AD /* NeonTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A72990F23CBF67E008ED7AD /* NeonTextField.swift */; };
 		7A735E49238CFEF400FE4D32 /* SubBlocksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E48238CFEF400FE4D32 /* SubBlocksView.swift */; };
 		7A735E4B238D16A300FE4D32 /* ToDoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E4A238D16A300FE4D32 /* ToDoCard.swift */; };
 		7A735E4D238D2ED400FE4D32 /* SubBlockCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E4C238D2ED400FE4D32 /* SubBlockCard.swift */; };
 		7A735E4F238D591C00FE4D32 /* IconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E4E238D591C00FE4D32 /* IconPicker.swift */; };
 		7A735E51238D6E5A00FE4D32 /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E50238D6E5A00FE4D32 /* Array+Ext.swift */; };
+		7A7EB49023CAACBA004C9E82 /* CardLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB48F23CAACBA004C9E82 /* CardLabels.swift */; };
+		7A9C38B923CAA3D00088FEA9 /* HabitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C38B823CAA3D00088FEA9 /* HabitsViewModel.swift */; };
+		7A9C38BB23CAA4110088FEA9 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C38BA23CAA4110088FEA9 /* ScheduleViewModel.swift */; };
 		7AEAEE9F239AC723007DE056 /* ProPurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEAEE9E239AC723007DE056 /* ProPurchaseView.swift */; };
+		7AEF591B23CAB15F00FEEA36 /* HabitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEF591A23CAB15F00FEEA36 /* HabitsView.swift */; };
 		B658B761255B945710FC2F42 /* Pods_neonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9076E2F3ADB2E623D12BBF3D /* Pods_neonTests.framework */; };
 		B912B77E89CBF0E08ECEB8A2 /* Pods_neonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F07358A92310DC9C6BA03B89 /* Pods_neonUITests.framework */; };
 /* End PBXBuildFile section */
@@ -133,7 +138,6 @@
 		2317288D22917778007DBF8B /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
 		232ED4DF228C93A4008FC4A0 /* AnalyticsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsGateway.swift; sourceTree = "<group>"; };
 		23356ED42256676E00541A60 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		2336981A238187C2006ACD1E /* HabitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsView.swift; sourceTree = "<group>"; };
 		2336981C23818A0B006ACD1E /* HabitBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitBlock.swift; sourceTree = "<group>"; };
 		2336981E23818D52006ACD1E /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		2338BEB8220A7840004F288F /* neon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = neon.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,7 +153,7 @@
 		2338BEE0220A7841004F288F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		234C1A08220C8E9D00344316 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		234DF2FA237A113200EB248A /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
-		2373C1FE237036B500237763 /* SuggestionsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsStore.swift; sourceTree = "<group>"; };
+		2373C1FE237036B500237763 /* SuggestionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsViewModel.swift; sourceTree = "<group>"; };
 		238EA767223EA0D900981E98 /* neon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = neon.entitlements; sourceTree = "<group>"; };
 		2395A94D224AE1750007D6F2 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		23B63CE0222491050026B9C2 /* CalendarGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGateway.swift; sourceTree = "<group>"; };
@@ -164,13 +168,19 @@
 		390CCC3E80133F37FB4A2306 /* Pods-neonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neonTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-neonTests/Pods-neonTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6B9A0107CCBF37CCAA2CAAD3 /* Pods-neonUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neonUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-neonUITests/Pods-neonUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7A0CEDD9239C05CA00CB32BF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		7A134DE023CB530D00127C71 /* HabitCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCard.swift; sourceTree = "<group>"; };
 		7A4E738323A01819008036ED /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		7A72990F23CBF67E008ED7AD /* NeonTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeonTextField.swift; sourceTree = "<group>"; };
 		7A735E48238CFEF400FE4D32 /* SubBlocksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubBlocksView.swift; sourceTree = "<group>"; };
 		7A735E4A238D16A300FE4D32 /* ToDoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCard.swift; sourceTree = "<group>"; };
 		7A735E4C238D2ED400FE4D32 /* SubBlockCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubBlockCard.swift; sourceTree = "<group>"; };
 		7A735E4E238D591C00FE4D32 /* IconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPicker.swift; sourceTree = "<group>"; };
 		7A735E50238D6E5A00FE4D32 /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
+		7A7EB48F23CAACBA004C9E82 /* CardLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardLabels.swift; sourceTree = "<group>"; };
+		7A9C38B823CAA3D00088FEA9 /* HabitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewModel.swift; sourceTree = "<group>"; };
+		7A9C38BA23CAA4110088FEA9 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
 		7AEAEE9E239AC723007DE056 /* ProPurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProPurchaseView.swift; sourceTree = "<group>"; };
+		7AEF591A23CAB15F00FEEA36 /* HabitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsView.swift; sourceTree = "<group>"; };
 		8BA23B93EB57D0A9C87A3846 /* Pods_neon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_neon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9076E2F3ADB2E623D12BBF3D /* Pods_neonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_neonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3593EBEBDFB2F7E14F71C3D /* Pods-neon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-neon/Pods-neon.debug.xcconfig"; sourceTree = "<group>"; };
@@ -212,36 +222,9 @@
 		2304FA15235F2A1B006DA688 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				2304FA1B235F2A50006DA688 /* Settings */,
 				2304FA1A235F2A4A006DA688 /* To Do List */,
-				2304FA19235F2A45006DA688 /* Habits */,
-				2304FA18235F2A3E006DA688 /* Schedule */,
-				2304FA16235F2A2A006DA688 /* ContentView.swift */,
 			);
 			path = App;
-			sourceTree = "<group>";
-		};
-		2304FA18235F2A3E006DA688 /* Schedule */ = {
-			isa = PBXGroup;
-			children = (
-				2304FA1C235F2D3B006DA688 /* HourBlock.swift */,
-				2304FA20235F2F99006DA688 /* ScheduleView.swift */,
-				2304FA32235F305F006DA688 /* TodayCard.swift */,
-				2304FA34235F306B006DA688 /* FutureCard.swift */,
-				2373C1FE237036B500237763 /* SuggestionsStore.swift */,
-				7A735E48238CFEF400FE4D32 /* SubBlocksView.swift */,
-				7A735E4C238D2ED400FE4D32 /* SubBlockCard.swift */,
-			);
-			path = Schedule;
-			sourceTree = "<group>";
-		};
-		2304FA19235F2A45006DA688 /* Habits */ = {
-			isa = PBXGroup;
-			children = (
-				2336981A238187C2006ACD1E /* HabitsView.swift */,
-				2336981C23818A0B006ACD1E /* HabitBlock.swift */,
-			);
-			path = Habits;
 			sourceTree = "<group>";
 		};
 		2304FA1A235F2A4A006DA688 /* To Do List */ = {
@@ -252,33 +235,6 @@
 				7A735E4A238D16A300FE4D32 /* ToDoCard.swift */,
 			);
 			path = "To Do List";
-			sourceTree = "<group>";
-		};
-		2304FA1B235F2A50006DA688 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				2304FA38235F315F006DA688 /* SettingsView.swift */,
-				23C53D7C2369E01900BA4378 /* CalendarSettingsView.swift */,
-				23C53D7E2369E02400BA4378 /* OtherSettingsView.swift */,
-				23C6F8802372DCB200E53286 /* SettingsStore.swift */,
-				23036F4D237B2D9000563206 /* PrivacyPolicyView.swift */,
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
-		2304FA25235F2FE6006DA688 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				2304FA26235F2FF2006DA688 /* NewSheet.swift */,
-				2304FA28235F3000006DA688 /* Header.swift */,
-				2304FA2A235F300A006DA688 /* Card.swift */,
-				2304FA2C235F301A006DA688 /* AddToBlockSheet.swift */,
-				2336981E23818D52006ACD1E /* ActionButton.swift */,
-				7A735E4E238D591C00FE4D32 /* IconPicker.swift */,
-				23E82154236DB57A004E6F15 /* WhatsNewView.swift */,
-				7AEAEE9E239AC723007DE056 /* ProPurchaseView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		23074FC5220B425D00B64762 /* Extension */ = {
@@ -331,12 +287,14 @@
 		2338BEBA220A7840004F288F /* neon */ = {
 			isa = PBXGroup;
 			children = (
-				2304FA25235F2FE6006DA688 /* Views */,
+				7A9C38B223CAA30A0088FEA9 /* View */,
+				7A9C38B123CAA3010088FEA9 /* Model */,
+				7A9C38B323CAA3100088FEA9 /* ViewModel */,
 				2304FA15235F2A1B006DA688 /* App */,
-				2338BEBB220A7840004F288F /* AppDelegate.swift */,
-				2304FA13235F29ED006DA688 /* SceneDelegate.swift */,
 				23074FC6220B426200B64762 /* Service */,
 				23074FC5220B425D00B64762 /* Extension */,
+				2338BEBB220A7840004F288F /* AppDelegate.swift */,
+				2304FA13235F29ED006DA688 /* SceneDelegate.swift */,
 				2338BEC5220A7841004F288F /* Assets.xcassets */,
 				2338BEC2220A7840004F288F /* neon.xcdatamodeld */,
 				2304FA3A235F39E4006DA688 /* LaunchScreen.storyboard */,
@@ -377,6 +335,105 @@
 				6B9A0107CCBF37CCAA2CAAD3 /* Pods-neonUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		7A7EB48D23CAACAA004C9E82 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				2304FA2A235F300A006DA688 /* Card.swift */,
+				7A7EB48F23CAACBA004C9E82 /* CardLabels.swift */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		7A9C38B123CAA3010088FEA9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2304FA1C235F2D3B006DA688 /* HourBlock.swift */,
+				2336981C23818A0B006ACD1E /* HabitBlock.swift */,
+			);
+			name = Model;
+			path = App/Model;
+			sourceTree = "<group>";
+		};
+		7A9C38B223CAA30A0088FEA9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2304FA16235F2A2A006DA688 /* ContentView.swift */,
+				7A9C38B523CAA3250088FEA9 /* Schedule */,
+				7A9C38B623CAA3890088FEA9 /* Habits */,
+				7A9C38B723CAA38E0088FEA9 /* Settings */,
+				7A9C38B423CAA3200088FEA9 /* Shared */,
+			);
+			name = View;
+			path = App/View;
+			sourceTree = "<group>";
+		};
+		7A9C38B323CAA3100088FEA9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7A9C38B823CAA3D00088FEA9 /* HabitsViewModel.swift */,
+				7A9C38BA23CAA4110088FEA9 /* ScheduleViewModel.swift */,
+				2373C1FE237036B500237763 /* SuggestionsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7A9C38B423CAA3200088FEA9 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				7A7EB48D23CAACAA004C9E82 /* Card */,
+				2304FA26235F2FF2006DA688 /* NewSheet.swift */,
+				2304FA28235F3000006DA688 /* Header.swift */,
+				2304FA2C235F301A006DA688 /* AddToBlockSheet.swift */,
+				2336981E23818D52006ACD1E /* ActionButton.swift */,
+				23E82154236DB57A004E6F15 /* WhatsNewView.swift */,
+				7AEAEE9E239AC723007DE056 /* ProPurchaseView.swift */,
+				7A72990F23CBF67E008ED7AD /* NeonTextField.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		7A9C38B523CAA3250088FEA9 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				2304FA20235F2F99006DA688 /* ScheduleView.swift */,
+				7A735E4E238D591C00FE4D32 /* IconPicker.swift */,
+				2304FA32235F305F006DA688 /* TodayCard.swift */,
+				2304FA34235F306B006DA688 /* FutureCard.swift */,
+				7AEF591923CAB09200FEEA36 /* SubBlocks */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
+		7A9C38B623CAA3890088FEA9 /* Habits */ = {
+			isa = PBXGroup;
+			children = (
+				7AEF591A23CAB15F00FEEA36 /* HabitsView.swift */,
+				7A134DE023CB530D00127C71 /* HabitCard.swift */,
+			);
+			path = Habits;
+			sourceTree = "<group>";
+		};
+		7A9C38B723CAA38E0088FEA9 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				2304FA38235F315F006DA688 /* SettingsView.swift */,
+				23C53D7C2369E01900BA4378 /* CalendarSettingsView.swift */,
+				23C53D7E2369E02400BA4378 /* OtherSettingsView.swift */,
+				23C6F8802372DCB200E53286 /* SettingsStore.swift */,
+				23036F4D237B2D9000563206 /* PrivacyPolicyView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		7AEF591923CAB09200FEEA36 /* SubBlocks */ = {
+			isa = PBXGroup;
+			children = (
+				7A735E48238CFEF400FE4D32 /* SubBlocksView.swift */,
+				7A735E4C238D2ED400FE4D32 /* SubBlockCard.swift */,
+			);
+			path = SubBlocks;
 			sourceTree = "<group>";
 		};
 		CBE1FB35023C3D4B2AC08158 /* Frameworks */ = {
@@ -646,11 +703,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A7EB49023CAACBA004C9E82 /* CardLabels.swift in Sources */,
 				23C53D7F2369E02400BA4378 /* OtherSettingsView.swift in Sources */,
-				2336981B238187C2006ACD1E /* HabitsView.swift in Sources */,
 				2304FA29235F3000006DA688 /* Header.swift in Sources */,
 				2304FA2D235F301A006DA688 /* AddToBlockSheet.swift in Sources */,
 				231392A922666FC400DB0ABF /* DataGateway.swift in Sources */,
+				7A9C38B923CAA3D00088FEA9 /* HabitsViewModel.swift in Sources */,
+				7A9C38BB23CAA4110088FEA9 /* ScheduleViewModel.swift in Sources */,
 				2338BEC4220A7840004F288F /* neon.xcdatamodeld in Sources */,
 				234DF2FB237A113200EB248A /* Int+Ext.swift in Sources */,
 				2336981F23818D52006ACD1E /* ActionButton.swift in Sources */,
@@ -661,6 +720,7 @@
 				2304FA35235F306B006DA688 /* FutureCard.swift in Sources */,
 				7A735E4B238D16A300FE4D32 /* ToDoCard.swift in Sources */,
 				2336981D23818A0B006ACD1E /* HabitBlock.swift in Sources */,
+				7AEF591B23CAB15F00FEEA36 /* HabitsView.swift in Sources */,
 				23C6F8812372DCB200E53286 /* SettingsStore.swift in Sources */,
 				2304FA27235F2FF2006DA688 /* NewSheet.swift in Sources */,
 				2304FA37235F3153006DA688 /* ToDoItem.swift in Sources */,
@@ -674,15 +734,17 @@
 				23C53D7D2369E01900BA4378 /* CalendarSettingsView.swift in Sources */,
 				2338BEBC220A7840004F288F /* AppDelegate.swift in Sources */,
 				7A735E51238D6E5A00FE4D32 /* Array+Ext.swift in Sources */,
-				2373C1FF237036B500237763 /* SuggestionsStore.swift in Sources */,
+				2373C1FF237036B500237763 /* SuggestionsViewModel.swift in Sources */,
 				2304FA33235F305F006DA688 /* TodayCard.swift in Sources */,
 				23B63CE1222491050026B9C2 /* CalendarGateway.swift in Sources */,
+				7A72991023CBF67E008ED7AD /* NeonTextField.swift in Sources */,
 				7AEAEE9F239AC723007DE056 /* ProPurchaseView.swift in Sources */,
 				23C53D812369E62800BA4378 /* String+Ext.swift in Sources */,
 				7A735E4D238D2ED400FE4D32 /* SubBlockCard.swift in Sources */,
 				23036F4E237B2D9000563206 /* PrivacyPolicyView.swift in Sources */,
 				23E45BE2224BA3A9002D01AC /* NotificationsGateway.swift in Sources */,
 				2304FA1D235F2D3B006DA688 /* HourBlock.swift in Sources */,
+				7A134DE123CB530D00127C71 /* HabitCard.swift in Sources */,
 				234C1A09220C8E9D00344316 /* Date+Ext.swift in Sources */,
 				2304FA23235F2FB7006DA688 /* ToDoListView.swift in Sources */,
 				2304FA43235F4AB4006DA688 /* HapticsGateway.swift in Sources */,
@@ -849,6 +911,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -860,7 +923,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -876,6 +939,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -887,7 +951,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

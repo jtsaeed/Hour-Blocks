@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ToDoListView: View {
     
-    @EnvironmentObject var blocks: HourBlocksStore
+    @EnvironmentObject var blocks: ScheduleViewModel
     @EnvironmentObject var store: ToDoItemsStore
     
     var body: some View {
