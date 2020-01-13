@@ -118,7 +118,7 @@ struct EmptySubBlockCard: View {
     }
     
     func present() {
-        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        HapticsGateway.shared.triggerLightImpact()
         isPresented = true
     }
 }

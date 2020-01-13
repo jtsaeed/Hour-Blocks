@@ -13,16 +13,16 @@ struct CalendarSettingsView: View {
     
     @Binding var isPresented: Bool
     
+    @EnvironmentObject var viewModel: SettingsViewModel
     @EnvironmentObject var scheduleViewModel: ScheduleViewModel
-    @EnvironmentObject var settings: SettingsStore
     
     var body: some View {
         NavigationView {
             List {
                 if CalendarGateway.shared.hasPermission() {
                     ForEach(CalendarGateway.shared.getAllCalendars().sorted(by: { $0.title < $1.title }), id: \.self) { calendar in
-                        CalendarCard(isEnabled: self.settings.enabledCalendars[calendar.calendarIdentifier] ?? true, name: calendar.title, didToggle: { status in
-                            self.settings.toggleCalendar(for: calendar.calendarIdentifier, to: status)
+                        CalendarCard(isEnabled: self.viewModel.enabledCalendars[calendar.calendarIdentifier] ?? true, name: calendar.title, didToggle: { status in
+                            self.viewModel.toggleCalendar(for: calendar.calendarIdentifier, to: status)
                         })
                     }
                 } else {

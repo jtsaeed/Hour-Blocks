@@ -13,8 +13,8 @@ struct OtherSettingsView: View {
     
     @Binding var isPresented: Bool
     
+    @EnvironmentObject var viewModel: SettingsViewModel
     @EnvironmentObject var scheduleViewModel: ScheduleViewModel
-    @EnvironmentObject var settings: SettingsStore
     
     @State var timeFormatValue: Int
     @State var reminderTimerValue: Int
@@ -35,6 +35,9 @@ struct OtherSettingsView: View {
                                title: "Autocapitalization",
                                description: "Would you like the titles of blocks to be automatically capitalised?",
                                options: ["Yes", "No"])
+                if DataGateway.shared.isPro() && UIApplication.shared.supportsAlternateIcons {
+                    IconChooserCard()
+                }
             }
             .navigationBarItems(trailing: Button(action: {
                 self.isPresented = false
@@ -52,9 +55,9 @@ struct OtherSettingsView: View {
     }
     
     func save() {
-        settings.other[OtherSettingsKey.timeFormat.rawValue] = timeFormatValue
-        settings.other[OtherSettingsKey.reminderTimer.rawValue] = reminderTimerValue
-        settings.other[OtherSettingsKey.autoCaps.rawValue] = autoCapsValue
+        viewModel.other[OtherSettingsKey.timeFormat.rawValue] = timeFormatValue
+        viewModel.other[OtherSettingsKey.reminderTimer.rawValue] = reminderTimerValue
+        viewModel.other[OtherSettingsKey.autoCaps.rawValue] = autoCapsValue
     }
 }
 
@@ -69,21 +72,78 @@ struct OtherStuffCard: View {
     var body: some View {
         Card(cornerRadius: 24, shadowRadius: 6) {
             VStack(alignment: .leading, spacing: 24) {
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text(self.title)
-                            .font(.system(size: 22, weight: .semibold, design: .rounded))
-                        Text(self.description)
-                            .font(.system(size: 17, weight: .regular, design: .default))
-                            .opacity(0.45)
-                    }
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(self.title)
+                        .font(.system(size: 22, weight: .semibold, design: .rounded))
+                    Text(self.description)
+                        .font(.system(size: 17, weight: .regular, design: .default))
+                        .opacity(0.45)
+                }
             
                 Picker("", selection: self.$value) {
                     ForEach(0 ..< self.options.count) { index in
-                            Text(self.options[index]).tag(index)
-                        }
+                        Text(self.options[index]).tag(index)
                     }
-                    .pickerStyle(SegmentedPickerStyle())
-                }
+                }.pickerStyle(SegmentedPickerStyle())
+            }
         }
+    }
+}
+
+struct IconChooserCard: View {
+    
+    @EnvironmentObject var viewModel: SettingsViewModel
+    
+    var body: some View {
+        Card(cornerRadius: 24, shadowRadius: 6) {
+            VStack(alignment: .leading, spacing: 24) {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("App Icon")
+                        .font(.system(size: 22, weight: .semibold, design: .rounded))
+                    Text("Which Hour Blocks app icon would you like to be shown on your home screen?")
+                        .font(.system(size: 17, weight: .regular, design: .default))
+                        .opacity(0.45)
+                }
+                
+                HStack(alignment: .center) {
+                    Image("choose_original_icon")
+                        .resizable()
+                        .frame(width: 48, height: 48)
+                        .cornerRadius(12)
+                        .onTapGesture(perform: self.setOriginalIcon)
+                    
+                    Spacer()
+                    
+                    Image("choose_dark_icon")
+                        .resizable()
+                        .frame(width: 48, height: 48)
+                        .cornerRadius(12)
+                        .onTapGesture(perform: self.setDarkIcon)
+                    
+                    Spacer()
+                    
+                    Image("choose_pro_icon")
+                        .resizable()
+                        .frame(width: 48, height: 48)
+                        .cornerRadius(12)
+                        .onTapGesture(perform: self.setProIcon)
+                }.padding(.horizontal, 8)
+            }
+        }
+    }
+    
+    func setOriginalIcon() {
+        HapticsGateway.shared.triggerAddBlockHaptic()
+        viewModel.set(icon: .original)
+    }
+    
+    func setDarkIcon() {
+        HapticsGateway.shared.triggerLightImpact()
+        viewModel.set(icon: .dark)
+    }
+    
+    func setProIcon() {
+        HapticsGateway.shared.triggerLightImpact()
+        viewModel.set(icon: .pro)
     }
 }

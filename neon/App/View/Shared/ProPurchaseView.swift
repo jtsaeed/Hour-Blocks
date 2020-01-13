@@ -21,14 +21,14 @@ struct ProPurchaseView: View {
         VStack {
             WhatsNewHeader(title: "Hour Blocks Pro")
                 .padding(.vertical, 40)
-                
+            
             VStack(alignment: .leading, spacing: 16) {
                 WhatsNewItem(title: "Sub Blocks 💪",
                              content: "Add as many Sub Blocks as you want to an Hour Block for maximum productivity")
                 WhatsNewItem(title: "Unlimited Habits 🔥",
                              content: "Break the 3 habits limit and keep those streaks going for an unlimited amount of habits")
-                WhatsNewItem(title: "Support The App ❤️",
-                             content: "Help guarantee future updates with features that wouldn't otherwise be possible, especially for Pro users!")
+                WhatsNewItem(title: "Alternate App Icons 🎨",
+                             content: "Choose from 3 different app icons to display on your homescreen")
             }
             
             Spacer()
@@ -36,13 +36,13 @@ struct ProPurchaseView: View {
             if !isLoading {
                 ActionButton(title: "Let's go Pro!", color: Color("secondary"))
                     .onTapGesture {
-                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                        HapticsGateway.shared.triggerLightImpact()
                         self.purchasePro()
                     }
                 
                 SecondaryActionButton(title: "Restore purchase", color: Color("secondary"))
                     .onTapGesture {
-                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                        HapticsGateway.shared.triggerLightImpact()
                         self.restorePro()
                     }
             } else {

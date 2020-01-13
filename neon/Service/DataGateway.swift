@@ -19,7 +19,7 @@ class DataGateway {
         self.managedObjectContext = managedObjectContext
     }
     
-    let currentVersion = 3.2
+    let currentVersion = 4.0
 }
 
 // MARK: - Blocks
@@ -149,54 +149,6 @@ extension DataGateway {
     }
 }
 
-// MARK: - To Do
-
-extension DataGateway {
-    
-    func getToDoEntities() -> [ToDoEntity] {
-        var toDos = [ToDoEntity]()
-        let request: NSFetchRequest<ToDoEntity> = ToDoEntity.fetchRequest()
-        
-        do {
-            toDos = try self.managedObjectContext.fetch(request)
-        } catch {
-            print("error")
-        }
-        
-        return toDos
-    }
-    
-    func saveToDo(toDo: ToDoItem) {
-        toDo.getEntity(context: self.managedObjectContext)
-        
-        do {
-            try self.managedObjectContext.save()
-        } catch {
-            print("error")
-        }
-    }
-    
-    func deleteToDo(toDo: ToDoItem) {
-        for entity in getToDoEntities() {
-            guard let identifier = entity.identifier else {
-                continue
-            }
-            
-            if toDo.identifier == identifier {
-                managedObjectContext.delete(entity)
-                
-                do {
-                    try managedObjectContext.save()
-                } catch {
-                    print("error")
-                }
-                
-                return
-            }
-        }
-    }
-}
-
 // MARK: - Misc
 
 extension DataGateway {
@@ -285,12 +237,17 @@ extension DataGateway {
                 otherSettings[OtherSettingsKey.autoCaps.rawValue] = 0
             }
             
+            if otherSettings[OtherSettingsKey.icon.rawValue] == nil {
+                otherSettings[OtherSettingsKey.icon.rawValue] = 0
+            }
+            
             return otherSettings
         } else {
             return [
                 OtherSettingsKey.timeFormat.rawValue: 1,
                 OtherSettingsKey.reminderTimer.rawValue: 1,
                 OtherSettingsKey.autoCaps.rawValue: 0,
+                OtherSettingsKey.icon.rawValue: 0,
             ]
         }
     }

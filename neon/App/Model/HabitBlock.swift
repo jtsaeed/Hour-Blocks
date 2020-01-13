@@ -20,7 +20,7 @@ struct HabitBlock: Hashable {
     var lastDay: Date
     var completedToday: Bool
     
-    private var streak: Int
+    var streak: Int
     var streakDescription: String {
         return streak == 0 ? "not started" : "\(streak) day streak"
     }

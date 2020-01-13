@@ -14,7 +14,7 @@ struct HabitsView: View {
     
     var body: some View {
         List {
-            Section(header: HabitsHeader()) {
+            Section(header: HabitsHeader(streaks: viewModel.habits.filter{ $0.streak > 0 }.count)) {
                 if !viewModel.habits.isEmpty {
                     ForEach(viewModel.habits, id: \.self) { habit in
                         HabitCard(viewModel: self.viewModel, currentHabit: habit)
@@ -32,8 +32,11 @@ struct HabitsView: View {
 
 private struct HabitsHeader: View {
     
+    let streaks: Int
+    
     var body: some View {
-        Header(title: "Habits", subtitle: "Habits") {
+        Header(title: "Habits",
+               subtitle: "\(streaks) \(streaks == 1 ? "streak" : "streaks")") {
             EmptyView()
         }
     }

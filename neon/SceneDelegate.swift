@@ -27,8 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let contentView = ContentView()
                 .environmentObject(ScheduleViewModel())
                 .environmentObject(SuggestionsViewModel())
-                .environmentObject(ToDoItemsStore())
-                .environmentObject(SettingsStore())
+                .environmentObject(SettingsViewModel())
                 .environment(\.managedObjectContext, managedObjectContext)
             
             window.rootViewController = UIHostingController(rootView: contentView)

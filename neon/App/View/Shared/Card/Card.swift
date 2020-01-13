@@ -13,16 +13,6 @@ struct Card<Content>: View where Content: View {
     var cornerRadius: CGFloat = 16
     var shadowRadius: CGFloat = 6
     let content: () -> Content
-
-    init(cornerRadius: CGFloat, @ViewBuilder content: @escaping () -> Content) {
-        self.cornerRadius = cornerRadius
-        self.content = content
-    }
-    
-    init(shadowRadius: CGFloat, @ViewBuilder content: @escaping () -> Content) {
-        self.shadowRadius = shadowRadius
-        self.content = content
-    }
     
     init(cornerRadius: CGFloat, shadowRadius: CGFloat, @ViewBuilder content: @escaping () -> Content) {
         self.cornerRadius = cornerRadius

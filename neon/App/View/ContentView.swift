@@ -13,7 +13,7 @@ struct ContentView: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
     @EnvironmentObject var scheduleViewModel: ScheduleViewModel
-    @EnvironmentObject var settings: SettingsStore
+    @EnvironmentObject var settingsViewModel: SettingsViewModel
     
     @State private var selection = 0
     

@@ -106,8 +106,12 @@ struct EmptyHabitCard: View {
                 Spacer()
                 Image("add_button")
                 .sheet(isPresented: self.$isPresented, content: {
-                    NewHabitView(isPresented: self.$isPresented, title: self.title) { habitTitle in
-                        self.viewModel.addHabitBlock(with: habitTitle)
+                    if self.viewModel.habits.count >= 3 && !DataGateway.shared.isPro() {
+                        ProPurchaseView(showPurchasePro: self.$isPresented)
+                    } else {
+                        NewHabitView(isPresented: self.$isPresented, title: self.title) { habitTitle in
+                            self.viewModel.addHabitBlock(with: habitTitle)
+                        }
                     }
                 })
             }
@@ -115,7 +119,7 @@ struct EmptyHabitCard: View {
     }
     
     func present() {
-        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        HapticsGateway.shared.triggerLightImpact()
         isPresented = true
     }
 }

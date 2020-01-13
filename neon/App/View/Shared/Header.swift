@@ -43,35 +43,3 @@ struct Header<Content>: View where Content: View {
         }
     }
 }
-
-struct ToDoHeader: View {
-    
-    @EnvironmentObject var store: ToDoItemsStore
-    
-    @State var title = ""
-    @State var priority: ToDoPriority = .none
-    
-    @State var isPresented = false
-    
-    var addButtonDisabled: Bool
-    var items: Int
-    
-    var body: some View {
-        Header(title: "To Do List", subtitle: "\(items) \(items == 1 ? "item" : "items")") {
-            if !self.addButtonDisabled {
-                Button(action: {
-                    UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                    self.isPresented.toggle()
-                }, label: {
-                    Image("add_button")
-                })
-                .padding(.top, 32)
-                .padding(.trailing, 47)
-                .sheet(isPresented: self.$isPresented, content: {
-                    NewToDoItemView(isPresented: self.$isPresented, title: self.$title, priority: self.$priority)
-                        .environmentObject(self.store)
-                })
-            }
-        }
-    }
-}

@@ -102,7 +102,7 @@ struct IconChoiceRow: View {
     }
     
     func save(with newIconName: String) {
-        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        HapticsGateway.shared.triggerLightImpact()
         
         var newBlock = currentBlock
         newBlock.iconOverride = newIconName

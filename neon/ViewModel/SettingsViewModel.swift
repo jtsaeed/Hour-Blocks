@@ -8,8 +8,9 @@
 
 import Foundation
 import Combine
+import UIKit
 
-class SettingsStore: ObservableObject {
+class SettingsViewModel: ObservableObject {
     
     @Published var enabledCalendars: [String: Bool] {
         didSet {
@@ -35,6 +36,22 @@ class SettingsStore: ObservableObject {
     func set(_ settingsKey: OtherSettingsKey, to value: Int) {
         other[settingsKey.rawValue] = value
     }
+    
+    func set(icon: AppIconKey) {
+        var iconName: String? = nil
+        
+        if icon == .pro {
+            iconName = "icon_pro"
+        }
+        
+        if icon == .dark {
+            iconName = "icon_dark"
+        }
+        
+        UIApplication.shared.setAlternateIconName(iconName) { error in
+            if let error = error { print(error.localizedDescription) }
+        }
+    }
 }
 
 enum OtherSettingsKey: String {
@@ -42,4 +59,12 @@ enum OtherSettingsKey: String {
     case timeFormat
     case reminderTimer
     case autoCaps
+    case icon
+}
+
+enum AppIconKey: String {
+    
+    case original
+    case pro = "icon_pro"
+    case dark = "icon_dark"
 }

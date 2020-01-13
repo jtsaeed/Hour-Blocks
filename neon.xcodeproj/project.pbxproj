@@ -13,7 +13,6 @@
 		2304FA1D235F2D3B006DA688 /* HourBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA1C235F2D3B006DA688 /* HourBlock.swift */; };
 		2304FA1F235F2F28006DA688 /* DomainsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA1E235F2F28006DA688 /* DomainsGateway.swift */; };
 		2304FA21235F2F99006DA688 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA20235F2F99006DA688 /* ScheduleView.swift */; };
-		2304FA23235F2FB7006DA688 /* ToDoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA22235F2FB7006DA688 /* ToDoListView.swift */; };
 		2304FA27235F2FF2006DA688 /* NewSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA26235F2FF2006DA688 /* NewSheet.swift */; };
 		2304FA29235F3000006DA688 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA28235F3000006DA688 /* Header.swift */; };
 		2304FA2B235F300A006DA688 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA2A235F300A006DA688 /* Card.swift */; };
@@ -21,7 +20,6 @@
 		2304FA31235F304C006DA688 /* NSManagedObjectContext+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA30235F304C006DA688 /* NSManagedObjectContext+Ext.swift */; };
 		2304FA33235F305F006DA688 /* TodayCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA32235F305F006DA688 /* TodayCard.swift */; };
 		2304FA35235F306B006DA688 /* FutureCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA34235F306B006DA688 /* FutureCard.swift */; };
-		2304FA37235F3153006DA688 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA36235F3153006DA688 /* ToDoItem.swift */; };
 		2304FA39235F315F006DA688 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA38235F315F006DA688 /* SettingsView.swift */; };
 		2304FA3B235F39E4006DA688 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2304FA3A235F39E4006DA688 /* LaunchScreen.storyboard */; };
 		2304FA43235F4AB4006DA688 /* HapticsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA42235F4AB4006DA688 /* HapticsGateway.swift */; };
@@ -42,7 +40,7 @@
 		23C53D7D2369E01900BA4378 /* CalendarSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C53D7C2369E01900BA4378 /* CalendarSettingsView.swift */; };
 		23C53D7F2369E02400BA4378 /* OtherSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C53D7E2369E02400BA4378 /* OtherSettingsView.swift */; };
 		23C53D812369E62800BA4378 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C53D802369E62800BA4378 /* String+Ext.swift */; };
-		23C6F8812372DCB200E53286 /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6F8802372DCB200E53286 /* SettingsStore.swift */; };
+		23C6F8812372DCB200E53286 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6F8802372DCB200E53286 /* SettingsViewModel.swift */; };
 		23E45BE2224BA3A9002D01AC /* NotificationsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E45BE1224BA3A9002D01AC /* NotificationsGateway.swift */; };
 		23E82155236DB57A004E6F15 /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E82154236DB57A004E6F15 /* WhatsNewView.swift */; };
 		61B305ACEAA2B4F72109821D /* Pods_neon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BA23B93EB57D0A9C87A3846 /* Pods_neon.framework */; };
@@ -52,11 +50,14 @@
 		7A629DAB238C059300C186B1 /* notification.aif in Resources */ = {isa = PBXBuildFile; fileRef = 23E7851322AA753100A9650F /* notification.aif */; };
 		7A72991023CBF67E008ED7AD /* NeonTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A72990F23CBF67E008ED7AD /* NeonTextField.swift */; };
 		7A735E49238CFEF400FE4D32 /* SubBlocksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E48238CFEF400FE4D32 /* SubBlocksView.swift */; };
-		7A735E4B238D16A300FE4D32 /* ToDoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E4A238D16A300FE4D32 /* ToDoCard.swift */; };
 		7A735E4D238D2ED400FE4D32 /* SubBlockCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E4C238D2ED400FE4D32 /* SubBlockCard.swift */; };
 		7A735E4F238D591C00FE4D32 /* IconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E4E238D591C00FE4D32 /* IconPicker.swift */; };
 		7A735E51238D6E5A00FE4D32 /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E50238D6E5A00FE4D32 /* Array+Ext.swift */; };
 		7A7EB49023CAACBA004C9E82 /* CardLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB48F23CAACBA004C9E82 /* CardLabels.swift */; };
+		7A8BA9B323CCCD2C0078E67D /* icon_dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A8BA9AF23CCCD2C0078E67D /* icon_dark@2x.png */; };
+		7A8BA9B423CCCD2C0078E67D /* icon_pro@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A8BA9B023CCCD2C0078E67D /* icon_pro@3x.png */; };
+		7A8BA9B523CCCD2C0078E67D /* icon_pro@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A8BA9B123CCCD2C0078E67D /* icon_pro@2x.png */; };
+		7A8BA9B623CCCD2C0078E67D /* icon_dark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A8BA9B223CCCD2C0078E67D /* icon_dark@3x.png */; };
 		7A9C38B923CAA3D00088FEA9 /* HabitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C38B823CAA3D00088FEA9 /* HabitsViewModel.swift */; };
 		7A9C38BB23CAA4110088FEA9 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C38BA23CAA4110088FEA9 /* ScheduleViewModel.swift */; };
 		7AEAEE9F239AC723007DE056 /* ProPurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEAEE9E239AC723007DE056 /* ProPurchaseView.swift */; };
@@ -122,7 +123,6 @@
 		2304FA1C235F2D3B006DA688 /* HourBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourBlock.swift; sourceTree = "<group>"; };
 		2304FA1E235F2F28006DA688 /* DomainsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainsGateway.swift; sourceTree = "<group>"; };
 		2304FA20235F2F99006DA688 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
-		2304FA22235F2FB7006DA688 /* ToDoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListView.swift; sourceTree = "<group>"; };
 		2304FA26235F2FF2006DA688 /* NewSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSheet.swift; sourceTree = "<group>"; };
 		2304FA28235F3000006DA688 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		2304FA2A235F300A006DA688 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
@@ -130,7 +130,6 @@
 		2304FA30235F304C006DA688 /* NSManagedObjectContext+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Ext.swift"; sourceTree = "<group>"; };
 		2304FA32235F305F006DA688 /* TodayCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCard.swift; sourceTree = "<group>"; };
 		2304FA34235F306B006DA688 /* FutureCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureCard.swift; sourceTree = "<group>"; };
-		2304FA36235F3153006DA688 /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 		2304FA38235F315F006DA688 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2304FA3A235F39E4006DA688 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2304FA42235F4AB4006DA688 /* HapticsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsGateway.swift; sourceTree = "<group>"; };
@@ -160,7 +159,7 @@
 		23C53D7C2369E01900BA4378 /* CalendarSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSettingsView.swift; sourceTree = "<group>"; };
 		23C53D7E2369E02400BA4378 /* OtherSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSettingsView.swift; sourceTree = "<group>"; };
 		23C53D802369E62800BA4378 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
-		23C6F8802372DCB200E53286 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
+		23C6F8802372DCB200E53286 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		23E45BE1224BA3A9002D01AC /* NotificationsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsGateway.swift; sourceTree = "<group>"; };
 		23E7851322AA753100A9650F /* notification.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = notification.aif; sourceTree = "<group>"; };
 		23E82154236DB57A004E6F15 /* WhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewView.swift; sourceTree = "<group>"; };
@@ -172,11 +171,14 @@
 		7A4E738323A01819008036ED /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		7A72990F23CBF67E008ED7AD /* NeonTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeonTextField.swift; sourceTree = "<group>"; };
 		7A735E48238CFEF400FE4D32 /* SubBlocksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubBlocksView.swift; sourceTree = "<group>"; };
-		7A735E4A238D16A300FE4D32 /* ToDoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCard.swift; sourceTree = "<group>"; };
 		7A735E4C238D2ED400FE4D32 /* SubBlockCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubBlockCard.swift; sourceTree = "<group>"; };
 		7A735E4E238D591C00FE4D32 /* IconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPicker.swift; sourceTree = "<group>"; };
 		7A735E50238D6E5A00FE4D32 /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 		7A7EB48F23CAACBA004C9E82 /* CardLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardLabels.swift; sourceTree = "<group>"; };
+		7A8BA9AF23CCCD2C0078E67D /* icon_dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_dark@2x.png"; sourceTree = "<group>"; };
+		7A8BA9B023CCCD2C0078E67D /* icon_pro@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_pro@3x.png"; sourceTree = "<group>"; };
+		7A8BA9B123CCCD2C0078E67D /* icon_pro@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_pro@2x.png"; sourceTree = "<group>"; };
+		7A8BA9B223CCCD2C0078E67D /* icon_dark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_dark@3x.png"; sourceTree = "<group>"; };
 		7A9C38B823CAA3D00088FEA9 /* HabitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewModel.swift; sourceTree = "<group>"; };
 		7A9C38BA23CAA4110088FEA9 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
 		7AEAEE9E239AC723007DE056 /* ProPurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProPurchaseView.swift; sourceTree = "<group>"; };
@@ -219,24 +221,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2304FA15235F2A1B006DA688 /* App */ = {
-			isa = PBXGroup;
-			children = (
-				2304FA1A235F2A4A006DA688 /* To Do List */,
-			);
-			path = App;
-			sourceTree = "<group>";
-		};
-		2304FA1A235F2A4A006DA688 /* To Do List */ = {
-			isa = PBXGroup;
-			children = (
-				2304FA22235F2FB7006DA688 /* ToDoListView.swift */,
-				2304FA36235F3153006DA688 /* ToDoItem.swift */,
-				7A735E4A238D16A300FE4D32 /* ToDoCard.swift */,
-			);
-			path = "To Do List";
-			sourceTree = "<group>";
-		};
 		23074FC5220B425D00B64762 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,9 +274,9 @@
 				7A9C38B223CAA30A0088FEA9 /* View */,
 				7A9C38B123CAA3010088FEA9 /* Model */,
 				7A9C38B323CAA3100088FEA9 /* ViewModel */,
-				2304FA15235F2A1B006DA688 /* App */,
 				23074FC6220B426200B64762 /* Service */,
 				23074FC5220B425D00B64762 /* Extension */,
+				7A8BA9AE23CCCC6D0078E67D /* App Icons */,
 				2338BEBB220A7840004F288F /* AppDelegate.swift */,
 				2304FA13235F29ED006DA688 /* SceneDelegate.swift */,
 				2338BEC5220A7841004F288F /* Assets.xcassets */,
@@ -346,6 +330,17 @@
 			path = Card;
 			sourceTree = "<group>";
 		};
+		7A8BA9AE23CCCC6D0078E67D /* App Icons */ = {
+			isa = PBXGroup;
+			children = (
+				7A8BA9AF23CCCD2C0078E67D /* icon_dark@2x.png */,
+				7A8BA9B223CCCD2C0078E67D /* icon_dark@3x.png */,
+				7A8BA9B123CCCD2C0078E67D /* icon_pro@2x.png */,
+				7A8BA9B023CCCD2C0078E67D /* icon_pro@3x.png */,
+			);
+			path = "App Icons";
+			sourceTree = "<group>";
+		};
 		7A9C38B123CAA3010088FEA9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -375,6 +370,7 @@
 				7A9C38B823CAA3D00088FEA9 /* HabitsViewModel.swift */,
 				7A9C38BA23CAA4110088FEA9 /* ScheduleViewModel.swift */,
 				2373C1FE237036B500237763 /* SuggestionsViewModel.swift */,
+				23C6F8802372DCB200E53286 /* SettingsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -421,7 +417,6 @@
 				2304FA38235F315F006DA688 /* SettingsView.swift */,
 				23C53D7C2369E01900BA4378 /* CalendarSettingsView.swift */,
 				23C53D7E2369E02400BA4378 /* OtherSettingsView.swift */,
-				23C6F8802372DCB200E53286 /* SettingsStore.swift */,
 				23036F4D237B2D9000563206 /* PrivacyPolicyView.swift */,
 			);
 			path = Settings;
@@ -589,10 +584,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A8BA9B623CCCD2C0078E67D /* icon_dark@3x.png in Resources */,
+				7A8BA9B323CCCD2C0078E67D /* icon_dark@2x.png in Resources */,
 				7A629DAB238C059300C186B1 /* notification.aif in Resources */,
 				2338BEC6220A7841004F288F /* Assets.xcassets in Resources */,
 				2304FA3B235F39E4006DA688 /* LaunchScreen.storyboard in Resources */,
+				7A8BA9B423CCCD2C0078E67D /* icon_pro@3x.png in Resources */,
 				23356ED52256676E00541A60 /* GoogleService-Info.plist in Resources */,
+				7A8BA9B523CCCD2C0078E67D /* icon_pro@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -718,12 +717,10 @@
 				2304FA2B235F300A006DA688 /* Card.swift in Sources */,
 				232ED4E0228C93A4008FC4A0 /* AnalyticsGateway.swift in Sources */,
 				2304FA35235F306B006DA688 /* FutureCard.swift in Sources */,
-				7A735E4B238D16A300FE4D32 /* ToDoCard.swift in Sources */,
 				2336981D23818A0B006ACD1E /* HabitBlock.swift in Sources */,
 				7AEF591B23CAB15F00FEEA36 /* HabitsView.swift in Sources */,
-				23C6F8812372DCB200E53286 /* SettingsStore.swift in Sources */,
+				23C6F8812372DCB200E53286 /* SettingsViewModel.swift in Sources */,
 				2304FA27235F2FF2006DA688 /* NewSheet.swift in Sources */,
-				2304FA37235F3153006DA688 /* ToDoItem.swift in Sources */,
 				7A735E49238CFEF400FE4D32 /* SubBlocksView.swift in Sources */,
 				2304FA39235F315F006DA688 /* SettingsView.swift in Sources */,
 				2304FA1F235F2F28006DA688 /* DomainsGateway.swift in Sources */,
@@ -746,7 +743,6 @@
 				2304FA1D235F2D3B006DA688 /* HourBlock.swift in Sources */,
 				7A134DE123CB530D00127C71 /* HabitCard.swift in Sources */,
 				234C1A09220C8E9D00344316 /* Date+Ext.swift in Sources */,
-				2304FA23235F2FB7006DA688 /* ToDoListView.swift in Sources */,
 				2304FA43235F4AB4006DA688 /* HapticsGateway.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -911,7 +907,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -919,11 +914,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.2;
+				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -939,7 +934,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -947,11 +941,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.2;
+				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

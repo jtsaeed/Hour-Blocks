@@ -10,8 +10,8 @@ import SwiftUI
 
 struct SettingsView: View {
     
+    @EnvironmentObject var viewModel: SettingsViewModel
     @EnvironmentObject var scheduleViewModel: ScheduleViewModel
-    @EnvironmentObject var settings: SettingsStore
     
     @State var isCalendarsPresented = false
     @State var isOtherStuffPresented = false
@@ -30,17 +30,17 @@ struct SettingsView: View {
                     }
                     .sheet(isPresented: $isCalendarsPresented, content: {
                         CalendarSettingsView(isPresented: self.$isCalendarsPresented)
+                            .environmentObject(self.viewModel)
                             .environmentObject(self.scheduleViewModel)
-                            .environmentObject(self.settings)
                     })
                 SettingsCard(title: "Other Stuff", subtitle: "Take control of", icon: "settings_other")
                     .onTapGesture {
                         self.isOtherStuffPresented.toggle()
                     }
                     .sheet(isPresented: $isOtherStuffPresented, content: {
-                        OtherSettingsView(isPresented: self.$isOtherStuffPresented, timeFormatValue: self.settings.other[OtherSettingsKey.timeFormat.rawValue]!, reminderTimerValue: self.settings.other[OtherSettingsKey.reminderTimer.rawValue]!, autoCapsValue: self.settings.other[OtherSettingsKey.autoCaps.rawValue]!)
+                        OtherSettingsView(isPresented: self.$isOtherStuffPresented, timeFormatValue: self.viewModel.other[OtherSettingsKey.timeFormat.rawValue]!, reminderTimerValue: self.viewModel.other[OtherSettingsKey.reminderTimer.rawValue]!, autoCapsValue: self.viewModel.other[OtherSettingsKey.autoCaps.rawValue]!)
+                            .environmentObject(self.viewModel)
                             .environmentObject(self.scheduleViewModel)
-                            .environmentObject(self.settings)
                     })
                 SettingsCard(title: "Twitter", subtitle: "Follow me on", icon: "settings_twitter")
                     .onTapGesture {

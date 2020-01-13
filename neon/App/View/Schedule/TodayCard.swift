@@ -43,7 +43,7 @@ struct TodayCardContextMenu: View {
     
     @EnvironmentObject var viewModel: ScheduleViewModel
     @EnvironmentObject var suggestionsViewModel: SuggestionsViewModel
-    @EnvironmentObject var settings: SettingsStore
+    @EnvironmentObject var settingsViewModel: SettingsViewModel
     
     @State var isRenamePresented = false
     @State var isIconPickerPresented = false
@@ -77,7 +77,7 @@ struct TodayCardContextMenu: View {
             .sheet(isPresented: $isDuplicatePresented, content: {
                 DuplicateBlockSheet(isPresented: self.$isDuplicatePresented, title: self.currentBlock.title!)
                     .environmentObject(self.viewModel)
-                    .environmentObject(self.settings)
+                    .environmentObject(self.settingsViewModel)
             })
             Button(action: reminderAction) {
                 Text(currentBlock.hasReminder ? "Remove Reminder" : "Set a Reminder")
@@ -139,7 +139,7 @@ struct TodayCardAddButton: View {
     
     var body: some View {
         Button(action: {
-            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+            HapticsGateway.shared.triggerLightImpact()
             self.suggestionsViewModel.load(for: self.block.hour)
             self.isPresented.toggle()
         }, label: {

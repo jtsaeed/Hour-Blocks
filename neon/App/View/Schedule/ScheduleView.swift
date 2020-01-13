@@ -12,7 +12,7 @@ struct ScheduleView: View {
     
     @EnvironmentObject var viewModel: ScheduleViewModel
     @EnvironmentObject var suggestionsViewModel: SuggestionsViewModel
-    @EnvironmentObject var settings: SettingsStore
+    @EnvironmentObject var settingsViewModel: SettingsViewModel
     
     @State var currentHour = Calendar.current.component(.hour, from: Date())
     
@@ -89,7 +89,7 @@ private struct FutureHeader: View {
     }
     
     func add() {
-        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        HapticsGateway.shared.triggerLightImpact()
         isPresented.toggle()
     }
 }
