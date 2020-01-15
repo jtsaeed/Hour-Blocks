@@ -27,7 +27,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let contentView = ContentView()
                 .environmentObject(ScheduleViewModel())
                 .environmentObject(SuggestionsViewModel())
-                .environmentObject(HabitsViewModel())
                 .environmentObject(SettingsViewModel())
                 .environment(\.managedObjectContext, managedObjectContext)
             

@@ -23,7 +23,7 @@ struct WhatsNewView: View {
                 WhatsNewItem(title: "Alternate App Icons 🎨",
                              content: "Pro users now have the ability to choose from 3 different app icons to display on their homescreen")
                 WhatsNewItem(title: "Minor Changes ✨",
-                             content: "Minor improvements all round and fixed a lot of crash related issues")
+                             content: "Minor improvements all round and fixed some crash related issues, however I am aware that iPhone XR & 11 users are still experiencing crashes and these are being worked on")
             }
             
             Spacer()

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct HabitCard: View {
     
-    @EnvironmentObject var viewModel: HabitsViewModel
+    @ObservedObject var viewModel: HabitsViewModel
     
     let currentHabit: HabitBlock
     
