@@ -18,8 +18,8 @@ struct SettingsView: View {
     @State var isPrivacyPolicyPresented = false
     
     var body: some View {
-        List {
-            Section(header: SettingsHeader()) {
+        ScrollView {
+            SettingsHeader()
                 SettingsCard(title: "Permissions", subtitle: "Take control of", icon: "settings_permissions")
                     .onTapGesture {
                         self.openPermissionsSettings()
@@ -53,7 +53,6 @@ struct SettingsView: View {
                     .sheet(isPresented: $isPrivacyPolicyPresented, content: {
                         PrivacyPolicyView(isPresented: self.$isPrivacyPolicyPresented)
                     })
-            }
         }
     }
     
@@ -75,8 +74,23 @@ struct SettingsView: View {
 private struct SettingsHeader: View {
     
     var body: some View {
-        Header(title: "Settings", subtitle: "TAKE CONTROL") {
-            EmptyView()
+        ZStack(alignment: .trailing) {
+            VStack(alignment: .leading) {
+                Text("Hour Blocks \(DataGateway.shared.currentVersion)".uppercased())
+                    .font(.system(size: 14))
+                    .fontWeight(.semibold)
+                    .foregroundColor(Color("subtitle"))
+                    .padding(.top, 24)
+                    .padding(.leading, 32)
+                Text("Settings")
+                    .font(.system(size: 34))
+                    .fontWeight(.bold)
+                    .foregroundColor(Color("title"))
+                    .padding(.top, 4)
+                    .padding(.leading, 32)
+            }
+            .frame(width: UIScreen.main.bounds.width, height: 96, alignment: .leading)
+            .background(Color("background"))
         }
     }
 }
@@ -95,7 +109,8 @@ struct SettingsCard: View {
                 Spacer()
                 Image(self.icon)
             }
-        }
+        }.padding(.horizontal, 16)
+        .padding(.vertical, 2)
     }
 }
 

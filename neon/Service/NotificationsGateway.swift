@@ -34,13 +34,13 @@ class NotificationsGateway {
     }
     
     func removeNotification(for block: HourBlock) {
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [block.identifier])
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [block.id])
     }
     
     func hasPendingNotification(for block: HourBlock, completion: @escaping (_ result: Bool) -> ()) {
         UNUserNotificationCenter.current().getPendingNotificationRequests { (requests) in
             for request in requests {
-                if request.identifier == block.identifier {
+                if request.identifier == block.id {
                     completion(true)
                     return
                 }
@@ -72,7 +72,7 @@ class NotificationsGateway {
         let dateTrigger = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateTrigger, repeats: false)
         
-        let request = UNNotificationRequest(identifier: block.identifier, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: block.id, content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request) { error in
             completion(error == nil)

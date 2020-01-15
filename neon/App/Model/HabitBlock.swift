@@ -12,9 +12,9 @@ import SwiftUI
 import Combine
 import CoreData
 
-struct HabitBlock: Hashable {
+struct HabitBlock: Identifiable {
     
-    let identifier: String
+    let id: String
     
     let title: String
     var lastDay: Date
@@ -26,7 +26,7 @@ struct HabitBlock: Hashable {
     }
     
     init(title: String) {
-        self.identifier = UUID().uuidString
+        self.id = UUID().uuidString
         
         self.title = title
         self.streak = 0
@@ -36,7 +36,7 @@ struct HabitBlock: Hashable {
     
     init?(fromEntity entity: HabitBlockEntity) {
         guard let entityIdentifier = entity.identifier else { return nil }
-        self.identifier = entityIdentifier
+        self.id = entityIdentifier
         
         guard let entityTitle = entity.title else { return nil }
         self.title = entityTitle
@@ -54,7 +54,7 @@ struct HabitBlock: Hashable {
     @discardableResult
     func getEntity(context: NSManagedObjectContext) -> HabitBlockEntity {
         let entity = HabitBlockEntity(context: context)
-        entity.identifier = identifier
+        entity.identifier = id
         entity.title = title
         entity.streak = Int64(streak)
         entity.lastDay = lastDay

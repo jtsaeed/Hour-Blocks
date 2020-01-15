@@ -55,7 +55,7 @@ extension DataGateway {
                 continue
             }
             
-            if block.identifier == identifier {
+            if block.id == identifier {
                 managedObjectContext.delete(entity)
                 
                 do {
@@ -134,7 +134,7 @@ extension DataGateway {
                 continue
             }
             
-            if habitBlock.identifier == identifier {
+            if habitBlock.id == identifier {
                 managedObjectContext.delete(entity)
                 
                 do {
@@ -237,17 +237,12 @@ extension DataGateway {
                 otherSettings[OtherSettingsKey.autoCaps.rawValue] = 0
             }
             
-            if otherSettings[OtherSettingsKey.icon.rawValue] == nil {
-                otherSettings[OtherSettingsKey.icon.rawValue] = 0
-            }
-            
             return otherSettings
         } else {
             return [
                 OtherSettingsKey.timeFormat.rawValue: 1,
                 OtherSettingsKey.reminderTimer.rawValue: 1,
                 OtherSettingsKey.autoCaps.rawValue: 0,
-                OtherSettingsKey.icon.rawValue: 0,
             ]
         }
     }

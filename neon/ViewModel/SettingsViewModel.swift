@@ -12,17 +12,8 @@ import UIKit
 
 class SettingsViewModel: ObservableObject {
     
-    @Published var enabledCalendars: [String: Bool] {
-        didSet {
-            UserDefaults.standard.set(enabledCalendars, forKey: "enabledCalendars")
-        }
-    }
-    
-    @Published var other: [String: Int] {
-        didSet {
-            UserDefaults.standard.set(other, forKey: "otherSettings")
-        }
-    }
+    @Published var enabledCalendars: [String: Bool]
+    @Published var other: [String: Int]
     
     init() {
         enabledCalendars = DataGateway.shared.loadEnabledCalendars()
@@ -31,10 +22,12 @@ class SettingsViewModel: ObservableObject {
     
     func toggleCalendar(for identifier: String, to status: Bool) {
         enabledCalendars[identifier] = status
+        UserDefaults.standard.set(enabledCalendars, forKey: "enabledCalendars")
     }
     
     func set(_ settingsKey: OtherSettingsKey, to value: Int) {
         other[settingsKey.rawValue] = value
+        UserDefaults.standard.set(other, forKey: "otherSettings")
     }
     
     func set(icon: AppIconKey) {

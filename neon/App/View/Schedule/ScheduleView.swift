@@ -22,7 +22,7 @@ struct ScheduleView: View {
         NavigationView {
             List {
                 Section(header: TodayHeader(allDayEvent: $viewModel.allDayEvent)) {
-                    ForEach(viewModel.todaysBlocks.filter { $0.hour >=  currentHour }, id: \.self) { block in
+                    ForEach(viewModel.todaysBlocks.filter { $0.hour >=  currentHour }) { block in
                         TodayCard(currentBlock: block).environmentObject(self.viewModel)
                     }
                 }
@@ -30,7 +30,7 @@ struct ScheduleView: View {
                     if viewModel.futureBlocks.isEmpty {
                         EmptyFutureCard()
                     } else {
-                        ForEach(viewModel.futureBlocks.sorted { $0.day < $1.day }, id: \.self) { block in
+                        ForEach(viewModel.futureBlocks.sorted { $0.day < $1.day }) { block in
                             FutureCard(currentBlock: block)
                         }
                     }

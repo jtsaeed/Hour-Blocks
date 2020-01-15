@@ -10,7 +10,7 @@ import SwiftUI
 
 struct HabitCard: View {
     
-    @ObservedObject var viewModel: HabitsViewModel
+    @EnvironmentObject var viewModel: HabitsViewModel
     
     let currentHabit: HabitBlock
     
@@ -100,11 +100,11 @@ struct EmptyHabitCard: View {
     var body: some View {
         Card {
             HStack {
-                CardLabels(title: "Habit",
+                CardLabels(title: "Daily Habit",
                             subtitle: "Add a new",
                             titleColor: Color("subtitle"))
                 Spacer()
-                Image("add_button")
+                Image(self.viewModel.habits.count >= 3 ? "pro_add_button" : "add_button")
                 .sheet(isPresented: self.$isPresented, content: {
                     if self.viewModel.habits.count >= 3 && !DataGateway.shared.isPro() {
                         ProPurchaseView(showPurchasePro: self.$isPresented)

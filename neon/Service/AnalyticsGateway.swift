@@ -19,6 +19,10 @@ class AnalyticsGateway {
                                                       "suggestion": isSuggestion])
 	}
     
+    func logFutureBlock(for title: String) {
+        Analytics.logEvent("futureBlock", parameters: ["title": title])
+    }
+    
     func logHabitCompleted(for title: String) {
         Analytics.logEvent("habit", parameters: ["title": title])
     }

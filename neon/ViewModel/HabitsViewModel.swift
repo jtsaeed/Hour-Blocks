@@ -12,6 +12,10 @@ class HabitsViewModel: ObservableObject {
     
     @Published var habits = [HabitBlock]()
     
+    init() {
+        refreshHabitBlocks()
+    }
+    
     func refreshHabitBlocks() {
         let loadedHabitBlocks = DataGateway.shared.getHabitBlockEntities().compactMap { habitBlockEntity in
             return HabitBlock(fromEntity: habitBlockEntity)
@@ -28,7 +32,7 @@ class HabitsViewModel: ObservableObject {
     }
     
     func removeHabitBlock(habitBlock: HabitBlock) {
-        DispatchQueue.main.async { self.habits.removeAll(where: { $0.identifier == habitBlock.identifier }) }
+        DispatchQueue.main.async { self.habits.removeAll(where: { $0.id == habitBlock.id }) }
         DataGateway.shared.deleteHabitBlock(habitBlock: habitBlock)
     }
     

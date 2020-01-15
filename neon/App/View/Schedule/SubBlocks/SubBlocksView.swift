@@ -17,7 +17,7 @@ struct SubBlocksView: View {
     var body: some View {
         List {
             if !viewModel.isSubBlocksEmpty(for: currentHourBlock.hour) {
-                ForEach(viewModel.subBlocks[currentHourBlock.hour]!, id: \.self) { currentSubBlock in
+                ForEach(viewModel.subBlocks[currentHourBlock.hour]!) { currentSubBlock in
                     SubBlockCard(currentHourBlock: self.currentHourBlock, currentSubBlock: currentSubBlock)
                 }
             }

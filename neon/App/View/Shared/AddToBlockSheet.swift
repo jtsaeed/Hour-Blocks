@@ -19,7 +19,7 @@ struct AddToBlockSheet: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(viewModel.todaysBlocks.filter { $0.hour >= Calendar.current.component(.hour, from: Date()) }, id: \.self) { block in
+                ForEach(viewModel.todaysBlocks.filter { $0.hour >= Calendar.current.component(.hour, from: Date()) }) { block in
                     AddToBlockCard(currentBlock: block, didAddToBlock: {
                         self.addBlock(for: block.hour)
                     }, didAddToSubBlock: {
@@ -60,12 +60,12 @@ struct DuplicateBlockSheet: View {
     
     @Binding var isPresented: Bool
     
-    let title: String
+    var currentBlock: HourBlock
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(viewModel.todaysBlocks.filter { $0.hour >= Calendar.current.component(.hour, from: Date()) }, id: \.self) { block in
+                ForEach(viewModel.todaysBlocks.filter { $0.hour >= Calendar.current.component(.hour, from: Date()) }) { block in
                     AddToBlockCard(currentBlock: block, didAddToBlock: {
                         self.addBlock(for: block.hour)
                     }, didAddToSubBlock: {
@@ -82,12 +82,15 @@ struct DuplicateBlockSheet: View {
     
     func addBlock(for hour: Int) {
         HapticsGateway.shared.triggerAddBlockHaptic()
-        viewModel.setTodayBlock(for: hour, with: self.title)
+        
+        var newBlock = HourBlock(day: Date(), hour: hour, title: currentBlock.title!)
+        newBlock.iconOverride = currentBlock.iconOverride
+        viewModel.setTodayBlock(newBlock)
     }
     
     func addSubBlock(for hour: Int) {
         HapticsGateway.shared.triggerAddBlockHaptic()
-        viewModel.addSubBlock(for: hour, with: self.title)
+        viewModel.addSubBlock(for: hour, with: currentBlock.title!)
     }
     
     func dismissSheet() {
@@ -153,7 +156,7 @@ struct AddFutureBlockView: View {
     
     var body: some View {
         List {
-            ForEach(fullDayBlocks(), id: \.self) { block in
+            ForEach(fullDayBlocks()) { block in
                 AddToBlockCard(currentBlock: block, didAddToBlock: {
                     self.didAddBlock(block.hour)
                 }, didAddToSubBlock: {})

@@ -10,9 +10,9 @@ import SwiftUI
 import Combine
 import CoreData
 
-struct HourBlock: Hashable {
+struct HourBlock: Identifiable {
     
-    let identifier: String
+    let id: String
     let day: Date
     let hour: Int
     
@@ -24,7 +24,7 @@ struct HourBlock: Hashable {
     var isSubBlock = false
     
     init(day: Date, hour: Int, title: String?) {
-        self.identifier = UUID().uuidString
+        self.id = UUID().uuidString
         self.day = day
         self.hour = hour
         
@@ -35,7 +35,7 @@ struct HourBlock: Hashable {
     init?(fromEntity entity: HourBlockEntity) {
         guard let entityIdentifier = entity.identifier else { return nil }
         
-        self.identifier = entityIdentifier
+        self.id = entityIdentifier
         self.day = entity.day!
         self.hour = Int(entity.hour)
         self.title = entity.title
@@ -70,7 +70,7 @@ struct HourBlock: Hashable {
     @discardableResult
     func getEntity(context: NSManagedObjectContext) -> HourBlockEntity {
         let entity = HourBlockEntity(context: context)
-        entity.identifier = identifier
+        entity.identifier = id
         entity.title = title
         entity.day = day
         entity.hour = Int64(hour)

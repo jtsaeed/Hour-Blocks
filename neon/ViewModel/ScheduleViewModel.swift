@@ -111,7 +111,7 @@ class ScheduleViewModel: ObservableObject {
     }
     
     func removeSubBlock(for block: HourBlock) {
-        subBlocks[block.hour]?.removeAll(where: { $0.identifier == block.identifier })
+        subBlocks[block.hour]?.removeAll(where: { $0.id == block.id })
         DataGateway.shared.deleteHourBlock(block: block)
     }
     
@@ -149,13 +149,13 @@ class ScheduleViewModel: ObservableObject {
     }
     
     func removeFutureBlock(for block: HourBlock) {
-        futureBlocks.removeAll { $0.identifier == block.identifier }
+        futureBlocks.removeAll { $0.id == block.id }
         DataGateway.shared.deleteHourBlock(block: block)
     }
     
     func setReminder(_ status: Bool, for block: HourBlock) {
         for i in 0 ..< todaysBlocks.count {
-            if (block.identifier == todaysBlocks[i].identifier) {
+            if (block.id == todaysBlocks[i].id) {
                 todaysBlocks[i].hasReminder = status
             }
         }

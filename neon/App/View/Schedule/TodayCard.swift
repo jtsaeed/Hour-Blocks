@@ -75,7 +75,7 @@ struct TodayCardContextMenu: View {
                 Image(systemName: "doc.on.doc")
             }
             .sheet(isPresented: $isDuplicatePresented, content: {
-                DuplicateBlockSheet(isPresented: self.$isDuplicatePresented, title: self.currentBlock.title!)
+                DuplicateBlockSheet(isPresented: self.$isDuplicatePresented, currentBlock: self.currentBlock)
                     .environmentObject(self.viewModel)
                     .environmentObject(self.settingsViewModel)
             })

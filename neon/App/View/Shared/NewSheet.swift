@@ -136,10 +136,31 @@ struct NewHabitView: View {
     
     var body: some View {
         NavigationView {
-            VStack(alignment: .center) {
+            VStack(alignment: .leading) {
                 NeonTextField(title: $title, didReturn: { title in
                     self.addHabit()
                 })
+                Text("Suggestions")
+                    .font(.system(size: 28, weight: .semibold, design: .default))
+                    .padding(.leading, 24)
+                List {
+                    SuggestionCard(suggestion: Suggestion(title: "Meditate", reason: "Popular"), didAddBlock: { title in
+                        self.title = title
+                        self.addHabit()
+                    })
+                    SuggestionCard(suggestion: Suggestion(title: "Exercise", reason: "Popular"), didAddBlock: { title in
+                        self.title = title
+                        self.addHabit()
+                    })
+                    SuggestionCard(suggestion: Suggestion(title: "Drink Water", reason: "Popular"), didAddBlock: { title in
+                        self.title = title
+                        self.addHabit()
+                    })
+                    SuggestionCard(suggestion: Suggestion(title: "Read", reason: "Popular"), didAddBlock: { title in
+                        self.title = title
+                        self.addHabit()
+                    })
+                }
                 Spacer()
             }
             .navigationBarTitle("Add a new habit")

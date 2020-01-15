@@ -40,19 +40,16 @@ struct ContentView: View {
                 .sheet(isPresented: $showWhatsNew, content: {
                     WhatsNewView(showWhatsNew: self.$showWhatsNew)
                 })
-                .tag(0)
             HabitsView()
                 .tabItem {
                     Image(systemName: "flame")
                     Text("Habits")
                 }
-                .tag(1)
             SettingsView()
                 .tabItem {
                     Image(systemName: "gear")
                     Text("Settings")
                 }
-                .tag(2)
         }.accentColor(Color("primary"))
     }
 }

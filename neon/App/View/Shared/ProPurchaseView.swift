@@ -50,6 +50,11 @@ struct ProPurchaseView: View {
             }
         }.padding(.horizontal, 40)
         .padding(.bottom, 16)
+        .navigationBarItems(leading: Button(action: {
+            self.showPurchasePro = false
+        }, label: {
+            Text("Cancel")
+        }))
         .alert(isPresented: $showErrorAlert) {
             Alert(title: Text("Error"), message: Text(errorAlertText), dismissButton: .default(Text("OK")))
         }
