@@ -14,16 +14,14 @@ struct WhatsNewView: View {
     
     var body: some View {
         VStack {
-            WhatsNewHeader(title: "What's new in Hour Blocks 4.0")
+            WhatsNewHeader(title: "What's new in Hour Blocks 4.1")
                 .padding(.bottom, 32)
             
             VStack(alignment: .leading, spacing: 16) {
-                WhatsNewItem(title: "Habits 🔥",
-                             content: "Keep track of your habits and get some streaks going with the brand new Habits tab!")
-                WhatsNewItem(title: "Alternate App Icons 🎨",
-                             content: "Pro users now have the ability to choose from 3 different app icons to display on their homescreen")
+                WhatsNewItem(title: "Edit Everything ✏️",
+                             content: "You can now rename and choose custom icons for Future Blocks & Sub Blocks")
                 WhatsNewItem(title: "Minor Changes ✨",
-                             content: "Minor improvements all round and fixed some crash related issues, however I am aware that iPhone XR & 11 users are still experiencing crashes and these are being worked on")
+                             content: "Few bug fixes here and there")
             }
             
             Spacer()

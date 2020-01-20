@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -46,6 +46,8 @@
 		61B305ACEAA2B4F72109821D /* Pods_neon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BA23B93EB57D0A9C87A3846 /* Pods_neon.framework */; };
 		7A0CEDDA239C05CA00CB32BF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0CEDD9239C05CA00CB32BF /* StoreKit.framework */; };
 		7A134DE123CB530D00127C71 /* HabitCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A134DE023CB530D00127C71 /* HabitCard.swift */; };
+		7A1C180C23D38F5A00E849E3 /* RenameBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C180B23D38F5A00E849E3 /* RenameBlockView.swift */; };
+		7A47B73523D5C8320059BA04 /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 7A47B73423D5C8320059BA04 /* SwiftyBeaver */; };
 		7A4E738423A01819008036ED /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4E738323A01819008036ED /* CloudKit.framework */; };
 		7A629DAB238C059300C186B1 /* notification.aif in Resources */ = {isa = PBXBuildFile; fileRef = 23E7851322AA753100A9650F /* notification.aif */; };
 		7A72991023CBF67E008ED7AD /* NeonTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A72990F23CBF67E008ED7AD /* NeonTextField.swift */; };
@@ -168,6 +170,7 @@
 		6B9A0107CCBF37CCAA2CAAD3 /* Pods-neonUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neonUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-neonUITests/Pods-neonUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7A0CEDD9239C05CA00CB32BF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		7A134DE023CB530D00127C71 /* HabitCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCard.swift; sourceTree = "<group>"; };
+		7A1C180B23D38F5A00E849E3 /* RenameBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenameBlockView.swift; sourceTree = "<group>"; };
 		7A4E738323A01819008036ED /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		7A72990F23CBF67E008ED7AD /* NeonTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeonTextField.swift; sourceTree = "<group>"; };
 		7A735E48238CFEF400FE4D32 /* SubBlocksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubBlocksView.swift; sourceTree = "<group>"; };
@@ -199,6 +202,7 @@
 				7A4E738423A01819008036ED /* CloudKit.framework in Frameworks */,
 				7A0CEDDA239C05CA00CB32BF /* StoreKit.framework in Frameworks */,
 				61B305ACEAA2B4F72109821D /* Pods_neon.framework in Frameworks */,
+				7A47B73523D5C8320059BA04 /* SwiftyBeaver in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +390,7 @@
 				23E82154236DB57A004E6F15 /* WhatsNewView.swift */,
 				7AEAEE9E239AC723007DE056 /* ProPurchaseView.swift */,
 				7A72990F23CBF67E008ED7AD /* NeonTextField.swift */,
+				7A1C180B23D38F5A00E849E3 /* RenameBlockView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -467,6 +472,7 @@
 			);
 			name = neon;
 			packageProductDependencies = (
+				7A47B73423D5C8320059BA04 /* SwiftyBeaver */,
 			);
 			productName = neon;
 			productReference = 2338BEB8220A7840004F288F /* neon.app */;
@@ -567,6 +573,7 @@
 			);
 			mainGroup = 2338BEAF220A7840004F288F;
 			packageReferences = (
+				7A47B73323D5C8320059BA04 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */,
 			);
 			productRefGroup = 2338BEB9220A7840004F288F /* Products */;
 			projectDirPath = "";
@@ -736,6 +743,7 @@
 				23B63CE1222491050026B9C2 /* CalendarGateway.swift in Sources */,
 				7A72991023CBF67E008ED7AD /* NeonTextField.swift in Sources */,
 				7AEAEE9F239AC723007DE056 /* ProPurchaseView.swift in Sources */,
+				7A1C180C23D38F5A00E849E3 /* RenameBlockView.swift in Sources */,
 				23C53D812369E62800BA4378 /* String+Ext.swift in Sources */,
 				7A735E4D238D2ED400FE4D32 /* SubBlockCard.swift in Sources */,
 				23036F4E237B2D9000563206 /* PrivacyPolicyView.swift in Sources */,
@@ -906,7 +914,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -914,7 +922,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0;
+				MARKETING_VERSION = 4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -933,7 +941,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -941,7 +949,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0;
+				MARKETING_VERSION = 4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1077,6 +1085,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7A47B73323D5C8320059BA04 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyBeaver/SwiftyBeaver.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.8.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7A47B73423D5C8320059BA04 /* SwiftyBeaver */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7A47B73323D5C8320059BA04 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */;
+			productName = SwiftyBeaver;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		2338BEC2220A7840004F288F /* neon.xcdatamodeld */ = {

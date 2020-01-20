@@ -19,7 +19,7 @@ class HapticsGateway {
     }
     
     func triggerClearBlockHaptic() {
-        UIImpactFeedbackGenerator(style: .soft).impactOccurred(intensity: 1)
+        UIImpactFeedbackGenerator(style: .soft).impactOccurred(intensity: 0.9)
     }
     
     func triggerCompletionHaptic() {
@@ -28,5 +28,9 @@ class HapticsGateway {
     
     func triggerLightImpact() {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
+    }
+    
+    func triggerErrorHaptic() {
+        UINotificationFeedbackGenerator().notificationOccurred(.error)
     }
 }

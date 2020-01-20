@@ -38,17 +38,15 @@ struct SubBlockCardContextMenu: View {
     
     var body: some View {
         VStack {
-            /*
-            Button(action: {
-                self.rename()
-            }) {
+            Button(action: rename) {
                 Text("Rename")
                 Image(systemName: "pencil")
             }
             .sheet(isPresented: $isRenamePresented, content: {
-                NewBlockView(isPresented: self.$isRenamePresented, title: self.$blocks.currentTitle, currentBlock: self.currentBlock)
-                    .environmentObject(self.blocks)
-                    .environmentObject(self.suggestions)
+                RenameBlockView(isPresented: self.$isRenamePresented,
+                                currentBlock: self.currentBlock,
+                                blockType: .sub)
+                    .environmentObject(self.viewModel)
             })
             Button(action: {
                 self.changeIcon()
@@ -57,10 +55,9 @@ struct SubBlockCardContextMenu: View {
                 Image(systemName: "pencil")
             }
             .sheet(isPresented: $isIconPickerPresented, content: {
-                IconPicker(isPresented: self.$isIconPickerPresented, currentBlock: self.currentBlock)
-                    .environmentObject(self.blocks)
+                IconPicker(isPresented: self.$isIconPickerPresented, currentBlock: self.currentBlock, blockType: .sub)
+                    .environmentObject(self.viewModel)
             })
- */
             Button(action: clear) {
                 Text("Delete")
                 Image(systemName: "trash")
@@ -69,8 +66,6 @@ struct SubBlockCardContextMenu: View {
     }
     
     func rename() {
-        viewModel.currentTitle = currentBlock.title!
-        suggestionsViewModel.load(for: currentBlock.hour)
         isRenamePresented.toggle()
     }
     
@@ -105,7 +100,7 @@ struct EmptySubBlockCard: View {
                 Image("pro_add_button")
                     .sheet(isPresented: self.$isPresented, content: {
                     if DataGateway.shared.isPro() {
-                        NewBlockView(isPresented: self.$isPresented, title: self.$title, currentBlock: self.currentHourBlock, isSubBlock: true)
+                        NewBlockView(isPresented: self.$isPresented, currentBlock: self.currentHourBlock, isSubBlock: true)
                         .environmentObject(self.viewModel)
                         .environmentObject(self.suggestionsViewModel)
                     } else {

@@ -118,7 +118,7 @@ struct NewFutureBlockView: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .center) {
-                NeonTextField(title: $title, didReturn: { title in })
+                NeonTextField(title: $title, didReturn: { })
                 DatePicker("Choose a date", selection: $date, in: dateClosedRange, displayedComponents: .date)
                     .labelsHidden()
                 NavigationLink(destination: AddFutureBlockView(didAddBlock: { hour in

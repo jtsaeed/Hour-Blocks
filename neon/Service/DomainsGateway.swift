@@ -18,7 +18,7 @@ class DomainsGateway {
     init() {
         domains["calendar"] = BlockDomain(key: "calendar", iconName: "calendar_item", suggestionTitle: "")
         
-        domains["wake"] = BlockDomain(key: "wake", iconName: "alarm", suggestionTitle: "wake up")
+        domains["wake"] = BlockDomain(key: "wake", iconName: "alarm_clock", suggestionTitle: "wake up")
         
         domains["read"] = BlockDomain(key: "read", iconName: "chrome_reader", suggestionTitle: "read")
         domains["book"] = BlockDomain(key: "book", iconName: "chrome_reader", suggestionTitle: "read book")

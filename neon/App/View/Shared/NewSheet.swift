@@ -17,7 +17,8 @@ struct NewBlockView: View {
     @EnvironmentObject var suggestionsViewModel: SuggestionsViewModel
     
     @Binding var isPresented: Bool
-    @Binding var title: String
+    
+    @State var title = ""
     
     let currentBlock: HourBlock
     var isSubBlock: Bool = false
@@ -25,9 +26,9 @@ struct NewBlockView: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                NeonTextField(title: $title, color: isSubBlock ? Color("secondaryLight") : Color("primaryLight") ,didReturn: { title in
-                    self.addBlock(isSuggestion: false)
-                })
+                NeonTextField(title: $title,
+                              color: isSubBlock ? Color("secondaryLight") : Color("primaryLight"),
+                              didReturn: { self.addBlock(isSuggestion: false) })
                 Text("Suggestions")
                     .font(.system(size: 28, weight: .semibold, design: .default))
                     .padding(.leading, 24)
@@ -74,7 +75,6 @@ struct NewBlockView: View {
             }
             
             isPresented = false
-            title = ""
             
             handleReviewRequest()
         }
@@ -137,9 +137,7 @@ struct NewHabitView: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                NeonTextField(title: $title, didReturn: { title in
-                    self.addHabit()
-                })
+                NeonTextField(title: $title, didReturn: addHabit)
                 Text("Suggestions")
                     .font(.system(size: 28, weight: .semibold, design: .default))
                     .padding(.leading, 24)

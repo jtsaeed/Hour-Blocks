@@ -14,7 +14,7 @@ struct NeonTextField: View {
     
     var color: Color = Color("primaryLight")
     
-    var didReturn: (String) -> ()
+    var didReturn: () -> ()
 
     var body: some View {
         ZStack() {
@@ -22,9 +22,7 @@ struct NeonTextField: View {
                 .frame(height: 44)
                 .foregroundColor(color)
                 .cornerRadius(8)
-            TextField("Enter the title here...", text: $title) {
-                self.didReturn(self.title)
-            }
+            TextField("Enter the title here...", text: $title, onCommit: didReturn)
                 .autocapitalization(.none)
                 .font(.system(size: 17, weight: .medium, design: .default))
                 .foregroundColor(Color("title"))

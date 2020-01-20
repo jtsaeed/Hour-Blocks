@@ -16,7 +16,7 @@ struct HourBlock: Identifiable {
     let day: Date
     let hour: Int
     
-    let title: String?
+    var title: String?
     var domain: BlockDomain?
     var iconOverride: String?
     

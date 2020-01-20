@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 import Firebase
 import SwiftyStoreKit
+import SwiftyBeaver
+let log = SwiftyBeaver.self
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         setupIAP()
+        
+        
+        log.addDestination(console)
 		
         return true
     }

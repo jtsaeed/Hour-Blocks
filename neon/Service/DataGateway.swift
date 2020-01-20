@@ -19,7 +19,7 @@ class DataGateway {
         self.managedObjectContext = managedObjectContext
     }
     
-    let currentVersion = 4.0
+    let currentVersion = 4.1
 }
 
 // MARK: - Blocks
@@ -31,7 +31,7 @@ extension DataGateway {
         let request: NSFetchRequest<HourBlockEntity> = HourBlockEntity.fetchRequest()
         
         do {
-            hourBlocks = try self.managedObjectContext.fetch(request)
+            hourBlocks = try managedObjectContext.fetch(request)
         } catch {
             print("error")
         }
@@ -40,32 +40,42 @@ extension DataGateway {
     }
     
     func saveHourBlock(block: HourBlock) {
-        block.getEntity(context: self.managedObjectContext)
+        block.getEntity(context: managedObjectContext)
         
         do {
-            try self.managedObjectContext.save()
+            try managedObjectContext.save()
+        } catch {
+            print("error")
+        }
+    }
+    
+    func editHourBlock(block: HourBlock, set value: Any?, forKey key: String) {
+        let request: NSFetchRequest<HourBlockEntity> = HourBlockEntity.fetchRequest()
+        request.predicate = NSPredicate(format: "identifier == %@", block.id)
+        
+        do {
+            let hourBlockEntities = try managedObjectContext.fetch(request)
+            let hourBlockEntity = hourBlockEntities.first!
+            
+            hourBlockEntity.setValue(value, forKey: key)
+            
+            try managedObjectContext.save()
         } catch {
             print("error")
         }
     }
     
     func deleteHourBlock(block: HourBlock) {
-        for entity in getHourBlockEntities() {
-            guard let identifier = entity.identifier else {
-                continue
-            }
+        let request: NSFetchRequest<HourBlockEntity> = HourBlockEntity.fetchRequest()
+        request.predicate = NSPredicate(format: "identifier == %@", block.id)
+        
+        do {
+            let hourBlockEntities = try managedObjectContext.fetch(request)
+            managedObjectContext.delete(hourBlockEntities.first!)
             
-            if block.id == identifier {
-                managedObjectContext.delete(entity)
-                
-                do {
-                    try managedObjectContext.save()
-                } catch {
-                    print("error")
-                }
-                
-                return
-            }
+            try managedObjectContext.save()
+        } catch {
+            print("error")
         }
     }
 }

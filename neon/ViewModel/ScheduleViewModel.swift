@@ -12,10 +12,8 @@ class ScheduleViewModel: ObservableObject {
     
     @Published var todaysBlocks = [HourBlock]()
     @Published var subBlocks = [Int: [HourBlock]]()
-    @Published var currentTitle = ""
     
     @Published var futureBlocks = [HourBlock]()
-    @Published var currentFutureTitle = ""
     @Published var currentFutureDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
     
     @Published var allDayEvent = ""
@@ -110,6 +108,16 @@ class ScheduleViewModel: ObservableObject {
         DataGateway.shared.saveHourBlock(block: block)
     }
     
+    func removeAllSubBlocks(for block: HourBlock) {
+        if let subBlocks = subBlocks[block.hour] {
+            for subBlock in subBlocks {
+                DataGateway.shared.deleteHourBlock(block: subBlock)
+            }
+        }
+        
+        subBlocks[block.hour]?.removeAll()
+    }
+    
     func removeSubBlock(for block: HourBlock) {
         subBlocks[block.hour]?.removeAll(where: { $0.id == block.id })
         DataGateway.shared.deleteHourBlock(block: block)
@@ -132,8 +140,13 @@ class ScheduleViewModel: ObservableObject {
     
     func removeTodayBlock(for hour: Int) {
         DataGateway.shared.deleteHourBlock(block: todaysBlocks[hour])
+        
+        if todaysBlocks[hour].hasReminder {
+            NotificationsGateway.shared.removeNotification(for: todaysBlocks[hour])
+        }
+        removeAllSubBlocks(for: todaysBlocks[hour])
+        
         todaysBlocks[hour] = HourBlock(day: Date(), hour: hour, title: nil)
-        subBlocks[hour]?.removeAll()
     }
     
     func addFutureBlock(for date: Date, _ hour: Int, with title: String) {
@@ -160,4 +173,38 @@ class ScheduleViewModel: ObservableObject {
             }
         }
     }
+    
+    func renameBlock(_ type: BlockType, for block: HourBlock, newTitle: String) {
+        if type == .today {
+            todaysBlocks[block.hour].title = newTitle
+        } else if type == .sub {
+            if let index = subBlocks[block.hour]?.firstIndex(where: { $0.id == block.id }) {
+                subBlocks[block.hour]?[index].title = newTitle
+            }
+        } else if type == .future {
+            if let index = futureBlocks.firstIndex(where: { $0.id == block.id }) {
+                futureBlocks[index].title = newTitle
+            }
+        }
+        
+        DataGateway.shared.editHourBlock(block: block, set: newTitle, forKey: "title")
+    }
+    
+    func editBlockIcon(_ type: BlockType, for block: HourBlock, iconOverride: String) {
+        if type == .today {
+            todaysBlocks[block.hour].iconOverride = iconOverride
+        } else if type == .sub {
+            if let index = subBlocks[block.hour]?.firstIndex(where: { $0.id == block.id }) {
+                subBlocks[block.hour]?[index].iconOverride = iconOverride
+            }
+        } else if type == .future {
+            if let index = futureBlocks.firstIndex(where: { $0.id == block.id }) {
+                futureBlocks[index].iconOverride = iconOverride
+            }
+        }
+        
+        DataGateway.shared.editHourBlock(block: block, set: iconOverride, forKey: "iconOverride")
+    }
 }
+
+enum BlockType { case today, sub, future }

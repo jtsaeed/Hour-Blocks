@@ -19,7 +19,7 @@ struct FutureCard: View {
                            subtitle: self.currentBlock.day.getFormattedDate())
                 Spacer()
                 if self.currentBlock.domain != DomainsGateway.shared.domains["calendar"] {
-                    CardIcon(iconName: self.currentBlock.domain?.iconName ?? "default")
+                    CardIcon(iconName: self.currentBlock.iconName)
                         .contextMenu { FutureCardContextMenu(currentBlock: self.currentBlock) }
                 } else {
                     CardIcon(iconName: "calendar_item")
@@ -33,15 +33,44 @@ struct FutureCardContextMenu: View {
     
     @EnvironmentObject var viewModel: ScheduleViewModel
     
+    @State var isRenamePresented = false
+    @State var isIconPickerPresented = false
+    
     let currentBlock: HourBlock
     
     var body: some View {
         VStack {
+            Button(action: rename) {
+                Text("Rename")
+                Image(systemName: "pencil")
+            }
+            .sheet(isPresented: $isRenamePresented, content: {
+                RenameBlockView(isPresented: self.$isRenamePresented,
+                                currentBlock: self.currentBlock,
+                                blockType: .future)
+                    .environmentObject(self.viewModel)
+            })
+            Button(action: changeIcon) {
+                Text("Change Icon")
+                Image(systemName: "pencil")
+            }
+            .sheet(isPresented: $isIconPickerPresented, content: {
+                IconPicker(isPresented: self.$isIconPickerPresented, currentBlock: self.currentBlock, blockType: .future)
+                    .environmentObject(self.viewModel)
+            })
             Button(action: clear) {
                 Text("Clear")
                 Image(systemName: "trash")
             }
         }
+    }
+    
+    func rename() {
+        isRenamePresented = true
+    }
+    
+    func changeIcon() {
+        isIconPickerPresented = true
     }
     
     func clear() {

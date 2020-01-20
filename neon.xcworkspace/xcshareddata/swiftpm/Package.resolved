@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SwiftyBeaver",
+        "repositoryURL": "https://github.com/SwiftyBeaver/SwiftyBeaver.git",
+        "state": {
+          "branch": null,
+          "revision": "2f2b7ac0b675e9d0ac696758f15bbff97eb65a31",
+          "version": "1.8.4"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -57,17 +57,18 @@ struct TodayCardContextMenu: View {
                 Text("Rename")
                 Image(systemName: "pencil")
             }
-            .sheet(isPresented: $isRenamePresented, content: {
-                NewBlockView(isPresented: self.$isRenamePresented, title: self.$viewModel.currentTitle, currentBlock: self.currentBlock)
-                    .environmentObject(self.viewModel)
-                    .environmentObject(self.suggestionsViewModel)
-            })
+            .sheet(isPresented: $isRenamePresented) {
+                RenameBlockView(isPresented: self.$isRenamePresented,
+                                currentBlock: self.currentBlock,
+                                blockType: .today)
+                .environmentObject(self.viewModel)
+            }
             Button(action: changeIcon) {
                 Text("Change Icon")
                 Image(systemName: "pencil")
             }
             .sheet(isPresented: $isIconPickerPresented, content: {
-                IconPicker(isPresented: self.$isIconPickerPresented, currentBlock: self.currentBlock)
+                IconPicker(isPresented: self.$isIconPickerPresented, currentBlock: self.currentBlock, blockType: .today)
                     .environmentObject(self.viewModel)
             })
             Button(action: duplicate) {
@@ -79,9 +80,11 @@ struct TodayCardContextMenu: View {
                     .environmentObject(self.viewModel)
                     .environmentObject(self.settingsViewModel)
             })
-            Button(action: reminderAction) {
-                Text(currentBlock.hasReminder ? "Remove Reminder" : "Set a Reminder")
-                Image(systemName: "alarm")
+            if currentBlock.hour != Calendar.current.component(.hour, from: Date()) {
+                Button(action: reminderAction) {
+                    Text(currentBlock.hasReminder ? "Remove Reminder" : "Set a Reminder")
+                    Image(systemName: "alarm")
+                }
             }
             Button(action: clear) {
                 Text("Clear")
@@ -91,8 +94,6 @@ struct TodayCardContextMenu: View {
     }
     
     func rename() {
-        viewModel.currentTitle = currentBlock.title!
-        suggestionsViewModel.load(for: currentBlock.hour)
         isRenamePresented.toggle()
     }
     
@@ -146,7 +147,7 @@ struct TodayCardAddButton: View {
             Image("add_button")
         })
         .sheet(isPresented: $isPresented, content: {
-            NewBlockView(isPresented: self.$isPresented, title: self.$title, currentBlock: self.block)
+            NewBlockView(isPresented: self.$isPresented, currentBlock: self.block)
                 .environmentObject(self.viewModel)
                 .environmentObject(self.suggestionsViewModel)
         })
@@ -157,7 +158,7 @@ struct TodayCardLabels: View {
     
     @EnvironmentObject var viewModel: ScheduleViewModel
     
-    let currentBlock: HourBlock
+    var currentBlock: HourBlock
     
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {

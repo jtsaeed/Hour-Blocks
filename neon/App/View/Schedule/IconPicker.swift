@@ -15,6 +15,7 @@ struct IconPicker: View {
     @Binding var isPresented: Bool
     
     let currentBlock: HourBlock
+    let blockType: BlockType
     
     let icons = [
         "Creative": ["brush", "create", "music_note", "palette"],
@@ -28,7 +29,10 @@ struct IconPicker: View {
     
     var body: some View {
         NavigationView {
-            IconChoiceList(isPresented: $isPresented, currentBlock: currentBlock, icons: icons)
+            IconChoiceList(isPresented: $isPresented,
+                           currentBlock: currentBlock,
+                           blockType: blockType,
+                           icons: icons)
             .navigationBarTitle("Choose an icon")
             .navigationBarItems(leading: Button(action: {
                 self.isPresented = false
@@ -44,17 +48,42 @@ struct IconChoiceList: View {
     @Binding var isPresented: Bool
     
     let currentBlock: HourBlock
+    let blockType: BlockType
     let icons: [String: [String]]
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .leading, spacing: 24) {
-                IconChoiceSection(isPresented: $isPresented, currentBlock: currentBlock, sectionTitle: "Creative", iconNames: icons["Creative"]!)
-                IconChoiceSection(isPresented: $isPresented, currentBlock: currentBlock, sectionTitle: "Social", iconNames: icons["Social"]!)
-                IconChoiceSection(isPresented: $isPresented, currentBlock: currentBlock, sectionTitle: "Sports", iconNames: icons["Sports"]!)
-                IconChoiceSection(isPresented: $isPresented, currentBlock: currentBlock, sectionTitle: "Travel", iconNames: icons["Travel"]!)
-                IconChoiceSection(isPresented: $isPresented, currentBlock: currentBlock, sectionTitle: "Work", iconNames: icons["Work"]!)
-                IconChoiceSection(isPresented: $isPresented, currentBlock: currentBlock, sectionTitle: "Other", iconNames: icons["Other"]!)
+                IconChoiceSection(isPresented: $isPresented,
+                                  currentBlock: currentBlock,
+                                  blockType: blockType,
+                                  sectionTitle: "Creative",
+                                  iconNames: icons["Creative"]!)
+                IconChoiceSection(isPresented: $isPresented,
+                                  currentBlock: currentBlock,
+                                  blockType: blockType,
+                                  sectionTitle: "Social",
+                                  iconNames: icons["Social"]!)
+                IconChoiceSection(isPresented: $isPresented,
+                                  currentBlock: currentBlock,
+                                  blockType: blockType,
+                                  sectionTitle: "Sports",
+                                  iconNames: icons["Sports"]!)
+                IconChoiceSection(isPresented: $isPresented,
+                                  currentBlock: currentBlock,
+                                  blockType: blockType,
+                                  sectionTitle: "Travel",
+                                  iconNames: icons["Travel"]!)
+                IconChoiceSection(isPresented: $isPresented,
+                                  currentBlock: currentBlock,
+                                  blockType: blockType,
+                                  sectionTitle: "Work",
+                                  iconNames: icons["Work"]!)
+                IconChoiceSection(isPresented: $isPresented,
+                                  currentBlock: currentBlock,
+                                  blockType: blockType,
+                                  sectionTitle: "Other",
+                                  iconNames: icons["Other"]!)
             }.padding(.vertical, 24)
         }.padding(.leading, 16)
     }
@@ -65,6 +94,7 @@ struct IconChoiceSection: View {
     @Binding var isPresented: Bool
     
     let currentBlock: HourBlock
+    let blockType: BlockType
     let sectionTitle: String
     let iconNames: [String]
     
@@ -74,7 +104,10 @@ struct IconChoiceSection: View {
                 .font(.system(size: 16, weight: .semibold, design: .default))
                 .foregroundColor(Color("subtitle"))
                 .padding(.leading, 8)
-            IconChoiceRow(isPresented: $isPresented, currentBlock: currentBlock, iconNames: iconNames)
+            IconChoiceRow(isPresented: $isPresented,
+                          currentBlock: currentBlock,
+                          blockType: blockType,
+                          iconNames: iconNames)
         }
     }
 }
@@ -86,6 +119,7 @@ struct IconChoiceRow: View {
     @Binding var isPresented: Bool
     
     let currentBlock: HourBlock
+    let blockType: BlockType
     let iconNames: [String]
     
     var body: some View {
@@ -103,11 +137,7 @@ struct IconChoiceRow: View {
     
     func save(with newIconName: String) {
         HapticsGateway.shared.triggerLightImpact()
-        
-        var newBlock = currentBlock
-        newBlock.iconOverride = newIconName
-        viewModel.setTodayBlock(newBlock)
-        
+        viewModel.editBlockIcon(blockType, for: currentBlock, iconOverride: newIconName)
         isPresented = false
     }
 }
