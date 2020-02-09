@@ -65,6 +65,7 @@ struct NewBlockView: View {
             UINotificationFeedbackGenerator().notificationOccurred(.error)
         } else {
             HapticsGateway.shared.triggerAddBlockHaptic()
+            LoggingGateway.shared.logBlockAdded(for: DomainsGateway.shared.determineDomain(for: title)?.key ?? "default")
             AnalyticsGateway.shared.logHourBlock(for: DomainsGateway.shared.determineDomain(for: title)?.key ?? "default",
                                                  at: currentBlock.formattedTime,
                                                  isSuggestion: isSuggestion.description)

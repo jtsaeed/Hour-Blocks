@@ -15,53 +15,52 @@ struct SettingsView: View {
     
     @State var isCalendarsPresented = false
     @State var isOtherStuffPresented = false
+    @State var isFeedbackPresented = false
     @State var isPrivacyPolicyPresented = false
     
     var body: some View {
-        ScrollView {
-            SettingsHeader()
-                SettingsCard(title: "Permissions", subtitle: "Take control of", icon: "settings_permissions")
-                    .onTapGesture {
-                        self.openPermissionsSettings()
-                    }
-                SettingsCard(title: "Calendars", subtitle: "Take control of", icon: "settings_calendars")
-                    .onTapGesture {
-                        self.isCalendarsPresented.toggle()
-                    }
-                    .sheet(isPresented: $isCalendarsPresented, content: {
-                        CalendarSettingsView(isPresented: self.$isCalendarsPresented)
-                            .environmentObject(self.viewModel)
-                            .environmentObject(self.scheduleViewModel)
-                    })
-                SettingsCard(title: "Other Stuff", subtitle: "Take control of", icon: "settings_other")
-                    .onTapGesture {
-                        self.isOtherStuffPresented.toggle()
-                    }
-                    .sheet(isPresented: $isOtherStuffPresented, content: {
-                        OtherSettingsView(isPresented: self.$isOtherStuffPresented, timeFormatValue: self.viewModel.other[OtherSettingsKey.timeFormat.rawValue]!, reminderTimerValue: self.viewModel.other[OtherSettingsKey.reminderTimer.rawValue]!, autoCapsValue: self.viewModel.other[OtherSettingsKey.autoCaps.rawValue]!)
-                            .environmentObject(self.viewModel)
-                            .environmentObject(self.scheduleViewModel)
-                    })
-                SettingsCard(title: "Twitter", subtitle: "Follow me on", icon: "settings_twitter")
-                    .onTapGesture {
-                        self.openTwitter()
-                    }
-                SettingsCard(title: "Privacy Policy", subtitle: "Take a look at the", icon: "settings_privacy")
-                    .onTapGesture {
-                        self.isPrivacyPolicyPresented.toggle()
-                    }
-                    .sheet(isPresented: $isPrivacyPolicyPresented, content: {
-                        PrivacyPolicyView(isPresented: self.$isPrivacyPolicyPresented)
-                    })
-        }
-    }
-    
-    func openPermissionsSettings() {
-        if let url = URL(string: UIApplication.openSettingsURLString) {
-            if UIApplication.shared.canOpenURL(url) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        NavigationView {
+            List {
+                Section(header: SettingsHeader()) {
+                    SettingsCard(title: "Calendars", subtitle: "Take control of", icon: "settings_calendars")
+                        .onTapGesture {
+                            self.isCalendarsPresented.toggle()
+                        }
+                        .sheet(isPresented: $isCalendarsPresented, content: {
+                            CalendarSettingsView(isPresented: self.$isCalendarsPresented)
+                                .environmentObject(self.viewModel)
+                                .environmentObject(self.scheduleViewModel)
+                        })
+                    SettingsCard(title: "Other Stuff", subtitle: "Take control of", icon: "settings_other")
+                        .onTapGesture {
+                            self.isOtherStuffPresented.toggle()
+                        }
+                        .sheet(isPresented: $isOtherStuffPresented, content: {
+                            OtherSettingsView(isPresented: self.$isOtherStuffPresented, timeFormatValue: self.viewModel.other[OtherSettingsKey.timeFormat.rawValue]!, reminderTimerValue: self.viewModel.other[OtherSettingsKey.reminderTimer.rawValue]!, autoCapsValue: self.viewModel.other[OtherSettingsKey.autoCaps.rawValue]!)
+                                .environmentObject(self.viewModel)
+                                .environmentObject(self.scheduleViewModel)
+                        })
+                    SettingsCard(title: "Feedback", subtitle: "Provide", icon: "settings_permissions")
+                        .onTapGesture {
+                            self.isFeedbackPresented.toggle()
+                        }
+                        .sheet(isPresented: $isFeedbackPresented) {
+                            FeedbackView(isPresented: self.$isFeedbackPresented)
+                        }
+                    SettingsCard(title: "Twitter", subtitle: "Follow me on", icon: "settings_twitter")
+                        .onTapGesture(perform: openTwitter)
+                    SettingsCard(title: "Privacy Policy", subtitle: "Take a look at the", icon: "settings_privacy")
+                        .onTapGesture {
+                            self.isPrivacyPolicyPresented.toggle()
+                        }
+                        .sheet(isPresented: $isPrivacyPolicyPresented, content: {
+                            PrivacyPolicyView(isPresented: self.$isPrivacyPolicyPresented)
+                        })
+                }
             }
-        }
+            .navigationBarTitle("Settings")
+            .navigationBarHidden(true)
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
     
     func openTwitter() {
@@ -74,23 +73,8 @@ struct SettingsView: View {
 private struct SettingsHeader: View {
     
     var body: some View {
-        ZStack(alignment: .trailing) {
-            VStack(alignment: .leading) {
-                Text("Hour Blocks \(DataGateway.shared.currentVersion)".uppercased())
-                    .font(.system(size: 14))
-                    .fontWeight(.semibold)
-                    .foregroundColor(Color("subtitle"))
-                    .padding(.top, 24)
-                    .padding(.leading, 32)
-                Text("Settings")
-                    .font(.system(size: 34))
-                    .fontWeight(.bold)
-                    .foregroundColor(Color("title"))
-                    .padding(.top, 4)
-                    .padding(.leading, 32)
-            }
-            .frame(width: UIScreen.main.bounds.width, height: 96, alignment: .leading)
-            .background(Color("background"))
+        Header(title: "Settings", subtitle: "Hour Blocks \(DataGateway.shared.currentVersion)".uppercased()) {
+            EmptyView()
         }
     }
 }
@@ -109,8 +93,7 @@ struct SettingsCard: View {
                 Spacer()
                 Image(self.icon)
             }
-        }.padding(.horizontal, 16)
-        .padding(.vertical, 2)
+        }
     }
 }
 

@@ -50,6 +50,11 @@ struct ContentView: View {
                     Image(systemName: "gear")
                     Text("Settings")
                 }
+            VotesView()
+                .tabItem {
+                    Image(systemName: "gear")
+                    Text("Votes")
+                }
         }.accentColor(Color("primary"))
     }
 }

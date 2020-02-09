@@ -14,14 +14,14 @@ struct WhatsNewView: View {
     
     var body: some View {
         VStack {
-            WhatsNewHeader(title: "What's new in Hour Blocks 4.1")
+            WhatsNewHeader(title: "What's new in Hour Blocks \(DataGateway.shared.currentVersion)")
                 .padding(.bottom, 32)
             
             VStack(alignment: .leading, spacing: 16) {
-                WhatsNewItem(title: "Edit Everything ✏️",
-                             content: "You can now rename and choose custom icons for Future Blocks & Sub Blocks")
-                WhatsNewItem(title: "Minor Changes ✨",
-                             content: "Few bug fixes here and there")
+                WhatsNewItem(title: "Vote For Features 🗳",
+                             content: "You can now vote for upcoming features and reach out to me directly through Email from the new Feedback section within Settings")
+                WhatsNewItem(title: "Bug Fixes 🐛",
+                             content: "Fixed crashes on iPhone XR/11 models when switching between tabs")
             }
             
             Spacer()

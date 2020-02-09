@@ -47,9 +47,14 @@
 		7A0CEDDA239C05CA00CB32BF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0CEDD9239C05CA00CB32BF /* StoreKit.framework */; };
 		7A134DE123CB530D00127C71 /* HabitCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A134DE023CB530D00127C71 /* HabitCard.swift */; };
 		7A1C180C23D38F5A00E849E3 /* RenameBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C180B23D38F5A00E849E3 /* RenameBlockView.swift */; };
+		7A3E2E0623ED98ED0063D46B /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3E2E0523ED98ED0063D46B /* ActivityIndicator.swift */; };
 		7A47B73523D5C8320059BA04 /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 7A47B73423D5C8320059BA04 /* SwiftyBeaver */; };
+		7A47B73723D5CAF80059BA04 /* LoggingGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A47B73623D5CAF80059BA04 /* LoggingGateway.swift */; };
 		7A4E738423A01819008036ED /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4E738323A01819008036ED /* CloudKit.framework */; };
 		7A629DAB238C059300C186B1 /* notification.aif in Resources */ = {isa = PBXBuildFile; fileRef = 23E7851322AA753100A9650F /* notification.aif */; };
+		7A666BC823F06AC4003D6F1F /* ToDoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A666BC723F06AC4003D6F1F /* ToDoListView.swift */; };
+		7A666BCA23F06AD2003D6F1F /* ToDoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A666BC923F06AD2003D6F1F /* ToDoCard.swift */; };
+		7A666BCC23F06ADB003D6F1F /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A666BCB23F06ADB003D6F1F /* ToDoItem.swift */; };
 		7A72991023CBF67E008ED7AD /* NeonTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A72990F23CBF67E008ED7AD /* NeonTextField.swift */; };
 		7A735E49238CFEF400FE4D32 /* SubBlocksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E48238CFEF400FE4D32 /* SubBlocksView.swift */; };
 		7A735E4D238D2ED400FE4D32 /* SubBlockCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E4C238D2ED400FE4D32 /* SubBlockCard.swift */; };
@@ -62,6 +67,12 @@
 		7A8BA9B623CCCD2C0078E67D /* icon_dark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A8BA9B223CCCD2C0078E67D /* icon_dark@3x.png */; };
 		7A9C38B923CAA3D00088FEA9 /* HabitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C38B823CAA3D00088FEA9 /* HabitsViewModel.swift */; };
 		7A9C38BB23CAA4110088FEA9 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C38BA23CAA4110088FEA9 /* ScheduleViewModel.swift */; };
+		7A9CD1B023EEDCB50036B251 /* VotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9CD1AF23EEDCB50036B251 /* VotesView.swift */; };
+		7AA4923223E9D4020006DCB8 /* APIGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA4923123E9D4020006DCB8 /* APIGateway.swift */; };
+		7AA4923423E9D46B0006DCB8 /* URLResponse+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA4923323E9D46B0006DCB8 /* URLResponse+Ext.swift */; };
+		7AA4923623E9D5640006DCB8 /* FeatureVotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA4923523E9D5640006DCB8 /* FeatureVotes.swift */; };
+		7AA4923823E9DA5D0006DCB8 /* FeedbackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA4923723E9DA5D0006DCB8 /* FeedbackViewModel.swift */; };
+		7AA4923A23E9DD100006DCB8 /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA4923923E9DD100006DCB8 /* FeedbackView.swift */; };
 		7AEAEE9F239AC723007DE056 /* ProPurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEAEE9E239AC723007DE056 /* ProPurchaseView.swift */; };
 		7AEF591B23CAB15F00FEEA36 /* HabitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEF591A23CAB15F00FEEA36 /* HabitsView.swift */; };
 		B658B761255B945710FC2F42 /* Pods_neonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9076E2F3ADB2E623D12BBF3D /* Pods_neonTests.framework */; };
@@ -171,7 +182,12 @@
 		7A0CEDD9239C05CA00CB32BF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		7A134DE023CB530D00127C71 /* HabitCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCard.swift; sourceTree = "<group>"; };
 		7A1C180B23D38F5A00E849E3 /* RenameBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenameBlockView.swift; sourceTree = "<group>"; };
+		7A3E2E0523ED98ED0063D46B /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		7A47B73623D5CAF80059BA04 /* LoggingGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingGateway.swift; sourceTree = "<group>"; };
 		7A4E738323A01819008036ED /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		7A666BC723F06AC4003D6F1F /* ToDoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListView.swift; sourceTree = "<group>"; };
+		7A666BC923F06AD2003D6F1F /* ToDoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCard.swift; sourceTree = "<group>"; };
+		7A666BCB23F06ADB003D6F1F /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 		7A72990F23CBF67E008ED7AD /* NeonTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeonTextField.swift; sourceTree = "<group>"; };
 		7A735E48238CFEF400FE4D32 /* SubBlocksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubBlocksView.swift; sourceTree = "<group>"; };
 		7A735E4C238D2ED400FE4D32 /* SubBlockCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubBlockCard.swift; sourceTree = "<group>"; };
@@ -184,6 +200,12 @@
 		7A8BA9B223CCCD2C0078E67D /* icon_dark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_dark@3x.png"; sourceTree = "<group>"; };
 		7A9C38B823CAA3D00088FEA9 /* HabitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewModel.swift; sourceTree = "<group>"; };
 		7A9C38BA23CAA4110088FEA9 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
+		7A9CD1AF23EEDCB50036B251 /* VotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotesView.swift; sourceTree = "<group>"; };
+		7AA4923123E9D4020006DCB8 /* APIGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGateway.swift; sourceTree = "<group>"; };
+		7AA4923323E9D46B0006DCB8 /* URLResponse+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLResponse+Ext.swift"; sourceTree = "<group>"; };
+		7AA4923523E9D5640006DCB8 /* FeatureVotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureVotes.swift; sourceTree = "<group>"; };
+		7AA4923723E9DA5D0006DCB8 /* FeedbackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewModel.swift; sourceTree = "<group>"; };
+		7AA4923923E9DD100006DCB8 /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
 		7AEAEE9E239AC723007DE056 /* ProPurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProPurchaseView.swift; sourceTree = "<group>"; };
 		7AEF591A23CAB15F00FEEA36 /* HabitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsView.swift; sourceTree = "<group>"; };
 		8BA23B93EB57D0A9C87A3846 /* Pods_neon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_neon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -233,6 +255,7 @@
 				23C53D802369E62800BA4378 /* String+Ext.swift */,
 				234DF2FA237A113200EB248A /* Int+Ext.swift */,
 				7A735E50238D6E5A00FE4D32 /* Array+Ext.swift */,
+				7AA4923323E9D46B0006DCB8 /* URLResponse+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -246,6 +269,8 @@
 				232ED4DF228C93A4008FC4A0 /* AnalyticsGateway.swift */,
 				2304FA1E235F2F28006DA688 /* DomainsGateway.swift */,
 				2304FA42235F4AB4006DA688 /* HapticsGateway.swift */,
+				7A47B73623D5CAF80059BA04 /* LoggingGateway.swift */,
+				7AA4923123E9D4020006DCB8 /* APIGateway.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -325,6 +350,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		7A666BC623F06AB1003D6F1F /* To Do */ = {
+			isa = PBXGroup;
+			children = (
+				7A666BC723F06AC4003D6F1F /* ToDoListView.swift */,
+				7A666BC923F06AD2003D6F1F /* ToDoCard.swift */,
+			);
+			path = "To Do";
+			sourceTree = "<group>";
+		};
 		7A7EB48D23CAACAA004C9E82 /* Card */ = {
 			isa = PBXGroup;
 			children = (
@@ -350,6 +384,8 @@
 			children = (
 				2304FA1C235F2D3B006DA688 /* HourBlock.swift */,
 				2336981C23818A0B006ACD1E /* HabitBlock.swift */,
+				7AA4923523E9D5640006DCB8 /* FeatureVotes.swift */,
+				7A666BCB23F06ADB003D6F1F /* ToDoItem.swift */,
 			);
 			name = Model;
 			path = App/Model;
@@ -361,6 +397,7 @@
 				2304FA16235F2A2A006DA688 /* ContentView.swift */,
 				7A9C38B523CAA3250088FEA9 /* Schedule */,
 				7A9C38B623CAA3890088FEA9 /* Habits */,
+				7A666BC623F06AB1003D6F1F /* To Do */,
 				7A9C38B723CAA38E0088FEA9 /* Settings */,
 				7A9C38B423CAA3200088FEA9 /* Shared */,
 			);
@@ -375,6 +412,7 @@
 				7A9C38BA23CAA4110088FEA9 /* ScheduleViewModel.swift */,
 				2373C1FE237036B500237763 /* SuggestionsViewModel.swift */,
 				23C6F8802372DCB200E53286 /* SettingsViewModel.swift */,
+				7AA4923723E9DA5D0006DCB8 /* FeedbackViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -391,6 +429,7 @@
 				7AEAEE9E239AC723007DE056 /* ProPurchaseView.swift */,
 				7A72990F23CBF67E008ED7AD /* NeonTextField.swift */,
 				7A1C180B23D38F5A00E849E3 /* RenameBlockView.swift */,
+				7A3E2E0523ED98ED0063D46B /* ActivityIndicator.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -423,6 +462,8 @@
 				23C53D7C2369E01900BA4378 /* CalendarSettingsView.swift */,
 				23C53D7E2369E02400BA4378 /* OtherSettingsView.swift */,
 				23036F4D237B2D9000563206 /* PrivacyPolicyView.swift */,
+				7AA4923923E9DD100006DCB8 /* FeedbackView.swift */,
+				7A9CD1AF23EEDCB50036B251 /* VotesView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -709,11 +750,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AA4923A23E9DD100006DCB8 /* FeedbackView.swift in Sources */,
+				7A47B73723D5CAF80059BA04 /* LoggingGateway.swift in Sources */,
+				7A666BCC23F06ADB003D6F1F /* ToDoItem.swift in Sources */,
 				7A7EB49023CAACBA004C9E82 /* CardLabels.swift in Sources */,
 				23C53D7F2369E02400BA4378 /* OtherSettingsView.swift in Sources */,
 				2304FA29235F3000006DA688 /* Header.swift in Sources */,
 				2304FA2D235F301A006DA688 /* AddToBlockSheet.swift in Sources */,
 				231392A922666FC400DB0ABF /* DataGateway.swift in Sources */,
+				7AA4923623E9D5640006DCB8 /* FeatureVotes.swift in Sources */,
 				7A9C38B923CAA3D00088FEA9 /* HabitsViewModel.swift in Sources */,
 				7A9C38BB23CAA4110088FEA9 /* ScheduleViewModel.swift in Sources */,
 				2338BEC4220A7840004F288F /* neon.xcdatamodeld in Sources */,
@@ -721,7 +766,9 @@
 				2336981F23818D52006ACD1E /* ActionButton.swift in Sources */,
 				2304FA21235F2F99006DA688 /* ScheduleView.swift in Sources */,
 				23E82155236DB57A004E6F15 /* WhatsNewView.swift in Sources */,
+				7A9CD1B023EEDCB50036B251 /* VotesView.swift in Sources */,
 				2304FA2B235F300A006DA688 /* Card.swift in Sources */,
+				7A3E2E0623ED98ED0063D46B /* ActivityIndicator.swift in Sources */,
 				232ED4E0228C93A4008FC4A0 /* AnalyticsGateway.swift in Sources */,
 				2304FA35235F306B006DA688 /* FutureCard.swift in Sources */,
 				2336981D23818A0B006ACD1E /* HabitBlock.swift in Sources */,
@@ -730,17 +777,22 @@
 				2304FA27235F2FF2006DA688 /* NewSheet.swift in Sources */,
 				7A735E49238CFEF400FE4D32 /* SubBlocksView.swift in Sources */,
 				2304FA39235F315F006DA688 /* SettingsView.swift in Sources */,
+				7AA4923423E9D46B0006DCB8 /* URLResponse+Ext.swift in Sources */,
 				2304FA1F235F2F28006DA688 /* DomainsGateway.swift in Sources */,
+				7A666BCA23F06AD2003D6F1F /* ToDoCard.swift in Sources */,
 				2304FA14235F29ED006DA688 /* SceneDelegate.swift in Sources */,
 				2304FA17235F2A2A006DA688 /* ContentView.swift in Sources */,
 				2304FA31235F304C006DA688 /* NSManagedObjectContext+Ext.swift in Sources */,
 				7A735E4F238D591C00FE4D32 /* IconPicker.swift in Sources */,
 				23C53D7D2369E01900BA4378 /* CalendarSettingsView.swift in Sources */,
 				2338BEBC220A7840004F288F /* AppDelegate.swift in Sources */,
+				7A666BC823F06AC4003D6F1F /* ToDoListView.swift in Sources */,
 				7A735E51238D6E5A00FE4D32 /* Array+Ext.swift in Sources */,
 				2373C1FF237036B500237763 /* SuggestionsViewModel.swift in Sources */,
 				2304FA33235F305F006DA688 /* TodayCard.swift in Sources */,
 				23B63CE1222491050026B9C2 /* CalendarGateway.swift in Sources */,
+				7AA4923823E9DA5D0006DCB8 /* FeedbackViewModel.swift in Sources */,
+				7AA4923223E9D4020006DCB8 /* APIGateway.swift in Sources */,
 				7A72991023CBF67E008ED7AD /* NeonTextField.swift in Sources */,
 				7AEAEE9F239AC723007DE056 /* ProPurchaseView.swift in Sources */,
 				7A1C180C23D38F5A00E849E3 /* RenameBlockView.swift in Sources */,
@@ -922,7 +974,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 4.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -949,7 +1001,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 4.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

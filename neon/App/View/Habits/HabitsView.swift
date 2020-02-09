@@ -13,14 +13,19 @@ struct HabitsView: View {
     @ObservedObject var viewModel = HabitsViewModel()
     
     var body: some View {
-        List {
-            Section(header: HabitsHeader(streaks: viewModel.habits.filter{ $0.streak > 0 }.count)) {
-                ForEach(viewModel.habits) { habit in
-                    HabitCard(viewModel: self.viewModel, currentHabit: habit)
+        NavigationView {
+            List {
+                Section(header: HabitsHeader(streaks: viewModel.habits.filter{ $0.streak > 0 }.count)) {
+                    ForEach(viewModel.habits) { habit in
+                        HabitCard(viewModel: self.viewModel, currentHabit: habit)
+                    }
+                    EmptyHabitCard(viewModel: viewModel)
                 }
-                EmptyHabitCard(viewModel: viewModel)
             }
-        }
+            .navigationBarTitle("Habits")
+            .navigationBarHidden(true)
+        }.navigationViewStyle(StackNavigationViewStyle())
+        .onAppear(perform: viewModel.refreshHabitBlocks)
     }
 }
 

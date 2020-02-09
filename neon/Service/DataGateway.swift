@@ -19,7 +19,7 @@ class DataGateway {
         self.managedObjectContext = managedObjectContext
     }
     
-    let currentVersion = 4.1
+    let currentVersion = 4.2
 }
 
 // MARK: - Blocks

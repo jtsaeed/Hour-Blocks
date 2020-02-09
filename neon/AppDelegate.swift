@@ -11,9 +11,11 @@ import CoreData
 import Firebase
 import SwiftyStoreKit
 import SwiftyBeaver
-let log = SwiftyBeaver.self
+//let log = SwiftyBeaver.self
 
 @UIApplicationMain
+
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -21,9 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         setupIAP()
         
-        
+        /*
+        let console = ConsoleDestination()  // log to Xcode Console
+        let platform = SBPlatformDestination(appID: "zLgY00",
+                                             appSecret: "0uc8aJlbn2YI6ErjehPowjYdnBAWhjbk",
+                                             encryptionKey: "z7ayppodwoiqezHNBGhjltGzpjdyomem")
         log.addDestination(console)
-		
+        log.addDestination(platform)
+ */
         return true
     }
     
