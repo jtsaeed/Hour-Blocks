@@ -40,7 +40,7 @@ struct SettingsView: View {
                                 .environmentObject(self.viewModel)
                                 .environmentObject(self.scheduleViewModel)
                         })
-                    SettingsCard(title: "Feedback", subtitle: "Provide", icon: "settings_permissions")
+                    SettingsCard(title: "Feedback", subtitle: "Provide", icon: "vote_button")
                         .onTapGesture {
                             self.isFeedbackPresented.toggle()
                         }

@@ -40,10 +40,10 @@ struct ContentView: View {
                 .sheet(isPresented: $showWhatsNew, content: {
                     WhatsNewView(showWhatsNew: self.$showWhatsNew)
                 })
-            HabitsView()
+            ToDoListView()
                 .tabItem {
-                    Image(systemName: "flame")
-                    Text("Habits")
+                    Image(systemName: "list.bullet")
+                    Text("To Do List")
                 }
             SettingsView()
                 .tabItem {

@@ -28,4 +28,14 @@ extension String {
         
         return title
     }
+    
+    func urgencyToColorString() -> String {
+        if self == "soon" {
+            return "primary"
+        } else if self == "whenever" {
+            return "subtitle"
+        }
+        
+        return self
+    }
 }

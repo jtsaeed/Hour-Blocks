@@ -55,6 +55,7 @@
 		7A666BC823F06AC4003D6F1F /* ToDoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A666BC723F06AC4003D6F1F /* ToDoListView.swift */; };
 		7A666BCA23F06AD2003D6F1F /* ToDoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A666BC923F06AD2003D6F1F /* ToDoCard.swift */; };
 		7A666BCC23F06ADB003D6F1F /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A666BCB23F06ADB003D6F1F /* ToDoItem.swift */; };
+		7A666BCE23F06FCD003D6F1F /* ToDoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A666BCD23F06FCD003D6F1F /* ToDoListViewModel.swift */; };
 		7A72991023CBF67E008ED7AD /* NeonTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A72990F23CBF67E008ED7AD /* NeonTextField.swift */; };
 		7A735E49238CFEF400FE4D32 /* SubBlocksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E48238CFEF400FE4D32 /* SubBlocksView.swift */; };
 		7A735E4D238D2ED400FE4D32 /* SubBlockCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E4C238D2ED400FE4D32 /* SubBlockCard.swift */; };
@@ -188,6 +189,7 @@
 		7A666BC723F06AC4003D6F1F /* ToDoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListView.swift; sourceTree = "<group>"; };
 		7A666BC923F06AD2003D6F1F /* ToDoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCard.swift; sourceTree = "<group>"; };
 		7A666BCB23F06ADB003D6F1F /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
+		7A666BCD23F06FCD003D6F1F /* ToDoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewModel.swift; sourceTree = "<group>"; };
 		7A72990F23CBF67E008ED7AD /* NeonTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeonTextField.swift; sourceTree = "<group>"; };
 		7A735E48238CFEF400FE4D32 /* SubBlocksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubBlocksView.swift; sourceTree = "<group>"; };
 		7A735E4C238D2ED400FE4D32 /* SubBlockCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubBlockCard.swift; sourceTree = "<group>"; };
@@ -413,6 +415,7 @@
 				2373C1FE237036B500237763 /* SuggestionsViewModel.swift */,
 				23C6F8802372DCB200E53286 /* SettingsViewModel.swift */,
 				7AA4923723E9DA5D0006DCB8 /* FeedbackViewModel.swift */,
+				7A666BCD23F06FCD003D6F1F /* ToDoListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -799,6 +802,7 @@
 				23C53D812369E62800BA4378 /* String+Ext.swift in Sources */,
 				7A735E4D238D2ED400FE4D32 /* SubBlockCard.swift in Sources */,
 				23036F4E237B2D9000563206 /* PrivacyPolicyView.swift in Sources */,
+				7A666BCE23F06FCD003D6F1F /* ToDoListViewModel.swift in Sources */,
 				23E45BE2224BA3A9002D01AC /* NotificationsGateway.swift in Sources */,
 				2304FA1D235F2D3B006DA688 /* HourBlock.swift in Sources */,
 				7A134DE123CB530D00127C71 /* HabitCard.swift in Sources */,

@@ -16,6 +16,17 @@ struct CardLabels: View {
     var titleColor = Color("title")
     var subtitleColor = Color("subtitle")
     var alignment: HorizontalAlignment = .leading
+    var lineLimit = 1
+    
+    var textAlignment: TextAlignment {
+        if alignment == .trailing {
+            return .trailing
+        } else if alignment == .center {
+            return .center
+        }
+        
+        return .leading
+    }
     
     var body: some View {
         VStack(alignment: alignment, spacing: 4) {
@@ -23,8 +34,10 @@ struct CardLabels: View {
                 .modifier(CardSubtitleLabel())
                 .foregroundColor(subtitleColor)
             Text(title.smartCapitalization())
-                .modifier(CardTitleLabel())
+                .modifier(CardTitleLabelNoLineLimit())
+                .lineLimit(lineLimit)
                 .foregroundColor(titleColor)
+                .multilineTextAlignment(textAlignment)
         }
     }
 }
@@ -36,9 +49,18 @@ struct CardSubtitleLabel: ViewModifier {
     }
 }
 
+struct CardTitleLabelNoLineLimit: ViewModifier {
+    
+    func body(content: Content) -> some View {
+        content.font(.system(size: 22, weight: .bold, design: .rounded))
+    }
+}
+
 struct CardTitleLabel: ViewModifier {
     
     func body(content: Content) -> some View {
-        content.font(.system(size: 22, weight: .bold, design: .rounded)).lineLimit(1)
+        content.modifier(CardTitleLabelNoLineLimit()).lineLimit(1)
     }
 }
+
+

@@ -111,6 +111,70 @@ extension DataGateway {
     }
 }
 
+// MARK: - To Do
+
+extension DataGateway {
+    
+    func getToDoEntities() -> [ToDoEntity] {
+        var toDos = [ToDoEntity]()
+        let request: NSFetchRequest<ToDoEntity> = ToDoEntity.fetchRequest()
+        
+        do {
+            toDos = try self.managedObjectContext.fetch(request)
+        } catch {
+            print("error")
+        }
+        
+        return toDos
+    }
+    
+    func saveToDo(toDo: ToDoItem) {
+        toDo.getEntity(context: self.managedObjectContext)
+        
+        do {
+            try self.managedObjectContext.save()
+        } catch {
+            print("error")
+        }
+    }
+    
+    func editToDo(toDo: ToDoItem, set value: Any?, forKey key: String) {
+        let request: NSFetchRequest<ToDoEntity> = ToDoEntity.fetchRequest()
+        request.predicate = NSPredicate(format: "identifier == %@", toDo.id)
+        
+        do {
+            let toDoEntities = try managedObjectContext.fetch(request)
+            let toDoEntity = toDoEntities.first!
+            
+            toDoEntity.setValue(value, forKey: key)
+            
+            try managedObjectContext.save()
+        } catch {
+            print("error")
+        }
+    }
+    
+    func deleteToDo(toDo: ToDoItem) {
+        for entity in getToDoEntities() {
+            guard let identifier = entity.identifier else {
+                continue
+            }
+            
+            if toDo.id == identifier {
+                managedObjectContext.delete(entity)
+                
+                do {
+                    try managedObjectContext.save()
+                } catch {
+                    print("error")
+                }
+                
+                return
+            }
+        }
+    }
+}
+
 // MARK: - Habits
 
 extension DataGateway {

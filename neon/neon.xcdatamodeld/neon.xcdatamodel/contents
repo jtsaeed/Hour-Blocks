@@ -24,11 +24,12 @@
         <attribute name="identifier" optional="YES" attributeType="String"/>
         <attribute name="priority" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="urgency" optional="YES" attributeType="String"/>
     </entity>
     <elements>
         <element name="HabitBlockEntity" positionX="-63" positionY="63" width="128" height="118"/>
         <element name="HourBlockEntity" positionX="-63" positionY="36" width="128" height="133"/>
         <element name="SuggestionEntity" positionX="-63" positionY="63" width="128" height="88"/>
-        <element name="ToDoEntity" positionX="-63" positionY="9" width="128" height="88"/>
+        <element name="ToDoEntity" positionX="-63" positionY="9" width="128" height="103"/>
     </elements>
 </model>

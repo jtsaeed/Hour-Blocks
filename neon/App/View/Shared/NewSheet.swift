@@ -62,7 +62,7 @@ struct NewBlockView: View {
     
     func addBlock(isSuggestion: Bool) {
         if self.title.isEmpty && !isSuggestion {
-            UINotificationFeedbackGenerator().notificationOccurred(.error)
+            HapticsGateway.shared.triggerErrorHaptic()
         } else {
             HapticsGateway.shared.triggerAddBlockHaptic()
             LoggingGateway.shared.logBlockAdded(for: DomainsGateway.shared.determineDomain(for: title)?.key ?? "default")
@@ -122,6 +122,59 @@ struct NoSuggestionsCard: View {
                            alignment: .center)
             }
         }
+    }
+}
+
+// MARK: New To Do
+
+struct NewToDoView: View {
+    
+    @Binding var isPresented: Bool
+    
+    @ObservedObject var viewModel: ToDoListViewModel
+    
+    @State var title = ""
+    @State var urgency: ToDoUrgency = .whenever
+    
+    var body: some View {
+        NavigationView {
+            VStack(alignment: .leading) {
+                NeonTextField(title: $title, didReturn: { })
+                Text("Urgency")
+                    .font(.system(size: 28, weight: .semibold, design: .default))
+                    .padding(.leading, 24)
+                Picker("", selection: $urgency) {
+                    Text("Whenever").tag(ToDoUrgency.whenever)
+                    Text("Soon").tag(ToDoUrgency.soon)
+                    Text("Urgent").tag(ToDoUrgency.urgent)
+                }.pickerStyle(SegmentedPickerStyle())
+                    .padding(.horizontal, 24)
+                Spacer()
+            }
+            .navigationBarTitle("Add a new to do")
+            .navigationBarItems(leading: Button(action: dismiss, label: {
+                Text("Cancel")
+            }), trailing: Button(action: addToDo, label: {
+                Text("Add")
+            }))
+        }.accentColor(Color("primary"))
+        .navigationViewStyle(StackNavigationViewStyle())
+    }
+    
+    func addToDo() {
+        if title.isEmpty {
+            HapticsGateway.shared.triggerErrorHaptic()
+        } else {
+            HapticsGateway.shared.triggerAddBlockHaptic()
+            AnalyticsGateway.shared.logToDo()
+            viewModel.addToDoItem(with: title, urgency)
+            
+            dismiss()
+        }
+    }
+    
+    func dismiss() {
+        isPresented = false
     }
 }
 

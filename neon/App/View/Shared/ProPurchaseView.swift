@@ -25,8 +25,6 @@ struct ProPurchaseView: View {
             VStack(alignment: .leading, spacing: 16) {
                 WhatsNewItem(title: "Sub Blocks 💪",
                              content: "Add as many Sub Blocks as you want to an Hour Block for maximum productivity")
-                WhatsNewItem(title: "Unlimited Habits 🔥",
-                             content: "Break the 3 habits limit and keep those streaks going for an unlimited amount of habits")
                 WhatsNewItem(title: "Alternate App Icons 🎨",
                              content: "Choose from 3 different app icons to display on your homescreen")
             }

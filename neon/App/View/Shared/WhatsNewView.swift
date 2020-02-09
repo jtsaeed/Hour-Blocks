@@ -18,10 +18,10 @@ struct WhatsNewView: View {
                 .padding(.bottom, 32)
             
             VStack(alignment: .leading, spacing: 16) {
-                WhatsNewItem(title: "Vote For Features 🗳",
-                             content: "You can now vote for upcoming features and reach out to me directly through Email from the new Feedback section within Settings")
-                WhatsNewItem(title: "Bug Fixes 🐛",
-                             content: "Fixed crashes on iPhone XR/11 models when switching between tabs")
+                WhatsNewItem(title: "Episode 4.3: Return of The To Do List ☑️",
+                             content: "As a result of an overwhelming amount of votes, an overhauled version of the To Do List comes back to Hour Blocks!")
+                WhatsNewItem(title: "Minor Changes ✨",
+                             content: "Stability & aesthetic improvements here and there")
             }
             
             Spacer()
