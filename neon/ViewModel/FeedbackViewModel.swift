@@ -19,7 +19,7 @@ class FeedbackViewModel: ObservableObject {
     func getFeatures(completion: @escaping (APIResponse) -> ()) {
         APIGateway.shared.getFeatures { features, response in
             if let features = features {
-                self.features = features
+                DispatchQueue.main.async { self.features = features }
             }
             
             completion(response)

@@ -26,10 +26,10 @@ struct CalendarSettingsView: View {
                         })
                     }
                 } else {
-                    SettingsCard(title: "Permissions", subtitle: "Enable calendar", icon: "settings_permissions")
-                        .onTapGesture {
-                            self.openPermissionsSettings()
-                        }
+                    SettingsCard(title: "Permissions",
+                                 subtitle: "Enable calendar",
+                                 iconName: "privacy_icon",
+                                 tapped: openPermissionsSettings)
                 }
             }
             .navigationBarItems(trailing: Button(action: {
@@ -42,8 +42,6 @@ struct CalendarSettingsView: View {
         .navigationViewStyle(StackNavigationViewStyle())
         .onDisappear {
             self.isPresented = false
-            self.scheduleViewModel.reloadTodayBlocks()
-            self.scheduleViewModel.reloadFutureBlocks()
         }
     }
     

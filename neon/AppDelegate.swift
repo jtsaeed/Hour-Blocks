@@ -10,8 +10,6 @@ import UIKit
 import CoreData
 import Firebase
 import SwiftyStoreKit
-import SwiftyBeaver
-//let log = SwiftyBeaver.self
 
 @UIApplicationMain
 
@@ -23,18 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         setupIAP()
         
-        /*
-        let console = ConsoleDestination()  // log to Xcode Console
-        let platform = SBPlatformDestination(appID: "zLgY00",
-                                             appSecret: "0uc8aJlbn2YI6ErjehPowjYdnBAWhjbk",
-                                             encryptionKey: "z7ayppodwoiqezHNBGhjltGzpjdyomem")
-        log.addDestination(console)
-        log.addDestination(platform)
- */
         return true
     }
     
     func setupIAP() {
+        #if os(iOS)
         SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
             for purchase in purchases {
                 switch purchase.transaction.transactionState {
@@ -48,7 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
 
-        #if os(iOS)
         SwiftyStoreKit.shouldAddStorePaymentHandler = { payment, product in
             return true
         }

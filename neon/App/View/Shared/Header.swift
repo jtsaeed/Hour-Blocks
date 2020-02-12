@@ -1,9 +1,9 @@
 //
-//  Header.swift
-//  neon3
+//  NewHeader.swift
+//  neon
 //
-//  Created by James Saeed on 19/06/2019.
-//  Copyright © 2019 James Saeed. All rights reserved.
+//  Created by James Saeed on 11/02/2020.
+//  Copyright © 2020 James Saeed. All rights reserved.
 //
 
 import SwiftUI
@@ -21,25 +21,20 @@ struct Header<Content>: View where Content: View {
     }
 
     var body: some View {
-        ZStack(alignment: .trailing) {
-            VStack(alignment: .leading) {
+        HStack(alignment: .bottom) {
+            VStack(alignment: .leading, spacing: 4) {
                 Text(subtitle.uppercased())
                     .font(.system(size: 14))
                     .fontWeight(.semibold)
                     .foregroundColor(Color("subtitle"))
-                    .padding(.top, 8)
-                    .padding(.leading, 32)
                 Text(title)
                     .font(.system(size: 34))
                     .fontWeight(.bold)
                     .foregroundColor(Color("title"))
-                    .padding(.top, 4)
-                    .padding(.leading, 32)
             }
-            .frame(width: UIScreen.main.bounds.width, height: 112, alignment: .leading)
-            .background(Color("background"))
-            
-            content()
-        }
+            Spacer()
+            content().padding(.trailing, 14)
+        }.padding(.top, 32)
+        .padding(.horizontal, 32)
     }
 }

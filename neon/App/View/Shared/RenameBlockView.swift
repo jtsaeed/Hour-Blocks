@@ -17,13 +17,12 @@ struct RenameBlockView: View {
     @State var title = ""
     
     let currentBlock: HourBlock
-    let blockType: BlockType
     
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
                 NeonTextField(title: $title,
-                              color: blockType == .sub ? Color("secondaryLight") : Color("primaryLight"),
+                              color: currentBlock.isSubBlock ? Color("secondaryLight") : Color("primaryLight"),
                               didReturn: addBlock)
                 Spacer()
             }
@@ -35,7 +34,7 @@ struct RenameBlockView: View {
             }), trailing: Button(action: addBlock, label: {
                 Text("Confirm")
             }))
-        }.accentColor(Color(blockType == .sub ? "secondary" : "primary"))
+        }.accentColor(Color(currentBlock.isSubBlock ? "secondary" : "primary"))
         .navigationViewStyle(StackNavigationViewStyle())
         .onAppear {
             self.title = self.currentBlock.title!
@@ -47,7 +46,7 @@ struct RenameBlockView: View {
             HapticsGateway.shared.triggerErrorHaptic()
         } else {
             HapticsGateway.shared.triggerLightImpact()
-            viewModel.renameBlock(blockType, for: currentBlock, newTitle: title)
+            viewModel.rename(hourBlock: currentBlock, with: title)
             isPresented = false
         }
     }

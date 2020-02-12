@@ -19,7 +19,7 @@ struct SubBlockCard: View {
                 CardLabels(title: self.currentSubBlock.title!,
                            subtitle: self.currentHourBlock.title!)
                 Spacer()
-                CardIcon(iconName: self.currentSubBlock.iconName)
+                CardIcon(iconName: self.currentSubBlock.iconName).padding(.leading, 8)
             }
         }.contextMenu { SubBlockCardContextMenu(currentBlock: currentSubBlock) }
         
@@ -44,8 +44,7 @@ struct SubBlockCardContextMenu: View {
             }
             .sheet(isPresented: $isRenamePresented, content: {
                 RenameBlockView(isPresented: self.$isRenamePresented,
-                                currentBlock: self.currentBlock,
-                                blockType: .sub)
+                                currentBlock: self.currentBlock)
                     .environmentObject(self.viewModel)
             })
             Button(action: {
@@ -55,7 +54,7 @@ struct SubBlockCardContextMenu: View {
                 Image(systemName: "pencil")
             }
             .sheet(isPresented: $isIconPickerPresented, content: {
-                IconPicker(isPresented: self.$isIconPickerPresented, currentBlock: self.currentBlock, blockType: .sub)
+                IconPicker(isPresented: self.$isIconPickerPresented, currentBlock: self.currentBlock)
                     .environmentObject(self.viewModel)
             })
             Button(action: clear) {
@@ -75,7 +74,7 @@ struct SubBlockCardContextMenu: View {
     
     func clear() {
         HapticsGateway.shared.triggerClearBlockHaptic()
-        viewModel.removeSubBlock(for: currentBlock)
+        viewModel.remove(hourBlock: currentBlock)
     }
 }
 
@@ -97,19 +96,18 @@ struct EmptySubBlockCard: View {
                             subtitle: "Add a new",
                             titleColor: Color("subtitle"))
                 Spacer()
-                Image("pro_add_button")
+                IconButton(iconName: "add_icon", pro: true, action: self.present)
                     .sheet(isPresented: self.$isPresented, content: {
-                    if DataGateway.shared.isPro() {
-                        NewBlockView(isPresented: self.$isPresented, currentBlock: self.currentHourBlock, isSubBlock: true)
-                        .environmentObject(self.viewModel)
-                        .environmentObject(self.suggestionsViewModel)
-                    } else {
-                        ProPurchaseView(showPurchasePro: self.$isPresented)
-                    }
-                    
-                })
+                        if DataGateway.shared.isPro() {
+                            NewBlockView(isPresented: self.$isPresented, currentBlock: self.currentHourBlock, isSubBlock: true)
+                            .environmentObject(self.viewModel)
+                            .environmentObject(self.suggestionsViewModel)
+                        } else {
+                            ProPurchaseView(showPurchasePro: self.$isPresented)
+                        }
+                    })
             }
-        }.onTapGesture(perform: present)
+        }
     }
     
     func present() {

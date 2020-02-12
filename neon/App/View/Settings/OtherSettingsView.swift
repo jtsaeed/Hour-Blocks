@@ -49,7 +49,7 @@ struct OtherSettingsView: View {
         .accentColor(Color("primary"))
         .navigationViewStyle(StackNavigationViewStyle())
         .onDisappear {
-            self.scheduleViewModel.reloadTodayBlocks()
+            self.scheduleViewModel.loadHourBlocks()
             self.save()
         }
     }

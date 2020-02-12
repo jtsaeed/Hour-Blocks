@@ -65,14 +65,14 @@ struct NewBlockView: View {
             HapticsGateway.shared.triggerErrorHaptic()
         } else {
             HapticsGateway.shared.triggerAddBlockHaptic()
-            LoggingGateway.shared.logBlockAdded(for: DomainsGateway.shared.determineDomain(for: title)?.key ?? "default")
             AnalyticsGateway.shared.logHourBlock(for: DomainsGateway.shared.determineDomain(for: title)?.key ?? "default",
                                                  at: currentBlock.formattedTime,
                                                  isSuggestion: isSuggestion.description)
             if isSubBlock {
-                viewModel.addSubBlock(for: currentBlock.hour, with: title)
+                viewModel.add(hourBlock: currentBlock)
+//                viewModel.addSubBlock(for: currentBlock.hour, with: title)
             } else {
-                viewModel.setTodayBlock(for: currentBlock.hour, with: title)
+//                viewModel.setTodayBlock(for: currentBlock.hour, with: title)
             }
             
             isPresented = false
@@ -100,8 +100,7 @@ struct SuggestionCard: View {
                 CardLabels(title: self.suggestion.title,
                            subtitle: self.suggestion.reason.uppercased())
                 Spacer()
-                Image("add_button")
-                    .onTapGesture(perform: self.add)
+                IconButton(iconName: "add_icon", action: self.add)
             }
         }
     }

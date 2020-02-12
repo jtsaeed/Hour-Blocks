@@ -14,11 +14,10 @@ struct ToDoListView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                Section(header: ToDoListHeader(viewModel: viewModel)) {
-                    ForEach(viewModel.toDoItems.sorted(by: { $0 < $1 })) { toDoItem in
-                        ToDoCard(viewModel: self.viewModel, toDoItem: toDoItem)
-                    }
+            VStack {
+                ToDoListHeader(viewModel: viewModel)
+                List(viewModel.toDoItems.sorted(by: { $0 < $1 })) { toDoItem in
+                    ToDoCard(viewModel: self.viewModel, toDoItem: toDoItem)
                 }
             }
             .navigationBarTitle("To Do List")
@@ -36,14 +35,10 @@ private struct ToDoListHeader: View {
     var body: some View {
         Header(title: "To Do List",
                subtitle: "\(viewModel.toDoItems.count) ITEM\(viewModel.toDoItems.count == 1 ? "" : "S")") {
-            Button(action: self.add) {
-                Image("add_button")
-            }
-            .padding(.top, 32)
-            .padding(.trailing, 47)
-            .sheet(isPresented: self.$isPresented, content: {
-                NewToDoView(isPresented: self.$isPresented, viewModel: self.viewModel)
-            })
+            IconButton(iconName: "add_icon", action: self.add)
+                .sheet(isPresented: self.$isPresented, content: {
+                    NewToDoView(isPresented: self.$isPresented, viewModel: self.viewModel)
+                })
         }
     }
     

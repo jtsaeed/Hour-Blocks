@@ -11,6 +11,8 @@ import CoreData
 
 struct ContentView: View {
     
+    let debug = true
+    
     @Environment(\.managedObjectContext) var managedObjectContext
     @EnvironmentObject var scheduleViewModel: ScheduleViewModel
     @EnvironmentObject var settingsViewModel: SettingsViewModel
@@ -50,11 +52,13 @@ struct ContentView: View {
                     Image(systemName: "gear")
                     Text("Settings")
                 }
+            if debug {
             VotesView()
                 .tabItem {
                     Image(systemName: "gear")
                     Text("Votes")
                 }
+            }
         }.accentColor(Color("primary"))
     }
 }

@@ -25,7 +25,7 @@ struct HourBlock: Identifiable {
     
     init(day: Date, hour: Int, title: String?) {
         self.id = UUID().uuidString
-        self.day = day
+        self.day = Calendar.current.startOfDay(for: day)
         self.hour = hour
         
         self.title = title

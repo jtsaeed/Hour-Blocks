@@ -12,21 +12,16 @@
 		2304FA17235F2A2A006DA688 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA16235F2A2A006DA688 /* ContentView.swift */; };
 		2304FA1D235F2D3B006DA688 /* HourBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA1C235F2D3B006DA688 /* HourBlock.swift */; };
 		2304FA1F235F2F28006DA688 /* DomainsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA1E235F2F28006DA688 /* DomainsGateway.swift */; };
-		2304FA21235F2F99006DA688 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA20235F2F99006DA688 /* ScheduleView.swift */; };
 		2304FA27235F2FF2006DA688 /* NewSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA26235F2FF2006DA688 /* NewSheet.swift */; };
-		2304FA29235F3000006DA688 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA28235F3000006DA688 /* Header.swift */; };
 		2304FA2B235F300A006DA688 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA2A235F300A006DA688 /* Card.swift */; };
 		2304FA2D235F301A006DA688 /* AddToBlockSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA2C235F301A006DA688 /* AddToBlockSheet.swift */; };
 		2304FA31235F304C006DA688 /* NSManagedObjectContext+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA30235F304C006DA688 /* NSManagedObjectContext+Ext.swift */; };
-		2304FA33235F305F006DA688 /* TodayCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA32235F305F006DA688 /* TodayCard.swift */; };
-		2304FA35235F306B006DA688 /* FutureCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA34235F306B006DA688 /* FutureCard.swift */; };
 		2304FA39235F315F006DA688 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA38235F315F006DA688 /* SettingsView.swift */; };
 		2304FA3B235F39E4006DA688 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2304FA3A235F39E4006DA688 /* LaunchScreen.storyboard */; };
 		2304FA43235F4AB4006DA688 /* HapticsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA42235F4AB4006DA688 /* HapticsGateway.swift */; };
 		231392A922666FC400DB0ABF /* DataGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231392A822666FC400DB0ABF /* DataGateway.swift */; };
 		232ED4E0228C93A4008FC4A0 /* AnalyticsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232ED4DF228C93A4008FC4A0 /* AnalyticsGateway.swift */; };
 		23356ED52256676E00541A60 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23356ED42256676E00541A60 /* GoogleService-Info.plist */; };
-		2336981D23818A0B006ACD1E /* HabitBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336981C23818A0B006ACD1E /* HabitBlock.swift */; };
 		2336981F23818D52006ACD1E /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336981E23818D52006ACD1E /* ActionButton.swift */; };
 		2338BEBC220A7840004F288F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEBB220A7840004F288F /* AppDelegate.swift */; };
 		2338BEC4220A7840004F288F /* neon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEC2220A7840004F288F /* neon.xcdatamodeld */; };
@@ -45,11 +40,10 @@
 		23E82155236DB57A004E6F15 /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E82154236DB57A004E6F15 /* WhatsNewView.swift */; };
 		61B305ACEAA2B4F72109821D /* Pods_neon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BA23B93EB57D0A9C87A3846 /* Pods_neon.framework */; };
 		7A0CEDDA239C05CA00CB32BF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0CEDD9239C05CA00CB32BF /* StoreKit.framework */; };
-		7A134DE123CB530D00127C71 /* HabitCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A134DE023CB530D00127C71 /* HabitCard.swift */; };
+		7A1AF6F623F34A9E00425BB6 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7A1AF6F523F34A9E00425BB6 /* SwiftyStoreKit */; };
+		7A1AF6F823F440ED00425BB6 /* BlockDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1AF6F723F440ED00425BB6 /* BlockDomain.swift */; };
 		7A1C180C23D38F5A00E849E3 /* RenameBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C180B23D38F5A00E849E3 /* RenameBlockView.swift */; };
 		7A3E2E0623ED98ED0063D46B /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3E2E0523ED98ED0063D46B /* ActivityIndicator.swift */; };
-		7A47B73523D5C8320059BA04 /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 7A47B73423D5C8320059BA04 /* SwiftyBeaver */; };
-		7A47B73723D5CAF80059BA04 /* LoggingGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A47B73623D5CAF80059BA04 /* LoggingGateway.swift */; };
 		7A4E738423A01819008036ED /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4E738323A01819008036ED /* CloudKit.framework */; };
 		7A629DAB238C059300C186B1 /* notification.aif in Resources */ = {isa = PBXBuildFile; fileRef = 23E7851322AA753100A9650F /* notification.aif */; };
 		7A666BC823F06AC4003D6F1F /* ToDoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A666BC723F06AC4003D6F1F /* ToDoListView.swift */; };
@@ -66,16 +60,21 @@
 		7A8BA9B423CCCD2C0078E67D /* icon_pro@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A8BA9B023CCCD2C0078E67D /* icon_pro@3x.png */; };
 		7A8BA9B523CCCD2C0078E67D /* icon_pro@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A8BA9B123CCCD2C0078E67D /* icon_pro@2x.png */; };
 		7A8BA9B623CCCD2C0078E67D /* icon_dark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A8BA9B223CCCD2C0078E67D /* icon_dark@3x.png */; };
-		7A9C38B923CAA3D00088FEA9 /* HabitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C38B823CAA3D00088FEA9 /* HabitsViewModel.swift */; };
-		7A9C38BB23CAA4110088FEA9 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C38BA23CAA4110088FEA9 /* ScheduleViewModel.swift */; };
 		7A9CD1B023EEDCB50036B251 /* VotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9CD1AF23EEDCB50036B251 /* VotesView.swift */; };
 		7AA4923223E9D4020006DCB8 /* APIGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA4923123E9D4020006DCB8 /* APIGateway.swift */; };
 		7AA4923423E9D46B0006DCB8 /* URLResponse+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA4923323E9D46B0006DCB8 /* URLResponse+Ext.swift */; };
 		7AA4923623E9D5640006DCB8 /* FeatureVotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA4923523E9D5640006DCB8 /* FeatureVotes.swift */; };
 		7AA4923823E9DA5D0006DCB8 /* FeedbackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA4923723E9DA5D0006DCB8 /* FeedbackViewModel.swift */; };
 		7AA4923A23E9DD100006DCB8 /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA4923923E9DD100006DCB8 /* FeedbackView.swift */; };
+		7AAEAE0E23F2E46A00B62445 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEAE0D23F2E46A00B62445 /* IconButton.swift */; };
+		7AAEAE1023F2E54E00B62445 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEAE0F23F2E54E00B62445 /* Header.swift */; };
+		7AD43CC323F33C4100404A0C /* ScheduleDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD43CC223F33C4100404A0C /* ScheduleDatePicker.swift */; };
+		7AD43CC523F33F0300404A0C /* DatePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD43CC423F33F0300404A0C /* DatePickerViewModel.swift */; };
+		7ADE54EA23F0B21F007FAE38 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADE54E923F0B21F007FAE38 /* ScheduleViewModel.swift */; };
+		7ADE54ED23F0B898007FAE38 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 7ADE54EC23F0B898007FAE38 /* SwiftDate */; };
+		7ADE54EF23F0BD89007FAE38 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADE54EE23F0BD89007FAE38 /* ScheduleView.swift */; };
+		7AE3A3B823F2011200C81F3A /* HourBlockCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE3A3B723F2011200C81F3A /* HourBlockCard.swift */; };
 		7AEAEE9F239AC723007DE056 /* ProPurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEAEE9E239AC723007DE056 /* ProPurchaseView.swift */; };
-		7AEF591B23CAB15F00FEEA36 /* HabitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEF591A23CAB15F00FEEA36 /* HabitsView.swift */; };
 		B658B761255B945710FC2F42 /* Pods_neonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9076E2F3ADB2E623D12BBF3D /* Pods_neonTests.framework */; };
 		B912B77E89CBF0E08ECEB8A2 /* Pods_neonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F07358A92310DC9C6BA03B89 /* Pods_neonUITests.framework */; };
 /* End PBXBuildFile section */
@@ -136,14 +135,10 @@
 		2304FA16235F2A2A006DA688 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2304FA1C235F2D3B006DA688 /* HourBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourBlock.swift; sourceTree = "<group>"; };
 		2304FA1E235F2F28006DA688 /* DomainsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainsGateway.swift; sourceTree = "<group>"; };
-		2304FA20235F2F99006DA688 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		2304FA26235F2FF2006DA688 /* NewSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSheet.swift; sourceTree = "<group>"; };
-		2304FA28235F3000006DA688 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		2304FA2A235F300A006DA688 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		2304FA2C235F301A006DA688 /* AddToBlockSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToBlockSheet.swift; sourceTree = "<group>"; };
 		2304FA30235F304C006DA688 /* NSManagedObjectContext+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Ext.swift"; sourceTree = "<group>"; };
-		2304FA32235F305F006DA688 /* TodayCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCard.swift; sourceTree = "<group>"; };
-		2304FA34235F306B006DA688 /* FutureCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureCard.swift; sourceTree = "<group>"; };
 		2304FA38235F315F006DA688 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2304FA3A235F39E4006DA688 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2304FA42235F4AB4006DA688 /* HapticsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsGateway.swift; sourceTree = "<group>"; };
@@ -151,7 +146,6 @@
 		2317288D22917778007DBF8B /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
 		232ED4DF228C93A4008FC4A0 /* AnalyticsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsGateway.swift; sourceTree = "<group>"; };
 		23356ED42256676E00541A60 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		2336981C23818A0B006ACD1E /* HabitBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitBlock.swift; sourceTree = "<group>"; };
 		2336981E23818D52006ACD1E /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		2338BEB8220A7840004F288F /* neon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = neon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2338BEBB220A7840004F288F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -181,10 +175,9 @@
 		390CCC3E80133F37FB4A2306 /* Pods-neonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neonTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-neonTests/Pods-neonTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6B9A0107CCBF37CCAA2CAAD3 /* Pods-neonUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neonUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-neonUITests/Pods-neonUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7A0CEDD9239C05CA00CB32BF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		7A134DE023CB530D00127C71 /* HabitCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCard.swift; sourceTree = "<group>"; };
+		7A1AF6F723F440ED00425BB6 /* BlockDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockDomain.swift; sourceTree = "<group>"; };
 		7A1C180B23D38F5A00E849E3 /* RenameBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenameBlockView.swift; sourceTree = "<group>"; };
 		7A3E2E0523ED98ED0063D46B /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
-		7A47B73623D5CAF80059BA04 /* LoggingGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingGateway.swift; sourceTree = "<group>"; };
 		7A4E738323A01819008036ED /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		7A666BC723F06AC4003D6F1F /* ToDoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListView.swift; sourceTree = "<group>"; };
 		7A666BC923F06AD2003D6F1F /* ToDoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCard.swift; sourceTree = "<group>"; };
@@ -200,16 +193,20 @@
 		7A8BA9B023CCCD2C0078E67D /* icon_pro@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_pro@3x.png"; sourceTree = "<group>"; };
 		7A8BA9B123CCCD2C0078E67D /* icon_pro@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_pro@2x.png"; sourceTree = "<group>"; };
 		7A8BA9B223CCCD2C0078E67D /* icon_dark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_dark@3x.png"; sourceTree = "<group>"; };
-		7A9C38B823CAA3D00088FEA9 /* HabitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewModel.swift; sourceTree = "<group>"; };
-		7A9C38BA23CAA4110088FEA9 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
 		7A9CD1AF23EEDCB50036B251 /* VotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotesView.swift; sourceTree = "<group>"; };
 		7AA4923123E9D4020006DCB8 /* APIGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGateway.swift; sourceTree = "<group>"; };
 		7AA4923323E9D46B0006DCB8 /* URLResponse+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLResponse+Ext.swift"; sourceTree = "<group>"; };
 		7AA4923523E9D5640006DCB8 /* FeatureVotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureVotes.swift; sourceTree = "<group>"; };
 		7AA4923723E9DA5D0006DCB8 /* FeedbackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewModel.swift; sourceTree = "<group>"; };
 		7AA4923923E9DD100006DCB8 /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
+		7AAEAE0D23F2E46A00B62445 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
+		7AAEAE0F23F2E54E00B62445 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		7AD43CC223F33C4100404A0C /* ScheduleDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDatePicker.swift; sourceTree = "<group>"; };
+		7AD43CC423F33F0300404A0C /* DatePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewModel.swift; sourceTree = "<group>"; };
+		7ADE54E923F0B21F007FAE38 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
+		7ADE54EE23F0BD89007FAE38 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
+		7AE3A3B723F2011200C81F3A /* HourBlockCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourBlockCard.swift; sourceTree = "<group>"; };
 		7AEAEE9E239AC723007DE056 /* ProPurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProPurchaseView.swift; sourceTree = "<group>"; };
-		7AEF591A23CAB15F00FEEA36 /* HabitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsView.swift; sourceTree = "<group>"; };
 		8BA23B93EB57D0A9C87A3846 /* Pods_neon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_neon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9076E2F3ADB2E623D12BBF3D /* Pods_neonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_neonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3593EBEBDFB2F7E14F71C3D /* Pods-neon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-neon/Pods-neon.debug.xcconfig"; sourceTree = "<group>"; };
@@ -223,10 +220,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ADE54ED23F0B898007FAE38 /* SwiftDate in Frameworks */,
 				7A4E738423A01819008036ED /* CloudKit.framework in Frameworks */,
 				7A0CEDDA239C05CA00CB32BF /* StoreKit.framework in Frameworks */,
+				7A1AF6F623F34A9E00425BB6 /* SwiftyStoreKit in Frameworks */,
 				61B305ACEAA2B4F72109821D /* Pods_neon.framework in Frameworks */,
-				7A47B73523D5C8320059BA04 /* SwiftyBeaver in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,7 +269,6 @@
 				232ED4DF228C93A4008FC4A0 /* AnalyticsGateway.swift */,
 				2304FA1E235F2F28006DA688 /* DomainsGateway.swift */,
 				2304FA42235F4AB4006DA688 /* HapticsGateway.swift */,
-				7A47B73623D5CAF80059BA04 /* LoggingGateway.swift */,
 				7AA4923123E9D4020006DCB8 /* APIGateway.swift */,
 			);
 			path = Service;
@@ -385,9 +382,9 @@
 			isa = PBXGroup;
 			children = (
 				2304FA1C235F2D3B006DA688 /* HourBlock.swift */,
-				2336981C23818A0B006ACD1E /* HabitBlock.swift */,
 				7AA4923523E9D5640006DCB8 /* FeatureVotes.swift */,
 				7A666BCB23F06ADB003D6F1F /* ToDoItem.swift */,
+				7A1AF6F723F440ED00425BB6 /* BlockDomain.swift */,
 			);
 			name = Model;
 			path = App/Model;
@@ -398,7 +395,6 @@
 			children = (
 				2304FA16235F2A2A006DA688 /* ContentView.swift */,
 				7A9C38B523CAA3250088FEA9 /* Schedule */,
-				7A9C38B623CAA3890088FEA9 /* Habits */,
 				7A666BC623F06AB1003D6F1F /* To Do */,
 				7A9C38B723CAA38E0088FEA9 /* Settings */,
 				7A9C38B423CAA3200088FEA9 /* Shared */,
@@ -410,12 +406,12 @@
 		7A9C38B323CAA3100088FEA9 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				7A9C38B823CAA3D00088FEA9 /* HabitsViewModel.swift */,
-				7A9C38BA23CAA4110088FEA9 /* ScheduleViewModel.swift */,
 				2373C1FE237036B500237763 /* SuggestionsViewModel.swift */,
 				23C6F8802372DCB200E53286 /* SettingsViewModel.swift */,
 				7AA4923723E9DA5D0006DCB8 /* FeedbackViewModel.swift */,
 				7A666BCD23F06FCD003D6F1F /* ToDoListViewModel.swift */,
+				7ADE54E923F0B21F007FAE38 /* ScheduleViewModel.swift */,
+				7AD43CC423F33F0300404A0C /* DatePickerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -425,7 +421,6 @@
 			children = (
 				7A7EB48D23CAACAA004C9E82 /* Card */,
 				2304FA26235F2FF2006DA688 /* NewSheet.swift */,
-				2304FA28235F3000006DA688 /* Header.swift */,
 				2304FA2C235F301A006DA688 /* AddToBlockSheet.swift */,
 				2336981E23818D52006ACD1E /* ActionButton.swift */,
 				23E82154236DB57A004E6F15 /* WhatsNewView.swift */,
@@ -433,6 +428,8 @@
 				7A72990F23CBF67E008ED7AD /* NeonTextField.swift */,
 				7A1C180B23D38F5A00E849E3 /* RenameBlockView.swift */,
 				7A3E2E0523ED98ED0063D46B /* ActivityIndicator.swift */,
+				7AAEAE0D23F2E46A00B62445 /* IconButton.swift */,
+				7AAEAE0F23F2E54E00B62445 /* Header.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -440,22 +437,13 @@
 		7A9C38B523CAA3250088FEA9 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				2304FA20235F2F99006DA688 /* ScheduleView.swift */,
+				7ADE54EE23F0BD89007FAE38 /* ScheduleView.swift */,
+				7AD43CC223F33C4100404A0C /* ScheduleDatePicker.swift */,
+				7AE3A3B723F2011200C81F3A /* HourBlockCard.swift */,
 				7A735E4E238D591C00FE4D32 /* IconPicker.swift */,
-				2304FA32235F305F006DA688 /* TodayCard.swift */,
-				2304FA34235F306B006DA688 /* FutureCard.swift */,
 				7AEF591923CAB09200FEEA36 /* SubBlocks */,
 			);
 			path = Schedule;
-			sourceTree = "<group>";
-		};
-		7A9C38B623CAA3890088FEA9 /* Habits */ = {
-			isa = PBXGroup;
-			children = (
-				7AEF591A23CAB15F00FEEA36 /* HabitsView.swift */,
-				7A134DE023CB530D00127C71 /* HabitCard.swift */,
-			);
-			path = Habits;
 			sourceTree = "<group>";
 		};
 		7A9C38B723CAA38E0088FEA9 /* Settings */ = {
@@ -508,7 +496,7 @@
 				23BA59672242B0C400AE45DE /* Embed Frameworks */,
 				2395A95C224AE1750007D6F2 /* Embed App Extensions */,
 				2395A98A224AE78E0007D6F2 /* Embed Watch Content */,
-				130B7DA3F58372265F672172 /* [CP] Embed Pods Frameworks */,
+				7F4B9B3B52FBADB039804C5B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -516,7 +504,8 @@
 			);
 			name = neon;
 			packageProductDependencies = (
-				7A47B73423D5C8320059BA04 /* SwiftyBeaver */,
+				7ADE54EC23F0B898007FAE38 /* SwiftDate */,
+				7A1AF6F523F34A9E00425BB6 /* SwiftyStoreKit */,
 			);
 			productName = neon;
 			productReference = 2338BEB8220A7840004F288F /* neon.app */;
@@ -617,7 +606,8 @@
 			);
 			mainGroup = 2338BEAF220A7840004F288F;
 			packageReferences = (
-				7A47B73323D5C8320059BA04 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */,
+				7ADE54EB23F0B898007FAE38 /* XCRemoteSwiftPackageReference "SwiftDate" */,
+				7A1AF6F423F34A9E00425BB6 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */,
 			);
 			productRefGroup = 2338BEB9220A7840004F288F /* Products */;
 			projectDirPath = "";
@@ -663,23 +653,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		130B7DA3F58372265F672172 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-neon/Pods-neon-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-neon/Pods-neon-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-neon/Pods-neon-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		7C8B58ECED1F9FF1006E3FB1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -700,6 +673,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7F4B9B3B52FBADB039804C5B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-neon/Pods-neon-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-neon/Pods-neon-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-neon/Pods-neon-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D08009ACCAB2FA3EEED83FA3 /* [CP] Check Pods Manifest.lock */ = {
@@ -754,29 +744,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AA4923A23E9DD100006DCB8 /* FeedbackView.swift in Sources */,
-				7A47B73723D5CAF80059BA04 /* LoggingGateway.swift in Sources */,
+				7AAEAE1023F2E54E00B62445 /* Header.swift in Sources */,
 				7A666BCC23F06ADB003D6F1F /* ToDoItem.swift in Sources */,
 				7A7EB49023CAACBA004C9E82 /* CardLabels.swift in Sources */,
 				23C53D7F2369E02400BA4378 /* OtherSettingsView.swift in Sources */,
-				2304FA29235F3000006DA688 /* Header.swift in Sources */,
+				7AD43CC523F33F0300404A0C /* DatePickerViewModel.swift in Sources */,
 				2304FA2D235F301A006DA688 /* AddToBlockSheet.swift in Sources */,
 				231392A922666FC400DB0ABF /* DataGateway.swift in Sources */,
 				7AA4923623E9D5640006DCB8 /* FeatureVotes.swift in Sources */,
-				7A9C38B923CAA3D00088FEA9 /* HabitsViewModel.swift in Sources */,
-				7A9C38BB23CAA4110088FEA9 /* ScheduleViewModel.swift in Sources */,
 				2338BEC4220A7840004F288F /* neon.xcdatamodeld in Sources */,
 				234DF2FB237A113200EB248A /* Int+Ext.swift in Sources */,
 				2336981F23818D52006ACD1E /* ActionButton.swift in Sources */,
-				2304FA21235F2F99006DA688 /* ScheduleView.swift in Sources */,
 				23E82155236DB57A004E6F15 /* WhatsNewView.swift in Sources */,
 				7A9CD1B023EEDCB50036B251 /* VotesView.swift in Sources */,
 				2304FA2B235F300A006DA688 /* Card.swift in Sources */,
 				7A3E2E0623ED98ED0063D46B /* ActivityIndicator.swift in Sources */,
 				232ED4E0228C93A4008FC4A0 /* AnalyticsGateway.swift in Sources */,
-				2304FA35235F306B006DA688 /* FutureCard.swift in Sources */,
-				2336981D23818A0B006ACD1E /* HabitBlock.swift in Sources */,
-				7AEF591B23CAB15F00FEEA36 /* HabitsView.swift in Sources */,
+				7ADE54EF23F0BD89007FAE38 /* ScheduleView.swift in Sources */,
 				23C6F8812372DCB200E53286 /* SettingsViewModel.swift in Sources */,
+				7ADE54EA23F0B21F007FAE38 /* ScheduleViewModel.swift in Sources */,
 				2304FA27235F2FF2006DA688 /* NewSheet.swift in Sources */,
 				7A735E49238CFEF400FE4D32 /* SubBlocksView.swift in Sources */,
 				2304FA39235F315F006DA688 /* SettingsView.swift in Sources */,
@@ -792,22 +778,24 @@
 				7A666BC823F06AC4003D6F1F /* ToDoListView.swift in Sources */,
 				7A735E51238D6E5A00FE4D32 /* Array+Ext.swift in Sources */,
 				2373C1FF237036B500237763 /* SuggestionsViewModel.swift in Sources */,
-				2304FA33235F305F006DA688 /* TodayCard.swift in Sources */,
 				23B63CE1222491050026B9C2 /* CalendarGateway.swift in Sources */,
 				7AA4923823E9DA5D0006DCB8 /* FeedbackViewModel.swift in Sources */,
 				7AA4923223E9D4020006DCB8 /* APIGateway.swift in Sources */,
 				7A72991023CBF67E008ED7AD /* NeonTextField.swift in Sources */,
+				7A1AF6F823F440ED00425BB6 /* BlockDomain.swift in Sources */,
 				7AEAEE9F239AC723007DE056 /* ProPurchaseView.swift in Sources */,
+				7AD43CC323F33C4100404A0C /* ScheduleDatePicker.swift in Sources */,
 				7A1C180C23D38F5A00E849E3 /* RenameBlockView.swift in Sources */,
 				23C53D812369E62800BA4378 /* String+Ext.swift in Sources */,
 				7A735E4D238D2ED400FE4D32 /* SubBlockCard.swift in Sources */,
 				23036F4E237B2D9000563206 /* PrivacyPolicyView.swift in Sources */,
+				7AAEAE0E23F2E46A00B62445 /* IconButton.swift in Sources */,
 				7A666BCE23F06FCD003D6F1F /* ToDoListViewModel.swift in Sources */,
 				23E45BE2224BA3A9002D01AC /* NotificationsGateway.swift in Sources */,
 				2304FA1D235F2D3B006DA688 /* HourBlock.swift in Sources */,
-				7A134DE123CB530D00127C71 /* HabitCard.swift in Sources */,
 				234C1A09220C8E9D00344316 /* Date+Ext.swift in Sources */,
 				2304FA43235F4AB4006DA688 /* HapticsGateway.swift in Sources */,
+				7AE3A3B823F2011200C81F3A /* HourBlockCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -978,11 +966,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.2;
+				MARKETING_VERSION = 4.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1005,11 +993,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.2;
+				MARKETING_VERSION = 4.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1143,21 +1131,34 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7A47B73323D5C8320059BA04 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */ = {
+		7A1AF6F423F34A9E00425BB6 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftyBeaver/SwiftyBeaver.git";
+			repositoryURL = "https://github.com/bizz84/SwiftyStoreKit";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		7ADE54EB23F0B898007FAE38 /* XCRemoteSwiftPackageReference "SwiftDate" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/malcommac/SwiftDate";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.8.4;
+				minimumVersion = 6.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7A47B73423D5C8320059BA04 /* SwiftyBeaver */ = {
+		7A1AF6F523F34A9E00425BB6 /* SwiftyStoreKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7A47B73323D5C8320059BA04 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */;
-			productName = SwiftyBeaver;
+			package = 7A1AF6F423F34A9E00425BB6 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */;
+			productName = SwiftyStoreKit;
+		};
+		7ADE54EC23F0B898007FAE38 /* SwiftDate */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7ADE54EB23F0B898007FAE38 /* XCRemoteSwiftPackageReference "SwiftDate" */;
+			productName = SwiftDate;
 		};
 /* End XCSwiftPackageProductDependency section */
 

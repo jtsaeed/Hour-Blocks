@@ -14,6 +14,8 @@ struct FeedbackView: View {
     
     @ObservedObject var viewModel = FeedbackViewModel()
     
+    @State var currentFeature: Feature?
+    
     @State var isLoading = false
     
     @State var displayError = false
@@ -23,8 +25,6 @@ struct FeedbackView: View {
     
     var body: some View {
         NavigationView {
-            // e4 - 0.18
-            // e3 - 0.82
             VStack(spacing: 16) {
                 if isLoading {
                     ActivityIndicator(isAnimating: $isLoading)
@@ -36,15 +36,15 @@ struct FeedbackView: View {
                     if viewModel.hasVoted { Spacer() }
                     if !viewModel.hasVoted {
                         List(viewModel.features) { feature in
-                            FeatureCard(feature: feature)
-                            .onTapGesture {
+                            FeatureCard(feature: feature, tapped: {
                                 HapticsGateway.shared.triggerLightImpact()
+                                self.currentFeature = feature
                                 self.displayConfirmation = true
-                            }
+                            })
                             .alert(isPresented: self.$displayConfirmation) {
                                 Alert(title: Text("Confirm Vote"),
-                                      message: Text("Are you sure you'd like to vote for \(feature.description.lowercased())?"),
-                                      primaryButton: .default(Text("Yes"), action: { self.vote(for: feature) }),
+                                      message: Text("Are you sure you'd like to vote for \(self.currentFeature!.description.lowercased())?"),
+                                      primaryButton: .default(Text("Yes"), action: self.vote),
                                       secondaryButton: .cancel())
                             }
                         }
@@ -64,6 +64,7 @@ struct FeedbackView: View {
             }))
         }.accentColor(Color("primary"))
         .onAppear(perform: getFeatures)
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     func email() {
@@ -94,22 +95,20 @@ struct FeedbackView: View {
         }
     }
     
-    func vote(for feature: Feature) {
+    func vote() {
         self.isLoading = true
         
-        viewModel.vote(for: feature) { response in
+        viewModel.vote(for: currentFeature!) { response in
             self.isLoading = false
             
             guard response == .success else {
                 self.displayError = true
-                // 1 -
-                // 2 -
                 self.errorMessage = response.rawValue
                 HapticsGateway.shared.triggerErrorHaptic()
                 return
             }
             
-            self.viewModel.hasVoted = true
+            DispatchQueue.main.async { self.viewModel.hasVoted = true }
             HapticsGateway.shared.triggerCompletionHaptic()
         }
     }
@@ -118,6 +117,7 @@ struct FeedbackView: View {
 struct FeatureCard: View {
     
     let feature: Feature
+    let tapped: () -> Void
     
     var body: some View {
         Card {
@@ -125,7 +125,7 @@ struct FeatureCard: View {
                 Text(self.feature.description)
                     .font(.system(size: 20, weight: .medium, design: .rounded))
                 Spacer()
-                Image("vote_button").padding(.leading, 24)
+                IconButton(iconName: "how_to_vote", action: self.tapped)
             }
         }
     }

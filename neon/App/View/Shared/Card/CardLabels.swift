@@ -16,7 +16,6 @@ struct CardLabels: View {
     var titleColor = Color("title")
     var subtitleColor = Color("subtitle")
     var alignment: HorizontalAlignment = .leading
-    var lineLimit = 1
     
     var textAlignment: TextAlignment {
         if alignment == .trailing {
@@ -34,8 +33,7 @@ struct CardLabels: View {
                 .modifier(CardSubtitleLabel())
                 .foregroundColor(subtitleColor)
             Text(title.smartCapitalization())
-                .modifier(CardTitleLabelNoLineLimit())
-                .lineLimit(lineLimit)
+                .modifier(CardTitleLabel())
                 .foregroundColor(titleColor)
                 .multilineTextAlignment(textAlignment)
         }
@@ -45,21 +43,14 @@ struct CardLabels: View {
 struct CardSubtitleLabel: ViewModifier {
     
     func body(content: Content) -> some View {
-        content.font(.system(size: 14, weight: .semibold, design: .default))
-    }
-}
-
-struct CardTitleLabelNoLineLimit: ViewModifier {
-    
-    func body(content: Content) -> some View {
-        content.font(.system(size: 22, weight: .bold, design: .rounded))
+        content.font(.system(size: 14, weight: .semibold, design: .default)).lineLimit(1)
     }
 }
 
 struct CardTitleLabel: ViewModifier {
     
     func body(content: Content) -> some View {
-        content.modifier(CardTitleLabelNoLineLimit()).lineLimit(1)
+        content.font(.system(size: 22, weight: .bold, design: .rounded)).lineLimit(2)
     }
 }
 

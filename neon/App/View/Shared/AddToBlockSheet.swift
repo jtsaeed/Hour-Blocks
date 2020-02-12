@@ -19,7 +19,7 @@ struct AddToBlockSheet: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(viewModel.todaysBlocks.filter { $0.hour >= Calendar.current.component(.hour, from: Date()) }) { block in
+                ForEach(viewModel.currentHourBlocks) { block in
                     AddToBlockCard(currentBlock: block, didAddToBlock: {
                         self.addBlock(for: block.hour)
                     }, didAddToSubBlock: {
@@ -37,14 +37,14 @@ struct AddToBlockSheet: View {
     
     func addBlock(for hour: Int) {
         HapticsGateway.shared.triggerAddBlockHaptic()
-        viewModel.setTodayBlock(for: hour, with: self.title)
+//        viewModel.setTodayBlock(for: hour, with: self.title)
         
         dismissSheet()
     }
     
     func addSubBlock(for hour: Int) {
         HapticsGateway.shared.triggerAddBlockHaptic()
-        viewModel.addSubBlock(for: hour, with: self.title)
+//        viewModel.addSubBlock(for: hour, with: self.title)
         
         dismissSheet()
     }
@@ -65,7 +65,7 @@ struct DuplicateBlockSheet: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(viewModel.todaysBlocks.filter { $0.hour >= Calendar.current.component(.hour, from: Date()) }) { block in
+                ForEach(viewModel.currentHourBlocks) { block in
                     AddToBlockCard(currentBlock: block, didAddToBlock: {
                         self.addBlock(for: block.hour)
                     }, didAddToSubBlock: {
@@ -85,93 +85,16 @@ struct DuplicateBlockSheet: View {
         
         var newBlock = HourBlock(day: Date(), hour: hour, title: currentBlock.title!)
         newBlock.iconOverride = currentBlock.iconOverride
-        viewModel.setTodayBlock(newBlock)
+//        viewModel.setTodayBlock(newBlock)
     }
     
     func addSubBlock(for hour: Int) {
         HapticsGateway.shared.triggerAddBlockHaptic()
-        viewModel.addSubBlock(for: hour, with: currentBlock.title!)
+//        viewModel.addSubBlock(for: hour, with: currentBlock.title!)
     }
     
     func dismissSheet() {
         self.isPresented = false
-    }
-}
-
-// MARK: - New Future Block View
-
-struct NewFutureBlockView: View {
-    
-    @EnvironmentObject var viewModel: ScheduleViewModel
-    
-    @Binding var isPresented: Bool
-    
-    @State var title = ""
-    @State var date = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
-    
-    var dateClosedRange: ClosedRange<Date> {
-        let min = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
-        let max = Calendar.current.date(byAdding: .month, value: 1, to: Date())!
-        return min...max
-    }
-    
-    var body: some View {
-        NavigationView {
-            VStack(alignment: .center) {
-                NeonTextField(title: $title, didReturn: { })
-                DatePicker("Choose a date", selection: $date, in: dateClosedRange, displayedComponents: .date)
-                    .labelsHidden()
-                NavigationLink(destination: AddFutureBlockView(didAddBlock: { hour in
-                    self.addFutureBlock(at: hour)
-                }), label: {
-                    ActionButton(title: "Choose an hour").padding(32)
-                })
-                Spacer()
-            }
-            .navigationBarTitle("What's in the future?")
-            .navigationBarItems(leading: Button(action: {
-                self.isPresented = false
-            }, label: {
-                Text("Cancel")
-            }))
-        }.accentColor(Color("primary"))
-        .navigationViewStyle(StackNavigationViewStyle())
-    }
-    
-    func addFutureBlock(at hour: Int) {
-        if self.title.isEmpty {
-            UINotificationFeedbackGenerator().notificationOccurred(.error)
-        } else {
-            HapticsGateway.shared.triggerAddBlockHaptic()
-            viewModel.addFutureBlock(for: date, hour, with: title)
-            
-            self.isPresented = false
-        }
-    }
-}
-
-struct AddFutureBlockView: View {
-    
-    var didAddBlock: (Int) -> ()
-    
-    var body: some View {
-        List {
-            ForEach(fullDayBlocks()) { block in
-                AddToBlockCard(currentBlock: block, didAddToBlock: {
-                    self.didAddBlock(block.hour)
-                }, didAddToSubBlock: {})
-            }
-        }.navigationBarTitle("Choose an hour")
-    }
-    
-    func fullDayBlocks() -> [HourBlock] {
-        var blocks = [HourBlock]()
-        
-        for i in 0...23 {
-            blocks.append(HourBlock(day: Date(), hour: i, title: nil))
-        }
-        
-        return blocks
     }
 }
 
@@ -206,12 +129,10 @@ private struct AddToBlockAddButton: View {
     @State var isPresented = false
     
     var body: some View {
-        Button(action: add, label: {
-            Image(subBlock ? "pro_add_button" : "add_button")
-        })
-        .sheet(isPresented: $isPresented) {
-            ProPurchaseView(showPurchasePro: self.$isPresented)
-        }
+        IconButton(iconName: "add_button", pro: subBlock, action: add)
+            .sheet(isPresented: $isPresented) {
+                ProPurchaseView(showPurchasePro: self.$isPresented)
+            }
     }
     
     func add() {

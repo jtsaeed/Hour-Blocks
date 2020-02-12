@@ -19,7 +19,7 @@ class DataGateway {
         self.managedObjectContext = managedObjectContext
     }
     
-    let currentVersion = 4.2
+    let currentVersion = 4.3
 }
 
 // MARK: - Blocks
@@ -34,6 +34,20 @@ extension DataGateway {
             hourBlocks = try managedObjectContext.fetch(request)
         } catch {
             print("error")
+        }
+        
+        return hourBlocks
+    }
+    
+    func getHourBlockEntities(for day: Date) -> [HourBlockEntity] {
+        var hourBlocks = [HourBlockEntity]()
+        let request: NSFetchRequest<HourBlockEntity> = HourBlockEntity.fetchRequest()
+        request.predicate = NSPredicate(format: "day == %@", Calendar.current.startOfDay(for: day) as NSDate)
+        
+        do {
+            hourBlocks = try managedObjectContext.fetch(request)
+        } catch let error {
+            print(error.localizedDescription)
         }
         
         return hourBlocks
@@ -161,54 +175,6 @@ extension DataGateway {
             }
             
             if toDo.id == identifier {
-                managedObjectContext.delete(entity)
-                
-                do {
-                    try managedObjectContext.save()
-                } catch {
-                    print("error")
-                }
-                
-                return
-            }
-        }
-    }
-}
-
-// MARK: - Habits
-
-extension DataGateway {
-    
-    func getHabitBlockEntities() -> [HabitBlockEntity] {
-        var habitBlocks = [HabitBlockEntity]()
-        let request: NSFetchRequest<HabitBlockEntity> = HabitBlockEntity.fetchRequest()
-        
-        do {
-            habitBlocks = try self.managedObjectContext.fetch(request)
-        } catch {
-            print("error")
-        }
-        
-        return habitBlocks
-    }
-    
-    func saveHabitBlock(habitBlock: HabitBlock) {
-        habitBlock.getEntity(context: self.managedObjectContext)
-        
-        do {
-            try self.managedObjectContext.save()
-        } catch {
-            print("error")
-        }
-    }
-    
-    func deleteHabitBlock(habitBlock: HabitBlock) {
-        for entity in getHabitBlockEntities() {
-            guard let identifier = entity.identifier else {
-                continue
-            }
-            
-            if habitBlock.id == identifier {
                 managedObjectContext.delete(entity)
                 
                 do {

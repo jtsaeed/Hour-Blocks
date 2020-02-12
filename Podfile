@@ -7,7 +7,6 @@ target 'neon' do
 
   # Pods for neon
   pod 'Firebase/Core'
-  pod 'SwiftyStoreKit'
 
   target 'neonTests' do
     inherit! :search_paths

@@ -20,42 +20,49 @@ struct SettingsView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                Section(header: SettingsHeader()) {
-                    SettingsCard(title: "Calendars", subtitle: "Take control of", icon: "settings_calendars")
-                        .onTapGesture {
-                            self.isCalendarsPresented.toggle()
-                        }
-                        .sheet(isPresented: $isCalendarsPresented, content: {
-                            CalendarSettingsView(isPresented: self.$isCalendarsPresented)
-                                .environmentObject(self.viewModel)
-                                .environmentObject(self.scheduleViewModel)
-                        })
-                    SettingsCard(title: "Other Stuff", subtitle: "Take control of", icon: "settings_other")
-                        .onTapGesture {
-                            self.isOtherStuffPresented.toggle()
-                        }
-                        .sheet(isPresented: $isOtherStuffPresented, content: {
-                            OtherSettingsView(isPresented: self.$isOtherStuffPresented, timeFormatValue: self.viewModel.other[OtherSettingsKey.timeFormat.rawValue]!, reminderTimerValue: self.viewModel.other[OtherSettingsKey.reminderTimer.rawValue]!, autoCapsValue: self.viewModel.other[OtherSettingsKey.autoCaps.rawValue]!)
-                                .environmentObject(self.viewModel)
-                                .environmentObject(self.scheduleViewModel)
-                        })
-                    SettingsCard(title: "Feedback", subtitle: "Provide", icon: "vote_button")
-                        .onTapGesture {
-                            self.isFeedbackPresented.toggle()
-                        }
-                        .sheet(isPresented: $isFeedbackPresented) {
-                            FeedbackView(isPresented: self.$isFeedbackPresented)
-                        }
-                    SettingsCard(title: "Twitter", subtitle: "Follow me on", icon: "settings_twitter")
-                        .onTapGesture(perform: openTwitter)
-                    SettingsCard(title: "Privacy Policy", subtitle: "Take a look at the", icon: "settings_privacy")
-                        .onTapGesture {
-                            self.isPrivacyPolicyPresented.toggle()
-                        }
-                        .sheet(isPresented: $isPrivacyPolicyPresented, content: {
-                            PrivacyPolicyView(isPresented: self.$isPrivacyPolicyPresented)
-                        })
+            VStack {
+                SettingsHeader()
+                List {
+                    SettingsCard(title: "Calendars",
+                                 subtitle: "Take control of",
+                                 iconName: "calendar_item",
+                                 tapped: presentCalendars)
+                    .sheet(isPresented: $isCalendarsPresented, content: {
+                        CalendarSettingsView(isPresented: self.$isCalendarsPresented)
+                            .environmentObject(self.viewModel)
+                            .environmentObject(self.scheduleViewModel)
+                    })
+                    
+                    SettingsCard(title: "Other Stuff",
+                                 subtitle: "Take control of",
+                                 iconName: "other_icon",
+                                 tapped: presentOtherStuff)
+                    .sheet(isPresented: $isOtherStuffPresented, content: {
+                        OtherSettingsView(isPresented: self.$isOtherStuffPresented, timeFormatValue: self.viewModel.other[OtherSettingsKey.timeFormat.rawValue]!, reminderTimerValue: self.viewModel.other[OtherSettingsKey.reminderTimer.rawValue]!, autoCapsValue: self.viewModel.other[OtherSettingsKey.autoCaps.rawValue]!)
+                            .environmentObject(self.viewModel)
+                            .environmentObject(self.scheduleViewModel)
+                    })
+                    
+                    SettingsCard(title: "Feedback",
+                                 subtitle: "Provide valuable",
+                                 iconName: "how_to_vote",
+                                 tapped: presentFeedback)
+                    .sheet(isPresented: $isFeedbackPresented) {
+                        FeedbackView(isPresented: self.$isFeedbackPresented)
+                    }
+                    
+                    SettingsCard(title: "Twitter",
+                                 subtitle: "Follow me on",
+                                 iconName: "twitter_icon",
+                                 tapped: openTwitter)
+                    
+                    SettingsCard(title: "Privacy Policy",
+                                 subtitle: "Take a look at the",
+                                 iconName: "privacy_icon",
+                                 tapped: presentPrivacyPolicy)
+                    .sheet(isPresented: $isPrivacyPolicyPresented, content: {
+                        PrivacyPolicyView(isPresented: self.$isPrivacyPolicyPresented)
+                    })
                 }
             }
             .navigationBarTitle("Settings")
@@ -68,6 +75,11 @@ struct SettingsView: View {
             UIApplication.shared.open(url)
         }
     }
+    
+    func presentCalendars() { isCalendarsPresented = true }
+    func presentOtherStuff() { isOtherStuffPresented = true }
+    func presentFeedback() { isFeedbackPresented = true }
+    func presentPrivacyPolicy() { isPrivacyPolicyPresented = true }
 }
 
 private struct SettingsHeader: View {
@@ -83,7 +95,8 @@ struct SettingsCard: View {
     
     let title: String
     let subtitle: String
-    let icon: String
+    let iconName: String
+    let tapped: () -> Void
     
     var body: some View {
         Card {
@@ -91,7 +104,8 @@ struct SettingsCard: View {
                 CardLabels(title: self.title,
                            subtitle: self.subtitle.uppercased())
                 Spacer()
-                Image(self.icon)
+                IconButton(iconName: self.iconName,
+                           action: self.tapped)
             }
         }
     }

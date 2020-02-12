@@ -10,18 +10,18 @@ import SwiftUI
 
 struct SubBlocksView: View {
     
-    @EnvironmentObject var viewModel: ScheduleViewModel
+    @ObservedObject var viewModel: ScheduleViewModel
     
-    let currentHourBlock: HourBlock
+    let hourBlock: HourBlock
     
     var body: some View {
         List {
-            if !viewModel.isSubBlocksEmpty(for: currentHourBlock.hour) {
-                ForEach(viewModel.subBlocks[currentHourBlock.hour]!) { currentSubBlock in
-                    SubBlockCard(currentHourBlock: self.currentHourBlock, currentSubBlock: currentSubBlock)
+            if viewModel.currentSubBlocks.filter({ $0.hour == hourBlock.hour }).count > 0 {
+                ForEach(viewModel.currentSubBlocks.filter({ $0.hour == hourBlock.hour })) { subBlock in
+                    SubBlockCard(currentHourBlock: self.hourBlock, currentSubBlock: subBlock)
                 }
             }
-            EmptySubBlockCard(currentHourBlock: currentHourBlock)
-        }.navigationBarTitle("Today at \(currentHourBlock.formattedTime.lowercased())")
+            EmptySubBlockCard(currentHourBlock: hourBlock)
+        }.navigationBarTitle("Today at \(hourBlock.formattedTime.lowercased())")
     }
 }

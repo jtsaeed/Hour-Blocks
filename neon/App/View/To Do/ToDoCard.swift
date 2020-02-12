@@ -19,8 +19,7 @@ struct ToDoCard: View {
             CardLabels(title: self.toDoItem.title,
                        subtitle: self.toDoItem.urgency.rawValue.uppercased(),
                        subtitleColor: Color(self.toDoItem.urgency.rawValue.urgencyToColorString()),
-                       alignment: .center,
-                       lineLimit: 3)
+                       alignment: .center)
         }.contextMenu {
             ToDoCardContextMenu(viewModel: viewModel, toDoItem: toDoItem)
         }
@@ -51,7 +50,7 @@ struct ToDoCardContextMenu: View {
                 Text("Rename")
                 Image(systemName: "pencil")
             }
-            .sheet(isPresented: self.$isAddToBlockPresented, content: {
+            .sheet(isPresented: self.$isRenamePresented, content: {
                 RenameToDoView(isPresented: self.$isRenamePresented,
                                viewModel: self.viewModel,
                                toDoItem: self.toDoItem)

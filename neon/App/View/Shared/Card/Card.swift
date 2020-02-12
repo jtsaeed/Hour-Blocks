@@ -35,21 +35,6 @@ struct Card<Content>: View where Content: View {
     }
 }
 
-struct EmptyListCard: View {
-    
-    var body: some View {
-        Card {
-            HStack {
-                CardLabels(title: "Empty",
-                            subtitle: "Currently",
-                            titleColor: Color("subtitle"))
-                Spacer()
-                Image("add_button")
-            }
-        }
-    }
-}
-
 struct CardIcon: View {
     
     let iconName: String
