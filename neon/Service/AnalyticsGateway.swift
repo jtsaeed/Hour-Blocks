@@ -20,7 +20,7 @@ class AnalyticsGateway {
 	}
     
     func log(hourBlock: HourBlock, isSuggestion: Bool) {
-        Analytics.logEvent("hourBlock5", parameters: ["domain": hourBlock.domain!.key,
+        Analytics.logEvent("hourBlock5", parameters: ["domain": hourBlock.domain?.rawValue ?? "default",
                                                       "suggestion": isSuggestion.description])
     }
     

@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+/*
 class SuggestionsViewModel: ObservableObject {
     
     @Published var list = [Suggestion]()
@@ -38,7 +39,7 @@ class SuggestionsViewModel: ObservableObject {
         .filter { $0.value >= 3 }
                     
         let suggestions = pastMonthFrequencies.map { frequencies in
-            return Suggestion(title: DomainsGateway.shared.domains[frequencies.key]!.suggestionTitle, reason: "Frequently Added", score: frequencies.value)
+            return Suggestion(title: "", reason: "Frequently Added", score: frequencies.value)
         }
         .sorted { $0.score! > $1.score! }
 //        .prefix(upTo: 3)
@@ -63,10 +64,4 @@ class SuggestionsViewModel: ObservableObject {
         return suggestions
     }
 }
-
-struct Suggestion: Hashable {
-    
-    var title: String
-    var reason: String
-    var score: Int?
-}
+*/

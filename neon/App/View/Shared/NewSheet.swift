@@ -65,7 +65,7 @@ struct NewBlockView: View {
             HapticsGateway.shared.triggerErrorHaptic()
         } else {
             HapticsGateway.shared.triggerAddBlockHaptic()
-            AnalyticsGateway.shared.logHourBlock(for: DomainsGateway.shared.determineDomain(for: title)?.key ?? "default",
+            AnalyticsGateway.shared.logHourBlock(for: DomainsGateway.shared.determineDomain(for: title)?.rawValue ?? "default",
                                                  at: currentBlock.formattedTime,
                                                  isSuggestion: isSuggestion.description)
             if isSubBlock {

@@ -8,13 +8,7 @@
 
 import Foundation
 
-protocol Domain: Hashable {
-    
-    var iconName: String { get }
-    var suggestionTitle: String { get }
-}
-
-enum NewBlockDomain: String, Domain, CaseIterable {
+enum BlockDomain: String, Domain, CaseIterable {
     
     case calendar
     case wake
@@ -173,4 +167,10 @@ enum NewBlockDomain: String, Domain, CaseIterable {
         case .volleyball: return "volleyball"
         }
     }
+}
+
+protocol Domain: Hashable {
+    
+    var iconName: String { get }
+    var suggestionTitle: String { get }
 }

@@ -12,8 +12,11 @@ import SwiftDate
 class ScheduleViewModel: ObservableObject {
     
     @Published var currentDate = Calendar.current.startOfDay(for: Date())
+    
     @Published var currentHourBlocks = [HourBlock]()
     @Published var currentSubBlocks = [HourBlock]()
+    
+    @Published var currentSuggestions = [Suggestion]()
     
     init() {
         loadHourBlocks()
@@ -34,6 +37,27 @@ class ScheduleViewModel: ObservableObject {
             self.currentHourBlocks = temporaryHourBlocks
             self.currentSubBlocks = loadedHourBlocks.filter({ $0.isSubBlock })
         }
+    }
+    
+    func loadSuggestions(for hour: Int, on date: Date) {
+        var suggestions = [Suggestion]()
+        
+        // weekday
+        if date.weekday >= 2 && date.weekday <= 6 {
+            if hour >= 9 && hour <= 17 {
+                suggestions.append(Suggestion(domain: .work, reason: "popular"))
+                suggestions.append(Suggestion(domain: .lecture, reason: "popular"))
+            }
+            
+            if hour == 8 || hour == 17 {
+                suggestions.append(Suggestion(domain: .commute, reason: "popular"))
+            }
+        }
+        
+        // weekend
+        if date.weekday == 6 || date.weekday == 7
+        
+        // every day
     }
     
     func add(hourBlock: HourBlock) {

@@ -42,6 +42,7 @@
 		7A0CEDDA239C05CA00CB32BF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0CEDD9239C05CA00CB32BF /* StoreKit.framework */; };
 		7A1AF6F623F34A9E00425BB6 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7A1AF6F523F34A9E00425BB6 /* SwiftyStoreKit */; };
 		7A1AF6F823F440ED00425BB6 /* BlockDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1AF6F723F440ED00425BB6 /* BlockDomain.swift */; };
+		7A1AF6FA23F456F600425BB6 /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1AF6F923F456F600425BB6 /* Suggestion.swift */; };
 		7A1C180C23D38F5A00E849E3 /* RenameBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C180B23D38F5A00E849E3 /* RenameBlockView.swift */; };
 		7A3E2E0623ED98ED0063D46B /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3E2E0523ED98ED0063D46B /* ActivityIndicator.swift */; };
 		7A4E738423A01819008036ED /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4E738323A01819008036ED /* CloudKit.framework */; };
@@ -176,6 +177,7 @@
 		6B9A0107CCBF37CCAA2CAAD3 /* Pods-neonUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neonUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-neonUITests/Pods-neonUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7A0CEDD9239C05CA00CB32BF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		7A1AF6F723F440ED00425BB6 /* BlockDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockDomain.swift; sourceTree = "<group>"; };
+		7A1AF6F923F456F600425BB6 /* Suggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suggestion.swift; sourceTree = "<group>"; };
 		7A1C180B23D38F5A00E849E3 /* RenameBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenameBlockView.swift; sourceTree = "<group>"; };
 		7A3E2E0523ED98ED0063D46B /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		7A4E738323A01819008036ED /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -385,6 +387,7 @@
 				7AA4923523E9D5640006DCB8 /* FeatureVotes.swift */,
 				7A666BCB23F06ADB003D6F1F /* ToDoItem.swift */,
 				7A1AF6F723F440ED00425BB6 /* BlockDomain.swift */,
+				7A1AF6F923F456F600425BB6 /* Suggestion.swift */,
 			);
 			name = Model;
 			path = App/Model;
@@ -766,6 +769,7 @@
 				2304FA27235F2FF2006DA688 /* NewSheet.swift in Sources */,
 				7A735E49238CFEF400FE4D32 /* SubBlocksView.swift in Sources */,
 				2304FA39235F315F006DA688 /* SettingsView.swift in Sources */,
+				7A1AF6FA23F456F600425BB6 /* Suggestion.swift in Sources */,
 				7AA4923423E9D46B0006DCB8 /* URLResponse+Ext.swift in Sources */,
 				2304FA1F235F2F28006DA688 /* DomainsGateway.swift in Sources */,
 				7A666BCA23F06AD2003D6F1F /* ToDoCard.swift in Sources */,
