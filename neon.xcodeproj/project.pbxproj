@@ -30,7 +30,6 @@
 		2338BEDF220A7841004F288F /* neonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEDE220A7841004F288F /* neonUITests.swift */; };
 		234C1A09220C8E9D00344316 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C1A08220C8E9D00344316 /* Date+Ext.swift */; };
 		234DF2FB237A113200EB248A /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234DF2FA237A113200EB248A /* Int+Ext.swift */; };
-		2373C1FF237036B500237763 /* SuggestionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2373C1FE237036B500237763 /* SuggestionsViewModel.swift */; };
 		23B63CE1222491050026B9C2 /* CalendarGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B63CE0222491050026B9C2 /* CalendarGateway.swift */; };
 		23C53D7D2369E01900BA4378 /* CalendarSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C53D7C2369E01900BA4378 /* CalendarSettingsView.swift */; };
 		23C53D7F2369E02400BA4378 /* OtherSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C53D7E2369E02400BA4378 /* OtherSettingsView.swift */; };
@@ -43,6 +42,7 @@
 		7A1AF6F623F34A9E00425BB6 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7A1AF6F523F34A9E00425BB6 /* SwiftyStoreKit */; };
 		7A1AF6F823F440ED00425BB6 /* BlockDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1AF6F723F440ED00425BB6 /* BlockDomain.swift */; };
 		7A1AF6FA23F456F600425BB6 /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1AF6F923F456F600425BB6 /* Suggestion.swift */; };
+		7A1AF6FC23F5674000425BB6 /* AddHourBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1AF6FB23F5674000425BB6 /* AddHourBlockView.swift */; };
 		7A1C180C23D38F5A00E849E3 /* RenameBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C180B23D38F5A00E849E3 /* RenameBlockView.swift */; };
 		7A3E2E0623ED98ED0063D46B /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3E2E0523ED98ED0063D46B /* ActivityIndicator.swift */; };
 		7A4E738423A01819008036ED /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4E738323A01819008036ED /* CloudKit.framework */; };
@@ -161,7 +161,6 @@
 		2338BEE0220A7841004F288F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		234C1A08220C8E9D00344316 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		234DF2FA237A113200EB248A /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
-		2373C1FE237036B500237763 /* SuggestionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsViewModel.swift; sourceTree = "<group>"; };
 		238EA767223EA0D900981E98 /* neon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = neon.entitlements; sourceTree = "<group>"; };
 		2395A94D224AE1750007D6F2 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		23B63CE0222491050026B9C2 /* CalendarGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGateway.swift; sourceTree = "<group>"; };
@@ -178,6 +177,7 @@
 		7A0CEDD9239C05CA00CB32BF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		7A1AF6F723F440ED00425BB6 /* BlockDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockDomain.swift; sourceTree = "<group>"; };
 		7A1AF6F923F456F600425BB6 /* Suggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suggestion.swift; sourceTree = "<group>"; };
+		7A1AF6FB23F5674000425BB6 /* AddHourBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHourBlockView.swift; sourceTree = "<group>"; };
 		7A1C180B23D38F5A00E849E3 /* RenameBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenameBlockView.swift; sourceTree = "<group>"; };
 		7A3E2E0523ED98ED0063D46B /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		7A4E738323A01819008036ED /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -409,7 +409,6 @@
 		7A9C38B323CAA3100088FEA9 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				2373C1FE237036B500237763 /* SuggestionsViewModel.swift */,
 				23C6F8802372DCB200E53286 /* SettingsViewModel.swift */,
 				7AA4923723E9DA5D0006DCB8 /* FeedbackViewModel.swift */,
 				7A666BCD23F06FCD003D6F1F /* ToDoListViewModel.swift */,
@@ -443,6 +442,7 @@
 				7ADE54EE23F0BD89007FAE38 /* ScheduleView.swift */,
 				7AD43CC223F33C4100404A0C /* ScheduleDatePicker.swift */,
 				7AE3A3B723F2011200C81F3A /* HourBlockCard.swift */,
+				7A1AF6FB23F5674000425BB6 /* AddHourBlockView.swift */,
 				7A735E4E238D591C00FE4D32 /* IconPicker.swift */,
 				7AEF591923CAB09200FEEA36 /* SubBlocks */,
 			);
@@ -777,11 +777,11 @@
 				2304FA17235F2A2A006DA688 /* ContentView.swift in Sources */,
 				2304FA31235F304C006DA688 /* NSManagedObjectContext+Ext.swift in Sources */,
 				7A735E4F238D591C00FE4D32 /* IconPicker.swift in Sources */,
+				7A1AF6FC23F5674000425BB6 /* AddHourBlockView.swift in Sources */,
 				23C53D7D2369E01900BA4378 /* CalendarSettingsView.swift in Sources */,
 				2338BEBC220A7840004F288F /* AppDelegate.swift in Sources */,
 				7A666BC823F06AC4003D6F1F /* ToDoListView.swift in Sources */,
 				7A735E51238D6E5A00FE4D32 /* Array+Ext.swift in Sources */,
-				2373C1FF237036B500237763 /* SuggestionsViewModel.swift in Sources */,
 				23B63CE1222491050026B9C2 /* CalendarGateway.swift in Sources */,
 				7AA4923823E9DA5D0006DCB8 /* FeedbackViewModel.swift in Sources */,
 				7AA4923223E9D4020006DCB8 /* APIGateway.swift in Sources */,

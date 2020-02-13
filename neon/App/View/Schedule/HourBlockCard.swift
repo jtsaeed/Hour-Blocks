@@ -15,7 +15,6 @@ struct HourBlockCard: View {
     let hourBlock: HourBlock
     
     @State var isAddBlockViewPresented = false
-    @State var isSubBlockViewPresented = false
     
     var body: some View {
         Card {
@@ -26,20 +25,21 @@ struct HourBlockCard: View {
                     ZStack {
                         CardIcon(iconName: self.hourBlock.iconName)
                             .contextMenu { HourBlockCardContextMenu(viewModel: self.viewModel, currentBlock: self.hourBlock) }
-                            .sheet(isPresented: self.$isSubBlockViewPresented) {
-                                SubBlocksView(viewModel: self.viewModel, hourBlock: self.hourBlock)
-                            }
+                        
+                        NavigationLink(destination: SubBlocksView(viewModel: self.viewModel, hourBlock: self.hourBlock)) {
+                            EmptyView()
+                        }.frame(width: 0)
                     }.padding(.leading, 8)
                 } else {
                     IconButton(iconName: "add_icon", action: self.presentAddBlockView)
-                        .sheet(isPresented: self.$isAddBlockViewPresented) {
-                            NewAddHourBlockView(isPresented: self.$isAddBlockViewPresented,
-                                                viewModel: self.viewModel,
-                                                hour: self.hourBlock.hour,
-                                                time: self.hourBlock.formattedTime.lowercased())
-                        }
                 }
             }
+        }.sheet(isPresented: self.$isAddBlockViewPresented) {
+            AddHourBlockView(isPresented: self.$isAddBlockViewPresented,
+                             viewModel: self.viewModel,
+                             hour: self.hourBlock.hour,
+                             time: self.hourBlock.formattedTime.lowercased(),
+                             day: self.hourBlock.day)
         }
     }
     
@@ -49,7 +49,7 @@ struct HourBlockCard: View {
     }
 }
 
-struct HourBlockCardLabels: View {
+private struct HourBlockCardLabels: View {
     
     var currentBlock: HourBlock
     
@@ -73,7 +73,7 @@ struct HourBlockCardLabels: View {
     }
 }
 
-struct HourBlockCardContextMenu: View {
+private struct HourBlockCardContextMenu: View {
     
     @ObservedObject var viewModel: ScheduleViewModel
     
@@ -91,54 +91,5 @@ struct HourBlockCardContextMenu: View {
     func clear() {
         HapticsGateway.shared.triggerClearBlockHaptic()
         viewModel.remove(hourBlock: currentBlock)
-    }
-}
-
-struct NewAddHourBlockView: View {
-    
-    @Binding var isPresented: Bool
-    
-    @ObservedObject var viewModel: ScheduleViewModel
-    
-    let hour: Int
-    let time: String
-    
-    @State var title = ""
-    
-    var body: some View {
-        NavigationView {
-            VStack(alignment: .leading) {
-                NeonTextField(title: $title, didReturn: addBlock)
-                Text("Suggestions")
-                    .font(.system(size: 28, weight: .semibold, design: .default))
-                    .padding(.leading, 24)
-                Spacer()
-            }
-            .navigationBarTitle(time)
-            .navigationBarItems(leading: Button(action: dismiss, label: {
-                Text("Cancel")
-            }), trailing: Button(action: addBlock, label: {
-                Text("Add")
-            }))
-        }.accentColor(Color("primary"))
-    }
-    
-    func dismiss() {
-        isPresented = false
-    }
-    
-    func addBlock() {
-        if self.title.isEmpty {
-            HapticsGateway.shared.triggerErrorHaptic()
-        } else {
-            HapticsGateway.shared.triggerAddBlockHaptic()
-            
-            let hourBlock = HourBlock(day: viewModel.currentDate,
-                                      hour: hour,
-                                      title: title)
-            viewModel.add(hourBlock: hourBlock)
-            
-            dismiss()
-        }
     }
 }

@@ -52,12 +52,44 @@ class ScheduleViewModel: ObservableObject {
             if hour == 8 || hour == 17 {
                 suggestions.append(Suggestion(domain: .commute, reason: "popular"))
             }
+            
+            if hour == 17 {
+                suggestions.append(Suggestion(domain: .home, reason: "popular"))
+            }
         }
         
         // weekend
-        if date.weekday == 6 || date.weekday == 7
+        if date.weekday == 6 || date.weekday == 7 {
+            if hour >= 19 && hour <= 21 {
+                suggestions.append(Suggestion(domain: .party, reason: "popular"))
+            }
+        }
         
-        // every day
+        // every day, morning
+        if hour >= 5 && hour <= 8 {
+            suggestions.append(Suggestion(domain: .wake, reason: "popular"))
+            suggestions.append(Suggestion(domain: .shower, reason: "popular"))
+            suggestions.append(Suggestion(domain: .morning, reason: "popular"))
+        }
+        // every day, little after morning
+        if hour >= 6 && hour <= 9 {
+            suggestions.append(Suggestion(domain: .coffee, reason: "popular"))
+            suggestions.append(Suggestion(domain: .breakfast, reason: "popular"))
+        }
+        // every day, lunch
+        if hour >= 11 && hour <= 14 {
+            suggestions.append(Suggestion(domain: .lunch, reason: "popular"))
+        }
+        // every day, dinner
+        if hour >= 17 && hour <= 21 {
+            suggestions.append(Suggestion(domain: .dinner, reason: "popular"))
+        }
+        // every day, sleep
+        if hour >= 21 && hour <= 23 {
+            suggestions.append(Suggestion(domain: .sleep, reason: "popular"))
+        }
+        
+        DispatchQueue.main.async { self.currentSuggestions = suggestions }
     }
     
     func add(hourBlock: HourBlock) {

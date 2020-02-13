@@ -11,10 +11,10 @@ import StoreKit
 
 // MARK: - New Block View
 
+
 struct NewBlockView: View {
     
     @EnvironmentObject var viewModel: ScheduleViewModel
-    @EnvironmentObject var suggestionsViewModel: SuggestionsViewModel
     
     @Binding var isPresented: Bool
     
@@ -32,6 +32,7 @@ struct NewBlockView: View {
                 Text("Suggestions")
                     .font(.system(size: 28, weight: .semibold, design: .default))
                     .padding(.leading, 24)
+                    /*
                 List {
                     if suggestionsViewModel.list.count > 0 {
                         ForEach(suggestionsViewModel.list, id: \.self) { suggestion in
@@ -44,6 +45,7 @@ struct NewBlockView: View {
                         NoSuggestionsCard()
                     }
                 }
+                */
                 Spacer()
             }
             .navigationBarTitle(currentBlock.formattedTime.lowercased())
@@ -85,28 +87,6 @@ struct NewBlockView: View {
         if DataGateway.shared.getTotalBlockCount() == 10 {
             SKStoreReviewController.requestReview()
         }
-    }
-}
-
-struct SuggestionCard: View {
-    
-    let suggestion: Suggestion
-    
-    var didAddBlock: (String) -> ()
-    
-    var body: some View {
-        Card {
-            HStack {
-                CardLabels(title: self.suggestion.title,
-                           subtitle: self.suggestion.reason.uppercased())
-                Spacer()
-                IconButton(iconName: "add_icon", action: self.add)
-            }
-        }
-    }
-    
-    func add() {
-        didAddBlock(suggestion.title)
     }
 }
 
@@ -173,69 +153,6 @@ struct NewToDoView: View {
     }
     
     func dismiss() {
-        isPresented = false
-    }
-}
-
-// MARK: New Habit
-
-struct NewHabitView: View {
-    
-    @Binding var isPresented: Bool
-    
-    @State var title: String
-    
-    var didAddHabit: (String) -> ()
-    
-    var body: some View {
-        NavigationView {
-            VStack(alignment: .leading) {
-                NeonTextField(title: $title, didReturn: addHabit)
-                Text("Suggestions")
-                    .font(.system(size: 28, weight: .semibold, design: .default))
-                    .padding(.leading, 24)
-                List {
-                    SuggestionCard(suggestion: Suggestion(title: "Meditate", reason: "Popular"), didAddBlock: { title in
-                        self.title = title
-                        self.addHabit()
-                    })
-                    SuggestionCard(suggestion: Suggestion(title: "Exercise", reason: "Popular"), didAddBlock: { title in
-                        self.title = title
-                        self.addHabit()
-                    })
-                    SuggestionCard(suggestion: Suggestion(title: "Drink Water", reason: "Popular"), didAddBlock: { title in
-                        self.title = title
-                        self.addHabit()
-                    })
-                    SuggestionCard(suggestion: Suggestion(title: "Read", reason: "Popular"), didAddBlock: { title in
-                        self.title = title
-                        self.addHabit()
-                    })
-                }
-                Spacer()
-            }
-            .navigationBarTitle("Add a new habit")
-            .navigationBarItems(leading: Button(action: closeSheet, label: {
-                Text("Cancel")
-            }), trailing: Button(action: addHabit, label: {
-                Text("Add")
-            }))
-            
-        }.accentColor(Color("primary"))
-        .navigationViewStyle(StackNavigationViewStyle())
-    }
-    
-    func addHabit() {
-        if self.title.isEmpty {
-            UINotificationFeedbackGenerator().notificationOccurred(.error)
-        } else {
-            HapticsGateway.shared.triggerAddBlockHaptic()
-            self.isPresented = false
-            self.didAddHabit(self.title)
-        }
-    }
-    
-    func closeSheet() {
         isPresented = false
     }
 }

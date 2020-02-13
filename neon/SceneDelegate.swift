@@ -26,7 +26,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             managedObjectContext.automaticallyMergesChangesFromParent = true
             let contentView = ContentView()
                 .environmentObject(ScheduleViewModel())
-                .environmentObject(SuggestionsViewModel())
                 .environmentObject(SettingsViewModel())
                 .environment(\.managedObjectContext, managedObjectContext)
             

@@ -29,7 +29,6 @@ struct SubBlockCard: View {
 struct SubBlockCardContextMenu: View {
     
     @EnvironmentObject var viewModel: ScheduleViewModel
-    @EnvironmentObject var suggestionsViewModel: SuggestionsViewModel
     
     @State var isRenamePresented = false
     @State var isIconPickerPresented = false
@@ -81,7 +80,6 @@ struct SubBlockCardContextMenu: View {
 struct EmptySubBlockCard: View {
     
     @EnvironmentObject var viewModel: ScheduleViewModel
-    @EnvironmentObject var suggestionsViewModel: SuggestionsViewModel
     
     @State var title = ""
     
@@ -101,7 +99,6 @@ struct EmptySubBlockCard: View {
                         if DataGateway.shared.isPro() {
                             NewBlockView(isPresented: self.$isPresented, currentBlock: self.currentHourBlock, isSubBlock: true)
                             .environmentObject(self.viewModel)
-                            .environmentObject(self.suggestionsViewModel)
                         } else {
                             ProPurchaseView(showPurchasePro: self.$isPresented)
                         }
