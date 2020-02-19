@@ -76,6 +76,7 @@
 		7ADE54EF23F0BD89007FAE38 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADE54EE23F0BD89007FAE38 /* ScheduleView.swift */; };
 		7AE3A3B823F2011200C81F3A /* HourBlockCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE3A3B723F2011200C81F3A /* HourBlockCard.swift */; };
 		7AEAEE9F239AC723007DE056 /* ProPurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEAEE9E239AC723007DE056 /* ProPurchaseView.swift */; };
+		AB3376C423FDEBDB00D3C99E /* ScheduleViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3376C323FDEBDA00D3C99E /* ScheduleViewModelTests.swift */; };
 		B658B761255B945710FC2F42 /* Pods_neonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9076E2F3ADB2E623D12BBF3D /* Pods_neonTests.framework */; };
 		B912B77E89CBF0E08ECEB8A2 /* Pods_neonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F07358A92310DC9C6BA03B89 /* Pods_neonUITests.framework */; };
 /* End PBXBuildFile section */
@@ -212,6 +213,7 @@
 		8BA23B93EB57D0A9C87A3846 /* Pods_neon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_neon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9076E2F3ADB2E623D12BBF3D /* Pods_neonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_neonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3593EBEBDFB2F7E14F71C3D /* Pods-neon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-neon/Pods-neon.debug.xcconfig"; sourceTree = "<group>"; };
+		AB3376C323FDEBDA00D3C99E /* ScheduleViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModelTests.swift; sourceTree = "<group>"; };
 		F07358A92310DC9C6BA03B89 /* Pods_neonUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_neonUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEF89E64D0C593B4421B153A /* Pods-neonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neonTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-neonTests/Pods-neonTests.release.xcconfig"; sourceTree = "<group>"; };
 		FF3FA86C71973A520B8323EA /* Pods-neonUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neonUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-neonUITests/Pods-neonUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 			children = (
 				2338BED3220A7841004F288F /* neonTests.swift */,
 				2338BED5220A7841004F288F /* Info.plist */,
+				AB3376C323FDEBDA00D3C99E /* ScheduleViewModelTests.swift */,
 			);
 			path = neonTests;
 			sourceTree = "<group>";
@@ -808,6 +811,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2338BED4220A7841004F288F /* neonTests.swift in Sources */,
+				AB3376C423FDEBDB00D3C99E /* ScheduleViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -962,7 +966,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -970,11 +974,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.3;
+				MARKETING_VERSION = 5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -989,7 +993,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -997,11 +1001,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.3;
+				MARKETING_VERSION = 5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -35,6 +35,11 @@ struct ScheduleView: View {
                                    dismissed: self.viewModel.loadHourBlocks)
             }
         }.navigationViewStyle(StackNavigationViewStyle())
+        .onAppear(perform: {
+            CalendarGateway.shared.handlePermissions {
+                self.viewModel.loadHourBlocks()
+            }
+        })
     }
 }
 
@@ -46,7 +51,7 @@ private struct ScheduleHeader: View {
     
     var body: some View {
         Header(title: viewModel.currentDate.getRelativeDateToToday(),
-               subtitle: viewModel.currentDate.getFormattedDate(),
+               subtitle: viewModel.allDayEvent?.title ?? viewModel.currentDate.getFormattedDate(),
                content: { IconButton(iconName: "calendar_item",
                                      action: self.presentDatePicker) })
     }

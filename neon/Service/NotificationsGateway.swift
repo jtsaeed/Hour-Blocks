@@ -13,18 +13,18 @@ class NotificationsGateway {
     
     static let shared = NotificationsGateway()
     
-	func addNotification(for block: HourBlock, completion: @escaping (_ success: Bool) -> ()) {
+    func addNotification(for block: HourBlock, on date: Date, completion: @escaping (_ success: Bool) -> ()) {
         UNUserNotificationCenter.current().getNotificationSettings(completionHandler: { (settings) in
             if settings.authorizationStatus == .notDetermined || settings.authorizationStatus == .denied {
                 UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: { (result, error) in
                     if result == true {
-						self.createNotification(for: block, completion: { (success) in
+                        self.createNotification(for: block, on: date, completion: { (success) in
                             completion(success)
                         })
                     }
                 })
             } else if settings.authorizationStatus == .authorized {
-				self.createNotification(for: block, completion: { (success) in
+                self.createNotification(for: block, on: date, completion: { (success) in
                     completion(success)
                 })
             } else {
@@ -50,7 +50,7 @@ class NotificationsGateway {
         }
     }
     
-	private func createNotification(for block: HourBlock, completion: @escaping (_ success: Bool) -> ()) {
+    private func createNotification(for block: HourBlock, on date: Date, completion: @escaping (Bool) -> ()) {
         let content = UNMutableNotificationContent()
         content.title = "Upcoming Hour Block"
         content.body = "You have \(block.title!.lowercased()) coming up at \(block.formattedTime)"
@@ -66,7 +66,7 @@ class NotificationsGateway {
             }
         }
 		
-        var date = Calendar.current.date(bySettingHour: block.hour, minute: 0, second: 0, of: Date())!
+        var date = Calendar.current.date(bySettingHour: block.hour, minute: 0, second: 0, of: date)!
 		date = Calendar.current.date(byAdding: .minute, value: -timeOffset, to: date)!
         
         let dateTrigger = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: date)

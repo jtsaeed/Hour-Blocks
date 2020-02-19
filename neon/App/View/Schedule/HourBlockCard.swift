@@ -30,7 +30,7 @@ struct HourBlockCard: View {
                           hourBlock: self.hourBlock)
                 .environmentObject(self.viewModel)
         }
-        .contextMenu { HourBlockCardContextMenu(currentBlock: self.hourBlock) }
+        .contextMenu { if hourBlock.domain != .calendar { HourBlockCardContextMenu(currentBlock: self.hourBlock) } }
     }
     
     func presentSubBlocksView() {
@@ -58,7 +58,8 @@ struct EmptyHourBlockCard: View {
             AddHourBlockView(isPresented: self.$isAddBlockViewPresented,
                              hour: self.hourBlock.hour,
                              time: self.hourBlock.formattedTime.lowercased(),
-                             day: self.hourBlock.day)
+                             day: self.hourBlock.day,
+                             isSubBlock: false)
                 .environmentObject(self.viewModel)
         }
     }
@@ -71,6 +72,8 @@ struct EmptyHourBlockCard: View {
 
 private struct HourBlockCardLabels: View {
     
+    @EnvironmentObject var viewModel: ScheduleViewModel
+    
     var currentBlock: HourBlock
     
     var body: some View {
@@ -80,6 +83,12 @@ private struct HourBlockCardLabels: View {
                     Circle()
                         .frame(width: 8, height: 8)
                         .foregroundColor(Color("primary"))
+                        .opacity(0.5)
+                }
+                if viewModel.currentSubBlocks.filter({ $0.hour == currentBlock.hour }).count > 0 {
+                    Circle()
+                        .frame(width: 8, height: 8)
+                        .foregroundColor(Color("secondary"))
                         .opacity(0.5)
                 }
                 Text(currentBlock.formattedTime.uppercased())
@@ -134,7 +143,8 @@ private struct HourBlockCardContextMenu: View {
                     .environmentObject(self.viewModel)
                     .environmentObject(self.settingsViewModel)
             })
-            if currentBlock.hour != viewModel.currentHour {
+            if (currentBlock.day == viewModel.currentDate && currentBlock.hour != viewModel.currentHour) ||
+                (currentBlock.day < viewModel.currentDate){
                 Button(action: reminderAction) {
                     Text(currentBlock.hasReminder ? "Remove Reminder" : "Set a Reminder")
                     Image(systemName: "alarm")
@@ -162,12 +172,12 @@ private struct HourBlockCardContextMenu: View {
     func reminderAction() {
         if currentBlock.hasReminder {
             NotificationsGateway.shared.removeNotification(for: currentBlock)
-//            DispatchQueue.main.async { self.viewModel.setReminder(false, for: self.currentBlock) }
+            DispatchQueue.main.async { self.viewModel.setReminder(false, for: self.currentBlock) }
             UINotificationFeedbackGenerator().notificationOccurred(.success)
         } else {
-            NotificationsGateway.shared.addNotification(for: currentBlock, completion: { success in
+            NotificationsGateway.shared.addNotification(for: currentBlock, on: viewModel.currentDate, completion: { success in
                 if success {
-//                    DispatchQueue.main.async { self.viewModel.setReminder(true, for: self.currentBlock) }
+                    DispatchQueue.main.async { self.viewModel.setReminder(true, for: self.currentBlock) }
                     UINotificationFeedbackGenerator().notificationOccurred(.success)
                 } else {
                     UINotificationFeedbackGenerator().notificationOccurred(.error)

@@ -13,6 +13,7 @@ struct ScheduleDatePicker: View {
     
     @Binding var isDatePickerPresented: Bool
     @Binding var currentDate: Date
+    @Binding var currentHour: Int
     
     @ObservedObject var viewModel = DatePickerViewModel()
     
@@ -45,6 +46,7 @@ struct ScheduleDatePicker: View {
     func select(_ date: Date) {
         HapticsGateway.shared.triggerLightImpact()
         currentDate = Calendar.current.startOfDay(for: date)
+        currentHour = Calendar.current.isDateInToday(date) ? Calendar.current.component(.hour, from: Date()) : 6
         dismissed()
         dismiss()
     }
@@ -52,6 +54,7 @@ struct ScheduleDatePicker: View {
     func backToToday() {
         HapticsGateway.shared.triggerLightImpact()
         currentDate = Calendar.current.startOfDay(for: Date())
+        currentHour = Calendar.current.component(.hour, from: Date())
         dismissed()
         dismiss()
     }

@@ -97,7 +97,11 @@ struct EmptySubBlockCard: View {
                 IconButton(iconName: "add_icon", pro: true, action: self.present)
                     .sheet(isPresented: self.$isPresented, content: {
                         if DataGateway.shared.isPro() {
-                            NewBlockView(isPresented: self.$isPresented, currentBlock: self.currentHourBlock, isSubBlock: true)
+                            AddHourBlockView(isPresented: self.$isPresented,
+                                             hour: self.currentHourBlock.hour,
+                                             time: self.currentHourBlock.formattedTime,
+                                             day: self.currentHourBlock.day,
+                                             isSubBlock: true)
                             .environmentObject(self.viewModel)
                         } else {
                             ProPurchaseView(showPurchasePro: self.$isPresented)

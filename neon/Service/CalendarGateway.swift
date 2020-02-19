@@ -33,37 +33,24 @@ class CalendarGateway {
         }
     }
     
-    func importTodaysEvents() -> [ImportedCalendarEvent] {
-        var importedCalendarEvents = [ImportedCalendarEvent]()
+    func importEvents(for date: Date) -> [ImportedCalendarEvent] {
+        let eventsPredicate = eventStore.predicateForEvents(withStart: date.dateAtStartOf(.day),
+                                                            end: date.dateAtEndOf(.day),
+                                                            calendars: getEnabledCalendars())
         
-        let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
-        let todayStart = Calendar.current.date(bySetting: .hour, value: 0, of: yesterday)
-        let todayEnd = Calendar.current.date(bySetting: .hour, value: 23, of: Date())
-        let eventsPredicate = eventStore.predicateForEvents(withStart: todayStart!, end: todayEnd!, calendars: getEnabledCalendars())
-        
-        for storedEvent in eventStore.events(matching: eventsPredicate) {
-            let importedCalendarEvent = ImportedCalendarEvent(from: storedEvent)
-            
-            if (storedEvent.isAllDay) {
-                allDayEvent = importedCalendarEvent
-            } else {
-                importedCalendarEvents.append(importedCalendarEvent)
-            }
-        }
-        
-        return importedCalendarEvents
-    }
-    
-    func importFutureEvents() -> [EKEvent] {
-        let todayEnd = Calendar.current.date(bySetting: .hour, value: 23, of: Date())
-        let yearEnd = Calendar.current.date(byAdding: .month, value: 1, to: todayEnd!)
-        let eventsPredicate = eventStore.predicateForEvents(withStart: todayEnd!, end: yearEnd!, calendars: getEnabledCalendars())
-        
-        return eventStore.events(matching: eventsPredicate)
+        return eventStore.events(matching: eventsPredicate).map({ ImportedCalendarEvent(from: $0) })
     }
 	
 	private func getEnabledCalendars() -> [EKCalendar] {
-        return DataGateway.shared.loadEnabledCalendars().filter { $0.value == true }.compactMap { eventStore.calendar(withIdentifier: $0.key) }
+        var calendars = [EKCalendar]()
+        
+        for calendar in getAllCalendars() {
+            if DataGateway.shared.loadEnabledCalendars()[calendar.calendarIdentifier] == true {
+                calendars.append(calendar)
+            }
+        }
+        
+        return calendars
 	}
 	
 	func getAllCalendars() -> [EKCalendar] {
@@ -76,21 +63,20 @@ struct ImportedCalendarEvent {
     let title: String
     let date: Date
     
+    var isAllDay: Bool
     var startingHour: Int
     var endingHour: Int
     
-	init(from event: EKEvent) {
-        title = event.title
-        date = event.startDate
+    init(from event: EKEvent) {
+        self.title = event.title
+        self.date = event.startDate
+        self.isAllDay = event.isAllDay
         
-		startingHour = Calendar.current.component(.hour, from: event.startDate)
-		endingHour = Calendar.current.component(.hour, from: event.endDate)
+        self.startingHour = Calendar.current.component(.hour, from: event.startDate)
+        self.endingHour = Calendar.current.component(.hour, from: event.endDate)
 		
         // Calibrate hours
-        if endingHour <= Calendar.current.component(.hour, from: Date()) {
-            startingHour = 0
-            endingHour = 0
-        } else if startingHour > Calendar.current.component(.hour, from: event.endDate) {
+        if startingHour > Calendar.current.component(.hour, from: event.endDate) {
             endingHour = 23
         } else if startingHour == Calendar.current.component(.hour, from: event.endDate) {
             endingHour = startingHour

@@ -42,6 +42,7 @@ struct HourBlock: Identifiable {
         self.domain = DomainsGateway.shared.determineDomain(for: title)
         self.iconOverride = entity.iconOverride
         
+        self.hasReminder = entity.hasReminder
         self.isSubBlock = entity.isSubBlock
     }
     
@@ -76,6 +77,7 @@ struct HourBlock: Identifiable {
         entity.hour = Int64(hour)
         entity.isSubBlock = isSubBlock
         entity.iconOverride = iconOverride
+        entity.hasReminder = hasReminder
         
         return entity
     }

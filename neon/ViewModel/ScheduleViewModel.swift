@@ -19,6 +19,8 @@ class ScheduleViewModel: ObservableObject {
     
     @Published var currentSuggestions = [Suggestion]()
     
+    @Published var allDayEvent: ImportedCalendarEvent?
+    
     init() {
         loadHourBlocks()
     }
@@ -32,6 +34,22 @@ class ScheduleViewModel: ObservableObject {
         let loadedHourBlocks = DataGateway.shared.getHourBlockEntities(for: currentDate).compactMap({ HourBlock(fromEntity: $0) })
         for loadedHourBlock in loadedHourBlocks.filter({ $0.isSubBlock == false }) {
             temporaryHourBlocks[loadedHourBlock.hour] = loadedHourBlock
+        }
+        
+        DispatchQueue.main.async { self.allDayEvent = nil }
+        if CalendarGateway.shared.hasPermission() {
+            for event in CalendarGateway.shared.importEvents(for: currentDate) {
+                if event.isAllDay {
+                    DispatchQueue.main.async { self.allDayEvent = event }
+                    continue
+                }
+                
+                for i in event.startingHour...event.endingHour {
+                    var block = HourBlock(day: currentDate, hour: i, title: event.title)
+                    block.domain = .calendar
+                    temporaryHourBlocks[i] = block
+                }
+            }
         }
         
         DispatchQueue.main.async {
@@ -108,6 +126,10 @@ class ScheduleViewModel: ObservableObject {
         if hourBlock.isSubBlock {
             currentSubBlocks.removeAll(where: { $0.id == hourBlock.id })
         } else {
+            if hourBlock.hasReminder {
+                NotificationsGateway.shared.removeNotification(for: hourBlock)
+            }
+            
             currentHourBlocks[hourBlock.hour] = HourBlock(day: currentDate,
                                                           hour: hourBlock.hour,
                                                           title: nil)
@@ -138,5 +160,15 @@ class ScheduleViewModel: ObservableObject {
         }
         
         DataGateway.shared.editHourBlock(block: hourBlock, set: newTitle, forKey: "title")
+    }
+    
+    func setReminder(_ status: Bool, for block: HourBlock) {
+        for i in 0 ..< currentHourBlocks.count {
+            if (block.id == currentHourBlocks[i].id) {
+                currentHourBlocks[i].hasReminder = status
+                print("HB: Set \(status)")
+                DataGateway.shared.editHourBlock(block: currentHourBlocks[i], set: status, forKey: "hasReminder")
+            }
+        }
     }
 }
