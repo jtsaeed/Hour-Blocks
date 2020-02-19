@@ -11,7 +11,7 @@ import CoreData
 
 struct ContentView: View {
     
-    let debug = true
+    let debug = false
     
     @Environment(\.managedObjectContext) var managedObjectContext
     @EnvironmentObject var scheduleViewModel: ScheduleViewModel

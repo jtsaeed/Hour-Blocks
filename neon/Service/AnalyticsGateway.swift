@@ -19,17 +19,8 @@ class AnalyticsGateway {
                                                       "suggestion": isSuggestion])
 	}
     
-    func log(hourBlock: HourBlock, isSuggestion: Bool) {
-        Analytics.logEvent("hourBlock5", parameters: ["domain": hourBlock.domain?.rawValue ?? "default",
-                                                      "suggestion": isSuggestion.description])
-    }
-    
-    func logFutureBlock(for title: String) {
-        Analytics.logEvent("futureBlock", parameters: ["title": title])
-    }
-    
-    func logHabitCompleted(for title: String) {
-        Analytics.logEvent("habit", parameters: ["title": title])
+    func log(hourBlock: HourBlock) {
+        Analytics.logEvent("hourBlock5", parameters: ["domain": hourBlock.domain?.rawValue ?? "default"])
     }
     
     func logToDo() {

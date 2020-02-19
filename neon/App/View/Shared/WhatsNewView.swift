@@ -18,10 +18,12 @@ struct WhatsNewView: View {
                 .padding(.bottom, 32)
             
             VStack(alignment: .leading, spacing: 16) {
-                WhatsNewItem(title: "Revamped To Do List ✅",
-                             content: "As a result of an overwhelming amount of votes, an overhauled version of the To Do List comes back to Hour Blocks!")
+                WhatsNewItem(title: "A Full Calendar 🗓",
+                             content: "Switch up your Schedule screen to show you any day in the entire calendar for maximum control!")
+                WhatsNewItem(title: "Re-Engineered Suggestions 🔮",
+                             content: "The Suggestions system now shows you what's popular amongst all Hour Blocks users, along with improved long-term on-device learning")
                 WhatsNewItem(title: "Minor Changes ✨",
-                             content: "Fixes, aesthetic improvements, minor improvements- all the good little stuff")
+                             content: "A whole host of bug fixes, performance improvements & small tweaks")
             }
             
             Spacer()

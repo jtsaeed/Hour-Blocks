@@ -12,7 +12,7 @@ struct AddHourBlockView: View {
     
     @Binding var isPresented: Bool
     
-    @ObservedObject var viewModel: ScheduleViewModel
+    @EnvironmentObject var viewModel: ScheduleViewModel
     
     let hour: Int
     let time: String

@@ -22,6 +22,7 @@ class ToDoListViewModel: ObservableObject {
         
         DispatchQueue.main.async { self.toDoItems.append(toDoItem) }
         DataGateway.shared.saveToDo(toDo: toDoItem)
+        AnalyticsGateway.shared.logToDo()
     }
     
     func renameToDoItem(toDo: ToDoItem, newTitle: String) {

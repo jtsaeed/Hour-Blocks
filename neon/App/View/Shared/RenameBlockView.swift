@@ -23,15 +23,13 @@ struct RenameBlockView: View {
             VStack(alignment: .leading) {
                 NeonTextField(title: $title,
                               color: currentBlock.isSubBlock ? Color("secondaryLight") : Color("primaryLight"),
-                              didReturn: addBlock)
+                              didReturn: renameBlock)
                 Spacer()
             }
             .navigationBarTitle("Rename Block")
-            .navigationBarItems(leading: Button(action: {
-                self.isPresented = false
-            }, label: {
+            .navigationBarItems(leading: Button(action: dismiss, label: {
                 Text("Cancel")
-            }), trailing: Button(action: addBlock, label: {
+            }), trailing: Button(action: renameBlock, label: {
                 Text("Confirm")
             }))
         }.accentColor(Color(currentBlock.isSubBlock ? "secondary" : "primary"))
@@ -41,7 +39,11 @@ struct RenameBlockView: View {
         }
     }
     
-    func addBlock() {
+    func dismiss() {
+        isPresented = false
+    }
+    
+    func renameBlock() {
         if self.title.isEmpty {
             HapticsGateway.shared.triggerErrorHaptic()
         } else {

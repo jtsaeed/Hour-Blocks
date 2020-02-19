@@ -11,6 +11,7 @@ import SwiftDate
 
 class ScheduleViewModel: ObservableObject {
     
+    @Published var currentHour = Calendar.current.component(.hour, from: Date())
     @Published var currentDate = Calendar.current.startOfDay(for: Date())
     
     @Published var currentHourBlocks = [HourBlock]()
@@ -100,7 +101,7 @@ class ScheduleViewModel: ObservableObject {
         }
         
         DataGateway.shared.saveHourBlock(block: hourBlock)
-//        AnalyticsGateway.shared.log(hourBlock: hourBlock, isSuggestion: false)
+        AnalyticsGateway.shared.log(hourBlock: hourBlock)
     }
     
     func remove(hourBlock: HourBlock) {

@@ -10,7 +10,38 @@ import SwiftUI
 
 struct HourBlockCard: View {
     
-    @ObservedObject var viewModel: ScheduleViewModel
+    @EnvironmentObject var viewModel: ScheduleViewModel
+    
+    let hourBlock: HourBlock
+    
+    @State var isSubBlocksViewPresented = false
+    
+    var body: some View {
+        Card {
+            HStack {
+                HourBlockCardLabels(currentBlock: self.hourBlock)
+                Spacer()
+                CardIcon(iconName: self.hourBlock.iconName)
+                    .padding(.leading, 8)
+            }
+        }.onTapGesture(perform: presentSubBlocksView)
+        .sheet(isPresented: $isSubBlocksViewPresented) {
+            SubBlocksView(isPresented: self.$isSubBlocksViewPresented,
+                          hourBlock: self.hourBlock)
+                .environmentObject(self.viewModel)
+        }
+        .contextMenu { HourBlockCardContextMenu(currentBlock: self.hourBlock) }
+    }
+    
+    func presentSubBlocksView() {
+        HapticsGateway.shared.triggerLightImpact()
+        isSubBlocksViewPresented = true
+    }
+}
+
+struct EmptyHourBlockCard: View {
+    
+    @EnvironmentObject var viewModel: ScheduleViewModel
     
     let hourBlock: HourBlock
     
@@ -21,25 +52,14 @@ struct HourBlockCard: View {
             HStack {
                 HourBlockCardLabels(currentBlock: self.hourBlock)
                 Spacer()
-                if self.hourBlock.title != nil {
-                    ZStack {
-                        CardIcon(iconName: self.hourBlock.iconName)
-                            .contextMenu { HourBlockCardContextMenu(viewModel: self.viewModel, currentBlock: self.hourBlock) }
-                        
-                        NavigationLink(destination: SubBlocksView(viewModel: self.viewModel, hourBlock: self.hourBlock)) {
-                            EmptyView()
-                        }.frame(width: 0)
-                    }.padding(.leading, 8)
-                } else {
-                    IconButton(iconName: "add_icon", action: self.presentAddBlockView)
-                }
+                IconButton(iconName: "add_icon", action: self.presentAddBlockView)
             }
         }.sheet(isPresented: self.$isAddBlockViewPresented) {
             AddHourBlockView(isPresented: self.$isAddBlockViewPresented,
-                             viewModel: self.viewModel,
                              hour: self.hourBlock.hour,
                              time: self.hourBlock.formattedTime.lowercased(),
                              day: self.hourBlock.day)
+                .environmentObject(self.viewModel)
         }
     }
     
@@ -75,16 +95,84 @@ private struct HourBlockCardLabels: View {
 
 private struct HourBlockCardContextMenu: View {
     
-    @ObservedObject var viewModel: ScheduleViewModel
+    @EnvironmentObject var viewModel: ScheduleViewModel
+    @EnvironmentObject var settingsViewModel: ScheduleViewModel
     
     let currentBlock: HourBlock
     
+    @State var isRenamePresented = false
+    @State var isIconPickerPresented = false
+    @State var isDuplicatePresented = false
+    
     var body: some View {
         VStack {
+            Button(action: rename) {
+                Text("Rename")
+                Image(systemName: "pencil")
+            }
+            .sheet(isPresented: $isRenamePresented) {
+                RenameBlockView(isPresented: self.$isRenamePresented,
+                                currentBlock: self.currentBlock)
+                .environmentObject(self.viewModel)
+            }
+            Button(action: changeIcon) {
+                Text("Change Icon")
+                Image(systemName: "pencil")
+            }
+            .sheet(isPresented: $isIconPickerPresented, content: {
+                IconPicker(isPresented: self.$isIconPickerPresented,
+                           currentBlock: self.currentBlock)
+                    .environmentObject(self.viewModel)
+            })
+            Button(action: duplicate) {
+                Text("Duplicate")
+                Image(systemName: "doc.on.doc")
+            }
+            .sheet(isPresented: $isDuplicatePresented, content: {
+                DuplicateBlockSheet(isPresented: self.$isDuplicatePresented,
+                                    currentBlock: self.currentBlock)
+                    .environmentObject(self.viewModel)
+                    .environmentObject(self.settingsViewModel)
+            })
+            if currentBlock.hour != viewModel.currentHour {
+                Button(action: reminderAction) {
+                    Text(currentBlock.hasReminder ? "Remove Reminder" : "Set a Reminder")
+                    Image(systemName: "alarm")
+                }
+            }
             Button(action: clear) {
                 Text("Clear")
                 Image(systemName: "trash")
             }
+        }
+    }
+    
+    func rename() {
+        isRenamePresented = true
+    }
+    
+    func changeIcon() {
+        isIconPickerPresented = true
+    }
+    
+    func duplicate() {
+        isDuplicatePresented = true
+    }
+    
+    func reminderAction() {
+        if currentBlock.hasReminder {
+            NotificationsGateway.shared.removeNotification(for: currentBlock)
+//            DispatchQueue.main.async { self.viewModel.setReminder(false, for: self.currentBlock) }
+            UINotificationFeedbackGenerator().notificationOccurred(.success)
+        } else {
+            NotificationsGateway.shared.addNotification(for: currentBlock, completion: { success in
+                if success {
+//                    DispatchQueue.main.async { self.viewModel.setReminder(true, for: self.currentBlock) }
+                    UINotificationFeedbackGenerator().notificationOccurred(.success)
+                } else {
+                    UINotificationFeedbackGenerator().notificationOccurred(.error)
+                }
+            })
         }
     }
     

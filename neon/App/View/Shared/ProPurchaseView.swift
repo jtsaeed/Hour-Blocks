@@ -18,9 +18,9 @@ struct ProPurchaseView: View {
     @State var errorAlertText: String = "Unfortunately your request for Hour Blocks Pro could not be processed"
     
     var body: some View {
-        VStack {
+        VStack(spacing: 20) {
             WhatsNewHeader(title: "Hour Blocks Pro")
-                .padding(.vertical, 40)
+                .padding(.vertical, 32)
             
             VStack(alignment: .leading, spacing: 16) {
                 WhatsNewItem(title: "Sub Blocks 💪",
@@ -32,33 +32,30 @@ struct ProPurchaseView: View {
             Spacer()
             
             if !isLoading {
-                ActionButton(title: "Let's go Pro!", color: Color("secondary"))
-                    .onTapGesture {
-                        HapticsGateway.shared.triggerLightImpact()
-                        self.purchasePro()
-                    }
-                
-                SecondaryActionButton(title: "Restore purchase", color: Color("secondary"))
-                    .onTapGesture {
-                        HapticsGateway.shared.triggerLightImpact()
-                        self.restorePro()
-                    }
+                    ActionButton(title: "Let's go Pro!", color: Color("secondary"))
+                        .onTapGesture(perform: purchasePro)
+                    SecondaryActionButton(title: "Restore purchase", color: Color("secondary"))
+                        .onTapGesture(perform: restorePro)
+                    SecondaryActionButton(title: "No thanks!", color: Color("secondary"))
+                        .onTapGesture(perform: dismiss)
             } else {
                 ActivityIndicator(isAnimating: $isLoading)
             }
         }.padding(.horizontal, 40)
         .padding(.bottom, 16)
-        .navigationBarItems(leading: Button(action: {
-            self.showPurchasePro = false
-        }, label: {
-            Text("Cancel")
-        }))
         .alert(isPresented: $showErrorAlert) {
             Alert(title: Text("Error"), message: Text(errorAlertText), dismissButton: .default(Text("OK")))
         }
+        .accentColor(Color("secondary"))
     }
     
-    private func purchasePro() {
+    func dismiss() {
+        showPurchasePro = false
+    }
+    
+    func purchasePro() {
+        HapticsGateway.shared.triggerLightImpact()
+        
         self.isLoading = true
         
         SwiftyStoreKit.purchaseProduct("com.evh98.neon.pro", quantity: 1, atomically: true) { result in
@@ -70,7 +67,9 @@ struct ProPurchaseView: View {
         }
     }
     
-    private func restorePro() {
+    func restorePro() {
+        HapticsGateway.shared.triggerLightImpact()
+        
         self.isLoading = true
         
         SwiftyStoreKit.restorePurchases(atomically: true) { results in

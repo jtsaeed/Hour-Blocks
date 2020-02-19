@@ -145,7 +145,6 @@ struct NewToDoView: View {
             HapticsGateway.shared.triggerErrorHaptic()
         } else {
             HapticsGateway.shared.triggerAddBlockHaptic()
-            AnalyticsGateway.shared.logToDo()
             viewModel.addToDoItem(with: title, urgency)
             
             dismiss()

@@ -31,13 +31,8 @@ struct SecondaryActionButton: View {
     var color: Color = Color("primary")
     
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 12)
-                .foregroundColor(.clear)
-                .frame(height: 48)
-            Text(title)
-                .font(.system(size: 17, weight: .semibold, design: .default))
-                .foregroundColor(color)
-        }
+        Text(title)
+            .font(.system(size: 17, weight: .semibold, design: .default))
+            .foregroundColor(color)
     }
 }

@@ -19,7 +19,7 @@ struct AddToBlockSheet: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(viewModel.currentHourBlocks) { block in
+                ForEach(viewModel.currentHourBlocks.filter { $0.hour >=  viewModel.currentHour }) { block in
                     AddToBlockCard(currentBlock: block, didAddToBlock: {
                         self.addBlock(for: block.hour)
                     }, didAddToSubBlock: {
@@ -37,14 +37,19 @@ struct AddToBlockSheet: View {
     
     func addBlock(for hour: Int) {
         HapticsGateway.shared.triggerAddBlockHaptic()
-//        viewModel.setTodayBlock(for: hour, with: self.title)
+        
+        let newBlock = HourBlock(day: viewModel.currentDate, hour: hour, title: title)
+        viewModel.add(hourBlock: newBlock)
         
         dismissSheet()
     }
     
     func addSubBlock(for hour: Int) {
         HapticsGateway.shared.triggerAddBlockHaptic()
-//        viewModel.addSubBlock(for: hour, with: self.title)
+        
+        var newBlock = HourBlock(day: viewModel.currentDate, hour: hour, title: title)
+        newBlock.isSubBlock = true
+        viewModel.add(hourBlock: newBlock)
         
         dismissSheet()
     }
@@ -65,7 +70,7 @@ struct DuplicateBlockSheet: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(viewModel.currentHourBlocks) { block in
+                ForEach(viewModel.currentHourBlocks.filter { $0.hour >=  viewModel.currentHour }) { block in
                     AddToBlockCard(currentBlock: block, didAddToBlock: {
                         self.addBlock(for: block.hour)
                     }, didAddToSubBlock: {
@@ -83,14 +88,20 @@ struct DuplicateBlockSheet: View {
     func addBlock(for hour: Int) {
         HapticsGateway.shared.triggerAddBlockHaptic()
         
-        var newBlock = HourBlock(day: Date(), hour: hour, title: currentBlock.title!)
+        var newBlock = HourBlock(day: viewModel.currentDate, hour: hour, title: currentBlock.title!)
         newBlock.iconOverride = currentBlock.iconOverride
-//        viewModel.setTodayBlock(newBlock)
+        
+        viewModel.add(hourBlock: newBlock)
     }
     
     func addSubBlock(for hour: Int) {
         HapticsGateway.shared.triggerAddBlockHaptic()
-//        viewModel.addSubBlock(for: hour, with: currentBlock.title!)
+        
+        var newBlock = HourBlock(day: viewModel.currentDate, hour: hour, title: currentBlock.title!)
+        newBlock.iconOverride = currentBlock.iconOverride
+        newBlock.isSubBlock = true
+        
+        viewModel.add(hourBlock: newBlock)
     }
     
     func dismissSheet() {
@@ -129,7 +140,7 @@ private struct AddToBlockAddButton: View {
     @State var isPresented = false
     
     var body: some View {
-        IconButton(iconName: "add_button", pro: subBlock, action: add)
+        IconButton(iconName: "add_icon", pro: subBlock, action: add)
             .sheet(isPresented: $isPresented) {
                 ProPurchaseView(showPurchasePro: self.$isPresented)
             }

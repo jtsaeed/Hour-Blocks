@@ -10,17 +10,20 @@ import SwiftUI
 
 struct ScheduleView: View {
     
-    @ObservedObject var viewModel = ScheduleViewModel()
+    @EnvironmentObject var viewModel: ScheduleViewModel
     
     @State var isDatePickerPresented = false
     
     var body: some View {
         NavigationView {
             VStack {
-                ScheduleHeader(viewModel: viewModel, isDatePickerPresented: $isDatePickerPresented)
-                List(viewModel.currentHourBlocks) { hourBlock in
-                    HourBlockCard(viewModel: self.viewModel,
-                                  hourBlock: hourBlock)
+                ScheduleHeader(isDatePickerPresented: $isDatePickerPresented)
+                List(viewModel.currentHourBlocks.filter { $0.hour >=  viewModel.currentHour }) { hourBlock in
+                    if hourBlock.title != nil {
+                        HourBlockCard(hourBlock: hourBlock)
+                    } else {
+                        EmptyHourBlockCard(hourBlock: hourBlock)
+                    }
                 }
             }
             .navigationBarTitle("Schedule")
@@ -28,6 +31,7 @@ struct ScheduleView: View {
             .sheet(isPresented: $isDatePickerPresented) {
                 ScheduleDatePicker(isDatePickerPresented: self.$isDatePickerPresented,
                                    currentDate: self.$viewModel.currentDate,
+                                   currentHour: self.$viewModel.currentHour,
                                    dismissed: self.viewModel.loadHourBlocks)
             }
         }.navigationViewStyle(StackNavigationViewStyle())
@@ -36,7 +40,7 @@ struct ScheduleView: View {
 
 private struct ScheduleHeader: View {
     
-    @ObservedObject var viewModel: ScheduleViewModel
+    @EnvironmentObject var viewModel: ScheduleViewModel
     
     @Binding var isDatePickerPresented: Bool
     
