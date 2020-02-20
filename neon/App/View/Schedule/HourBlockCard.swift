@@ -34,8 +34,10 @@ struct HourBlockCard: View {
     }
     
     func presentSubBlocksView() {
-        HapticsGateway.shared.triggerLightImpact()
-        isSubBlocksViewPresented = true
+        if hourBlock.domain != .calendar {
+            HapticsGateway.shared.triggerLightImpact()
+            isSubBlocksViewPresented = true
+        }
     }
 }
 
@@ -85,12 +87,6 @@ private struct HourBlockCardLabels: View {
                         .foregroundColor(Color("primary"))
                         .opacity(0.5)
                 }
-                if viewModel.currentSubBlocks.filter({ $0.hour == currentBlock.hour }).count > 0 {
-                    Circle()
-                        .frame(width: 8, height: 8)
-                        .foregroundColor(Color("secondary"))
-                        .opacity(0.5)
-                }
                 Text(currentBlock.formattedTime.uppercased())
                     .modifier(CardSubtitleLabel())
                     .foregroundColor(Color("subtitle"))
@@ -109,12 +105,29 @@ private struct HourBlockCardContextMenu: View {
     
     let currentBlock: HourBlock
     
+    @State var isAddSubBlockPresented = false
     @State var isRenamePresented = false
     @State var isIconPickerPresented = false
     @State var isDuplicatePresented = false
     
     var body: some View {
         VStack {
+            Button(action: addSubBlock) {
+                Text("Add Sub Block")
+                Image(systemName: "plus.square")
+            }
+            .sheet(isPresented: self.$isAddSubBlockPresented, content: {
+                if DataGateway.shared.isPro() {
+                    AddHourBlockView(isPresented: self.$isAddSubBlockPresented,
+                                     hour: self.currentBlock.hour,
+                                     time: self.currentBlock.formattedTime,
+                                     day: self.currentBlock.day,
+                                     isSubBlock: true)
+                    .environmentObject(self.viewModel)
+                } else {
+                    ProPurchaseView(showPurchasePro: self.$isAddSubBlockPresented)
+                }
+            })
             Button(action: rename) {
                 Text("Rename")
                 Image(systemName: "pencil")
@@ -155,6 +168,10 @@ private struct HourBlockCardContextMenu: View {
                 Image(systemName: "trash")
             }
         }
+    }
+    
+    func addSubBlock() {
+        isAddSubBlockPresented = true
     }
     
     func rename() {

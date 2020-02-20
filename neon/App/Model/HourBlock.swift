@@ -81,4 +81,18 @@ struct HourBlock: Identifiable {
         
         return entity
     }
+    
+    @discardableResult
+    func getInMemoryEntity() -> HourBlockEntity {
+        let entity = HourBlockEntity()
+        entity.identifier = id
+        entity.title = title
+        entity.day = day
+        entity.hour = Int64(hour)
+        entity.isSubBlock = isSubBlock
+        entity.iconOverride = iconOverride
+        entity.hasReminder = hasReminder
+        
+        return entity
+    }
 }

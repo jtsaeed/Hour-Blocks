@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import StoreKit
 
 struct AddHourBlockView: View {
     
@@ -74,6 +75,14 @@ struct AddHourBlockView: View {
             viewModel.add(hourBlock: hourBlock)
             
             dismiss()
+            
+            handleReviewRequest()
+        }
+    }
+    
+    func handleReviewRequest() {
+        if DataGateway.shared.getTotalBlockCount() == 10 {
+            SKStoreReviewController.requestReview()
         }
     }
 }

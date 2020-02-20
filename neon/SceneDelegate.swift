@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
             managedObjectContext.automaticallyMergesChangesFromParent = true
             let contentView = ContentView()
-                .environmentObject(ScheduleViewModel())
+                .environmentObject(ScheduleViewModel(dataGateway: DataGateway.shared))
                 .environmentObject(SettingsViewModel())
                 .environment(\.managedObjectContext, managedObjectContext)
             

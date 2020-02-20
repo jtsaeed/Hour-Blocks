@@ -41,7 +41,7 @@ struct IconPicker: View {
     }
 }
 
-struct IconChoiceList: View {
+private struct IconChoiceList: View {
     
     @Binding var isPresented: Bool
     
@@ -80,7 +80,7 @@ struct IconChoiceList: View {
     }
 }
 
-struct IconChoiceSection: View {
+private struct IconChoiceSection: View {
     
     @Binding var isPresented: Bool
     
@@ -101,7 +101,7 @@ struct IconChoiceSection: View {
     }
 }
 
-struct IconChoiceRow: View {
+private struct IconChoiceRow: View {
     
     @EnvironmentObject var viewModel: ScheduleViewModel
     
@@ -130,7 +130,7 @@ struct IconChoiceRow: View {
     }
 }
 
-struct IconChoice: View {
+private struct IconChoice: View {
     
     let iconName: String
     

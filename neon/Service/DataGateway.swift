@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class DataGateway {
+struct DataGateway: DataInterface {
     
     static let shared = DataGateway(NSManagedObjectContext.current)
     
@@ -25,19 +25,6 @@ class DataGateway {
 // MARK: - Blocks
 
 extension DataGateway {
-    
-    func getHourBlockEntities() -> [HourBlockEntity] {
-        var hourBlocks = [HourBlockEntity]()
-        let request: NSFetchRequest<HourBlockEntity> = HourBlockEntity.fetchRequest()
-        
-        do {
-            hourBlocks = try managedObjectContext.fetch(request)
-        } catch {
-            print("error")
-        }
-        
-        return hourBlocks
-    }
     
     func getHourBlockEntities(for day: Date) -> [HourBlockEntity] {
         var hourBlocks = [HourBlockEntity]()
@@ -88,37 +75,6 @@ extension DataGateway {
             managedObjectContext.delete(hourBlockEntities.first!)
             
             try managedObjectContext.save()
-        } catch {
-            print("error")
-        }
-    }
-}
-
-// MARK: - Suggestions
-
-extension DataGateway {
-    
-    func getSuggestionEntities() -> [SuggestionEntity] {
-        var suggestions = [SuggestionEntity]()
-        let request: NSFetchRequest<SuggestionEntity> = SuggestionEntity.fetchRequest()
-        
-        do {
-            suggestions = try self.managedObjectContext.fetch(request)
-        } catch {
-            print("error")
-        }
-        
-        return suggestions
-    }
-    
-    func saveSuggestion(for domainKey: String, at hour: Int) {
-        let entity = SuggestionEntity(context: self.managedObjectContext)
-        entity.domainKey = domainKey
-        entity.hour = Int64(hour)
-        entity.date = Date()
-        
-        do {
-            try self.managedObjectContext.save()
         } catch {
             print("error")
         }

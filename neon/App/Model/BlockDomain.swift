@@ -153,7 +153,7 @@ enum BlockDomain: String, Domain, CaseIterable {
         case .competition: return "competition"
         case .meeting: return "meeting"
         case .school: return "school"
-        case .lecture: return "class"
+        case .lecture: return "lecture"
         case .study: return "study"
         case .homework: return "homework"
         case .exam: return "exam"

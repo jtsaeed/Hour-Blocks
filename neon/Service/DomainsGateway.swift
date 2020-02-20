@@ -40,7 +40,7 @@ class DomainsGateway {
         var determinedDomain: BlockDomain?
         var rating = 0.0
         
-        guard let embedding = NLEmbedding.wordEmbedding(for: .english) else { return nil }
+        let embedding = NLEmbedding.wordEmbedding(for: .english)
         
         for domain in BlockDomain.allCases {
             // Check if the word directly matches the keyword of the domain in the loop
@@ -50,18 +50,22 @@ class DomainsGateway {
                 break
             }
             
-            embedding.enumerateNeighbors(for: domain.rawValue, maximumCount: 25) { string, distance in
-                // If a similar word was found, return the corresponding domain and the match rating
-                if string == word {
-                    let tempRating = (1 - distance.magnitude).magnitude
-                    
-                    if tempRating > rating {
-                        rating = tempRating
-                        determinedDomain = domain
+            if embedding != nil {
+                embedding!.enumerateNeighbors(for: domain.rawValue, maximumCount: 25) { string, distance in
+                    // If a similar word was found, return the corresponding domain and the match rating
+                    if string == word {
+                        let tempRating = (1 - distance.magnitude).magnitude
+                        
+                        if tempRating > rating {
+                            rating = tempRating
+                            determinedDomain = domain
+                        }
                     }
+                    
+                    return true
                 }
-                
-                return true
+            } else {
+                AnalyticsGateway.shared.logMLFailed()
             }
         }
         

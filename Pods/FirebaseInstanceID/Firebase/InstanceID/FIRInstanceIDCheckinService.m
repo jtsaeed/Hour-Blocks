@@ -210,7 +210,6 @@ static FIRInstanceIDURLRequestTestBlock testBlock;
   NSInteger userNumber = 0;        // Multi Profile may change this.
   NSInteger userSerialNumber = 0;  // Multi Profile may change this
 
-  uint32_t loggingID = arc4random();
   NSString *timeZone = [NSTimeZone localTimeZone].name;
   int64_t lastCheckingTimestampMillis = checkinPreferences.lastCheckinTimestampMillis;
 
@@ -222,7 +221,6 @@ static FIRInstanceIDURLRequestTestBlock testBlock;
       @"last_checkin_msec" : @(lastCheckingTimestampMillis),
     },
     @"fragment" : @(kFragment),
-    @"logging_id" : @(loggingID),
     @"locale" : locale,
     @"version" : @(kCheckinVersion),
     @"digest" : checkinPreferences.digest ?: @"",

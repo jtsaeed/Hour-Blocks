@@ -11,6 +11,8 @@ import SwiftDate
 
 class ScheduleViewModel: ObservableObject {
     
+    let dataGateway: DataInterface
+    
     @Published var currentHour = Calendar.current.component(.hour, from: Date())
     @Published var currentDate = Calendar.current.startOfDay(for: Date())
     
@@ -21,7 +23,9 @@ class ScheduleViewModel: ObservableObject {
     
     @Published var allDayEvent: ImportedCalendarEvent?
     
-    init() {
+    init(dataGateway: DataInterface) {
+        self.dataGateway = dataGateway
+        
         loadHourBlocks()
     }
     

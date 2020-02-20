@@ -29,8 +29,8 @@ class FeedbackViewModel: ObservableObject {
     func getVotes(for feature: Feature, completion: @escaping (APIResponse) -> ()) {
         APIGateway.shared.getVotes(for: feature) { votes, response in
             if let votes = votes {
-                self.voteCount = votes.count
-                self.proVoteCount = votes.filter({ $0.proUser == "true" }).count
+                DispatchQueue.main.async { self.voteCount = votes.count }
+                DispatchQueue.main.async { self.proVoteCount = votes.filter({ $0.proUser == "true" }).count }
             }
             
             completion(response)

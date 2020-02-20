@@ -29,3 +29,30 @@ struct IconButton: View {
     }
 }
 
+struct IconToggle: View {
+    
+    @Binding var enabled: Bool
+    
+    let iconName: String
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            ZStack {
+                Circle()
+                    .frame(width: 40, height: 40)
+                    .foregroundColor(Color(enabled ? "greenLight" : "urgentLight"))
+                Image(iconName)
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                    .foregroundColor(Color(enabled ? "green" : "urgent"))
+            }
+        }
+    }
+}
+
+struct IconToggle_Previews : PreviewProvider {
+    static var previews: some View {
+        IconToggle(enabled: .constant(false), iconName: "calendar_item", action: { })
+    }
+}

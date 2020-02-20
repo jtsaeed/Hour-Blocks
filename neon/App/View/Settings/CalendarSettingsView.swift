@@ -21,9 +21,7 @@ struct CalendarSettingsView: View {
             List {
                 if CalendarGateway.shared.hasPermission() {
                     ForEach(CalendarGateway.shared.getAllCalendars().sorted(by: { $0.title < $1.title }), id: \.self) { calendar in
-                        CalendarCard(isEnabled: self.viewModel.enabledCalendars[calendar.calendarIdentifier] ?? true, name: calendar.title, didToggle: { status in
-                            self.viewModel.toggleCalendar(for: calendar.calendarIdentifier, to: status)
-                        })
+                        CalendarCard(calendar: calendar)
                     }
                 } else {
                     SettingsCard(title: "Permissions",
@@ -32,17 +30,17 @@ struct CalendarSettingsView: View {
                                  tapped: openPermissionsSettings)
                 }
             }
-            .navigationBarItems(trailing: Button(action: {
-                self.isPresented = false
-            }, label: {
+            .navigationBarItems(trailing: Button(action: dismiss, label: {
                 Text("Done")
             }))
             .navigationBarTitle("Calendars")
         }.accentColor(Color("primary"))
         .navigationViewStyle(StackNavigationViewStyle())
-        .onDisappear {
-            self.isPresented = false
-        }
+    }
+    
+    func dismiss() {
+        isPresented = false
+        scheduleViewModel.loadHourBlocks()
     }
     
     func openPermissionsSettings() {
@@ -54,6 +52,39 @@ struct CalendarSettingsView: View {
     }
 }
 
+private struct CalendarCard: View {
+    
+    @EnvironmentObject var scheduleViewModel: ScheduleViewModel
+    @EnvironmentObject var viewModel: SettingsViewModel
+    
+    let calendar: EKCalendar
+    
+    @State var isEnabled = true
+    
+    var body: some View {
+        DispatchQueue.main.async {
+            self.isEnabled = self.viewModel.enabledCalendars[self.calendar.calendarIdentifier] ?? true
+        }
+        
+        return Card {
+            HStack {
+                Text(self.calendar.title).modifier(CardTitleLabel())
+                Spacer()
+                IconToggle(enabled: self.$isEnabled,
+                           iconName: "calendar_item",
+                           action: self.toggle)
+            }
+        }
+    }
+    
+    func toggle() {
+        HapticsGateway.shared.triggerLightImpact()
+        isEnabled.toggle()
+        viewModel.toggleCalendar(for: calendar.calendarIdentifier, to: isEnabled)
+    }
+}
+
+/*
 struct CalendarCard: View {
     
     @State var isEnabled: Bool
@@ -80,3 +111,4 @@ struct CalendarCard: View {
         }.padding(.horizontal, 16)
     }
 }
+*/
