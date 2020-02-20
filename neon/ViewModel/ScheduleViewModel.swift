@@ -21,6 +21,8 @@ class ScheduleViewModel: ObservableObject {
     
     @Published var currentSuggestions = [Suggestion]()
     
+    @Published var currentTip: Tip?
+    
     @Published var allDayEvent: ImportedCalendarEvent?
     
     init(dataGateway: DataInterface) {
@@ -30,35 +32,37 @@ class ScheduleViewModel: ObservableObject {
     }
     
     func loadHourBlocks() {
-        var temporaryHourBlocks = [HourBlock]()
-        for hour in 0...23 {
-            temporaryHourBlocks.append(HourBlock(day: currentDate, hour: hour, title: nil))
-        }
-        
-        let loadedHourBlocks = DataGateway.shared.getHourBlockEntities(for: currentDate).compactMap({ HourBlock(fromEntity: $0) })
-        for loadedHourBlock in loadedHourBlocks.filter({ $0.isSubBlock == false }) {
-            temporaryHourBlocks[loadedHourBlock.hour] = loadedHourBlock
-        }
-        
-        DispatchQueue.main.async { self.allDayEvent = nil }
-        if CalendarGateway.shared.hasPermission() {
-            for event in CalendarGateway.shared.importEvents(for: currentDate) {
-                if event.isAllDay {
-                    DispatchQueue.main.async { self.allDayEvent = event }
-                    continue
-                }
-                
-                for i in event.startingHour...event.endingHour {
-                    var block = HourBlock(day: currentDate, hour: i, title: event.title)
-                    block.domain = .calendar
-                    temporaryHourBlocks[i] = block
+        DispatchQueue.global(qos: .userInteractive).async {
+            var temporaryHourBlocks = [HourBlock]()
+            for hour in 0...23 {
+                temporaryHourBlocks.append(HourBlock(day: self.currentDate, hour: hour, title: nil))
+            }
+            
+            let loadedHourBlocks = DataGateway.shared.getHourBlockEntities(for: self.currentDate).compactMap({ HourBlock(fromEntity: $0) })
+            for loadedHourBlock in loadedHourBlocks.filter({ $0.isSubBlock == false }) {
+                temporaryHourBlocks[loadedHourBlock.hour] = loadedHourBlock
+            }
+            
+            DispatchQueue.main.async { self.allDayEvent = nil }
+            if CalendarGateway.shared.hasPermission() {
+                for event in CalendarGateway.shared.importEvents(for: self.currentDate) {
+                    if event.isAllDay {
+                        DispatchQueue.main.async { self.allDayEvent = event }
+                        continue
+                    }
+                    
+                    for i in event.startingHour...event.endingHour {
+                        var block = HourBlock(day: self.currentDate, hour: i, title: event.title)
+                        block.domain = .calendar
+                        temporaryHourBlocks[i] = block
+                    }
                 }
             }
-        }
-        
-        DispatchQueue.main.async {
-            self.currentHourBlocks = temporaryHourBlocks
-            self.currentSubBlocks = loadedHourBlocks.filter({ $0.isSubBlock })
+            
+            DispatchQueue.main.async {
+                self.currentHourBlocks = temporaryHourBlocks
+                self.currentSubBlocks = loadedHourBlocks.filter({ $0.isSubBlock })
+            }
         }
     }
     
@@ -123,12 +127,27 @@ class ScheduleViewModel: ObservableObject {
         }
         
         DataGateway.shared.saveHourBlock(block: hourBlock)
+        DataGateway.shared.incrementTotalBlockCount()
         AnalyticsGateway.shared.log(hourBlock: hourBlock)
+        
+        refreshTips()
+    }
+    
+    private func refreshTips() {
+        let totalBlockCount = DataGateway.shared.getTotalBlockCount()
+        
+        if totalBlockCount == 1 {
+            currentTip = .blockOptions
+        } else if totalBlockCount == 5 {
+            currentTip = .viewSubBlocks
+        }
     }
     
     func remove(hourBlock: HourBlock) {
         if hourBlock.isSubBlock {
             currentSubBlocks.removeAll(where: { $0.id == hourBlock.id })
+            
+            DataGateway.shared.deleteHourBlock(block: hourBlock)
         } else {
             if hourBlock.hasReminder {
                 NotificationsGateway.shared.removeNotification(for: hourBlock)
@@ -137,9 +156,15 @@ class ScheduleViewModel: ObservableObject {
             currentHourBlocks[hourBlock.hour] = HourBlock(day: currentDate,
                                                           hour: hourBlock.hour,
                                                           title: nil)
+            DataGateway.shared.deleteHourBlock(block: hourBlock)
+            
+            for subBlock in currentSubBlocks.filter({ $0.hour == hourBlock.hour }) {
+                DataGateway.shared.deleteHourBlock(block: subBlock)
+            }
+            
+            currentSubBlocks.removeAll(where: { $0.hour == hourBlock.hour })
         }
         
-        DataGateway.shared.deleteHourBlock(block: hourBlock)
     }
     
     func editBlockIcon(for hourBlock: HourBlock, iconOverride: String) {
@@ -158,9 +183,11 @@ class ScheduleViewModel: ObservableObject {
         if hourBlock.isSubBlock {
             if let index = currentSubBlocks.firstIndex(where: { $0.id == hourBlock.id }) {
                 currentSubBlocks[index].title = newTitle
+                currentSubBlocks[index].domain = DomainsGateway.shared.determineDomain(for: newTitle)
             }
         } else {
             currentHourBlocks[hourBlock.hour].title = newTitle
+            currentHourBlocks[hourBlock.hour].domain = DomainsGateway.shared.determineDomain(for: newTitle)
         }
         
         DataGateway.shared.editHourBlock(block: hourBlock, set: newTitle, forKey: "title")

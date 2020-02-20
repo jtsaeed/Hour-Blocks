@@ -50,7 +50,8 @@ struct AddHourBlockView: View {
             }), trailing: Button(action: addBlock, label: {
                 Text("Add")
             }))
-        }.accentColor(Color(isSubBlock ? "secondary" : "primary"))
+        }.navigationViewStyle(StackNavigationViewStyle())
+        .accentColor(Color(isSubBlock ? "secondary" : "primary"))
         .onAppear(perform: loadSuggestions)
     }
     

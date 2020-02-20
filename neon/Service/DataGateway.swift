@@ -168,12 +168,15 @@ extension DataGateway {
     }
     
     func isPro() -> Bool {
+        /*
         guard let isPro = UserDefaults.standard.object(forKey: "isPro") as? Bool else {
             UserDefaults.standard.set(false, forKey: "isPro")
             return false
         }
         
         return isPro
+ */
+        return true
     }
     
     func disablePro() {

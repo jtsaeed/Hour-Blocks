@@ -74,6 +74,8 @@ struct EmptyHourBlockCard: View {
 
 private struct HourBlockCardLabels: View {
     
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    
     @EnvironmentObject var viewModel: ScheduleViewModel
     
     var currentBlock: HourBlock
@@ -85,7 +87,13 @@ private struct HourBlockCardLabels: View {
                     Circle()
                         .frame(width: 8, height: 8)
                         .foregroundColor(Color("primary"))
-                        .opacity(0.5)
+                        .opacity(colorScheme == .light ? 0.5 : 0.8)
+                }
+                if viewModel.currentSubBlocks.filter({ $0.hour == currentBlock.hour }).count > 0 {
+                    Circle()
+                        .frame(width: 8, height: 8)
+                        .foregroundColor(Color("secondary"))
+                        .opacity(colorScheme == .light ? 0.5 : 0.8)
                 }
                 Text(currentBlock.formattedTime.uppercased())
                     .modifier(CardSubtitleLabel())
@@ -109,6 +117,8 @@ private struct HourBlockCardContextMenu: View {
     @State var isRenamePresented = false
     @State var isIconPickerPresented = false
     @State var isDuplicatePresented = false
+    
+    @State var isClearWarningPresented = false
     
     var body: some View {
         VStack {
@@ -163,9 +173,15 @@ private struct HourBlockCardContextMenu: View {
                     Image(systemName: "alarm")
                 }
             }
-            Button(action: clear) {
+            Button(action: attemptClear) {
                 Text("Clear")
                 Image(systemName: "trash")
+            }
+            .alert(isPresented: $isClearWarningPresented) {
+                Alert(title: Text("Clear Confirmation"),
+                      message: Text("Clearing this Hour Block will also clear any Sub Blocks it contains"),
+                      primaryButton: .destructive(Text("Confirm"), action: self.clear),
+                      secondaryButton: .cancel())
             }
         }
     }
@@ -200,6 +216,14 @@ private struct HourBlockCardContextMenu: View {
                     UINotificationFeedbackGenerator().notificationOccurred(.error)
                 }
             })
+        }
+    }
+    
+    func attemptClear() {
+        if viewModel.currentSubBlocks.filter({ $0.hour == currentBlock.hour }).count > 0 {
+            isClearWarningPresented = true
+        } else {
+            clear()
         }
     }
     

@@ -18,11 +18,16 @@ struct ScheduleView: View {
         NavigationView {
             VStack {
                 ScheduleHeader(isDatePickerPresented: $isDatePickerPresented)
-                List(viewModel.currentHourBlocks.filter { $0.hour >=  viewModel.currentHour }) { hourBlock in
-                    if hourBlock.title != nil {
-                        HourBlockCard(hourBlock: hourBlock)
-                    } else {
-                        EmptyHourBlockCard(hourBlock: hourBlock)
+                List {
+                    if viewModel.currentTip != nil {
+                        TipBlockCard(tip: $viewModel.currentTip)
+                    }
+                    ForEach(viewModel.currentHourBlocks.filter { $0.hour >=  viewModel.currentHour }) { hourBlock in
+                        if hourBlock.title != nil {
+                            HourBlockCard(hourBlock: hourBlock)
+                        } else {
+                            EmptyHourBlockCard(hourBlock: hourBlock)
+                        }
                     }
                 }
             }

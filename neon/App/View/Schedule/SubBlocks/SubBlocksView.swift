@@ -29,7 +29,8 @@ struct SubBlocksView: View {
             .navigationBarItems(trailing: Button(action: dismiss, label: {
                 Text("Close")
             }))
-        }.accentColor(Color("secondary"))
+        }.navigationViewStyle(StackNavigationViewStyle())
+        .accentColor(Color("secondary"))
     }
     
     func dismiss() {

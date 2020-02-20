@@ -40,7 +40,6 @@ struct CalendarSettingsView: View {
     
     func dismiss() {
         isPresented = false
-        scheduleViewModel.loadHourBlocks()
     }
     
     func openPermissionsSettings() {
@@ -81,6 +80,7 @@ private struct CalendarCard: View {
         HapticsGateway.shared.triggerLightImpact()
         isEnabled.toggle()
         viewModel.toggleCalendar(for: calendar.calendarIdentifier, to: isEnabled)
+        scheduleViewModel.loadHourBlocks()
     }
 }
 

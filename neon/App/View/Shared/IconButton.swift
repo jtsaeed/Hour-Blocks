@@ -29,6 +29,25 @@ struct IconButton: View {
     }
 }
 
+struct CheckButton: View {
+    
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            ZStack {
+                Circle()
+                    .frame(width: 40, height: 40)
+                    .foregroundColor(Color("greenLight"))
+                Image("check")
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                    .foregroundColor(Color("green"))
+            }
+        }
+    }
+}
+
 struct IconToggle: View {
     
     @Binding var enabled: Bool

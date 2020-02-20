@@ -37,7 +37,8 @@ struct IconPicker: View {
             }, label: {
                 Text("Cancel")
             }))
-        }.accentColor(Color("primary"))
+        }.navigationViewStyle(StackNavigationViewStyle())
+        .accentColor(Color("primary"))
     }
 }
 
