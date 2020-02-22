@@ -34,18 +34,40 @@ class CalendarGateway {
     }
     
     func importEvents(for date: Date) -> [ImportedCalendarEvent] {
-        let eventsPredicate = eventStore.predicateForEvents(withStart: date.dateAtStartOf(.day),
-                                                            end: date.dateAtEndOf(.day),
+        let eventsPredicate = eventStore.predicateForEvents(withStart: date.toLocalTime().dateAtStartOf(.day),
+                                                            end: date.toLocalTime().dateAtEndOf(.day),
                                                             calendars: getEnabledCalendars())
         
         return eventStore.events(matching: eventsPredicate).map({ ImportedCalendarEvent(from: $0) })
+    }
+    
+    func rename(event: EKEvent, to newTitle: String) {
+        event.title = newTitle
+        
+        do {
+            try eventStore.save(event, span: .thisEvent)
+        } catch let error {
+            print(error)
+        }
+    }
+    
+    func clear(event: EKEvent) {
+        do {
+            try eventStore.remove(event, span: .thisEvent)
+        } catch let error {
+            print(error)
+        }
     }
 	
 	private func getEnabledCalendars() -> [EKCalendar] {
         var calendars = [EKCalendar]()
         
+        let userCalendars = DataGateway.shared.getUserCalendarEntities().compactMap({ UserCalendar(fromEntity: $0 )})
+        
         for calendar in getAllCalendars() {
-            if DataGateway.shared.loadEnabledCalendars()[calendar.calendarIdentifier] == true {
+            if userCalendars.first(where: { $0.identifier == calendar.calendarIdentifier })?.enabled == false {
+                continue
+            } else {
                 calendars.append(calendar)
             }
         }
@@ -60,6 +82,7 @@ class CalendarGateway {
 
 struct ImportedCalendarEvent {
     
+    let eventEntity: EKEvent
     let title: String
     let date: Date
     
@@ -68,6 +91,7 @@ struct ImportedCalendarEvent {
     var endingHour: Int
     
     init(from event: EKEvent) {
+        self.eventEntity = event
         self.title = event.title
         self.date = event.startDate
         self.isAllDay = event.isAllDay

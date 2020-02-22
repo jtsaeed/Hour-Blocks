@@ -22,6 +22,10 @@ class HapticsGateway {
         UIImpactFeedbackGenerator(style: .soft).impactOccurred(intensity: 0.9)
     }
     
+    func triggerSwipeHaptic() {
+        UIImpactFeedbackGenerator(style: .rigid).impactOccurred(intensity: 0.6)
+    }
+    
     func triggerCompletionHaptic() {
         UINotificationFeedbackGenerator().notificationOccurred(.success)
     }

@@ -30,7 +30,7 @@ struct HourBlockCard: View {
                           hourBlock: self.hourBlock)
                 .environmentObject(self.viewModel)
         }
-        .contextMenu { if hourBlock.domain != .calendar { HourBlockCardContextMenu(currentBlock: self.hourBlock) } }
+        .contextMenu { HourBlockCardContextMenu(currentBlock: self.hourBlock) }
     }
     
     func presentSubBlocksView() {
@@ -119,25 +119,28 @@ private struct HourBlockCardContextMenu: View {
     @State var isDuplicatePresented = false
     
     @State var isClearWarningPresented = false
+    @State var clearWarningMessage = ""
     
     var body: some View {
         VStack {
-            Button(action: addSubBlock) {
-                Text("Add Sub Block")
-                Image(systemName: "plus.square")
-            }
-            .sheet(isPresented: self.$isAddSubBlockPresented, content: {
-                if DataGateway.shared.isPro() {
-                    AddHourBlockView(isPresented: self.$isAddSubBlockPresented,
-                                     hour: self.currentBlock.hour,
-                                     time: self.currentBlock.formattedTime,
-                                     day: self.currentBlock.day,
-                                     isSubBlock: true)
-                    .environmentObject(self.viewModel)
-                } else {
-                    ProPurchaseView(showPurchasePro: self.$isAddSubBlockPresented)
+            if currentBlock.domain != .calendar {
+                Button(action: addSubBlock) {
+                    Text("Add Sub Block")
+                    Image(systemName: "plus.square")
                 }
-            })
+                .sheet(isPresented: self.$isAddSubBlockPresented, content: {
+                    if DataGateway.shared.isPro() {
+                        AddHourBlockView(isPresented: self.$isAddSubBlockPresented,
+                                         hour: self.currentBlock.hour,
+                                         time: self.currentBlock.formattedTime,
+                                         day: self.currentBlock.day,
+                                         isSubBlock: true)
+                        .environmentObject(self.viewModel)
+                    } else {
+                        ProPurchaseView(showPurchasePro: self.$isAddSubBlockPresented)
+                    }
+                })
+            }
             Button(action: rename) {
                 Text("Rename")
                 Image(systemName: "pencil")
@@ -147,25 +150,27 @@ private struct HourBlockCardContextMenu: View {
                                 currentBlock: self.currentBlock)
                 .environmentObject(self.viewModel)
             }
-            Button(action: changeIcon) {
-                Text("Change Icon")
-                Image(systemName: "pencil")
+            if currentBlock.domain != .calendar {
+                Button(action: changeIcon) {
+                    Text("Change Icon")
+                    Image(systemName: "pencil")
+                }
+                .sheet(isPresented: $isIconPickerPresented, content: {
+                    IconPicker(isPresented: self.$isIconPickerPresented,
+                               currentBlock: self.currentBlock)
+                        .environmentObject(self.viewModel)
+                })
+                Button(action: duplicate) {
+                    Text("Duplicate")
+                    Image(systemName: "doc.on.doc")
+                }
+                .sheet(isPresented: $isDuplicatePresented, content: {
+                    DuplicateBlockSheet(isPresented: self.$isDuplicatePresented,
+                                        currentBlock: self.currentBlock)
+                        .environmentObject(self.viewModel)
+                        .environmentObject(self.settingsViewModel)
+                })
             }
-            .sheet(isPresented: $isIconPickerPresented, content: {
-                IconPicker(isPresented: self.$isIconPickerPresented,
-                           currentBlock: self.currentBlock)
-                    .environmentObject(self.viewModel)
-            })
-            Button(action: duplicate) {
-                Text("Duplicate")
-                Image(systemName: "doc.on.doc")
-            }
-            .sheet(isPresented: $isDuplicatePresented, content: {
-                DuplicateBlockSheet(isPresented: self.$isDuplicatePresented,
-                                    currentBlock: self.currentBlock)
-                    .environmentObject(self.viewModel)
-                    .environmentObject(self.settingsViewModel)
-            })
             if (currentBlock.day == viewModel.currentDate && currentBlock.hour != viewModel.currentHour) ||
                 (currentBlock.day < viewModel.currentDate){
                 Button(action: reminderAction) {
@@ -179,7 +184,7 @@ private struct HourBlockCardContextMenu: View {
             }
             .alert(isPresented: $isClearWarningPresented) {
                 Alert(title: Text("Clear Confirmation"),
-                      message: Text("Clearing this Hour Block will also clear any Sub Blocks it contains"),
+                      message: Text(clearWarningMessage),
                       primaryButton: .destructive(Text("Confirm"), action: self.clear),
                       secondaryButton: .cancel())
             }
@@ -222,6 +227,10 @@ private struct HourBlockCardContextMenu: View {
     func attemptClear() {
         if viewModel.currentSubBlocks.filter({ $0.hour == currentBlock.hour }).count > 0 {
             isClearWarningPresented = true
+            clearWarningMessage = "Clearing this Hour Block will also clear any Sub Blocks it contains"
+        } else if currentBlock.domain == .calendar {
+            isClearWarningPresented = true
+            clearWarningMessage = "Clearing this Hour Block will also delete the associated Calendar event"
         } else {
             clear()
         }

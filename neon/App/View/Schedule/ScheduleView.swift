@@ -18,11 +18,14 @@ struct ScheduleView: View {
         NavigationView {
             VStack {
                 ScheduleHeader(isDatePickerPresented: $isDatePickerPresented)
+                    .gesture(DragGesture(minimumDistance: 64).onEnded({ gesture in
+                        self.handleHeaderSwipe(gesture)
+                    }))
                 List {
                     if viewModel.currentTip != nil {
                         TipBlockCard(tip: $viewModel.currentTip)
                     }
-                    ForEach(viewModel.currentHourBlocks.filter { $0.hour >=  viewModel.currentHour }) { hourBlock in
+                    ForEach(viewModel.currentHourBlocks.filter { $0.hour >= viewModel.currentHour }) { hourBlock in
                         if hourBlock.title != nil {
                             HourBlockCard(hourBlock: hourBlock)
                         } else {
@@ -45,6 +48,16 @@ struct ScheduleView: View {
                 self.viewModel.loadHourBlocks()
             }
         })
+    }
+    
+    func handleHeaderSwipe(_ gesture: DragGesture.Value) {
+        HapticsGateway.shared.triggerSwipeHaptic()
+        
+        if gesture.translation.width < 0 {
+            viewModel.nextDay()
+        } else {
+            viewModel.previousDay()
+        }
     }
 }
 

@@ -79,6 +79,8 @@
 		AB28F05823FEA0E5008EFE46 /* TipBlockCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB28F05723FEA0E5008EFE46 /* TipBlockCard.swift */; };
 		AB3376C423FDEBDB00D3C99E /* ScheduleViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3376C323FDEBDA00D3C99E /* ScheduleViewModelTests.swift */; };
 		ABB3C4F723FEB2CB0024E554 /* DataInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB3C4F623FEB2CB0024E554 /* DataInterface.swift */; };
+		ABDE2EE72400000E00666D55 /* OtherSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDE2EE62400000E00666D55 /* OtherSettings.swift */; };
+		ABDE2EE92400234F00666D55 /* UserCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDE2EE82400234F00666D55 /* UserCalendar.swift */; };
 		B658B761255B945710FC2F42 /* Pods_neonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9076E2F3ADB2E623D12BBF3D /* Pods_neonTests.framework */; };
 		B912B77E89CBF0E08ECEB8A2 /* Pods_neonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F07358A92310DC9C6BA03B89 /* Pods_neonUITests.framework */; };
 /* End PBXBuildFile section */
@@ -218,6 +220,8 @@
 		AB28F05723FEA0E5008EFE46 /* TipBlockCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipBlockCard.swift; sourceTree = "<group>"; };
 		AB3376C323FDEBDA00D3C99E /* ScheduleViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModelTests.swift; sourceTree = "<group>"; };
 		ABB3C4F623FEB2CB0024E554 /* DataInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataInterface.swift; sourceTree = "<group>"; };
+		ABDE2EE62400000E00666D55 /* OtherSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSettings.swift; sourceTree = "<group>"; };
+		ABDE2EE82400234F00666D55 /* UserCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCalendar.swift; sourceTree = "<group>"; };
 		F07358A92310DC9C6BA03B89 /* Pods_neonUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_neonUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEF89E64D0C593B4421B153A /* Pods-neonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neonTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-neonTests/Pods-neonTests.release.xcconfig"; sourceTree = "<group>"; };
 		FF3FA86C71973A520B8323EA /* Pods-neonUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neonUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-neonUITests/Pods-neonUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -396,6 +400,8 @@
 				7A666BCB23F06ADB003D6F1F /* ToDoItem.swift */,
 				7A1AF6F723F440ED00425BB6 /* BlockDomain.swift */,
 				7A1AF6F923F456F600425BB6 /* Suggestion.swift */,
+				ABDE2EE62400000E00666D55 /* OtherSettings.swift */,
+				ABDE2EE82400234F00666D55 /* UserCalendar.swift */,
 			);
 			name = Model;
 			path = App/Model;
@@ -774,6 +780,7 @@
 				7AA4923623E9D5640006DCB8 /* FeatureVotes.swift in Sources */,
 				2338BEC4220A7840004F288F /* neon.xcdatamodeld in Sources */,
 				234DF2FB237A113200EB248A /* Int+Ext.swift in Sources */,
+				ABDE2EE72400000E00666D55 /* OtherSettings.swift in Sources */,
 				2336981F23818D52006ACD1E /* ActionButton.swift in Sources */,
 				23E82155236DB57A004E6F15 /* WhatsNewView.swift in Sources */,
 				7A9CD1B023EEDCB50036B251 /* VotesView.swift in Sources */,
@@ -794,6 +801,7 @@
 				2304FA14235F29ED006DA688 /* SceneDelegate.swift in Sources */,
 				2304FA17235F2A2A006DA688 /* ContentView.swift in Sources */,
 				2304FA31235F304C006DA688 /* NSManagedObjectContext+Ext.swift in Sources */,
+				ABDE2EE92400234F00666D55 /* UserCalendar.swift in Sources */,
 				7A735E4F238D591C00FE4D32 /* IconPicker.swift in Sources */,
 				7A1AF6FC23F5674000425BB6 /* AddHourBlockView.swift in Sources */,
 				23C53D7D2369E01900BA4378 /* CalendarSettingsView.swift in Sources */,
@@ -982,7 +990,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -990,7 +998,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.0.1;
+				MARKETING_VERSION = 5.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1009,7 +1017,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1017,7 +1025,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.0.1;
+				MARKETING_VERSION = 5.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

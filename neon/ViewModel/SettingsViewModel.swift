@@ -12,22 +12,50 @@ import UIKit
 
 class SettingsViewModel: ObservableObject {
     
-    @Published var enabledCalendars: [String: Bool]
-    @Published var other: [String: Int]
+    @Published var userCalendars: [UserCalendar]
+    @Published var other: OtherSettings
     
     init() {
-        enabledCalendars = DataGateway.shared.loadEnabledCalendars()
-        other = DataGateway.shared.loadOtherSettings()
+        userCalendars = DataGateway.shared.getUserCalendarEntities().compactMap({ UserCalendar(fromEntity: $0) })
+        
+        // Load other settings
+        let defaultSettings = OtherSettings(timeFormat: 1, reminderTimer: 1, autoCaps: 0, dayStart: 2)
+        if let otherSettingsEntity = DataGateway.shared.getOtherSettingsEntity() {
+            other = OtherSettings(fromEntity: otherSettingsEntity) ?? defaultSettings
+        } else {
+            other = defaultSettings
+            DataGateway.shared.saveOtherSettings(defaultSettings)
+        }
     }
     
-    func toggleCalendar(for identifier: String, to status: Bool) {
-        enabledCalendars[identifier] = status
-        UserDefaults.standard.set(enabledCalendars, forKey: "enabledCalendars")
+    func toggleCalendar(for identifier: String) {
+        if let index = userCalendars.firstIndex(where: { $0.identifier == identifier }) {
+            userCalendars[index].enabled.toggle()
+            DataGateway.shared.modifyUserCalendar(userCalendar: userCalendars[index])
+        } else {
+            let userCalendar = UserCalendar(identifier: identifier, enabled: false)
+            DataGateway.shared.saveUserCalendar(userCalendar)
+        }
     }
     
-    func set(_ settingsKey: OtherSettingsKey, to value: Int) {
-        other[settingsKey.rawValue] = value
-        UserDefaults.standard.set(other, forKey: "otherSettings")
+    func setTimeFormat(to value: Int) {
+        other.timeFormat = value
+        DataGateway.shared.modifyOtherSettings(set: value, forKey: "timeFormat")
+    }
+    
+    func setReminderTimer(to value: Int) {
+        other.reminderTimer = value
+        DataGateway.shared.modifyOtherSettings(set: value, forKey: "reminderTimer")
+    }
+    
+    func setAutoCaps(to value: Int) {
+        other.autoCaps = value
+        DataGateway.shared.modifyOtherSettings(set: value, forKey: "autoCaps")
+    }
+    
+    func setDayStart(to value: Int) {
+        other.dayStart = value
+        DataGateway.shared.modifyOtherSettings(set: value, forKey: "dayStart")
     }
     
     func set(icon: AppIconKey) {
@@ -45,14 +73,6 @@ class SettingsViewModel: ObservableObject {
             if let error = error { print(error.localizedDescription) }
         }
     }
-}
-
-enum OtherSettingsKey: String {
-    
-    case timeFormat
-    case reminderTimer
-    case autoCaps
-    case icon
 }
 
 enum AppIconKey: String {

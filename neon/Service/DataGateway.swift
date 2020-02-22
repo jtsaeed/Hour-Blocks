@@ -18,8 +18,8 @@ struct DataGateway: DataInterface {
     init(_ managedObjectContext: NSManagedObjectContext) {
         self.managedObjectContext = managedObjectContext
     }
-    
-    let currentVersion = 5.0
+
+    let currentVersion = 5.1
 }
 
 // MARK: - Blocks
@@ -145,6 +145,92 @@ extension DataGateway {
     }
 }
 
+// MARK: - User Calendars
+
+extension DataGateway {
+    
+    func getUserCalendarEntities() -> [UserCalendarEntity] {
+        var userCalendars = [UserCalendarEntity]()
+        let request: NSFetchRequest<UserCalendarEntity> = UserCalendarEntity.fetchRequest()
+        
+        do {
+            userCalendars = try managedObjectContext.fetch(request)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        return userCalendars
+    }
+    
+    func saveUserCalendar(_ userCalendar: UserCalendar) {
+        userCalendar.getEntity(context: self.managedObjectContext)
+        
+        do {
+            try self.managedObjectContext.save()
+        } catch {
+            print("error")
+        }
+    }
+    
+    func modifyUserCalendar(userCalendar: UserCalendar) {
+        let request: NSFetchRequest<UserCalendarEntity> = UserCalendarEntity.fetchRequest()
+        request.predicate = NSPredicate(format: "identifier == %@", userCalendar.identifier)
+        
+        do {
+            let userCalendarEntities = try managedObjectContext.fetch(request)
+            let userCalendarEntity = userCalendarEntities.first!
+            
+            userCalendarEntity.setValue(userCalendar.enabled, forKey: "enabled")
+            
+            try managedObjectContext.save()
+        } catch {
+            print("error")
+        }
+    }
+}
+
+// MARK: - Other Settings
+
+extension DataGateway {
+    
+    func getOtherSettingsEntity() -> OtherSettingsEntity? {
+        let request: NSFetchRequest<OtherSettingsEntity> = OtherSettingsEntity.fetchRequest()
+        
+        do {
+            let otherSettingsEntities = try self.managedObjectContext.fetch(request)
+            return otherSettingsEntities.first
+        } catch {
+            print("error")
+            return nil
+        }
+    }
+    
+    func saveOtherSettings(_ defaultSettings: OtherSettings) {
+        defaultSettings.getEntity(context: self.managedObjectContext)
+        
+        do {
+            try self.managedObjectContext.save()
+        } catch {
+            print("error")
+        }
+    }
+    
+    func modifyOtherSettings(set value: Any?, forKey key: String) {
+        let request: NSFetchRequest<OtherSettingsEntity> = OtherSettingsEntity.fetchRequest()
+        
+        do {
+            let otherSettingsEntities = try managedObjectContext.fetch(request)
+            let otherSettingsEntity = otherSettingsEntities.first!
+            
+            otherSettingsEntity.setValue(value, forKey: key)
+            
+            try managedObjectContext.save()
+        } catch {
+            print("error")
+        }
+    }
+}
+
 // MARK: - Misc
 
 extension DataGateway {
@@ -168,15 +254,12 @@ extension DataGateway {
     }
     
     func isPro() -> Bool {
-        /*
         guard let isPro = UserDefaults.standard.object(forKey: "isPro") as? Bool else {
             UserDefaults.standard.set(false, forKey: "isPro")
             return false
         }
         
         return isPro
- */
-        return true
     }
     
     func disablePro() {
@@ -208,42 +291,11 @@ extension DataGateway {
         UserDefaults.standard.synchronize()
     }
     
-    func loadEnabledCalendars() -> [String: Bool] {
-        if let enabledCalendars = UserDefaults.standard.dictionary(forKey: "enabledCalendars") as? [String: Bool] {
-            return enabledCalendars
-        } else {
-            var calendars = [String: Bool]()
-                
-            for calendar in CalendarGateway.shared.getAllCalendars() {
-                calendars[calendar.calendarIdentifier] = true
-            }
-            
-            return calendars
-        }
-    }
-    
-    func loadOtherSettings() -> [String: Int] {
-        if var otherSettings = UserDefaults.standard.dictionary(forKey: "otherSettings") as? [String: Int] {
-            if otherSettings[OtherSettingsKey.timeFormat.rawValue] == nil {
-                otherSettings[OtherSettingsKey.timeFormat.rawValue] = 1
-            }
-            
-            if otherSettings[OtherSettingsKey.reminderTimer.rawValue] == nil {
-                otherSettings[OtherSettingsKey.reminderTimer.rawValue] = 1
-            }
-            
-            if otherSettings[OtherSettingsKey.autoCaps.rawValue] == nil {
-                otherSettings[OtherSettingsKey.autoCaps.rawValue] = 0
-            }
-            
-            return otherSettings
-        } else {
-            return [
-                OtherSettingsKey.timeFormat.rawValue: 1,
-                OtherSettingsKey.reminderTimer.rawValue: 1,
-                OtherSettingsKey.autoCaps.rawValue: 0,
-            ]
-        }
+    func getDayStartTime() -> Int {
+        guard let otherSettingsEntity = getOtherSettingsEntity() else { return 2 }
+        guard let dayStartSetting = OtherSettings(fromEntity: otherSettingsEntity)?.dayStart else { return 2 }
+        
+        return (dayStartSetting + 4)
     }
     
     func isSystemClock12h() -> Bool {

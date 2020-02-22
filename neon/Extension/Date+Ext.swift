@@ -37,6 +37,12 @@ extension Date {
     func getMonthAndYear() -> String {
         return "\(self.monthName(.default)) \(self.year)"
     }
+    
+    func toLocalTime() -> Date {
+        let timezone = TimeZone.current
+        let seconds = TimeInterval(timezone.secondsFromGMT(for: self))
+        return Date(timeInterval: seconds, since: self)
+    }
 }
 
 extension Date: Identifiable {

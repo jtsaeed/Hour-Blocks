@@ -16,6 +16,12 @@
         <attribute name="isSubBlock" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="OtherSettingsEntity" representedClassName="OtherSettingsEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="autoCaps" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="dayStart" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="reminderTimer" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="timeFormat" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
     <entity name="SuggestionEntity" representedClassName="SuggestionEntity" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="domainKey" optional="YES" attributeType="String"/>
@@ -27,10 +33,16 @@
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="urgency" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="UserCalendarEntity" representedClassName="UserCalendarEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="enabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="String"/>
+    </entity>
     <elements>
         <element name="HabitBlockEntity" positionX="-63" positionY="63" width="128" height="118"/>
         <element name="HourBlockEntity" positionX="-63" positionY="36" width="128" height="148"/>
         <element name="SuggestionEntity" positionX="-63" positionY="63" width="128" height="88"/>
         <element name="ToDoEntity" positionX="-63" positionY="9" width="128" height="103"/>
+        <element name="OtherSettingsEntity" positionX="-63" positionY="72" width="128" height="103"/>
+        <element name="UserCalendarEntity" positionX="-54" positionY="81" width="128" height="73"/>
     </elements>
 </model>

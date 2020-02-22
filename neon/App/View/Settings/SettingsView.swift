@@ -38,7 +38,11 @@ struct SettingsView: View {
                                  iconName: "other_icon",
                                  tapped: presentOtherStuff)
                     .sheet(isPresented: $isOtherStuffPresented, content: {
-                        OtherSettingsView(isPresented: self.$isOtherStuffPresented, timeFormatValue: self.viewModel.other[OtherSettingsKey.timeFormat.rawValue]!, reminderTimerValue: self.viewModel.other[OtherSettingsKey.reminderTimer.rawValue]!, autoCapsValue: self.viewModel.other[OtherSettingsKey.autoCaps.rawValue]!)
+                        OtherSettingsView(isPresented: self.$isOtherStuffPresented,
+                                          timeFormatValue: self.viewModel.other.timeFormat,
+                                          reminderTimerValue: self.viewModel.other.reminderTimer,
+                                          autoCapsValue: self.viewModel.other.autoCaps,
+                                          dayStartValue: self.viewModel.other.dayStart)
                             .environmentObject(self.viewModel)
                             .environmentObject(self.scheduleViewModel)
                     })

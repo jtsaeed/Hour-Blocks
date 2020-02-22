@@ -9,6 +9,7 @@
 import SwiftUI
 import Combine
 import CoreData
+import EventKit
 
 struct HourBlock: Identifiable {
     
@@ -19,6 +20,7 @@ struct HourBlock: Identifiable {
     var title: String?
     var domain: BlockDomain?
     var iconOverride: String?
+    var calendarEvent: EKEvent?
     
     var hasReminder = false
     var isSubBlock = false
@@ -47,13 +49,15 @@ struct HourBlock: Identifiable {
     }
     
     var formattedTime: String {
-        if let format = DataGateway.shared.loadOtherSettings()[OtherSettingsKey.timeFormat.rawValue] {
-            if format == 0 {
-                return DataGateway.shared.isSystemClock12h() ? hour.get12hTime() : hour.get24hTime()
-            } else if format == 1 {
-                return hour.get12hTime()
-            } else if format == 2 {
-                return hour.get24hTime()
+        if let otherSettingsEntity = DataGateway.shared.getOtherSettingsEntity() {
+            if let timeFormatSetting = OtherSettings(fromEntity: otherSettingsEntity)?.timeFormat {
+                if timeFormatSetting == 0 {
+                    return DataGateway.shared.isSystemClock12h() ? hour.get12hTime() : hour.get24hTime()
+                } else if timeFormatSetting == 1 {
+                    return hour.get12hTime()
+                } else if timeFormatSetting == 2 {
+                    return hour.get24hTime()
+                }
             }
         }
         

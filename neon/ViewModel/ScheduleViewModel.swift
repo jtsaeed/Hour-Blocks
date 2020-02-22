@@ -46,14 +46,12 @@ class ScheduleViewModel: ObservableObject {
             DispatchQueue.main.async { self.allDayEvent = nil }
             if CalendarGateway.shared.hasPermission() {
                 for event in CalendarGateway.shared.importEvents(for: self.currentDate) {
-                    if event.isAllDay {
-                        DispatchQueue.main.async { self.allDayEvent = event }
-                        continue
-                    }
+                    if event.isAllDay { continue }
                     
                     for i in event.startingHour...event.endingHour {
                         var block = HourBlock(day: self.currentDate, hour: i, title: event.title)
                         block.domain = .calendar
+                        block.calendarEvent = event.eventEntity
                         temporaryHourBlocks[i] = block
                     }
                 }
@@ -139,6 +137,8 @@ class ScheduleViewModel: ObservableObject {
         if totalBlockCount == 1 {
             currentTip = .blockOptions
         } else if totalBlockCount == 5 {
+            currentTip = .swipeToChangeDay
+        } else if totalBlockCount == 15 {
             currentTip = .viewSubBlocks
         }
     }
@@ -156,7 +156,11 @@ class ScheduleViewModel: ObservableObject {
             currentHourBlocks[hourBlock.hour] = HourBlock(day: currentDate,
                                                           hour: hourBlock.hour,
                                                           title: nil)
-            DataGateway.shared.deleteHourBlock(block: hourBlock)
+            if hourBlock.domain == .calendar {
+                CalendarGateway.shared.clear(event: hourBlock.calendarEvent!)
+            } else {
+                DataGateway.shared.deleteHourBlock(block: hourBlock)
+            }
             
             for subBlock in currentSubBlocks.filter({ $0.hour == hourBlock.hour }) {
                 DataGateway.shared.deleteHourBlock(block: subBlock)
@@ -184,13 +188,19 @@ class ScheduleViewModel: ObservableObject {
             if let index = currentSubBlocks.firstIndex(where: { $0.id == hourBlock.id }) {
                 currentSubBlocks[index].title = newTitle
                 currentSubBlocks[index].domain = DomainsGateway.shared.determineDomain(for: newTitle)
+                DataGateway.shared.editHourBlock(block: hourBlock, set: newTitle, forKey: "title")
             }
         } else {
             currentHourBlocks[hourBlock.hour].title = newTitle
-            currentHourBlocks[hourBlock.hour].domain = DomainsGateway.shared.determineDomain(for: newTitle)
+            
+            if hourBlock.domain == .calendar {
+                CalendarGateway.shared.rename(event: currentHourBlocks[hourBlock.hour].calendarEvent!,
+                                              to: newTitle)
+            } else {
+                currentHourBlocks[hourBlock.hour].domain = DomainsGateway.shared.determineDomain(for: newTitle)
+                DataGateway.shared.editHourBlock(block: hourBlock, set: newTitle, forKey: "title")
+            }
         }
-        
-        DataGateway.shared.editHourBlock(block: hourBlock, set: newTitle, forKey: "title")
     }
     
     func setReminder(_ status: Bool, for block: HourBlock) {
@@ -201,5 +211,21 @@ class ScheduleViewModel: ObservableObject {
                 DataGateway.shared.editHourBlock(block: currentHourBlocks[i], set: status, forKey: "hasReminder")
             }
         }
+    }
+    
+    func previousDay() {
+        let previousDay = currentDate - 1.days
+        currentDate = Calendar.current.startOfDay(for: previousDay)
+        currentHour = Calendar.current.isDateInToday(previousDay) ? Calendar.current.component(.hour, from: Date()) : DataGateway.shared.getDayStartTime()
+        
+        loadHourBlocks()
+    }
+    
+    func nextDay() {
+        let nextDay = currentDate + 1.days
+        currentDate = Calendar.current.startOfDay(for: nextDay)
+        currentHour = Calendar.current.isDateInToday(nextDay) ? Calendar.current.component(.hour, from: Date()) : DataGateway.shared.getDayStartTime()
+        
+        loadHourBlocks()
     }
 }

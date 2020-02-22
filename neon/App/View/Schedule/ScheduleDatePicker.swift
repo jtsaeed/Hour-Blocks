@@ -45,15 +45,15 @@ struct ScheduleDatePicker: View {
     
     func select(_ date: Date) {
         HapticsGateway.shared.triggerLightImpact()
-        currentDate = Calendar.current.startOfDay(for: date)
-        currentHour = Calendar.current.isDateInToday(date) ? Calendar.current.component(.hour, from: Date()) : 6
+        currentDate = Calendar.current.startOfDay(for: date.toLocalTime())
+        currentHour = Calendar.current.isDateInToday(date.toLocalTime()) ? Calendar.current.component(.hour, from: Date()) : DataGateway.shared.getDayStartTime()
         dismissed()
         dismiss()
     }
     
     func backToToday() {
         HapticsGateway.shared.triggerLightImpact()
-        currentDate = Calendar.current.startOfDay(for: Date())
+        currentDate = Calendar.current.startOfDay(for: Date().toLocalTime())
         currentHour = Calendar.current.component(.hour, from: Date())
         dismissed()
         dismiss()
@@ -90,12 +90,22 @@ private struct ScheduleDatePickerToolbar: View {
         HStack {
             ScheduleDatePickerToolbarButton(text: $viewModel.previousMonth,
                                             iconName: "arrow.left",
-                                            action: viewModel.browsePreviousMonth)
+                                            action: browsePreviousMonth)
             Spacer()
             ScheduleDatePickerToolbarButton(text: $viewModel.nextMonth,
                                             iconName: "arrow.right",
                                             action: viewModel.browseNextMonth)
         }
+    }
+    
+    func browsePreviousMonth() {
+        HapticsGateway.shared.triggerSwipeHaptic()
+        viewModel.browsePreviousMonth()
+    }
+    
+    func browseNextMonth() {
+        HapticsGateway.shared.triggerSwipeHaptic()
+        viewModel.browseNextMonth()
     }
 }
 

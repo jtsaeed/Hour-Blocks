@@ -62,7 +62,7 @@ private struct CalendarCard: View {
     
     var body: some View {
         DispatchQueue.main.async {
-            self.isEnabled = self.viewModel.enabledCalendars[self.calendar.calendarIdentifier] ?? true
+            self.isEnabled = self.viewModel.userCalendars.first(where: { $0.identifier == self.calendar.calendarIdentifier })?.enabled ?? true
         }
         
         return Card {
@@ -79,7 +79,7 @@ private struct CalendarCard: View {
     func toggle() {
         HapticsGateway.shared.triggerLightImpact()
         isEnabled.toggle()
-        viewModel.toggleCalendar(for: calendar.calendarIdentifier, to: isEnabled)
+        viewModel.toggleCalendar(for: calendar.calendarIdentifier)
         scheduleViewModel.loadHourBlocks()
     }
 }

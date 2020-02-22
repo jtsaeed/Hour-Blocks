@@ -19,6 +19,7 @@ struct OtherSettingsView: View {
     @State var timeFormatValue: Int
     @State var reminderTimerValue: Int
     @State var autoCapsValue: Int
+    @State var dayStartValue: Int
     
     var body: some View {
         NavigationView {
@@ -27,37 +28,40 @@ struct OtherSettingsView: View {
                                title: "Time Format",
                                description: "Change the time format used throughout Hour Blocks",
                                options: ["System", "12h", "24h"])
-                OtherStuffCard(value: $reminderTimerValue,
-                               title: "Reminder Timer",
-                               description: "The length of time before a block's reminder comes through (doesn't change reminders already set)",
-                               options: ["15m", "10m", "5m"])
                 OtherStuffCard(value: $autoCapsValue,
                                title: "Autocapitalization",
                                description: "Would you like the titles of blocks to be automatically capitalised?",
                                options: ["Yes", "No"])
+                OtherStuffCard(value: $dayStartValue,
+                               title: "Start of The Day",
+                               description: "What time does your day start?",
+                               options: ["4", "5", "6", "7", "8"])
+                OtherStuffCard(value: $reminderTimerValue,
+                               title: "Reminder Timer",
+                               description: "The length of time before a block's reminder comes through (doesn't change reminders already set)",
+                               options: ["15m", "10m", "5m"])
                 if DataGateway.shared.isPro() && UIApplication.shared.supportsAlternateIcons {
                     IconChooserCard()
                 }
             }
-            .navigationBarItems(trailing: Button(action: {
-                self.isPresented = false
-            }, label: {
-                Text("Done")
+            .navigationBarItems(trailing: Button(action: save, label: {
+                Text("Save")
             }))
             .navigationBarTitle("Other Settings")
         }
         .accentColor(Color("primary"))
         .navigationViewStyle(StackNavigationViewStyle())
-        .onDisappear {
-            self.scheduleViewModel.loadHourBlocks()
-            self.save()
-        }
     }
     
     func save() {
-        viewModel.other[OtherSettingsKey.timeFormat.rawValue] = timeFormatValue
-        viewModel.other[OtherSettingsKey.reminderTimer.rawValue] = reminderTimerValue
-        viewModel.other[OtherSettingsKey.autoCaps.rawValue] = autoCapsValue
+        HapticsGateway.shared.triggerLightImpact()
+        
+        viewModel.setTimeFormat(to: timeFormatValue)
+        viewModel.setDayStart(to: dayStartValue)
+        viewModel.setAutoCaps(to: autoCapsValue)
+        viewModel.setReminderTimer(to: reminderTimerValue)
+        
+        isPresented = false
     }
 }
 
