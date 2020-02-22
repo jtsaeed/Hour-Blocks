@@ -50,6 +50,8 @@ enum BlockDomain: String, Domain, CaseIterable {
     case school, lecture, study, homework, exam
     case baseball, basketball, cricket, hockey, rugby, football, tennis, volleyball
     
+    var localisedKey: String { return NSLocalizedString(self.rawValue, comment: "") }
+    
     var iconName: String {
         switch self {
         case .calendar: return "calendar_item"
@@ -167,79 +169,11 @@ enum BlockDomain: String, Domain, CaseIterable {
         case .volleyball: return "volleyball"
         }
     }
-    
-    var german: String {
-        switch self {
-        case .calendar: return ""
-        case .wake: return "aufwachen"
-        case .read: return "lesen"
-        case .book: return "buch"
-        case .quran: return "quran"
-        case .code: return "code"
-        case .commute: return "pendeln"
-        case .home: return "go home"
-        case .shopping: return "shopping"
-        case .store: return "go to the store"
-        case .movie: return "watch a movie"
-        case .work: return "work"
-        case .call: return "phone call"
-        case .email: return "emails"
-        case .vote: return "vote"
-        case .write: return "write"
-        case .draw: return "draw"
-        case .shower: return "have a shower"
-        case .swim: return "swimming"
-        case .tv: return "watch tv"
-        case .music: return "music"
-        case .guitar: return "guitar"
-        case .piano: return "piano"
-        case .paint: return "paint"
-        case .design: return "design"
-        case .walk: return "go for a walk"
-        case .morning: return "morning routine"
-        case .drive: return "drive"
-        case .run: return "go for a run"
-        case .bus: return "get the bus"
-        case .train: return "get the train"
-        case .flight: return "flight"
-        case .sleep: return "sleep"
-        case .nap: return "have a nap"
-        case .party: return "party"
-        case .coffee: return "have a coffee"
-        case .laundry: return "do laundry"
-        case .meditate: return "meditate"
-        case .yoga: return "yoga"
-        case .eat: return "eat food"
-        case .cook: return "cook food"
-        case .breakfast: return "have breakfast"
-        case .lunch: return "have lunch"
-        case .dinner: return "have dinner"
-        case .exercise: return "exercise"
-        case .gym: return "go to the gym"
-        case .golf: return "golf"
-        case .competition: return "competition"
-        case .meeting: return "meeting"
-        case .school: return "school"
-        case .lecture: return "lecture"
-        case .study: return "study"
-        case .homework: return "homework"
-        case .exam: return "exam"
-        case .baseball: return "baseball"
-        case .basketball: return "basketball"
-        case .cricket: return "cricket"
-        case .hockey: return "hockey"
-        case .rugby: return "rugby"
-        case .football: return "football"
-        case .tennis: return "tennis"
-        case .volleyball: return "volleyball"
-        }
-    }
 }
 
 protocol Domain: Hashable {
     
+    var localisedKey: String { get }
     var iconName: String { get }
     var suggestionTitle: String { get }
-    
-    var german: String { get }
 }

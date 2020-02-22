@@ -20,17 +20,17 @@ extension Date {
     
     func getRelativeDateToToday() -> String {
         if Calendar.current.isDateInToday(self) {
-            return "Today"
+            return NSLocalizedString("Today", comment: "")
         } else if self.isInPast {
-            return "The Past"
+            return NSLocalizedString("The Past", comment: "")
         } else if Calendar.current.isDateInTomorrow(self) {
-            return "Tomorrow"
+            return NSLocalizedString("Tomorrow", comment: "")
         } else if self.isInRange(date: Date(), and: (Date() + 7.days)) {
-            return "This Week"
+            return NSLocalizedString("Today", comment: "")
         } else if self.isInside(date: Date(), granularity: .month) {
-            return "This Month"
+            return NSLocalizedString("This Month", comment: "")
         } else {
-            return "The Future"
+            return NSLocalizedString("The Future", comment: "")
         }
     }
     

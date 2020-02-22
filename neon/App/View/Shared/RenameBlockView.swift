@@ -30,7 +30,7 @@ struct RenameBlockView: View {
             .navigationBarItems(leading: Button(action: dismiss, label: {
                 Text("Cancel")
             }), trailing: Button(action: renameBlock, label: {
-                Text("Confirm")
+                Text("Save")
             }))
         }.accentColor(Color(currentBlock.isSubBlock ? "secondary" : "primary"))
         .navigationViewStyle(StackNavigationViewStyle())

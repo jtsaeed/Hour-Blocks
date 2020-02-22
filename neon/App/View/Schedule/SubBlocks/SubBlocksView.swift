@@ -25,7 +25,7 @@ struct SubBlocksView: View {
                     }
                 }
                 EmptySubBlockCard(currentHourBlock: hourBlock)
-            }.navigationBarTitle("Today at \(hourBlock.formattedTime.lowercased())")
+            }.navigationBarTitle("Sub Blocks at \(hourBlock.formattedTime.lowercased())")
             .navigationBarItems(trailing: Button(action: dismiss, label: {
                 Text("Close")
             }))

@@ -11,7 +11,7 @@ import CoreData
 
 struct ContentView: View {
     
-    let debug = false
+    let debug = true
     
     @Environment(\.managedObjectContext) var managedObjectContext
     @EnvironmentObject var scheduleViewModel: ScheduleViewModel
@@ -30,36 +30,37 @@ struct ContentView: View {
  
     var body: some View {
         TabView {
-            ScheduleView()
-                .tabItem {
-                    Image(systemName: "calendar")
-                    Text("Schedule")
-                }
-                .onAppear(perform: {
-                    self.showWhatsNew = DataGateway.shared.isNewVersion()
-//                    self.showWhatsNew = true
-                })
-                .sheet(isPresented: $showWhatsNew, content: {
-                    WhatsNewView(showWhatsNew: self.$showWhatsNew)
-                })
-            ToDoListView()
-                .tabItem {
-                    Image(systemName: "list.bullet")
-                    Text("To Do List")
-                }
-            SettingsView()
-                .tabItem {
-                    Image(systemName: "gear")
-                    Text("Settings")
-                }
+            ScheduleView().tabItem {
+                Image(systemName: "calendar")
+                Text("Schedule")
+            }
+            .onAppear(perform: checkIfUpdated)
+            .sheet(isPresented: $showWhatsNew, content: {
+                WhatsNewView(showWhatsNew: self.$showWhatsNew)
+            })
+            ToDoListView().tabItem {
+                Image(systemName: "list.bullet")
+                Text("To Do List")
+            }
+            SettingsView().tabItem {
+                Image(systemName: "gear")
+                Text("Settings")
+            }
             if debug {
-            VotesView()
-                .tabItem {
+                VotesView().tabItem {
                     Image(systemName: "gear")
                     Text("Votes")
                 }
+                TestView(blocks: $scheduleViewModel.currentHourBlocks).tabItem {
+                    Image(systemName: "calendar")
+                    Text("Drag")
+                }
             }
         }.accentColor(Color("primary"))
+    }
+    
+    func checkIfUpdated() {
+        self.showWhatsNew = DataGateway.shared.isNewVersion()
     }
 }
 

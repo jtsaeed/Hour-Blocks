@@ -1,0 +1,71 @@
+/* 
+  Localizable.strings
+  neon
+
+  Created by James Saeed on 22/02/2020.
+  Copyright © 2020 James Saeed. All rights reserved.
+*/
+
+// MARK: -  Domain keys
+
+"calendar" = "";
+"wake" = "wake";
+"read" = "read";
+"book" = "book";
+"quran" = "quran";
+"code" = "code";
+"commute" = "commute";
+"home" = "home";
+"shopping" = "shopping";
+"store" = "store";
+"movie" = "movie";
+"work" = "work";
+"call" = "call";
+"email" = "email";
+"vote" = "vote";
+"write" = "write";
+"draw" = "draw";
+"shower" = "shower";
+"swim" = "swim";
+"tv" = "tv";
+"music" = "music";
+"guitar" = "guitar";
+"piano" = "piano";
+"paint" = "paint";
+"design" = "design";
+"walk" = "walk";
+"morning" = "morning";
+"drive" = "drive";
+"run" = "run";
+"bus" = "bus";
+"train" = "train";
+"flight" = "flight";
+"sleep" = "sleep";
+"nap" = "nap";
+"party" = "party";
+"coffee" = "coffee";
+"laundry" = "laundry";
+"meditate" = "meditate";
+"yoga" = "yoga";
+"eat" = "eat";
+"cook" = "cook";
+"breakfast" = "breakfast";
+"lunch" = "lunch";
+"dinner" = "dinner";
+"exercise" = "exercise";
+"gym" = "gym";
+"golf" = "golf";
+"competition" = "competition";
+"meeting" = "meeting";
+"school" = "lecture";
+"study" = "study";
+"homework" = "homework";
+"exam" = "exam";
+"baseball" = "baseball";
+"basketball" = "basketball";
+"cricket" = "cricket";
+"hockey" = "hockey";
+"rugby" = "rugby";
+"football" = "football";
+"tennis" = "tennis";
+"volleyball" = "volleyball";

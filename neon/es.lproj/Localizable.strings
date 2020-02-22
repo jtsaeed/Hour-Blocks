@@ -1,0 +1,105 @@
+/* 
+  Localizable.strings
+  neon
+
+  Created by James Saeed on 22/02/2020.
+  Copyright © 2020 James Saeed. All rights reserved.
+*/
+
+// MARK: -  Domain keys
+
+"calendar" = "";
+"wake" = "wake";
+"read" = "read";
+"book" = "book";
+"quran" = "quran";
+"code" = "code";
+"commute" = "commute";
+"home" = "home";
+"shopping" = "shopping";
+"store" = "store";
+"movie" = "movie";
+"work" = "work";
+"call" = "call";
+"email" = "email";
+"vote" = "vote";
+"write" = "write";
+"draw" = "draw";
+"shower" = "shower";
+"swim" = "swim";
+"tv" = "tv";
+"music" = "music";
+"guitar" = "guitar";
+"piano" = "piano";
+"paint" = "paint";
+"design" = "design";
+"walk" = "walk";
+"morning" = "morning";
+"drive" = "drive";
+"run" = "run";
+"bus" = "bus";
+"train" = "train";
+"flight" = "flight";
+"sleep" = "sleep";
+"nap" = "nap";
+"party" = "party";
+"coffee" = "coffee";
+"laundry" = "laundry";
+"meditate" = "meditate";
+"yoga" = "yoga";
+"eat" = "eat";
+"cook" = "cook";
+"breakfast" = "breakfast";
+"lunch" = "lunch";
+"dinner" = "dinner";
+"exercise" = "exercise";
+"gym" = "gym";
+"golf" = "golf";
+"competition" = "competition";
+"meeting" = "meeting";
+"school" = "lecture";
+"study" = "study";
+"homework" = "homework";
+"exam" = "exam";
+"baseball" = "baseball";
+"basketball" = "basketball";
+"cricket" = "cricket";
+"hockey" = "hockey";
+"rugby" = "rugby";
+"football" = "football";
+"tennis" = "tennis";
+"volleyball" = "volleyball";
+
+// MARK: - Schedule
+
+"Schedule" = "Horario";
+"Empty" = "Vacío";
+"Add Sub Block" = "Añadir Sub Block";
+"Change Icon" = "Cambiar Ícono";
+"Duplicate" = "Duplicar";
+"Set a Reminder" = "Establecer Recordatorio";
+"Clear" = "Limpiar";
+"Today" = "Hoy";
+"Tomorrow" = "Mañana";
+"This Week" = "Esta Semana";
+"This Month" = "Este Mes";
+"The Past" = "El Pasado";
+"The Future" = "El Futuro";
+"Suggestions" = "Sugerencias";
+"Currently" = "Actualmente";
+"None" = "Ninguna";
+"Popular" = "Popular";
+"Sub Blocks at %@" = "Sub Blocks a las %@";
+"Add a new Sub Block" = "Añadir un Sub Block nuevo";
+"Choose an icon" = "Elige un ícono";
+"Creative" = "Creativo";
+"Social" = "Social";
+"Sports" = "Deportes";
+"Travel" = "Viajes";
+"Work" = "Trabajo";
+"Other" = "Otros";
+"Hold an Hour Block for options" = "Mantén un Hour Block para más opciones";
+"Swipe on the header to change days" = "Desliza sobre el título para cambiar de dia";
+"Tap an Hour Block to view its Sub Blocks" = "Toca un Hour Block para ver sus Sub Blocks";
+
+// MARK: - To Do List

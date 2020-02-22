@@ -23,8 +23,6 @@ class ScheduleViewModelTests: XCTestCase {
     override func tearDown() { }
 
     func testLoadHourBlocks() {
-        viewModel.loadHourBlocks()
-        
         XCTAssert(viewModel.currentHourBlocks[12].domain == .lunch)
     }
 }

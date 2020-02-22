@@ -40,18 +40,13 @@ class DomainsGateway {
         var determinedDomain: BlockDomain?
         var rating = 0.0
         
-        let locale = Locale.current.languageCode
-        print("LOCALE: \(locale)")
+//        let locale = Locale.current.languageCode
         let embedding = NLEmbedding.wordEmbedding(for: .english)
+        if embedding == nil { AnalyticsGateway.shared.logMLFailed() }
         
         for domain in BlockDomain.allCases {
-            var localisedDomainName = domain.rawValue
-            if locale == "de" { localisedDomainName = domain.german }
-            
-            print("DOMAINS: \(localisedDomainName)")
-            
             // Check if the word directly matches the keyword of the domain in the loop
-            if localisedDomainName == word {
+            if domain.localisedKey == word {
                 determinedDomain = domain
                 rating = 1
                 break
@@ -71,9 +66,6 @@ class DomainsGateway {
                     
                     return true
                 }
-            } else {
-                print("LANGUAGE NOT SUPPORTED")
-                AnalyticsGateway.shared.logMLFailed()
             }
         }
         

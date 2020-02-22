@@ -44,7 +44,7 @@ struct AddHourBlockView: View {
                     }
                 }
             }
-            .navigationBarTitle(time)
+            .navigationBarTitle(time.lowercased())
             .navigationBarItems(leading: Button(action: dismiss, label: {
                 Text("Cancel")
             }), trailing: Button(action: addBlock, label: {
