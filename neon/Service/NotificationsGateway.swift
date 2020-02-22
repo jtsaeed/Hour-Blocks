@@ -58,13 +58,11 @@ class NotificationsGateway {
         
         var timeOffset = 10
         
-        if let otherSettingsEntity = DataGateway.shared.getOtherSettingsEntity() {
-            if let timeSetting = OtherSettings(fromEntity: otherSettingsEntity)?.reminderTimer {
-                if timeSetting == 0 {
-                    timeOffset = 15
-                } else if timeSetting == 2 {
-                    timeOffset = 5
-                }
+        if let timeSetting = DataGateway.shared.getOtherSettings()?.reminderTimer {
+            if timeSetting == 0 {
+                timeOffset = 15
+            } else if timeSetting == 2 {
+                timeOffset = 5
             }
         }
 		

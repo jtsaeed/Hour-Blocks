@@ -49,15 +49,13 @@ struct HourBlock: Identifiable {
     }
     
     var formattedTime: String {
-        if let otherSettingsEntity = DataGateway.shared.getOtherSettingsEntity() {
-            if let timeFormatSetting = OtherSettings(fromEntity: otherSettingsEntity)?.timeFormat {
-                if timeFormatSetting == 0 {
-                    return DataGateway.shared.isSystemClock12h() ? hour.get12hTime() : hour.get24hTime()
-                } else if timeFormatSetting == 1 {
-                    return hour.get12hTime()
-                } else if timeFormatSetting == 2 {
-                    return hour.get24hTime()
-                }
+        if let timeFormatSetting = DataGateway.shared.getOtherSettings()?.timeFormat {
+            if timeFormatSetting == 0 {
+                return DataGateway.shared.isSystemClock12h() ? hour.get12hTime() : hour.get24hTime()
+            } else if timeFormatSetting == 1 {
+                return hour.get12hTime()
+            } else if timeFormatSetting == 2 {
+                return hour.get24hTime()
             }
         }
         

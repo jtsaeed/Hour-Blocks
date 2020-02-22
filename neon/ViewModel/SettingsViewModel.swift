@@ -16,15 +16,17 @@ class SettingsViewModel: ObservableObject {
     @Published var other: OtherSettings
     
     init() {
-        userCalendars = DataGateway.shared.getUserCalendarEntities().compactMap({ UserCalendar(fromEntity: $0) })
+        userCalendars = DataGateway.shared.getUserCalendars()
         
         // Load other settings
-        let defaultSettings = OtherSettings(timeFormat: 1, reminderTimer: 1, autoCaps: 0, dayStart: 2)
-        if let otherSettingsEntity = DataGateway.shared.getOtherSettingsEntity() {
-            other = OtherSettings(fromEntity: otherSettingsEntity) ?? defaultSettings
+        if let otherSettings = DataGateway.shared.getOtherSettings() {
+            other = otherSettings
         } else {
-            other = defaultSettings
-            DataGateway.shared.saveOtherSettings(defaultSettings)
+            other = OtherSettings(timeFormat: 1,
+                                  reminderTimer: 1,
+                                  autoCaps: 0,
+                                  dayStart: 2)
+            DataGateway.shared.saveOtherSettings(other)
         }
     }
     

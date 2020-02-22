@@ -11,10 +11,8 @@ import Foundation
 extension String {
     
     func smartCapitalization() -> String {
-        if let otherSettingsEntity = DataGateway.shared.getOtherSettingsEntity() {
-            if let autoCapsSetting = OtherSettings(fromEntity: otherSettingsEntity)?.autoCaps {
-                if autoCapsSetting == 1 { return self }
-            }
+        if let autoCapsSetting = DataGateway.shared.getOtherSettings()?.autoCaps {
+            if autoCapsSetting == 1 { return self }
         }
         
         var title = ""

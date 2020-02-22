@@ -51,10 +51,6 @@ struct ContentView: View {
                     Image(systemName: "gear")
                     Text("Votes")
                 }
-                TestView(blocks: $scheduleViewModel.currentHourBlocks).tabItem {
-                    Image(systemName: "calendar")
-                    Text("Drag")
-                }
             }
         }.accentColor(Color("primary"))
     }

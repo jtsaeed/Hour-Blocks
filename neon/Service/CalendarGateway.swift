@@ -62,7 +62,7 @@ class CalendarGateway {
 	private func getEnabledCalendars() -> [EKCalendar] {
         var calendars = [EKCalendar]()
         
-        let userCalendars = DataGateway.shared.getUserCalendarEntities().compactMap({ UserCalendar(fromEntity: $0 )})
+        let userCalendars = DataGateway.shared.getUserCalendars()
         
         for calendar in getAllCalendars() {
             if userCalendars.first(where: { $0.identifier == calendar.calendarIdentifier })?.enabled == false {

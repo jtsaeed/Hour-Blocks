@@ -13,8 +13,7 @@ class ToDoListViewModel: ObservableObject {
     @Published var toDoItems = [ToDoItem]()
     
     init() {
-        let loadedToDoItems = DataGateway.shared.getToDoEntities().compactMap({ ToDoItem(fromEntity: $0) })
-        toDoItems = loadedToDoItems
+        toDoItems = DataGateway.shared.getToDoItems()
     }
     
     func addToDoItem(with title: String, _ urgency: ToDoUrgency) {

@@ -38,7 +38,7 @@ class ScheduleViewModel: ObservableObject {
                 temporaryHourBlocks.append(HourBlock(day: self.currentDate, hour: hour, title: nil))
             }
             
-            let loadedHourBlocks = DataGateway.shared.getHourBlockEntities(for: self.currentDate).compactMap({ HourBlock(fromEntity: $0) })
+            let loadedHourBlocks = DataGateway.shared.getHourBlocks(for: self.currentDate)
             for loadedHourBlock in loadedHourBlocks.filter({ $0.isSubBlock == false }) {
                 temporaryHourBlocks[loadedHourBlock.hour] = loadedHourBlock
             }
@@ -207,7 +207,6 @@ class ScheduleViewModel: ObservableObject {
         for i in 0 ..< currentHourBlocks.count {
             if (block.id == currentHourBlocks[i].id) {
                 currentHourBlocks[i].hasReminder = status
-                print("HB: Set \(status)")
                 DataGateway.shared.editHourBlock(block: currentHourBlocks[i], set: status, forKey: "hasReminder")
             }
         }
