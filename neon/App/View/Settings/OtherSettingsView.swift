@@ -25,20 +25,20 @@ struct OtherSettingsView: View {
         NavigationView {
             List {
                 OtherStuffCard(value: $timeFormatValue,
-                               title: "Time Format",
-                               description: "Change the time format used throughout Hour Blocks",
+                               title: NSLocalizedString("Time Format", comment: ""),
+                               description: NSLocalizedString("Change the time format used throughout Hour Blocks", comment: ""),
                                options: ["System", "12h", "24h"])
                 OtherStuffCard(value: $autoCapsValue,
-                               title: "Autocapitalization",
-                               description: "Would you like the titles of blocks to be automatically capitalised?",
+                               title: NSLocalizedString("Autocapitalization", comment: ""),
+                               description: NSLocalizedString("Would you like the titles of blocks to be automatically capitalised?", comment: ""),
                                options: ["Yes", "No"])
                 OtherStuffCard(value: $dayStartValue,
-                               title: "Start of The Day",
-                               description: "What time does your day start?",
+                               title: NSLocalizedString("Start of The Day", comment: ""),
+                               description: NSLocalizedString("What time does your day start?", comment: ""),
                                options: ["4", "5", "6", "7", "8"])
                 OtherStuffCard(value: $reminderTimerValue,
-                               title: "Reminder Timer",
-                               description: "The length of time before a block's reminder comes through (doesn't change reminders already set)",
+                               title: NSLocalizedString("Reminder Timer", comment: ""),
+                               description: NSLocalizedString("The length of time before a block's reminder comes through (doesn't change reminders already set)", comment: ""),
                                options: ["15m", "10m", "5m"])
                 if DataGateway.shared.isPro() && UIApplication.shared.supportsAlternateIcons {
                     IconChooserCard()

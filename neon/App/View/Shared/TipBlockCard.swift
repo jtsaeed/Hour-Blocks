@@ -21,8 +21,8 @@ struct TipBlockCard: View {
     var body: some View {
         Card {
             HStack {
-                CardLabels(title: self.tip?.rawValue ?? "",
-                           subtitle: "Tip")
+                CardLabels(title: NSLocalizedString(self.tip?.rawValue ?? "", comment: ""),
+                           subtitle: NSLocalizedString("Tip", comment: ""))
                 Spacer()
                 CheckButton(action: self.clearTip)
                     .padding(.leading, 8)
@@ -38,7 +38,7 @@ struct TipBlockCard: View {
 
 enum Tip: String {
     
-    case blockOptions = "Hold an Hour Block for options"
-    case swipeToChangeDay = "Swipe on the header to change days"
-    case viewSubBlocks = "Tap an Hour Block to view its Sub Blocks"
+    case blockOptions = "tipBlockOptions"
+    case swipeToChangeDay = "tipSwipeToChangeDay"
+    case viewSubBlocks = "tipViewSubBlocks"
 }

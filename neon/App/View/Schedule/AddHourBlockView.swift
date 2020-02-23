@@ -98,7 +98,7 @@ private struct SuggestionCard: View {
     var body: some View {
         Card {
             HStack {
-                CardLabels(title: self.suggestion.domain.suggestionTitle,
+                CardLabels(title: self.suggestion.title,
                            subtitle: self.suggestion.reason.uppercased())
                 Spacer()
                 IconButton(iconName: "add_icon",
@@ -109,6 +109,6 @@ private struct SuggestionCard: View {
     }
     
     func add() {
-        didAddBlock(suggestion.domain.suggestionTitle)
+        didAddBlock(suggestion.title)
     }
 }

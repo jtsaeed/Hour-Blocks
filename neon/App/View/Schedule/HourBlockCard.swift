@@ -99,7 +99,7 @@ private struct HourBlockCardLabels: View {
                     .modifier(CardSubtitleLabel())
                     .foregroundColor(Color("subtitle"))
             }
-            Text(currentBlock.title?.smartCapitalization() ?? "Empty")
+            Text(currentBlock.title?.smartCapitalization() ?? NSLocalizedString("Empty", comment: ""))
                 .modifier(CardTitleLabel())
                 .foregroundColor(currentBlock.title != nil ? Color("title") : Color("subtitle"))
         }

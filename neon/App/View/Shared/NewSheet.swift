@@ -14,8 +14,8 @@ struct NoSuggestionsCard: View {
     var body: some View {
         Card {
             HStack {
-                CardLabels(title: "None",
-                           subtitle: "Currently",
+                CardLabels(title: NSLocalizedString("None", comment: ""),
+                           subtitle: NSLocalizedString("Currently", comment: ""),
                            titleColor: Color("subtitle"),
                            alignment: .center)
             }
@@ -42,9 +42,9 @@ struct NewToDoView: View {
                     .font(.system(size: 28, weight: .semibold, design: .default))
                     .padding(.leading, 24)
                 Picker("", selection: $urgency) {
-                    Text("Whenever").tag(ToDoUrgency.whenever)
-                    Text("Soon").tag(ToDoUrgency.soon)
-                    Text("Urgent").tag(ToDoUrgency.urgent)
+                    Text("whenever").tag(ToDoUrgency.whenever)
+                    Text("soon").tag(ToDoUrgency.soon)
+                    Text("urgent").tag(ToDoUrgency.urgent)
                 }.pickerStyle(SegmentedPickerStyle())
                     .padding(.horizontal, 24)
                 Spacer()

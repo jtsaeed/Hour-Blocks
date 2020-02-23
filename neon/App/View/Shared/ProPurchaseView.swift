@@ -24,19 +24,22 @@ struct ProPurchaseView: View {
             
             VStack(alignment: .leading, spacing: 16) {
                 WhatsNewItem(title: "Sub Blocks 💪",
-                             content: "Add as many Sub Blocks as you want to an Hour Block for maximum productivity")
-                WhatsNewItem(title: "Alternate App Icons 🎨",
-                             content: "Choose from 3 different app icons to display on your homescreen")
+                             content: NSLocalizedString("Add as many Sub Blocks as you want to an Hour Block for maximum productivity", comment: ""))
+                WhatsNewItem(title: NSLocalizedString("Alternate App Icons 🎨", comment: ""),
+                             content: NSLocalizedString("Choose from 3 different app icons to display on your home screen", comment: ""))
             }
             
             Spacer()
             
             if !isLoading {
-                    ActionButton(title: "Let's go Pro!", color: Color("secondary"))
+                    ActionButton(title: NSLocalizedString("Let's go Pro!", comment: ""),
+                                 color: Color("secondary"))
                         .onTapGesture(perform: purchasePro)
-                    SecondaryActionButton(title: "Restore purchase", color: Color("secondary"))
+                    SecondaryActionButton(title: NSLocalizedString("Restore purchase", comment: ""),
+                                          color: Color("secondary"))
                         .onTapGesture(perform: restorePro)
-                    SecondaryActionButton(title: "No thanks!", color: Color("secondary"))
+                    SecondaryActionButton(title: NSLocalizedString("No thanks!", comment: ""),
+                                          color: Color("secondary"))
                         .onTapGesture(perform: dismiss)
             } else {
                 ActivityIndicator(isAnimating: $isLoading)

@@ -22,7 +22,7 @@ struct IconPicker: View {
         "Sports": ["emoji_events", "fitness_center", "golf_course", "pool", "sports_baseball", "sports_basketball",
                     "sports_cricket", "sports_hockey", "sports_rugby", "sports_soccer", "sports_tennis", "sports_volleyball"],
         "Travel": ["commute", "directions_bus", "directions_car", "directions_run", "directions_subway", "flight", "hotel"],
-        "Work": ["alarm", "call", "chrome_reader", "code", "create", "email", "group", "school", "work"],
+        "Work": ["alarm_clock", "call", "chrome_reader", "code", "create", "email", "group", "school", "work"],
         "Other": ["home", "how_to_vote", "local_florist", "local_laundry", "tv", "waves", "wb_sunny"]
     ]
     
@@ -54,27 +54,27 @@ private struct IconChoiceList: View {
             VStack(alignment: .leading, spacing: 24) {
                 IconChoiceSection(isPresented: $isPresented,
                                   currentBlock: currentBlock,
-                                  sectionTitle: "Creative",
+                                  sectionTitle: NSLocalizedString("Creative", comment: ""),
                                   iconNames: icons["Creative"]!)
                 IconChoiceSection(isPresented: $isPresented,
                                   currentBlock: currentBlock,
-                                  sectionTitle: "Social",
+                                  sectionTitle: NSLocalizedString("Social", comment: ""),
                                   iconNames: icons["Social"]!)
                 IconChoiceSection(isPresented: $isPresented,
                                   currentBlock: currentBlock,
-                                  sectionTitle: "Sports",
+                                  sectionTitle: NSLocalizedString("Sports", comment: ""),
                                   iconNames: icons["Sports"]!)
                 IconChoiceSection(isPresented: $isPresented,
                                   currentBlock: currentBlock,
-                                  sectionTitle: "Travel",
+                                  sectionTitle: NSLocalizedString("Travel", comment: ""),
                                   iconNames: icons["Travel"]!)
                 IconChoiceSection(isPresented: $isPresented,
                                   currentBlock: currentBlock,
-                                  sectionTitle: "Work",
+                                  sectionTitle: NSLocalizedString("Work", comment: ""),
                                   iconNames: icons["Work"]!)
                 IconChoiceSection(isPresented: $isPresented,
                                   currentBlock: currentBlock,
-                                  sectionTitle: "Other",
+                                  sectionTitle: NSLocalizedString("Other", comment: ""),
                                   iconNames: icons["Other"]!)
             }.padding(.vertical, 24)
         }.padding(.leading, 16)

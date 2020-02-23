@@ -57,7 +57,8 @@
 "golf" = "golf";
 "competition" = "competition";
 "meeting" = "meeting";
-"school" = "lecture";
+"school" = "school";
+"lecture" = "lecture";
 "study" = "study";
 "homework" = "homework";
 "exam" = "exam";

@@ -40,13 +40,12 @@ class DomainsGateway {
         var determinedDomain: BlockDomain?
         var rating = 0.0
         
-//        let locale = Locale.current.languageCode
         let embedding = NLEmbedding.wordEmbedding(for: .english)
         if embedding == nil { AnalyticsGateway.shared.logMLFailed() }
         
         for domain in BlockDomain.allCases {
             // Check if the word directly matches the keyword of the domain in the loop
-            if domain.localisedKey == word {
+            if domain.localisedKey == word || domain.rawValue == word {
                 determinedDomain = domain
                 rating = 1
                 break

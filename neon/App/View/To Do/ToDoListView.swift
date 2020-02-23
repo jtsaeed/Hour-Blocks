@@ -33,8 +33,8 @@ private struct ToDoListHeader: View {
     @State var isPresented = false
     
     var body: some View {
-        Header(title: "To Do List",
-               subtitle: "\(viewModel.toDoItems.count) ITEM\(viewModel.toDoItems.count == 1 ? "" : "S")") {
+        Header(title: NSLocalizedString("To Do List", comment: ""),
+               subtitle: viewModel.toDoItems.count == 1 ? NSLocalizedString("1 Item", comment: "") : String(format: NSLocalizedString("%d Items", comment: ""), viewModel.toDoItems.count) ) {
             IconButton(iconName: "add_icon", action: self.add)
                 .sheet(isPresented: self.$isPresented, content: {
                     NewToDoView(isPresented: self.$isPresented, viewModel: self.viewModel)

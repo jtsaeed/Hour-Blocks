@@ -9,88 +9,96 @@
 // MARK: -  Domain keys
 
 "calendar" = "";
-"wake" = "wake";
-"read" = "read";
-"book" = "book";
+"wake" = "despertar";
+"read" = "leer";
+"book" = "libro";
 "quran" = "quran";
-"code" = "code";
-"commute" = "commute";
-"home" = "home";
-"shopping" = "shopping";
-"store" = "store";
-"movie" = "movie";
-"work" = "work";
-"call" = "call";
-"email" = "email";
-"vote" = "vote";
-"write" = "write";
-"draw" = "draw";
-"shower" = "shower";
-"swim" = "swim";
+"code" = "programar";
+"commute" = "viajar";
+"home" = "casa";
+"shopping" = "compras";
+"store" = "tienda";
+"movie" = "pelicula";
+"work" = "trabajo";
+"call" = "llamar";
+"email" = "correo";
+"vote" = "votar";
+"write" = "escribir";
+"draw" = "dibujar";
+"shower" = "bañarse";
+"swim" = "nadar";
 "tv" = "tv";
-"music" = "music";
-"guitar" = "guitar";
+"music" = "música";
+"guitar" = "guitarra";
 "piano" = "piano";
-"paint" = "paint";
-"design" = "design";
-"walk" = "walk";
-"morning" = "morning";
-"drive" = "drive";
-"run" = "run";
-"bus" = "bus";
-"train" = "train";
-"flight" = "flight";
-"sleep" = "sleep";
-"nap" = "nap";
-"party" = "party";
-"coffee" = "coffee";
-"laundry" = "laundry";
-"meditate" = "meditate";
+"paint" = "pintar";
+"design" = "diseñar";
+"walk" = "caminar";
+"morning" = "mañana";
+"drive" = "conducir";
+"run" = "correr";
+"bus" = "autobús";
+"train" = "tren";
+"flight" = "vuelo";
+"sleep" = "dormir";
+"nap" = "sestear";
+"party" = "fiesta";
+"coffee" = "café";
+"laundry" = "lavandería";
+"meditate" = "meditar";
 "yoga" = "yoga";
-"eat" = "eat";
-"cook" = "cook";
-"breakfast" = "breakfast";
-"lunch" = "lunch";
-"dinner" = "dinner";
-"exercise" = "exercise";
-"gym" = "gym";
+"eat" = "comer";
+"cook" = "cocinar";
+"breakfast" = "desayuno";
+"lunch" = "almuerzo";
+"dinner" = "cena";
+"exercise" = "ejercitar";
+"gym" = "gimnasio";
 "golf" = "golf";
-"competition" = "competition";
-"meeting" = "meeting";
-"school" = "lecture";
-"study" = "study";
-"homework" = "homework";
-"exam" = "exam";
-"baseball" = "baseball";
-"basketball" = "basketball";
-"cricket" = "cricket";
+"competition" = "competencia";
+"meeting" = "reunión";
+"school" = "escuela";
+"lecture" = "clase";
+"study" = "estudiar";
+"homework" = "tarea";
+"exam" = "examen";
+"baseball" = "béisbol";
+"basketball" = "básquetbol";
+"cricket" = "críquet";
 "hockey" = "hockey";
 "rugby" = "rugby";
-"football" = "football";
-"tennis" = "tennis";
-"volleyball" = "volleyball";
+"football" = "fútbol";
+"tennis" = "ténis";
+"volleyball" = "vóleibol";
 
 // MARK: - Schedule
 
 "Schedule" = "Horario";
 "Empty" = "Vacío";
+
 "Add Sub Block" = "Añadir Sub Block";
 "Change Icon" = "Cambiar Ícono";
 "Duplicate" = "Duplicar";
 "Set a Reminder" = "Establecer Recordatorio";
 "Clear" = "Limpiar";
+
 "Today" = "Hoy";
 "Tomorrow" = "Mañana";
 "This Week" = "Esta Semana";
 "This Month" = "Este Mes";
 "The Past" = "El Pasado";
 "The Future" = "El Futuro";
+
 "Suggestions" = "Sugerencias";
 "Currently" = "Actualmente";
 "None" = "Ninguna";
 "Popular" = "Popular";
+
 "Sub Blocks at %@" = "Sub Blocks a las %@";
-"Add a new Sub Block" = "Añadir un Sub Block nuevo";
+"Add a new" = "Añadir un";
+
+"Rename Block" = "Renombrar Block";
+
 "Choose an icon" = "Elige un ícono";
 "Creative" = "Creativo";
 "Social" = "Social";
@@ -98,8 +106,75 @@
 "Travel" = "Viajes";
 "Work" = "Trabajo";
 "Other" = "Otros";
-"Hold an Hour Block for options" = "Mantén un Hour Block para más opciones";
-"Swipe on the header to change days" = "Desliza sobre el título para cambiar de dia";
-"Tap an Hour Block to view its Sub Blocks" = "Toca un Hour Block para ver sus Sub Blocks";
+
+"Tip" = "Consejo";
+"tipBlockOptions" = "Mantén Hour Block para más opciones";
+"tipSwipeToChangeDay" = "Desliza el título para cambiar de dia";
+"tipViewSubBlocks" = "Toca un Hour Block para ver sus Sub Blocks";
 
 // MARK: - To Do List
+
+"To Do List" = "Lista de Tareas";
+"1 Item" = "1 Ítem";
+"%d Items" = "%d Ítems";
+"Add a new to do" = "Añade una tarea";
+"Urgency" = "Urgencia";
+"whenever" = "Cuando Sea";
+"soon" = "Pronto";
+"urgent" = "Urgente";
+"Change to %@" = "Cambiar a %@";
+"Add to Block" = "Añadir a un Block";
+"Complete" = "Completado";
+
+// MARK: - Settings
+
+"Settings" = "Configuración";
+"Take control of" = "Tomar control sobre";
+"Calendars" = "Calendarios";
+"Other Stuff" = "Otras Cosas";
+"Provide valuable" = "Proporcionar";
+"Feedback" = "Feedback";
+"Follow me on" = "Sígueme en";
+"Take a look at the" = "Ver Políticas de";
+"Privacy Policy" = "Privacidad";
+"Other Settings" = "Otras Configuraciones";
+"Time Format" = "Formato de Hora";
+"Change the time format used throughout Hour Blocks" = "Cambia el formato de hora usado en todo Hour Blocks";
+"System" = "Sistema";
+"Autocapitalization" = "Mayúsculas automáticas";
+"Would you like the titles of blocks to be automatically capitalized?" = "¿Quieres que los títulos de bloques comiencen automáticamente con mayúsculas?";
+"Yes" = "Sí";
+"No" = "No";
+"Start of The Day" = "Comienzo del Día";
+"What time does your day start?" = "¿A qué hora empieza tu día?";
+"Reminder Timer" = "Temporizador de Recordatorios";
+"The length of time before a block's reminder comes through (doesn't change reminders already set)" = "El tiempo antes de que aparezca el recordatorio de un bloque (no modifica los recordatorios ya establecidos)";
+"App Icon" = "Ícono de La App";
+"Which Hour Blocks app icon would you like to be shown on your home screen?" = "¿Qué ícono de Hour Blocks quieres que se muestre en tu pantalla de inicio?";
+"Feedback" = "Feedback";
+"Email Me" = "Enviar Correo";
+"Vote for what you’d like to see most in Hour Blocks with 1 vote per update" = "Vota lo que más te gustaría para Hour Blocks con 1 voto por actualización";
+"You've already voted for a feature- check back after the next Hour Blocks update!" = "Ya ha votado por una función. ¡Vuelva a consultar después de la próxima actualización de Hour Blocks!";
+"Your personal data is safe 🔐" = "Tus datos personales están seguros 🔐";
+"Personal identifiers such as name and phone number aren't even asked for by Hour Blocks- we simply don't need that from you" = "Hour Blocks ni siquiera pide identificadores personales como nombres o direcciones; simplemente no lo necesitamos";
+"So what do we collect? 🤔" = "Entonces ¿qué recolectamos? 🤔";
+"In order to improve certain aspects of Hour Blocks such as icon generation and suggestions, we collect just simply the 'category' of a block you add- and it's completely anonymized, so it can't be traced back to you" = "Para mejorar ciertos aspectos de Hour Blocks como la generación de íconos y sugerencias, recolectamos simplemente la «categoría» de un bloque que añadas —y se anonimiza completamente—.";
+"View full privacy policy" = "Ver política de privacidad completa";
+
+// MARK: - Pro
+
+"Add as many Sub Blocks as you want to an Hour Block for maximum productivity" = "Añade tantos Sub Blocks como quieras para maximizar tu productividad";
+"Alternate App Icons 🎨" = "Alternar íconos de la app";
+"Choose from 3 different app icons to display on your home screen" = "Elige de 3 íconos diferentes para mostrar en tu pantalla de inicio";
+"Let's go Pro!" = "¡Súmate al Pro!";
+"Restore purchase" = "Restaurar compra";
+"No thanks!" = "¡No, gracias!";
+
+// MARK: - Misc
+"Enter the title here..." = "Ingresa el título aquí…";
+"Rename" = "Cambiar Nombre";
+"Cancel" = "Cancelar";
+"Add" = "Añadir";
+"Close" = "Cerrar";
+"Done" = "Listo";
+"Save" = "Guardar";

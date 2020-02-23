@@ -91,8 +91,8 @@ struct EmptySubBlockCard: View {
         Card {
             HStack {
                 CardLabels(title: "Sub Block",
-                            subtitle: "Add a new",
-                            titleColor: Color("subtitle"))
+                           subtitle: NSLocalizedString("Add a new", comment: ""),
+                           titleColor: Color("subtitle"))
                 Spacer()
                 IconButton(iconName: "add_icon", pro: true, action: self.present)
                     .sheet(isPresented: self.$isPresented, content: {

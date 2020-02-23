@@ -120,14 +120,14 @@ private struct ScheduleDatePickerToolbarButton: View {
         Button(action: action) {
             HStack {
                 if iconName != "arrow.left" {
-                    Text(text)
+                    Text(text.capitalized)
                         .font(.system(size: 20, weight: .semibold, design: .rounded))
                 }
                 Image(systemName: iconName)
                     .font(.system(size: 20, weight: .semibold, design: .rounded))
                     .padding(.leading, 4)
                 if iconName != "arrow.right" {
-                    Text(text)
+                    Text(text.capitalized)
                         .font(.system(size: 20, weight: .semibold, design: .rounded))
                 }
             }

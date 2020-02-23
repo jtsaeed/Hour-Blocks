@@ -16,8 +16,10 @@ struct PrivacyPolicyView: View {
         NavigationView {
             VStack {
                 VStack(alignment: .leading, spacing: 16) {
-                    PrivacyPolicyItem(title: "Your personal data is safe 🔐", content: "Personal identifiers such as name and address aren't even asked for by Hour Blocks- we simply don't need that from you")
-                    PrivacyPolicyItem(title: "So what do we collect? 🤔", content: "In order to improve certain aspects of Hour Blocks such as icon generation and suggestions, we collect just simply the 'category' of a block you add- and it's completely anonymized, so it can't be traced back to you")
+                    PrivacyPolicyItem(title: NSLocalizedString("Your personal data is safe 🔐", comment: ""),
+                                      content: NSLocalizedString("Personal identifiers such as name and phone number aren't even asked for by Hour Blocks- we simply don't need that from you", comment: ""))
+                    PrivacyPolicyItem(title: NSLocalizedString("So what do we collect? 🤔", comment: ""),
+                                      content: NSLocalizedString("In order to improve certain aspects of Hour Blocks such as icon generation and suggestions, we collect just simply the 'category' of a block you add- and it's completely anonymized, so it can't be traced back to you", comment: ""))
                 }
                 Spacer()
                 FullPolicyButton()

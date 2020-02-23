@@ -23,8 +23,8 @@ struct SettingsView: View {
             VStack {
                 SettingsHeader()
                 List {
-                    SettingsCard(title: "Calendars",
-                                 subtitle: "Take control of",
+                    SettingsCard(title: NSLocalizedString("Calendars", comment: ""),
+                                 subtitle: NSLocalizedString("Take control of", comment: ""),
                                  iconName: "calendar_item",
                                  tapped: presentCalendars)
                     .sheet(isPresented: $isCalendarsPresented, content: {
@@ -33,8 +33,8 @@ struct SettingsView: View {
                             .environmentObject(self.scheduleViewModel)
                     })
                     
-                    SettingsCard(title: "Other Stuff",
-                                 subtitle: "Take control of",
+                    SettingsCard(title: NSLocalizedString("Other Stuff", comment: ""),
+                                 subtitle: NSLocalizedString("Take control of", comment: ""),
                                  iconName: "other_icon",
                                  tapped: presentOtherStuff)
                     .sheet(isPresented: $isOtherStuffPresented, content: {
@@ -47,8 +47,8 @@ struct SettingsView: View {
                             .environmentObject(self.scheduleViewModel)
                     })
                     
-                    SettingsCard(title: "Feedback",
-                                 subtitle: "Provide valuable",
+                    SettingsCard(title: NSLocalizedString("Feedback", comment: ""),
+                                 subtitle: NSLocalizedString("Provide valuable", comment: ""),
                                  iconName: "how_to_vote",
                                  tapped: presentFeedback)
                     .sheet(isPresented: $isFeedbackPresented) {
@@ -56,12 +56,12 @@ struct SettingsView: View {
                     }
                     
                     SettingsCard(title: "Twitter",
-                                 subtitle: "Follow me on",
+                                 subtitle: NSLocalizedString("Follow me on", comment: ""),
                                  iconName: "twitter_icon",
                                  tapped: openTwitter)
                     
-                    SettingsCard(title: "Privacy Policy",
-                                 subtitle: "Take a look at the",
+                    SettingsCard(title: NSLocalizedString("Privacy Policy", comment: ""),
+                                 subtitle: NSLocalizedString("Take a look at the", comment: ""),
                                  iconName: "privacy_icon",
                                  tapped: presentPrivacyPolicy)
                     .sheet(isPresented: $isPrivacyPolicyPresented, content: {
@@ -89,7 +89,8 @@ struct SettingsView: View {
 private struct SettingsHeader: View {
     
     var body: some View {
-        Header(title: "Settings", subtitle: "Hour Blocks \(DataGateway.shared.currentVersion)".uppercased()) {
+        Header(title: NSLocalizedString("Settings", comment: ""),
+               subtitle: "Hour Blocks \(DataGateway.shared.fullCurrentVersion)".uppercased()) {
             EmptyView()
         }
     }

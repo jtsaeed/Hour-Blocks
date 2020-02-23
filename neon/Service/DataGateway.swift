@@ -20,6 +20,7 @@ struct DataGateway: DataInterface {
     }
 
     let currentVersion = 5.1
+    let fullCurrentVersion = "5.1.2"
 }
 
 // MARK: - Blocks

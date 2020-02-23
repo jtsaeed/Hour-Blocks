@@ -17,7 +17,7 @@ struct ToDoCard: View {
     var body: some View {
         Card {
             CardLabels(title: self.toDoItem.title,
-                       subtitle: self.toDoItem.urgency.rawValue.uppercased(),
+                       subtitle: NSLocalizedString(self.toDoItem.urgency.rawValue, comment: "").uppercased(),
                        subtitleColor: Color(self.toDoItem.urgency.rawValue.urgencyToColorString()),
                        alignment: .center)
         }.contextMenu {
@@ -57,19 +57,19 @@ struct ToDoCardContextMenu: View {
             })
             if toDoItem.urgency != .urgent {
                 Button(action: { self.changeUrgency(to: .urgent) }) {
-                    Text("Change to Urgent")
+                    Text("Change to \(NSLocalizedString("urgent", comment: ""))")
                     Image(systemName: "timer")
                 }
             }
             if toDoItem.urgency != .soon {
                 Button(action: { self.changeUrgency(to: .soon) }) {
-                    Text("Change to Soon")
+                    Text("Change to \(NSLocalizedString("soon", comment: ""))")
                     Image(systemName: "timer")
                 }
             }
             if toDoItem.urgency != .whenever {
                 Button(action: { self.changeUrgency(to: .whenever) }) {
-                    Text("Change to Whenever")
+                    Text("Change to \(NSLocalizedString("whenever", comment: ""))")
                     Image(systemName: "timer")
                 }
             }

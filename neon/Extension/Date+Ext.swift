@@ -18,6 +18,13 @@ extension Date {
         return dateFormatter.string(from: self).uppercased()
     }
     
+    func getFormattedTime(militaryTime: Bool) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = militaryTime ? "HH:00" : "ha"
+        
+        return dateFormatter.string(from: self).uppercased()
+    }
+    
     func getRelativeDateToToday() -> String {
         if Calendar.current.isDateInToday(self) {
             return NSLocalizedString("Today", comment: "")
@@ -26,7 +33,7 @@ extension Date {
         } else if Calendar.current.isDateInTomorrow(self) {
             return NSLocalizedString("Tomorrow", comment: "")
         } else if self.isInRange(date: Date(), and: (Date() + 7.days)) {
-            return NSLocalizedString("Today", comment: "")
+            return NSLocalizedString("This Week", comment: "")
         } else if self.isInside(date: Date(), granularity: .month) {
             return NSLocalizedString("This Month", comment: "")
         } else {
@@ -35,7 +42,7 @@ extension Date {
     }
     
     func getMonthAndYear() -> String {
-        return "\(self.monthName(.default)) \(self.year)"
+        return "\(self.monthName(.default).capitalized) \(self.year)"
     }
     
     func toLocalTime() -> Date {

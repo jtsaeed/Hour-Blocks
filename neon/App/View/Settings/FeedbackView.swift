@@ -29,7 +29,7 @@ struct FeedbackView: View {
                 if isLoading {
                     ActivityIndicator(isAnimating: $isLoading)
                 } else {
-                    Text(viewModel.hasVoted ? "You've already voted for a feature- check back after the next Hour Blocks update!" : "Vote for what you’d like to see most in Hour Blocks with 1 vote per update")
+                    Text(viewModel.hasVoted ? NSLocalizedString("You've already voted for a feature- check back after the next Hour Blocks update!", comment: "") : NSLocalizedString("Vote for what you’d like to see most in Hour Blocks with 1 vote per update", comment: ""))
                         .font(.system(size: 17, weight: .semibold, design: .rounded))
                         .padding(.horizontal, 32)
                         .padding(.top, 16)
