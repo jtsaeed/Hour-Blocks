@@ -221,6 +221,7 @@
 		AB12D21E2401A95500D01852 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AB28F05723FEA0E5008EFE46 /* TipBlockCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipBlockCard.swift; sourceTree = "<group>"; };
 		AB3376C323FDEBDA00D3C99E /* ScheduleViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModelTests.swift; sourceTree = "<group>"; };
+		AB79573D2403F7F900EA0B2D /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		ABB3C4F623FEB2CB0024E554 /* DataInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataInterface.swift; sourceTree = "<group>"; };
 		ABDE2EE62400000E00666D55 /* OtherSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSettings.swift; sourceTree = "<group>"; };
 		ABDE2EE82400234F00666D55 /* UserCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCalendar.swift; sourceTree = "<group>"; };
@@ -634,6 +635,7 @@
 				Base,
 				de,
 				es,
+				"en-GB",
 			);
 			mainGroup = 2338BEAF220A7840004F288F;
 			packageReferences = (
@@ -875,6 +877,7 @@
 				ABEB33DC24013A9900E91190 /* en */,
 				ABEB33DE24013B1100E91190 /* de */,
 				AB12D21E2401A95500D01852 /* es */,
+				AB79573D2403F7F900EA0B2D /* en-GB */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1009,7 +1012,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
@@ -1037,7 +1040,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;

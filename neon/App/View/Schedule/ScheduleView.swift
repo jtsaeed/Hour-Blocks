@@ -70,12 +70,18 @@ private struct ScheduleHeader: View {
     var body: some View {
         Header(title: viewModel.currentDate.getRelativeDateToToday(),
                subtitle: viewModel.allDayEvent?.title ?? viewModel.currentDate.getFormattedDate(),
-               content: { IconButton(iconName: "calendar_item",
-                                     action: self.presentDatePicker) })
+               content: { IconButton(iconName: Calendar.current.isDateInToday(self.viewModel.currentDate) ? "calendar_item" : "undo_icon",
+                                     action: self.handleAction) })
     }
     
-    func presentDatePicker() {
+    func handleAction() {
         HapticsGateway.shared.triggerLightImpact()
-        isDatePickerPresented = true
+        
+        if Calendar.current.isDateInToday(viewModel.currentDate) {
+            isDatePickerPresented = true
+        } else {
+            viewModel.currentDate = Calendar.current.startOfDay(for: Date().toLocalTime())
+            viewModel.currentHour = Calendar.current.component(.hour, from: Date())
+        }
     }
 }

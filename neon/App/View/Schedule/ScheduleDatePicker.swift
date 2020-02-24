@@ -36,8 +36,6 @@ struct ScheduleDatePicker: View {
             .navigationBarTitle(viewModel.browsingDate.getMonthAndYear())
             .navigationBarItems(leading: Button(action: dismiss, label: {
                 Text("Cancel")
-            }), trailing: Button(action: backToToday, label: {
-                Text("Back to Today")
             }))
         }.accentColor(Color("primary"))
         .navigationViewStyle(StackNavigationViewStyle())
@@ -47,14 +45,6 @@ struct ScheduleDatePicker: View {
         HapticsGateway.shared.triggerLightImpact()
         currentDate = Calendar.current.startOfDay(for: date.toLocalTime())
         currentHour = Calendar.current.isDateInToday(date.toLocalTime()) ? Calendar.current.component(.hour, from: Date()) : DataGateway.shared.getDayStartTime()
-        dismissed()
-        dismiss()
-    }
-    
-    func backToToday() {
-        HapticsGateway.shared.triggerLightImpact()
-        currentDate = Calendar.current.startOfDay(for: Date().toLocalTime())
-        currentHour = Calendar.current.component(.hour, from: Date())
         dismissed()
         dismiss()
     }

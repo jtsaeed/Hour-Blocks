@@ -42,9 +42,9 @@ struct NewToDoView: View {
                     .font(.system(size: 28, weight: .semibold, design: .default))
                     .padding(.leading, 24)
                 Picker("", selection: $urgency) {
-                    Text("whenever").tag(ToDoUrgency.whenever)
-                    Text("soon").tag(ToDoUrgency.soon)
-                    Text("urgent").tag(ToDoUrgency.urgent)
+                    Text(NSLocalizedString("whenever", comment: "").capitalized).tag(ToDoUrgency.whenever)
+                    Text(NSLocalizedString("soon", comment: "").capitalized).tag(ToDoUrgency.soon)
+                    Text(NSLocalizedString("urgent", comment: "").capitalized).tag(ToDoUrgency.urgent)
                 }.pickerStyle(SegmentedPickerStyle())
                     .padding(.horizontal, 24)
                 Spacer()
