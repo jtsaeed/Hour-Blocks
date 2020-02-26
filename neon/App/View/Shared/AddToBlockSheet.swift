@@ -27,7 +27,7 @@ struct AddToBlockSheet: View {
                     })
                 }
             }
-            .navigationBarTitle("Add to block")
+            .navigationBarTitle("Add to Block")
             .navigationBarItems(leading: Button(action: dismissSheet, label: {
                 Text("Cancel")
             }))
@@ -78,7 +78,7 @@ struct DuplicateBlockSheet: View {
                     })
                 }
             }
-            .navigationBarTitle("Add to block")
+            .navigationBarTitle("Add to Block")
             .navigationBarItems(trailing: Button(action: dismissSheet, label: {
                 Text("Done")
             }))

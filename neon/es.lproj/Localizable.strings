@@ -80,6 +80,7 @@
 "Change Icon" = "Cambiar Ícono";
 "Duplicate" = "Duplicar";
 "Set a Reminder" = "Establecer Recordatorio";
+"Remove Reminder" = "Eliminar Recordatorio";
 "Clear" = "Limpiar";
 
 "Today" = "Hoy";
@@ -110,18 +111,22 @@
 "Tip" = "Consejo";
 "tipBlockOptions" = "Mantén Hour Block para más opciones";
 "tipSwipeToChangeDay" = "Desliza el título para cambiar de dia";
-"tipViewSubBlocks" = "Toca un Hour Block para ver sus Sub Blocks";
+"tipViewSubBlocks" = "Toca un Block para ver sus Sub Blocks";
 
 // MARK: - To Do List
 
 "To Do List" = "Lista de Tareas";
 "1 Item" = "1 Ítem";
 "%d Items" = "%d Ítems";
+
 "Add a new to do" = "Añade una tarea";
+"Rename To Do" = "Renombrar tarea";
+
 "Urgency" = "Urgencia";
 "whenever" = "Cuando Sea";
 "soon" = "Pronto";
 "urgent" = "Urgente";
+
 "Change to %@" = "Cambiar a %@";
 "Add to Block" = "Añadir a un Block";
 "Complete" = "Completado";

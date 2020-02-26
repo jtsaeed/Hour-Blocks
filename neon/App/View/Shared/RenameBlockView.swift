@@ -78,7 +78,7 @@ struct RenameToDoView: View {
             }, label: {
                 Text("Cancel")
             }), trailing: Button(action: addBlock, label: {
-                Text("Confirm")
+                Text("Save")
             }))
         }.accentColor(Color("primary"))
         .navigationViewStyle(StackNavigationViewStyle())

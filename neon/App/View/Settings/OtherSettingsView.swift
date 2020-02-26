@@ -27,11 +27,11 @@ struct OtherSettingsView: View {
                 OtherStuffCard(value: $timeFormatValue,
                                title: NSLocalizedString("Time Format", comment: ""),
                                description: NSLocalizedString("Change the time format used throughout Hour Blocks", comment: ""),
-                               options: ["System", "12h", "24h"])
+                               options: [NSLocalizedString("System", comment: ""), "12h", "24h"])
                 OtherStuffCard(value: $autoCapsValue,
                                title: NSLocalizedString("Autocapitalization", comment: ""),
-                               description: NSLocalizedString("Would you like the titles of blocks to be automatically capitalised?", comment: ""),
-                               options: ["Yes", "No"])
+                               description: NSLocalizedString("Would you like the titles of blocks to be automatically capitalized?", comment: ""),
+                               options: [NSLocalizedString("Yes", comment: ""), NSLocalizedString("No", comment: "")])
                 OtherStuffCard(value: $dayStartValue,
                                title: NSLocalizedString("Start of The Day", comment: ""),
                                description: NSLocalizedString("What time does your day start?", comment: ""),

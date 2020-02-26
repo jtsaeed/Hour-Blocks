@@ -16,6 +16,6 @@ struct Suggestion: Hashable {
     var title: String {
         guard let locale = Locale.current.languageCode else { return domain.suggestionTitle }
         
-        return locale.starts(with: "en") ? domain.suggestionTitle : domain.localisedKey
+        return locale.starts(with: "en") ? domain.suggestionTitle : domain.localisedKey.capitalized
     }
 }

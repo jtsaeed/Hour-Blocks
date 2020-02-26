@@ -80,6 +80,7 @@
 "Change Icon" = "Change Icon";
 "Duplicate" = "Duplicate";
 "Set a Reminder" = "Set a Reminder";
+"Remove Reminder" = "Remove Reminder";
 "Clear" = "Clear";
 
 "Today" = "Today";
@@ -118,7 +119,8 @@
 "1 Item" = "1 Item";
 "%d Items" = "%d Items";
 
-"Add a new to do" = "Add a new to do";]
+"Add a new to do" = "Add a new to do";
+"Rename To Do" = "Rename to do";
 
 "Urgency" = "Urgency";
 "whenever" = "Whenever";

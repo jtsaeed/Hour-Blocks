@@ -93,7 +93,7 @@ private struct HourBlockCardLabels: View {
                     Circle()
                         .frame(width: 8, height: 8)
                         .foregroundColor(Color("secondary"))
-                        .opacity(colorScheme == .light ? 0.5 : 0.8)
+                        .opacity(colorScheme == .light ? 0.5 : 0.9)
                 }
                 Text(currentBlock.formattedTime.uppercased())
                     .modifier(CardSubtitleLabel())

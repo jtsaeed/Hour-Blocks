@@ -45,7 +45,7 @@ class DomainsGateway {
         
         for domain in BlockDomain.allCases {
             // Check if the word directly matches the keyword of the domain in the loop
-            if domain.localisedKey == word || domain.rawValue == word {
+            if (domain.localisedKey == word || domain.rawValue == word) && domain != .calendar {
                 determinedDomain = domain
                 rating = 1
                 break

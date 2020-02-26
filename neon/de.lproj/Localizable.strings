@@ -80,14 +80,15 @@
 "Change Icon" = "Icon ändern";
 "Duplicate" = "Duplizieren";
 "Set a Reminder" = "Erinnerung Setzen";
+"Remove Reminder" = "Erinnerung Entfernen";
 "Clear" = "Löschen";
 
 "Today" = "Heute";
 "Tomorrow" = "Morgen";
 "This Week" = "Nächste Woche";
 "This Month" = "Nächsten Monat";
-"The Past" = "Vergangenheit";
-"The Future" = "Zukunft";
+"The Past" = "Früher";
+"The Future" = "Später";
 
 "Suggestions" = "Empfehlungen";
 "Currently" = "Zurzeit";
@@ -119,6 +120,7 @@
 "%d Items" = "%d Einträge";
 
 "Add a new to do" = "To do hinzufügen";
+"Rename To Do" = "To do umbenennen";
 
 "Urgency" = "Dringlichkeit";
 "whenever" = "Irgendwann";
@@ -136,7 +138,7 @@
 "Take control of" = "Verwalten";
 "Calendars" = "Kalender";
 "Other Stuff" = "Sonstiges";
-"Provide valuable" = "Wertvolles geben";
+"Provide valuable" = "Gebe mir";
 "Feedback" = "Feedback";
 "Follow me on" = "Folge mir auf";
 "Take a look at the" = "Schau in die";
@@ -144,7 +146,7 @@
 "Other Settings" = "Sonstige Einstellungen";
 
 "Time Format" = "Zeitformat";
-"Change the time format used throughout Hour Blocks" = "Ändern das Zeitformat für die Blöcke";
+"Change the time format used throughout Hour Blocks" = "Ändere das Zeitformat der Hour Blocks";
 "System" = "System";
 "Autocapitalization" = "Automatische Großschreibung";
 "Would you like the titles of blocks to be automatically capitalized?" = "Sollen die Titel der Blöcke automatisch großgeschrieben werden?";

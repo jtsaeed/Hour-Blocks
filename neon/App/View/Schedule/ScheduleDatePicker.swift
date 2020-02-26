@@ -65,7 +65,7 @@ private struct DateCard: View {
                 CardLabels(title: self.date.getFormattedDate(),
                            subtitle: self.date.getRelativeDateToToday())
                 Spacer()
-                IconButton(iconName: "calendar_item",
+                IconButton(iconName: Calendar.current.isDateInToday(self.date) ? "calendar_item" : "calendar_empty",
                            action: self.selected)
             }
         }.padding(.horizontal, 16)
@@ -84,7 +84,7 @@ private struct ScheduleDatePickerToolbar: View {
             Spacer()
             ScheduleDatePickerToolbarButton(text: $viewModel.nextMonth,
                                             iconName: "arrow.right",
-                                            action: viewModel.browseNextMonth)
+                                            action: browseNextMonth)
         }
     }
     
