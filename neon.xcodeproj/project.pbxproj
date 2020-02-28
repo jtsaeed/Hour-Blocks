@@ -1012,7 +1012,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
@@ -1021,7 +1021,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.1.2;
+				MARKETING_VERSION = 5.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1040,7 +1040,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
@@ -1049,7 +1049,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.1.2;
+				MARKETING_VERSION = 5.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

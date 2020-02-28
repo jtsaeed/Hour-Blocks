@@ -49,19 +49,13 @@ struct HourBlock: Identifiable {
     }
     
     var formattedTime: String {
-        guard let localisedTime = Date().dateBySet(hour: self.hour, min: 0, secs: 0) else {
-            return hour.get24hTime()
-        }
-        
         if let timeFormatSetting = DataGateway.shared.getOtherSettings()?.timeFormat {
-            if timeFormatSetting == 0 {
-                return localisedTime.getFormattedTime(militaryTime: !DataGateway.shared.isSystemClock12h())
-            } else if timeFormatSetting == 2 {
-                return localisedTime.getFormattedTime(militaryTime: true)
+            if (timeFormatSetting == 0 && !DataGateway.shared.isSystemClock12h()) || timeFormatSetting == 2 {
+                return hour.get24hTime()
             }
         }
         
-        return localisedTime.getFormattedTime(militaryTime: false)
+        return hour.get12hTime()
     }
     
     var iconName: String {
