@@ -48,6 +48,11 @@ struct FeedbackForm: View {
             }), trailing: Button(action: send, label: {
                 Text("Send")
             }))
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("Error"),
+                      message: Text("Failed to generate Email, please make sure all fields are filled"),
+                      dismissButton: .default(Text("OK")))
+            }
         }.accentColor(Color("primary"))
     }
     
@@ -70,8 +75,6 @@ struct FeedbackForm: View {
             showAlert = true
             return
         }
-        
-        print(urlString)
         
         guard let url = URL(string: urlString) else {
             showAlert = true

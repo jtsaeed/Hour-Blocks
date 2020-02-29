@@ -135,6 +135,7 @@
 // MARK: - Settings
 
 "Settings" = "Configuración";
+
 "Take control of" = "Tomar control sobre";
 "Calendars" = "Calendarios";
 "Other Stuff" = "Otras Cosas";
@@ -144,23 +145,25 @@
 "Take a look at the" = "Ver Políticas de";
 "Privacy Policy" = "Privacidad";
 "Other Settings" = "Otras Configuraciones";
+
 "Time Format" = "Formato de Hora";
 "Change the time format used throughout Hour Blocks" = "Cambia el formato de hora usado en todo Hour Blocks";
 "System" = "Sistema";
 "Autocapitalization" = "Mayúsculas automáticas";
 "Would you like the titles of blocks to be automatically capitalized?" = "¿Quieres que los títulos de bloques comiencen automáticamente con mayúsculas?";
-"Yes" = "Sí";
-"No" = "No";
 "Start of The Day" = "Comienzo del Día";
 "What time does your day start?" = "¿A qué hora empieza tu día?";
 "Reminder Timer" = "Temporizador de Recordatorios";
 "The length of time before a block's reminder comes through (doesn't change reminders already set)" = "El tiempo antes de que aparezca el recordatorio de un bloque (no modifica los recordatorios ya establecidos)";
 "App Icon" = "Ícono de La App";
 "Which Hour Blocks app icon would you like to be shown on your home screen?" = "¿Qué ícono de Hour Blocks quieres que se muestre en tu pantalla de inicio?";
+
 "Feedback" = "Feedback";
 "Email Me" = "Enviar Correo";
+"Send" = "Enviar";
 "Vote for what you’d like to see most in Hour Blocks with 1 vote per update" = "Vota lo que más te gustaría para Hour Blocks con 1 voto por actualización";
 "You've already voted for a feature- check back after the next Hour Blocks update!" = "Ya ha votado por una función. ¡Vuelva a consultar después de la próxima actualización de Hour Blocks!";
+
 "Your personal data is safe 🔐" = "Tus datos personales están seguros 🔐";
 "Personal identifiers such as name and phone number aren't even asked for by Hour Blocks- we simply don't need that from you" = "Hour Blocks ni siquiera pide identificadores personales como nombres o direcciones; simplemente no lo necesitamos";
 "So what do we collect? 🤔" = "Entonces ¿qué recolectamos? 🤔";
@@ -184,3 +187,5 @@
 "Close" = "Cerrar";
 "Done" = "Listo";
 "Save" = "Guardar";
+"Yes" = "Sí";
+"No" = "No";
