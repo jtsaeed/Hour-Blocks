@@ -82,6 +82,7 @@ private struct ScheduleHeader: View {
         } else {
             viewModel.currentDate = Calendar.current.startOfDay(for: Date().toLocalTime())
             viewModel.currentHour = Calendar.current.component(.hour, from: Date())
+            viewModel.loadHourBlocks()
         }
     }
 }

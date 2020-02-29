@@ -33,8 +33,9 @@ struct AddHourBlockView: View {
                     .padding(.leading, 24)
                 List {
                     if viewModel.currentSuggestions.count > 0 {
-                        ForEach(viewModel.currentSuggestions, id: \.self) { suggestion in
+                        ForEach(viewModel.currentSuggestions) { suggestion in
                             SuggestionCard(suggestion: suggestion, isSubBlock: self.isSubBlock) { title in
+                                AnalyticsGateway.shared.log(suggestion: suggestion)
                                 self.title = title
                                 self.addBlock()
                             }
@@ -42,7 +43,7 @@ struct AddHourBlockView: View {
                     } else {
                         NoSuggestionsCard()
                     }
-                }
+                }.onAppear(perform: loadSuggestions)
             }
             .navigationBarTitle(time.lowercased())
             .navigationBarItems(leading: Button(action: dismiss, label: {
@@ -52,11 +53,13 @@ struct AddHourBlockView: View {
             }))
         }.navigationViewStyle(StackNavigationViewStyle())
         .accentColor(Color(isSubBlock ? "secondary" : "primary"))
-        .onAppear(perform: loadSuggestions)
+        
     }
     
     func loadSuggestions() {
-        viewModel.loadSuggestions(for: hour, on: day)
+        viewModel.loadSuggestions(for: hour,
+                                  on: day,
+                                  parentDomain: DomainsGateway.shared.determineDomain(for: title))
     }
     
     func dismiss() {

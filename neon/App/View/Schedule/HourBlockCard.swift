@@ -68,6 +68,7 @@ struct EmptyHourBlockCard: View {
     
     func presentAddBlockView() {
         HapticsGateway.shared.triggerLightImpact()
+        AnalyticsGateway.shared.logShowAddBlock()
         isAddBlockViewPresented = true
     }
 }

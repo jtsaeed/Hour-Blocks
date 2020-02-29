@@ -113,6 +113,7 @@ struct EmptySubBlockCard: View {
     
     func present() {
         HapticsGateway.shared.triggerLightImpact()
+        AnalyticsGateway.shared.logShowAddBlock()
         isPresented = true
     }
 }

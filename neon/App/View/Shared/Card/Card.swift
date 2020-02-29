@@ -37,9 +37,12 @@ struct Card<Content>: View where Content: View {
 
 struct CardIcon: View {
     
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    
     let iconName: String
     
     var body: some View {
-        Image(iconName).foregroundColor(Color("cardIcon"))
+        Image(iconName)
+            .opacity(colorScheme == .light ? 0.1 : 0.4)
     }
 }

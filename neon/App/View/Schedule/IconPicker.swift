@@ -133,6 +133,8 @@ private struct IconChoiceRow: View {
 
 private struct IconChoice: View {
     
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    
     let iconName: String
     
     var body: some View {
@@ -145,7 +147,7 @@ private struct IconChoice: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 32, height: 32)
-                .opacity(0.25)
+                .opacity(colorScheme == .light ? 0.25 : 0.6)
         }
     }
 }

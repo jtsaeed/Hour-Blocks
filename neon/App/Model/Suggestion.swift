@@ -8,10 +8,12 @@
 
 import Foundation
 
-struct Suggestion: Hashable {
+struct Suggestion: Identifiable {
     
+    let id = UUID().uuidString
     var domain: BlockDomain
     var reason: String
+    let score: Int
     
     var title: String {
         guard let locale = Locale.current.languageCode else { return domain.suggestionTitle }

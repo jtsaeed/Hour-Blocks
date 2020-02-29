@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import SwiftDate
 
 struct DataGateway: DataInterface {
     
@@ -20,12 +21,28 @@ struct DataGateway: DataInterface {
     }
 
     let currentVersion = 5.1
-    let fullCurrentVersion = "5.1.2"
+    let fullCurrentVersion = "5.1.4"
 }
 
 // MARK: - Blocks
 
 extension DataGateway {
+    
+    func getLastMonthsHourBlocks(from day: Date, for hour: Int) -> [HourBlock] {
+        var hourBlocks = [HourBlockEntity]()
+        let request: NSFetchRequest<HourBlockEntity> = HourBlockEntity.fetchRequest()
+        let startOfDateRange = Calendar.current.startOfDay(for: day - 30.days) as NSDate
+        let endOfDateRange = Calendar.current.startOfDay(for: day) as NSDate
+        request.predicate = NSPredicate(format: "(day >= %@) AND (day <= %@) AND (hour == %d)", startOfDateRange, endOfDateRange, hour)
+        
+        do {
+            hourBlocks = try managedObjectContext.fetch(request)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        return hourBlocks.compactMap({ HourBlock(fromEntity: $0) })
+    }
     
     func getHourBlocks(for day: Date) -> [HourBlock] {
         var hourBlocks = [HourBlockEntity]()
