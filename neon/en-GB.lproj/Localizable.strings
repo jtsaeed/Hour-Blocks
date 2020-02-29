@@ -80,6 +80,7 @@
 "Change Icon" = "Change Icon";
 "Duplicate" = "Duplicate";
 "Set a Reminder" = "Set a Reminder";
+"Remove Reminder" = "Remove Reminder";
 "Clear" = "Clear";
 
 "Today" = "Today";
@@ -92,7 +93,8 @@
 "Suggestions" = "Suggestions";
 "Currently" = "Currently";
 "None" = "None";
-"Popular" = "Popular";
+"popular" = "popular";
+"frequently added" = "frequently added";
 
 "Sub Blocks at %@" = "Sub Blocks at %@";
 "Add a new" = "Add a new";

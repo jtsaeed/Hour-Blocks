@@ -93,7 +93,8 @@
 "Suggestions" = "Suggestions";
 "Currently" = "Currently";
 "None" = "None";
-"Popular" = "Popular";
+"popular" = "popular";
+"frequently added" = "frequently added";
 
 "Sub Blocks at %@" = "Sub Blocks at %@";
 "Add a new" = "Add a new";

@@ -67,6 +67,9 @@ class ScheduleViewModel: ObservableObject {
     func loadSuggestions(for hour: Int, on date: Date, parentDomain: BlockDomain?) {
         var suggestions = [Suggestion]()
         
+        let popularString = NSLocalizedString("popular", comment: "")
+        let frequentlyAddedString = NSLocalizedString("frequently added", comment: "")
+        
         DispatchQueue.global(qos: .userInitiated).async {
             // frequently added
             let lastMonthsBlocks = DataGateway.shared.getLastMonthsHourBlocks(from: date, for: hour)
@@ -79,63 +82,63 @@ class ScheduleViewModel: ObservableObject {
             
             suggestions = lastMonthsDomainFrequencies.compactMap({ key, value in
                 guard value >= 3 else { return nil }
-                return Suggestion(domain: key, reason: "frequently added", score: value + 10)
+                return Suggestion(domain: key, reason: frequentlyAddedString, score: value + 10)
             })
             
             // weekday
             if date.weekday >= 2 && date.weekday <= 6 {
                 if hour >= 9 && hour <= 17 {
                     if !suggestions.contains(where: { $0.domain == .work }) {
-                        suggestions.append(Suggestion(domain: .work, reason: "popular", score: 6))
+                        suggestions.append(Suggestion(domain: .work, reason: popularString, score: 6))
                     }
                     if !suggestions.contains(where: { $0.domain == .lecture }) {
-                        suggestions.append(Suggestion(domain: .lecture, reason: "popular", score: 3))
+                        suggestions.append(Suggestion(domain: .lecture, reason: popularString, score: 3))
                     }
                 }
                 
                 if (hour == 8 || hour == 17) && !suggestions.contains(where: { $0.domain == .commute }) {
-                    suggestions.append(Suggestion(domain: .commute, reason: "popular", score: 1))
+                    suggestions.append(Suggestion(domain: .commute, reason: popularString, score: 1))
                 }
                 
                 if hour == 17 && !suggestions.contains(where: { $0.domain == .home }) {
-                    suggestions.append(Suggestion(domain: .home, reason: "popular", score: 1))
+                    suggestions.append(Suggestion(domain: .home, reason: popularString, score: 1))
                 }
             }
             
             // weekend
             if (date.weekday == 6 || date.weekday == 7) && (hour >= 19 && hour <= 21) && !suggestions.contains(where: { $0.domain == .party })  {
-                suggestions.append(Suggestion(domain: .party, reason: "popular", score: 1))
+                suggestions.append(Suggestion(domain: .party, reason: popularString, score: 1))
             }
             
             // every day, morning
             if hour >= 5 && hour <= 8 {
                 if !suggestions.contains(where: { $0.domain == .wake }) {
-                    suggestions.append(Suggestion(domain: .wake, reason: "popular", score: 2))
+                    suggestions.append(Suggestion(domain: .wake, reason: popularString, score: 2))
                 }
                 if !suggestions.contains(where: { $0.domain == .shower }) {
-                    suggestions.append(Suggestion(domain: .shower, reason: "popular", score: 3))
+                    suggestions.append(Suggestion(domain: .shower, reason: popularString, score: 3))
                 }
             }
             // every day, little after morning
             if hour >= 6 && hour <= 9 {
                 if !suggestions.contains(where: { $0.domain == .coffee }) {
-                    suggestions.append(Suggestion(domain: .coffee, reason: "popular", score: 1))
+                    suggestions.append(Suggestion(domain: .coffee, reason: popularString, score: 1))
                 }
                 if !suggestions.contains(where: { $0.domain == .breakfast }) {
-                    suggestions.append(Suggestion(domain: .breakfast, reason: "popular", score: 2))
+                    suggestions.append(Suggestion(domain: .breakfast, reason: popularString, score: 2))
                 }
             }
             // every day, lunch
             if hour >= 11 && hour <= 14 && !suggestions.contains(where: { $0.domain == .lunch }) {
-                suggestions.append(Suggestion(domain: .lunch, reason: "popular", score: 4))
+                suggestions.append(Suggestion(domain: .lunch, reason: popularString, score: 4))
             }
             // every day, dinner
             if hour >= 17 && hour <= 21 && !suggestions.contains(where: { $0.domain == .dinner }) {
-                suggestions.append(Suggestion(domain: .dinner, reason: "popular", score: 4))
+                suggestions.append(Suggestion(domain: .dinner, reason: popularString, score: 4))
             }
             // every day, sleep
             if hour >= 21 && hour <= 23 && !suggestions.contains(where: { $0.domain == .sleep }) {
-                suggestions.append(Suggestion(domain: .sleep, reason: "popular", score: 4))
+                suggestions.append(Suggestion(domain: .sleep, reason: popularString, score: 4))
             }
             
             suggestions = suggestions.filter({ $0.domain != parentDomain }).sorted(by: { $0.score > $1.score })
@@ -143,8 +146,6 @@ class ScheduleViewModel: ObservableObject {
             
             DispatchQueue.main.async { self.currentSuggestions = suggestions }
         }
-        
-        
     }
     
     func add(hourBlock: HourBlock) {

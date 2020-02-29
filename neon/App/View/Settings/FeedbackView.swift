@@ -14,6 +14,8 @@ struct FeedbackView: View {
     
     @ObservedObject var viewModel = FeedbackViewModel()
     
+    @State var isFeedbackFormPresented = false
+    
     @State var currentFeature: Feature?
     
     @State var isLoading = false
@@ -56,6 +58,9 @@ struct FeedbackView: View {
                       message: Text(errorMessage),
                       dismissButton: .default(Text("OK")))
             }
+            .sheet(isPresented: $isFeedbackFormPresented) {
+                FeedbackForm(isPresented: self.$isFeedbackFormPresented)
+            }
             .navigationBarTitle("Feedback")
             .navigationBarItems(leading: Button(action: email, label: {
                 Text("Email Me")
@@ -68,10 +73,13 @@ struct FeedbackView: View {
     }
     
     func email() {
+        /*
         let email = "support@jtsaeed.com"
         if let url = URL(string: "mailto:\(email)") {
             UIApplication.shared.open(url)
         }
+ */
+        isFeedbackFormPresented = true
     }
     
     func dismiss() {
