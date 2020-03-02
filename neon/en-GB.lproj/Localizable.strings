@@ -110,9 +110,9 @@
 "Other" = "Other";
 
 "Tip" = "Tip";
-"tipBlockOptions" = "Hold an Hour Block for options";
+"tipSwipeBlockOptions" = "Swipe across a Block for options";
+"tipBlockOptions" = "Hold an Block for more options";
 "tipSwipeToChangeDay" = "Swipe on the header to change days";
-"tipViewSubBlocks" = "Tap an Hour Block to view its Sub Blocks";
 
 // MARK: - To Do List
 

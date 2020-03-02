@@ -22,6 +22,7 @@ struct SubBlocksView: View {
                 if viewModel.currentSubBlocks.filter({ $0.hour == hourBlock.hour }).count > 0 {
                     ForEach(viewModel.currentSubBlocks.filter({ $0.hour == hourBlock.hour })) { subBlock in
                         SubBlockCard(currentHourBlock: self.hourBlock, currentSubBlock: subBlock)
+                            .buttonStyle(BorderlessButtonStyle())
                     }
                 }
                 EmptySubBlockCard(currentHourBlock: hourBlock)

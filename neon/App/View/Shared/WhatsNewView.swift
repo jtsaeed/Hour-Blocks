@@ -18,10 +18,10 @@ struct WhatsNewView: View {
                 .padding(.bottom, 32)
             
             VStack(alignment: .leading, spacing: 16) {
-                WhatsNewItem(title: "Swipe Controls ⚡️",
-                             content: "Swipe across the top header of the Schedule to quickly change days!")
-                WhatsNewItem(title: "Major Bug Fixes ✨",
-                             content: "Fixed an issue where users outside of the GMT timezone had calendar events showing in the wrong day")
+                WhatsNewItem(title: "Swipe For Options ⚡️",
+                             content: "Swipe across any card in the Schedule or To Do List to quickly access popular options")
+                WhatsNewItem(title: "Minor Improvements ✨",
+                             content: "Fixed a number of small bugs")
             }
             
             Spacer()

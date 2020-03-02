@@ -38,7 +38,7 @@ struct TipBlockCard: View {
 
 enum Tip: String {
     
+    case swipeBlockOptions = "tipSwipeBlockOptions"
     case blockOptions = "tipBlockOptions"
     case swipeToChangeDay = "tipSwipeToChangeDay"
-    case viewSubBlocks = "tipViewSubBlocks"
 }

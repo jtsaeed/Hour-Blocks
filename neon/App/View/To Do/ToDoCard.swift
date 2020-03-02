@@ -10,82 +10,93 @@ import SwiftUI
 
 struct ToDoCard: View {
     
-    @ObservedObject var viewModel: ToDoListViewModel
-    
-    let toDoItem: ToDoItem
-    
-    var body: some View {
-        Card {
-            CardLabels(title: self.toDoItem.title,
-                       subtitle: NSLocalizedString(self.toDoItem.urgency.rawValue, comment: "").uppercased(),
-                       subtitleColor: Color(self.toDoItem.urgency.rawValue.urgencyToColorString()),
-                       alignment: .center)
-        }.contextMenu {
-            ToDoCardContextMenu(viewModel: viewModel, toDoItem: toDoItem)
-        }
-    }
-}
-
-struct ToDoCardContextMenu: View {
-    
     @EnvironmentObject var scheduleViewModel: ScheduleViewModel
     @ObservedObject var viewModel: ToDoListViewModel
     
+    @State var offset: CGFloat = 0
+    @State var isSwiped = false
+    
+    @State var isSheetPresented = false
+    @State var activeSheet = 0
+    
     let toDoItem: ToDoItem
     
-    @State var isAddToBlockPresented = false
-    @State var isRenamePresented = false
-    
     var body: some View {
-        VStack {
-            Button(action: addToBlock) {
-                Text("Add to Block")
-                Image(systemName: "plus")
+        SwipeableToDoCard(offset: $offset, swiped: $isSwiped, toDoItem: toDoItem) {
+            HStack(spacing: 28) {
+                SwipeOption(iconName: "plus.square",
+                            primaryColor: Color("primary"),
+                            secondaryColor: Color("primaryLight"),
+                            action: self.addToBlock)
+                SwipeOption(iconName: "pencil",
+                            primaryColor: Color("primary"),
+                            secondaryColor: Color("primaryLight"),
+                            weight: .bold,
+                            action: self.rename)
+                SwipeOption(iconName: "checkmark",
+                            primaryColor: Color("green"),
+                            secondaryColor: Color("greenLight"),
+                            action: self.complete)
             }
-            .sheet(isPresented: self.$isAddToBlockPresented, content: {
-                AddToBlockSheet(isPresented: self.$isAddToBlockPresented, title: self.toDoItem.title)
-                    .environmentObject(self.scheduleViewModel)
-            })
-            Button(action: rename) {
-                Text("Rename")
-                Image(systemName: "pencil")
-            }
-            .sheet(isPresented: self.$isRenamePresented, content: {
-                RenameToDoView(isPresented: self.$isRenamePresented,
-                               viewModel: self.viewModel,
-                               toDoItem: self.toDoItem)
-            })
-            if toDoItem.urgency != .urgent {
-                Button(action: { self.changeUrgency(to: .urgent) }) {
-                    Text("Change to \(NSLocalizedString("urgent", comment: ""))")
-                    Image(systemName: "timer")
+        }.contextMenu {
+            if !isSwiped {
+                Button(action: addToBlock) {
+                    Text("Add to Block")
+                    Image(systemName: "plus")
                 }
-            }
-            if toDoItem.urgency != .soon {
-                Button(action: { self.changeUrgency(to: .soon) }) {
-                    Text("Change to \(NSLocalizedString("soon", comment: ""))")
-                    Image(systemName: "timer")
+                Button(action: rename) {
+                    Text("Rename")
+                    Image(systemName: "pencil")
                 }
-            }
-            if toDoItem.urgency != .whenever {
-                Button(action: { self.changeUrgency(to: .whenever) }) {
-                    Text("Change to \(NSLocalizedString("whenever", comment: ""))")
-                    Image(systemName: "timer")
+                if toDoItem.urgency != .urgent {
+                    Button(action: { self.changeUrgency(to: .urgent) }) {
+                        Text("Change to \(NSLocalizedString("urgent", comment: ""))")
+                        Image(systemName: "timer")
+                    }
                 }
-            }
-            Button(action: complete) {
-                Text("Complete")
-                Image(systemName: "checkmark")
+                if toDoItem.urgency != .soon {
+                    Button(action: { self.changeUrgency(to: .soon) }) {
+                        Text("Change to \(NSLocalizedString("soon", comment: ""))")
+                        Image(systemName: "timer")
+                    }
+                }
+                if toDoItem.urgency != .whenever {
+                    Button(action: { self.changeUrgency(to: .whenever) }) {
+                        Text("Change to \(NSLocalizedString("whenever", comment: ""))")
+                        Image(systemName: "timer")
+                    }
+                }
+                Button(action: complete) {
+                    Text("Complete")
+                    Image(systemName: "checkmark")
+                }
             }
         }
+        .sheet(isPresented: self.$isSheetPresented, content: {
+            if self.activeSheet == 0 {
+                AddToBlockSheet(isPresented: self.$isSheetPresented,
+                                title: self.toDoItem.title)
+                    .environmentObject(self.scheduleViewModel)
+            } else if self.activeSheet == 1 {
+                RenameToDoView(isPresented: self.$isSheetPresented,
+                               viewModel: self.viewModel,
+                               toDoItem: self.toDoItem)
+            }
+        })
     }
     
     func addToBlock() {
-        isAddToBlockPresented = true
+        HapticsGateway.shared.triggerLightImpact()
+        isSheetPresented = true
+        activeSheet = 0
+        unSwipe()
     }
     
     func rename() {
-        isRenamePresented = true
+        HapticsGateway.shared.triggerLightImpact()
+        isSheetPresented = true
+        activeSheet = 1
+        unSwipe()
     }
     
     func changeUrgency(to urgency: ToDoUrgency) {
@@ -96,5 +107,10 @@ struct ToDoCardContextMenu: View {
     func complete() {
         viewModel.removeToDoItem(toDo: toDoItem)
         HapticsGateway.shared.triggerCompletionHaptic()
+    }
+    
+    func unSwipe() {
+        isSwiped = false
+        offset = 0
     }
 }

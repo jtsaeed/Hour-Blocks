@@ -12,58 +12,83 @@ struct SubBlockCard: View {
     
     @EnvironmentObject var viewModel: ScheduleViewModel
     
-    @State var isRenamePresented = false
-    @State var isIconPickerPresented = false
+    @State var offset: CGFloat = 0
+    @State var isSwiped = false
+    
+    @State var isSheetPresented = false
+    @State var activeSheet = 0
     
     let currentHourBlock: HourBlock
     let currentSubBlock: HourBlock
     
     var body: some View {
-        Card {
-            HStack {
-                CardLabels(title: self.currentSubBlock.title!,
-                           subtitle: self.currentHourBlock.title!)
-                Spacer()
-                CardIcon(iconName: self.currentSubBlock.iconName).padding(.leading, 8)
+        SwipeableSubBlockCard(offset: $offset, swiped: $isSwiped, hourBlock: currentHourBlock, subBlock: currentSubBlock) {
+            HStack(spacing: 28) {
+                SwipeOption(iconName: "pencil",
+                            primaryColor: Color("secondary"),
+                            secondaryColor: Color("secondaryLight"),
+                            weight: .bold,
+                            action: self.rename)
+                SwipeOption(iconName: "paintbrush",
+                            primaryColor: Color("secondary"),
+                            secondaryColor: Color("secondaryLight"),
+                            action: self.changeIcon)
+                SwipeOption(iconName: "trash",
+                            primaryColor: Color("urgent"),
+                            secondaryColor: Color("urgentLight"),
+                            action: self.clear)
             }
         }.contextMenu {
-            Button(action: rename) {
-                Text("Rename")
-                Image(systemName: "pencil")
-            }
-            .sheet(isPresented: $isRenamePresented, content: {
-                RenameBlockView(isPresented: self.$isRenamePresented,
-                                currentBlock: self.currentSubBlock)
-                    .environmentObject(self.viewModel)
-            })
-            Button(action: {
-                self.changeIcon()
-            }) {
-                Text("Change Icon")
-                Image(systemName: "pencil")
-            }
-            .sheet(isPresented: $isIconPickerPresented, content: {
-                IconPicker(isPresented: self.$isIconPickerPresented, currentBlock: self.currentSubBlock)
-                    .environmentObject(self.viewModel)
-            })
-            Button(action: clear) {
-                Text("Delete")
-                Image(systemName: "trash")
+            if !isSwiped {
+                Button(action: rename) {
+                    Text("Rename")
+                    Image(systemName: "pencil")
+                }
+                Button(action: changeIcon) {
+                    Text("Change Icon")
+                    Image(systemName: "pencil")
+                }
+                Button(action: clear) {
+                    Text("Delete")
+                    Image(systemName: "trash")
+                }
             }
         }
+        .sheet(isPresented: $isSheetPresented, content: {
+            if self.activeSheet == 0 {
+                RenameBlockView(isPresented: self.$isSheetPresented,
+                                currentBlock: self.currentSubBlock)
+                    .environmentObject(self.viewModel)
+            } else if self.activeSheet == 1 {
+                IconPicker(isPresented: self.$isSheetPresented,
+                           currentBlock: self.currentSubBlock)
+                    .environmentObject(self.viewModel)
+            }
+        })
     }
     
     func rename() {
-        isRenamePresented.toggle()
+        HapticsGateway.shared.triggerLightImpact()
+        isSheetPresented = true
+        activeSheet = 0
+        unSwipe()
     }
     
     func changeIcon() {
-        isIconPickerPresented.toggle()
+        HapticsGateway.shared.triggerLightImpact()
+        isSheetPresented = true
+        activeSheet = 1
+        unSwipe()
     }
     
     func clear() {
         HapticsGateway.shared.triggerClearBlockHaptic()
         viewModel.remove(hourBlock: currentSubBlock)
+    }
+    
+    func unSwipe() {
+        isSwiped = false
+        offset = 0
     }
 }
 

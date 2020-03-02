@@ -110,9 +110,9 @@
 "Other" = "Otros";
 
 "Tip" = "Consejo";
-"tipBlockOptions" = "Mantén Hour Block para más opciones";
+"tipSwipeBlockOptions" = "Desliza Block para opciones";
+"tipBlockOptions" = "Mantén Block para más opciones";
 "tipSwipeToChangeDay" = "Desliza el título para cambiar de dia";
-"tipViewSubBlocks" = "Toca un Block para ver sus Sub Blocks";
 
 // MARK: - To Do List
 

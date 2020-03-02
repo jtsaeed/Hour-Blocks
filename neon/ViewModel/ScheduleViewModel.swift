@@ -166,11 +166,11 @@ class ScheduleViewModel: ObservableObject {
         let totalBlockCount = DataGateway.shared.getTotalBlockCount()
         
         if totalBlockCount == 1 {
-            currentTip = .blockOptions
+            currentTip = .swipeBlockOptions
         } else if totalBlockCount == 5 {
             currentTip = .swipeToChangeDay
         } else if totalBlockCount == 15 {
-            currentTip = .viewSubBlocks
+            currentTip = .blockOptions
         }
     }
     

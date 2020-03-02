@@ -110,9 +110,9 @@
 "Other" = "Sonstiges";
 
 "Tip" = "Tipp";
+"tipSwipeBlockOptions" = "Wische sie Block für Optionen";
 "tipBlockOptions" = "Halte einen Block für mehr Optionen";
 "tipSwipeToChangeDay" = "Wische im kopf um die tage zu ändern";
-"tipViewSubBlocks" = "Tippe auf einen Block um die Sub Blocks zu sehen";
 
 // MARK: - To Do List
 

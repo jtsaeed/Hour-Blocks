@@ -22,8 +22,6 @@ struct HourBlockCard: View {
     
     @State var isSheetPresented = false
     @State var activeSheet = 0
-    @State var isRenamePresented = false
-    @State var isSubBlocksViewPresented = false
     
     var body: some View {
         SwipeableHourBlockCard(offset: $offset, swiped: $isSwiped, hourBlock: hourBlock) {
@@ -239,8 +237,8 @@ private struct HourBlockCardContextMenu: View {
                         .environmentObject(self.settingsViewModel)
                 })
             }
-            if (currentBlock.day == viewModel.currentDate && currentBlock.hour != viewModel.currentHour) ||
-                (currentBlock.day < viewModel.currentDate){
+            if ((currentBlock.day == viewModel.currentDate && currentBlock.hour != viewModel.currentHour) ||
+            currentBlock.day < viewModel.currentDate) && currentBlock.domain != .calendar {
                 Button(action: reminderAction) {
                     Text(currentBlock.hasReminder ? "Remove Reminder" : "Set a Reminder")
                     Image(systemName: "alarm")

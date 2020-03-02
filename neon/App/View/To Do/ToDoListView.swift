@@ -17,7 +17,7 @@ struct ToDoListView: View {
             VStack {
                 ToDoListHeader(viewModel: viewModel)
                 List(viewModel.toDoItems.sorted(by: { $0 < $1 })) { toDoItem in
-                    ToDoCard(viewModel: self.viewModel, toDoItem: toDoItem)
+                    ToDoCard(viewModel: self.viewModel, toDoItem: toDoItem).buttonStyle(BorderlessButtonStyle())
                 }
             }
             .navigationBarTitle("To Do List")

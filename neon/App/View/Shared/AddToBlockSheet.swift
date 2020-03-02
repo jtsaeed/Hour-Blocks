@@ -123,9 +123,13 @@ struct AddToBlockCard: View {
                            subtitle: self.currentBlock.formattedTime,
                            titleColor: self.currentBlock.title != nil ? Color("title") : Color("subtitle"))
                 Spacer()
-                AddToBlockAddButton(subBlock: self.currentBlock.title != nil,
-                                    didAddToBlock: self.didAddToBlock,
-                                    didAddToSubBlock: self.didAddToSubBlock)
+                if self.currentBlock.domain == .calendar {
+                    CardIcon(iconName: "calendar_item").padding(.leading, 8)
+                } else {
+                    AddToBlockAddButton(subBlock: self.currentBlock.title != nil,
+                                        didAddToBlock: self.didAddToBlock,
+                                        didAddToSubBlock: self.didAddToSubBlock)
+                }
             }
         }
     }

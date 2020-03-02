@@ -20,8 +20,8 @@ struct DataGateway: DataInterface {
         self.managedObjectContext = managedObjectContext
     }
 
-    let currentVersion = 5.1
-    let fullCurrentVersion = "5.1.5"
+    let currentVersion = 5.2
+    let fullCurrentVersion = "5.2 beta 1"
 }
 
 // MARK: - Blocks

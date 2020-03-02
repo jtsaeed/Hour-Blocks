@@ -57,6 +57,10 @@ struct ContentView: View {
     
     func checkIfUpdated() {
         self.showWhatsNew = DataGateway.shared.isNewVersion()
+        
+        if showWhatsNew {
+            scheduleViewModel.currentTip = .swipeBlockOptions
+        }
     }
 }
 
