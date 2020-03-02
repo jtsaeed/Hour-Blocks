@@ -10,6 +10,11 @@ import SwiftUI
 
 struct SubBlockCard: View {
     
+    @EnvironmentObject var viewModel: ScheduleViewModel
+    
+    @State var isRenamePresented = false
+    @State var isIconPickerPresented = false
+    
     let currentHourBlock: HourBlock
     let currentSubBlock: HourBlock
     
@@ -21,29 +26,14 @@ struct SubBlockCard: View {
                 Spacer()
                 CardIcon(iconName: self.currentSubBlock.iconName).padding(.leading, 8)
             }
-        }.contextMenu { SubBlockCardContextMenu(currentBlock: currentSubBlock) }
-        
-    }
-}
-
-struct SubBlockCardContextMenu: View {
-    
-    @EnvironmentObject var viewModel: ScheduleViewModel
-    
-    @State var isRenamePresented = false
-    @State var isIconPickerPresented = false
-    
-    let currentBlock: HourBlock
-    
-    var body: some View {
-        VStack {
+        }.contextMenu {
             Button(action: rename) {
                 Text("Rename")
                 Image(systemName: "pencil")
             }
             .sheet(isPresented: $isRenamePresented, content: {
                 RenameBlockView(isPresented: self.$isRenamePresented,
-                                currentBlock: self.currentBlock)
+                                currentBlock: self.currentSubBlock)
                     .environmentObject(self.viewModel)
             })
             Button(action: {
@@ -53,7 +43,7 @@ struct SubBlockCardContextMenu: View {
                 Image(systemName: "pencil")
             }
             .sheet(isPresented: $isIconPickerPresented, content: {
-                IconPicker(isPresented: self.$isIconPickerPresented, currentBlock: self.currentBlock)
+                IconPicker(isPresented: self.$isIconPickerPresented, currentBlock: self.currentSubBlock)
                     .environmentObject(self.viewModel)
             })
             Button(action: clear) {
@@ -73,7 +63,7 @@ struct SubBlockCardContextMenu: View {
     
     func clear() {
         HapticsGateway.shared.triggerClearBlockHaptic()
-        viewModel.remove(hourBlock: currentBlock)
+        viewModel.remove(hourBlock: currentSubBlock)
     }
 }
 

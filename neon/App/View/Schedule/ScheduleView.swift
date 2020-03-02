@@ -27,7 +27,7 @@ struct ScheduleView: View {
                     }
                     ForEach(viewModel.currentHourBlocks.filter { $0.hour >= viewModel.currentHour }) { hourBlock in
                         if hourBlock.title != nil {
-                            HourBlockCard(hourBlock: hourBlock)
+                            HourBlockCard(hourBlock: hourBlock).buttonStyle(BorderlessButtonStyle())
                         } else {
                             EmptyHourBlockCard(hourBlock: hourBlock)
                         }

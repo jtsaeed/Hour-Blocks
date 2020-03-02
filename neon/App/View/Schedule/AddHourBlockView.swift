@@ -55,7 +55,7 @@ struct AddHourBlockView: View {
         .accentColor(Color(isSubBlock ? "secondary" : "primary"))
         
     }
-    
+   
     func loadSuggestions() {
         viewModel.loadSuggestions(for: hour,
                                   on: day,

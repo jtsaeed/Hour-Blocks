@@ -29,6 +29,28 @@ struct IconButton: View {
     }
 }
 
+struct SwipeOption: View {
+    
+    let iconName: String
+    let primaryColor: Color
+    let secondaryColor: Color
+    var weight: Font.Weight = .medium
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            ZStack {
+                Circle()
+                    .frame(width: 48, height: 48)
+                    .foregroundColor(secondaryColor)
+                Image(systemName: iconName)
+                    .font(.system(size: 22, weight: weight, design: .rounded))
+                    .foregroundColor(primaryColor)
+            }
+        }
+    }
+}
+
 struct CheckButton: View {
     
     let action: () -> Void

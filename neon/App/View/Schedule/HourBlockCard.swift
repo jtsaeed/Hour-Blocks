@@ -14,30 +14,97 @@ struct HourBlockCard: View {
     
     let hourBlock: HourBlock
     
+    @State var offset: CGFloat = 0
+    @State var isSwiped = false
+    
+    @State var isClearWarningPresented = false
+    @State var clearWarningMessage = ""
+    
+    @State var isSheetPresented = false
+    @State var activeSheet = 0
+    @State var isRenamePresented = false
     @State var isSubBlocksViewPresented = false
     
     var body: some View {
-        Card {
-            HStack {
-                HourBlockCardLabels(currentBlock: self.hourBlock)
-                Spacer()
-                CardIcon(iconName: self.hourBlock.iconName)
-                    .padding(.leading, 8)
+        SwipeableHourBlockCard(offset: $offset, swiped: $isSwiped, hourBlock: hourBlock) {
+            HStack(spacing: 28) {
+                SwipeOption(iconName: "pencil",
+                            primaryColor: Color("primary"),
+                            secondaryColor: Color("primaryLight"),
+                            weight: .bold,
+                            action: self.rename)
+                SwipeOption(iconName: "rectangle.grid.1x2",
+                            primaryColor: Color("secondary"),
+                            secondaryColor: Color("secondaryLight"),
+                            action: self.presentSubBlocksView)
+                SwipeOption(iconName: "trash",
+                            primaryColor: Color("urgent"),
+                            secondaryColor: Color("urgentLight"),
+                            action: self.attemptClear)
             }
-        }.onTapGesture(perform: presentSubBlocksView)
-        .sheet(isPresented: $isSubBlocksViewPresented) {
-            SubBlocksView(isPresented: self.$isSubBlocksViewPresented,
-                          hourBlock: self.hourBlock)
-                .environmentObject(self.viewModel)
         }
-        .contextMenu { HourBlockCardContextMenu(currentBlock: self.hourBlock) }
+        .alert(isPresented: self.$isClearWarningPresented) {
+            Alert(title: Text("Clear Confirmation"),
+                  message: Text(self.clearWarningMessage),
+                  primaryButton: .destructive(Text("Confirm"), action: self.clear),
+                  secondaryButton: .cancel())
+        }
+        .sheet(isPresented: self.$isSheetPresented) {
+            if self.activeSheet == 0 {
+                RenameBlockView(isPresented: self.$isSheetPresented,
+                                currentBlock: self.hourBlock)
+                .environmentObject(self.viewModel)
+            } else if self.activeSheet == 1 {
+                SubBlocksView(isPresented: self.$isSheetPresented,
+                              hourBlock: self.hourBlock)
+                    .environmentObject(self.viewModel)
+            }
+        }
+        .contextMenu {
+            if !isSwiped {
+                HourBlockCardContextMenu(currentBlock: self.hourBlock)
+            }
+        }
+    }
+    
+    func rename() {
+        HapticsGateway.shared.triggerLightImpact()
+        isSheetPresented = true
+        activeSheet = 0
+        unSwipe()
     }
     
     func presentSubBlocksView() {
         if hourBlock.domain != .calendar {
             HapticsGateway.shared.triggerLightImpact()
-            isSubBlocksViewPresented = true
+            isSheetPresented = true
+            activeSheet = 1
+            unSwipe()
+        } else {
+            HapticsGateway.shared.triggerErrorHaptic()
         }
+    }
+    
+    func attemptClear() {
+        if viewModel.currentSubBlocks.filter({ $0.hour == hourBlock.hour }).count > 0 {
+            isClearWarningPresented = true
+            clearWarningMessage = "Clearing this Hour Block will also clear any Sub Blocks it contains"
+        } else if hourBlock.domain == .calendar {
+            isClearWarningPresented = true
+            clearWarningMessage = "Clearing this Hour Block will also delete the associated Calendar event"
+        } else {
+            clear()
+        }
+    }
+    
+    func clear() {
+        HapticsGateway.shared.triggerClearBlockHaptic()
+        viewModel.remove(hourBlock: hourBlock)
+    }
+    
+    func unSwipe() {
+        isSwiped = false
+        offset = 0
     }
 }
 
@@ -73,7 +140,7 @@ struct EmptyHourBlockCard: View {
     }
 }
 
-private struct HourBlockCardLabels: View {
+struct HourBlockCardLabels: View {
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     
@@ -126,8 +193,8 @@ private struct HourBlockCardContextMenu: View {
         VStack {
             if currentBlock.domain != .calendar {
                 Button(action: addSubBlock) {
-                    Text("Add Sub Block")
-                    Image(systemName: "plus.square")
+                    Text("View Sub Blocks")
+                    Image(systemName: "rectangle.grid.1x2")
                 }
                 .sheet(isPresented: self.$isAddSubBlockPresented, content: {
                     if DataGateway.shared.isPro() {
@@ -154,7 +221,7 @@ private struct HourBlockCardContextMenu: View {
             if currentBlock.domain != .calendar {
                 Button(action: changeIcon) {
                     Text("Change Icon")
-                    Image(systemName: "pencil")
+                    Image(systemName: "paintbrush")
                 }
                 .sheet(isPresented: $isIconPickerPresented, content: {
                     IconPicker(isPresented: self.$isIconPickerPresented,

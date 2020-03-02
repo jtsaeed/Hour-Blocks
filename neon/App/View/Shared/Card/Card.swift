@@ -35,6 +35,86 @@ struct Card<Content>: View where Content: View {
     }
 }
 
+struct SwipeableHourBlockCard<Content>: View where Content: View {
+    
+    @Binding var offset: CGFloat
+    @Binding var swiped: Bool
+    
+    let hourBlock: HourBlock
+
+    let cornerRadius: CGFloat = 16
+    let shadowRadius: CGFloat = 6
+    
+    let swipeThreshold: CGFloat = 192
+    let swipedCardOffset: CGFloat = 256
+    let swipedOptionsOffset: CGFloat = 28
+    
+    let options: () -> Content
+    
+    init(offset: Binding<CGFloat>, swiped: Binding<Bool>, hourBlock: HourBlock, @ViewBuilder options: @escaping () -> Content) {
+        self._offset = offset
+        self._swiped = swiped
+        self.hourBlock = hourBlock
+        self.options = options
+    }
+
+    var body: some View {
+        ZStack(alignment: .trailing) {
+            if swiped {
+                options()
+                .opacity(Double(offset / -swipedCardOffset))
+                .offset(x: -swipedOptionsOffset, y: 0)
+            }
+            
+            Card {
+                HStack {
+                    HourBlockCardLabels(currentBlock: self.hourBlock)
+                    Spacer()
+                    CardIcon(iconName: self.hourBlock.iconName)
+                        .padding(.leading, 8)
+                }
+            }.offset(x: offset, y: 0)
+        }.animation(.spring())
+        .gesture(DragGesture(minimumDistance: 16, coordinateSpace: .local)
+            .onChanged({ self.follow(drag: $0) })
+            .onEnded({ self.resolve(drag: $0) }))
+    }
+    
+    func follow(drag: DragGesture.Value) {
+        if swiped {
+            if drag.translation.width > 0 {
+                offset = (drag.translation.width - swipedCardOffset)
+            }
+        } else {
+            if drag.translation.width < 0 {
+                offset = drag.translation.width
+            }
+        }
+    }
+    
+    func resolve(drag: DragGesture.Value) {
+        if swiped {
+            if drag.predictedEndTranslation.width > swipeThreshold {
+                HapticsGateway.shared.triggerSuccessfulSwipeHaptic()
+                swiped = false
+                withAnimation { self.offset = 0 }
+            } else {
+                HapticsGateway.shared.triggerFailedSwipeHaptic()
+                withAnimation { self.offset = -swipedCardOffset }
+            }
+        } else {
+            if drag.predictedEndTranslation.width < -swipeThreshold {
+                HapticsGateway.shared.triggerSuccessfulSwipeHaptic()
+                swiped = true
+                withAnimation { self.offset = -swipedCardOffset }
+            } else {
+                HapticsGateway.shared.triggerFailedSwipeHaptic()
+                withAnimation { self.offset = 0 }
+            }
+        }
+    }
+}
+
 struct CardIcon: View {
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
