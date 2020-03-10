@@ -11,8 +11,6 @@ import SwiftDate
 
 class ScheduleViewModel: ObservableObject {
     
-    var dataGateway: DataInterface
-    
     @Published var currentHour = Calendar.current.component(.hour, from: Date())
     @Published var currentDate = Calendar.current.startOfDay(for: Date())
     
@@ -25,9 +23,7 @@ class ScheduleViewModel: ObservableObject {
     
     @Published var allDayEvent: ImportedCalendarEvent?
     
-    init(dataGateway: DataInterface) {
-        self.dataGateway = dataGateway
-        
+    init() {
         loadHourBlocks()
     }
     
@@ -150,9 +146,9 @@ class ScheduleViewModel: ObservableObject {
     
     func add(hourBlock: HourBlock) {
         if hourBlock.isSubBlock {
-            currentSubBlocks.append(hourBlock)
+            DispatchQueue.main.async { self.currentSubBlocks.append(hourBlock) }
         } else {
-            currentHourBlocks[hourBlock.hour] = hourBlock
+            DispatchQueue.main.async { self.currentHourBlocks[hourBlock.hour] = hourBlock }
         }
         
         DataGateway.shared.saveHourBlock(block: hourBlock)
@@ -165,18 +161,20 @@ class ScheduleViewModel: ObservableObject {
     private func refreshTips() {
         let totalBlockCount = DataGateway.shared.getTotalBlockCount()
         
-        if totalBlockCount == 1 {
-            currentTip = .swipeBlockOptions
-        } else if totalBlockCount == 5 {
-            currentTip = .swipeToChangeDay
-        } else if totalBlockCount == 15 {
-            currentTip = .blockOptions
+        DispatchQueue.main.async {
+            if totalBlockCount == 1 {
+                self.currentTip = .swipeBlockOptions
+            } else if totalBlockCount == 5 {
+                self.currentTip = .swipeToChangeDay
+            } else if totalBlockCount == 15 {
+                self.currentTip = .blockOptions
+            }
         }
     }
     
     func remove(hourBlock: HourBlock) {
         if hourBlock.isSubBlock {
-            currentSubBlocks.removeAll(where: { $0.id == hourBlock.id })
+            DispatchQueue.main.async { self.currentSubBlocks.removeAll(where: { $0.id == hourBlock.id }) }
             
             DataGateway.shared.deleteHourBlock(block: hourBlock)
         } else {
@@ -184,9 +182,8 @@ class ScheduleViewModel: ObservableObject {
                 NotificationsGateway.shared.removeNotification(for: hourBlock)
             }
             
-            currentHourBlocks[hourBlock.hour] = HourBlock(day: currentDate,
-                                                          hour: hourBlock.hour,
-                                                          title: nil)
+            let emptyBlock = HourBlock(day: currentDate, hour: hourBlock.hour, title: nil)
+            DispatchQueue.main.async { self.currentHourBlocks[hourBlock.hour] = emptyBlock }
             if hourBlock.domain == .calendar {
                 CalendarGateway.shared.clear(event: hourBlock.calendarEvent!)
             } else {
@@ -197,7 +194,7 @@ class ScheduleViewModel: ObservableObject {
                 DataGateway.shared.deleteHourBlock(block: subBlock)
             }
             
-            currentSubBlocks.removeAll(where: { $0.hour == hourBlock.hour })
+            DispatchQueue.main.async { self.currentSubBlocks.removeAll(where: { $0.hour == hourBlock.hour }) }
         }
         
     }
@@ -205,10 +202,10 @@ class ScheduleViewModel: ObservableObject {
     func editBlockIcon(for hourBlock: HourBlock, iconOverride: String) {
         if hourBlock.isSubBlock {
             if let index = currentSubBlocks.firstIndex(where: { $0.id == hourBlock.id }) {
-                currentSubBlocks[index].iconOverride = iconOverride
+                DispatchQueue.main.async { self.currentSubBlocks[index].iconOverride = iconOverride }
             }
         } else {
-            currentHourBlocks[hourBlock.hour].iconOverride = iconOverride
+            DispatchQueue.main.async { self.currentHourBlocks[hourBlock.hour].iconOverride = iconOverride }
         }
         
         DataGateway.shared.editHourBlock(block: hourBlock, set: iconOverride, forKey: "iconOverride")
@@ -217,18 +214,20 @@ class ScheduleViewModel: ObservableObject {
     func rename(hourBlock: HourBlock, with newTitle: String) {
         if hourBlock.isSubBlock {
             if let index = currentSubBlocks.firstIndex(where: { $0.id == hourBlock.id }) {
-                currentSubBlocks[index].title = newTitle
-                currentSubBlocks[index].domain = DomainsGateway.shared.determineDomain(for: newTitle)
+                DispatchQueue.main.async {
+                    self.currentSubBlocks[index].title = newTitle
+                    self.currentSubBlocks[index].domain = DomainsGateway.shared.determineDomain(for: newTitle)
+                }
                 DataGateway.shared.editHourBlock(block: hourBlock, set: newTitle, forKey: "title")
             }
         } else {
-            currentHourBlocks[hourBlock.hour].title = newTitle
+            DispatchQueue.main.async { self.currentHourBlocks[hourBlock.hour].title = newTitle }
             
             if hourBlock.domain == .calendar {
                 CalendarGateway.shared.rename(event: currentHourBlocks[hourBlock.hour].calendarEvent!,
                                               to: newTitle)
             } else {
-                currentHourBlocks[hourBlock.hour].domain = DomainsGateway.shared.determineDomain(for: newTitle)
+                DispatchQueue.main.async { self.currentHourBlocks[hourBlock.hour].domain = DomainsGateway.shared.determineDomain(for: newTitle) }
                 DataGateway.shared.editHourBlock(block: hourBlock, set: newTitle, forKey: "title")
             }
         }
@@ -237,7 +236,7 @@ class ScheduleViewModel: ObservableObject {
     func setReminder(_ status: Bool, for block: HourBlock) {
         for i in 0 ..< currentHourBlocks.count {
             if (block.id == currentHourBlocks[i].id) {
-                currentHourBlocks[i].hasReminder = status
+                DispatchQueue.main.async { self.currentHourBlocks[i].hasReminder = status }
                 DataGateway.shared.editHourBlock(block: currentHourBlocks[i], set: status, forKey: "hasReminder")
             }
         }
@@ -245,16 +244,22 @@ class ScheduleViewModel: ObservableObject {
     
     func previousDay() {
         let previousDay = currentDate - 1.days
-        currentDate = Calendar.current.startOfDay(for: previousDay)
-        currentHour = Calendar.current.isDateInToday(previousDay) ? Calendar.current.component(.hour, from: Date()) : DataGateway.shared.getDayStartTime()
+        
+        DispatchQueue.main.async {
+            self.currentDate = Calendar.current.startOfDay(for: previousDay)
+            self.currentHour = Calendar.current.isDateInToday(previousDay) ? Calendar.current.component(.hour, from: Date()) : DataGateway.shared.getDayStartTime()
+        }
         
         loadHourBlocks()
     }
     
     func nextDay() {
         let nextDay = currentDate + 1.days
-        currentDate = Calendar.current.startOfDay(for: nextDay)
-        currentHour = Calendar.current.isDateInToday(nextDay) ? Calendar.current.component(.hour, from: Date()) : DataGateway.shared.getDayStartTime()
+        
+        DispatchQueue.main.async {
+            self.currentDate = Calendar.current.startOfDay(for: nextDay)
+            self.currentHour = Calendar.current.isDateInToday(nextDay) ? Calendar.current.component(.hour, from: Date()) : DataGateway.shared.getDayStartTime()
+        }
         
         loadHourBlocks()
     }

@@ -7,32 +7,32 @@
 //
 
 import Foundation
-import Firebase
+//import Firebase
 
 class AnalyticsGateway {
 	
 	static let shared = AnalyticsGateway()
     
     func log(hourBlock: HourBlock) {
-        Analytics.logEvent("hourBlock5", parameters: ["domain": hourBlock.domain?.rawValue ?? "default"])
+//        Analytics.logEvent("hourBlock5", parameters: ["domain": hourBlock.domain?.rawValue ?? "default"])
     }
     
     func log(suggestion: Suggestion) {
-        Analytics.logEvent("suggestion", parameters: ["domain": suggestion.domain.rawValue,
-                                                      "reason": suggestion.reason])
+//        Analytics.logEvent("suggestion", parameters: ["domain": suggestion.domain.rawValue,
+//                                                      "reason": suggestion.reason])
     }
     
     func logShowAddBlock() {
-        Analytics.logEvent("showAddBlock", parameters: nil)
+//        Analytics.logEvent("showAddBlock", parameters: nil)
     }
     
     func logMLFailed() {
-        Analytics.logEvent("MLFailed", parameters: ["device": UIDevice.current.model,
-                                                    "os": UIDevice.current.systemVersion,
-                                                    "locale": Locale.current.languageCode ?? "N/A"])
+//        Analytics.logEvent("MLFailed", parameters: ["device": UIDevice.current.model,
+//                                                    "os": UIDevice.current.systemVersion,
+//                                                    "locale": Locale.current.languageCode ?? "N/A"])
     }
     
     func logToDo() {
-        Analytics.logEvent("toDo", parameters: nil)
+//        Analytics.logEvent("toDo", parameters: nil)
     }
 }

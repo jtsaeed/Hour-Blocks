@@ -13,7 +13,11 @@ import CoreData
 extension NSManagedObjectContext {
     
     static var current: NSManagedObjectContext {
+        #if os(watchOS)
+        return NSManagedObjectContext()
+        #else
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
+        #endif
     }
 }

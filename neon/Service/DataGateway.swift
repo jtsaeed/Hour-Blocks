@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import SwiftDate
 
-struct DataGateway: DataInterface {
+struct DataGateway {
     
     static let shared = DataGateway(NSManagedObjectContext.current)
     

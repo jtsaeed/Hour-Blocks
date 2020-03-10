@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19E224g" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="HabitBlockEntity" representedClassName="HabitBlockEntity" syncable="YES" codeGenerationType="class">
         <attribute name="completedToday" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="identifier" optional="YES" attributeType="String"/>
@@ -40,9 +40,9 @@
     <elements>
         <element name="HabitBlockEntity" positionX="-63" positionY="63" width="128" height="118"/>
         <element name="HourBlockEntity" positionX="-63" positionY="36" width="128" height="148"/>
+        <element name="OtherSettingsEntity" positionX="-63" positionY="72" width="128" height="103"/>
         <element name="SuggestionEntity" positionX="-63" positionY="63" width="128" height="88"/>
         <element name="ToDoEntity" positionX="-63" positionY="9" width="128" height="103"/>
-        <element name="OtherSettingsEntity" positionX="-63" positionY="72" width="128" height="103"/>
         <element name="UserCalendarEntity" positionX="-54" positionY="81" width="128" height="73"/>
     </elements>
 </model>
