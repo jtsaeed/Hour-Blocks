@@ -35,10 +35,3 @@ struct TipBlockCard: View {
         tip = nil
     }
 }
-
-enum Tip: String {
-    
-    case swipeBlockOptions = "tipSwipeBlockOptions"
-    case blockOptions = "tipBlockOptions"
-    case swipeToChangeDay = "tipSwipeToChangeDay"
-}

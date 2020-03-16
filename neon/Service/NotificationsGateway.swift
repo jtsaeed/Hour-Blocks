@@ -54,7 +54,9 @@ class NotificationsGateway {
         let content = UNMutableNotificationContent()
         content.title = "Upcoming Hour Block"
         content.body = "You have \(block.title!.lowercased()) coming up at \(block.formattedTime)"
+        #if os(iOS)
         content.sound = UNNotificationSound.init(named: UNNotificationSoundName("notification.aif"))
+        #endif
         
         var timeOffset = 10
         

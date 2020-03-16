@@ -10,11 +10,16 @@ import Foundation
 import UIKit
 import CoreData
 
+#if os(watchOS)
+import WatchKit
+#endif
+
 extension NSManagedObjectContext {
     
     static var current: NSManagedObjectContext {
         #if os(watchOS)
-        return NSManagedObjectContext()
+        let extensionDelegate = WKExtension.shared().delegate as! ExtensionDelegate
+        return extensionDelegate.persistentContainer.viewContext
         #else
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext

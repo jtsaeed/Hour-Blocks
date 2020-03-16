@@ -104,6 +104,16 @@
 		AB4EDB3E2418162A0025B284 /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1AF6F923F456F600425BB6 /* Suggestion.swift */; };
 		AB4EDB3F2418162F0025B284 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A666BCB23F06ADB003D6F1F /* ToDoItem.swift */; };
 		AB4EDB40241816340025B284 /* UserCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDE2EE82400234F00666D55 /* UserCalendar.swift */; };
+		AB4EDB4324181DEE0025B284 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB4EDB4224181DEE0025B284 /* CloudKit.framework */; };
+		AB4EDB4924181F1E0025B284 /* WatchScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4EDB4824181F1E0025B284 /* WatchScheduleView.swift */; };
+		AB50994E24183D4000647486 /* WatchAddBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB50994D24183D4000647486 /* WatchAddBlockView.swift */; };
+		AB8C364B241833FC007F6899 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C53D802369E62800BA4378 /* String+Ext.swift */; };
+		ABB22D06241820B900B19D57 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADE54E923F0B21F007FAE38 /* ScheduleViewModel.swift */; };
+		ABB22D07241820C800B19D57 /* CalendarGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B63CE0222491050026B9C2 /* CalendarGateway.swift */; };
+		ABB22D08241820DF00B19D57 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C1A08220C8E9D00344316 /* Date+Ext.swift */; };
+		ABB22D0B2418211200B19D57 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB22D0A2418211200B19D57 /* Tip.swift */; };
+		ABB22D0C2418211600B19D57 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB22D0A2418211200B19D57 /* Tip.swift */; };
+		ABB22D0E241821E200B19D57 /* NotificationsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E45BE1224BA3A9002D01AC /* NotificationsGateway.swift */; };
 		ABDE2EE72400000E00666D55 /* OtherSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDE2EE62400000E00666D55 /* OtherSettings.swift */; };
 		ABDE2EE92400234F00666D55 /* UserCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDE2EE82400234F00666D55 /* UserCalendar.swift */; };
 		ABEB33DB24013A9900E91190 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ABEB33DD24013A9900E91190 /* Localizable.strings */; };
@@ -288,7 +298,13 @@
 		AB4EDB252418136A0025B284 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AB4EDB272418136A0025B284 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB4EDB282418136A0025B284 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		AB4EDB4124181DEB0025B284 /* neonWatch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "neonWatch Extension.entitlements"; sourceTree = "<group>"; };
+		AB4EDB4224181DEE0025B284 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS6.1.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
+		AB4EDB4824181F1E0025B284 /* WatchScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchScheduleView.swift; sourceTree = "<group>"; };
+		AB50994D24183D4000647486 /* WatchAddBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchAddBlockView.swift; sourceTree = "<group>"; };
 		AB79573D2403F7F900EA0B2D /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		ABB22D0A2418211200B19D57 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
+		ABB22D0F241823AE00B19D57 /* neonWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = neonWatch.entitlements; sourceTree = "<group>"; };
 		ABDE2EE62400000E00666D55 /* OtherSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSettings.swift; sourceTree = "<group>"; };
 		ABDE2EE82400234F00666D55 /* UserCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCalendar.swift; sourceTree = "<group>"; };
 		ABEB33DC24013A9900E91190 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -332,6 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB4EDB35241814EA0025B284 /* SwiftDate in Frameworks */,
+				AB4EDB4324181DEE0025B284 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +502,7 @@
 				7A1AF6F923F456F600425BB6 /* Suggestion.swift */,
 				ABDE2EE62400000E00666D55 /* OtherSettings.swift */,
 				ABDE2EE82400234F00666D55 /* UserCalendar.swift */,
+				ABB22D0A2418211200B19D57 /* Tip.swift */,
 			);
 			name = Model;
 			path = App/Model;
@@ -573,6 +591,7 @@
 		AB4EDB06241813690025B284 /* neonWatch */ = {
 			isa = PBXGroup;
 			children = (
+				ABB22D0F241823AE00B19D57 /* neonWatch.entitlements */,
 				AB4EDB07241813690025B284 /* Interface.storyboard */,
 				AB4EDB0A241813690025B284 /* Assets.xcassets */,
 				AB4EDB0C241813690025B284 /* Info.plist */,
@@ -583,6 +602,8 @@
 		AB4EDB15241813690025B284 /* neonWatch Extension */ = {
 			isa = PBXGroup;
 			children = (
+				AB4EDB4A24181F230025B284 /* View */,
+				AB4EDB4124181DEB0025B284 /* neonWatch Extension.entitlements */,
 				AB4EDB16241813690025B284 /* ContentView.swift */,
 				AB4EDB18241813690025B284 /* HostingController.swift */,
 				AB4EDB1A241813690025B284 /* ExtensionDelegate.swift */,
@@ -605,9 +626,19 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		AB4EDB4A24181F230025B284 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AB4EDB4824181F1E0025B284 /* WatchScheduleView.swift */,
+				AB50994D24183D4000647486 /* WatchAddBlockView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		CBE1FB35023C3D4B2AC08158 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AB4EDB4224181DEE0025B284 /* CloudKit.framework */,
 				7A4E738323A01819008036ED /* CloudKit.framework */,
 				7A0CEDD9239C05CA00CB32BF /* StoreKit.framework */,
 				8BA23B93EB57D0A9C87A3846 /* Pods_neon.framework */,
@@ -978,6 +1009,7 @@
 				2304FA14235F29ED006DA688 /* SceneDelegate.swift in Sources */,
 				2304FA17235F2A2A006DA688 /* ContentView.swift in Sources */,
 				2304FA31235F304C006DA688 /* NSManagedObjectContext+Ext.swift in Sources */,
+				ABB22D0B2418211200B19D57 /* Tip.swift in Sources */,
 				ABDE2EE92400234F00666D55 /* UserCalendar.swift in Sources */,
 				7A735E4F238D591C00FE4D32 /* IconPicker.swift in Sources */,
 				7A1AF6FC23F5674000425BB6 /* AddHourBlockView.swift in Sources */,
@@ -1032,19 +1064,27 @@
 				AB4EDB3A241815580025B284 /* DomainsGateway.swift in Sources */,
 				AB4EDB37241815440025B284 /* HourBlock.swift in Sources */,
 				AB4EDB39241815500025B284 /* neon.xcdatamodeld in Sources */,
+				ABB22D08241820DF00B19D57 /* Date+Ext.swift in Sources */,
 				AB4EDB3E2418162A0025B284 /* Suggestion.swift in Sources */,
+				AB4EDB4924181F1E0025B284 /* WatchScheduleView.swift in Sources */,
+				ABB22D0C2418211600B19D57 /* Tip.swift in Sources */,
 				AB4EDB3D241815770025B284 /* AnalyticsGateway.swift in Sources */,
 				AB4EDB19241813690025B284 /* HostingController.swift in Sources */,
 				AB4EDB3F2418162F0025B284 /* ToDoItem.swift in Sources */,
+				ABB22D06241820B900B19D57 /* ScheduleViewModel.swift in Sources */,
 				AB4EDB17241813690025B284 /* ContentView.swift in Sources */,
 				AB4EDB382418154A0025B284 /* BlockDomain.swift in Sources */,
 				AB4EDB362418153B0025B284 /* NSManagedObjectContext+Ext.swift in Sources */,
+				ABB22D07241820C800B19D57 /* CalendarGateway.swift in Sources */,
 				AB4EDB3C241815630025B284 /* Int+Ext.swift in Sources */,
 				AB4EDB1D241813690025B284 /* NotificationController.swift in Sources */,
+				AB8C364B241833FC007F6899 /* String+Ext.swift in Sources */,
 				AB4EDB1B241813690025B284 /* ExtensionDelegate.swift in Sources */,
 				AB4EDB1F241813690025B284 /* NotificationView.swift in Sources */,
+				ABB22D0E241821E200B19D57 /* NotificationsGateway.swift in Sources */,
 				AB4EDB21241813690025B284 /* ComplicationController.swift in Sources */,
 				AB4EDB33241814990025B284 /* DataGateway.swift in Sources */,
+				AB50994E24183D4000647486 /* WatchAddBlockView.swift in Sources */,
 				AB4EDB3B2418155E0025B284 /* OtherSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1362,11 +1402,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = neonWatch/neonWatch.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				IBSC_MODULE = neonWatch_Extension;
 				INFOPLIST_FILE = neonWatch/Info.plist;
+				MARKETING_VERSION = 5.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1382,11 +1424,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = neonWatch/neonWatch.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				IBSC_MODULE = neonWatch_Extension;
 				INFOPLIST_FILE = neonWatch/Info.plist;
+				MARKETING_VERSION = 5.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1401,6 +1445,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "neonWatch Extension/neonWatch Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"neonWatch Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 577WSH643L;
@@ -1411,6 +1456,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 5.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -1425,6 +1471,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "neonWatch Extension/neonWatch Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"neonWatch Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 577WSH643L;
@@ -1435,6 +1482,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 5.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;

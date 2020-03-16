@@ -45,7 +45,9 @@ class CalendarGateway {
         event.title = newTitle
         
         do {
+            #if os(iOS)
             try eventStore.save(event, span: .thisEvent)
+            #endif
         } catch let error {
             print(error)
         }
@@ -53,7 +55,9 @@ class CalendarGateway {
     
     func clear(event: EKEvent) {
         do {
+            #if os(iOS)
             try eventStore.remove(event, span: .thisEvent)
+            #endif
         } catch let error {
             print(error)
         }
