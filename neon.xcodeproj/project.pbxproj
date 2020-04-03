@@ -15,7 +15,6 @@
 		2304FA27235F2FF2006DA688 /* NewSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA26235F2FF2006DA688 /* NewSheet.swift */; };
 		2304FA2B235F300A006DA688 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA2A235F300A006DA688 /* Card.swift */; };
 		2304FA2D235F301A006DA688 /* AddToBlockSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA2C235F301A006DA688 /* AddToBlockSheet.swift */; };
-		2304FA31235F304C006DA688 /* NSManagedObjectContext+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA30235F304C006DA688 /* NSManagedObjectContext+Ext.swift */; };
 		2304FA39235F315F006DA688 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA38235F315F006DA688 /* SettingsView.swift */; };
 		2304FA3B235F39E4006DA688 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2304FA3A235F39E4006DA688 /* LaunchScreen.storyboard */; };
 		2304FA43235F4AB4006DA688 /* HapticsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA42235F4AB4006DA688 /* HapticsGateway.swift */; };
@@ -79,41 +78,7 @@
 		AB28F05823FEA0E5008EFE46 /* TipBlockCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB28F05723FEA0E5008EFE46 /* TipBlockCard.swift */; };
 		AB2BDEE8240AA41A004C2074 /* FeedbackForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2BDEE7240AA41A004C2074 /* FeedbackForm.swift */; };
 		AB3376C423FDEBDB00D3C99E /* ScheduleViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3376C323FDEBDA00D3C99E /* ScheduleViewModelTests.swift */; };
-		AB4EDB09241813690025B284 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4EDB07241813690025B284 /* Interface.storyboard */; };
-		AB4EDB0B241813690025B284 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB4EDB0A241813690025B284 /* Assets.xcassets */; };
-		AB4EDB12241813690025B284 /* neonWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AB4EDB11241813690025B284 /* neonWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		AB4EDB17241813690025B284 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4EDB16241813690025B284 /* ContentView.swift */; };
-		AB4EDB19241813690025B284 /* HostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4EDB18241813690025B284 /* HostingController.swift */; };
-		AB4EDB1B241813690025B284 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4EDB1A241813690025B284 /* ExtensionDelegate.swift */; };
-		AB4EDB1D241813690025B284 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4EDB1C241813690025B284 /* NotificationController.swift */; };
-		AB4EDB1F241813690025B284 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4EDB1E241813690025B284 /* NotificationView.swift */; };
-		AB4EDB21241813690025B284 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4EDB20241813690025B284 /* ComplicationController.swift */; };
-		AB4EDB232418136A0025B284 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB4EDB222418136A0025B284 /* Assets.xcassets */; };
-		AB4EDB262418136A0025B284 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB4EDB252418136A0025B284 /* Preview Assets.xcassets */; };
-		AB4EDB2B2418136A0025B284 /* neonWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = AB4EDB05241813680025B284 /* neonWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		AB4EDB33241814990025B284 /* DataGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231392A822666FC400DB0ABF /* DataGateway.swift */; };
-		AB4EDB35241814EA0025B284 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = AB4EDB34241814EA0025B284 /* SwiftDate */; };
-		AB4EDB362418153B0025B284 /* NSManagedObjectContext+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA30235F304C006DA688 /* NSManagedObjectContext+Ext.swift */; };
-		AB4EDB37241815440025B284 /* HourBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA1C235F2D3B006DA688 /* HourBlock.swift */; };
-		AB4EDB382418154A0025B284 /* BlockDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1AF6F723F440ED00425BB6 /* BlockDomain.swift */; };
-		AB4EDB39241815500025B284 /* neon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEC2220A7840004F288F /* neon.xcdatamodeld */; };
-		AB4EDB3A241815580025B284 /* DomainsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA1E235F2F28006DA688 /* DomainsGateway.swift */; };
-		AB4EDB3B2418155E0025B284 /* OtherSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDE2EE62400000E00666D55 /* OtherSettings.swift */; };
-		AB4EDB3C241815630025B284 /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234DF2FA237A113200EB248A /* Int+Ext.swift */; };
-		AB4EDB3D241815770025B284 /* AnalyticsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232ED4DF228C93A4008FC4A0 /* AnalyticsGateway.swift */; };
-		AB4EDB3E2418162A0025B284 /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1AF6F923F456F600425BB6 /* Suggestion.swift */; };
-		AB4EDB3F2418162F0025B284 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A666BCB23F06ADB003D6F1F /* ToDoItem.swift */; };
-		AB4EDB40241816340025B284 /* UserCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDE2EE82400234F00666D55 /* UserCalendar.swift */; };
-		AB4EDB4324181DEE0025B284 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB4EDB4224181DEE0025B284 /* CloudKit.framework */; };
-		AB4EDB4924181F1E0025B284 /* WatchScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4EDB4824181F1E0025B284 /* WatchScheduleView.swift */; };
-		AB50994E24183D4000647486 /* WatchAddBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB50994D24183D4000647486 /* WatchAddBlockView.swift */; };
-		AB8C364B241833FC007F6899 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C53D802369E62800BA4378 /* String+Ext.swift */; };
-		ABB22D06241820B900B19D57 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADE54E923F0B21F007FAE38 /* ScheduleViewModel.swift */; };
-		ABB22D07241820C800B19D57 /* CalendarGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B63CE0222491050026B9C2 /* CalendarGateway.swift */; };
-		ABB22D08241820DF00B19D57 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C1A08220C8E9D00344316 /* Date+Ext.swift */; };
 		ABB22D0B2418211200B19D57 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB22D0A2418211200B19D57 /* Tip.swift */; };
-		ABB22D0C2418211600B19D57 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB22D0A2418211200B19D57 /* Tip.swift */; };
-		ABB22D0E241821E200B19D57 /* NotificationsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E45BE1224BA3A9002D01AC /* NotificationsGateway.swift */; };
 		ABDE2EE72400000E00666D55 /* OtherSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDE2EE62400000E00666D55 /* OtherSettings.swift */; };
 		ABDE2EE92400234F00666D55 /* UserCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDE2EE82400234F00666D55 /* UserCalendar.swift */; };
 		ABEB33DB24013A9900E91190 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ABEB33DD24013A9900E91190 /* Localizable.strings */; };
@@ -136,20 +101,6 @@
 			remoteGlobalIDString = 2338BEB7220A7840004F288F;
 			remoteInfo = neon;
 		};
-		AB4EDB13241813690025B284 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2338BEB0220A7840004F288F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AB4EDB10241813690025B284;
-			remoteInfo = "neonWatch Extension";
-		};
-		AB4EDB292418136A0025B284 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2338BEB0220A7840004F288F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AB4EDB04241813680025B284;
-			remoteInfo = neonWatch;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -169,7 +120,6 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				AB4EDB2B2418136A0025B284 /* neonWatch.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -184,17 +134,6 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AB4EDB2E2418136A0025B284 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				AB4EDB12241813690025B284 /* neonWatch Extension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -206,7 +145,6 @@
 		2304FA26235F2FF2006DA688 /* NewSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSheet.swift; sourceTree = "<group>"; };
 		2304FA2A235F300A006DA688 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		2304FA2C235F301A006DA688 /* AddToBlockSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToBlockSheet.swift; sourceTree = "<group>"; };
-		2304FA30235F304C006DA688 /* NSManagedObjectContext+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Ext.swift"; sourceTree = "<group>"; };
 		2304FA38235F315F006DA688 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2304FA3A235F39E4006DA688 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2304FA42235F4AB4006DA688 /* HapticsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsGateway.swift; sourceTree = "<group>"; };
@@ -283,11 +221,10 @@
 		AB28F05723FEA0E5008EFE46 /* TipBlockCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipBlockCard.swift; sourceTree = "<group>"; };
 		AB2BDEE7240AA41A004C2074 /* FeedbackForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackForm.swift; sourceTree = "<group>"; };
 		AB3376C323FDEBDA00D3C99E /* ScheduleViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModelTests.swift; sourceTree = "<group>"; };
-		AB4EDB05241813680025B284 /* neonWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = neonWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB4EDB05241813680025B284 /* neonWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = neonWatch.app; path = "/Users/jtsaeed/Documents/Brand Work/Hour Blocks/Projects/neon/build/Debug-watchos/neonWatch.app"; sourceTree = "<absolute>"; };
 		AB4EDB08241813690025B284 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		AB4EDB0A241813690025B284 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB4EDB0C241813690025B284 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AB4EDB11241813690025B284 /* neonWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "neonWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB4EDB16241813690025B284 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AB4EDB18241813690025B284 /* HostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingController.swift; sourceTree = "<group>"; };
 		AB4EDB1A241813690025B284 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
@@ -343,15 +280,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AB4EDB0E241813690025B284 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AB4EDB35241814EA0025B284 /* SwiftDate in Frameworks */,
-				AB4EDB4324181DEE0025B284 /* CloudKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -359,7 +287,6 @@
 			isa = PBXGroup;
 			children = (
 				234C1A08220C8E9D00344316 /* Date+Ext.swift */,
-				2304FA30235F304C006DA688 /* NSManagedObjectContext+Ext.swift */,
 				23C53D802369E62800BA4378 /* String+Ext.swift */,
 				234DF2FA237A113200EB248A /* Int+Ext.swift */,
 				7A735E50238D6E5A00FE4D32 /* Array+Ext.swift */,
@@ -393,6 +320,7 @@
 				2338BEB9220A7840004F288F /* Products */,
 				4B7EB119015E82801222CD3A /* Pods */,
 				CBE1FB35023C3D4B2AC08158 /* Frameworks */,
+				AB3AD7212437462600C6D2B3 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -402,8 +330,6 @@
 				2338BEB8220A7840004F288F /* neon.app */,
 				2338BECF220A7841004F288F /* neonTests.xctest */,
 				2338BEDA220A7841004F288F /* neonUITests.xctest */,
-				AB4EDB05241813680025B284 /* neonWatch.app */,
-				AB4EDB11241813690025B284 /* neonWatch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -588,6 +514,14 @@
 			path = SubBlocks;
 			sourceTree = "<group>";
 		};
+		AB3AD7212437462600C6D2B3 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				AB4EDB05241813680025B284 /* neonWatch.app */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		AB4EDB06241813690025B284 /* neonWatch */ = {
 			isa = PBXGroup;
 			children = (
@@ -664,12 +598,10 @@
 				23BA59672242B0C400AE45DE /* Embed Frameworks */,
 				2395A95C224AE1750007D6F2 /* Embed App Extensions */,
 				2395A98A224AE78E0007D6F2 /* Embed Watch Content */,
-				90C31C9EC38AAEDA9222B7C3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				AB4EDB2A2418136A0025B284 /* PBXTargetDependency */,
 			);
 			name = neon;
 			packageProductDependencies = (
@@ -718,43 +650,6 @@
 			productReference = 2338BEDA220A7841004F288F /* neonUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		AB4EDB04241813680025B284 /* neonWatch */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AB4EDB322418136A0025B284 /* Build configuration list for PBXNativeTarget "neonWatch" */;
-			buildPhases = (
-				AB4EDB03241813680025B284 /* Resources */,
-				AB4EDB2E2418136A0025B284 /* Embed App Extensions */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				AB4EDB14241813690025B284 /* PBXTargetDependency */,
-			);
-			name = neonWatch;
-			productName = neonWatch;
-			productReference = AB4EDB05241813680025B284 /* neonWatch.app */;
-			productType = "com.apple.product-type.application.watchapp2";
-		};
-		AB4EDB10241813690025B284 /* neonWatch Extension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AB4EDB312418136A0025B284 /* Build configuration list for PBXNativeTarget "neonWatch Extension" */;
-			buildPhases = (
-				AB4EDB0D241813690025B284 /* Sources */,
-				AB4EDB0E241813690025B284 /* Frameworks */,
-				AB4EDB0F241813690025B284 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "neonWatch Extension";
-			packageProductDependencies = (
-				AB4EDB34241814EA0025B284 /* SwiftDate */,
-			);
-			productName = "neonWatch Extension";
-			productReference = AB4EDB11241813690025B284 /* neonWatch Extension.appex */;
-			productType = "com.apple.product-type.watchkit2-extension";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -798,12 +693,6 @@
 						LastSwiftMigration = 1020;
 						TestTargetID = 2338BEB7220A7840004F288F;
 					};
-					AB4EDB04241813680025B284 = {
-						CreatedOnToolsVersion = 11.3.1;
-					};
-					AB4EDB10241813690025B284 = {
-						CreatedOnToolsVersion = 11.3.1;
-					};
 				};
 			};
 			buildConfigurationList = 2338BEB3220A7840004F288F /* Build configuration list for PBXProject "neon" */;
@@ -829,8 +718,6 @@
 				2338BEB7220A7840004F288F /* neon */,
 				2338BECE220A7841004F288F /* neonTests */,
 				2338BED9220A7841004F288F /* neonUITests */,
-				AB4EDB04241813680025B284 /* neonWatch */,
-				AB4EDB10241813690025B284 /* neonWatch Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -866,24 +753,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AB4EDB03241813680025B284 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AB4EDB0B241813690025B284 /* Assets.xcassets in Resources */,
-				AB4EDB09241813690025B284 /* Interface.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AB4EDB0F241813690025B284 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AB4EDB262418136A0025B284 /* Preview Assets.xcassets in Resources */,
-				AB4EDB232418136A0025B284 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -907,23 +776,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		90C31C9EC38AAEDA9222B7C3 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-neon/Pods-neon-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-neon/Pods-neon-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-neon/Pods-neon-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D08009ACCAB2FA3EEED83FA3 /* [CP] Check Pods Manifest.lock */ = {
@@ -1008,7 +860,6 @@
 				7A666BCA23F06AD2003D6F1F /* ToDoCard.swift in Sources */,
 				2304FA14235F29ED006DA688 /* SceneDelegate.swift in Sources */,
 				2304FA17235F2A2A006DA688 /* ContentView.swift in Sources */,
-				2304FA31235F304C006DA688 /* NSManagedObjectContext+Ext.swift in Sources */,
 				ABB22D0B2418211200B19D57 /* Tip.swift in Sources */,
 				ABDE2EE92400234F00666D55 /* UserCalendar.swift in Sources */,
 				7A735E4F238D591C00FE4D32 /* IconPicker.swift in Sources */,
@@ -1056,39 +907,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AB4EDB0D241813690025B284 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AB4EDB40241816340025B284 /* UserCalendar.swift in Sources */,
-				AB4EDB3A241815580025B284 /* DomainsGateway.swift in Sources */,
-				AB4EDB37241815440025B284 /* HourBlock.swift in Sources */,
-				AB4EDB39241815500025B284 /* neon.xcdatamodeld in Sources */,
-				ABB22D08241820DF00B19D57 /* Date+Ext.swift in Sources */,
-				AB4EDB3E2418162A0025B284 /* Suggestion.swift in Sources */,
-				AB4EDB4924181F1E0025B284 /* WatchScheduleView.swift in Sources */,
-				ABB22D0C2418211600B19D57 /* Tip.swift in Sources */,
-				AB4EDB3D241815770025B284 /* AnalyticsGateway.swift in Sources */,
-				AB4EDB19241813690025B284 /* HostingController.swift in Sources */,
-				AB4EDB3F2418162F0025B284 /* ToDoItem.swift in Sources */,
-				ABB22D06241820B900B19D57 /* ScheduleViewModel.swift in Sources */,
-				AB4EDB17241813690025B284 /* ContentView.swift in Sources */,
-				AB4EDB382418154A0025B284 /* BlockDomain.swift in Sources */,
-				AB4EDB362418153B0025B284 /* NSManagedObjectContext+Ext.swift in Sources */,
-				ABB22D07241820C800B19D57 /* CalendarGateway.swift in Sources */,
-				AB4EDB3C241815630025B284 /* Int+Ext.swift in Sources */,
-				AB4EDB1D241813690025B284 /* NotificationController.swift in Sources */,
-				AB8C364B241833FC007F6899 /* String+Ext.swift in Sources */,
-				AB4EDB1B241813690025B284 /* ExtensionDelegate.swift in Sources */,
-				AB4EDB1F241813690025B284 /* NotificationView.swift in Sources */,
-				ABB22D0E241821E200B19D57 /* NotificationsGateway.swift in Sources */,
-				AB4EDB21241813690025B284 /* ComplicationController.swift in Sources */,
-				AB4EDB33241814990025B284 /* DataGateway.swift in Sources */,
-				AB50994E24183D4000647486 /* WatchAddBlockView.swift in Sources */,
-				AB4EDB3B2418155E0025B284 /* OtherSettings.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1101,16 +919,6 @@
 			isa = PBXTargetDependency;
 			target = 2338BEB7220A7840004F288F /* neon */;
 			targetProxy = 2338BEDB220A7841004F288F /* PBXContainerItemProxy */;
-		};
-		AB4EDB14241813690025B284 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AB4EDB10241813690025B284 /* neonWatch Extension */;
-			targetProxy = AB4EDB13241813690025B284 /* PBXContainerItemProxy */;
-		};
-		AB4EDB2A2418136A0025B284 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AB4EDB04241813680025B284 /* neonWatch */;
-			targetProxy = AB4EDB292418136A0025B284 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1259,13 +1067,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A3593EBEBDFB2F7E14F71C3D /* Pods-neon.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1287,13 +1093,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3090C3879864096A7AB572CC /* Pods-neon.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1397,102 +1201,6 @@
 			};
 			name = Release;
 		};
-		AB4EDB2C2418136A0025B284 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = neonWatch/neonWatch.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 577WSH643L;
-				IBSC_MODULE = neonWatch_Extension;
-				INFOPLIST_FILE = neonWatch/Info.plist;
-				MARKETING_VERSION = 5.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.1;
-			};
-			name = Debug;
-		};
-		AB4EDB2D2418136A0025B284 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = neonWatch/neonWatch.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 577WSH643L;
-				IBSC_MODULE = neonWatch_Extension;
-				INFOPLIST_FILE = neonWatch/Info.plist;
-				MARKETING_VERSION = 5.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.1;
-			};
-			name = Release;
-		};
-		AB4EDB2F2418136A0025B284 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_ENTITLEMENTS = "neonWatch Extension/neonWatch Extension.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"neonWatch Extension/Preview Content\"";
-				DEVELOPMENT_TEAM = 577WSH643L;
-				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "neonWatch Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 5.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.1;
-			};
-			name = Debug;
-		};
-		AB4EDB302418136A0025B284 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_ENTITLEMENTS = "neonWatch Extension/neonWatch Extension.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"neonWatch Extension/Preview Content\"";
-				DEVELOPMENT_TEAM = 577WSH643L;
-				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "neonWatch Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 5.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.1;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1532,24 +1240,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AB4EDB312418136A0025B284 /* Build configuration list for PBXNativeTarget "neonWatch Extension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AB4EDB2F2418136A0025B284 /* Debug */,
-				AB4EDB302418136A0025B284 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		AB4EDB322418136A0025B284 /* Build configuration list for PBXNativeTarget "neonWatch" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AB4EDB2C2418136A0025B284 /* Debug */,
-				AB4EDB2D2418136A0025B284 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -1578,11 +1268,6 @@
 			productName = SwiftyStoreKit;
 		};
 		7ADE54EC23F0B898007FAE38 /* SwiftDate */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7ADE54EB23F0B898007FAE38 /* XCRemoteSwiftPackageReference "SwiftDate" */;
-			productName = SwiftDate;
-		};
-		AB4EDB34241814EA0025B284 /* SwiftDate */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7ADE54EB23F0B898007FAE38 /* XCRemoteSwiftPackageReference "SwiftDate" */;
 			productName = SwiftDate;

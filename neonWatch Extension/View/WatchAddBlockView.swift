@@ -11,6 +11,6 @@ import SwiftUI
 struct WatchAddBlockView: View {
     
     var body: some View {
-        
+        Text("Test")
     }
 }
