@@ -26,7 +26,7 @@ struct AddHourBlockView: View {
         NavigationView {
             VStack(alignment: .leading) {
                 NeonTextField(title: $title,
-                              color: Color(isSubBlock ? "secondaryLight" : "primaryLight"),
+                              color: Color("primaryLight"),
                               didReturn: addBlock)
                 Text("Suggestions")
                     .font(.system(size: 28, weight: .semibold, design: .default))
@@ -52,7 +52,7 @@ struct AddHourBlockView: View {
                 Text("Add")
             }))
         }.navigationViewStyle(StackNavigationViewStyle())
-        .accentColor(Color(isSubBlock ? "secondary" : "primary"))
+        .accentColor(Color("primary"))
         
     }
    
@@ -105,7 +105,6 @@ private struct SuggestionCard: View {
                            subtitle: self.suggestion.reason.uppercased())
                 Spacer()
                 IconButton(iconName: "add_icon",
-                           pro: self.isSubBlock,
                            action: self.add)
             }
         }

@@ -24,15 +24,15 @@ struct SubBlockCard: View {
     var body: some View {
         SwipeableSubBlockCard(offset: $offset, swiped: $isSwiped, hourBlock: currentHourBlock, subBlock: currentSubBlock) {
             HStack(spacing: 28) {
+                SwipeOption(iconName: "paintbrush",
+                            primaryColor: Color("primary"),
+                            secondaryColor: Color("primaryLight"),
+                            action: self.changeIcon)
                 SwipeOption(iconName: "pencil",
-                            primaryColor: Color("secondary"),
-                            secondaryColor: Color("secondaryLight"),
+                            primaryColor: Color("primary"),
+                            secondaryColor: Color("primaryLight"),
                             weight: .bold,
                             action: self.rename)
-                SwipeOption(iconName: "paintbrush",
-                            primaryColor: Color("secondary"),
-                            secondaryColor: Color("secondaryLight"),
-                            action: self.changeIcon)
                 SwipeOption(iconName: "trash",
                             primaryColor: Color("urgent"),
                             secondaryColor: Color("urgentLight"),
@@ -109,18 +109,14 @@ struct EmptySubBlockCard: View {
                            subtitle: NSLocalizedString("Add a new", comment: ""),
                            titleColor: Color("subtitle"))
                 Spacer()
-                IconButton(iconName: "add_icon", pro: true, action: self.present)
+                IconButton(iconName: "add_icon", action: self.present)
                     .sheet(isPresented: self.$isPresented, content: {
-                        if DataGateway.shared.isPro() {
-                            AddHourBlockView(isPresented: self.$isPresented,
-                                             hour: self.currentHourBlock.hour,
-                                             time: self.currentHourBlock.formattedTime,
-                                             day: self.currentHourBlock.day,
-                                             isSubBlock: true)
-                            .environmentObject(self.viewModel)
-                        } else {
-                            ProPurchaseView(showPurchasePro: self.$isPresented)
-                        }
+                        AddHourBlockView(isPresented: self.$isPresented,
+                                         hour: self.currentHourBlock.hour,
+                                         time: self.currentHourBlock.formattedTime,
+                                         day: self.currentHourBlock.day,
+                                         isSubBlock: true)
+                        .environmentObject(self.viewModel)
                     })
             }
         }

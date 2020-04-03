@@ -41,7 +41,6 @@ class DomainsGateway {
         var rating = 0.0
         
         let embedding = NLEmbedding.wordEmbedding(for: .english)
-        if embedding == nil { AnalyticsGateway.shared.logMLFailed() }
         
         for domain in BlockDomain.allCases {
             // Check if the word directly matches the keyword of the domain in the loop

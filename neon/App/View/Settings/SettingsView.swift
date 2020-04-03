@@ -47,14 +47,6 @@ struct SettingsView: View {
                             .environmentObject(self.scheduleViewModel)
                     })
                     
-                    SettingsCard(title: NSLocalizedString("Feedback", comment: ""),
-                                 subtitle: NSLocalizedString("Provide valuable", comment: ""),
-                                 iconName: "how_to_vote",
-                                 tapped: presentFeedback)
-                    .sheet(isPresented: $isFeedbackPresented) {
-                        FeedbackView(isPresented: self.$isFeedbackPresented)
-                    }
-                    
                     SettingsCard(title: "Twitter",
                                  subtitle: NSLocalizedString("Follow me on", comment: ""),
                                  iconName: "twitter_icon",
@@ -82,7 +74,6 @@ struct SettingsView: View {
     
     func presentCalendars() { isCalendarsPresented = true }
     func presentOtherStuff() { isOtherStuffPresented = true }
-    func presentFeedback() { isFeedbackPresented = true }
     func presentPrivacyPolicy() { isPrivacyPolicyPresented = true }
 }
 

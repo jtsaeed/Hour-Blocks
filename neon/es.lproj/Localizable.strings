@@ -113,6 +113,9 @@
 "tipSwipeBlockOptions" = "Desliza Block para opciones";
 "tipBlockOptions" = "Mantén Block para más opciones";
 "tipSwipeToChangeDay" = "Desliza el título para cambiar de dia";
+"tipSwipeBlockOptionsMac" = "Right click a Block for options";
+"tipBlockOptionsMac" = "Keep adding blocks for suggestions";
+"tipSwipeToChangeDayMac" = "Tap the calendar icon to change days";
 
 // MARK: - To Do List
 

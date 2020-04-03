@@ -40,7 +40,7 @@ struct OtherSettingsView: View {
                                title: NSLocalizedString("Reminder Timer", comment: ""),
                                description: NSLocalizedString("The length of time before a block's reminder comes through (doesn't change reminders already set)", comment: ""),
                                options: ["15m", "10m", "5m"])
-                if DataGateway.shared.isPro() && UIApplication.shared.supportsAlternateIcons {
+                if UIApplication.shared.supportsAlternateIcons {
                     IconChooserCard()
                 }
             }

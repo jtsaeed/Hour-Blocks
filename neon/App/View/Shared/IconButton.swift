@@ -11,7 +11,6 @@ import SwiftUI
 struct IconButton: View {
     
     let iconName: String
-    var pro = false
     let action: () -> Void
     
     var body: some View {
@@ -19,11 +18,11 @@ struct IconButton: View {
             ZStack {
                 Circle()
                     .frame(width: 40, height: 40)
-                    .foregroundColor(Color(pro ? "secondaryLight" : "primaryLight"))
+                    .foregroundColor(Color("primaryLight"))
                 Image(iconName)
                     .resizable()
                     .frame(width: 20, height: 20)
-                    .foregroundColor(Color(pro ? "secondary" : "primary"))
+                    .foregroundColor(Color("primary"))
             }
         }
     }

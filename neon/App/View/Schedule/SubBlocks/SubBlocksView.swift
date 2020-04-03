@@ -31,7 +31,7 @@ struct SubBlocksView: View {
                 Text("Close")
             }))
         }.navigationViewStyle(StackNavigationViewStyle())
-        .accentColor(Color("secondary"))
+        .accentColor(Color("primary"))
     }
     
     func dismiss() {

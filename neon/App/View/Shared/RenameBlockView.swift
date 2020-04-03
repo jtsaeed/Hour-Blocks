@@ -22,7 +22,7 @@ struct RenameBlockView: View {
         NavigationView {
             VStack(alignment: .leading) {
                 NeonTextField(title: $title,
-                              color: currentBlock.isSubBlock ? Color("secondaryLight") : Color("primaryLight"),
+                              color: Color("primaryLight"),
                               didReturn: renameBlock)
                 Spacer()
             }
@@ -32,7 +32,7 @@ struct RenameBlockView: View {
             }), trailing: Button(action: renameBlock, label: {
                 Text("Save")
             }))
-        }.accentColor(Color(currentBlock.isSubBlock ? "secondary" : "primary"))
+        }.accentColor(Color("primary"))
         .navigationViewStyle(StackNavigationViewStyle())
         .onAppear {
             self.title = self.currentBlock.title!

@@ -26,15 +26,15 @@ struct HourBlockCard: View {
     var body: some View {
         SwipeableHourBlockCard(offset: $offset, swiped: $isSwiped, hourBlock: hourBlock) {
             HStack(spacing: 28) {
+                SwipeOption(iconName: "rectangle.grid.1x2",
+                            primaryColor: Color("primary"),
+                            secondaryColor: Color("primaryLight"),
+                            action: self.presentSubBlocksView)
                 SwipeOption(iconName: "pencil",
                             primaryColor: Color("primary"),
                             secondaryColor: Color("primaryLight"),
                             weight: .bold,
                             action: self.rename)
-                SwipeOption(iconName: "rectangle.grid.1x2",
-                            primaryColor: Color("secondary"),
-                            secondaryColor: Color("secondaryLight"),
-                            action: self.presentSubBlocksView)
                 SwipeOption(iconName: "trash",
                             primaryColor: Color("urgent"),
                             secondaryColor: Color("urgentLight"),
@@ -149,16 +149,10 @@ struct HourBlockCardLabels: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             HStack(spacing: 8) {
-                if currentBlock.hasReminder {
-                    Circle()
-                        .frame(width: 8, height: 8)
-                        .foregroundColor(Color("primary"))
-                        .opacity(colorScheme == .light ? 0.5 : 0.8)
-                }
                 if viewModel.currentSubBlocks.filter({ $0.hour == currentBlock.hour }).count > 0 {
                     Circle()
                         .frame(width: 8, height: 8)
-                        .foregroundColor(Color("secondary"))
+                        .foregroundColor(Color("primary"))
                         .opacity(colorScheme == .light ? 0.5 : 0.9)
                 }
                 Text(currentBlock.formattedTime.uppercased())
@@ -195,12 +189,8 @@ private struct HourBlockCardContextMenu: View {
                     Image(systemName: "rectangle.grid.1x2")
                 }
                 .sheet(isPresented: self.$isSubBlocksPresented, content: {
-                    if DataGateway.shared.isPro() {
-                        SubBlocksView(isPresented: self.$isSubBlocksPresented, hourBlock: self.currentBlock)
-                        .environmentObject(self.viewModel)
-                    } else {
-                        ProPurchaseView(showPurchasePro: self.$isSubBlocksPresented)
-                    }
+                    SubBlocksView(isPresented: self.$isSubBlocksPresented, hourBlock: self.currentBlock)
+                    .environmentObject(self.viewModel)
                 })
             }
             Button(action: rename) {

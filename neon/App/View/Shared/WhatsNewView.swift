@@ -18,10 +18,10 @@ struct WhatsNewView: View {
                 .padding(.bottom, 32)
             
             VStack(alignment: .leading, spacing: 16) {
-                WhatsNewItem(title: "Swipe For Options ⚡️",
-                             content: "Swipe across any card in the Schedule or To Do List to quickly access popular options")
+                WhatsNewItem(title: "Totally Free 🎉",
+                             content: "With COVID-19 forcing many to now work from home, Sub Blocks and alternate app icons are now free to help support everybody affected")
                 WhatsNewItem(title: "Minor Improvements ✨",
-                             content: "Fixed a number of small bugs")
+                             content: "Fixed a few small bugs")
             }
             
             Spacer()

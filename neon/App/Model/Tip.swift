@@ -10,7 +10,13 @@ import Foundation
 
 enum Tip: String {
     
+    #if targetEnvironment(macCatalyst)
+    case swipeBlockOptions = "tipSwipeBlockOptionsMac"
+    case blockOptions = "tipBlockOptionsMac"
+    case swipeToChangeDay = "tipSwipeToChangeDayMac"
+    #else
     case swipeBlockOptions = "tipSwipeBlockOptions"
     case blockOptions = "tipBlockOptions"
     case swipeToChangeDay = "tipSwipeToChangeDay"
+    #endif
 }

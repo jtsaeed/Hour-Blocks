@@ -144,21 +144,14 @@ private struct AddToBlockAddButton: View {
     @State var isPresented = false
     
     var body: some View {
-        IconButton(iconName: "add_icon", pro: subBlock, action: add)
-            .sheet(isPresented: $isPresented) {
-                ProPurchaseView(showPurchasePro: self.$isPresented)
-            }
+        IconButton(iconName: "add_icon", action: add)
     }
     
     func add() {
         HapticsGateway.shared.triggerAddBlockHaptic()
         
         if subBlock {
-            if DataGateway.shared.isPro() {
-                self.didAddToSubBlock()
-            } else {
-                isPresented = true
-            }
+            self.didAddToSubBlock()
         } else {
             self.didAddToBlock()
         }
