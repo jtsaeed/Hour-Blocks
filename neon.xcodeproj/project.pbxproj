@@ -222,26 +222,9 @@
 		AB2BDEE7240AA41A004C2074 /* FeedbackForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackForm.swift; sourceTree = "<group>"; };
 		AB3376C323FDEBDA00D3C99E /* ScheduleViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModelTests.swift; sourceTree = "<group>"; };
 		AB4EDB05241813680025B284 /* neonWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = neonWatch.app; path = "/Users/jtsaeed/Documents/Brand Work/Hour Blocks/Projects/neon/build/Debug-watchos/neonWatch.app"; sourceTree = "<absolute>"; };
-		AB4EDB08241813690025B284 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		AB4EDB0A241813690025B284 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AB4EDB0C241813690025B284 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AB4EDB16241813690025B284 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		AB4EDB18241813690025B284 /* HostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingController.swift; sourceTree = "<group>"; };
-		AB4EDB1A241813690025B284 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
-		AB4EDB1C241813690025B284 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		AB4EDB1E241813690025B284 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
-		AB4EDB20241813690025B284 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
-		AB4EDB222418136A0025B284 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AB4EDB252418136A0025B284 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		AB4EDB272418136A0025B284 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AB4EDB282418136A0025B284 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		AB4EDB4124181DEB0025B284 /* neonWatch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "neonWatch Extension.entitlements"; sourceTree = "<group>"; };
 		AB4EDB4224181DEE0025B284 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS6.1.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
-		AB4EDB4824181F1E0025B284 /* WatchScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchScheduleView.swift; sourceTree = "<group>"; };
-		AB50994D24183D4000647486 /* WatchAddBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchAddBlockView.swift; sourceTree = "<group>"; };
 		AB79573D2403F7F900EA0B2D /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		ABB22D0A2418211200B19D57 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
-		ABB22D0F241823AE00B19D57 /* neonWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = neonWatch.entitlements; sourceTree = "<group>"; };
 		ABDE2EE62400000E00666D55 /* OtherSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSettings.swift; sourceTree = "<group>"; };
 		ABDE2EE82400234F00666D55 /* UserCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCalendar.swift; sourceTree = "<group>"; };
 		ABEB33DC24013A9900E91190 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -315,8 +298,6 @@
 				2338BEBA220A7840004F288F /* neon */,
 				2338BED2220A7841004F288F /* neonTests */,
 				2338BEDD220A7841004F288F /* neonUITests */,
-				AB4EDB06241813690025B284 /* neonWatch */,
-				AB4EDB15241813690025B284 /* neonWatch Extension */,
 				2338BEB9220A7840004F288F /* Products */,
 				4B7EB119015E82801222CD3A /* Pods */,
 				CBE1FB35023C3D4B2AC08158 /* Frameworks */,
@@ -520,53 +501,6 @@
 				AB4EDB05241813680025B284 /* neonWatch.app */,
 			);
 			name = "Recovered References";
-			sourceTree = "<group>";
-		};
-		AB4EDB06241813690025B284 /* neonWatch */ = {
-			isa = PBXGroup;
-			children = (
-				ABB22D0F241823AE00B19D57 /* neonWatch.entitlements */,
-				AB4EDB07241813690025B284 /* Interface.storyboard */,
-				AB4EDB0A241813690025B284 /* Assets.xcassets */,
-				AB4EDB0C241813690025B284 /* Info.plist */,
-			);
-			path = neonWatch;
-			sourceTree = "<group>";
-		};
-		AB4EDB15241813690025B284 /* neonWatch Extension */ = {
-			isa = PBXGroup;
-			children = (
-				AB4EDB4A24181F230025B284 /* View */,
-				AB4EDB4124181DEB0025B284 /* neonWatch Extension.entitlements */,
-				AB4EDB16241813690025B284 /* ContentView.swift */,
-				AB4EDB18241813690025B284 /* HostingController.swift */,
-				AB4EDB1A241813690025B284 /* ExtensionDelegate.swift */,
-				AB4EDB1C241813690025B284 /* NotificationController.swift */,
-				AB4EDB1E241813690025B284 /* NotificationView.swift */,
-				AB4EDB20241813690025B284 /* ComplicationController.swift */,
-				AB4EDB222418136A0025B284 /* Assets.xcassets */,
-				AB4EDB272418136A0025B284 /* Info.plist */,
-				AB4EDB282418136A0025B284 /* PushNotificationPayload.apns */,
-				AB4EDB242418136A0025B284 /* Preview Content */,
-			);
-			path = "neonWatch Extension";
-			sourceTree = "<group>";
-		};
-		AB4EDB242418136A0025B284 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				AB4EDB252418136A0025B284 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		AB4EDB4A24181F230025B284 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				AB4EDB4824181F1E0025B284 /* WatchScheduleView.swift */,
-				AB50994D24183D4000647486 /* WatchAddBlockView.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		CBE1FB35023C3D4B2AC08158 /* Frameworks */ = {
@@ -923,14 +857,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		AB4EDB07241813690025B284 /* Interface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AB4EDB08241813690025B284 /* Base */,
-			);
-			name = Interface.storyboard;
-			sourceTree = "<group>";
-		};
 		ABEB33DD24013A9900E91190 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1079,7 +1005,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.2;
+				MARKETING_VERSION = 5.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1105,7 +1031,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.2;
+				MARKETING_VERSION = 5.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

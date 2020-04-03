@@ -60,11 +60,9 @@ struct SwipeableHourBlockCard<Content>: View where Content: View {
 
     var body: some View {
         ZStack(alignment: .trailing) {
-            if swiped {
                 options()
                 .opacity(Double(offset / -swipedCardOffset))
                 .offset(x: -swipedOptionsOffset, y: 0)
-            }
             
             Card {
                 HStack {
@@ -86,7 +84,7 @@ struct SwipeableHourBlockCard<Content>: View where Content: View {
                 offset = (drag.translation.width - swipedCardOffset)
             }
         } else {
-            if drag.translation.width < 0 {
+            if drag.translation.width < 0 && drag.translation.width > -swipedCardOffset {
                 offset = drag.translation.width
             }
         }
@@ -98,7 +96,7 @@ struct SwipeableHourBlockCard<Content>: View where Content: View {
                 HapticsGateway.shared.triggerSuccessfulSwipeHaptic()
                 swiped = false
                 withAnimation { self.offset = 0 }
-            } else {
+            } else if drag.predictedEndTranslation.width > 0 {
                 HapticsGateway.shared.triggerFailedSwipeHaptic()
                 withAnimation { self.offset = -swipedCardOffset }
             }
@@ -107,7 +105,7 @@ struct SwipeableHourBlockCard<Content>: View where Content: View {
                 HapticsGateway.shared.triggerSuccessfulSwipeHaptic()
                 swiped = true
                 withAnimation { self.offset = -swipedCardOffset }
-            } else {
+            } else if drag.predictedEndTranslation.width < 0 {
                 HapticsGateway.shared.triggerFailedSwipeHaptic()
                 withAnimation { self.offset = 0 }
             }
@@ -142,11 +140,9 @@ struct SwipeableSubBlockCard<Content>: View where Content: View {
 
     var body: some View {
         ZStack(alignment: .trailing) {
-            if swiped {
-                options()
-                .opacity(Double(offset / -swipedCardOffset))
-                .offset(x: -swipedOptionsOffset, y: 0)
-            }
+            options()
+            .opacity(Double(offset / -swipedCardOffset))
+            .offset(x: -swipedOptionsOffset, y: 0)
             
             Card {
                 HStack {
@@ -168,7 +164,7 @@ struct SwipeableSubBlockCard<Content>: View where Content: View {
                 offset = (drag.translation.width - swipedCardOffset)
             }
         } else {
-            if drag.translation.width < 0 {
+            if drag.translation.width < 0 && drag.translation.width > -swipedCardOffset {
                 offset = drag.translation.width
             }
         }
@@ -180,7 +176,7 @@ struct SwipeableSubBlockCard<Content>: View where Content: View {
                 HapticsGateway.shared.triggerSuccessfulSwipeHaptic()
                 swiped = false
                 withAnimation { self.offset = 0 }
-            } else {
+            } else if drag.predictedEndTranslation.width > 0 {
                 HapticsGateway.shared.triggerFailedSwipeHaptic()
                 withAnimation { self.offset = -swipedCardOffset }
             }
@@ -189,7 +185,7 @@ struct SwipeableSubBlockCard<Content>: View where Content: View {
                 HapticsGateway.shared.triggerSuccessfulSwipeHaptic()
                 swiped = true
                 withAnimation { self.offset = -swipedCardOffset }
-            } else {
+            } else if drag.predictedEndTranslation.width < 0 {
                 HapticsGateway.shared.triggerFailedSwipeHaptic()
                 withAnimation { self.offset = 0 }
             }
@@ -222,11 +218,9 @@ struct SwipeableToDoCard<Content>: View where Content: View {
 
     var body: some View {
         ZStack(alignment: .trailing) {
-            if swiped {
-                options()
-                .opacity(Double(offset / -swipedCardOffset))
-                .offset(x: -swipedOptionsOffset, y: 0)
-            }
+            options()
+            .opacity(Double(offset / -swipedCardOffset))
+            .offset(x: -swipedOptionsOffset, y: 0)
             
             Card {
                 CardLabels(title: self.toDoItem.title,
@@ -246,7 +240,7 @@ struct SwipeableToDoCard<Content>: View where Content: View {
                 offset = (drag.translation.width - swipedCardOffset)
             }
         } else {
-            if drag.translation.width < 0 {
+            if drag.translation.width < 0 && drag.translation.width > -swipedCardOffset {
                 offset = drag.translation.width
             }
         }
@@ -258,7 +252,7 @@ struct SwipeableToDoCard<Content>: View where Content: View {
                 HapticsGateway.shared.triggerSuccessfulSwipeHaptic()
                 swiped = false
                 withAnimation { self.offset = 0 }
-            } else {
+            } else if drag.predictedEndTranslation.width > 0 {
                 HapticsGateway.shared.triggerFailedSwipeHaptic()
                 withAnimation { self.offset = -swipedCardOffset }
             }
@@ -267,7 +261,7 @@ struct SwipeableToDoCard<Content>: View where Content: View {
                 HapticsGateway.shared.triggerSuccessfulSwipeHaptic()
                 swiped = true
                 withAnimation { self.offset = -swipedCardOffset }
-            } else {
+            } else if drag.predictedEndTranslation.width < 0 {
                 HapticsGateway.shared.triggerFailedSwipeHaptic()
                 withAnimation { self.offset = 0 }
             }

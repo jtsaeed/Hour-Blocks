@@ -179,7 +179,7 @@ private struct HourBlockCardContextMenu: View {
     
     let currentBlock: HourBlock
     
-    @State var isAddSubBlockPresented = false
+    @State var isSubBlocksPresented = false
     @State var isRenamePresented = false
     @State var isIconPickerPresented = false
     @State var isDuplicatePresented = false
@@ -190,20 +190,16 @@ private struct HourBlockCardContextMenu: View {
     var body: some View {
         VStack {
             if currentBlock.domain != .calendar {
-                Button(action: addSubBlock) {
+                Button(action: viewSubBlocks) {
                     Text("View Sub Blocks")
                     Image(systemName: "rectangle.grid.1x2")
                 }
-                .sheet(isPresented: self.$isAddSubBlockPresented, content: {
+                .sheet(isPresented: self.$isSubBlocksPresented, content: {
                     if DataGateway.shared.isPro() {
-                        AddHourBlockView(isPresented: self.$isAddSubBlockPresented,
-                                         hour: self.currentBlock.hour,
-                                         time: self.currentBlock.formattedTime,
-                                         day: self.currentBlock.day,
-                                         isSubBlock: true)
+                        SubBlocksView(isPresented: self.$isSubBlocksPresented, hourBlock: self.currentBlock)
                         .environmentObject(self.viewModel)
                     } else {
-                        ProPurchaseView(showPurchasePro: self.$isAddSubBlockPresented)
+                        ProPurchaseView(showPurchasePro: self.$isSubBlocksPresented)
                     }
                 })
             }
@@ -257,8 +253,8 @@ private struct HourBlockCardContextMenu: View {
         }
     }
     
-    func addSubBlock() {
-        isAddSubBlockPresented = true
+    func viewSubBlocks() {
+        isSubBlocksPresented = true
     }
     
     func rename() {

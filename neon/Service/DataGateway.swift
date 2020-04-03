@@ -6,13 +6,13 @@
 //  Copyright © 2019 James Saeed. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreData
 import SwiftDate
 
 struct DataGateway {
     
-    static let shared = DataGateway(NSManagedObjectContext.current)
+    static let shared = DataGateway((UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
     
     var managedObjectContext: NSManagedObjectContext
     
@@ -21,7 +21,7 @@ struct DataGateway {
     }
 
     let currentVersion = 5.2
-    let fullCurrentVersion = "5.2 beta 1"
+    let fullCurrentVersion = "5.2.1"
 }
 
 // MARK: - Blocks

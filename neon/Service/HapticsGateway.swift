@@ -27,11 +27,11 @@ class HapticsGateway {
     }
     
     func triggerFailedSwipeHaptic() {
-        UIImpactFeedbackGenerator(style: .rigid).impactOccurred(intensity: 0.3)
+        UIImpactFeedbackGenerator(style: .rigid).impactOccurred(intensity: 0.4)
     }
     
     func triggerSuccessfulSwipeHaptic() {
-        UIImpactFeedbackGenerator(style: .soft).impactOccurred(intensity: 0.4)
+        UIImpactFeedbackGenerator(style: .soft).impactOccurred(intensity: 0.5)
     }
     
     func triggerCompletionHaptic() {
