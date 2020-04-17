@@ -6,7 +6,7 @@ target 'neon' do
   use_frameworks!
 
   # Pods for neon
-  pod 'Firebase/Core'
+#  pod 'Firebase/Core'
 
   target 'neonTests' do
     inherit! :search_paths

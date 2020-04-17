@@ -18,10 +18,10 @@ struct WhatsNewView: View {
                 .padding(.bottom, 32)
             
             VStack(alignment: .leading, spacing: 16) {
-                WhatsNewItem(title: "Totally Free 🎉",
-                             content: "With COVID-19 forcing many to now work from home, Sub Blocks and alternate app icons are now free to help support everybody affected")
+                WhatsNewItem(title: "macOS App 💻",
+                             content: "Effortlessly take control of your day from your lap and your desk, with Hour Blocks on macOS")
                 WhatsNewItem(title: "Minor Improvements ✨",
-                             content: "Fixed a few small bugs")
+                             content: "You can now set your day to start from 12am within Settings")
             }
             
             Spacer()

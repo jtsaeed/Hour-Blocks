@@ -12,7 +12,7 @@ import SwiftDate
 
 struct DataGateway {
     
-    static let shared = DataGateway((UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
+    static let shared = DataGateway(NSManagedObjectContext.current)
     
     var managedObjectContext: NSManagedObjectContext
     
@@ -20,8 +20,8 @@ struct DataGateway {
         self.managedObjectContext = managedObjectContext
     }
 
-    let currentVersion = 5.3
-    let fullCurrentVersion = "5.3"
+    let currentVersion = 5.4
+    let fullCurrentVersion = "5.4"
 }
 
 // MARK: - Blocks
@@ -288,7 +288,7 @@ extension DataGateway {
     func getDayStartTime() -> Int {
         guard let dayStartSetting = getOtherSettings()?.dayStart else { return 2 }
         
-        return (dayStartSetting + 4)
+        return dayStartSetting == 0 ? dayStartSetting : (dayStartSetting + 4)
     }
     
     func isSystemClock12h() -> Bool {

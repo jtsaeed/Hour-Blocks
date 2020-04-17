@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 //import Firebase
-import SwiftyStoreKit
 
 @UIApplicationMain
 
@@ -19,30 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
 //        FirebaseApp.configure()
-        setupIAP()
         
         return true
-    }
-    
-    func setupIAP() {
-        #if os(iOS) || os(macOS)
-        SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
-            for purchase in purchases {
-                switch purchase.transaction.transactionState {
-                case .purchased, .restored:
-                    print("\(purchase.transaction.transactionState.debugDescription): \(purchase.productId)")
-                case .failed, .purchasing, .deferred:
-                    break // do nothing
-                @unknown default:
-                    break // do nothing
-                }
-            }
-        }
-
-        SwiftyStoreKit.shouldAddStorePaymentHandler = { payment, product in
-            return true
-        }
-        #endif
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

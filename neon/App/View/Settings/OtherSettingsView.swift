@@ -35,7 +35,7 @@ struct OtherSettingsView: View {
                 OtherStuffCard(value: $dayStartValue,
                                title: NSLocalizedString("Start of The Day", comment: ""),
                                description: NSLocalizedString("What time does your day start?", comment: ""),
-                               options: ["4", "5", "6", "7", "8"])
+                               options: ["12", "5", "6", "7", "8"])
                 OtherStuffCard(value: $reminderTimerValue,
                                title: NSLocalizedString("Reminder Timer", comment: ""),
                                description: NSLocalizedString("The length of time before a block's reminder comes through (doesn't change reminders already set)", comment: ""),
