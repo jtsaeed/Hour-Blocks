@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2338BEB7220A7840004F288F"
-               BuildableName = "neon.app"
-               BlueprintName = "neon"
+               BuildableName = "Hour Blocks.app"
+               BlueprintName = "Hour Blocks"
                ReferencedContainer = "container:Hour Blocks.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -31,8 +31,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2338BEB7220A7840004F288F"
-            BuildableName = "neon.app"
-            BlueprintName = "neon"
+            BuildableName = "Hour Blocks.app"
+            BlueprintName = "Hour Blocks"
             ReferencedContainer = "container:Hour Blocks.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -42,8 +42,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2338BECE220A7841004F288F"
-               BuildableName = "neonTests.xctest"
-               BlueprintName = "neonTests"
+               BuildableName = "Hour BlocksTests.xctest"
+               BlueprintName = "Hour BlocksTests"
                ReferencedContainer = "container:Hour Blocks.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -52,8 +52,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2338BED9220A7841004F288F"
-               BuildableName = "neonUITests.xctest"
-               BlueprintName = "neonUITests"
+               BuildableName = "Hour BlocksUITests.xctest"
+               BlueprintName = "Hour BlocksUITests"
                ReferencedContainer = "container:Hour Blocks.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -74,8 +74,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2338BEB7220A7840004F288F"
-            BuildableName = "neon.app"
-            BlueprintName = "neon"
+            BuildableName = "Hour Blocks.app"
+            BlueprintName = "Hour Blocks"
             ReferencedContainer = "container:Hour Blocks.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -91,8 +91,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2338BEB7220A7840004F288F"
-            BuildableName = "neon.app"
-            BlueprintName = "neon"
+            BuildableName = "Hour Blocks.app"
+            BlueprintName = "Hour Blocks"
             ReferencedContainer = "container:Hour Blocks.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

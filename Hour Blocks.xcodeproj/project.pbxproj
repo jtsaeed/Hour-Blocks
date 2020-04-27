@@ -145,15 +145,15 @@
 		232ED4DF228C93A4008FC4A0 /* AnalyticsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsGateway.swift; sourceTree = "<group>"; };
 		23356ED42256676E00541A60 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2336981E23818D52006ACD1E /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
-		2338BEB8220A7840004F288F /* neon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = neon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2338BEB8220A7840004F288F /* Hour Blocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hour Blocks.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2338BEBB220A7840004F288F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2338BEC3220A7840004F288F /* neon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = neon.xcdatamodel; sourceTree = "<group>"; };
 		2338BEC5220A7841004F288F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2338BECA220A7841004F288F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2338BECF220A7841004F288F /* neonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = neonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2338BECF220A7841004F288F /* Hour BlocksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hour BlocksTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2338BED3220A7841004F288F /* neonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = neonTests.swift; sourceTree = "<group>"; };
 		2338BED5220A7841004F288F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2338BEDA220A7841004F288F /* neonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = neonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2338BEDA220A7841004F288F /* Hour BlocksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hour BlocksUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2338BEDE220A7841004F288F /* neonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = neonUITests.swift; sourceTree = "<group>"; };
 		2338BEE0220A7841004F288F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		234C1A08220C8E9D00344316 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
@@ -291,9 +291,9 @@
 		2338BEB9220A7840004F288F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2338BEB8220A7840004F288F /* neon.app */,
-				2338BECF220A7841004F288F /* neonTests.xctest */,
-				2338BEDA220A7841004F288F /* neonUITests.xctest */,
+				2338BEB8220A7840004F288F /* Hour Blocks.app */,
+				2338BECF220A7841004F288F /* Hour BlocksTests.xctest */,
+				2338BEDA220A7841004F288F /* Hour BlocksUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -497,9 +497,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2338BEB7220A7840004F288F /* neon */ = {
+		2338BEB7220A7840004F288F /* Hour Blocks */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2338BEE3220A7841004F288F /* Build configuration list for PBXNativeTarget "neon" */;
+			buildConfigurationList = 2338BEE3220A7841004F288F /* Build configuration list for PBXNativeTarget "Hour Blocks" */;
 			buildPhases = (
 				D08009ACCAB2FA3EEED83FA3 /* [CP] Check Pods Manifest.lock */,
 				2338BEB4220A7840004F288F /* Sources */,
@@ -513,17 +513,17 @@
 			);
 			dependencies = (
 			);
-			name = neon;
+			name = "Hour Blocks";
 			packageProductDependencies = (
 				7ADE54EC23F0B898007FAE38 /* SwiftDate */,
 			);
 			productName = neon;
-			productReference = 2338BEB8220A7840004F288F /* neon.app */;
+			productReference = 2338BEB8220A7840004F288F /* Hour Blocks.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2338BECE220A7841004F288F /* neonTests */ = {
+		2338BECE220A7841004F288F /* Hour BlocksTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2338BEE6220A7841004F288F /* Build configuration list for PBXNativeTarget "neonTests" */;
+			buildConfigurationList = 2338BEE6220A7841004F288F /* Build configuration list for PBXNativeTarget "Hour BlocksTests" */;
 			buildPhases = (
 				E7CC160CB2410A79C5A97A9B /* [CP] Check Pods Manifest.lock */,
 				2338BECB220A7841004F288F /* Sources */,
@@ -535,14 +535,14 @@
 			dependencies = (
 				2338BED1220A7841004F288F /* PBXTargetDependency */,
 			);
-			name = neonTests;
+			name = "Hour BlocksTests";
 			productName = neonTests;
-			productReference = 2338BECF220A7841004F288F /* neonTests.xctest */;
+			productReference = 2338BECF220A7841004F288F /* Hour BlocksTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		2338BED9220A7841004F288F /* neonUITests */ = {
+		2338BED9220A7841004F288F /* Hour BlocksUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2338BEE9220A7841004F288F /* Build configuration list for PBXNativeTarget "neonUITests" */;
+			buildConfigurationList = 2338BEE9220A7841004F288F /* Build configuration list for PBXNativeTarget "Hour BlocksUITests" */;
 			buildPhases = (
 				7C8B58ECED1F9FF1006E3FB1 /* [CP] Check Pods Manifest.lock */,
 				2338BED6220A7841004F288F /* Sources */,
@@ -554,9 +554,9 @@
 			dependencies = (
 				2338BEDC220A7841004F288F /* PBXTargetDependency */,
 			);
-			name = neonUITests;
+			name = "Hour BlocksUITests";
 			productName = neonUITests;
-			productReference = 2338BEDA220A7841004F288F /* neonUITests.xctest */;
+			productReference = 2338BEDA220A7841004F288F /* Hour BlocksUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -623,9 +623,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2338BEB7220A7840004F288F /* neon */,
-				2338BECE220A7841004F288F /* neonTests */,
-				2338BED9220A7841004F288F /* neonUITests */,
+				2338BEB7220A7840004F288F /* Hour Blocks */,
+				2338BECE220A7841004F288F /* Hour BlocksTests */,
+				2338BED9220A7841004F288F /* Hour BlocksUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -814,12 +814,12 @@
 /* Begin PBXTargetDependency section */
 		2338BED1220A7841004F288F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2338BEB7220A7840004F288F /* neon */;
+			target = 2338BEB7220A7840004F288F /* Hour Blocks */;
 			targetProxy = 2338BED0220A7841004F288F /* PBXContainerItemProxy */;
 		};
 		2338BEDC220A7841004F288F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2338BEB7220A7840004F288F /* neon */;
+			target = 2338BEB7220A7840004F288F /* Hour Blocks */;
 			targetProxy = 2338BEDB220A7841004F288F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -965,7 +965,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -991,7 +991,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1027,7 +1027,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/neon.app/neon";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hour Blocks.app/Hour Blocks";
 			};
 			name = Debug;
 		};
@@ -1049,7 +1049,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/neon.app/neon";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hour Blocks.app/Hour Blocks";
 			};
 			name = Release;
 		};
@@ -1107,7 +1107,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2338BEE3220A7841004F288F /* Build configuration list for PBXNativeTarget "neon" */ = {
+		2338BEE3220A7841004F288F /* Build configuration list for PBXNativeTarget "Hour Blocks" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2338BEE4220A7841004F288F /* Debug */,
@@ -1116,7 +1116,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2338BEE6220A7841004F288F /* Build configuration list for PBXNativeTarget "neonTests" */ = {
+		2338BEE6220A7841004F288F /* Build configuration list for PBXNativeTarget "Hour BlocksTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2338BEE7220A7841004F288F /* Debug */,
@@ -1125,7 +1125,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2338BEE9220A7841004F288F /* Build configuration list for PBXNativeTarget "neonUITests" */ = {
+		2338BEE9220A7841004F288F /* Build configuration list for PBXNativeTarget "Hour BlocksUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2338BEEA220A7841004F288F /* Debug */,
