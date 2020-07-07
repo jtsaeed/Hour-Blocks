@@ -30,14 +30,10 @@ struct ContentView: View {
  
     var body: some View {
         TabView {
-            ScheduleView().tabItem {
+            NewScheduleView().tabItem {
                 Image(systemName: "calendar")
                 Text("Schedule")
             }
-            .onAppear(perform: checkIfUpdated)
-            .sheet(isPresented: $showWhatsNew, content: {
-                WhatsNewView(showWhatsNew: self.$showWhatsNew)
-            })
             ToDoListView().tabItem {
                 Image(systemName: "list.bullet")
                 Text("To Do List")
@@ -47,6 +43,10 @@ struct ContentView: View {
                 Text("Settings")
             }
         }.accentColor(Color("primary"))
+        .onAppear(perform: checkIfUpdated)
+        .sheet(isPresented: $showWhatsNew, content: {
+            WhatsNewView(showWhatsNew: self.$showWhatsNew)
+        })
     }
     
     func checkIfUpdated() {
