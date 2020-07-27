@@ -17,7 +17,7 @@ struct SubBlock: Identifiable {
     let title: String
     let timestamp: Date
     
-    init(of hourBlock: NewHourBlock, title: String) {
+    init(of hourBlock: HourBlock, title: String) {
         self.id = UUID().uuidString
         self.hourBlockId = hourBlock.id
         

@@ -15,7 +15,7 @@ struct Provider: TimelineProvider {
 
     public func snapshot(with context: Context, completion: @escaping (SimpleEntry) -> ()) {
         let entry = SimpleEntry(date: Date(),
-                                hourBlock: NewHourBlock(day: Date(), hour: 19, title: "Dinner with Bonnie"),
+                                hourBlock: HourBlock(day: Date(), hour: 19, title: "Dinner with Bonnie"),
                                 relevance: TimelineEntryRelevance(score: 0))
         completion(entry)
     }
@@ -28,7 +28,7 @@ struct Provider: TimelineProvider {
         for hourOffset in 0 ..< 5 {
             let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
             let entry = SimpleEntry(date: entryDate,
-                                    hourBlock: NewHourBlock(day: Date(), hour: 19, title: "Dinner with Bonnie"),
+                                    hourBlock: HourBlock(day: Date(), hour: 19, title: "Dinner with Bonnie"),
                                     relevance: TimelineEntryRelevance(score: 0))
             entries.append(entry)
         }
@@ -40,16 +40,16 @@ struct Provider: TimelineProvider {
 
 struct SimpleEntry: TimelineEntry {
     public let date: Date
-    let hourBlock: NewHourBlock
+    let hourBlock: HourBlock
     let relevance: TimelineEntryRelevance?
 }
 
 struct PlaceholderView : View {
     var body: some View {
         NeonWidgetEntryView(entry: SimpleEntry(date: Date(),
-                                               hourBlock: NewHourBlock(day: Date(),
-                                                                       hour: 19,
-                                                                       title: "Dinner with Bonnie"),
+                                               hourBlock: HourBlock(day: Date(),
+                                                                    hour: 19,
+                                                                    title: "Dinner with Bonnie"),
                                                relevance: TimelineEntryRelevance(score: 0)))
     }
 }
@@ -63,9 +63,9 @@ struct NeonWidgetEntryView : View {
     @ViewBuilder
     var body: some View {
         switch family {
-            case .systemSmall: UpcomingView(hourBlock: entry.hourBlock)
-            case .systemMedium: UpcomingView(hourBlock: entry.hourBlock)
-            default: UpcomingView(hourBlock: entry.hourBlock)
+            case .systemSmall: UpcomingScheduleView(hourBlock: entry.hourBlock)
+            case .systemMedium: UpcomingScheduleView(hourBlock: entry.hourBlock)
+            default: UpcomingScheduleView(hourBlock: entry.hourBlock)
         }
     }
 }
@@ -86,9 +86,9 @@ struct NeonWidget: Widget {
 
 struct NeonWidget_Previews: PreviewProvider {
     static var previews: some View {
-        UpcomingView(hourBlock: NewHourBlock(day: Date(),
-                                             hour: 19,
-                                             title: "Dinner with Bonnie"))
+        UpcomingScheduleView(hourBlock: HourBlock(day: Date(),
+                                                  hour: 19,
+                                                  title: "Dinner with Bonnie"))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

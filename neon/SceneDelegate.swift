@@ -24,10 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
             managedObjectContext.automaticallyMergesChangesFromParent = true
-            let contentView = ContentView()
-                .environmentObject(ScheduleViewModel())
-                .environmentObject(SettingsViewModel())
-                .environment(\.managedObjectContext, managedObjectContext)
+            let contentView = ContentView().environment(\.managedObjectContext, managedObjectContext)
             
             window.rootViewController = UIHostingController(rootView: contentView)
             self.window = window

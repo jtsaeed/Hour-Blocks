@@ -1,36 +1,104 @@
 //
-//  DataGateway.swift
-//  neon3
+//  NewDataGateway.swift
+//  Hour Blocks
 //
-//  Created by James Saeed on 16/10/2019.
-//  Copyright © 2019 James Saeed. All rights reserved.
+//  Created by James Saeed on 01/07/2020.
+//  Copyright © 2020 James Saeed. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import CoreData
 import SwiftDate
 
 struct DataGateway {
     
-    static let shared = DataGateway(NSManagedObjectContext.current)
+    let managedObjectContext: NSManagedObjectContext
     
-    var managedObjectContext: NSManagedObjectContext
+    init() {
+        self.managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        self.managedObjectContext.automaticallyMergesChangesFromParent = true
+    }
     
-    init(_ managedObjectContext: NSManagedObjectContext) {
+    init(for managedObjectContext: NSManagedObjectContext) {
         self.managedObjectContext = managedObjectContext
     }
-
-    let currentVersion = 5.4
-    let fullCurrentVersion = "5.4"
 }
 
-// MARK: - Blocks
+// MARK: - Create
 
 extension DataGateway {
     
+    func saveHourBlock(block: HourBlock) {
+        block.getEntity(context: managedObjectContext)
+        
+        do {
+            try managedObjectContext.save()
+        } catch {
+            print("error")
+        }
+    }
+    
+    func saveSubBlock(block: SubBlock) {
+        block.getEntity(context: managedObjectContext)
+        
+        do {
+            try managedObjectContext.save()
+        } catch {
+            print("error")
+        }
+    }
+    
+    func saveToDoItem(toDoItem: ToDoItem) {
+        toDoItem.getEntity(context: managedObjectContext)
+        
+        do {
+            try managedObjectContext.save()
+        } catch {
+            print("error")
+        }
+    }
+}
+
+// MARK: - Retrieve
+
+extension DataGateway {
+    
+    func getHourBlocks(for day: Date) -> [HourBlock] {
+        var hourBlocks = [HourBlockEntity]()
+        let request = NSFetchRequest<HourBlockEntity>(entityName: "HourBlockEntity")
+        request.predicate = NSPredicate(format: "day == %@", Calendar.current.startOfDay(for: day) as NSDate)
+        
+        do {
+            hourBlocks = try managedObjectContext.fetch(request)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        return hourBlocks.compactMap { HourBlock(fromEntity: $0) }
+    }
+    
+    func getHourBlock(for hour: Int, on day: Date) -> HourBlock? {
+        var hourBlocks = [HourBlockEntity]()
+        let request = NSFetchRequest<HourBlockEntity>(entityName: "HourBlockEntity")
+        request.predicate = NSPredicate(format: "day == %@ && hour == %d", Calendar.current.startOfDay(for: day) as NSDate, hour)
+        
+        do {
+            hourBlocks = try managedObjectContext.fetch(request)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        if let firstBlock = hourBlocks.first {
+            return HourBlock(fromEntity: firstBlock)
+        } else {
+            return nil
+        }
+    }
+    
     func getLastMonthsHourBlocks(from day: Date, for hour: Int) -> [HourBlock] {
         var hourBlocks = [HourBlockEntity]()
-        let request: NSFetchRequest<HourBlockEntity> = HourBlockEntity.fetchRequest()
+        let request = NSFetchRequest<HourBlockEntity>(entityName: "HourBlockEntity")
         let startOfDateRange = Calendar.current.startOfDay(for: day - 30.days) as NSDate
         let endOfDateRange = Calendar.current.startOfDay(for: day) as NSDate
         request.predicate = NSPredicate(format: "(day >= %@) AND (day <= %@) AND (hour == %d)", startOfDateRange, endOfDateRange, hour)
@@ -44,32 +112,43 @@ extension DataGateway {
         return hourBlocks.compactMap({ HourBlock(fromEntity: $0) })
     }
     
-    func getHourBlocks(for day: Date) -> [HourBlock] {
-        var hourBlocks = [HourBlockEntity]()
-        let request: NSFetchRequest<HourBlockEntity> = HourBlockEntity.fetchRequest()
-        request.predicate = NSPredicate(format: "day == %@", Calendar.current.startOfDay(for: day) as NSDate)
+    func getSubBlocks(for hourBlock: HourBlock) -> [SubBlock] {
+        var subBlocks = [SubBlockEntity]()
+        
+        let request = NSFetchRequest<SubBlockEntity>(entityName: "SubBlockEntity")
+        request.predicate = NSPredicate(format: "hourBlockIdentifier == %@", hourBlock.id)
+        request.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: true)]
         
         do {
-            hourBlocks = try managedObjectContext.fetch(request)
+            subBlocks = try managedObjectContext.fetch(request)
         } catch let error {
             print(error.localizedDescription)
         }
         
-        return hourBlocks.compactMap({ HourBlock(fromEntity: $0) })
+        return subBlocks.compactMap { SubBlock(fromEntity: $0) }
     }
     
-    func saveHourBlock(block: HourBlock) {
-        block.getEntity(context: managedObjectContext)
+    func getToDoItems() -> [ToDoItem] {
+        var toDoEntities = [ToDoEntity]()
+        
+        let request = NSFetchRequest<ToDoEntity>(entityName: "ToDoEntity")
         
         do {
-            try managedObjectContext.save()
-        } catch {
-            print("error")
+            toDoEntities = try managedObjectContext.fetch(request)
+        } catch let error {
+            print(error.localizedDescription)
         }
+        
+        return toDoEntities.compactMap { ToDoItem(fromEntity: $0) }
     }
+}
+
+// MARK: - Update
+
+extension DataGateway {
     
     func editHourBlock(block: HourBlock, set value: Any?, forKey key: String) {
-        let request: NSFetchRequest<HourBlockEntity> = HourBlockEntity.fetchRequest()
+        let request = NSFetchRequest<HourBlockEntity>(entityName: "HourBlockEntity")
         request.predicate = NSPredicate(format: "identifier == %@", block.id)
         
         do {
@@ -83,72 +162,73 @@ extension DataGateway {
             print("error")
         }
     }
+}
+
+// MARK: - Delete
+
+extension DataGateway {
     
     func deleteHourBlock(block: HourBlock) {
-        let request: NSFetchRequest<HourBlockEntity> = HourBlockEntity.fetchRequest()
+        let request = NSFetchRequest<SubBlockEntity>(entityName: "SubBlockEntity")
         request.predicate = NSPredicate(format: "identifier == %@", block.id)
         
         do {
             let hourBlockEntities = try managedObjectContext.fetch(request)
-            managedObjectContext.delete(hourBlockEntities.first!)
+            
+            if let hourBlock = hourBlockEntities.first {
+                managedObjectContext.delete(hourBlock)
+            }
             
             try managedObjectContext.save()
         } catch {
             print("error")
         }
     }
-}
-
-// MARK: - To Do
-
-extension DataGateway {
     
-    func getToDoItems() -> [ToDoItem] {
-        var toDos = [ToDoEntity]()
-        let request: NSFetchRequest<ToDoEntity> = ToDoEntity.fetchRequest()
+    func deleteSubBlocks(of hourBlock: HourBlock) {
+        let request = NSFetchRequest<SubBlockEntity>(entityName: "SubBlockEntity")
+        request.predicate = NSPredicate(format: "hourBlockIdentifier == %@", hourBlock.id)
         
         do {
-            toDos = try self.managedObjectContext.fetch(request)
-        } catch {
-            print("error")
-        }
-        
-        return toDos.compactMap({ ToDoItem(fromEntity: $0) })
-    }
-    
-    func saveToDo(toDo: ToDoItem) {
-        toDo.getEntity(context: self.managedObjectContext)
-        
-        do {
-            try self.managedObjectContext.save()
+            let subBlockEntities = try managedObjectContext.fetch(request)
+            
+            for subBlockEntity in subBlockEntities {
+                managedObjectContext.delete(subBlockEntity)
+            }
+            
+            try managedObjectContext.save()
         } catch {
             print("error")
         }
     }
     
-    func editToDo(toDo: ToDoItem, set value: Any?, forKey key: String) {
-        let request: NSFetchRequest<ToDoEntity> = ToDoEntity.fetchRequest()
-        request.predicate = NSPredicate(format: "identifier == %@", toDo.id)
+    func deleteSubBlock(block: SubBlock) {
+        let request = NSFetchRequest<SubBlockEntity>(entityName: "SubBlockEntity")
+        request.predicate = NSPredicate(format: "identifier == %@", block.id)
+        
+        do {
+            let subBlockEntities = try managedObjectContext.fetch(request)
+            
+            if let subBlock = subBlockEntities.first {
+                managedObjectContext.delete(subBlock)
+            }
+            
+            try managedObjectContext.save()
+        } catch {
+            print("error")
+        }
+    }
+    
+    func deleteToDoItem(toDoItem: ToDoItem) {
+        let request = NSFetchRequest<ToDoEntity>(entityName: "ToDoEntity")
+        request.predicate = NSPredicate(format: "identifier == %@", toDoItem.id)
         
         do {
             let toDoEntities = try managedObjectContext.fetch(request)
-            let toDoEntity = toDoEntities.first!
             
-            toDoEntity.setValue(value, forKey: key)
-            
-            try managedObjectContext.save()
-        } catch {
-            print("error")
-        }
-    }
-    
-    func deleteToDo(toDo: ToDoItem) {
-        let request: NSFetchRequest<ToDoEntity> = ToDoEntity.fetchRequest()
-        request.predicate = NSPredicate(format: "identifier == %@", toDo.id)
-        
-        do {
-            let toDoEntities = try managedObjectContext.fetch(request)
-            managedObjectContext.delete(toDoEntities.first!)
+            if let toDoEntity = toDoEntities.first {
+                managedObjectContext.delete(toDoEntity)
+            }
             
             try managedObjectContext.save()
         } catch {
@@ -157,150 +237,19 @@ extension DataGateway {
     }
 }
 
-// MARK: - User Calendars
+// MARK: - MISC
 
 extension DataGateway {
-    
-    func getUserCalendars() -> [UserCalendar] {
-        var userCalendars = [UserCalendarEntity]()
-        let request: NSFetchRequest<UserCalendarEntity> = UserCalendarEntity.fetchRequest()
-        
-        do {
-            userCalendars = try managedObjectContext.fetch(request)
-        } catch let error {
-            print(error.localizedDescription)
-        }
-        
-        return userCalendars.compactMap({ UserCalendar(fromEntity: $0) })
-    }
-    
-    func saveUserCalendar(_ userCalendar: UserCalendar) {
-        userCalendar.getEntity(context: self.managedObjectContext)
-        
-        do {
-            try self.managedObjectContext.save()
-        } catch {
-            print("error")
-        }
-    }
-    
-    func modifyUserCalendar(userCalendar: UserCalendar) {
-        let request: NSFetchRequest<UserCalendarEntity> = UserCalendarEntity.fetchRequest()
-        request.predicate = NSPredicate(format: "identifier == %@", userCalendar.identifier)
-        
-        do {
-            let userCalendarEntities = try managedObjectContext.fetch(request)
-            let userCalendarEntity = userCalendarEntities.first!
-            
-            userCalendarEntity.setValue(userCalendar.enabled, forKey: "enabled")
-            
-            try managedObjectContext.save()
-        } catch {
-            print("error")
-        }
-    }
-}
 
-// MARK: - Other Settings
-
-extension DataGateway {
-    
-    func getOtherSettings() -> OtherSettings? {
-        let request: NSFetchRequest<OtherSettingsEntity> = OtherSettingsEntity.fetchRequest()
-        
-        do {
-            let otherSettingsEntities = try self.managedObjectContext.fetch(request)
-            guard let otherSettingsEntity = otherSettingsEntities.first else { return nil }
-            return OtherSettings(fromEntity: otherSettingsEntity)
-        } catch {
-            print("error")
-            return nil
-        }
-    }
-    
-    func saveOtherSettings(_ defaultSettings: OtherSettings) {
-        defaultSettings.getEntity(context: self.managedObjectContext)
-        
-        do {
-            try self.managedObjectContext.save()
-        } catch {
-            print("error")
-        }
-    }
-    
-    func modifyOtherSettings(set value: Any?, forKey key: String) {
-        let request: NSFetchRequest<OtherSettingsEntity> = OtherSettingsEntity.fetchRequest()
-        
-        do {
-            let otherSettingsEntities = try managedObjectContext.fetch(request)
-            let otherSettingsEntity = otherSettingsEntities.first!
-            
-            otherSettingsEntity.setValue(value, forKey: key)
-            
-            try managedObjectContext.save()
-        } catch {
-            print("error")
-        }
-    }
-}
-
-// MARK: - Misc
-
-extension DataGateway {
-    
     func isNewVersion() -> Bool {
-        if let _ = UserDefaults.standard.object(forKey: "VersionOfLastRun") as? String {
-            UserDefaults.standard.removeObject(forKey: "VersionOfLastRun")
-            
-            return true
-        }
-        
         guard let userVersion = UserDefaults.standard.object(forKey: "currentVersion") as? Double else {
-            UserDefaults.standard.set(currentVersion, forKey: "currentVersion")
+            UserDefaults.standard.set(MetaGateway.shared.currentVersion, forKey: "currentVersion")
             return false
         }
         
-        UserDefaults.standard.set(currentVersion, forKey: "currentVersion")
+        UserDefaults.standard.set(MetaGateway.shared.currentVersion, forKey: "currentVersion")
         UserDefaults.standard.synchronize()
         
-        return userVersion < currentVersion
-    }
-    
-    func getTotalBlockCount() -> Int {
-        guard let totalAgendaCount = UserDefaults.standard.object(forKey: "totalBlockCount") as? Int else {
-            return 0
-        }
-        return totalAgendaCount
-    }
-    
-    func incrementTotalBlockCount() {
-        let totalAgendaCount = UserDefaults.standard.object(forKey: "totalBlockCount") as? Int
-        
-        if totalAgendaCount == nil {
-            UserDefaults.standard.set(1, forKey: "totalBlockCount")
-        } else {
-            UserDefaults.standard.set(totalAgendaCount! + 1, forKey: "totalBlockCount")
-        }
-        
-        UserDefaults.standard.synchronize()
-    }
-    
-    func getDayStartTime() -> Int {
-        guard let dayStartSetting = getOtherSettings()?.dayStart else { return 2 }
-        
-        return dayStartSetting == 0 ? dayStartSetting : (dayStartSetting + 4)
-    }
-    
-    func isSystemClock12h() -> Bool {
-        let formatter = DateFormatter()
-        formatter.locale = Locale.current
-        formatter.dateStyle = .none
-        formatter.timeStyle = .short
-
-        let dateString = formatter.string(from: Date())
-        let amRange = dateString.range(of: formatter.amSymbol)
-        let pmRange = dateString.range(of: formatter.pmSymbol)
-
-        return !(pmRange == nil && amRange == nil)
+        return userVersion < MetaGateway.shared.currentVersion
     }
 }
