@@ -47,6 +47,16 @@ extension NewDataGateway {
             print("error")
         }
     }
+    
+    func saveToDoItem(toDoItem: ToDoItem) {
+        toDoItem.getEntity(context: managedObjectContext)
+        
+        do {
+            try managedObjectContext.save()
+        } catch {
+            print("error")
+        }
+    }
 }
 
 // MARK: - Retrieve
@@ -99,6 +109,20 @@ extension NewDataGateway {
         }
         
         return subBlocks.compactMap { SubBlock(fromEntity: $0) }
+    }
+    
+    func getToDoItems() -> [ToDoItem] {
+        var toDoEntities = [ToDoEntity]()
+        
+        let request = NSFetchRequest<ToDoEntity>(entityName: "ToDoEntity")
+        
+        do {
+            toDoEntities = try managedObjectContext.fetch(request)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        return toDoEntities.compactMap { ToDoItem(fromEntity: $0) }
     }
 }
 
@@ -177,4 +201,27 @@ extension NewDataGateway {
             print("error")
         }
     }
+    
+    func deleteToDoItem(toDoItem: ToDoItem) {
+        let request = NSFetchRequest<ToDoEntity>(entityName: "ToDoEntity")
+        request.predicate = NSPredicate(format: "identifier == %@", toDoItem.id)
+        
+        do {
+            let toDoEntities = try managedObjectContext.fetch(request)
+            
+            if let toDoEntity = toDoEntities.first {
+                managedObjectContext.delete(toDoEntity)
+            }
+            
+            try managedObjectContext.save()
+        } catch {
+            print("error")
+        }
+    }
+}
+
+// MARK: - MISC
+
+extension NewDataGateway {
+    
 }

@@ -42,6 +42,7 @@ struct NewCardLabels: View {
                 .foregroundColor(titleColor)
                 .opacity(titleOpacity)
                 .multilineTextAlignment(textAlignment)
+                .padding(.trailing, 12)
         }
     }
 }
@@ -49,14 +50,18 @@ struct NewCardLabels: View {
 struct CardSubtitleFont: ViewModifier {
     
     func body(content: Content) -> some View {
-        content.font(.system(size: 14, weight: .semibold, design: .default)).lineLimit(1)
+        content
+            .font(.system(size: 14, weight: .semibold, design: .default))
+            .lineLimit(1)
     }
 }
 
 struct CardTitleFont: ViewModifier {
     
     func body(content: Content) -> some View {
-        content.font(.system(size: 22, weight: .bold, design: .rounded)).lineLimit(2)
+        content
+            .font(.system(size: 22, weight: .bold, design: .rounded))
+            .lineLimit(2)
     }
 }
 

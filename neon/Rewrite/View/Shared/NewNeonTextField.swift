@@ -14,12 +14,12 @@ struct NewNeonTextField: View {
     
     var color: Color = Color("AccentColorLight")
     
-    var didReturn: () -> ()
+    let didReturn: () -> Void
 
     var body: some View {
         ZStack() {
             Rectangle()
-                .frame(height: 44)
+                .frame(height: 40)
                 .foregroundColor(color)
                 .cornerRadius(8)
             TextField("Enter the title here...", text: $input, onCommit: didReturn)

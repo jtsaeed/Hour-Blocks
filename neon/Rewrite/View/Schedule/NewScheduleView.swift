@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SwiftDate
 
 struct NewScheduleView: View {
     
@@ -23,7 +24,9 @@ struct NewScheduleView: View {
                     NewIconButton(iconName: "calendar", action: viewModel.presentDatePickerView)
                 }
             }.sheet(isPresented: $viewModel.isDatePickerViewPresented) {
-                NewScheduleDatePicker(viewModel: viewModel)
+                NewScheduleDatePicker(isPresented: $viewModel.isDatePickerViewPresented,
+                                      scheduleDate: $viewModel.currentDate,
+                                      dateChanged: viewModel.loadHourBlocks)
             }
             
             ScheduleBlocksListView(viewModel: viewModel)
@@ -37,7 +40,7 @@ private struct ScheduleBlocksListView: View {
     
     var body: some View {
         ScrollView(showsIndicators: false) {
-            LazyVStack(spacing: 24) {
+            VStack(spacing: 24) {
                 ForEach(viewModel.isFilterEnabled ? viewModel.todaysCalendarBlocks.filter { $0.endDate.hour >= viewModel.currentHour } : viewModel.todaysCalendarBlocks, id: \.self) { event in
                     CalendarBlockView(event: event)
                 }

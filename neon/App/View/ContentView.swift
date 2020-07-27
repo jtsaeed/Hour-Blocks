@@ -34,11 +34,11 @@ struct ContentView: View {
                 Image(systemName: "calendar")
                 Text("Schedule")
             }
-            ToDoListView().tabItem {
+            NewToDoListView().tabItem {
                 Image(systemName: "list.bullet")
                 Text("To Do List")
             }
-            SettingsView().tabItem {
+            NewSettingsView().tabItem {
                 Image(systemName: "gear")
                 Text("Settings")
             }

@@ -23,9 +23,10 @@ struct ToDoItem: Identifiable, Comparable {
     
     init?(fromEntity entity: ToDoEntity) {
         guard let entityIdentifier = entity.identifier else { return nil }
+        guard let entityTitle = entity.title else { return nil }
         
         self.id = entityIdentifier
-        self.title = entity.title!
+        self.title = entityTitle
         
         if let entityUrgency = entity.urgency {
             self.urgency = ToDoUrgency(rawValue: entityUrgency)!

@@ -17,7 +17,7 @@ struct HourBlockView: View {
         NewCard {
             VStack(spacing: 20) {
                 HStack {
-                    NewCardLabels(title: viewModel.title,
+                    NewCardLabels(title: viewModel.title.smartCapitalization(),
                                subtitle: viewModel.time)
                     Spacer()
                     HourBlockIcon(name: viewModel.getIconName())
@@ -37,20 +37,28 @@ struct HourBlockView: View {
         
         .contextMenu(
             ContextMenu(menuItems: {
-                Button(action: viewModel.presentManageSubBlocksView, label: {
-                    Label("Add Sub Block", systemImage: "plus.square")
-                })
-                Button(action: clearBlock, label: {
+                Button(action: viewModel.presentEditBlockView) {
+                    Label("Edit", systemImage: "pencil")
+                }
+                .sheet(isPresented: $viewModel.isEditHourBlockViewPresented) {
+                    EditHourBlockView(viewModel: viewModel)
+                }
+                
+                Button(action: viewModel.presentManageSubBlocksView) {
+                    Label("Sub Blocks", systemImage: "rectangle.grid.1x2")
+                }
+                .sheet(isPresented: $viewModel.isManageSubBlocksViewPresented) {
+                    ManageSubBlocksView(isPresented: $viewModel.isManageSubBlocksViewPresented,
+                                        viewModel: viewModel,
+                                        hourBlock: viewModel.hourBlock,
+                                        onSubBlockAdded: { _ in })
+                }
+                
+                Button(action: clearBlock) {
                     Label("Clear", systemImage: "trash")
-                })
+                }
             })
         )
-        
-        .sheet(isPresented: $viewModel.isManageSubBlocksViewPresented) {
-            ManageSubBlocksView(isPresented: $viewModel.isManageSubBlocksViewPresented,
-                                hourBlock: viewModel.hourBlock,
-                                onSubBlockAdded: { viewModel.addSubBlock($0) })
-        }
     }
     
     func clearBlock() {

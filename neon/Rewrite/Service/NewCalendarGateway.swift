@@ -39,8 +39,43 @@ struct NewCalendarGateway {
     func getEvents(for date: Date) -> [EKEvent] {
         let eventsPredicate = eventStore.predicateForEvents(withStart: date.toLocalTime().dateAtStartOf(.day),
                                                             end: date.toLocalTime().dateAtEndOf(.day),
-                                                            calendars: eventStore.calendars(for: .event))
+                                                            calendars: getEnabledCalendars())
         
         return eventStore.events(matching: eventsPredicate)
+    }
+    
+    func initialiseEnabledCalendars() -> [String: Bool] {
+        var enabledCalendars = [String: Bool]()
+        
+        let calendarIdentifiers = getAllCalendars().map { $0.calendarIdentifier }
+        for identifier in calendarIdentifiers {
+            enabledCalendars[identifier] = true
+        }
+        
+        UserDefaults.standard.set(enabledCalendars, forKey: "enabledCalendars")
+        
+        return enabledCalendars
+    }
+    
+    func getCalendarName(for identifier: String) -> String {
+        return eventStore.calendar(withIdentifier: identifier)?.title ?? "Unknown Calendar Title"
+    }
+    
+    private func getEnabledCalendars() -> [EKCalendar] {
+        if let userCalendars = UserDefaults.standard.dictionary(forKey: "enabledCalendars") as? [String: Bool] {
+            return getAllCalendars().compactMap { calendar in
+                if userCalendars[calendar.calendarIdentifier] == true {
+                    return calendar
+                } else {
+                    return nil
+                }
+            }
+        } else {
+            return getAllCalendars()
+        }
+    }
+    
+    func getAllCalendars() -> [EKCalendar] {
+        return eventStore.calendars(for: .event)
     }
 }

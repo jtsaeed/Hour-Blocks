@@ -25,6 +25,7 @@ struct EmptyHourBlockView: View {
                            action: viewModel.presentAddHourBlockView)
             }
         }.padding(.horizontal, 24)
+        .padding(.vertical, 6)
         .sheet(isPresented: $viewModel.isAddHourBlockViewPresented) {
             NewAddHourBlockView(isPresented: $viewModel.isAddHourBlockViewPresented,
                              hour: viewModel.hourBlock.hour,

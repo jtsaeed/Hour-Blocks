@@ -21,8 +21,13 @@ struct NewAddHourBlockView: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                NewNeonTextField(input: $title, didReturn: addHourBlock)
-                    .padding(24)
+                HStack(spacing: 16) {
+                    NewNeonTextField(input: $title,
+                                     didReturn: addHourBlock)
+                    NewIconButton(iconName: "plus",
+                                  iconWeight: .bold,
+                                  action: addHourBlock)
+                }.padding(24)
                 
                 Text("Suggestions")
                     .font(.system(size: 28, weight: .bold, design: .default))
@@ -40,9 +45,8 @@ struct NewAddHourBlockView: View {
                         }
                     }.padding(.top, 8)
                 }
-            }.navigationTitle("Add a New Hour Block")
-            .navigationBarItems(leading: Button("Cancel", action: dismiss),
-                                trailing: Button("Add", action: addHourBlock))
+            }.navigationTitle("Add an Hour Block")
+            .navigationBarItems(leading: Button("Cancel", action: dismiss))
         }
         .onAppear {
             viewModel.loadSuggestions(for: hour, on: day)

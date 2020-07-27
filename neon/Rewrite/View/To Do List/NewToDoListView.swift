@@ -10,18 +10,22 @@ import SwiftUI
 
 struct NewToDoListView: View {
     
-    @ObservedObject var viewModel: NewToDoListViewModel
+    @StateObject var viewModel = NewToDoListViewModel()
     
     var body: some View {
         VStack {
             NewHeaderView(title: "To Do List", subtitle: "\(viewModel.toDoItems.count) Items") {
-                NewIconButton(iconName: "calendar", action: viewModel.addToDoItem)
+                NewIconButton(iconName: "plus",
+                              iconWeight: .bold,
+                              action: viewModel.presentAddToDoItemView)
+            }.sheet(isPresented: $viewModel.isAddToDoItemViewPresented) {
+                NewAddToDoItemView(viewModel: viewModel)
             }
             
             ScrollView(showsIndicators: false) {
-                LazyVStack(spacing: 24) {
-                    ForEach(viewModel.toDoItems) { toDo in
-                        Text(toDo.title)
+                VStack(spacing: 24) {
+                    ForEach(viewModel.toDoItems) { toDoItem in
+                        ToDoItemCardView(toDoItem: toDoItem)
                     }
                 }.padding(.top, 8)
                 .padding(.bottom, 24)

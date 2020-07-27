@@ -18,9 +18,8 @@ class HourBlockViewModel: Identifiable, ObservableObject {
     @Published var subBlocks: [SubBlock]
     
     @Published var isAddHourBlockViewPresented = false
-    @Published var isRenameHourBlockViewPresented = false
+    @Published var isEditHourBlockViewPresented = false
     @Published var isDuplicateHourBlockViewPresented = false
-    @Published var isIconPickerViewPresented = false
     @Published var isManageSubBlocksViewPresented = false
     
     init(for hourBlock: NewHourBlock, and subBlocks: [SubBlock], dataGateway: NewDataGateway) {
@@ -44,6 +43,20 @@ class HourBlockViewModel: Identifiable, ObservableObject {
         isAddHourBlockViewPresented = true
     }
     
+    func presentEditBlockView() {
+        isEditHourBlockViewPresented = true
+    }
+    
+    func dismissEditBlockView() {
+        isEditHourBlockViewPresented = false
+    }
+    
+    func saveChanges(title: String) {
+        self.title = title
+        dataGateway.editHourBlock(block: hourBlock, set: title, forKey: "title")
+        dismissEditBlockView()
+    }
+    
     func presentManageSubBlocksView() {
         isManageSubBlocksViewPresented = true
     }
@@ -56,6 +69,11 @@ class HourBlockViewModel: Identifiable, ObservableObject {
     func addSubBlock(_ subBlock: SubBlock) {
         dataGateway.saveSubBlock(block: subBlock)
         subBlocks.append(subBlock)
+    }
+    
+    func clearSubBlock(_ subBlock: SubBlock) {
+        dataGateway.deleteSubBlock(block: subBlock)
+        subBlocks.removeAll { $0.id == subBlock.id }
     }
     
     func getIconName() -> String {

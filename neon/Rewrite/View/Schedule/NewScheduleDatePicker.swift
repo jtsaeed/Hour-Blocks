@@ -10,38 +10,68 @@ import SwiftUI
 
 struct NewScheduleDatePicker: View {
     
-    @ObservedObject var viewModel: NewScheduleViewModel
+    @Binding var isPresented: Bool
+    @Binding var scheduleDate: Date
+    let dateChanged: () -> Void
+    
+    @StateObject var viewModel: ScheduleDatePickerViewModel
+    
+    init(isPresented: Binding<Bool>, scheduleDate: Binding<Date>, dateChanged: @escaping () -> Void) {
+        self._isPresented = isPresented
+        self._scheduleDate = scheduleDate
+        self._viewModel = StateObject<ScheduleDatePickerViewModel>(wrappedValue: ScheduleDatePickerViewModel(initialSelectedDate: scheduleDate.wrappedValue))
+        self.dateChanged = dateChanged
+    }
     
     var body: some View {
         NavigationView {
             VStack {
                 GeometryReader { geometry in
-                    DatePicker("Picker", selection: $viewModel.currentDate, displayedComponents: .date)
+                    DatePicker("Picker", selection: $viewModel.selectedDate, displayedComponents: .date)
                         .datePickerStyle(GraphicalDatePickerStyle())
                         .frame(maxHeight: geometry.size.width)
                         .accentColor(Color("AccentColor"))
-                        .onChange(of: viewModel.currentDate) { _ in
+                        .onChange(of: viewModel.selectedDate) { _ in
                             viewModel.loadHourBlocks()
                         }
                 }.padding(.horizontal, 24)
                 .padding(.top, 24)
                 
                 ScrollView(showsIndicators: false) {
-                    LazyVStack(spacing: 24) {
-                        if viewModel.todaysHourBlocks.count > 0 {
-                            ForEach(viewModel.todaysHourBlocks.filter({ $0.title != "Empty" })) { hourBlockViewModel in
-                                HourBlockView(viewModel: hourBlockViewModel,
-                                              onBlockCleared: { viewModel.clearBlock(hourBlockViewModel.hourBlock) })
-                            }
-                        } else {
+                    VStack(spacing: 24) {
+                        ForEach(viewModel.calendarBlocks, id: \.self) { event in
+                            CalendarBlockView(event: event)
+                        }
+                        
+                        if !viewModel.calendarBlocks.isEmpty &&
+                            !viewModel.hourBlocks.filter { $0.title != "Empty" }.isEmpty {
+                            NeonDivider().padding(.horizontal, 32)
+                        }
+                        
+                        ForEach(viewModel.hourBlocks.filter { $0.title != "Empty" } ) { hourBlockViewModel in
+                            CompactHourBlockView(viewModel: hourBlockViewModel)
+                        }
+                        
+                        if viewModel.calendarBlocks.isEmpty && viewModel.hourBlocks.filter { $0.title != "Empty" }.isEmpty {
                             NoHourBlocksView()
                         }
                     }.padding(.top, 8)
                     .padding(.bottom, 24)
                 }
             }.navigationBarTitle("Date Picker", displayMode: .inline)
-            .navigationBarItems(trailing: Button("Done", action: viewModel.dismissDatePickerView))
+            .navigationBarItems(leading: Button("Cancel", action: dismiss),
+                                trailing: Button("Save", action: save))
         }.accentColor(Color("AccentColor"))
+    }
+    
+    func save() {
+        scheduleDate = viewModel.selectedDate
+        dateChanged()
+        dismiss()
+    }
+    
+    func dismiss() {
+        isPresented = false
     }
 }
 /*

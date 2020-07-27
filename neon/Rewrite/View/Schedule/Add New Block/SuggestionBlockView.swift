@@ -16,7 +16,7 @@ struct SuggestionBlockView: View {
     var body: some View {
         NewCard {
             HStack {
-                NewCardLabels(title: suggestion.title,
+                NewCardLabels(title: suggestion.title.smartCapitalization(),
                               subtitle: suggestion.reason)
                 Spacer()
                 NewIconButton(iconName: "plus",

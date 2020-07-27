@@ -17,13 +17,10 @@ struct CalendarBlockView: View {
         NewCard {
             HStack {
                 NewCardLabels(title: event.title,
-                              subtitle: "\(event.startDate.getFormattedTime(militaryTime: false)) TO \(event.endDate.getFormattedTime(militaryTime: false))")
+                              subtitle: "\(event.startDate.getFullFormattedTime(militaryTime: false)) TO \(event.endDate.getFullFormattedTime(militaryTime: false))")
                 Spacer()
                 HourBlockIcon(name: "calendar_item")
             }
         }.padding(.horizontal, 24)
-        .onTapGesture {
-            UIApplication.shared.open(event.url!)
-        }
     }
 }

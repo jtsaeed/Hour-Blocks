@@ -52,20 +52,24 @@ class NewScheduleViewModel: ObservableObject {
     
     func addBlock(_ hourBlock: NewHourBlock) {
         todaysHourBlocks[hourBlock.hour] = HourBlockViewModel(for: hourBlock)
+        updateCurrentHour()
     }
     
     func refreshBlock(_ hourBlockViewModel: HourBlockViewModel) {
         todaysHourBlocks[hourBlockViewModel.hourBlock.hour] = hourBlockViewModel
+        updateCurrentHour()
     }
     
     func clearBlock(_ hourBlock: NewHourBlock) {
         todaysHourBlocks[hourBlock.hour] = HourBlockViewModel(for: NewHourBlock(day: hourBlock.day,
                                                                                 hour: hourBlock.hour,
                                                                                 title: nil))
+        updateCurrentHour()
     }
     
     func toggleFilter() {
         isFilterEnabled.toggle()
+        updateCurrentHour()
     }
     
     func presentDatePickerView() {
@@ -74,5 +78,10 @@ class NewScheduleViewModel: ObservableObject {
     
     func dismissDatePickerView() {
         isDatePickerViewPresented = false
+        updateCurrentHour()
+    }
+    
+    private func updateCurrentHour() {
+        currentHour = Calendar.current.component(.hour, from: Date())
     }
 }

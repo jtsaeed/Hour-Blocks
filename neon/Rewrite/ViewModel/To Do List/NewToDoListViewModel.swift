@@ -10,9 +10,38 @@ import Foundation
 
 class NewToDoListViewModel: ObservableObject {
     
+    let dataGateway: NewDataGateway
+    
     @Published var toDoItems = [ToDoItem]()
     
-    func addToDoItem() {
+    @Published var isAddToDoItemViewPresented = false
+    
+    init(dataGateway: NewDataGateway) {
+        self.dataGateway = dataGateway
         
+        loadToDoItems()
+    }
+    
+    convenience init() {
+        self.init(dataGateway: NewDataGateway())
+    }
+    
+    func loadToDoItems() {
+        toDoItems = dataGateway.getToDoItems()
+    }
+    
+    func add(toDoItem: ToDoItem) {
+        dataGateway.saveToDoItem(toDoItem: toDoItem)
+        
+        toDoItems.append(toDoItem)
+        toDoItems.sort()
+    }
+    
+    func presentAddToDoItemView() {
+        isAddToDoItemViewPresented = true
+    }
+    
+    func dismissAddToDoItemView() {
+        isAddToDoItemViewPresented = false
     }
 }
