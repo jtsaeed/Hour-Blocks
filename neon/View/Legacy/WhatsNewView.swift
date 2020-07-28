@@ -14,28 +14,30 @@ struct WhatsNewView: View {
     
     var body: some View {
         VStack {
-            WhatsNewHeader(title: "What's new in Hour Blocks \(MetaGateway.shared.currentVersion)")
-                .padding(.bottom, 32)
+            WhatsNewHeader(title: "What's new in Hour Blocks \(VersionGateway.shared.currentVersion)")
             
-            VStack(alignment: .leading, spacing: 16) {
-                WhatsNewItem(title: "macOS App 💻",
-                             content: "Effortlessly take control of your day from your lap and your desk, with Hour Blocks on macOS")
-                WhatsNewItem(title: "Minor Improvements ✨",
-                             content: "You can now set your day to start from 12am within Settings")
-            }
-            
-            Spacer()
-            
-            ActionButton(title: "Let's go!")
-                .onTapGesture {
-                    HapticsGateway.shared.triggerLightImpact()
-                    self.showWhatsNew = false
+            ScrollView {
+                VStack(alignment: .leading, spacing: 16) {
+                    WhatsNewItem(title: "Redesigned Schedule 🖌",
+                                 content: "See your Sub Blocks directly in the schedule, preview your days with the new date picker, take a peek at blocks from earlier in the day + much more!")
+                    WhatsNewItem(title: "Homescreen Widget 📱",
+                                 content: "Get a snapshot of your upcoming schedule without even leaving your homescreen!")
+                    WhatsNewItem(title: "Small Improvements ✨",
+                                 content: "Hour Blocks 6.0 has been rewritten from the ground up, so expect to see plenty of small improvements and bug fixes all around")
                 }
+            }.padding(.vertical, 32)
+            
+            ActionButton(title: "Let's go!", action: dismiss)
         }.padding(40)
+    }
+    
+    func dismiss() {
+        HapticsGateway.shared.triggerLightImpact()
+        self.showWhatsNew = false
     }
 }
 
-struct WhatsNewHeader: View {
+private struct WhatsNewHeader: View {
     
     let title: String
     
@@ -46,7 +48,7 @@ struct WhatsNewHeader: View {
     }
 }
 
-struct WhatsNewItem: View {
+private struct WhatsNewItem: View {
     
     let title: String
     let content: String

@@ -12,7 +12,7 @@ class ToDoListViewModel: ObservableObject {
     
     let dataGateway: DataGateway
     
-    @Published var toDoItems = [ToDoItem]()
+    @Published var toDoItems = [ToDoItemViewModel]()
     
     @Published var isAddToDoItemViewPresented = false
     
@@ -27,14 +27,18 @@ class ToDoListViewModel: ObservableObject {
     }
     
     func loadToDoItems() {
-        toDoItems = dataGateway.getToDoItems()
+        toDoItems = dataGateway.getToDoItems().map { ToDoItemViewModel(for: $0) }
     }
     
     func add(toDoItem: ToDoItem) {
         dataGateway.saveToDoItem(toDoItem: toDoItem)
         
-        toDoItems.append(toDoItem)
+        toDoItems.append(ToDoItemViewModel(for: toDoItem))
         toDoItems.sort()
+    }
+    
+    func clear(toDoItem: ToDoItem) {
+        toDoItems.removeAll(where: { $0.toDoItem.id == toDoItem.id })
     }
     
     func presentAddToDoItemView() {

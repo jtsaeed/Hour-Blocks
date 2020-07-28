@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-struct ToDoItem: Identifiable, Comparable {
+struct ToDoItem: Identifiable {
     
     let id: String
     var title: String
@@ -40,16 +40,6 @@ struct ToDoItem: Identifiable, Comparable {
         entity.identifier = id
         entity.title = title
         entity.urgency = urgency.rawValue
-    }
-    
-    static func < (lhs: ToDoItem, rhs: ToDoItem) -> Bool {
-        if lhs.urgency == .whenever && (rhs.urgency == .soon || rhs.urgency == .urgent) {
-            return false
-        } else if lhs.urgency == .soon && rhs.urgency == .urgent {
-            return false
-        } else {
-            return true
-        }
     }
 }
 

@@ -34,31 +34,28 @@ struct HourBlockView: View {
                 }
             }
         }.padding(.horizontal, 24)
-        
-        .contextMenu(
-            ContextMenu(menuItems: {
-                Button(action: viewModel.presentEditBlockView) {
-                    Label("Edit", systemImage: "pencil")
-                }
-                .sheet(isPresented: $viewModel.isEditHourBlockViewPresented) {
-                    EditHourBlockView(viewModel: viewModel)
-                }
-                
-                Button(action: viewModel.presentManageSubBlocksView) {
-                    Label("Sub Blocks", systemImage: "rectangle.grid.1x2")
-                }
-                .sheet(isPresented: $viewModel.isManageSubBlocksViewPresented) {
-                    ManageSubBlocksView(isPresented: $viewModel.isManageSubBlocksViewPresented,
-                                        viewModel: viewModel,
-                                        hourBlock: viewModel.hourBlock,
-                                        onSubBlockAdded: { _ in })
-                }
-                
-                Button(action: clearBlock) {
-                    Label("Clear", systemImage: "trash")
-                }
-            })
-        )
+
+        .contextMenu(ContextMenu(menuItems: {
+            Button(action: viewModel.presentEditBlockView) {
+                Label("Edit", systemImage: "pencil")
+            }
+            .sheet(isPresented: $viewModel.isEditHourBlockViewPresented) {
+                EditHourBlockView(viewModel: viewModel)
+            }
+            
+            Button(action: viewModel.presentManageSubBlocksView) {
+                Label("Sub Blocks", systemImage: "rectangle.grid.1x2")
+            }
+            .sheet(isPresented: $viewModel.isManageSubBlocksViewPresented) {
+                ManageSubBlocksView(isPresented: $viewModel.isManageSubBlocksViewPresented,
+                                    viewModel: viewModel,
+                                    hourBlock: viewModel.hourBlock)
+            }
+            
+            Button(action: clearBlock) {
+                Label("Clear", systemImage: "trash")
+            }
+        }))
     }
     
     func clearBlock() {

@@ -10,16 +10,32 @@ import SwiftUI
 
 struct ToDoItemView: View {
     
-    let toDoItem: ToDoItem
+    @ObservedObject var viewModel: ToDoItemViewModel
+    
+    let onItemCleared: () -> Void
     
     var body: some View {
         Card {
-            CardLabels(title: toDoItem.title,
-                       subtitle: toDoItem.urgency.rawValue,
-                       subtitleColor: Color(toDoItem.urgency.rawValue.urgencyToColorString()),
+            CardLabels(title: viewModel.title,
+                       subtitle: viewModel.urgency,
+                       subtitleColor: Color(viewModel.urgency.urgencyToColorString()),
                        subtitleOpacity: 1.0,
                        alignment: .center)
         }.padding(.horizontal, 24)
+        
+        .contextMenu(ContextMenu(menuItems: {
+            Button(action: {}) {
+                Label("Edit", systemImage: "pencil")
+            }
+            Button(action: clearItem) {
+                Label("Clear", systemImage: "trash")
+            }
+        }))
+    }
+    
+    func clearItem() {
+        viewModel.clearItem()
+        self.onItemCleared()
     }
 }
 

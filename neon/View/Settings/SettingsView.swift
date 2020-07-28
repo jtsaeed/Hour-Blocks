@@ -14,7 +14,9 @@ struct SettingsView: View {
     
     var body: some View {
         VStack {
-            HeaderView(title: "Settings", subtitle: "Hour Blocks 6.0 Beta 1") { EmptyView() }
+            HeaderView(title: "Settings", subtitle: "Hour Blocks \(VersionGateway.shared.fullCurrentVersion)") {
+                EmptyView()
+            }
             
             ScrollView {
                 VStack(spacing: 24) {
@@ -22,6 +24,9 @@ struct SettingsView: View {
                                      subtitle: "Provide valuable",
                                      iconName: "text.bubble.fill",
                                      action: viewModel.presentFeedbackView)
+                    .sheet(isPresented: $viewModel.isFeedbackViewPresented, content: {
+                        FeedbackView(isPresented: $viewModel.isFeedbackViewPresented)
+                    })
                     
                     SettingsCardView(title: "Calendars",
                                      subtitle: "Take control of",

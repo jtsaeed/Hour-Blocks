@@ -15,7 +15,7 @@ struct ContentView: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
     
-    @State var showWhatsNew = false
+    @State var showWhatsNew = VersionGateway.shared.isNewVersion()
  
     var body: some View {
         TabView {
@@ -32,21 +32,10 @@ struct ContentView: View {
                 Text("Settings")
             }
         }.accentColor(Color("primary"))
-//        .onAppear(perform: checkIfUpdated)
         .sheet(isPresented: $showWhatsNew, content: {
             WhatsNewView(showWhatsNew: self.$showWhatsNew)
         })
     }
-    
-    /*
-    func checkIfUpdated() {
-        self.showWhatsNew = DataGateway.shared.isNewVersion()
-        
-        if showWhatsNew {
-            scheduleViewModel.currentTip = .swipeBlockOptions
-        }
-    }
-     */
 }
 
 #if DEBUG

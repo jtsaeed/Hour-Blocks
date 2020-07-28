@@ -162,6 +162,22 @@ extension DataGateway {
             print("error")
         }
     }
+    
+    func editToDoItem(item: ToDoItem, set value: Any?, forKey key: String) {
+        let request = NSFetchRequest<ToDoEntity>(entityName: "ToDoEntity")
+        request.predicate = NSPredicate(format: "identifier == %@", item.id)
+        
+        do {
+            let toDoEntities = try managedObjectContext.fetch(request)
+            let toDoEntity = toDoEntities.first!
+            
+            toDoEntity.setValue(value, forKey: key)
+            
+            try managedObjectContext.save()
+        } catch {
+            print("error")
+        }
+    }
 }
 
 // MARK: - Delete
@@ -234,22 +250,5 @@ extension DataGateway {
         } catch {
             print("error")
         }
-    }
-}
-
-// MARK: - MISC
-
-extension DataGateway {
-
-    func isNewVersion() -> Bool {
-        guard let userVersion = UserDefaults.standard.object(forKey: "currentVersion") as? Double else {
-            UserDefaults.standard.set(MetaGateway.shared.currentVersion, forKey: "currentVersion")
-            return false
-        }
-        
-        UserDefaults.standard.set(MetaGateway.shared.currentVersion, forKey: "currentVersion")
-        UserDefaults.standard.synchronize()
-        
-        return userVersion < MetaGateway.shared.currentVersion
     }
 }

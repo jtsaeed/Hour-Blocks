@@ -24,8 +24,9 @@ struct ToDoListView: View {
             
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 24) {
-                    ForEach(viewModel.toDoItems) { toDoItem in
-                        ToDoItemView(toDoItem: toDoItem)
+                    ForEach(viewModel.toDoItems) { toDoItemViewModel in
+                        ToDoItemView(viewModel: toDoItemViewModel,
+                                     onItemCleared: { viewModel.clear(toDoItem: toDoItemViewModel.toDoItem) })
                     }
                 }.padding(.top, 8)
                 .padding(.bottom, 24)

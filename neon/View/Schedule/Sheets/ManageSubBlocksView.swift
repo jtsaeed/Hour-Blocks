@@ -14,7 +14,6 @@ struct ManageSubBlocksView: View {
     @ObservedObject var viewModel: HourBlockViewModel
     
     let hourBlock: HourBlock
-    let onSubBlockAdded: (SubBlock) -> Void
     
     @State var title = ""
     

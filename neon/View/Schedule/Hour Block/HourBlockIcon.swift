@@ -16,6 +16,7 @@ struct HourBlockIcon: View {
         Image(name)
             .resizable()
             .frame(width: 40, height: 40)
+            .foregroundColor(.black)
             .opacity(0.1)
     }
 }

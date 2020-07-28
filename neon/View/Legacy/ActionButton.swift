@@ -11,28 +11,18 @@ import SwiftUI
 struct ActionButton: View {
     
     let title: String
-    var color: Color = Color("primary")
+    let action: () -> Void
     
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 12)
-                .foregroundColor(color)
-                .frame(height: 48)
-            Text(title)
-                .font(.system(size: 17, weight: .semibold, design: .default))
-                .foregroundColor(.white)
-        }
-    }
-}
-
-struct SecondaryActionButton: View {
-    
-    let title: String
-    var color: Color = Color("primary")
-    
-    var body: some View {
-        Text(title)
-            .font(.system(size: 17, weight: .semibold, design: .default))
-            .foregroundColor(color)
+        Button(action: action, label: {
+            ZStack {
+                RoundedRectangle(cornerRadius: 12)
+                    .foregroundColor(Color("primary"))
+                    .frame(height: 48)
+                Text(title)
+                    .font(.system(size: 17, weight: .semibold, design: .default))
+                    .foregroundColor(.white)
+            }
+        })
     }
 }

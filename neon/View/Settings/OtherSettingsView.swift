@@ -11,7 +11,7 @@ import SwiftUI
 struct OtherSettingsView: View {
     
     var body: some View {
-        Text("Other Settings")
+        Text("In construction")
     }
 }
 
