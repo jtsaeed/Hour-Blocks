@@ -10,21 +10,22 @@ import SwiftUI
 
 struct EditToDoItemView: View {
     
-    @ObservedObject var viewModel: ToDoListViewModel
+    @ObservedObject var viewModel: ToDoItemViewModel
     
     @State var title = ""
     @State var urgency: ToDoUrgency = .whenever
     
+    init(viewModel: ToDoItemViewModel) {
+        self.viewModel = viewModel
+        self._title = State(initialValue: viewModel.title)
+        self._urgency = State(initialValue: viewModel.toDoItem.urgency)
+    }
+    
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                HStack(spacing: 16) {
-                    NeonTextField(input: $title,
-                                  didReturn: addToDoItem)
-                    IconButton(iconName: "plus",
-                                  iconWeight: .bold,
-                                  action: addToDoItem)
-                }.padding(24)
+                NeonTextField(input: $title, didReturn: {})
+                    .padding(24)
                 
                 Text("Urgency")
                     .font(.system(size: 28, weight: .bold, design: .default))
@@ -37,24 +38,20 @@ struct EditToDoItemView: View {
                     .padding(.horizontal, 24)
                 
                 Spacer()
-            }.navigationTitle("Add a To Do Item")
-            .navigationBarItems(leading: Button("Cancel", action: dismiss))
+            }.navigationTitle("Edit To Do Item")
+            .navigationBarItems(leading: Button("Cancel", action: viewModel.dismissEditItemView),
+                                trailing: Button("Save", action: save))
         }
         .accentColor(Color("AccentColor"))
     }
     
-    func addToDoItem() {
-        viewModel.add(toDoItem: ToDoItem(title: title, urgency: urgency))
-        dismiss()
-    }
-    
-    func dismiss() {
-        viewModel.dismissAddToDoItemView()
+    func save() {
+        viewModel.saveChanges(title: title, urgency: urgency)
     }
 }
 
 struct EditToDoItemView_Previews: PreviewProvider {
     static var previews: some View {
-        EditToDoItemView(viewModel: ToDoListViewModel())
+        EditToDoItemView(viewModel: ToDoItemViewModel(for: ToDoItem(title: "Test", urgency: .whenever)))
     }
 }

@@ -185,7 +185,7 @@ extension DataGateway {
 extension DataGateway {
     
     func deleteHourBlock(block: HourBlock) {
-        let request = NSFetchRequest<SubBlockEntity>(entityName: "SubBlockEntity")
+        let request = NSFetchRequest<HourBlockEntity>(entityName: "HourBlockEntity")
         request.predicate = NSPredicate(format: "identifier == %@", block.id)
         
         do {

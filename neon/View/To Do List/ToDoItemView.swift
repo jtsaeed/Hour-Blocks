@@ -24,13 +24,17 @@ struct ToDoItemView: View {
         }.padding(.horizontal, 24)
         
         .contextMenu(ContextMenu(menuItems: {
-            Button(action: {}) {
+            Button(action: viewModel.presentEditItemView) {
                 Label("Edit", systemImage: "pencil")
             }
             Button(action: onItemCleared) {
                 Label("Clear", systemImage: "trash")
             }
         }))
+        
+        .sheet(isPresented: $viewModel.isEditItemViewPresented) {
+            EditToDoItemView(viewModel: viewModel)
+        }
     }
 }
 
