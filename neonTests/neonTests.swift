@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import neon
+@testable import Hour_Blocks
 
 class neonTests: XCTestCase {
 

@@ -1,24 +1,24 @@
 {
   "images" : [
     {
+      "filename" : "Artboard.png",
       "idiom" : "universal",
-      "filename" : "default.png",
       "scale" : "1x"
     },
     {
+      "filename" : "Artboard@2x.png",
       "idiom" : "universal",
-      "filename" : "default@2x.png",
       "scale" : "2x"
     },
     {
+      "filename" : "Artboard@3x.png",
       "idiom" : "universal",
-      "filename" : "default@3x.png",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   },
   "properties" : {
     "template-rendering-intent" : "template"

@@ -1,5 +1,5 @@
 //
-//  BlockDomains.swift
+//  DomainsGateway.swift
 //  neon3
 //
 //  Created by James Saeed on 08/07/2019.

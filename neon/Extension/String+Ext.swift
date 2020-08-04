@@ -11,10 +11,6 @@ import Foundation
 extension String {
     
     func smartCapitalization() -> String {
-        if let autoCapsSetting = DataGateway.shared.getOtherSettings()?.autoCaps {
-            if autoCapsSetting == 1 { return self }
-        }
-        
         var title = ""
         let words = self.lowercased().components(separatedBy: " ")
         
@@ -30,10 +26,12 @@ extension String {
     }
     
     func urgencyToColorString() -> String {
-        if self == "soon" {
-            return "primary"
+        if self == "urgent" {
+            return "RedColor"
+        } else if self == "soon" {
+            return "AccentColor"
         } else if self == "whenever" {
-            return "subtitle"
+            return "TextColor"
         }
         
         return self

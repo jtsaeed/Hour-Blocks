@@ -1,119 +1,81 @@
 //
-//  CalendarGateway.swift
-//  neon
+//  NewCalendarGateway.swift
+//  Hour Blocks
 //
-//  Created by James Saeed on 25/02/2019.
-//  Copyright © 2019 James Saeed. All rights reserved.
+//  Created by James Saeed on 06/07/2020.
+//  Copyright © 2020 James Saeed. All rights reserved.
 //
 
 import Foundation
 import EventKit
 
-class CalendarGateway {
+protocol CalendarGatewayProtocol {
     
-    static let shared = CalendarGateway()
+    func hasPermission() -> Bool
+    func handlePermissions(completion: @escaping () -> Void)
+    func getEvents(for date: Date) -> [EKEvent]
+}
+
+struct CalendarGateway {
     
-    var eventStore = EKEventStore()
-	
-	var allDayEvent: ImportedCalendarEvent?
+    let eventStore = EKEventStore()
     
     func hasPermission() -> Bool {
         let status = EKEventStore.authorizationStatus(for: EKEntityType.event)
         return status == EKAuthorizationStatus.authorized
     }
     
-    func handlePermissions(completion: @escaping () -> ()) {
+    func handlePermissions(completion: @escaping () -> Void) {
         let status = EKEventStore.authorizationStatus(for: EKEntityType.event)
         
         if status == EKAuthorizationStatus.notDetermined {
             eventStore.requestAccess(to: .event) { granted, error in
-                self.eventStore = EKEventStore()
                 completion()
             }
         }
     }
     
-    func importEvents(for date: Date) -> [ImportedCalendarEvent] {
+    
+    func getEvents(for date: Date) -> [EKEvent] {
         let eventsPredicate = eventStore.predicateForEvents(withStart: date.toLocalTime().dateAtStartOf(.day),
                                                             end: date.toLocalTime().dateAtEndOf(.day),
                                                             calendars: getEnabledCalendars())
         
-        return eventStore.events(matching: eventsPredicate).map({ ImportedCalendarEvent(from: $0) })
+        return eventStore.events(matching: eventsPredicate)
     }
     
-    func rename(event: EKEvent, to newTitle: String) {
-        event.title = newTitle
+    func initialiseEnabledCalendars() -> [String: Bool] {
+        var enabledCalendars = [String: Bool]()
         
-        do {
-            #if os(iOS)
-            try eventStore.save(event, span: .thisEvent)
-            #endif
-        } catch let error {
-            print(error)
+        let calendarIdentifiers = getAllCalendars().map { $0.calendarIdentifier }
+        for identifier in calendarIdentifiers {
+            enabledCalendars[identifier] = true
         }
+        
+        UserDefaults.standard.set(enabledCalendars, forKey: "enabledCalendars")
+        
+        return enabledCalendars
     }
     
-    func clear(event: EKEvent) {
-        do {
-            #if os(iOS)
-            try eventStore.remove(event, span: .thisEvent)
-            #endif
-        } catch let error {
-            print(error)
-        }
+    func getCalendarName(for identifier: String) -> String {
+        return eventStore.calendar(withIdentifier: identifier)?.title ?? "Unknown Calendar Title"
     }
-	
-	private func getEnabledCalendars() -> [EKCalendar] {
-        var calendars = [EKCalendar]()
-        
-        let userCalendars = DataGateway.shared.getUserCalendars()
-        
-        for calendar in getAllCalendars() {
-            if userCalendars.first(where: { $0.identifier == calendar.calendarIdentifier })?.enabled == false {
-                continue
-            } else {
-                calendars.append(calendar)
+    
+    private func getEnabledCalendars() -> [EKCalendar] {
+        if let userCalendars = UserDefaults.standard.dictionary(forKey: "enabledCalendars") as? [String: Bool] {
+            return getAllCalendars().compactMap { calendar in
+                if userCalendars[calendar.calendarIdentifier] == true {
+                    return calendar
+                } else {
+                    return nil
+                }
             }
-        }
-        
-        return calendars
-	}
-	
-	func getAllCalendars() -> [EKCalendar] {
-		return eventStore.calendars(for: .event)
-	}
-}
-
-struct ImportedCalendarEvent {
-    
-    let eventEntity: EKEvent
-    let title: String
-    let date: Date
-    
-    var isAllDay: Bool
-    var startingHour: Int
-    var endingHour: Int
-    
-    init(from event: EKEvent) {
-        self.eventEntity = event
-        self.title = event.title
-        self.date = event.startDate
-        self.isAllDay = event.isAllDay
-        
-        self.startingHour = Calendar.current.component(.hour, from: event.startDate)
-        self.endingHour = Calendar.current.component(.hour, from: event.endDate)
-		
-        // Calibrate hours
-        if startingHour > Calendar.current.component(.hour, from: event.endDate) {
-            endingHour = 23
-        } else if startingHour == Calendar.current.component(.hour, from: event.endDate) {
-            endingHour = startingHour
         } else {
-            if Calendar.current.component(.minute, from: event.endDate) == 0 {
-                endingHour = Calendar.current.component(.hour, from: event.endDate) - 1
-            } else {
-                endingHour = Calendar.current.component(.hour, from: event.endDate)
-            }
+            return getAllCalendars()
         }
+    }
+    
+    func getAllCalendars() -> [EKCalendar] {
+        return eventStore.calendars(for: .event)
     }
 }

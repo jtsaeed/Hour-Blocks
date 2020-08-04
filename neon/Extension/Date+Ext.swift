@@ -25,6 +25,13 @@ extension Date {
         return dateFormatter.string(from: self).uppercased()
     }
     
+    func getFullFormattedTime(militaryTime: Bool) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = militaryTime ? "HH:mm" : "h:mma"
+        
+        return dateFormatter.string(from: self).uppercased()
+    }
+    
     func getRelativeDateToToday() -> String {
         if Calendar.current.isDateInToday(self) {
             return NSLocalizedString("Today", comment: "")
