@@ -50,29 +50,41 @@ class ScheduleViewModel: ObservableObject {
         todaysCalendarBlocks = calendarGateway.getEvents(for: currentDate)
     }
     
+    func handleCalendarPermissions() {
+        calendarGateway.handlePermissions {
+            DispatchQueue.main.async { self.loadHourBlocks() }
+        }
+    }
+    
     func addBlock(_ hourBlock: HourBlock) {
+        HapticsGateway.shared.triggerAddBlockHaptic()
+        
+        dataGateway.saveHourBlock(block: hourBlock)
+        
         todaysHourBlocks[hourBlock.hour] = HourBlockViewModel(for: hourBlock)
         updateCurrentHour()
     }
     
-    func refreshBlock(_ hourBlockViewModel: HourBlockViewModel) {
-        todaysHourBlocks[hourBlockViewModel.hourBlock.hour] = hourBlockViewModel
-        updateCurrentHour()
-    }
-    
     func clearBlock(_ hourBlock: HourBlock) {
+        HapticsGateway.shared.triggerClearBlockHaptic()
+        
+        dataGateway.deleteHourBlock(block: hourBlock)
+        dataGateway.deleteSubBlocks(of: hourBlock)
         todaysHourBlocks[hourBlock.hour] = HourBlockViewModel(for: HourBlock(day: hourBlock.day,
                                                                              hour: hourBlock.hour,
                                                                              title: nil))
+        
         updateCurrentHour()
     }
     
     func toggleFilter() {
+        HapticsGateway.shared.triggerLightImpact()
         isFilterEnabled.toggle()
         updateCurrentHour()
     }
     
     func presentDatePickerView() {
+        HapticsGateway.shared.triggerLightImpact()
         isDatePickerViewPresented = true
     }
     

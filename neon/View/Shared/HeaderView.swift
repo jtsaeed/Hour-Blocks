@@ -23,7 +23,7 @@ struct HeaderView<Content>: View where Content: View {
     var body: some View {
         ZStack(alignment: .leading) {
             Rectangle()
-                .foregroundColor(.white)
+                .foregroundColor(Color("BackgroundColor"))
                 .frame(height: 96)
             HStack {
                 VStack(alignment: .leading, spacing: 4) {

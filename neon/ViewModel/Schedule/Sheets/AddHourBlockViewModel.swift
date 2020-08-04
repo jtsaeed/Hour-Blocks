@@ -32,8 +32,4 @@ class AddHourBlockViewModel: ObservableObject {
             }
         }
     }
-    
-    func add(_ hourBlock: HourBlock) {
-        dataGateway.saveHourBlock(block: hourBlock)
-    }
 }

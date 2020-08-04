@@ -48,10 +48,6 @@ class ToDoItemViewModel: ObservableObject, Identifiable {
         
         dismissEditItemView()
     }
-    
-    func clearItem() {
-        dataGateway.deleteToDoItem(toDoItem: toDoItem)
-    }
 }
 
 extension ToDoItemViewModel: Comparable {

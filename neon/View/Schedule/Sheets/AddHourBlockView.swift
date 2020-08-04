@@ -60,12 +60,12 @@ struct AddHourBlockView: View {
     }
     
     func addHourBlock() {
-        let hourBlock = HourBlock(day: day, hour: hour, title: title)
-        
-        viewModel.add(hourBlock)
-        onAdded(hourBlock)
-        
-        dismiss()
+        if !title.isEmpty {
+            onAdded(HourBlock(day: day, hour: hour, title: title))
+            dismiss()
+        } else {
+            HapticsGateway.shared.triggerErrorHaptic()
+        }
     }
     
     func dismiss() {

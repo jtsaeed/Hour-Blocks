@@ -52,15 +52,10 @@ struct HourBlockView: View {
                                     hourBlock: viewModel.hourBlock)
             }
             
-            Button(action: clearBlock) {
+            Button(action: onBlockCleared) {
                 Label("Clear", systemImage: "trash")
             }
         }))
-    }
-    
-    func clearBlock() {
-        viewModel.clearBlock()
-        self.onBlockCleared()
     }
 }
 
@@ -95,7 +90,7 @@ struct NoHourBlocksView: View {
             HStack {
                 CardLabels(title: "Hour Blocks",
                            subtitle: "No",
-                           titleColor: Color("subtitle"),
+                           titleColor: Color("TextColor"),
                            alignment: .center)
             }
         }.padding(.horizontal, 24)

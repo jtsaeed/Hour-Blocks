@@ -25,7 +25,7 @@ struct NeonTextField: View {
             TextField("Enter the title here...", text: $input, onCommit: didReturn)
                 .autocapitalization(.none)
                 .font(.system(size: 17, weight: .medium, design: .default))
-                .foregroundColor(.black)
+                .foregroundColor(Color("TextColor"))
                 .padding(.horizontal, 16)
         }
     }

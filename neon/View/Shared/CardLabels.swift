@@ -10,11 +10,13 @@ import SwiftUI
 
 struct CardLabels: View {
     
+    @Environment(\.colorScheme) var colorScheme
+    
     let title: String
     let subtitle: String
     
-    var titleColor = Color(.black)
-    var subtitleColor = Color(.black)
+    var titleColor = Color("TextColor")
+    var subtitleColor = Color("TextColor")
     
     var titleOpacity = 0.9
     var subtitleOpacity = 0.4

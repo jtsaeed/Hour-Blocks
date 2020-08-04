@@ -31,6 +31,8 @@ class ToDoListViewModel: ObservableObject {
     }
     
     func add(toDoItem: ToDoItem) {
+        HapticsGateway.shared.triggerAddBlockHaptic()
+        
         dataGateway.saveToDoItem(toDoItem: toDoItem)
         
         toDoItems.append(ToDoItemViewModel(for: toDoItem))
@@ -38,10 +40,15 @@ class ToDoListViewModel: ObservableObject {
     }
     
     func clear(toDoItem: ToDoItem) {
+        HapticsGateway.shared.triggerClearBlockHaptic()
+        
+        dataGateway.deleteToDoItem(toDoItem: toDoItem)
+        
         toDoItems.removeAll(where: { $0.toDoItem.id == toDoItem.id })
     }
     
     func presentAddToDoItemView() {
+        HapticsGateway.shared.triggerLightImpact()
         isAddToDoItemViewPresented = true
     }
     

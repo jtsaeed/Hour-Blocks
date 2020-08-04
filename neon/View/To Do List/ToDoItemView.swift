@@ -19,7 +19,7 @@ struct ToDoItemView: View {
             CardLabels(title: viewModel.title,
                        subtitle: viewModel.urgency,
                        subtitleColor: Color(viewModel.urgency.urgencyToColorString()),
-                       subtitleOpacity: 1.0,
+                       subtitleOpacity: viewModel.toDoItem.urgency == .whenever ? 0.4 : 1.0,
                        alignment: .center)
         }.padding(.horizontal, 24)
         
@@ -27,15 +27,10 @@ struct ToDoItemView: View {
             Button(action: {}) {
                 Label("Edit", systemImage: "pencil")
             }
-            Button(action: clearItem) {
+            Button(action: onItemCleared) {
                 Label("Clear", systemImage: "trash")
             }
         }))
-    }
-    
-    func clearItem() {
-        viewModel.clearItem()
-        self.onItemCleared()
     }
 }
 

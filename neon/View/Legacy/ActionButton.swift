@@ -17,7 +17,7 @@ struct ActionButton: View {
         Button(action: action, label: {
             ZStack {
                 RoundedRectangle(cornerRadius: 12)
-                    .foregroundColor(Color("primary"))
+                    .foregroundColor(Color("AccentColor"))
                     .frame(height: 48)
                 Text(title)
                     .font(.system(size: 17, weight: .semibold, design: .default))

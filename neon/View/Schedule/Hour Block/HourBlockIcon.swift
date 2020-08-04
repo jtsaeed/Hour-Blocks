@@ -10,14 +10,16 @@ import SwiftUI
 
 struct HourBlockIcon: View {
     
+    @Environment(\.colorScheme) var colorScheme
+    
     let name: String
     
     var body: some View {
         Image(name)
             .resizable()
             .frame(width: 40, height: 40)
-            .foregroundColor(.black)
-            .opacity(0.1)
+            .foregroundColor(Color("TextColor"))
+            .opacity(colorScheme == .light ? 0.1 : 0.25)
     }
 }
 

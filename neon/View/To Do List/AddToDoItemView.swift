@@ -44,8 +44,12 @@ struct AddToDoItemView: View {
     }
     
     func addToDoItem() {
-        viewModel.add(toDoItem: ToDoItem(title: title, urgency: urgency))
-        dismiss()
+        if !title.isEmpty {
+            viewModel.add(toDoItem: ToDoItem(title: title, urgency: urgency))
+            dismiss()
+        } else {
+            HapticsGateway.shared.triggerErrorHaptic()
+        }
     }
     
     func dismiss() {

@@ -26,10 +26,12 @@ extension String {
     }
     
     func urgencyToColorString() -> String {
-        if self == "soon" {
-            return "primary"
+        if self == "urgent" {
+            return "RedColor"
+        } else if self == "soon" {
+            return "AccentColor"
         } else if self == "whenever" {
-            return "subtitle"
+            return "TextColor"
         }
         
         return self

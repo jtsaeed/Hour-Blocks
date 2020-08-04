@@ -31,7 +31,7 @@ struct ContentView: View {
                 Image(systemName: "gear")
                 Text("Settings")
             }
-        }.accentColor(Color("primary"))
+        }.accentColor(Color("AccentColor"))
         .sheet(isPresented: $showWhatsNew, content: {
             WhatsNewView(showWhatsNew: self.$showWhatsNew)
         })

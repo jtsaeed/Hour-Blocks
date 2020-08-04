@@ -44,9 +44,12 @@ struct ManageSubBlocksView: View {
     }
     
     func addSubBlock() {
-        viewModel.addSubBlock(SubBlock(of: hourBlock, title: title))
-        
-        dismiss()
+        if !title.isEmpty {
+            viewModel.addSubBlock(SubBlock(of: hourBlock, title: title))
+            dismiss()
+        } else {
+            HapticsGateway.shared.triggerErrorHaptic()
+        }
     }
     
     func dismiss() {

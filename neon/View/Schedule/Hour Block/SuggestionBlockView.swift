@@ -34,7 +34,7 @@ struct NoSuggestionsBlockView: View {
             HStack {
                 CardLabels(title: "None",
                            subtitle: "Currently",
-                           titleColor: Color("subtitle"),
+                           titleColor: Color("TextColor"),
                            alignment: .center)
             }
         }.padding(.horizontal, 24)

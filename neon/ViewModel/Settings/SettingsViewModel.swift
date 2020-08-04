@@ -11,24 +11,28 @@ import UIKit
 
 class SettingsViewModel: ObservableObject {
     
+    @Published var isFeedbackViewPresented = false
     @Published var isCalendarOptionsViewPresented = false
     @Published var isOtherSettingsViewPresented = false
-    @Published var isFeedbackViewPresented = false
     @Published var isPrivacyPolicyPresented = false
     
+    func presentFeedbackView() {
+        HapticsGateway.shared.triggerLightImpact()
+        isFeedbackViewPresented = true
+    }
+    
     func presentCalendarOptionsView() {
+        HapticsGateway.shared.triggerLightImpact()
         isCalendarOptionsViewPresented = true
     }
     
     func presentOtherSettingsView() {
+        HapticsGateway.shared.triggerLightImpact()
         isOtherSettingsViewPresented = true
     }
     
-    func presentFeedbackView() {
-        isFeedbackViewPresented = true
-    }
-    
     func presentPrivacyPolicyView() {
+        HapticsGateway.shared.triggerLightImpact()
         isPrivacyPolicyPresented = true
     }
     
