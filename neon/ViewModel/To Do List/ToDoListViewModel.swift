@@ -11,19 +11,21 @@ import Foundation
 class ToDoListViewModel: ObservableObject {
     
     let dataGateway: DataGateway
+    let analyticsGateway: AnalyticsGateway
     
     @Published var toDoItems = [ToDoItemViewModel]()
     
     @Published var isAddToDoItemViewPresented = false
     
-    init(dataGateway: DataGateway) {
+    init(dataGateway: DataGateway, analyticsGateway: AnalyticsGateway) {
         self.dataGateway = dataGateway
+        self.analyticsGateway = analyticsGateway
         
         loadToDoItems()
     }
     
     convenience init() {
-        self.init(dataGateway: DataGateway())
+        self.init(dataGateway: DataGateway(), analyticsGateway: AnalyticsGateway())
     }
     
     func loadToDoItems() {
@@ -33,7 +35,8 @@ class ToDoListViewModel: ObservableObject {
     func add(toDoItem: ToDoItem) {
         HapticsGateway.shared.triggerAddBlockHaptic()
         
-        dataGateway.saveToDoItem(toDoItem: toDoItem)
+        dataGateway.save(toDoItem: toDoItem)
+        analyticsGateway.logToDoItem()
         
         toDoItems.append(ToDoItemViewModel(for: toDoItem))
         toDoItems.sort()
@@ -42,7 +45,7 @@ class ToDoListViewModel: ObservableObject {
     func clear(toDoItem: ToDoItem) {
         HapticsGateway.shared.triggerClearBlockHaptic()
         
-        dataGateway.deleteToDoItem(toDoItem: toDoItem)
+        dataGateway.delete(toDoItem: toDoItem)
         
         toDoItems.removeAll(where: { $0.toDoItem.id == toDoItem.id })
     }

@@ -10,15 +10,17 @@ import Foundation
 class AddHourBlockViewModel: ObservableObject {
     
     let dataGateway: DataGateway
+    let analyticsGateway: AnalyticsGateway
     
     @Published var currentSuggestions = [Suggestion]()
     
-    init(dataGateway: DataGateway) {
+    init(dataGateway: DataGateway, analyticsGateway: AnalyticsGateway) {
         self.dataGateway = dataGateway
+        self.analyticsGateway = analyticsGateway
     }
     
     convenience init() {
-        self.init(dataGateway: DataGateway())
+        self.init(dataGateway: DataGateway(), analyticsGateway: AnalyticsGateway())
     }
     
     func loadSuggestions(for hour: Int, on day: Date) {
@@ -31,5 +33,9 @@ class AddHourBlockViewModel: ObservableObject {
                 self.currentSuggestions = pulledSuggestions
             }
         }
+    }
+    
+    func logAddedSuggestion(_ suggestion: Suggestion) {
+        analyticsGateway.log(suggestion: suggestion)
     }
 }

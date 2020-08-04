@@ -56,6 +56,7 @@ struct AddHourBlockView: View {
     
     func addSuggestionBlock(for suggestion: Suggestion) {
         title = suggestion.title
+        viewModel.logAddedSuggestion(suggestion)
         addHourBlock()
     }
     

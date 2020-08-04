@@ -29,8 +29,8 @@ struct DataGateway {
 
 extension DataGateway {
     
-    func saveHourBlock(block: HourBlock) {
-        block.getEntity(context: managedObjectContext)
+    func save(hourBlock: HourBlock) {
+        hourBlock.getEntity(context: managedObjectContext)
         
         do {
             try managedObjectContext.save()
@@ -39,8 +39,8 @@ extension DataGateway {
         }
     }
     
-    func saveSubBlock(block: SubBlock) {
-        block.getEntity(context: managedObjectContext)
+    func save(subBlock: SubBlock) {
+        subBlock.getEntity(context: managedObjectContext)
         
         do {
             try managedObjectContext.save()
@@ -49,7 +49,7 @@ extension DataGateway {
         }
     }
     
-    func saveToDoItem(toDoItem: ToDoItem) {
+    func save(toDoItem: ToDoItem) {
         toDoItem.getEntity(context: managedObjectContext)
         
         do {
@@ -147,9 +147,9 @@ extension DataGateway {
 
 extension DataGateway {
     
-    func editHourBlock(block: HourBlock, set value: Any?, forKey key: String) {
+    func edit(hourBlock: HourBlock, set value: Any?, forKey key: String) {
         let request = NSFetchRequest<HourBlockEntity>(entityName: "HourBlockEntity")
-        request.predicate = NSPredicate(format: "identifier == %@", block.id)
+        request.predicate = NSPredicate(format: "identifier == %@", hourBlock.id)
         
         do {
             let hourBlockEntities = try managedObjectContext.fetch(request)
@@ -163,9 +163,9 @@ extension DataGateway {
         }
     }
     
-    func editToDoItem(item: ToDoItem, set value: Any?, forKey key: String) {
+    func edit(toDoItem: ToDoItem, set value: Any?, forKey key: String) {
         let request = NSFetchRequest<ToDoEntity>(entityName: "ToDoEntity")
-        request.predicate = NSPredicate(format: "identifier == %@", item.id)
+        request.predicate = NSPredicate(format: "identifier == %@", toDoItem.id)
         
         do {
             let toDoEntities = try managedObjectContext.fetch(request)
@@ -184,9 +184,9 @@ extension DataGateway {
 
 extension DataGateway {
     
-    func deleteHourBlock(block: HourBlock) {
+    func delete(hourBlock: HourBlock) {
         let request = NSFetchRequest<HourBlockEntity>(entityName: "HourBlockEntity")
-        request.predicate = NSPredicate(format: "identifier == %@", block.id)
+        request.predicate = NSPredicate(format: "identifier == %@", hourBlock.id)
         
         do {
             let hourBlockEntities = try managedObjectContext.fetch(request)
@@ -218,9 +218,9 @@ extension DataGateway {
         }
     }
     
-    func deleteSubBlock(block: SubBlock) {
+    func delete(subBlock: SubBlock) {
         let request = NSFetchRequest<SubBlockEntity>(entityName: "SubBlockEntity")
-        request.predicate = NSPredicate(format: "identifier == %@", block.id)
+        request.predicate = NSPredicate(format: "identifier == %@", subBlock.id)
         
         do {
             let subBlockEntities = try managedObjectContext.fetch(request)
@@ -235,7 +235,7 @@ extension DataGateway {
         }
     }
     
-    func deleteToDoItem(toDoItem: ToDoItem) {
+    func delete(toDoItem: ToDoItem) {
         let request = NSFetchRequest<ToDoEntity>(entityName: "ToDoEntity")
         request.predicate = NSPredicate(format: "identifier == %@", toDoItem.id)
         

@@ -43,8 +43,8 @@ class ToDoItemViewModel: ObservableObject, Identifiable {
         self.title = title
         self.urgency = urgency.rawValue
         
-        dataGateway.editToDoItem(item: toDoItem, set: title, forKey: "title")
-        dataGateway.editToDoItem(item: toDoItem, set: urgency.rawValue, forKey: "urgency")
+        dataGateway.edit(toDoItem: toDoItem, set: title, forKey: "title")
+        dataGateway.edit(toDoItem: toDoItem, set: urgency.rawValue, forKey: "urgency")
         
         dismissEditItemView()
     }

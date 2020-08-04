@@ -14,6 +14,7 @@ class ScheduleViewModel: ObservableObject {
     
     let dataGateway: DataGateway
     let calendarGateway: CalendarGateway
+    let analyticsGateway: AnalyticsGateway
     
     @Published var currentHour = Calendar.current.component(.hour, from: Date())
     @Published var currentDate = Calendar.current.startOfDay(for: Date())
@@ -23,15 +24,18 @@ class ScheduleViewModel: ObservableObject {
     @Published var isFilterEnabled = true
     @Published var isDatePickerViewPresented = false
     
-    init(dataGateway: DataGateway, calendarGateway: CalendarGateway) {
+    init(dataGateway: DataGateway, calendarGateway: CalendarGateway, analyticsGateway: AnalyticsGateway) {
         self.dataGateway = dataGateway
         self.calendarGateway = calendarGateway
+        self.analyticsGateway = analyticsGateway
         
         loadHourBlocks()
     }
     
     convenience init() {
-        self.init(dataGateway: DataGateway(), calendarGateway: CalendarGateway())
+        self.init(dataGateway: DataGateway(),
+                  calendarGateway: CalendarGateway(),
+                  analyticsGateway: AnalyticsGateway())
     }
     
     func loadHourBlocks() {
@@ -59,7 +63,8 @@ class ScheduleViewModel: ObservableObject {
     func addBlock(_ hourBlock: HourBlock) {
         HapticsGateway.shared.triggerAddBlockHaptic()
         
-        dataGateway.saveHourBlock(block: hourBlock)
+        dataGateway.save(hourBlock: hourBlock)
+        analyticsGateway.log(hourBlock: hourBlock)
         
         todaysHourBlocks[hourBlock.hour] = HourBlockViewModel(for: hourBlock)
         updateCurrentHour()
@@ -68,7 +73,7 @@ class ScheduleViewModel: ObservableObject {
     func clearBlock(_ hourBlock: HourBlock) {
         HapticsGateway.shared.triggerClearBlockHaptic()
         
-        dataGateway.deleteHourBlock(block: hourBlock)
+        dataGateway.delete(hourBlock: hourBlock)
         dataGateway.deleteSubBlocks(of: hourBlock)
         todaysHourBlocks[hourBlock.hour] = HourBlockViewModel(for: HourBlock(day: hourBlock.day,
                                                                              hour: hourBlock.hour,

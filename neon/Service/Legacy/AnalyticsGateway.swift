@@ -10,23 +10,17 @@ import Foundation
 import Firebase
 
 class AnalyticsGateway {
-	
-	static let shared = AnalyticsGateway()
     
     func log(hourBlock: HourBlock) {
-//        Analytics.logEvent("hourBlock5", parameters: ["domain": hourBlock.domain?.rawValue ?? "default"])
+        Analytics.logEvent("hourBlock5", parameters: ["domain": DomainsGateway.shared.determineDomain(for: hourBlock.title!)?.rawValue ?? "Default"])
     }
     
     func log(suggestion: Suggestion) {
-//        Analytics.logEvent("suggestion", parameters: ["domain": suggestion.domain.rawValue,
-//                                                      "reason": suggestion.reason])
+        Analytics.logEvent("suggestion", parameters: ["domain": suggestion.domain.rawValue,
+                                                      "reason": suggestion.reason])
     }
     
-    func logShowAddBlock() {
-//        Analytics.logEvent("showAddBlock", parameters: nil)
-    }
-    
-    func logToDo() {
-//        Analytics.logEvent("toDo", parameters: nil)
+    func logToDoItem() {
+        Analytics.logEvent("toDo", parameters: nil)
     }
 }

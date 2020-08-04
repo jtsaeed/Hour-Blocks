@@ -56,7 +56,7 @@ class HourBlockViewModel: Identifiable, ObservableObject {
         HapticsGateway.shared.triggerLightImpact()
         
         self.title = title
-        dataGateway.editHourBlock(block: hourBlock, set: title, forKey: "title")
+        dataGateway.edit(hourBlock: hourBlock, set: title, forKey: "title")
         
         dismissEditBlockView()
     }
@@ -68,7 +68,7 @@ class HourBlockViewModel: Identifiable, ObservableObject {
     func addSubBlock(_ subBlock: SubBlock) {
         HapticsGateway.shared.triggerLightImpact()
         
-        dataGateway.saveSubBlock(block: subBlock)
+        dataGateway.save(subBlock: subBlock)
         
         subBlocks.append(subBlock)
     }
@@ -76,7 +76,7 @@ class HourBlockViewModel: Identifiable, ObservableObject {
     func clearSubBlock(_ subBlock: SubBlock) {
         HapticsGateway.shared.triggerClearBlockHaptic()
         
-        dataGateway.deleteSubBlock(block: subBlock)
+        dataGateway.delete(subBlock: subBlock)
         
         subBlocks.removeAll { $0.id == subBlock.id }
     }
