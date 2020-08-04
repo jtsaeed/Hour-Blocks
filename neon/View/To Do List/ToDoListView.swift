@@ -31,7 +31,7 @@ struct ToDoListView: View {
                 }.padding(.top, 8)
                 .padding(.bottom, 24)
             }
-        }
+        }.navigationBarHidden(true)
     }
 }
 

@@ -1,6 +1,0 @@
-framework module Pods_neon {
-  umbrella header "Pods-neon-umbrella.h"
-
-  export *
-  module * { export * }
-}

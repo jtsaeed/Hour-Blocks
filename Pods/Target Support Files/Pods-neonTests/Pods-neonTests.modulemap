@@ -1,6 +1,0 @@
-framework module Pods_neonTests {
-  umbrella header "Pods-neonTests-umbrella.h"
-
-  export *
-  module * { export * }
-}

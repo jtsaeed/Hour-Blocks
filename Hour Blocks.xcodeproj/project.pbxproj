@@ -28,7 +28,7 @@
 		23C53D812369E62800BA4378 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C53D802369E62800BA4378 /* String+Ext.swift */; };
 		23E45BE2224BA3A9002D01AC /* NotificationsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E45BE1224BA3A9002D01AC /* NotificationsGateway.swift */; };
 		23E82155236DB57A004E6F15 /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E82154236DB57A004E6F15 /* WhatsNewView.swift */; };
-		61B305ACEAA2B4F72109821D /* Pods_neon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BA23B93EB57D0A9C87A3846 /* Pods_neon.framework */; platformFilter = ios; };
+		609F8EA78CE49843115F4A0D /* Pods_Hour_BlocksTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12A40077628A72E8344C9A4E /* Pods_Hour_BlocksTests.framework */; };
 		7A1AF6F823F440ED00425BB6 /* BlockDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1AF6F723F440ED00425BB6 /* BlockDomain.swift */; };
 		7A1AF6FA23F456F600425BB6 /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1AF6F923F456F600425BB6 /* Suggestion.swift */; };
 		7A4E738423A01819008036ED /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4E738323A01819008036ED /* CloudKit.framework */; };
@@ -40,9 +40,11 @@
 		7A8BA9B523CCCD2C0078E67D /* icon_pro@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A8BA9B123CCCD2C0078E67D /* icon_pro@2x.png */; };
 		7A8BA9B623CCCD2C0078E67D /* icon_dark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A8BA9B223CCCD2C0078E67D /* icon_dark@3x.png */; };
 		7ADE54ED23F0B898007FAE38 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 7ADE54EC23F0B898007FAE38 /* SwiftDate */; };
+		815BF6060562A2DC79C991CC /* Pods_Hour_Blocks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3105B3338C0F7D4F81D55776 /* Pods_Hour_Blocks.framework */; };
 		AB05597824CEFB21006F0228 /* ScheduleDatePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB05597724CEFB21006F0228 /* ScheduleDatePickerViewModel.swift */; };
 		AB05597A24CF085B006F0228 /* CompactHourBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB05597924CF085B006F0228 /* CompactHourBlockView.swift */; };
 		AB05598224CF5E1C006F0228 /* VersionGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB05598124CF5E1C006F0228 /* VersionGateway.swift */; };
+		AB0D3E8524D9B7D700CFF640 /* TestSidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0D3E8424D9B7D700CFF640 /* TestSidebarView.swift */; };
 		AB1D6FCF24C47AC700D26D4B /* AddToDoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1D6FCE24C47AC700D26D4B /* AddToDoItemView.swift */; };
 		AB33B25824BF5EDD0057662F /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB33B25724BF5EDD0057662F /* WidgetKit.framework */; };
 		AB33B25A24BF5EDD0057662F /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB33B25924BF5EDD0057662F /* SwiftUI.framework */; };
@@ -112,8 +114,7 @@
 		ABFC243624D022850091E3A5 /* ToDoItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFC243524D022850091E3A5 /* ToDoItemViewModel.swift */; };
 		ABFC243824D029730091E3A5 /* EditToDoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFC243724D029730091E3A5 /* EditToDoItemView.swift */; };
 		ABFC243A24D039B30091E3A5 /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFC243924D039B30091E3A5 /* FeedbackView.swift */; };
-		B658B761255B945710FC2F42 /* Pods_neonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9076E2F3ADB2E623D12BBF3D /* Pods_neonTests.framework */; };
-		B912B77E89CBF0E08ECEB8A2 /* Pods_neonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F07358A92310DC9C6BA03B89 /* Pods_neonUITests.framework */; };
+		ACCF499AD9B1C82075601FF8 /* Pods_Hour_BlocksUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC17F140379ADAB615CD7BFE /* Pods_Hour_BlocksUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,6 +176,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		12A40077628A72E8344C9A4E /* Pods_Hour_BlocksTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hour_BlocksTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		23036F4D237B2D9000563206 /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 		2304FA13235F29ED006DA688 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2304FA16235F2A2A006DA688 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -206,9 +208,8 @@
 		23E45BE1224BA3A9002D01AC /* NotificationsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsGateway.swift; sourceTree = "<group>"; };
 		23E7851322AA753100A9650F /* notification.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = notification.aif; sourceTree = "<group>"; };
 		23E82154236DB57A004E6F15 /* WhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewView.swift; sourceTree = "<group>"; };
-		3090C3879864096A7AB572CC /* Pods-neon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neon.release.xcconfig"; path = "Pods/Target Support Files/Pods-neon/Pods-neon.release.xcconfig"; sourceTree = "<group>"; };
-		390CCC3E80133F37FB4A2306 /* Pods-neonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neonTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-neonTests/Pods-neonTests.debug.xcconfig"; sourceTree = "<group>"; };
-		6B9A0107CCBF37CCAA2CAAD3 /* Pods-neonUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neonUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-neonUITests/Pods-neonUITests.release.xcconfig"; sourceTree = "<group>"; };
+		3105B3338C0F7D4F81D55776 /* Pods_Hour_Blocks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hour_Blocks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		53827539E684DDA9CBD076D4 /* Pods-Hour BlocksTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hour BlocksTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hour BlocksTests/Pods-Hour BlocksTests.release.xcconfig"; sourceTree = "<group>"; };
 		7A1AF6F723F440ED00425BB6 /* BlockDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockDomain.swift; sourceTree = "<group>"; };
 		7A1AF6F923F456F600425BB6 /* Suggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suggestion.swift; sourceTree = "<group>"; };
 		7A4E738323A01819008036ED /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -218,12 +219,11 @@
 		7A8BA9B023CCCD2C0078E67D /* icon_pro@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_pro@3x.png"; sourceTree = "<group>"; };
 		7A8BA9B123CCCD2C0078E67D /* icon_pro@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_pro@2x.png"; sourceTree = "<group>"; };
 		7A8BA9B223CCCD2C0078E67D /* icon_dark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_dark@3x.png"; sourceTree = "<group>"; };
-		8BA23B93EB57D0A9C87A3846 /* Pods_neon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_neon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9076E2F3ADB2E623D12BBF3D /* Pods_neonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_neonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A3593EBEBDFB2F7E14F71C3D /* Pods-neon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-neon/Pods-neon.debug.xcconfig"; sourceTree = "<group>"; };
+		893180180D781FAF36E08784 /* Pods-Hour Blocks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hour Blocks.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hour Blocks/Pods-Hour Blocks.release.xcconfig"; sourceTree = "<group>"; };
 		AB05597724CEFB21006F0228 /* ScheduleDatePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDatePickerViewModel.swift; sourceTree = "<group>"; };
 		AB05597924CF085B006F0228 /* CompactHourBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactHourBlockView.swift; sourceTree = "<group>"; };
 		AB05598124CF5E1C006F0228 /* VersionGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionGateway.swift; sourceTree = "<group>"; };
+		AB0D3E8424D9B7D700CFF640 /* TestSidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSidebarView.swift; sourceTree = "<group>"; };
 		AB12D21E2401A95500D01852 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AB1D6FCE24C47AC700D26D4B /* AddToDoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoItemView.swift; sourceTree = "<group>"; };
 		AB33B25624BF5EDD0057662F /* NeonWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NeonWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -295,9 +295,11 @@
 		ABFC243524D022850091E3A5 /* ToDoItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemViewModel.swift; sourceTree = "<group>"; };
 		ABFC243724D029730091E3A5 /* EditToDoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditToDoItemView.swift; sourceTree = "<group>"; };
 		ABFC243924D039B30091E3A5 /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
-		F07358A92310DC9C6BA03B89 /* Pods_neonUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_neonUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FEF89E64D0C593B4421B153A /* Pods-neonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neonTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-neonTests/Pods-neonTests.release.xcconfig"; sourceTree = "<group>"; };
-		FF3FA86C71973A520B8323EA /* Pods-neonUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neonUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-neonUITests/Pods-neonUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		AC17F140379ADAB615CD7BFE /* Pods_Hour_BlocksUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hour_BlocksUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5DE115035038B9A1CA41814 /* Pods-Hour BlocksUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hour BlocksUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hour BlocksUITests/Pods-Hour BlocksUITests.release.xcconfig"; sourceTree = "<group>"; };
+		BB00A606921CE762F9B8DC18 /* Pods-Hour Blocks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hour Blocks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hour Blocks/Pods-Hour Blocks.debug.xcconfig"; sourceTree = "<group>"; };
+		C333766CEB721D29367837DC /* Pods-Hour BlocksTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hour BlocksTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hour BlocksTests/Pods-Hour BlocksTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D2AA83B739B807FE5A287937 /* Pods-Hour BlocksUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hour BlocksUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hour BlocksUITests/Pods-Hour BlocksUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,7 +309,7 @@
 			files = (
 				7ADE54ED23F0B898007FAE38 /* SwiftDate in Frameworks */,
 				7A4E738423A01819008036ED /* CloudKit.framework in Frameworks */,
-				61B305ACEAA2B4F72109821D /* Pods_neon.framework in Frameworks */,
+				815BF6060562A2DC79C991CC /* Pods_Hour_Blocks.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,7 +317,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B658B761255B945710FC2F42 /* Pods_neonTests.framework in Frameworks */,
+				609F8EA78CE49843115F4A0D /* Pods_Hour_BlocksTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,7 +325,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B912B77E89CBF0E08ECEB8A2 /* Pods_neonUITests.framework in Frameworks */,
+				ACCF499AD9B1C82075601FF8 /* Pods_Hour_BlocksUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,12 +427,12 @@
 		4B7EB119015E82801222CD3A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A3593EBEBDFB2F7E14F71C3D /* Pods-neon.debug.xcconfig */,
-				3090C3879864096A7AB572CC /* Pods-neon.release.xcconfig */,
-				390CCC3E80133F37FB4A2306 /* Pods-neonTests.debug.xcconfig */,
-				FEF89E64D0C593B4421B153A /* Pods-neonTests.release.xcconfig */,
-				FF3FA86C71973A520B8323EA /* Pods-neonUITests.debug.xcconfig */,
-				6B9A0107CCBF37CCAA2CAAD3 /* Pods-neonUITests.release.xcconfig */,
+				BB00A606921CE762F9B8DC18 /* Pods-Hour Blocks.debug.xcconfig */,
+				893180180D781FAF36E08784 /* Pods-Hour Blocks.release.xcconfig */,
+				C333766CEB721D29367837DC /* Pods-Hour BlocksTests.debug.xcconfig */,
+				53827539E684DDA9CBD076D4 /* Pods-Hour BlocksTests.release.xcconfig */,
+				D2AA83B739B807FE5A287937 /* Pods-Hour BlocksUITests.debug.xcconfig */,
+				B5DE115035038B9A1CA41814 /* Pods-Hour BlocksUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -581,6 +583,7 @@
 				ABAFADF724B231540098B823 /* To Do List */,
 				ABAFADF824B2315B0098B823 /* Settings */,
 				AB33B25124BF5E9D0057662F /* Widget */,
+				ABF5833624D9C01F006F6448 /* Concepts */,
 				AB05597C24CF5B3D006F0228 /* Legacy */,
 			);
 			path = View;
@@ -698,18 +701,26 @@
 			path = "To Do List";
 			sourceTree = "<group>";
 		};
+		ABF5833624D9C01F006F6448 /* Concepts */ = {
+			isa = PBXGroup;
+			children = (
+				AB0D3E8424D9B7D700CFF640 /* TestSidebarView.swift */,
+			);
+			path = Concepts;
+			sourceTree = "<group>";
+		};
 		CBE1FB35023C3D4B2AC08158 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				AB4EDB4224181DEE0025B284 /* CloudKit.framework */,
 				7A4E738323A01819008036ED /* CloudKit.framework */,
-				8BA23B93EB57D0A9C87A3846 /* Pods_neon.framework */,
-				9076E2F3ADB2E623D12BBF3D /* Pods_neonTests.framework */,
-				F07358A92310DC9C6BA03B89 /* Pods_neonUITests.framework */,
 				2395A94D224AE1750007D6F2 /* NotificationCenter.framework */,
 				2317288D22917778007DBF8B /* Messages.framework */,
 				AB33B25724BF5EDD0057662F /* WidgetKit.framework */,
 				AB33B25924BF5EDD0057662F /* SwiftUI.framework */,
+				3105B3338C0F7D4F81D55776 /* Pods_Hour_Blocks.framework */,
+				12A40077628A72E8344C9A4E /* Pods_Hour_BlocksTests.framework */,
+				AC17F140379ADAB615CD7BFE /* Pods_Hour_BlocksUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -728,6 +739,7 @@
 				23BA59672242B0C400AE45DE /* Embed Frameworks */,
 				2395A95C224AE1750007D6F2 /* Embed App Extensions */,
 				2395A98A224AE78E0007D6F2 /* Embed Watch Content */,
+				CFE16C93B84066C578FDE72E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -929,11 +941,28 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-neonUITests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Hour BlocksUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CFE16C93B84066C578FDE72E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Hour Blocks/Pods-Hour Blocks-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Hour Blocks/Pods-Hour Blocks-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Hour Blocks/Pods-Hour Blocks-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D08009ACCAB2FA3EEED83FA3 /* [CP] Check Pods Manifest.lock */ = {
@@ -951,7 +980,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-neon-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Hour Blocks-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -973,7 +1002,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-neonTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Hour BlocksTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1038,6 +1067,7 @@
 				ABBA399524AD5C3B008A4A56 /* ScheduleDatePicker.swift in Sources */,
 				AB849E1D24C86CA300D27333 /* SettingsCardView.swift in Sources */,
 				AB72E0B924ACE86E004DD577 /* ScheduleView.swift in Sources */,
+				AB0D3E8524D9B7D700CFF640 /* TestSidebarView.swift in Sources */,
 				AB1D6FCF24C47AC700D26D4B /* AddToDoItemView.swift in Sources */,
 				23C53D812369E62800BA4378 /* String+Ext.swift in Sources */,
 				23036F4E237B2D9000563206 /* PrivacyPolicyView.swift in Sources */,
@@ -1255,7 +1285,7 @@
 		};
 		2338BEE4220A7841004F288F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A3593EBEBDFB2F7E14F71C3D /* Pods-neon.debug.xcconfig */;
+			baseConfigurationReference = BB00A606921CE762F9B8DC18 /* Pods-Hour Blocks.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1282,7 +1312,7 @@
 		};
 		2338BEE5220A7841004F288F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3090C3879864096A7AB572CC /* Pods-neon.release.xcconfig */;
+			baseConfigurationReference = 893180180D781FAF36E08784 /* Pods-Hour Blocks.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1309,7 +1339,7 @@
 		};
 		2338BEE7220A7841004F288F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 390CCC3E80133F37FB4A2306 /* Pods-neonTests.debug.xcconfig */;
+			baseConfigurationReference = C333766CEB721D29367837DC /* Pods-Hour BlocksTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1332,7 +1362,7 @@
 		};
 		2338BEE8220A7841004F288F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FEF89E64D0C593B4421B153A /* Pods-neonTests.release.xcconfig */;
+			baseConfigurationReference = 53827539E684DDA9CBD076D4 /* Pods-Hour BlocksTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1355,7 +1385,7 @@
 		};
 		2338BEEA220A7841004F288F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FF3FA86C71973A520B8323EA /* Pods-neonUITests.debug.xcconfig */;
+			baseConfigurationReference = D2AA83B739B807FE5A287937 /* Pods-Hour BlocksUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1376,7 +1406,7 @@
 		};
 		2338BEEB220A7841004F288F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B9A0107CCBF37CCAA2CAAD3 /* Pods-neonUITests.release.xcconfig */;
+			baseConfigurationReference = B5DE115035038B9A1CA41814 /* Pods-Hour BlocksUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

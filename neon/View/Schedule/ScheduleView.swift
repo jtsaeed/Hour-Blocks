@@ -31,6 +31,7 @@ struct ScheduleView: View {
             
             ScheduleBlocksListView(viewModel: viewModel)
         }.onAppear(perform: viewModel.handleCalendarPermissions)
+        .navigationBarHidden(true)
     }
 }
 

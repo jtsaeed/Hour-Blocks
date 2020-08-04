@@ -1,19 +1,19 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'neon' do
+target 'Hour Blocks' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
   # Pods for neon
-#  pod 'Firebase/Core'
+  pod 'Firebase/Core'
 
-  target 'neonTests' do
+  target 'Hour BlocksTests' do
     inherit! :search_paths
     # Pods for testing
   end
 
-  target 'neonUITests' do
+  target 'Hour BlocksUITests' do
     inherit! :search_paths
     # Pods for testing
   end
