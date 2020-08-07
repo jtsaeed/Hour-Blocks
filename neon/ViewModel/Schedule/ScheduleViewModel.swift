@@ -15,6 +15,7 @@ class ScheduleViewModel: ObservableObject {
     let dataGateway: DataGateway
     let calendarGateway: CalendarGateway
     let analyticsGateway: AnalyticsGateway
+    let remindersGateway: RemindersGateway
     
     @Published var currentHour = Calendar.current.component(.hour, from: Date())
     @Published var currentDate = Calendar.current.startOfDay(for: Date())
@@ -24,10 +25,11 @@ class ScheduleViewModel: ObservableObject {
     @Published var isFilterEnabled = true
     @Published var isDatePickerViewPresented = false
     
-    init(dataGateway: DataGateway, calendarGateway: CalendarGateway, analyticsGateway: AnalyticsGateway) {
+    init(dataGateway: DataGateway, calendarGateway: CalendarGateway, analyticsGateway: AnalyticsGateway, remindersGateway: RemindersGateway) {
         self.dataGateway = dataGateway
         self.calendarGateway = calendarGateway
         self.analyticsGateway = analyticsGateway
+        self.remindersGateway = remindersGateway
         
         loadHourBlocks()
     }
@@ -35,7 +37,8 @@ class ScheduleViewModel: ObservableObject {
     convenience init() {
         self.init(dataGateway: DataGateway(),
                   calendarGateway: CalendarGateway(),
-                  analyticsGateway: AnalyticsGateway())
+                  analyticsGateway: AnalyticsGateway(),
+                  remindersGateway: RemindersGateway())
     }
     
     func loadHourBlocks() {
@@ -64,6 +67,7 @@ class ScheduleViewModel: ObservableObject {
         HapticsGateway.shared.triggerAddBlockHaptic()
         
         dataGateway.save(hourBlock: hourBlock)
+        remindersGateway.setReminder(for: hourBlock)
         analyticsGateway.log(hourBlock: hourBlock)
         
         todaysHourBlocks[hourBlock.hour] = HourBlockViewModel(for: hourBlock)
@@ -75,6 +79,8 @@ class ScheduleViewModel: ObservableObject {
         
         dataGateway.delete(hourBlock: hourBlock)
         dataGateway.deleteSubBlocks(of: hourBlock)
+        remindersGateway.removeReminder(for: hourBlock)
+        
         todaysHourBlocks[hourBlock.hour] = HourBlockViewModel(for: HourBlock(day: hourBlock.day,
                                                                              hour: hourBlock.hour,
                                                                              title: nil))

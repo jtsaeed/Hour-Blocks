@@ -17,10 +17,18 @@ struct CalendarBlockView: View {
         Card {
             HStack {
                 CardLabels(title: event.title,
-                           subtitle: "\(event.startDate.getFullFormattedTime(militaryTime: false)) TO \(event.endDate.getFullFormattedTime(militaryTime: false))")
+                           subtitle: getSubtitle())
                 Spacer()
                 HourBlockIcon(name: "calendar_item")
             }
         }.padding(.horizontal, 24)
+    }
+    
+    func getSubtitle() -> String {
+        if event.isAllDay {
+            return "ALL DAY"
+        } else {
+            return "\(event.startDate.getFullFormattedTime(militaryTime: false)) TO \(event.endDate.getFullFormattedTime(militaryTime: false))"
+        }
     }
 }

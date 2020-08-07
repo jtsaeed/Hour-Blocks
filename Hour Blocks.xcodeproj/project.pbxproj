@@ -110,6 +110,7 @@
 		ABAFADFD24B231C40098B823 /* ToDoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAFADFC24B231C40098B823 /* ToDoListViewModel.swift */; };
 		ABBA399324AD1782008A4A56 /* SuggestionsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBA399224AD1782008A4A56 /* SuggestionsGateway.swift */; };
 		ABBA399524AD5C3B008A4A56 /* ScheduleDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBA399424AD5C3B008A4A56 /* ScheduleDatePicker.swift */; };
+		ABC1D07F24D9DCA4001F8B6B /* RemindersGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC1D07E24D9DCA4001F8B6B /* RemindersGateway.swift */; };
 		ABEB33DB24013A9900E91190 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ABEB33DD24013A9900E91190 /* Localizable.strings */; };
 		ABFC243624D022850091E3A5 /* ToDoItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFC243524D022850091E3A5 /* ToDoItemViewModel.swift */; };
 		ABFC243824D029730091E3A5 /* EditToDoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFC243724D029730091E3A5 /* EditToDoItemView.swift */; };
@@ -290,6 +291,7 @@
 		ABAFADFC24B231C40098B823 /* ToDoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewModel.swift; sourceTree = "<group>"; };
 		ABBA399224AD1782008A4A56 /* SuggestionsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsGateway.swift; sourceTree = "<group>"; };
 		ABBA399424AD5C3B008A4A56 /* ScheduleDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDatePicker.swift; sourceTree = "<group>"; };
+		ABC1D07E24D9DCA4001F8B6B /* RemindersGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersGateway.swift; sourceTree = "<group>"; };
 		ABEB33DC24013A9900E91190 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ABEB33DE24013B1100E91190 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ABFC243524D022850091E3A5 /* ToDoItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemViewModel.swift; sourceTree = "<group>"; };
@@ -621,6 +623,7 @@
 				AB05598124CF5E1C006F0228 /* VersionGateway.swift */,
 				2304FA1E235F2F28006DA688 /* DomainsGateway.swift */,
 				2304FA42235F4AB4006DA688 /* HapticsGateway.swift */,
+				ABC1D07E24D9DCA4001F8B6B /* RemindersGateway.swift */,
 				AB05597B24CF5B37006F0228 /* Legacy */,
 			);
 			path = Service;
@@ -1060,6 +1063,7 @@
 				AB72E0BF24ACE885004DD577 /* HourBlockViewModel.swift in Sources */,
 				AB72E0CB24ACE981004DD577 /* AddHourBlockView.swift in Sources */,
 				AB48A6D624AD0FCA00C50E58 /* SuggestionBlockView.swift in Sources */,
+				ABC1D07F24D9DCA4001F8B6B /* RemindersGateway.swift in Sources */,
 				AB7EABDE24B4FE8300041AB1 /* SettingsView.swift in Sources */,
 				AB05597824CEFB21006F0228 /* ScheduleDatePickerViewModel.swift in Sources */,
 				AB72E0B724ACE84A004DD577 /* DataGateway.swift in Sources */,
