@@ -33,7 +33,7 @@ struct WhatsNewView: View {
     
     func dismiss() {
         HapticsGateway.shared.triggerLightImpact()
-        self.showWhatsNew = false
+        showWhatsNew = false
     }
 }
 
