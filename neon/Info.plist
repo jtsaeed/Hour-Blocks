@@ -21,11 +21,11 @@
 				<key>UIPrerenderedIcon</key>
 				<string>NO</string>
 			</dict>
-			<key>icon_pro</key>
+			<key>icon_blueprint</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>icon_pro</string>
+					<string>icon_blueprint</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<string>NO</string>

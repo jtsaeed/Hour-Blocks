@@ -30,7 +30,7 @@ struct TestSidebarView: View {
                         Label("Calendars", systemImage: "calendar")
                     }
                     
-                    NavigationLink(destination: OtherSettingsView()) {
+                    NavigationLink(destination: OtherSettingsView(isPresented: .constant(true))) {
                         Label("Other Stuff", systemImage: "gearshape.fill")
                     }
                     

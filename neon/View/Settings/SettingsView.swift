@@ -41,7 +41,7 @@ struct SettingsView: View {
                                      iconName: "gearshape.fill",
                                      action: viewModel.presentOtherSettingsView)
                     .sheet(isPresented: $viewModel.isOtherSettingsViewPresented) {
-                        OtherSettingsView()
+                        OtherSettingsView(isPresented: $viewModel.isOtherSettingsViewPresented)
                     }
                     
                     SettingsCardView(title: "Twitter",

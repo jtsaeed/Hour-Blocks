@@ -18,7 +18,7 @@ struct HourBlockView: View {
             VStack(spacing: 20) {
                 HStack {
                     CardLabels(title: viewModel.title.smartCapitalization(),
-                               subtitle: viewModel.time)
+                               subtitle: viewModel.getFormattedTime())
                     Spacer()
                     HourBlockIcon(name: viewModel.getIconName())
                 }
@@ -46,16 +46,17 @@ struct HourBlockView: View {
             Button(action: viewModel.presentManageSubBlocksView) {
                 Label("Sub Blocks", systemImage: "rectangle.grid.1x2")
             }
-            .sheet(isPresented: $viewModel.isManageSubBlocksViewPresented) {
-                ManageSubBlocksView(isPresented: $viewModel.isManageSubBlocksViewPresented,
-                                    viewModel: viewModel,
-                                    hourBlock: viewModel.hourBlock)
-            }
             
             Button(action: onBlockCleared) {
                 Label("Clear", systemImage: "trash")
             }
         }))
+        
+        .sheet(isPresented: $viewModel.isManageSubBlocksViewPresented) {
+            ManageSubBlocksView(isPresented: $viewModel.isManageSubBlocksViewPresented,
+                                viewModel: viewModel,
+                                hourBlock: viewModel.hourBlock)
+        }
     }
 }
 

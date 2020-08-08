@@ -17,7 +17,7 @@ struct EmptyHourBlockView: View {
         Card {
             HStack {
                 CardLabels(title: "Empty",
-                           subtitle: viewModel.time,
+                           subtitle: viewModel.getFormattedTime(),
                            titleOpacity: 0.4)
                 Spacer()
                 IconButton(iconName: "plus",

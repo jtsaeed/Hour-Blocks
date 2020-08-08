@@ -14,7 +14,6 @@ class HourBlockViewModel: Identifiable, ObservableObject {
     let hourBlock: HourBlock
     
     @Published var title: String
-    @Published var time: String
     @Published var subBlocks: [SubBlock]
     
     @Published var isAddHourBlockViewPresented = false
@@ -27,7 +26,6 @@ class HourBlockViewModel: Identifiable, ObservableObject {
         
         self.hourBlock = hourBlock
         self.title = hourBlock.title ?? "Empty"
-        self.time = hourBlock.hour.get12hTime()
         self.subBlocks = subBlocks
     }
     
@@ -79,6 +77,16 @@ class HourBlockViewModel: Identifiable, ObservableObject {
         dataGateway.delete(subBlock: subBlock)
         
         subBlocks.removeAll { $0.id == subBlock.id }
+    }
+    
+    func getFormattedTime() -> String {
+        let timeFormatValue = UserDefaults.standard.integer(forKey: "timeFormat")
+        
+        if (timeFormatValue == 0 && !UtilGateway.shared.isSystemClock12h()) || timeFormatValue == 2 {
+            return hourBlock.hour.get24hTime()
+        } else {
+            return hourBlock.hour.get12hTime()
+        }
     }
     
     func getIconName() -> String {

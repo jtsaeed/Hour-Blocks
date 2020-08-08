@@ -14,6 +14,7 @@ class RemindersGateway {
     func setReminder(for hourBlock: HourBlock) {
         hasPermissions { result in
             guard result == true else { return }
+            guard UserDefaults.standard.integer(forKey: "reminders") == 0 else { return }
             
             let content = self.createNotificationContent(from: hourBlock)
             let trigger = self.createNotificationTrigger(from: hourBlock)
