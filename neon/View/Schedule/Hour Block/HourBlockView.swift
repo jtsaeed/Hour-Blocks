@@ -20,7 +20,7 @@ struct HourBlockView: View {
                     CardLabels(title: viewModel.title.smartCapitalization(),
                                subtitle: viewModel.getFormattedTime())
                     Spacer()
-                    HourBlockIcon(name: viewModel.getIconName())
+                    HourBlockIcon(name: viewModel.selectedIcon == nil ? viewModel.getIconName() : viewModel.selectedIcon!.imageName)
                 }
                 
                 if !viewModel.subBlocks.isEmpty {
@@ -39,23 +39,23 @@ struct HourBlockView: View {
             Button(action: viewModel.presentEditBlockView) {
                 Label("Edit", systemImage: "pencil")
             }
-            .sheet(isPresented: $viewModel.isEditHourBlockViewPresented) {
-                EditHourBlockView(viewModel: viewModel)
-            }
             
             Button(action: viewModel.presentManageSubBlocksView) {
                 Label("Sub Blocks", systemImage: "rectangle.grid.1x2")
+            }
+            
+            .sheet(isPresented: $viewModel.isManageSubBlocksViewPresented) {
+                ManageSubBlocksView(isPresented: $viewModel.isManageSubBlocksViewPresented,
+                                    viewModel: viewModel,
+                                    hourBlock: viewModel.hourBlock)
             }
             
             Button(action: onBlockCleared) {
                 Label("Clear", systemImage: "trash")
             }
         }))
-        
-        .sheet(isPresented: $viewModel.isManageSubBlocksViewPresented) {
-            ManageSubBlocksView(isPresented: $viewModel.isManageSubBlocksViewPresented,
-                                viewModel: viewModel,
-                                hourBlock: viewModel.hourBlock)
+        .sheet(isPresented: $viewModel.isEditHourBlockViewPresented) {
+            EditHourBlockView(viewModel: viewModel)
         }
     }
 }

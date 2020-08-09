@@ -34,13 +34,15 @@
 		7A4E738423A01819008036ED /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4E738323A01819008036ED /* CloudKit.framework */; };
 		7A629DAB238C059300C186B1 /* notification.aif in Resources */ = {isa = PBXBuildFile; fileRef = 23E7851322AA753100A9650F /* notification.aif */; };
 		7A666BCC23F06ADB003D6F1F /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A666BCB23F06ADB003D6F1F /* ToDoItem.swift */; };
-		7A735E4F238D591C00FE4D32 /* IconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E4E238D591C00FE4D32 /* IconPicker.swift */; };
+		7A735E4F238D591C00FE4D32 /* LegacyIconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E4E238D591C00FE4D32 /* LegacyIconPicker.swift */; };
 		7ADE54ED23F0B898007FAE38 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 7ADE54EC23F0B898007FAE38 /* SwiftDate */; };
 		815BF6060562A2DC79C991CC /* Pods_Hour_Blocks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3105B3338C0F7D4F81D55776 /* Pods_Hour_Blocks.framework */; };
 		AB05597824CEFB21006F0228 /* ScheduleDatePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB05597724CEFB21006F0228 /* ScheduleDatePickerViewModel.swift */; };
 		AB05597A24CF085B006F0228 /* CompactHourBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB05597924CF085B006F0228 /* CompactHourBlockView.swift */; };
 		AB05598224CF5E1C006F0228 /* VersionGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB05598124CF5E1C006F0228 /* VersionGateway.swift */; };
 		AB0D3E8524D9B7D700CFF640 /* TestSidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0D3E8424D9B7D700CFF640 /* TestSidebarView.swift */; };
+		AB10A95324E05CC500FCB466 /* WidgetDataGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10A95124E05C6600FCB466 /* WidgetDataGateway.swift */; };
+		AB10A95524E05E2000FCB466 /* IconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10A95424E05E2000FCB466 /* IconPickerView.swift */; };
 		AB1D6FCF24C47AC700D26D4B /* AddToDoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1D6FCE24C47AC700D26D4B /* AddToDoItemView.swift */; };
 		AB22514C24DEE96900DEFD92 /* icon_dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB22514824DEE96900DEFD92 /* icon_dark@2x.png */; };
 		AB22514D24DEE96900DEFD92 /* icon_blueprint@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB22514924DEE96900DEFD92 /* icon_blueprint@2x.png */; };
@@ -58,6 +60,8 @@
 		AB33B26C24BF63CC0057662F /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234DF2FA237A113200EB248A /* Int+Ext.swift */; };
 		AB33B26D24BF63E40057662F /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C53D802369E62800BA4378 /* String+Ext.swift */; };
 		AB33B26E24BF642E0057662F /* neon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEC2220A7840004F288F /* neon.xcdatamodeld */; };
+		AB372FE424E0884D008F6034 /* SelectableIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB372FE324E0884D008F6034 /* SelectableIcon.swift */; };
+		AB372FE624E09341008F6034 /* SchedulePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB372FE524E09341008F6034 /* SchedulePickerView.swift */; };
 		AB48A6C924ACF0E100C50E58 /* ManageSubBlocksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6C024ACF0E000C50E58 /* ManageSubBlocksTests.swift */; };
 		AB48A6CA24ACF0E100C50E58 /* RenameHourBlockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6C124ACF0E000C50E58 /* RenameHourBlockTests.swift */; };
 		AB48A6CB24ACF0E100C50E58 /* IconPickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6C224ACF0E100C50E58 /* IconPickerTests.swift */; };
@@ -99,7 +103,6 @@
 		AB72E0D024ACE9F9004DD577 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB72E0CE24ACE9F9004DD577 /* Card.swift */; };
 		AB72E0D124ACE9F9004DD577 /* CardLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB72E0CF24ACE9F9004DD577 /* CardLabels.swift */; };
 		AB72E0D324ACEA47004DD577 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB72E0D224ACEA47004DD577 /* IconButton.swift */; };
-		AB7D9D4224BF946500E5BEF8 /* WidgetDataGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7D9D4124BF946500E5BEF8 /* WidgetDataGateway.swift */; };
 		AB7EABDE24B4FE8300041AB1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7EABDD24B4FE8300041AB1 /* SettingsView.swift */; };
 		AB849E1B24C86BFF00D27333 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB849E1A24C86BFF00D27333 /* SettingsViewModel.swift */; };
 		AB849E1D24C86CA300D27333 /* SettingsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB849E1C24C86CA300D27333 /* SettingsCardView.swift */; };
@@ -217,12 +220,14 @@
 		7A1AF6F923F456F600425BB6 /* Suggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suggestion.swift; sourceTree = "<group>"; };
 		7A4E738323A01819008036ED /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		7A666BCB23F06ADB003D6F1F /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
-		7A735E4E238D591C00FE4D32 /* IconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPicker.swift; sourceTree = "<group>"; };
+		7A735E4E238D591C00FE4D32 /* LegacyIconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyIconPicker.swift; sourceTree = "<group>"; };
 		893180180D781FAF36E08784 /* Pods-Hour Blocks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hour Blocks.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hour Blocks/Pods-Hour Blocks.release.xcconfig"; sourceTree = "<group>"; };
 		AB05597724CEFB21006F0228 /* ScheduleDatePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDatePickerViewModel.swift; sourceTree = "<group>"; };
 		AB05597924CF085B006F0228 /* CompactHourBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactHourBlockView.swift; sourceTree = "<group>"; };
 		AB05598124CF5E1C006F0228 /* VersionGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionGateway.swift; sourceTree = "<group>"; };
 		AB0D3E8424D9B7D700CFF640 /* TestSidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSidebarView.swift; sourceTree = "<group>"; };
+		AB10A95124E05C6600FCB466 /* WidgetDataGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDataGateway.swift; sourceTree = "<group>"; };
+		AB10A95424E05E2000FCB466 /* IconPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerView.swift; sourceTree = "<group>"; };
 		AB12D21E2401A95500D01852 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AB1D6FCE24C47AC700D26D4B /* AddToDoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoItemView.swift; sourceTree = "<group>"; };
 		AB22514824DEE96900DEFD92 /* icon_dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_dark@2x.png"; sourceTree = "<group>"; };
@@ -238,6 +243,8 @@
 		AB33B26024BF5EDE0057662F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB33B26424BF5EDE0057662F /* NeonWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NeonWidgetExtension.entitlements; sourceTree = "<group>"; };
 		AB33B26824BF5F030057662F /* UpcomingScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingScheduleView.swift; sourceTree = "<group>"; };
+		AB372FE324E0884D008F6034 /* SelectableIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableIcon.swift; sourceTree = "<group>"; };
+		AB372FE524E09341008F6034 /* SchedulePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePickerView.swift; sourceTree = "<group>"; };
 		AB48A6C024ACF0E000C50E58 /* ManageSubBlocksTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageSubBlocksTests.swift; sourceTree = "<group>"; };
 		AB48A6C124ACF0E000C50E58 /* RenameHourBlockTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenameHourBlockTests.swift; sourceTree = "<group>"; };
 		AB48A6C224ACF0E100C50E58 /* IconPickerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconPickerTests.swift; sourceTree = "<group>"; };
@@ -282,7 +289,6 @@
 		AB72E0CF24ACE9F9004DD577 /* CardLabels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardLabels.swift; sourceTree = "<group>"; };
 		AB72E0D224ACEA47004DD577 /* IconButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		AB79573D2403F7F900EA0B2D /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		AB7D9D4124BF946500E5BEF8 /* WidgetDataGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDataGateway.swift; sourceTree = "<group>"; };
 		AB7EABDD24B4FE8300041AB1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		AB849E1A24C86BFF00D27333 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		AB849E1C24C86CA300D27333 /* SettingsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCardView.swift; sourceTree = "<group>"; };
@@ -466,11 +472,9 @@
 		AB05597C24CF5B3D006F0228 /* Legacy */ = {
 			isa = PBXGroup;
 			children = (
-				7A735E4E238D591C00FE4D32 /* IconPicker.swift */,
+				7A735E4E238D591C00FE4D32 /* LegacyIconPicker.swift */,
 				23C53D7E2369E02400BA4378 /* LegacyOtherSettingsView.swift */,
 				2304FA2C235F301A006DA688 /* AddToBlockSheet.swift */,
-				2336981E23818D52006ACD1E /* ActionButton.swift */,
-				23E82154236DB57A004E6F15 /* WhatsNewView.swift */,
 			);
 			path = Legacy;
 			sourceTree = "<group>";
@@ -488,8 +492,10 @@
 			children = (
 				AB72E0CA24ACE981004DD577 /* AddHourBlockView.swift */,
 				AB9F12B224C8D83100F31F21 /* EditHourBlockView.swift */,
+				AB10A95424E05E2000FCB466 /* IconPickerView.swift */,
 				ABBA399424AD5C3B008A4A56 /* ScheduleDatePicker.swift */,
 				AB5F9A2F24AE6E6E00C4C597 /* ManageSubBlocksView.swift */,
+				AB372FE524E09341008F6034 /* SchedulePickerView.swift */,
 			);
 			path = Sheets;
 			sourceTree = "<group>";
@@ -517,7 +523,7 @@
 				AB33B25C24BF5EDD0057662F /* NeonWidget.swift */,
 				AB33B25E24BF5EDE0057662F /* Assets.xcassets */,
 				AB33B26024BF5EDE0057662F /* Info.plist */,
-				AB7D9D4124BF946500E5BEF8 /* WidgetDataGateway.swift */,
+				AB10A95124E05C6600FCB466 /* WidgetDataGateway.swift */,
 			);
 			path = NeonWidget;
 			sourceTree = "<group>";
@@ -614,6 +620,7 @@
 				7A666BCB23F06ADB003D6F1F /* ToDoItem.swift */,
 				7A1AF6F723F440ED00425BB6 /* BlockDomain.swift */,
 				7A1AF6F923F456F600425BB6 /* Suggestion.swift */,
+				AB372FE324E0884D008F6034 /* SelectableIcon.swift */,
 			);
 			name = Model;
 			path = Rewrite/Model;
@@ -644,6 +651,8 @@
 				AB72E0C624ACE8C5004DD577 /* HeaderView.swift */,
 				AB72E0CC24ACE9AF004DD577 /* NeonTextField.swift */,
 				AB5A9BF624B396BB00F97B10 /* NeonDivider.swift */,
+				2336981E23818D52006ACD1E /* ActionButton.swift */,
+				23E82154236DB57A004E6F15 /* WhatsNewView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -1033,6 +1042,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB372FE424E0884D008F6034 /* SelectableIcon.swift in Sources */,
 				ABBA399324AD1782008A4A56 /* SuggestionsGateway.swift in Sources */,
 				AB72E0CD24ACE9AF004DD577 /* NeonTextField.swift in Sources */,
 				7A666BCC23F06ADB003D6F1F /* ToDoItem.swift in Sources */,
@@ -1048,7 +1058,6 @@
 				2336981F23818D52006ACD1E /* ActionButton.swift in Sources */,
 				AB72E0C724ACE8C5004DD577 /* HeaderView.swift in Sources */,
 				AB5A9BF724B396BB00F97B10 /* NeonDivider.swift in Sources */,
-				AB7D9D4224BF946500E5BEF8 /* WidgetDataGateway.swift in Sources */,
 				AB05598224CF5E1C006F0228 /* VersionGateway.swift in Sources */,
 				AB05597A24CF085B006F0228 /* CompactHourBlockView.swift in Sources */,
 				23E82155236DB57A004E6F15 /* WhatsNewView.swift in Sources */,
@@ -1068,7 +1077,7 @@
 				AB72E0D024ACE9F9004DD577 /* Card.swift in Sources */,
 				2304FA17235F2A2A006DA688 /* ContentView.swift in Sources */,
 				AB5A9BF324B3867900F97B10 /* CalendarGateway.swift in Sources */,
-				7A735E4F238D591C00FE4D32 /* IconPicker.swift in Sources */,
+				7A735E4F238D591C00FE4D32 /* LegacyIconPicker.swift in Sources */,
 				AB72E0C124ACE88A004DD577 /* AddHourBlockViewModel.swift in Sources */,
 				AB5F9A2E24AE63E800C4C597 /* SubBlock.swift in Sources */,
 				AB5A9BF124B385DB00F97B10 /* HourBlockIcon.swift in Sources */,
@@ -1076,12 +1085,14 @@
 				AB849E2124C877C200D27333 /* OtherSettingsView.swift in Sources */,
 				2338BEBC220A7840004F288F /* AppDelegate.swift in Sources */,
 				AB72E0BF24ACE885004DD577 /* HourBlockViewModel.swift in Sources */,
+				AB10A95524E05E2000FCB466 /* IconPickerView.swift in Sources */,
 				AB72E0CB24ACE981004DD577 /* AddHourBlockView.swift in Sources */,
 				AB48A6D624AD0FCA00C50E58 /* SuggestionBlockView.swift in Sources */,
 				ABC1D07F24D9DCA4001F8B6B /* RemindersGateway.swift in Sources */,
 				AB7EABDE24B4FE8300041AB1 /* SettingsView.swift in Sources */,
 				AB05597824CEFB21006F0228 /* ScheduleDatePickerViewModel.swift in Sources */,
 				AB72E0B724ACE84A004DD577 /* DataGateway.swift in Sources */,
+				AB372FE624E09341008F6034 /* SchedulePickerView.swift in Sources */,
 				7A1AF6F823F440ED00425BB6 /* BlockDomain.swift in Sources */,
 				ABBA399524AD5C3B008A4A56 /* ScheduleDatePicker.swift in Sources */,
 				AB849E1D24C86CA300D27333 /* SettingsCardView.swift in Sources */,
@@ -1142,6 +1153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB33B26B24BF63A80057662F /* HourBlock.swift in Sources */,
+				AB10A95324E05CC500FCB466 /* WidgetDataGateway.swift in Sources */,
 				AB33B25D24BF5EDD0057662F /* NeonWidget.swift in Sources */,
 				AB33B26A24BF60BF0057662F /* UpcomingScheduleView.swift in Sources */,
 				AB33B26E24BF642E0057662F /* neon.xcdatamodeld in Sources */,

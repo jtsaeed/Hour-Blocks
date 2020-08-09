@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 import CoreData
 import EventKit
 
@@ -90,7 +91,7 @@ class ScheduleViewModel: ObservableObject {
     
     func toggleFilter() {
         HapticsGateway.shared.triggerLightImpact()
-        isFilterEnabled.toggle()
+        withAnimation { isFilterEnabled.toggle() }
         updateCurrentHour()
     }
     

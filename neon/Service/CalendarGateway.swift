@@ -37,11 +37,15 @@ struct CalendarGateway {
     
     
     func getEvents(for date: Date) -> [EKEvent] {
+        let startDate = date.toLocalTime().dateAtStartOf(.day)
+        
         let eventsPredicate = eventStore.predicateForEvents(withStart: date.toLocalTime().dateAtStartOf(.day),
                                                             end: date.toLocalTime().dateAtEndOf(.day),
                                                             calendars: getEnabledCalendars())
         
-        return eventStore.events(matching: eventsPredicate)
+        return eventStore.events(matching: eventsPredicate).filter { event in
+            !event.isAllDay || (event.isAllDay && event.endDate.day == startDate.day)
+        }
     }
     
     func initialiseEnabledCalendars() -> [String: Bool] {

@@ -14,6 +14,7 @@ class HourBlockViewModel: Identifiable, ObservableObject {
     let hourBlock: HourBlock
     
     @Published var title: String
+    @Published var selectedIcon: SelectableIcon?
     @Published var subBlocks: [SubBlock]
     
     @Published var isAddHourBlockViewPresented = false
@@ -26,6 +27,7 @@ class HourBlockViewModel: Identifiable, ObservableObject {
         
         self.hourBlock = hourBlock
         self.title = hourBlock.title ?? "Empty"
+        if let iconOverride = hourBlock.iconOverride { self.selectedIcon = SelectableIcon(rawValue: iconOverride) }
         self.subBlocks = subBlocks
     }
     
@@ -50,11 +52,16 @@ class HourBlockViewModel: Identifiable, ObservableObject {
         isEditHourBlockViewPresented = false
     }
     
-    func saveChanges(title: String) {
+    func saveChanges(title: String, icon: SelectableIcon?) {
         HapticsGateway.shared.triggerLightImpact()
         
         self.title = title
         dataGateway.edit(hourBlock: hourBlock, set: title, forKey: "title")
+        
+        if let icon = icon {
+            self.selectedIcon = icon
+            dataGateway.edit(hourBlock: hourBlock, set: icon.rawValue, forKey: "iconOverride")
+        }
         
         dismissEditBlockView()
     }

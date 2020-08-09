@@ -30,6 +30,10 @@ class HapticsGateway {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
     }
     
+    func triggerSoftImpact() {
+        UIImpactFeedbackGenerator(style: .soft).impactOccurred(intensity: 0.5)
+    }
+    
     func triggerErrorHaptic() {
         UINotificationFeedbackGenerator().notificationOccurred(.error)
     }

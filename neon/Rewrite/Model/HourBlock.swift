@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-struct HourBlock {
+struct HourBlock: Identifiable {
     
     let id: String
     
@@ -17,12 +17,16 @@ struct HourBlock {
     let day: Date
     let hour: Int
     
+    let iconOverride: String?
+    
     init(day: Date, hour: Int, title: String?) {
         self.id = UUID().uuidString
         
         self.title = title
         self.day = Calendar.current.startOfDay(for: day)
         self.hour = hour
+        
+        self.iconOverride = nil
     }
     
     init?(fromEntity entity: HourBlockEntity) {
@@ -35,6 +39,7 @@ struct HourBlock {
         self.title = entityTitle
         self.day = entityDay
         self.hour = Int(entity.hour)
+        self.iconOverride = entity.iconOverride
     }
     
     @discardableResult
@@ -46,6 +51,7 @@ struct HourBlock {
         entity.title = title
         entity.day = day
         entity.hour = Int64(hour)
+        entity.iconOverride = iconOverride
         
         return entity
     }

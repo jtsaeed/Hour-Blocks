@@ -22,13 +22,15 @@ struct Provider: TimelineProvider {
 
     public func timeline(with context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [SimpleEntry] = []
+        
+        let blocks = WidgetDataGateway.shared.getHourBlocks(for: Date())
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
         for hourOffset in 0 ..< 5 {
             let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
             let entry = SimpleEntry(date: entryDate,
-                                    hourBlock: HourBlock(day: Date(), hour: 19, title: "Dinner with Bonnie"),
+                                    hourBlock: blocks.first!,
                                     relevance: TimelineEntryRelevance(score: 0))
             entries.append(entry)
         }
@@ -45,6 +47,7 @@ struct SimpleEntry: TimelineEntry {
 }
 
 struct PlaceholderView : View {
+    
     var body: some View {
         NeonWidgetEntryView(entry: SimpleEntry(date: Date(),
                                                hourBlock: HourBlock(day: Date(),
@@ -75,7 +78,7 @@ struct NeonWidget: Widget {
     private let kind: String = "NeonWidget"
 
     public var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider(), placeholder: PlaceholderView()) { entry in
+        StaticConfiguration(kind: kind, provider: Provider()) { entry in
             NeonWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("Upcoming Schedule")

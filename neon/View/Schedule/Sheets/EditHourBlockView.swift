@@ -13,19 +13,26 @@ struct EditHourBlockView: View {
     @ObservedObject var viewModel: HourBlockViewModel
     
     @State var title: String
+    @State var icon: SelectableIcon?
     
     init(viewModel: HourBlockViewModel) {
         self.viewModel = viewModel
         self._title = State(initialValue: viewModel.title)
+        self._icon = State(initialValue: viewModel.selectedIcon)
     }
     
     var body: some View {
         NavigationView {
+            ScrollView {
             VStack(alignment: .leading) {
                 NeonTextField(input: $title, didReturn: {})
                     .padding(24)
                 
+                IconPicker(selection: $icon)
+                
                 Spacer()
+            }
+                
             }.navigationTitle("Edit Hour Block")
             .navigationBarItems(leading: Button("Cancel", action: viewModel.dismissEditBlockView),
                                 trailing: Button("Save", action: save))
@@ -34,7 +41,7 @@ struct EditHourBlockView: View {
     }
     
     func save() {
-        viewModel.saveChanges(title: title)
+        viewModel.saveChanges(title: title, icon: icon)
     }
 }
 

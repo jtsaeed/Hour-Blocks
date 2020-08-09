@@ -19,7 +19,7 @@ struct ScheduleView: View {
                 HStack(spacing: 16) {
                     IconButton(iconName: "arrow.up",
                                   iconWeight: .semibold,
-                                  action: withAnimation { viewModel.toggleFilter })
+                                  action: viewModel.toggleFilter)
                         .rotationEffect(Angle(degrees: viewModel.isFilterEnabled ? 0 : 180))
                     IconButton(iconName: "calendar", action: viewModel.presentDatePickerView)
                 }
