@@ -24,6 +24,8 @@ struct Provider: TimelineProvider {
         var entries: [SimpleEntry] = []
         
         let blocks = WidgetDataGateway.shared.getHourBlocks(for: Date())
+        
+        print(blocks.count)
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()

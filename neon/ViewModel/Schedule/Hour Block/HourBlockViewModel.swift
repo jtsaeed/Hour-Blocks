@@ -17,10 +17,10 @@ class HourBlockViewModel: Identifiable, ObservableObject {
     @Published var selectedIcon: SelectableIcon?
     @Published var subBlocks: [SubBlock]
     
+    @Published var isSheetPresented = false
+    @Published var selectedSheet: HourBlockSheet?
+    
     @Published var isAddHourBlockViewPresented = false
-    @Published var isEditHourBlockViewPresented = false
-    @Published var isDuplicateHourBlockViewPresented = false
-    @Published var isManageSubBlocksViewPresented = false
     
     init(for hourBlock: HourBlock, and subBlocks: [SubBlock], dataGateway: DataGateway) {
         self.dataGateway = dataGateway
@@ -31,25 +31,12 @@ class HourBlockViewModel: Identifiable, ObservableObject {
         self.subBlocks = subBlocks
     }
     
-    convenience init(for hourBlock: HourBlock) {
-        self.init(for: hourBlock, and: [SubBlock](), dataGateway: DataGateway())
-    }
-    
     convenience init(for hourBlock: HourBlock, and subBlocks: [SubBlock]) {
         self.init(for: hourBlock, and: subBlocks, dataGateway: DataGateway())
     }
     
-    func presentAddHourBlockView() {
-        HapticsGateway.shared.triggerLightImpact()
-        isAddHourBlockViewPresented = true
-    }
-    
-    func presentEditBlockView() {
-        isEditHourBlockViewPresented = true
-    }
-    
-    func dismissEditBlockView() {
-        isEditHourBlockViewPresented = false
+    convenience init(for hourBlock: HourBlock) {
+        self.init(for: hourBlock, and: [SubBlock](), dataGateway: DataGateway())
     }
     
     func saveChanges(title: String, icon: SelectableIcon?) {
@@ -64,10 +51,6 @@ class HourBlockViewModel: Identifiable, ObservableObject {
         }
         
         dismissEditBlockView()
-    }
-    
-    func presentManageSubBlocksView() {
-        isManageSubBlocksViewPresented = true
     }
     
     func addSubBlock(_ subBlock: SubBlock) {
@@ -99,4 +82,39 @@ class HourBlockViewModel: Identifiable, ObservableObject {
     func getIconName() -> String {
         return DomainsGateway.shared.determineDomain(for: title)?.iconName ?? "default"
     }
+}
+
+// MARK: - Sheets
+
+extension HourBlockViewModel {
+    
+    func presentAddHourBlockView() {
+        HapticsGateway.shared.triggerLightImpact()
+        isAddHourBlockViewPresented = true
+    }
+    
+    func presentEditBlockView() {
+        isSheetPresented = true
+        selectedSheet = .edit
+    }
+    
+    func dismissEditBlockView() {
+        isSheetPresented = false
+        selectedSheet = nil
+    }
+    
+    func presentManageSubBlocksView() {
+        isSheetPresented = true
+        selectedSheet = .subBlocks
+    }
+    
+    func presentDuplicateBlockView() {
+        isSheetPresented = true
+        selectedSheet = .duplicate
+    }
+}
+
+enum HourBlockSheet {
+    
+    case edit, subBlocks, duplicate
 }

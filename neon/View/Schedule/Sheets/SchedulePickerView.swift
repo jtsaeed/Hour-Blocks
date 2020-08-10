@@ -15,6 +15,7 @@ struct SchedulePickerView: View {
     @Binding var isPresented: Bool
     
     let title: String
+    let hourBlock: HourBlock
     
     var body: some View {
         NavigationView {
@@ -24,15 +25,21 @@ struct SchedulePickerView: View {
                         if hourBlockViewModel.title != "Empty" {
                             CompactHourBlockView(viewModel: hourBlockViewModel)
                         } else {
-                            EmptyHourBlockView(viewModel: hourBlockViewModel,
-                                               onNewBlockAdded: { viewModel.addBlock($0) })
+                            PickerEmptyBlockView(viewModel: hourBlockViewModel,
+                                                 hourBlock: hourBlock,
+                                                 onNewBlockAdded: { self.add(hourBlock: $0) })
                         }
                     }
                 }.padding(.top, 8)
                 .padding(.bottom, 24)
             }.navigationTitle(title)
-            .navigationBarItems(leading: Button("Done", action: dismiss))
+            .navigationBarItems(trailing: Button("Done", action: dismiss))
         }.accentColor(Color("AccentColor"))
+    }
+    
+    func add(hourBlock: HourBlock) {
+        viewModel.addBlock(hourBlock)
+        NotificationCenter.default.post(name: Notification.Name("RefreshSchedule"), object: nil)
     }
     
     func dismiss() {
@@ -40,8 +47,41 @@ struct SchedulePickerView: View {
     }
 }
 
+private struct PickerEmptyBlockView: View {
+    
+    @ObservedObject var viewModel: HourBlockViewModel
+    
+    let hourBlock: HourBlock
+    let onNewBlockAdded: (HourBlock) -> Void
+    
+    var body: some View {
+        Card {
+            HStack {
+                CardLabels(title: "Empty",
+                           subtitle: viewModel.getFormattedTime(),
+                           titleOpacity: 0.4)
+                Spacer()
+                IconButton(iconName: "plus",
+                           iconWeight: .bold,
+                           action: addNewHourBlock)
+            }
+        }.padding(.horizontal, 24)
+    }
+    
+    func addNewHourBlock() {
+        let newHourBlock = HourBlock(day: viewModel.hourBlock.day,
+                                     hour: viewModel.hourBlock.hour,
+                                     title: hourBlock.title,
+                                     iconOverride: hourBlock.iconOverride)
+        
+        onNewBlockAdded(newHourBlock)
+    }
+}
+
 struct SchedulePickerView_Previews: PreviewProvider {
     static var previews: some View {
-        SchedulePickerView()
+        SchedulePickerView(isPresented: .constant(true),
+                           title: "Picker",
+                           hourBlock: HourBlock(day: Date(), hour: 17, title: "Dinner"))
     }
 }

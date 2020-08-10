@@ -36,5 +36,7 @@ class CalendarOptionsViewModel: ObservableObject {
         enabledCalendars[identifier] = value
         
         UserDefaults.standard.set(enabledCalendars, forKey: "enabledCalendars")
+        
+        NotificationCenter.default.post(name: Notification.Name("RefreshSchedule"), object: nil)
     }
 }

@@ -16,8 +16,8 @@ struct SuggestionsGateway {
         var suggestions = [Suggestion]()
         
         // Get all possible suggestions
-        suggestions.append(contentsOf: getFrequentlyAdded(for: hour, on: day, with: dataGateway))
         suggestions.append(contentsOf: getPopular(for: hour, on: day))
+        suggestions.append(contentsOf: getFrequentlyAdded(for: hour, on: day, with: dataGateway, existingSuggestions: suggestions))
         
         // Sort by score
         suggestions = suggestions.sorted(by: { $0.score > $1.score })
@@ -30,12 +30,13 @@ struct SuggestionsGateway {
         return suggestions
     }
     
-    private func getFrequentlyAdded(for hour: Int, on day: Date, with dataGateway: DataGateway) -> [Suggestion] {
+    private func getFrequentlyAdded(for hour: Int, on day: Date, with dataGateway: DataGateway, existingSuggestions: [Suggestion]) -> [Suggestion] {
         let lastMonthsBlocks = dataGateway.getLastMonthsHourBlocks(from: day, for: hour)
         let lastMonthsDomains = lastMonthsBlocks.compactMap({ DomainsGateway.shared.determineDomain(for: $0.title!) })
         var lastMonthsDomainFrequencies = [BlockDomain: Int]()
         
         for domain in lastMonthsDomains {
+            if existingSuggestions.contains(where: { $0.domain == domain }) { continue }
             lastMonthsDomainFrequencies[domain] = (lastMonthsDomainFrequencies[domain] ?? 0) + 1
         }
         
@@ -70,7 +71,6 @@ struct SuggestionsGateway {
         // every day, morning
         if hour >= 5 && hour <= 8 {
             suggestions.append(Suggestion(domain: .wake, reason: "popular", score: 2))
-            suggestions.append(Suggestion(domain: .shower, reason: "popular", score: 3))
         }
         // every day, little after morning
         if hour >= 6 && hour <= 9 {
@@ -85,9 +85,13 @@ struct SuggestionsGateway {
         if hour >= 17 && hour <= 21 {
             suggestions.append(Suggestion(domain: .dinner, reason: "popular", score: 4))
         }
+        // every day, evening
+        if hour >= 18 && hour <= 22 {
+            suggestions.append(Suggestion(domain: .relax, reason: "popular", score: 3))
+        }
         // every day, sleep
         if hour >= 21 && hour <= 23 {
-            suggestions.append(Suggestion(domain: .sleep, reason: "popular", score: 4))
+            suggestions.append(Suggestion(domain: .sleep, reason: "popular", score: 3))
         }
         
         return suggestions

@@ -19,7 +19,7 @@ struct WhatsNewView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
                     WhatsNewItem(title: "Redesigned Schedule 🖌",
-                                 content: "See your Sub Blocks directly in the schedule, preview your days with the new date picker, take a peek at blocks from earlier in the day + much more!")
+                                 content: "See your Sub Blocks directly in the schedule, preview your days with the new date picker, take a peek at blocks from earlier in the day + so much more!")
                     WhatsNewItem(title: "Homescreen Widget 📱",
                                  content: "Get a snapshot of your upcoming schedule without even leaving your homescreen!")
                     WhatsNewItem(title: "Small Improvements ✨",

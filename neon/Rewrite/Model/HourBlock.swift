@@ -19,14 +19,18 @@ struct HourBlock: Identifiable {
     
     let iconOverride: String?
     
-    init(day: Date, hour: Int, title: String?) {
+    init(day: Date, hour: Int, title: String?, iconOverride: String?) {
         self.id = UUID().uuidString
         
         self.title = title
         self.day = Calendar.current.startOfDay(for: day)
         self.hour = hour
         
-        self.iconOverride = nil
+        self.iconOverride = iconOverride
+    }
+    
+    init(day: Date, hour: Int, title: String?) {
+        self.init(day: day, hour: hour, title: title, iconOverride: nil)
     }
     
     init?(fromEntity entity: HourBlockEntity) {

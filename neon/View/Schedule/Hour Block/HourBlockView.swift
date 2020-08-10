@@ -39,23 +39,34 @@ struct HourBlockView: View {
             Button(action: viewModel.presentEditBlockView) {
                 Label("Edit", systemImage: "pencil")
             }
-            
             Button(action: viewModel.presentManageSubBlocksView) {
                 Label("Sub Blocks", systemImage: "rectangle.grid.1x2")
             }
-            
-            .sheet(isPresented: $viewModel.isManageSubBlocksViewPresented) {
-                ManageSubBlocksView(isPresented: $viewModel.isManageSubBlocksViewPresented,
-                                    viewModel: viewModel,
-                                    hourBlock: viewModel.hourBlock)
+            Button(action: viewModel.presentDuplicateBlockView) {
+                Label("Duplicate", systemImage: "plus.square.on.square")
             }
-            
+            Divider()
             Button(action: onBlockCleared) {
                 Label("Clear", systemImage: "trash")
             }
         }))
-        .sheet(isPresented: $viewModel.isEditHourBlockViewPresented) {
-            EditHourBlockView(viewModel: viewModel)
+        
+        .sheet(isPresented: $viewModel.isSheetPresented) {
+            if viewModel.selectedSheet == .edit {
+                EditHourBlockView(viewModel: viewModel)
+            }
+            
+            if viewModel.selectedSheet == .subBlocks {
+                ManageSubBlocksView(isPresented: $viewModel.isSheetPresented,
+                                    viewModel: viewModel,
+                                    hourBlock: viewModel.hourBlock)
+            }
+            
+            if viewModel.selectedSheet == .duplicate {
+                SchedulePickerView(isPresented: $viewModel.isSheetPresented,
+                                   title: "Duplicate Hour Block",
+                                   hourBlock: viewModel.hourBlock)
+            }
         }
     }
 }

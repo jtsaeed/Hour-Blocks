@@ -27,13 +27,25 @@ struct ToDoItemView: View {
             Button(action: viewModel.presentEditItemView) {
                 Label("Edit", systemImage: "pencil")
             }
+            Button(action: viewModel.presentAddToScheduleView) {
+                Label("Add to Today", systemImage: "calendar.badge.plus")
+            }
+            Divider()
             Button(action: onItemCleared) {
                 Label("Clear", systemImage: "trash")
             }
         }))
         
-        .sheet(isPresented: $viewModel.isEditItemViewPresented) {
-            EditToDoItemView(viewModel: viewModel)
+        .sheet(isPresented: $viewModel.isSheetPresented) {
+            if viewModel.selectedSheet == .edit {
+                EditToDoItemView(viewModel: viewModel)
+            }
+            
+            if viewModel.selectedSheet == .addToSchedule {
+                SchedulePickerView(isPresented: $viewModel.isSheetPresented,
+                                   title: "Add to Today",
+                                   hourBlock: HourBlock(day: Date(), hour: 12, title: viewModel.title))
+            }
         }
     }
 }

@@ -16,8 +16,6 @@ struct Suggestion: Identifiable {
     let score: Int
     
     var title: String {
-        guard let locale = Locale.current.languageCode else { return domain.suggestionTitle }
-        
-        return locale.starts(with: "en") ? domain.suggestionTitle : domain.localisedKey.capitalized
+        return domain.suggestionTitle
     }
 }

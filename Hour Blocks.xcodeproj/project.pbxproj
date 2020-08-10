@@ -89,6 +89,9 @@
 		AB5F9A2E24AE63E800C4C597 /* SubBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F9A2D24AE63E800C4C597 /* SubBlock.swift */; };
 		AB5F9A3024AE6E6E00C4C597 /* ManageSubBlocksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F9A2F24AE6E6E00C4C597 /* ManageSubBlocksView.swift */; };
 		AB6841DD2437E06A009EF794 /* NSManagedObjectContext+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6841DC2437E06A009EF794 /* NSManagedObjectContext+Ext.swift */; };
+		AB69CB9724E17FDC00028715 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4E738323A01819008036ED /* CloudKit.framework */; };
+		AB69CB9924E1888C00028715 /* URL+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB69CB9824E1888C00028715 /* URL+Ext.swift */; };
+		AB69CB9A24E188AC00028715 /* URL+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB69CB9824E1888C00028715 /* URL+Ext.swift */; };
 		AB72E0B724ACE84A004DD577 /* DataGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB72E0B624ACE84A004DD577 /* DataGateway.swift */; };
 		AB72E0B924ACE86E004DD577 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB72E0B824ACE86E004DD577 /* ScheduleView.swift */; };
 		AB72E0BB24ACE876004DD577 /* HourBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB72E0BA24ACE876004DD577 /* HourBlockView.swift */; };
@@ -274,6 +277,7 @@
 		AB5F9A2D24AE63E800C4C597 /* SubBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubBlock.swift; sourceTree = "<group>"; };
 		AB5F9A2F24AE6E6E00C4C597 /* ManageSubBlocksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageSubBlocksView.swift; sourceTree = "<group>"; };
 		AB6841DC2437E06A009EF794 /* NSManagedObjectContext+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Ext.swift"; sourceTree = "<group>"; };
+		AB69CB9824E1888C00028715 /* URL+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Ext.swift"; sourceTree = "<group>"; };
 		AB72E0B624ACE84A004DD577 /* DataGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGateway.swift; sourceTree = "<group>"; };
 		AB72E0B824ACE86E004DD577 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		AB72E0BA24ACE876004DD577 /* HourBlockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourBlockView.swift; sourceTree = "<group>"; };
@@ -345,6 +349,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB69CB9724E17FDC00028715 /* CloudKit.framework in Frameworks */,
 				AB33B25A24BF5EDD0057662F /* SwiftUI.framework in Frameworks */,
 				AB33B25824BF5EDD0057662F /* WidgetKit.framework in Frameworks */,
 			);
@@ -361,6 +366,7 @@
 				234DF2FA237A113200EB248A /* Int+Ext.swift */,
 				AB6841DC2437E06A009EF794 /* NSManagedObjectContext+Ext.swift */,
 				AB5A9BF824B39DDE00F97B10 /* EKEvent+Ext.swift */,
+				AB69CB9824E1888C00028715 /* URL+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1057,6 +1063,7 @@
 				ABFC243A24D039B30091E3A5 /* FeedbackView.swift in Sources */,
 				2336981F23818D52006ACD1E /* ActionButton.swift in Sources */,
 				AB72E0C724ACE8C5004DD577 /* HeaderView.swift in Sources */,
+				AB69CB9924E1888C00028715 /* URL+Ext.swift in Sources */,
 				AB5A9BF724B396BB00F97B10 /* NeonDivider.swift in Sources */,
 				AB05598224CF5E1C006F0228 /* VersionGateway.swift in Sources */,
 				AB05597A24CF085B006F0228 /* CompactHourBlockView.swift in Sources */,
@@ -1159,6 +1166,7 @@
 				AB33B26E24BF642E0057662F /* neon.xcdatamodeld in Sources */,
 				AB33B26D24BF63E40057662F /* String+Ext.swift in Sources */,
 				AB33B26C24BF63CC0057662F /* Int+Ext.swift in Sources */,
+				AB69CB9A24E188AC00028715 /* URL+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1324,7 +1332,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.1;
+				CURRENT_PROJECT_VERSION = 0.2;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1351,7 +1359,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.1;
+				CURRENT_PROJECT_VERSION = 0.2;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1466,7 +1474,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeonWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.1;
+				CURRENT_PROJECT_VERSION = 0.2;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = NeonWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1494,7 +1502,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeonWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.1;
+				CURRENT_PROJECT_VERSION = 0.2;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = NeonWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

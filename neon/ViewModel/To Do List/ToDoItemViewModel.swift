@@ -17,7 +17,8 @@ class ToDoItemViewModel: ObservableObject, Identifiable {
     @Published var title: String
     @Published var urgency: String
     
-    @Published var isEditItemViewPresented = false
+    @Published var isSheetPresented = false
+    @Published var selectedSheet: ToDoItemSheet?
     
     init(for toDoItem: ToDoItem, dataGateway: DataGateway) {
         self.dataGateway = dataGateway
@@ -32,11 +33,18 @@ class ToDoItemViewModel: ObservableObject, Identifiable {
     }
     
     func presentEditItemView() {
-        isEditItemViewPresented = true
+        isSheetPresented = true
+        selectedSheet = .edit
     }
     
     func dismissEditItemView() {
-        isEditItemViewPresented = false
+        isSheetPresented = false
+        selectedSheet = .edit
+    }
+    
+    func presentAddToScheduleView() {
+        isSheetPresented = true
+        selectedSheet = .addToSchedule
     }
     
     func saveChanges(title: String, urgency: ToDoUrgency) {
@@ -65,4 +73,8 @@ extension ToDoItemViewModel: Comparable {
             return true
         }
     }
+}
+
+enum ToDoItemSheet {
+    case edit, addToSchedule
 }

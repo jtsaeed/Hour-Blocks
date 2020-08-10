@@ -74,6 +74,9 @@ private struct OtherSettingsCard: View {
                 }.pickerStyle(SegmentedPickerStyle())
             }
         }.padding(.horizontal, 24)
+        .onChange(of: value) { _ in
+            NotificationCenter.default.post(name: Notification.Name("RefreshSchedule"), object: nil)
+        }
     }
 }
 

@@ -11,6 +11,8 @@ import SwiftDate
 
 struct ScheduleView: View {
     
+    let refreshPublisher = NotificationCenter.default.publisher(for: NSNotification.Name("RefreshSchedule"))
+    
     @StateObject var viewModel = ScheduleViewModel()
     
     var body: some View {
@@ -31,6 +33,7 @@ struct ScheduleView: View {
             
             ScheduleBlocksListView(viewModel: viewModel)
         }.onAppear(perform: viewModel.handleCalendarPermissions)
+        .onReceive(refreshPublisher) { _ in viewModel.loadHourBlocks() }
         .navigationBarHidden(true)
     }
 }

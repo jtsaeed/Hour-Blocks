@@ -12,20 +12,20 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
-			<key>icon_dark</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>icon_dark</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<string>NO</string>
-			</dict>
 			<key>icon_blueprint</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>icon_blueprint</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<string>NO</string>
+			</dict>
+			<key>icon_dark</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>icon_dark</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<string>NO</string>
