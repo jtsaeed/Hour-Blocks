@@ -10,7 +10,7 @@ import SwiftUI
 
 struct UpcomingScheduleView: View {
     
-    let hourBlock: HourBlock
+    let hourBlock: HourBlock?
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
@@ -18,13 +18,20 @@ struct UpcomingScheduleView: View {
                                         startPoint: .top,
                                         endPoint: .bottom)
             
-            VStack(alignment: .leading, spacing: 4) {
-                Text(hourBlock.hour.get12hTime())
-                    .font(.system(size: 17, weight: .semibold, design: .default))
-                Text(hourBlock.title!.smartCapitalization())
+            if let hourBlock = hourBlock {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(hourBlock.hour.get12hTime())
+                        .font(.system(size: 17, weight: .semibold, design: .default))
+                    Text(hourBlock.title!.smartCapitalization())
+                        .font(.system(size: 24, weight: .medium, design: .rounded))
+                }.padding(16)
+                .foregroundColor(.white)
+            } else {
+                Text("Nothing scheduled today")
                     .font(.system(size: 24, weight: .medium, design: .rounded))
-            }.padding(16)
-            .foregroundColor(.white)
+                    .padding(16)
+                    .foregroundColor(.white)
+            }
         }
     }
 }

@@ -59,22 +59,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let coordinator = container.persistentStoreCoordinator
         let storeURL = URL.storeURL(for: "group.com.evh98.neon", databaseName: "neon")
         
-        if let oldURL = container.persistentStoreDescriptions.first?.url {
-            print(oldURL.path)
-            let oldStore = coordinator.persistentStore(for: oldURL)
-            
-            do {
-                try coordinator.migratePersistentStore(oldStore!, to: storeURL, options: nil, withType: NSSQLiteStoreType)
-            } catch let error {
-                print(error.localizedDescription)
-            }
+        var defaultURL: URL?
+        if let storeDescription = container.persistentStoreDescriptions.first, let url = storeDescription.url {
+            defaultURL = FileManager.default.fileExists(atPath: url.path) ? url : nil
         }
         
-        let storeDescription = NSPersistentStoreDescription(url: storeURL)
-        container.persistentStoreDescriptions = [storeDescription]
+        if defaultURL == nil {
+            container.persistentStoreDescriptions = [NSPersistentStoreDescription(url: storeURL)]
+        }
+        
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+            
+            if let url = defaultURL, url.absoluteString != storeURL.absoluteString {
+                let coordinator = container.persistentStoreCoordinator
+                if let oldStore = coordinator.persistentStore(for: url) {
+                    do {
+                        try coordinator.migratePersistentStore(oldStore, to: storeURL, options: nil, withType: NSSQLiteStoreType)
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+
+                    // delete old store
+                    let fileCoordinator = NSFileCoordinator(filePresenter: nil)
+                    fileCoordinator.coordinate(writingItemAt: url, options: .forDeleting, error: nil, byAccessor: { url in
+                        do {
+                            try FileManager.default.removeItem(at: url)
+                        } catch {
+                            print(error.localizedDescription)
+                        }
+                    })
+                }
             }
         })
         return container

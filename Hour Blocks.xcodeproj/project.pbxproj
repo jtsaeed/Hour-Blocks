@@ -11,7 +11,6 @@
 		2304FA14235F29ED006DA688 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA13235F29ED006DA688 /* SceneDelegate.swift */; };
 		2304FA17235F2A2A006DA688 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA16235F2A2A006DA688 /* ContentView.swift */; };
 		2304FA1F235F2F28006DA688 /* DomainsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA1E235F2F28006DA688 /* DomainsGateway.swift */; };
-		2304FA2D235F301A006DA688 /* AddToBlockSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA2C235F301A006DA688 /* AddToBlockSheet.swift */; };
 		2304FA3B235F39E4006DA688 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2304FA3A235F39E4006DA688 /* LaunchScreen.storyboard */; };
 		2304FA43235F4AB4006DA688 /* HapticsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA42235F4AB4006DA688 /* HapticsGateway.swift */; };
 		232ED4E0228C93A4008FC4A0 /* AnalyticsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232ED4DF228C93A4008FC4A0 /* AnalyticsGateway.swift */; };
@@ -24,7 +23,6 @@
 		2338BEDF220A7841004F288F /* neonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEDE220A7841004F288F /* neonUITests.swift */; };
 		234C1A09220C8E9D00344316 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C1A08220C8E9D00344316 /* Date+Ext.swift */; };
 		234DF2FB237A113200EB248A /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234DF2FA237A113200EB248A /* Int+Ext.swift */; };
-		23C53D7F2369E02400BA4378 /* LegacyOtherSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C53D7E2369E02400BA4378 /* LegacyOtherSettingsView.swift */; };
 		23C53D812369E62800BA4378 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C53D802369E62800BA4378 /* String+Ext.swift */; };
 		23E45BE2224BA3A9002D01AC /* NotificationsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E45BE1224BA3A9002D01AC /* NotificationsGateway.swift */; };
 		23E82155236DB57A004E6F15 /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E82154236DB57A004E6F15 /* WhatsNewView.swift */; };
@@ -34,7 +32,6 @@
 		7A4E738423A01819008036ED /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4E738323A01819008036ED /* CloudKit.framework */; };
 		7A629DAB238C059300C186B1 /* notification.aif in Resources */ = {isa = PBXBuildFile; fileRef = 23E7851322AA753100A9650F /* notification.aif */; };
 		7A666BCC23F06ADB003D6F1F /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A666BCB23F06ADB003D6F1F /* ToDoItem.swift */; };
-		7A735E4F238D591C00FE4D32 /* LegacyIconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A735E4E238D591C00FE4D32 /* LegacyIconPicker.swift */; };
 		7ADE54ED23F0B898007FAE38 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 7ADE54EC23F0B898007FAE38 /* SwiftDate */; };
 		815BF6060562A2DC79C991CC /* Pods_Hour_Blocks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3105B3338C0F7D4F81D55776 /* Pods_Hour_Blocks.framework */; };
 		AB05597824CEFB21006F0228 /* ScheduleDatePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB05597724CEFB21006F0228 /* ScheduleDatePickerViewModel.swift */; };
@@ -54,7 +51,6 @@
 		AB33B25D24BF5EDD0057662F /* NeonWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B25C24BF5EDD0057662F /* NeonWidget.swift */; };
 		AB33B25F24BF5EDE0057662F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB33B25E24BF5EDE0057662F /* Assets.xcassets */; };
 		AB33B26324BF5EDE0057662F /* NeonWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AB33B25624BF5EDD0057662F /* NeonWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		AB33B26924BF5F030057662F /* UpcomingScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B26824BF5F030057662F /* UpcomingScheduleView.swift */; };
 		AB33B26A24BF60BF0057662F /* UpcomingScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B26824BF5F030057662F /* UpcomingScheduleView.swift */; };
 		AB33B26B24BF63A80057662F /* HourBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB72E0C824ACE8ED004DD577 /* HourBlock.swift */; };
 		AB33B26C24BF63CC0057662F /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234DF2FA237A113200EB248A /* Int+Ext.swift */; };
@@ -92,6 +88,7 @@
 		AB69CB9724E17FDC00028715 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4E738323A01819008036ED /* CloudKit.framework */; };
 		AB69CB9924E1888C00028715 /* URL+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB69CB9824E1888C00028715 /* URL+Ext.swift */; };
 		AB69CB9A24E188AC00028715 /* URL+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB69CB9824E1888C00028715 /* URL+Ext.swift */; };
+		AB69CB9C24E1940C00028715 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2338BEC5220A7841004F288F /* Assets.xcassets */; };
 		AB72E0B724ACE84A004DD577 /* DataGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB72E0B624ACE84A004DD577 /* DataGateway.swift */; };
 		AB72E0B924ACE86E004DD577 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB72E0B824ACE86E004DD577 /* ScheduleView.swift */; };
 		AB72E0BB24ACE876004DD577 /* HourBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB72E0BA24ACE876004DD577 /* HourBlockView.swift */; };
@@ -113,7 +110,6 @@
 		AB849E2124C877C200D27333 /* OtherSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB849E2024C877C200D27333 /* OtherSettingsView.swift */; };
 		AB849E2324C8827400D27333 /* CalendarOptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB849E2224C8827400D27333 /* CalendarOptionsViewModel.swift */; };
 		AB9F12B324C8D83100F31F21 /* EditHourBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F12B224C8D83100F31F21 /* EditHourBlockView.swift */; };
-		ABA52F2A24DEE3D200420DF1 /* LegacySettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA52F2924DEE3D200420DF1 /* LegacySettingsViewModel.swift */; };
 		ABAFADFA24B231700098B823 /* ToDoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAFADF924B231700098B823 /* ToDoListView.swift */; };
 		ABAFADFD24B231C40098B823 /* ToDoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAFADFC24B231C40098B823 /* ToDoListViewModel.swift */; };
 		ABBA399324AD1782008A4A56 /* SuggestionsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBA399224AD1782008A4A56 /* SuggestionsGateway.swift */; };
@@ -190,7 +186,6 @@
 		2304FA13235F29ED006DA688 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2304FA16235F2A2A006DA688 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2304FA1E235F2F28006DA688 /* DomainsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainsGateway.swift; sourceTree = "<group>"; };
-		2304FA2C235F301A006DA688 /* AddToBlockSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToBlockSheet.swift; sourceTree = "<group>"; };
 		2304FA3A235F39E4006DA688 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2304FA42235F4AB4006DA688 /* HapticsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsGateway.swift; sourceTree = "<group>"; };
 		2317288D22917778007DBF8B /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
@@ -212,7 +207,6 @@
 		234DF2FA237A113200EB248A /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
 		238EA767223EA0D900981E98 /* neon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = neon.entitlements; sourceTree = "<group>"; };
 		2395A94D224AE1750007D6F2 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
-		23C53D7E2369E02400BA4378 /* LegacyOtherSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyOtherSettingsView.swift; sourceTree = "<group>"; };
 		23C53D802369E62800BA4378 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		23E45BE1224BA3A9002D01AC /* NotificationsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsGateway.swift; sourceTree = "<group>"; };
 		23E7851322AA753100A9650F /* notification.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = notification.aif; sourceTree = "<group>"; };
@@ -223,7 +217,6 @@
 		7A1AF6F923F456F600425BB6 /* Suggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suggestion.swift; sourceTree = "<group>"; };
 		7A4E738323A01819008036ED /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		7A666BCB23F06ADB003D6F1F /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
-		7A735E4E238D591C00FE4D32 /* LegacyIconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyIconPicker.swift; sourceTree = "<group>"; };
 		893180180D781FAF36E08784 /* Pods-Hour Blocks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hour Blocks.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hour Blocks/Pods-Hour Blocks.release.xcconfig"; sourceTree = "<group>"; };
 		AB05597724CEFB21006F0228 /* ScheduleDatePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDatePickerViewModel.swift; sourceTree = "<group>"; };
 		AB05597924CF085B006F0228 /* CompactHourBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactHourBlockView.swift; sourceTree = "<group>"; };
@@ -300,7 +293,6 @@
 		AB849E2024C877C200D27333 /* OtherSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSettingsView.swift; sourceTree = "<group>"; };
 		AB849E2224C8827400D27333 /* CalendarOptionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarOptionsViewModel.swift; sourceTree = "<group>"; };
 		AB9F12B224C8D83100F31F21 /* EditHourBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHourBlockView.swift; sourceTree = "<group>"; };
-		ABA52F2924DEE3D200420DF1 /* LegacySettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacySettingsViewModel.swift; sourceTree = "<group>"; };
 		ABAFADF924B231700098B823 /* ToDoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListView.swift; sourceTree = "<group>"; };
 		ABAFADFC24B231C40098B823 /* ToDoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewModel.swift; sourceTree = "<group>"; };
 		ABBA399224AD1782008A4A56 /* SuggestionsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsGateway.swift; sourceTree = "<group>"; };
@@ -475,16 +467,6 @@
 			path = Legacy;
 			sourceTree = "<group>";
 		};
-		AB05597C24CF5B3D006F0228 /* Legacy */ = {
-			isa = PBXGroup;
-			children = (
-				7A735E4E238D591C00FE4D32 /* LegacyIconPicker.swift */,
-				23C53D7E2369E02400BA4378 /* LegacyOtherSettingsView.swift */,
-				2304FA2C235F301A006DA688 /* AddToBlockSheet.swift */,
-			);
-			path = Legacy;
-			sourceTree = "<group>";
-		};
 		AB05598324CF65C1006F0228 /* Hour Block */ = {
 			isa = PBXGroup;
 			children = (
@@ -515,18 +497,11 @@
 			path = Sheets;
 			sourceTree = "<group>";
 		};
-		AB33B25124BF5E9D0057662F /* Widget */ = {
-			isa = PBXGroup;
-			children = (
-				AB33B26824BF5F030057662F /* UpcomingScheduleView.swift */,
-			);
-			path = Widget;
-			sourceTree = "<group>";
-		};
 		AB33B25B24BF5EDD0057662F /* NeonWidget */ = {
 			isa = PBXGroup;
 			children = (
 				AB33B25C24BF5EDD0057662F /* NeonWidget.swift */,
+				AB33B26824BF5F030057662F /* UpcomingScheduleView.swift */,
 				AB33B25E24BF5EDE0057662F /* Assets.xcassets */,
 				AB33B26024BF5EDE0057662F /* Info.plist */,
 				AB10A95124E05C6600FCB466 /* WidgetDataGateway.swift */,
@@ -600,9 +575,7 @@
 				AB72E0C524ACE8B8004DD577 /* Schedule */,
 				ABAFADF724B231540098B823 /* To Do List */,
 				ABAFADF824B2315B0098B823 /* Settings */,
-				AB33B25124BF5E9D0057662F /* Widget */,
 				ABF5833624D9C01F006F6448 /* Concepts */,
-				AB05597C24CF5B3D006F0228 /* Legacy */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -613,7 +586,6 @@
 				ABAFADF424B22E040098B823 /* Schedule */,
 				ABAFADFB24B231B70098B823 /* To Do List */,
 				AB7EABDC24B4FE6D00041AB1 /* Settings */,
-				ABA52F2824DEE3C300420DF1 /* Legacy */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -680,14 +652,6 @@
 				AB849E2224C8827400D27333 /* CalendarOptionsViewModel.swift */,
 			);
 			path = Settings;
-			sourceTree = "<group>";
-		};
-		ABA52F2824DEE3C300420DF1 /* Legacy */ = {
-			isa = PBXGroup;
-			children = (
-				ABA52F2924DEE3D200420DF1 /* LegacySettingsViewModel.swift */,
-			);
-			path = Legacy;
 			sourceTree = "<group>";
 		};
 		ABAFADF424B22E040098B823 /* Schedule */ = {
@@ -951,6 +915,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB69CB9C24E1940C00028715 /* Assets.xcassets in Resources */,
 				AB33B25F24BF5EDE0057662F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1052,9 +1017,7 @@
 				ABBA399324AD1782008A4A56 /* SuggestionsGateway.swift in Sources */,
 				AB72E0CD24ACE9AF004DD577 /* NeonTextField.swift in Sources */,
 				7A666BCC23F06ADB003D6F1F /* ToDoItem.swift in Sources */,
-				23C53D7F2369E02400BA4378 /* LegacyOtherSettingsView.swift in Sources */,
 				AB9F12B324C8D83100F31F21 /* EditHourBlockView.swift in Sources */,
-				2304FA2D235F301A006DA688 /* AddToBlockSheet.swift in Sources */,
 				AB6841DD2437E06A009EF794 /* NSManagedObjectContext+Ext.swift in Sources */,
 				2338BEC4220A7840004F288F /* neon.xcdatamodeld in Sources */,
 				AB22515124DEF30600DEFD92 /* UtilGateway.swift in Sources */,
@@ -1072,7 +1035,6 @@
 				AB72E0BD24ACE87D004DD577 /* EmptyHourBlockView.swift in Sources */,
 				AB849E1B24C86BFF00D27333 /* SettingsViewModel.swift in Sources */,
 				232ED4E0228C93A4008FC4A0 /* AnalyticsGateway.swift in Sources */,
-				AB33B26924BF5F030057662F /* UpcomingScheduleView.swift in Sources */,
 				ABFC243824D029730091E3A5 /* EditToDoItemView.swift in Sources */,
 				AB72E0D124ACE9F9004DD577 /* CardLabels.swift in Sources */,
 				7A1AF6FA23F456F600425BB6 /* Suggestion.swift in Sources */,
@@ -1084,7 +1046,6 @@
 				AB72E0D024ACE9F9004DD577 /* Card.swift in Sources */,
 				2304FA17235F2A2A006DA688 /* ContentView.swift in Sources */,
 				AB5A9BF324B3867900F97B10 /* CalendarGateway.swift in Sources */,
-				7A735E4F238D591C00FE4D32 /* LegacyIconPicker.swift in Sources */,
 				AB72E0C124ACE88A004DD577 /* AddHourBlockViewModel.swift in Sources */,
 				AB5F9A2E24AE63E800C4C597 /* SubBlock.swift in Sources */,
 				AB5A9BF124B385DB00F97B10 /* HourBlockIcon.swift in Sources */,
@@ -1112,7 +1073,6 @@
 				AB72E0BB24ACE876004DD577 /* HourBlockView.swift in Sources */,
 				AB72E0C324ACE892004DD577 /* ScheduleViewModel.swift in Sources */,
 				AB5A9BF924B39DDE00F97B10 /* EKEvent+Ext.swift in Sources */,
-				ABA52F2A24DEE3D200420DF1 /* LegacySettingsViewModel.swift in Sources */,
 				234C1A09220C8E9D00344316 /* Date+Ext.swift in Sources */,
 				ABAFADFD24B231C40098B823 /* ToDoListViewModel.swift in Sources */,
 				AB554EDD24BB7395006CFEBD /* ToDoItemView.swift in Sources */,

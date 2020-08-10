@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import WidgetKit
 
 class HourBlockViewModel: Identifiable, ObservableObject {
     
@@ -51,6 +52,8 @@ class HourBlockViewModel: Identifiable, ObservableObject {
         }
         
         dismissEditBlockView()
+        
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     func addSubBlock(_ subBlock: SubBlock) {

@@ -6,10 +6,10 @@
 //  Copyright © 2020 James Saeed. All rights reserved.
 //
 
-import UIKit
 import SwiftUI
 import CoreData
 import EventKit
+import WidgetKit
 
 class ScheduleViewModel: ObservableObject {
     
@@ -73,6 +73,8 @@ class ScheduleViewModel: ObservableObject {
         
         todaysHourBlocks[hourBlock.hour] = HourBlockViewModel(for: hourBlock)
         updateCurrentHour()
+        
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     func clearBlock(_ hourBlock: HourBlock) {
@@ -85,8 +87,9 @@ class ScheduleViewModel: ObservableObject {
         todaysHourBlocks[hourBlock.hour] = HourBlockViewModel(for: HourBlock(day: hourBlock.day,
                                                                              hour: hourBlock.hour,
                                                                              title: nil))
-        
         updateCurrentHour()
+        
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     func toggleFilter() {

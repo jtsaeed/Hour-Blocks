@@ -11,30 +11,52 @@ import SwiftUI
 import CoreData
 
 struct Provider: TimelineProvider {
-    public typealias Entry = SimpleEntry
+    public typealias Entry = HourBlockEntry
 
-    public func snapshot(with context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(),
+    public func snapshot(with context: Context, completion: @escaping (HourBlockEntry) -> ()) {
+        let entry = HourBlockEntry(date: Date(),
                                 hourBlock: HourBlock(day: Date(), hour: 19, title: "Dinner with Bonnie"),
                                 relevance: TimelineEntryRelevance(score: 0))
         completion(entry)
     }
+    
+    public func placeholder(in context: Context) -> HourBlockEntry {
+        return HourBlockEntry(date: Date(), hourBlock: nil, relevance: TimelineEntryRelevance(score: 0))
+    }
 
     public func timeline(with context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
+        var entries: [HourBlockEntry] = []
         
-        let blocks = WidgetDataGateway.shared.getHourBlocks(for: Date())
+        let hourBlocks = WidgetDataGateway.shared.getHourBlocks(for: Date()).sorted { $0.hour < $1.hour }
         
-        print(blocks.count)
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate,
-                                    hourBlock: blocks.first!,
-                                    relevance: TimelineEntryRelevance(score: 0))
-            entries.append(entry)
+        if let firstBlock = hourBlocks.first {
+            let currentDate = Date()
+            
+            let hourDifference = firstBlock.hour - Calendar.current.component(.hour, from: currentDate)
+            let entryScore = hourDifference < 2 ? 50 : 24 - hourDifference
+            let firstEntry = HourBlockEntry(date: currentDate,
+                                            hourBlock: firstBlock,
+                                            relevance: TimelineEntryRelevance(score: Float(entryScore)))
+            entries.append(firstEntry)
+            
+            if hourBlocks.count > 1 {
+                for index in 1 ..< hourBlocks.count {
+                    let entryDate = Calendar.current.date(bySettingHour: hourBlocks[index - 1].hour + 1,
+                                                              minute: 0,
+                                                              second: 0,
+                                                              of: currentDate)!
+                    let hourDifference = hourBlocks[index].hour - Calendar.current.component(.hour, from: currentDate)
+                    let entryScore = hourDifference < 2 ? 50 : 24 - hourDifference
+                    let entry = HourBlockEntry(date: entryDate,
+                                               hourBlock: hourBlocks[index],
+                                               relevance: TimelineEntryRelevance(score: Float(entryScore)))
+                    entries.append(entry)
+                }
+            }
+        } else {
+            entries.append(HourBlockEntry(date: Date(),
+                                          hourBlock: nil,
+                                          relevance: nil))
         }
 
         let timeline = Timeline(entries: entries, policy: .atEnd)
@@ -42,20 +64,21 @@ struct Provider: TimelineProvider {
     }
 }
 
-struct SimpleEntry: TimelineEntry {
+struct HourBlockEntry: TimelineEntry {
+    
     public let date: Date
-    let hourBlock: HourBlock
+    let hourBlock: HourBlock?
     let relevance: TimelineEntryRelevance?
 }
 
 struct PlaceholderView : View {
     
     var body: some View {
-        NeonWidgetEntryView(entry: SimpleEntry(date: Date(),
-                                               hourBlock: HourBlock(day: Date(),
+        NeonWidgetEntryView(entry: HourBlockEntry(date: Date(),
+                                                  hourBlock: HourBlock(day: Date(),
                                                                     hour: 19,
                                                                     title: "Dinner with Bonnie"),
-                                               relevance: TimelineEntryRelevance(score: 0)))
+                                                  relevance: TimelineEntryRelevance(score: 0)))
     }
 }
 
@@ -69,7 +92,6 @@ struct NeonWidgetEntryView : View {
     var body: some View {
         switch family {
             case .systemSmall: UpcomingScheduleView(hourBlock: entry.hourBlock)
-            case .systemMedium: UpcomingScheduleView(hourBlock: entry.hourBlock)
             default: UpcomingScheduleView(hourBlock: entry.hourBlock)
         }
     }
