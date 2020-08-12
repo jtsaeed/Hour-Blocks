@@ -16,20 +16,33 @@ class ScheduleDatePickerTests: XCTestCase {
     
     var dataGateway: DataGateway!
     var viewModel: ScheduleDatePickerViewModel!
-
+    
     override func setUpWithError() throws {
         dataGateway = DataGateway(for: mockPersistantContainer.viewContext)
         viewModel = ScheduleDatePickerViewModel(dataGateway: dataGateway,
                                                 calendarGateway: MockCalendarGateway(),
                                                 initialSelectedDate: date)
     }
-
+    
     override func tearDownWithError() throws {
         dataGateway.deleteAllHourBlocks()
     }
-
+    
     func testLoadHourBlocks() {
-        // TODO
+        
+        dataGateway.save(hourBlock: HourBlock(day: Date(), hour: 15, title: "Gym"))
+        
+        
+        viewModel.loadHourBlocks()
+        
+        let expectation = XCTestExpectation(description: "Load Hour Blocks from view model")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            XCTAssertEqual(self.viewModel.hourBlocks[15].title, "Gym")
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 2.0)
     }
     
     lazy var mockPersistantContainer: NSPersistentContainer = {
@@ -42,7 +55,7 @@ class ScheduleDatePickerTests: XCTestCase {
         container.loadPersistentStores { (description, error) in
             // Check if the data store is in memory
             precondition( description.type == NSInMemoryStoreType )
-                                        
+            
             // Check if creating container wrong
             if let error = error {
                 fatalError("Create an in-mem coordinator failed \(error)")
