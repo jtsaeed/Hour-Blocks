@@ -14,7 +14,7 @@ class ScheduleTests: XCTestCase {
     
     var dataGateway: DataGateway!
     var viewModel: ScheduleViewModel!
-
+    
     override func setUpWithError() throws {
         dataGateway = DataGateway(for: mockPersistantContainer.viewContext)
         viewModel = ScheduleViewModel(dataGateway: dataGateway,
@@ -22,11 +22,11 @@ class ScheduleTests: XCTestCase {
                                       analyticsGateway: MockAnalyticsGateway(),
                                       remindersGateway: MockRemindersGateway())
     }
-
+    
     override func tearDownWithError() throws {
         dataGateway.deleteAllHourBlocks()
     }
-
+    
     func testLoadHourBlocks() {
         dataGateway.save(hourBlock: HourBlock(day: Date(), hour: 13, title: "Lunch"))
         dataGateway.save(hourBlock: HourBlock(day: Date(), hour: 15, title: "Gym"))
@@ -45,27 +45,90 @@ class ScheduleTests: XCTestCase {
     }
     
     func testAddHourBlock() {
-        // TODO
+        
+        viewModel.addBlock(HourBlock(day: Date(), hour: 14, title: "Walk"))
+        
+        let expectation = XCTestExpectation(description: "Add Hour Block to view model")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            
+            XCTAssertEqual(self.viewModel.todaysHourBlocks[14].title, "Walk")
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 2.0)
+        
+        
     }
     
     func testClearHourBlock() {
-        // TODO
+        let block = HourBlock(day: Date(), hour: 13, title: "Lunch")
+        
+        dataGateway.save(hourBlock: block)
+        viewModel.clearBlock(block)
+        
+        let expectation = XCTestExpectation(description: "Clear Hour Block from view model")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            
+            XCTAssertEqual(self.viewModel.todaysHourBlocks[14].title, "Empty")
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 2.0)
+        
     }
     
     func testEnableFilter() {
-        // TODO
+        let expectation = XCTestExpectation(description: "Enable Hour Blocks filter from view model")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            
+            XCTAssertTrue(self.viewModel.isFilterEnabled)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 2.0)
+        
     }
     
     func testDisableFilter() {
-        // TODO
+        let expectation = XCTestExpectation(description: "Disable Hour Blocks filter from view model")
+        
+        viewModel.toggleFilter()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            
+            XCTAssertFalse(self.viewModel.isFilterEnabled)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 2.0)
     }
-
+    
     func testPresentDatePickerView() {
-        // TODO
+        let expectation = XCTestExpectation(description: "Present Date pciker from view model")
+        
+        viewModel.presentDatePickerView()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            
+            XCTAssertTrue(self.viewModel.isDatePickerViewPresented)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 2.0)
     }
     
     func testDismissDatePickerView() {
-        // TODO
+        let expectation = XCTestExpectation(description: "Disable Hour Blocks filter from view model")
+        
+        viewModel.toggleFilter()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            
+            XCTAssertFalse(self.viewModel.isDatePickerViewPresented)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 2.0)
     }
     
     lazy var mockPersistantContainer: NSPersistentContainer = {
@@ -78,7 +141,7 @@ class ScheduleTests: XCTestCase {
         container.loadPersistentStores { (description, error) in
             // Check if the data store is in memory
             precondition( description.type == NSInMemoryStoreType )
-                                        
+            
             // Check if creating container wrong
             if let error = error {
                 fatalError("Create an in-mem coordinator failed \(error)")
