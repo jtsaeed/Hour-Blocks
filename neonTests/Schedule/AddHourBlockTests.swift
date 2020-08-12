@@ -12,7 +12,8 @@ import CoreData
 
 class AddHourBlockTests: XCTestCase {
     
-    let date = Date(year: 2020, month: 08, day: 02, hour: 13, minute: 0)
+    let date = Date(year: 2020, month: 08, day: 02, hour: 19, minute: 0)
+    let hour = 19
     
     var dataGateway: DataGateway!
     var viewModel: AddHourBlockViewModel!
