@@ -27,18 +27,6 @@ class ToDoItemTests: XCTestCase {
     override func tearDownWithError() throws {
         dataGateway.deleteAllToDoItems()
     }
-
-    func testPresentEditItemView() {
-        // TODO
-    }
-    
-    func testDismissEditItemView() {
-        // TODO
-    }
-    
-    func testPresentAddToScheduleView() {
-        // TODO
-    }
     
     func testSaveTitleChanges() {
         // TODO

@@ -65,22 +65,6 @@ class HourBlockTests: XCTestCase {
         // TODO
     }
     
-    func testPresentAddHourBlockView() {
-        
-    }
-    
-    func testPresentEditBlockView() {
-        
-    }
-    
-    func testPresentManageSubBlocksView() {
-        
-    }
-    
-    func testPresentDuplicateBlockView() {
-        
-    }
-    
     lazy var mockPersistantContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "neon")
         let description = NSPersistentStoreDescription()

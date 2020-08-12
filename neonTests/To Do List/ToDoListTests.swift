@@ -36,14 +36,6 @@ class ToDoListTests: XCTestCase {
         // TODO
     }
     
-    func testPresentAddToDoItemView() {
-        // TODO
-    }
-    
-    func testDismissAddToDoItemView() {
-        // TODO
-    }
-    
     lazy var mockPersistantContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "neon")
         let description = NSPersistentStoreDescription()

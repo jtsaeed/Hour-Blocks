@@ -19,7 +19,6 @@
 		2338BEBC220A7840004F288F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEBB220A7840004F288F /* AppDelegate.swift */; };
 		2338BEC4220A7840004F288F /* neon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEC2220A7840004F288F /* neon.xcdatamodeld */; };
 		2338BEC6220A7841004F288F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2338BEC5220A7841004F288F /* Assets.xcassets */; };
-		2338BED4220A7841004F288F /* neonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338BED3220A7841004F288F /* neonTests.swift */; };
 		2338BEDF220A7841004F288F /* neonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEDE220A7841004F288F /* neonUITests.swift */; };
 		234C1A09220C8E9D00344316 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C1A08220C8E9D00344316 /* Date+Ext.swift */; };
 		234DF2FB237A113200EB248A /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234DF2FA237A113200EB248A /* Int+Ext.swift */; };
@@ -67,9 +66,6 @@
 		AB372FE624E09341008F6034 /* SchedulePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB372FE524E09341008F6034 /* SchedulePickerView.swift */; };
 		AB48A6CF24ACF0E100C50E58 /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6C624ACF0E100C50E58 /* ScheduleTests.swift */; };
 		AB48A6D624AD0FCA00C50E58 /* SuggestionBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6D424ACFA9400C50E58 /* SuggestionBlockView.swift */; };
-		AB48A6E624AD12E500C50E58 /* OtherSettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6E324AD12E500C50E58 /* OtherSettingsTests.swift */; };
-		AB48A6E724AD12E500C50E58 /* SettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6E424AD12E500C50E58 /* SettingsTests.swift */; };
-		AB48A6E824AD12E500C50E58 /* CalendarSettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6E524AD12E500C50E58 /* CalendarSettingsTests.swift */; };
 		AB554EDD24BB7395006CFEBD /* ToDoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB554EDC24BB7395006CFEBD /* ToDoItemView.swift */; };
 		AB5A9BEF24B3859200F97B10 /* CalendarBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5A9BEE24B3859200F97B10 /* CalendarBlockView.swift */; };
 		AB5A9BF124B385DB00F97B10 /* HourBlockIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5A9BF024B385DB00F97B10 /* HourBlockIcon.swift */; };
@@ -208,7 +204,6 @@
 		2338BEC5220A7841004F288F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2338BECA220A7841004F288F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2338BECF220A7841004F288F /* Hour BlocksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hour BlocksTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2338BED3220A7841004F288F /* neonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = neonTests.swift; sourceTree = "<group>"; };
 		2338BED5220A7841004F288F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2338BEDA220A7841004F288F /* Hour BlocksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hour BlocksUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2338BEDE220A7841004F288F /* neonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = neonUITests.swift; sourceTree = "<group>"; };
@@ -256,9 +251,6 @@
 		AB372FE524E09341008F6034 /* SchedulePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePickerView.swift; sourceTree = "<group>"; };
 		AB48A6C624ACF0E100C50E58 /* ScheduleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTests.swift; sourceTree = "<group>"; };
 		AB48A6D424ACFA9400C50E58 /* SuggestionBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionBlockView.swift; sourceTree = "<group>"; };
-		AB48A6E324AD12E500C50E58 /* OtherSettingsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherSettingsTests.swift; sourceTree = "<group>"; };
-		AB48A6E424AD12E500C50E58 /* SettingsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTests.swift; sourceTree = "<group>"; };
-		AB48A6E524AD12E500C50E58 /* CalendarSettingsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarSettingsTests.swift; sourceTree = "<group>"; };
 		AB4EDB05241813680025B284 /* neonWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = neonWatch.app; path = "/Users/jtsaeed/Documents/Brand Work/Hour Blocks/Projects/neon/build/Debug-watchos/neonWatch.app"; sourceTree = "<absolute>"; };
 		AB4EDB4224181DEE0025B284 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS6.1.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		AB554EDC24BB7395006CFEBD /* ToDoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemView.swift; sourceTree = "<group>"; };
@@ -431,7 +423,6 @@
 		2338BED2220A7841004F288F /* neonTests */ = {
 			isa = PBXGroup;
 			children = (
-				2338BED3220A7841004F288F /* neonTests.swift */,
 				2338BED5220A7841004F288F /* Info.plist */,
 				AB48A6BF24ACF0CF00C50E58 /* Schedule */,
 				AB48A6D724AD12C800C50E58 /* To Do List */,
@@ -571,9 +562,6 @@
 		AB48A6E224AD12DA00C50E58 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				AB48A6E524AD12E500C50E58 /* CalendarSettingsTests.swift */,
-				AB48A6E324AD12E500C50E58 /* OtherSettingsTests.swift */,
-				AB48A6E424AD12E500C50E58 /* SettingsTests.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1137,13 +1125,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABB477C224E42DD8004DC0E6 /* ToDoListTests.swift in Sources */,
-				2338BED4220A7841004F288F /* neonTests.swift in Sources */,
 				ABB477BC24E419DE004DC0E6 /* HourBlockTests.swift in Sources */,
 				ABB477BE24E41BB6004DC0E6 /* ScheduleDatePickerTests.swift in Sources */,
-				AB48A6E724AD12E500C50E58 /* SettingsTests.swift in Sources */,
 				ABB477C024E42CEB004DC0E6 /* AddHourBlockTests.swift in Sources */,
-				AB48A6E824AD12E500C50E58 /* CalendarSettingsTests.swift in Sources */,
-				AB48A6E624AD12E500C50E58 /* OtherSettingsTests.swift in Sources */,
 				ABB477C424E42FF3004DC0E6 /* ToDoItemTests.swift in Sources */,
 				AB48A6CF24ACF0E100C50E58 /* ScheduleTests.swift in Sources */,
 			);
