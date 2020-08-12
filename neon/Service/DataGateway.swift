@@ -201,6 +201,22 @@ extension DataGateway {
         }
     }
     
+    func deleteAllHourBlocks() {
+        let request = NSFetchRequest<HourBlockEntity>(entityName: "HourBlockEntity")
+        
+        do {
+            let hourBlockEntities = try managedObjectContext.fetch(request)
+            
+            for hourBlockEntity in hourBlockEntities {
+                managedObjectContext.delete(hourBlockEntity)
+            }
+            
+            try managedObjectContext.save()
+        } catch {
+            print("error")
+        }
+    }
+    
     func deleteSubBlocks(of hourBlock: HourBlock) {
         let request = NSFetchRequest<SubBlockEntity>(entityName: "SubBlockEntity")
         request.predicate = NSPredicate(format: "hourBlockIdentifier == %@", hourBlock.id)

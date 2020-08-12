@@ -8,6 +8,9 @@
 
 import Foundation
 
-struct MockRemindersGateway {
+struct MockRemindersGateway: RemindersGatewayProtocol {
     
+    func setReminder(for hourBlock: HourBlock) { }
+    
+    func removeReminder(for hourBlock: HourBlock) { }
 }

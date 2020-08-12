@@ -11,9 +11,11 @@ import UserNotifications
 
 protocol RemindersGatewayProtocol {
     
+    func setReminder(for hourBlock: HourBlock)
+    func removeReminder(for hourBlock: HourBlock)
 }
 
-struct RemindersGateway {
+struct RemindersGateway: RemindersGatewayProtocol {
     
     func setReminder(for hourBlock: HourBlock) {
         hasPermissions { result in

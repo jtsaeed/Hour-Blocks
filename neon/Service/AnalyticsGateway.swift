@@ -16,7 +16,7 @@ protocol AnalyticsGatewayProtocol {
     func logToDoItem()
 }
 
-class AnalyticsGateway: AnalyticsGatewayProtocol {
+struct AnalyticsGateway: AnalyticsGatewayProtocol {
     
     func log(hourBlock: HourBlock) {
         Analytics.logEvent("hourBlock5", parameters: ["domain": DomainsGateway.shared.determineDomain(for: hourBlock.title!)?.rawValue ?? "Default"])

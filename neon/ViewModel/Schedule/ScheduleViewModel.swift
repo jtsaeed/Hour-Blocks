@@ -15,9 +15,9 @@ import StoreKit
 class ScheduleViewModel: ObservableObject {
     
     let dataGateway: DataGateway
-    let calendarGateway: CalendarGateway
-    let analyticsGateway: AnalyticsGateway
-    let remindersGateway: RemindersGateway
+    let calendarGateway: CalendarGatewayProtocol
+    let analyticsGateway: AnalyticsGatewayProtocol
+    let remindersGateway: RemindersGatewayProtocol
     
     @Published var currentHour = Calendar.current.component(.hour, from: Date())
     @Published var currentDate = Calendar.current.startOfDay(for: Date())
@@ -29,7 +29,7 @@ class ScheduleViewModel: ObservableObject {
     
     @AppStorage("totalBlockCount") var totalBlockCount = 0
     
-    init(dataGateway: DataGateway, calendarGateway: CalendarGateway, analyticsGateway: AnalyticsGateway, remindersGateway: RemindersGateway) {
+    init(dataGateway: DataGateway, calendarGateway: CalendarGatewayProtocol, analyticsGateway: AnalyticsGatewayProtocol, remindersGateway: RemindersGatewayProtocol) {
         self.dataGateway = dataGateway
         self.calendarGateway = calendarGateway
         self.analyticsGateway = analyticsGateway

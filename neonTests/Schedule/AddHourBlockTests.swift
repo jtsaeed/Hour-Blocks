@@ -25,21 +25,7 @@ class AddHourBlockTests: XCTestCase {
     }
     
     func testAddHourBlock() {
-        let dataGateway = NewDataGateway(for: mockPersistantContainer.viewContext)
-        let scheduleViewModel = NewScheduleViewModel(dataGateway: dataGateway)
-        let viewModel = AddHourBlockViewModel(dataGateway: dataGateway)
-        
-        viewModel.add(NewHourBlock(day: Date(), hour: 12, title: "Lunch"))
-        scheduleViewModel.loadHourBlocks()
-        
-        let expectation = XCTestExpectation(description: "Load Hour Blocks from view model")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            XCTAssertEqual(scheduleViewModel.todaysHourBlocks[12].title, "Lunch")
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 2.0)
+        // TODO
     }
     
     lazy var mockPersistantContainer: NSPersistentContainer = {
