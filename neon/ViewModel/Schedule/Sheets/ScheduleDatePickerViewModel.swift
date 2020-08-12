@@ -12,13 +12,13 @@ import EventKit
 class ScheduleDatePickerViewModel: ObservableObject {
     
     let dataGateway: DataGateway
-    let calendarGateway: CalendarGateway
+    let calendarGateway: CalendarGatewayProtocol
     
     @Published var selectedDate: Date
     @Published var hourBlocks = [HourBlockViewModel]()
     @Published var calendarBlocks = [EKEvent]()
     
-    init(dataGateway: DataGateway, calendarGateway: CalendarGateway, initialSelectedDate: Date) {
+    init(dataGateway: DataGateway, calendarGateway: CalendarGatewayProtocol, initialSelectedDate: Date) {
         self.dataGateway = dataGateway
         self.calendarGateway = calendarGateway
         self.selectedDate = initialSelectedDate

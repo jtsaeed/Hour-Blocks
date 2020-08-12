@@ -1,5 +1,5 @@
 //
-//  AddHourBlockTests.swift
+//  ScheduleDatePickerTests.swift
 //  Hour BlocksTests
 //
 //  Created by James Saeed on 12/08/2020.
@@ -10,24 +10,25 @@ import XCTest
 import CoreData
 @testable import Hour_Blocks
 
-class AddHourBlockTests: XCTestCase {
+class ScheduleDatePickerTests: XCTestCase {
     
-    let date = Date(year: 2020, month: 08, day: 02, hour: 19, minute: 0)
-    let hour = 19
+    let date = Date(year: 2020, month: 08, day: 02, hour: 13, minute: 0)
     
     var dataGateway: DataGateway!
-    var viewModel: AddHourBlockViewModel!
+    var viewModel: ScheduleDatePickerViewModel!
 
     override func setUpWithError() throws {
         dataGateway = DataGateway(for: mockPersistantContainer.viewContext)
-        viewModel = AddHourBlockViewModel(dataGateway: dataGateway, analyticsGateway: MockAnalyticsGateway())
+        viewModel = ScheduleDatePickerViewModel(dataGateway: dataGateway,
+                                                calendarGateway: MockCalendarGateway(),
+                                                initialSelectedDate: date)
     }
 
     override func tearDownWithError() throws {
         dataGateway.deleteAllHourBlocks()
     }
 
-    func testLoadSuggestions() {
+    func testLoadHourBlocks() {
         // TODO
     }
     

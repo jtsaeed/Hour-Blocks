@@ -1,10 +1,12 @@
 //
-//  HourBlockViewModel.swift
-//  Hour Blocks
+//  HourBlockTests.swift
+//  Hour BlocksTests
 //
-//  Created by James Saeed on 01/06/2020.
+//  Created by James Saeed on 12/08/2020.
 //  Copyright © 2020 James Saeed. All rights reserved.
 //
+
+import Foundation
 
 import XCTest
 import CoreData
@@ -12,44 +14,59 @@ import CoreData
 
 class HourBlockTests: XCTestCase {
     
-    override func setUpWithError() throws { }
+    let date = Date(year: 2020, month: 08, day: 02, hour: 13, minute: 0)
+    
+    var dataGateway: DataGateway!
+    var viewModel: HourBlockViewModel!
 
-    override func tearDownWithError() throws { }
-
-    func testPresentAddHourBlockView() {
+    override func setUpWithError() throws {
+        dataGateway = DataGateway(for: mockPersistantContainer.viewContext)
+        
+        let hourBlock = HourBlock(day: date, hour: 13, title: "Lunch")
+        let subBlocks = [
+            SubBlock(of: hourBlock, title: "Buy ingredients"),
+            SubBlock(of: hourBlock, title: "Cook"),
+            SubBlock(of: hourBlock, title: "Eat")
+        ]
+        
+        dataGateway.save(hourBlock: hourBlock)
+        for subBlock in subBlocks {
+            dataGateway.save(subBlock: subBlock)
+        }
+        
+        viewModel = HourBlockViewModel(for: hourBlock, and: subBlocks, dataGateway: dataGateway)
+    }
+    
+    override func tearDownWithError() throws {
+        dataGateway.deleteAllHourBlocks()
+    }
+    
+    func testSaveTitleChanges() {
         // TODO
     }
     
-    func testPresentRenameHourBlockView() {
+    func testSaveIconChanges() {
         // TODO
     }
     
-    func testPresentDuplicateHourBlockView() {
+    func testAddSubBlock() {
         // TODO
     }
     
-    func testPresentIconPickerView() {
+    func testClearSubBlock() {
         // TODO
     }
     
-    func testPresentManageSubBlocksView() {
+    func testGetFormattedTime() {
         // TODO
     }
     
-    func testSetReminder() {
-        // TODO
-    }
-    
-    func testClearReminder() {
-        // TODO
-    }
-    
-    func testClearBlock() {
+    func testGetIconName() {
         // TODO
     }
     
     lazy var mockPersistantContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "neon6")
+        let container = NSPersistentContainer(name: "neon")
         let description = NSPersistentStoreDescription()
         description.type = NSInMemoryStoreType
         description.shouldAddStoreAsynchronously = false // Make it simpler in test env

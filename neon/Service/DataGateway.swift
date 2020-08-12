@@ -209,6 +209,7 @@ extension DataGateway {
             
             for hourBlockEntity in hourBlockEntities {
                 managedObjectContext.delete(hourBlockEntity)
+                deleteSubBlocks(of: HourBlock(fromEntity: hourBlockEntity)!)
             }
             
             try managedObjectContext.save()
@@ -259,6 +260,22 @@ extension DataGateway {
             let toDoEntities = try managedObjectContext.fetch(request)
             
             if let toDoEntity = toDoEntities.first {
+                managedObjectContext.delete(toDoEntity)
+            }
+            
+            try managedObjectContext.save()
+        } catch {
+            print("error")
+        }
+    }
+    
+    func deleteAllToDoItems() {
+        let request = NSFetchRequest<ToDoEntity>(entityName: "ToDoEntity")
+        
+        do {
+            let toDoEntities = try managedObjectContext.fetch(request)
+            
+            for toDoEntity in toDoEntities {
                 managedObjectContext.delete(toDoEntity)
             }
             

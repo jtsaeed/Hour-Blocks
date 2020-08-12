@@ -1,40 +1,57 @@
 //
 //  ToDoItemTests.swift
-//  Hour Blocks
+//  Hour BlocksTests
 //
-//  Created by James Saeed on 02/06/2020.
+//  Created by James Saeed on 12/08/2020.
 //  Copyright © 2020 James Saeed. All rights reserved.
 //
 
 import XCTest
+import CoreData
+@testable import Hour_Blocks
 
 class ToDoItemTests: XCTestCase {
     
-    override func setUpWithError() throws { }
+    var dataGateway: DataGateway!
+    var viewModel: ToDoItemViewModel!
 
-    override func tearDownWithError() throws { }
+    override func setUpWithError() throws {
+        dataGateway = DataGateway(for: mockPersistantContainer.viewContext)
+        
+        let toDoItem = ToDoItem(title: "Book meeting room", urgency: .soon)
+        dataGateway.save(toDoItem: toDoItem)
+        
+        viewModel = ToDoItemViewModel(for: toDoItem)
+    }
 
-    func testPresentRenameToDoItemView() {
+    override func tearDownWithError() throws {
+        dataGateway.deleteAllToDoItems()
+    }
+    
+    func testSaveTitleChanges() {
         // TODO
     }
     
-    func testPresentAddToBlockView() {
-        // TODO
-    }
-
-    func testChangePriorityToUrgent() {
+    func testSavePriorityChanges() {
         // TODO
     }
     
-    func testChangePriorityToSoon() {
-        // TODO
-    }
-
-    func testChangePriorityToWhenever() {
-        // TODO
-    }
-    
-    func testComplete() {
-        // TODO
-    }
+    lazy var mockPersistantContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "neon")
+        let description = NSPersistentStoreDescription()
+        description.type = NSInMemoryStoreType
+        description.shouldAddStoreAsynchronously = false // Make it simpler in test env
+        
+        container.persistentStoreDescriptions = [description]
+        container.loadPersistentStores { (description, error) in
+            // Check if the data store is in memory
+            precondition( description.type == NSInMemoryStoreType )
+                                        
+            // Check if creating container wrong
+            if let error = error {
+                fatalError("Create an in-mem coordinator failed \(error)")
+            }
+        }
+        return container
+    }()
 }
