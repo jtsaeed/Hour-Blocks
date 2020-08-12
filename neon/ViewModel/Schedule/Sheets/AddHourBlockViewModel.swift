@@ -10,11 +10,11 @@ import Foundation
 class AddHourBlockViewModel: ObservableObject {
     
     let dataGateway: DataGateway
-    let analyticsGateway: AnalyticsGateway
+    let analyticsGateway: AnalyticsGatewayProtocol
     
     @Published var currentSuggestions = [Suggestion]()
     
-    init(dataGateway: DataGateway, analyticsGateway: AnalyticsGateway) {
+    init(dataGateway: DataGateway, analyticsGateway: AnalyticsGatewayProtocol) {
         self.dataGateway = dataGateway
         self.analyticsGateway = analyticsGateway
     }

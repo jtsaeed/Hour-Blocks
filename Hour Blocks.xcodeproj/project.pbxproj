@@ -67,11 +67,6 @@
 		AB372FE624E09341008F6034 /* SchedulePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB372FE524E09341008F6034 /* SchedulePickerView.swift */; };
 		AB48A6CF24ACF0E100C50E58 /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6C624ACF0E100C50E58 /* ScheduleTests.swift */; };
 		AB48A6D624AD0FCA00C50E58 /* SuggestionBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6D424ACFA9400C50E58 /* SuggestionBlockView.swift */; };
-		AB48A6DD24AD12D500C50E58 /* ToDoListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6D824AD12D500C50E58 /* ToDoListTests.swift */; };
-		AB48A6DE24AD12D500C50E58 /* AddToBlockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6D924AD12D500C50E58 /* AddToBlockTests.swift */; };
-		AB48A6DF24AD12D500C50E58 /* ToDoItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6DA24AD12D500C50E58 /* ToDoItemTests.swift */; };
-		AB48A6E024AD12D500C50E58 /* AddToDoItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6DB24AD12D500C50E58 /* AddToDoItemTests.swift */; };
-		AB48A6E124AD12D500C50E58 /* RenameToDoItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6DC24AD12D500C50E58 /* RenameToDoItemTests.swift */; };
 		AB48A6E624AD12E500C50E58 /* OtherSettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6E324AD12E500C50E58 /* OtherSettingsTests.swift */; };
 		AB48A6E724AD12E500C50E58 /* SettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6E424AD12E500C50E58 /* SettingsTests.swift */; };
 		AB48A6E824AD12E500C50E58 /* CalendarSettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6E524AD12E500C50E58 /* CalendarSettingsTests.swift */; };
@@ -116,6 +111,8 @@
 		ABAFADFA24B231700098B823 /* ToDoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAFADF924B231700098B823 /* ToDoListView.swift */; };
 		ABAFADFD24B231C40098B823 /* ToDoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAFADFC24B231C40098B823 /* ToDoListViewModel.swift */; };
 		ABB477BC24E419DE004DC0E6 /* HourBlockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB477BB24E419DE004DC0E6 /* HourBlockTests.swift */; };
+		ABB477BE24E41BB6004DC0E6 /* ScheduleDatePickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB477BD24E41BB6004DC0E6 /* ScheduleDatePickerTests.swift */; };
+		ABB477C024E42CEB004DC0E6 /* AddHourBlockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB477BF24E42CEB004DC0E6 /* AddHourBlockTests.swift */; };
 		ABBA399324AD1782008A4A56 /* SuggestionsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBA399224AD1782008A4A56 /* SuggestionsGateway.swift */; };
 		ABBA399524AD5C3B008A4A56 /* ScheduleDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBA399424AD5C3B008A4A56 /* ScheduleDatePicker.swift */; };
 		ABC1D07F24D9DCA4001F8B6B /* RemindersGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC1D07E24D9DCA4001F8B6B /* RemindersGateway.swift */; };
@@ -257,11 +254,6 @@
 		AB372FE524E09341008F6034 /* SchedulePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePickerView.swift; sourceTree = "<group>"; };
 		AB48A6C624ACF0E100C50E58 /* ScheduleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTests.swift; sourceTree = "<group>"; };
 		AB48A6D424ACFA9400C50E58 /* SuggestionBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionBlockView.swift; sourceTree = "<group>"; };
-		AB48A6D824AD12D500C50E58 /* ToDoListTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoListTests.swift; sourceTree = "<group>"; };
-		AB48A6D924AD12D500C50E58 /* AddToBlockTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToBlockTests.swift; sourceTree = "<group>"; };
-		AB48A6DA24AD12D500C50E58 /* ToDoItemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoItemTests.swift; sourceTree = "<group>"; };
-		AB48A6DB24AD12D500C50E58 /* AddToDoItemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToDoItemTests.swift; sourceTree = "<group>"; };
-		AB48A6DC24AD12D500C50E58 /* RenameToDoItemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenameToDoItemTests.swift; sourceTree = "<group>"; };
 		AB48A6E324AD12E500C50E58 /* OtherSettingsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherSettingsTests.swift; sourceTree = "<group>"; };
 		AB48A6E424AD12E500C50E58 /* SettingsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTests.swift; sourceTree = "<group>"; };
 		AB48A6E524AD12E500C50E58 /* CalendarSettingsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarSettingsTests.swift; sourceTree = "<group>"; };
@@ -306,6 +298,8 @@
 		ABAFADF924B231700098B823 /* ToDoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListView.swift; sourceTree = "<group>"; };
 		ABAFADFC24B231C40098B823 /* ToDoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewModel.swift; sourceTree = "<group>"; };
 		ABB477BB24E419DE004DC0E6 /* HourBlockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourBlockTests.swift; sourceTree = "<group>"; };
+		ABB477BD24E41BB6004DC0E6 /* ScheduleDatePickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDatePickerTests.swift; sourceTree = "<group>"; };
+		ABB477BF24E42CEB004DC0E6 /* AddHourBlockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHourBlockTests.swift; sourceTree = "<group>"; };
 		ABBA399224AD1782008A4A56 /* SuggestionsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsGateway.swift; sourceTree = "<group>"; };
 		ABBA399424AD5C3B008A4A56 /* ScheduleDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDatePicker.swift; sourceTree = "<group>"; };
 		ABC1D07E24D9DCA4001F8B6B /* RemindersGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersGateway.swift; sourceTree = "<group>"; };
@@ -542,6 +536,8 @@
 			children = (
 				AB48A6C624ACF0E100C50E58 /* ScheduleTests.swift */,
 				ABB477BB24E419DE004DC0E6 /* HourBlockTests.swift */,
+				ABB477BD24E41BB6004DC0E6 /* ScheduleDatePickerTests.swift */,
+				ABB477BF24E42CEB004DC0E6 /* AddHourBlockTests.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -562,11 +558,6 @@
 		AB48A6D724AD12C800C50E58 /* To Do List */ = {
 			isa = PBXGroup;
 			children = (
-				AB48A6D924AD12D500C50E58 /* AddToBlockTests.swift */,
-				AB48A6DB24AD12D500C50E58 /* AddToDoItemTests.swift */,
-				AB48A6DC24AD12D500C50E58 /* RenameToDoItemTests.swift */,
-				AB48A6DA24AD12D500C50E58 /* ToDoItemTests.swift */,
-				AB48A6D824AD12D500C50E58 /* ToDoListTests.swift */,
 			);
 			path = "To Do List";
 			sourceTree = "<group>";
@@ -1140,16 +1131,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2338BED4220A7841004F288F /* neonTests.swift in Sources */,
-				AB48A6DE24AD12D500C50E58 /* AddToBlockTests.swift in Sources */,
 				ABB477BC24E419DE004DC0E6 /* HourBlockTests.swift in Sources */,
-				AB48A6DD24AD12D500C50E58 /* ToDoListTests.swift in Sources */,
+				ABB477BE24E41BB6004DC0E6 /* ScheduleDatePickerTests.swift in Sources */,
 				AB48A6E724AD12E500C50E58 /* SettingsTests.swift in Sources */,
-				AB48A6E024AD12D500C50E58 /* AddToDoItemTests.swift in Sources */,
+				ABB477C024E42CEB004DC0E6 /* AddHourBlockTests.swift in Sources */,
 				AB48A6E824AD12E500C50E58 /* CalendarSettingsTests.swift in Sources */,
 				AB48A6E624AD12E500C50E58 /* OtherSettingsTests.swift in Sources */,
-				AB48A6E124AD12D500C50E58 /* RenameToDoItemTests.swift in Sources */,
 				AB48A6CF24ACF0E100C50E58 /* ScheduleTests.swift in Sources */,
-				AB48A6DF24AD12D500C50E58 /* ToDoItemTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
