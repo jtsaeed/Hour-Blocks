@@ -11,13 +11,13 @@ import Foundation
 class ToDoListViewModel: ObservableObject {
     
     let dataGateway: DataGateway
-    let analyticsGateway: AnalyticsGateway
+    let analyticsGateway: AnalyticsGatewayProtocol
     
     @Published var toDoItems = [ToDoItemViewModel]()
     
     @Published var isAddToDoItemViewPresented = false
     
-    init(dataGateway: DataGateway, analyticsGateway: AnalyticsGateway) {
+    init(dataGateway: DataGateway, analyticsGateway: AnalyticsGatewayProtocol) {
         self.dataGateway = dataGateway
         self.analyticsGateway = analyticsGateway
         

@@ -28,7 +28,7 @@ class ScheduleDatePickerTests: XCTestCase {
         dataGateway.deleteAllHourBlocks()
     }
 
-    func testLoadHourBlocks() throws {
+    func testLoadHourBlocks() {
         // TODO
     }
     

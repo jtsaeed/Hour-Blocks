@@ -1,5 +1,5 @@
 //
-//  AddHourBlockTests.swift
+//  ToDoListTests.swift
 //  Hour BlocksTests
 //
 //  Created by James Saeed on 12/08/2020.
@@ -10,23 +10,37 @@ import XCTest
 import CoreData
 @testable import Hour_Blocks
 
-class AddHourBlockTests: XCTestCase {
-    
-    let date = Date(year: 2020, month: 08, day: 02, hour: 13, minute: 0)
+class ToDoListTests: XCTestCase {
     
     var dataGateway: DataGateway!
-    var viewModel: AddHourBlockViewModel!
+    var viewModel: ToDoListViewModel!
 
     override func setUpWithError() throws {
         dataGateway = DataGateway(for: mockPersistantContainer.viewContext)
-        viewModel = AddHourBlockViewModel(dataGateway: dataGateway, analyticsGateway: MockAnalyticsGateway())
+        viewModel = ToDoListViewModel(dataGateway: dataGateway, analyticsGateway: MockAnalyticsGateway())
     }
 
     override func tearDownWithError() throws {
-        dataGateway.deleteAllHourBlocks()
+        dataGateway.deleteAllToDoItems()
     }
 
-    func testLoadSuggestions() {
+    func testLoadToDoItems() {
+        // TODO
+    }
+    
+    func testAddToDoItem() {
+        // TODO
+    }
+    
+    func testClearToDoItem() {
+        // TODO
+    }
+    
+    func testPresentAddToDoItemView() {
+        // TODO
+    }
+    
+    func testDismissAddToDoItemView() {
         // TODO
     }
     
