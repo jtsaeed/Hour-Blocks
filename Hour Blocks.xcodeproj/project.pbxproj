@@ -114,6 +114,7 @@
 		ABB477BE24E41BB6004DC0E6 /* ScheduleDatePickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB477BD24E41BB6004DC0E6 /* ScheduleDatePickerTests.swift */; };
 		ABB477C024E42CEB004DC0E6 /* AddHourBlockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB477BF24E42CEB004DC0E6 /* AddHourBlockTests.swift */; };
 		ABB477C224E42DD8004DC0E6 /* ToDoListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB477C124E42DD8004DC0E6 /* ToDoListTests.swift */; };
+		ABB477C424E42FF3004DC0E6 /* ToDoItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB477C324E42FF3004DC0E6 /* ToDoItemTests.swift */; };
 		ABBA399324AD1782008A4A56 /* SuggestionsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBA399224AD1782008A4A56 /* SuggestionsGateway.swift */; };
 		ABBA399524AD5C3B008A4A56 /* ScheduleDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBA399424AD5C3B008A4A56 /* ScheduleDatePicker.swift */; };
 		ABC1D07F24D9DCA4001F8B6B /* RemindersGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC1D07E24D9DCA4001F8B6B /* RemindersGateway.swift */; };
@@ -302,6 +303,7 @@
 		ABB477BD24E41BB6004DC0E6 /* ScheduleDatePickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDatePickerTests.swift; sourceTree = "<group>"; };
 		ABB477BF24E42CEB004DC0E6 /* AddHourBlockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHourBlockTests.swift; sourceTree = "<group>"; };
 		ABB477C124E42DD8004DC0E6 /* ToDoListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListTests.swift; sourceTree = "<group>"; };
+		ABB477C324E42FF3004DC0E6 /* ToDoItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemTests.swift; sourceTree = "<group>"; };
 		ABBA399224AD1782008A4A56 /* SuggestionsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsGateway.swift; sourceTree = "<group>"; };
 		ABBA399424AD5C3B008A4A56 /* ScheduleDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDatePicker.swift; sourceTree = "<group>"; };
 		ABC1D07E24D9DCA4001F8B6B /* RemindersGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersGateway.swift; sourceTree = "<group>"; };
@@ -561,6 +563,7 @@
 			isa = PBXGroup;
 			children = (
 				ABB477C124E42DD8004DC0E6 /* ToDoListTests.swift */,
+				ABB477C324E42FF3004DC0E6 /* ToDoItemTests.swift */,
 			);
 			path = "To Do List";
 			sourceTree = "<group>";
@@ -1141,6 +1144,7 @@
 				ABB477C024E42CEB004DC0E6 /* AddHourBlockTests.swift in Sources */,
 				AB48A6E824AD12E500C50E58 /* CalendarSettingsTests.swift in Sources */,
 				AB48A6E624AD12E500C50E58 /* OtherSettingsTests.swift in Sources */,
+				ABB477C424E42FF3004DC0E6 /* ToDoItemTests.swift in Sources */,
 				AB48A6CF24ACF0E100C50E58 /* ScheduleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
