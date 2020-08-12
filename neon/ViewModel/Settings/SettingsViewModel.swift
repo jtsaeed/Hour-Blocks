@@ -14,7 +14,8 @@ class SettingsViewModel: ObservableObject {
     @Published var isFeedbackViewPresented = false
     @Published var isCalendarOptionsViewPresented = false
     @Published var isOtherSettingsViewPresented = false
-    @Published var isPrivacyPolicyPresented = false
+    @Published var isPrivacyPolicyViewPresented = false
+    @Published var isAcknowledgementsViewPresented = false
     
     func presentFeedbackView() {
         HapticsGateway.shared.triggerLightImpact()
@@ -33,7 +34,12 @@ class SettingsViewModel: ObservableObject {
     
     func presentPrivacyPolicyView() {
         HapticsGateway.shared.triggerLightImpact()
-        isPrivacyPolicyPresented = true
+        isPrivacyPolicyViewPresented = true
+    }
+    
+    func presentAcknowledgementsView() {
+        HapticsGateway.shared.triggerLightImpact()
+        isAcknowledgementsViewPresented = true
     }
     
     func openTwitter() {

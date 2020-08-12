@@ -10,6 +10,7 @@ import SwiftUI
 import CoreData
 import EventKit
 import WidgetKit
+import StoreKit
 
 class ScheduleViewModel: ObservableObject {
     
@@ -25,6 +26,8 @@ class ScheduleViewModel: ObservableObject {
     
     @Published var isFilterEnabled = true
     @Published var isDatePickerViewPresented = false
+    
+    @AppStorage("totalBlockCount") var totalBlockCount = 0
     
     init(dataGateway: DataGateway, calendarGateway: CalendarGateway, analyticsGateway: AnalyticsGateway, remindersGateway: RemindersGateway) {
         self.dataGateway = dataGateway
@@ -73,6 +76,9 @@ class ScheduleViewModel: ObservableObject {
         
         todaysHourBlocks[hourBlock.hour] = HourBlockViewModel(for: hourBlock)
         updateCurrentHour()
+        
+        totalBlockCount = totalBlockCount + 1
+        if totalBlockCount > 10 { SKStoreReviewController.requestReview() }
         
         WidgetCenter.shared.reloadAllTimelines()
     }

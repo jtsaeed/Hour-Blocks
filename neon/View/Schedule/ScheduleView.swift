@@ -19,10 +19,9 @@ struct ScheduleView: View {
         VStack {
             HeaderView(title: "Schedule", subtitle: viewModel.currentDate.getFormattedDate()) {
                 HStack(spacing: 16) {
-                    IconButton(iconName: "arrow.up",
+                    IconButton(iconName: viewModel.isFilterEnabled ? "clock.fill" : "clock",
                                   iconWeight: .semibold,
                                   action: viewModel.toggleFilter)
-                        .rotationEffect(Angle(degrees: viewModel.isFilterEnabled ? 0 : 180))
                     IconButton(iconName: "calendar", action: viewModel.presentDatePickerView)
                 }
             }.sheet(isPresented: $viewModel.isDatePickerViewPresented) {

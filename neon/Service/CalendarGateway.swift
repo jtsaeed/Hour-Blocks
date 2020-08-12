@@ -14,9 +14,12 @@ protocol CalendarGatewayProtocol {
     func hasPermission() -> Bool
     func handlePermissions(completion: @escaping () -> Void)
     func getEvents(for date: Date) -> [EKEvent]
+    func initialiseEnabledCalendars() -> [String: Bool]
+    func getCalendarName(for identifier: String) -> String
+    func getAllCalendars() -> [EKCalendar]
 }
 
-struct CalendarGateway {
+struct CalendarGateway: CalendarGatewayProtocol {
     
     let eventStore = EKEventStore()
     
@@ -34,7 +37,6 @@ struct CalendarGateway {
             }
         }
     }
-    
     
     func getEvents(for date: Date) -> [EKEvent] {
         let startDate = date.toLocalTime().dateAtStartOf(.day)
@@ -65,6 +67,10 @@ struct CalendarGateway {
         return eventStore.calendar(withIdentifier: identifier)?.title ?? "Unknown Calendar Title"
     }
     
+    func getAllCalendars() -> [EKCalendar] {
+        return eventStore.calendars(for: .event)
+    }
+    
     private func getEnabledCalendars() -> [EKCalendar] {
         if let userCalendars = UserDefaults.standard.dictionary(forKey: "enabledCalendars") as? [String: Bool] {
             return getAllCalendars().compactMap { calendar in
@@ -77,9 +83,5 @@ struct CalendarGateway {
         } else {
             return getAllCalendars()
         }
-    }
-    
-    func getAllCalendars() -> [EKCalendar] {
-        return eventStore.calendars(for: .event)
     }
 }

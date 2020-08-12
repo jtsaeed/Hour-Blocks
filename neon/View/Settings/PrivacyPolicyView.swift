@@ -16,10 +16,10 @@ struct PrivacyPolicyView: View {
         NavigationView {
             VStack {
                 VStack(alignment: .leading, spacing: 16) {
-                    PrivacyPolicyItem(title: "Your personal data is safe 🔐",
-                                      content: "Personal identifiers such as name and phone number aren't even asked for by Hour Blocks- we simply don't need that from you")
-                    PrivacyPolicyItem(title: "So what do we collect? 🤔",
-                                      content: "In order to improve certain aspects of Hour Blocks such as icon generation and suggestions, we collect just simply the 'category' of a block you add- and it's completely anonymized, so it can't be traced back to you")
+                    TextBlockView(title: "Your personal data is safe 🔐",
+                                  content: "Personal identifiers such as name and phone number aren't even asked for by Hour Blocks- we simply don't need that from you")
+                    TextBlockView(title: "So what do we collect? 🤔",
+                                  content: "In order to improve certain aspects of Hour Blocks such as icon generation and suggestions, we collect just simply the 'category' of a block you add- and it's completely anonymized, so it can't be traced back to you")
                 }
                 Spacer()
                 
@@ -36,20 +36,5 @@ struct PrivacyPolicyView: View {
     
     func dismiss() {
         isPresented = false
-    }
-}
-
-private struct PrivacyPolicyItem: View {
-    
-    let title: String
-    let content: String
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text(title)
-                .font(.system(size: 20, weight: .semibold, design: .rounded))
-            Text(content)
-                .font(.system(size: 17, weight: .regular, design: .default))
-        }
     }
 }

@@ -17,14 +17,13 @@ class ScheduleTests: XCTestCase {
     override func tearDownWithError() throws { }
 
     func testLoadHourBlocks() {
-        let dataGateway = NewDataGateway(for: mockPersistantContainer.viewContext)
-        let viewModel = NewScheduleViewModel(dataGateway: dataGateway)
+        let dataGateway = DataGateway(for: mockPersistantContainer.viewContext)
+        let calendarGateway = CalendarGateway()
+        let viewModel = ScheduleViewModel(dataGateway: dataGateway)
         
-        dataGateway.saveHourBlock(block: NewHourBlock(day: Date(), hour: 13, title: "Lunch"))
-        dataGateway.saveHourBlock(block: NewHourBlock(day: Date(), hour: 15, title: "Gym"))
-        dataGateway.saveHourBlock(block: NewHourBlock(day: Date(), hour: 16, title: "Work"))
-        
-        measure { viewModel.loadHourBlocks() }
+        dataGateway.save(hourBlock: HourBlock(day: Date(), hour: 13, title: "Lunch"))
+        dataGateway.save(hourBlock: HourBlock(day: Date(), hour: 15, title: "Gym"))
+        dataGateway.save(hourBlock: HourBlock(day: Date(), hour: 16, title: "Work"))
         
         let expectation = XCTestExpectation(description: "Load Hour Blocks from view model")
         

@@ -9,7 +9,11 @@
 import Foundation
 import UserNotifications
 
-class RemindersGateway {
+protocol RemindersGatewayProtocol {
+    
+}
+
+struct RemindersGateway {
     
     func setReminder(for hourBlock: HourBlock) {
         hasPermissions { result in

@@ -9,7 +9,14 @@
 import Foundation
 import Firebase
 
-class AnalyticsGateway {
+protocol AnalyticsGatewayProtocol {
+    
+    func log(hourBlock: HourBlock)
+    func log(suggestion: Suggestion)
+    func logToDoItem()
+}
+
+class AnalyticsGateway: AnalyticsGatewayProtocol {
     
     func log(hourBlock: HourBlock) {
         Analytics.logEvent("hourBlock5", parameters: ["domain": DomainsGateway.shared.determineDomain(for: hourBlock.title!)?.rawValue ?? "Default"])

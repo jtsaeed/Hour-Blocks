@@ -53,8 +53,16 @@ struct SettingsView: View {
                                      subtitle: "Take a look at the",
                                      iconName: "lock.fill",
                                      action: viewModel.presentPrivacyPolicyView)
-                    .sheet(isPresented: $viewModel.isPrivacyPolicyPresented) {
-                        PrivacyPolicyView(isPresented: $viewModel.isPrivacyPolicyPresented)
+                    .sheet(isPresented: $viewModel.isPrivacyPolicyViewPresented) {
+                        PrivacyPolicyView(isPresented: $viewModel.isPrivacyPolicyViewPresented)
+                    }
+                    
+                    SettingsCardView(title: "Acknowledgements",
+                                     subtitle: "Take a look at the",
+                                     iconName: "star.fill",
+                                     action: viewModel.presentAcknowledgementsView)
+                    .sheet(isPresented: $viewModel.isAcknowledgementsViewPresented) {
+                        AcknowledgementsSheet(isPresented: $viewModel.isAcknowledgementsViewPresented)
                     }
                 }.padding(.top, 8)
                 .padding(.bottom, 24)

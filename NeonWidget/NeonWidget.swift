@@ -14,10 +14,19 @@ struct Provider: TimelineProvider {
     public typealias Entry = HourBlockEntry
 
     public func snapshot(with context: Context, completion: @escaping (HourBlockEntry) -> ()) {
-        let entry = HourBlockEntry(date: Date(),
-                                hourBlock: HourBlock(day: Date(), hour: 19, title: "Dinner with Bonnie"),
-                                relevance: TimelineEntryRelevance(score: 0))
-        completion(entry)
+        let hourBlocks = WidgetDataGateway.shared.getHourBlocks(for: Date()).sorted { $0.hour < $1.hour }
+        
+        if let firstBlock = hourBlocks.first {
+            let entry = HourBlockEntry(date: Date(),
+                                    hourBlock: firstBlock,
+                                    relevance: TimelineEntryRelevance(score: 0))
+            completion(entry)
+        } else {
+            let entry = HourBlockEntry(date: Date(),
+                                       hourBlock: nil,
+                                       relevance: nil)
+            completion(entry)
+        }
     }
     
     public func placeholder(in context: Context) -> HourBlockEntry {
@@ -33,7 +42,7 @@ struct Provider: TimelineProvider {
             let currentDate = Date()
             
             let hourDifference = firstBlock.hour - Calendar.current.component(.hour, from: currentDate)
-            let entryScore = hourDifference < 2 ? 50 : 24 - hourDifference
+            let entryScore = hourDifference < 2 ? 30 : 24 - hourDifference
             let firstEntry = HourBlockEntry(date: currentDate,
                                             hourBlock: firstBlock,
                                             relevance: TimelineEntryRelevance(score: Float(entryScore)))
@@ -46,7 +55,7 @@ struct Provider: TimelineProvider {
                                                               second: 0,
                                                               of: currentDate)!
                     let hourDifference = hourBlocks[index].hour - Calendar.current.component(.hour, from: currentDate)
-                    let entryScore = hourDifference < 2 ? 50 : 24 - hourDifference
+                    let entryScore = hourDifference < 2 ? 30 : 24 - hourDifference
                     let entry = HourBlockEntry(date: entryDate,
                                                hourBlock: hourBlocks[index],
                                                relevance: TimelineEntryRelevance(score: Float(entryScore)))
@@ -74,11 +83,7 @@ struct HourBlockEntry: TimelineEntry {
 struct PlaceholderView : View {
     
     var body: some View {
-        NeonWidgetEntryView(entry: HourBlockEntry(date: Date(),
-                                                  hourBlock: HourBlock(day: Date(),
-                                                                    hour: 19,
-                                                                    title: "Dinner with Bonnie"),
-                                                  relevance: TimelineEntryRelevance(score: 0)))
+        PlaceholderUpcomingScheduleView()
     }
 }
 
@@ -91,8 +96,9 @@ struct NeonWidgetEntryView : View {
     @ViewBuilder
     var body: some View {
         switch family {
-            case .systemSmall: UpcomingScheduleView(hourBlock: entry.hourBlock)
-            default: UpcomingScheduleView(hourBlock: entry.hourBlock)
+        case .systemSmall: UpcomingScheduleView(hourBlock: entry.hourBlock)
+        case .systemMedium: UpcomingScheduleView(hourBlock: entry.hourBlock, small: false)
+        default: UpcomingScheduleView(hourBlock: entry.hourBlock)
         }
     }
 }
@@ -106,16 +112,23 @@ struct NeonWidget: Widget {
             NeonWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("Upcoming Schedule")
-        .description("Take a quick peek at your upcoming schedule")
-        .supportedFamilies([.systemSmall])
+        .description("Take a quick peek at your upcoming schedule for the day")
+        .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
 
 struct NeonWidget_Previews: PreviewProvider {
     static var previews: some View {
-        UpcomingScheduleView(hourBlock: HourBlock(day: Date(),
-                                                  hour: 19,
-                                                  title: "Dinner with Bonnie"))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+        Group {
+            UpcomingScheduleView(hourBlock: HourBlock(day: Date(),
+                                                      hour: 19,
+                                                      title: "Dinner with Bonnie"))
+                .previewContext(WidgetPreviewContext(family: .systemSmall))
+    
+            UpcomingScheduleView(hourBlock: HourBlock(day: Date(),
+                                                      hour: 19,
+                                                      title: "Dinner with Bonnie"), small: false)
+                .previewContext(WidgetPreviewContext(family: .systemMedium))
+        }
     }
 }

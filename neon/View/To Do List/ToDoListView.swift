@@ -32,6 +32,7 @@ struct ToDoListView: View {
                 .padding(.bottom, 24)
             }
         }.navigationBarHidden(true)
+        .onAppear(perform: viewModel.loadToDoItems)
     }
 }
 
