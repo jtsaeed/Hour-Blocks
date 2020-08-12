@@ -65,15 +65,7 @@
 		AB33B26E24BF642E0057662F /* neon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEC2220A7840004F288F /* neon.xcdatamodeld */; };
 		AB372FE424E0884D008F6034 /* SelectableIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB372FE324E0884D008F6034 /* SelectableIcon.swift */; };
 		AB372FE624E09341008F6034 /* SchedulePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB372FE524E09341008F6034 /* SchedulePickerView.swift */; };
-		AB48A6C924ACF0E100C50E58 /* ManageSubBlocksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6C024ACF0E000C50E58 /* ManageSubBlocksTests.swift */; };
-		AB48A6CA24ACF0E100C50E58 /* RenameHourBlockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6C124ACF0E000C50E58 /* RenameHourBlockTests.swift */; };
-		AB48A6CB24ACF0E100C50E58 /* IconPickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6C224ACF0E100C50E58 /* IconPickerTests.swift */; };
-		AB48A6CC24ACF0E100C50E58 /* HourBlockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6C324ACF0E100C50E58 /* HourBlockTests.swift */; };
-		AB48A6CD24ACF0E100C50E58 /* DuplicateHourBlockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6C424ACF0E100C50E58 /* DuplicateHourBlockTests.swift */; };
-		AB48A6CE24ACF0E100C50E58 /* SubBlockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6C524ACF0E100C50E58 /* SubBlockViewModel.swift */; };
 		AB48A6CF24ACF0E100C50E58 /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6C624ACF0E100C50E58 /* ScheduleTests.swift */; };
-		AB48A6D024ACF0E100C50E58 /* DatePickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6C724ACF0E100C50E58 /* DatePickerTests.swift */; };
-		AB48A6D124ACF0E100C50E58 /* AddHourBlockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6C824ACF0E100C50E58 /* AddHourBlockTests.swift */; };
 		AB48A6D624AD0FCA00C50E58 /* SuggestionBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6D424ACFA9400C50E58 /* SuggestionBlockView.swift */; };
 		AB48A6DD24AD12D500C50E58 /* ToDoListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6D824AD12D500C50E58 /* ToDoListTests.swift */; };
 		AB48A6DE24AD12D500C50E58 /* AddToBlockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6D924AD12D500C50E58 /* AddToBlockTests.swift */; };
@@ -123,6 +115,7 @@
 		AB9F12B324C8D83100F31F21 /* EditHourBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F12B224C8D83100F31F21 /* EditHourBlockView.swift */; };
 		ABAFADFA24B231700098B823 /* ToDoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAFADF924B231700098B823 /* ToDoListView.swift */; };
 		ABAFADFD24B231C40098B823 /* ToDoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAFADFC24B231C40098B823 /* ToDoListViewModel.swift */; };
+		ABB477BC24E419DE004DC0E6 /* HourBlockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB477BB24E419DE004DC0E6 /* HourBlockTests.swift */; };
 		ABBA399324AD1782008A4A56 /* SuggestionsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBA399224AD1782008A4A56 /* SuggestionsGateway.swift */; };
 		ABBA399524AD5C3B008A4A56 /* ScheduleDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBA399424AD5C3B008A4A56 /* ScheduleDatePicker.swift */; };
 		ABC1D07F24D9DCA4001F8B6B /* RemindersGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC1D07E24D9DCA4001F8B6B /* RemindersGateway.swift */; };
@@ -262,15 +255,7 @@
 		AB33B26824BF5F030057662F /* UpcomingScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingScheduleView.swift; sourceTree = "<group>"; };
 		AB372FE324E0884D008F6034 /* SelectableIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableIcon.swift; sourceTree = "<group>"; };
 		AB372FE524E09341008F6034 /* SchedulePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePickerView.swift; sourceTree = "<group>"; };
-		AB48A6C024ACF0E000C50E58 /* ManageSubBlocksTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageSubBlocksTests.swift; sourceTree = "<group>"; };
-		AB48A6C124ACF0E000C50E58 /* RenameHourBlockTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenameHourBlockTests.swift; sourceTree = "<group>"; };
-		AB48A6C224ACF0E100C50E58 /* IconPickerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconPickerTests.swift; sourceTree = "<group>"; };
-		AB48A6C324ACF0E100C50E58 /* HourBlockTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourBlockTests.swift; sourceTree = "<group>"; };
-		AB48A6C424ACF0E100C50E58 /* DuplicateHourBlockTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuplicateHourBlockTests.swift; sourceTree = "<group>"; };
-		AB48A6C524ACF0E100C50E58 /* SubBlockViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubBlockViewModel.swift; sourceTree = "<group>"; };
 		AB48A6C624ACF0E100C50E58 /* ScheduleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTests.swift; sourceTree = "<group>"; };
-		AB48A6C724ACF0E100C50E58 /* DatePickerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerTests.swift; sourceTree = "<group>"; };
-		AB48A6C824ACF0E100C50E58 /* AddHourBlockTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddHourBlockTests.swift; sourceTree = "<group>"; };
 		AB48A6D424ACFA9400C50E58 /* SuggestionBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionBlockView.swift; sourceTree = "<group>"; };
 		AB48A6D824AD12D500C50E58 /* ToDoListTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoListTests.swift; sourceTree = "<group>"; };
 		AB48A6D924AD12D500C50E58 /* AddToBlockTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToBlockTests.swift; sourceTree = "<group>"; };
@@ -320,6 +305,7 @@
 		AB9F12B224C8D83100F31F21 /* EditHourBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHourBlockView.swift; sourceTree = "<group>"; };
 		ABAFADF924B231700098B823 /* ToDoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListView.swift; sourceTree = "<group>"; };
 		ABAFADFC24B231C40098B823 /* ToDoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewModel.swift; sourceTree = "<group>"; };
+		ABB477BB24E419DE004DC0E6 /* HourBlockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourBlockTests.swift; sourceTree = "<group>"; };
 		ABBA399224AD1782008A4A56 /* SuggestionsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsGateway.swift; sourceTree = "<group>"; };
 		ABBA399424AD5C3B008A4A56 /* ScheduleDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDatePicker.swift; sourceTree = "<group>"; };
 		ABC1D07E24D9DCA4001F8B6B /* RemindersGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersGateway.swift; sourceTree = "<group>"; };
@@ -555,14 +541,7 @@
 			isa = PBXGroup;
 			children = (
 				AB48A6C624ACF0E100C50E58 /* ScheduleTests.swift */,
-				AB48A6C824ACF0E100C50E58 /* AddHourBlockTests.swift */,
-				AB48A6C724ACF0E100C50E58 /* DatePickerTests.swift */,
-				AB48A6C424ACF0E100C50E58 /* DuplicateHourBlockTests.swift */,
-				AB48A6C324ACF0E100C50E58 /* HourBlockTests.swift */,
-				AB48A6C224ACF0E100C50E58 /* IconPickerTests.swift */,
-				AB48A6C024ACF0E000C50E58 /* ManageSubBlocksTests.swift */,
-				AB48A6C124ACF0E000C50E58 /* RenameHourBlockTests.swift */,
-				AB48A6C524ACF0E100C50E58 /* SubBlockViewModel.swift */,
+				ABB477BB24E419DE004DC0E6 /* HourBlockTests.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -1160,23 +1139,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB48A6D024ACF0E100C50E58 /* DatePickerTests.swift in Sources */,
 				2338BED4220A7841004F288F /* neonTests.swift in Sources */,
 				AB48A6DE24AD12D500C50E58 /* AddToBlockTests.swift in Sources */,
-				AB48A6CE24ACF0E100C50E58 /* SubBlockViewModel.swift in Sources */,
-				AB48A6CD24ACF0E100C50E58 /* DuplicateHourBlockTests.swift in Sources */,
-				AB48A6CA24ACF0E100C50E58 /* RenameHourBlockTests.swift in Sources */,
+				ABB477BC24E419DE004DC0E6 /* HourBlockTests.swift in Sources */,
 				AB48A6DD24AD12D500C50E58 /* ToDoListTests.swift in Sources */,
-				AB48A6CB24ACF0E100C50E58 /* IconPickerTests.swift in Sources */,
 				AB48A6E724AD12E500C50E58 /* SettingsTests.swift in Sources */,
 				AB48A6E024AD12D500C50E58 /* AddToDoItemTests.swift in Sources */,
 				AB48A6E824AD12E500C50E58 /* CalendarSettingsTests.swift in Sources */,
 				AB48A6E624AD12E500C50E58 /* OtherSettingsTests.swift in Sources */,
 				AB48A6E124AD12D500C50E58 /* RenameToDoItemTests.swift in Sources */,
-				AB48A6C924ACF0E100C50E58 /* ManageSubBlocksTests.swift in Sources */,
 				AB48A6CF24ACF0E100C50E58 /* ScheduleTests.swift in Sources */,
-				AB48A6CC24ACF0E100C50E58 /* HourBlockTests.swift in Sources */,
-				AB48A6D124ACF0E100C50E58 /* AddHourBlockTests.swift in Sources */,
 				AB48A6DF24AD12D500C50E58 /* ToDoItemTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
