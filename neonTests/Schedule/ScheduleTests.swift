@@ -106,7 +106,7 @@ class ScheduleTests: XCTestCase {
     }
     
     func testPresentDatePickerView() {
-        let expectation = XCTestExpectation(description: "Present Date pciker from view model")
+        let expectation = XCTestExpectation(description: "Present Date picker from view model")
         
         viewModel.presentDatePickerView()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -119,7 +119,7 @@ class ScheduleTests: XCTestCase {
     }
     
     func testDismissDatePickerView() {
-        let expectation = XCTestExpectation(description: "Disable Hour Blocks filter from view model")
+        let expectation = XCTestExpectation(description: "Dismiss Date picker from view model")
         
         viewModel.toggleFilter()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
