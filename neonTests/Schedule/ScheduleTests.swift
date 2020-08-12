@@ -45,7 +45,6 @@ class ScheduleTests: XCTestCase {
     }
     
     func testAddHourBlock() {
-        
         viewModel.addBlock(HourBlock(day: Date(), hour: 14, title: "Walk"))
         
         let expectation = XCTestExpectation(description: "Add Hour Block to view model")
@@ -57,8 +56,6 @@ class ScheduleTests: XCTestCase {
         }
         
         wait(for: [expectation], timeout: 2.0)
-        
-        
     }
     
     func testClearHourBlock() {
@@ -76,7 +73,6 @@ class ScheduleTests: XCTestCase {
         }
         
         wait(for: [expectation], timeout: 2.0)
-        
     }
     
     func testEnableFilter() {
@@ -89,7 +85,6 @@ class ScheduleTests: XCTestCase {
         }
         
         wait(for: [expectation], timeout: 2.0)
-        
     }
     
     func testDisableFilter() {
@@ -99,32 +94,6 @@ class ScheduleTests: XCTestCase {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             
             XCTAssertFalse(self.viewModel.isFilterEnabled)
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 2.0)
-    }
-    
-    func testPresentDatePickerView() {
-        let expectation = XCTestExpectation(description: "Present Date picker from view model")
-        
-        viewModel.presentDatePickerView()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            
-            XCTAssertTrue(self.viewModel.isDatePickerViewPresented)
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 2.0)
-    }
-    
-    func testDismissDatePickerView() {
-        let expectation = XCTestExpectation(description: "Dismiss Date picker from view model")
-        
-        viewModel.toggleFilter()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            
-            XCTAssertFalse(self.viewModel.isDatePickerViewPresented)
             expectation.fulfill()
         }
         

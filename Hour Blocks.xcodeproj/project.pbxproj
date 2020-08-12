@@ -426,7 +426,6 @@
 				2338BED5220A7841004F288F /* Info.plist */,
 				AB48A6BF24ACF0CF00C50E58 /* Schedule */,
 				AB48A6D724AD12C800C50E58 /* To Do List */,
-				AB48A6E224AD12DA00C50E58 /* Settings */,
 				AB6BED6124E3FDAA000A00A5 /* Service */,
 			);
 			path = neonTests;
@@ -557,13 +556,6 @@
 				ABB477C324E42FF3004DC0E6 /* ToDoItemTests.swift */,
 			);
 			path = "To Do List";
-			sourceTree = "<group>";
-		};
-		AB48A6E224AD12DA00C50E58 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Settings;
 			sourceTree = "<group>";
 		};
 		AB6BED6124E3FDAA000A00A5 /* Service */ = {
