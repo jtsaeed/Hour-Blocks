@@ -34,12 +34,12 @@ class ScheduleTests: XCTestCase {
         dataGateway.save(hourBlock: HourBlock(day: date, hour: 15, title: "Gym"))
         dataGateway.save(hourBlock: HourBlock(day: date, hour: 16, title: "Work"))
         
+        viewModel.currentDate = date
         viewModel.loadHourBlocks()
         
         let expectation = XCTestExpectation(description: "Load Hour Blocks from view model")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            print(self.viewModel.todaysHourBlocks)
             
             XCTAssertEqual(self.viewModel.todaysHourBlocks[15].title, "Gym")
             expectation.fulfill()
