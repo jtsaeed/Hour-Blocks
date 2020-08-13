@@ -28,15 +28,16 @@ class AddHourBlockTests: XCTestCase {
     }
 
     func testLoadSuggestions() {
+        viewModel.loadSuggestions(for: hour, on: date)
+        
         let expectation = XCTestExpectation(description: "loadSuggestions returns array containing an element that has domain property equal to BlockDomain.relax")
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            
-            XCTAssertTrue(self.viewModel.loadSuggestions(for: self.hour, on: self.date).contains(where: $0.domain == BlockDomain.relax))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            XCTAssertTrue(self.viewModel.currentSuggestions.contains(where: { $0.domain == .relax }))
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: 2.0)
+        wait(for: [expectation], timeout: 5.0)
     }
     
     lazy var mockPersistantContainer: NSPersistentContainer = {

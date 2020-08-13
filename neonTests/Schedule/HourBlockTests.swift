@@ -54,11 +54,12 @@ class HourBlockTests: XCTestCase {
     }
     
     func testSaveIconChanges() {
+        viewModel.saveChanges(title: viewModel.title, icon: .people)
+        
         let expectation = XCTestExpectation(description: "Save icon changes icon param in view model")
         
-        viewModel.saveChanges(title: viewModel.title, icon: SelectableIcon.people)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            XCTAssertEqual(self.viewModel.selectedIcon, SelectableIcon.people)
+            XCTAssertEqual(self.viewModel.selectedIcon, .people)
             expectation.fulfill()
         }
         
@@ -66,11 +67,11 @@ class HourBlockTests: XCTestCase {
     }
     
     func testAddSubBlock() {
+        let initialSubBlockCount = viewModel.subBlocks.count
+        viewModel.addSubBlock(SubBlock(of: viewModel.hourBlock, title: "food"))
+        
         let expectation = XCTestExpectation(description: "Adding a subblock increases subblock array count in view model")
         
-        let initialSubBlockCount = viewModel.subBlocks.count
-        
-        viewModel.addSubBlock(SubBlock(of: viewModel.hourBlock, title: "food"))
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             XCTAssertGreaterThan(self.viewModel.subBlocks.count, initialSubBlockCount)
             expectation.fulfill()
@@ -80,11 +81,11 @@ class HourBlockTests: XCTestCase {
     }
     
     func testClearSubBlock() {
+        let initialSubBlockCount = viewModel.subBlocks.count
+        viewModel.clearSubBlock(viewModel.subBlocks[0])
+        
         let expectation = XCTestExpectation(description: "Clear a subblock decreases subblock array count in view model")
         
-        let initialSubBlockCount = viewModel.subBlocks.count
-        
-        viewModel.clearSubBlock(viewModel.subBlocks[0])
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             XCTAssertLessThan(self.viewModel.subBlocks.count, initialSubBlockCount)
             expectation.fulfill()

@@ -33,17 +33,10 @@ class ScheduleDatePickerViewModel: ObservableObject {
     }
     
     func loadHourBlocks() {
-        var hourBlockViewModels = (0 ..< 24).map { hour in
-            HourBlockViewModel(for: HourBlock(day: selectedDate,
-                                              hour: hour,
-                                              title: nil))
-        }
+        hourBlocks = dataGateway.getHourBlocks(for: selectedDate)
+            .sorted(by: { $0.hour < $1.hour })
+            .map { HourBlockViewModel(for: $0) }
         
-        for hourBlock in dataGateway.getHourBlocks(for: selectedDate) {
-            hourBlockViewModels[hourBlock.hour] = HourBlockViewModel(for: hourBlock)
-        }
-        
-        hourBlocks = hourBlockViewModels
         calendarBlocks = calendarGateway.getEvents(for: selectedDate)
     }
 }

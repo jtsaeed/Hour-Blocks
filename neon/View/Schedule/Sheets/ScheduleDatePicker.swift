@@ -43,16 +43,15 @@ struct ScheduleDatePicker: View {
                             CalendarBlockView(event: event)
                         }
                         
-                        if !viewModel.calendarBlocks.isEmpty &&
-                            !viewModel.hourBlocks.filter { $0.title != "Empty" }.isEmpty {
+                        if !viewModel.calendarBlocks.isEmpty && !viewModel.hourBlocks.isEmpty {
                             NeonDivider().padding(.horizontal, 32)
                         }
                         
-                        ForEach(viewModel.hourBlocks.filter { $0.title != "Empty" } ) { hourBlockViewModel in
+                        ForEach(viewModel.hourBlocks) { hourBlockViewModel in
                             CompactHourBlockView(viewModel: hourBlockViewModel)
                         }
                         
-                        if viewModel.calendarBlocks.isEmpty && viewModel.hourBlocks.filter { $0.title != "Empty" }.isEmpty {
+                        if viewModel.calendarBlocks.isEmpty && viewModel.hourBlocks.isEmpty {
                             NoHourBlocksView()
                         }
                     }.padding(.top, 8)

@@ -12,6 +12,8 @@ import CoreData
 
 class ScheduleTests: XCTestCase {
     
+    let date = Date(year: 2020, month: 08, day: 02, hour: 13, minute: 0)
+    
     var dataGateway: DataGateway!
     var viewModel: ScheduleViewModel!
     
@@ -28,20 +30,22 @@ class ScheduleTests: XCTestCase {
     }
     
     func testLoadHourBlocks() {
-        dataGateway.save(hourBlock: HourBlock(day: Date(), hour: 13, title: "Lunch"))
-        dataGateway.save(hourBlock: HourBlock(day: Date(), hour: 15, title: "Gym"))
-        dataGateway.save(hourBlock: HourBlock(day: Date(), hour: 16, title: "Work"))
+        dataGateway.save(hourBlock: HourBlock(day: date, hour: 13, title: "Lunch"))
+        dataGateway.save(hourBlock: HourBlock(day: date, hour: 15, title: "Gym"))
+        dataGateway.save(hourBlock: HourBlock(day: date, hour: 16, title: "Work"))
         
         viewModel.loadHourBlocks()
         
         let expectation = XCTestExpectation(description: "Load Hour Blocks from view model")
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            print(self.viewModel.todaysHourBlocks)
+            
             XCTAssertEqual(self.viewModel.todaysHourBlocks[15].title, "Gym")
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: 2.0)
+        wait(for: [expectation], timeout: 5.0)
     }
     
     func testAddHourBlock() {
@@ -50,7 +54,6 @@ class ScheduleTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Add Hour Block to view model")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            
             XCTAssertEqual(self.viewModel.todaysHourBlocks[14].title, "Walk")
             expectation.fulfill()
         }
@@ -67,7 +70,6 @@ class ScheduleTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Clear Hour Block from view model")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            
             XCTAssertEqual(self.viewModel.todaysHourBlocks[14].title, "Empty")
             expectation.fulfill()
         }
@@ -79,7 +81,6 @@ class ScheduleTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Enable Hour Blocks filter from view model")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            
             XCTAssertTrue(self.viewModel.isFilterEnabled)
             expectation.fulfill()
         }
@@ -88,11 +89,11 @@ class ScheduleTests: XCTestCase {
     }
     
     func testDisableFilter() {
+        viewModel.toggleFilter()
+        
         let expectation = XCTestExpectation(description: "Disable Hour Blocks filter from view model")
         
-        viewModel.toggleFilter()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            
             XCTAssertFalse(self.viewModel.isFilterEnabled)
             expectation.fulfill()
         }
