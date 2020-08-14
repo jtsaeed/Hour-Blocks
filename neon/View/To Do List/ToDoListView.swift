@@ -10,6 +10,8 @@ import SwiftUI
 
 struct ToDoListView: View {
     
+    let refreshPublisher = NotificationCenter.default.publisher(for: NSNotification.Name("RefreshToDoList"))
+    
     @StateObject var viewModel = ToDoListViewModel()
     
     var body: some View {
@@ -33,6 +35,7 @@ struct ToDoListView: View {
             }
         }.navigationBarHidden(true)
         .onAppear(perform: viewModel.loadToDoItems)
+        .onReceive(refreshPublisher) { _ in viewModel.loadToDoItems() }
     }
 }
 

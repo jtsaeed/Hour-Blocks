@@ -55,6 +55,8 @@ class ToDoItemViewModel: ObservableObject, Identifiable {
         dataGateway.edit(toDoItem: toDoItem, set: urgency.rawValue, forKey: "urgency")
         
         dismissEditItemView()
+        
+        NotificationCenter.default.post(name: Notification.Name("RefreshToDoList"), object: nil)
     }
 }
 
