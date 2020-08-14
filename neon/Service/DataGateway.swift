@@ -169,9 +169,9 @@ extension DataGateway {
         
         do {
             let toDoEntities = try managedObjectContext.fetch(request)
-            let toDoEntity = toDoEntities.first!
-            
-            toDoEntity.setValue(value, forKey: key)
+            if let toDoEntity = toDoEntities.first{
+                toDoEntity.setValue(value, forKey: key)
+            }
             
             try managedObjectContext.save()
         } catch {

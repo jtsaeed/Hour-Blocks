@@ -30,6 +30,7 @@ class ToDoListViewModel: ObservableObject {
     
     func loadToDoItems() {
         toDoItems = dataGateway.getToDoItems().map { ToDoItemViewModel(for: $0) }
+        toDoItems.sort()
     }
     
     func add(toDoItem: ToDoItem) {

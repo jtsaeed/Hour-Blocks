@@ -29,11 +29,33 @@ class ToDoItemTests: XCTestCase {
     }
     
     func testSaveTitleChanges() {
-        // TODO
+        let expectation = XCTestExpectation(description: "The view model's title has changed after calling viewModel.saveChanges")
+        
+        
+        viewModel.saveChanges(title: "new", urgency: .soon)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            XCTAssertEqual(self.viewModel.title, "new")
+            
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 2.0)
     }
     
     func testSavePriorityChanges() {
-        // TODO
+        let expectation = XCTestExpectation(description: "view model's urgency is equal to ToDoPriority.urgent after calling viewModel.saveChanges")
+        
+        
+        viewModel.saveChanges(title: viewModel.title, urgency: .urgent)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            XCTAssertEqual(self.viewModel.urgency, "urgent")
+            
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 2.0)
     }
     
     lazy var mockPersistantContainer: NSPersistentContainer = {
