@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17162" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17183" systemVersion="19G73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="HabitBlockEntity" representedClassName="HabitBlockEntity" syncable="YES" codeGenerationType="class">
         <attribute name="completedToday" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="identifier" optional="YES" attributeType="String"/>
@@ -15,6 +15,9 @@
         <attribute name="identifier" optional="YES" attributeType="String"/>
         <attribute name="isSubBlock" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
+        <fetchedProperty name="fetchedProperty" optional="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="HourBlockEntity"/>
+        </fetchedProperty>
     </entity>
     <entity name="OtherSettingsEntity" representedClassName="OtherSettingsEntity" syncable="YES" codeGenerationType="class">
         <attribute name="autoCaps" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
@@ -45,7 +48,7 @@
     </entity>
     <elements>
         <element name="HabitBlockEntity" positionX="-63" positionY="63" width="128" height="118"/>
-        <element name="HourBlockEntity" positionX="-63" positionY="36" width="128" height="148"/>
+        <element name="HourBlockEntity" positionX="-63" positionY="36" width="128" height="176"/>
         <element name="OtherSettingsEntity" positionX="-63" positionY="72" width="128" height="103"/>
         <element name="SubBlockEntity" positionX="-54" positionY="72" width="128" height="103"/>
         <element name="SuggestionEntity" positionX="-63" positionY="63" width="128" height="88"/>

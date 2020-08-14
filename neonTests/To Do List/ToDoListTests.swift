@@ -25,12 +25,12 @@ class ToDoListTests: XCTestCase {
     }
     
     func testLoadToDoItems() {
-        let expectation = XCTestExpectation(description: "view model's toDoItems array size is equal to the amount of toDoItems added")
-        
         dataGateway.save(toDoItem: ToDoItem(title: "Clean", urgency: ToDoUrgency.urgent))
         dataGateway.save(toDoItem: ToDoItem(title: "Eat", urgency: ToDoUrgency.whenever))
         
         viewModel.loadToDoItems()
+        
+        let expectation = XCTestExpectation(description: "view model's toDoItems array size is equal to the amount of toDoItems added")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             XCTAssertEqual(self.viewModel.toDoItems.count, 2)
@@ -42,8 +42,6 @@ class ToDoListTests: XCTestCase {
     }
     
     func testSortToDoItems() {
-        let expectation = XCTestExpectation(description: "The view model's toDoItems are correctly ordered by priority after loading")
-        
         dataGateway.save(toDoItem: ToDoItem(title: "Sleep", urgency: ToDoUrgency.whenever))
         dataGateway.save(toDoItem: ToDoItem(title: "Eat", urgency: ToDoUrgency.soon))
         dataGateway.save(toDoItem: ToDoItem(title: "Clean", urgency: ToDoUrgency.urgent))
@@ -51,6 +49,8 @@ class ToDoListTests: XCTestCase {
         dataGateway.save(toDoItem: ToDoItem(title: "Code", urgency: ToDoUrgency.soon))
         
         viewModel.loadToDoItems()
+        
+        let expectation = XCTestExpectation(description: "The view model's toDoItems are correctly ordered by priority after loading")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             XCTAssertEqual(self.viewModel.toDoItems, self.viewModel.toDoItems.sorted())
@@ -63,9 +63,9 @@ class ToDoListTests: XCTestCase {
     
     
     func testAddToDoItem() {
-        let expectation = XCTestExpectation(description: "The view model's toDoItems count is equal to 1 after calling viewModel.add")
-        
         viewModel.add(toDoItem: ToDoItem(title: "Clean", urgency: ToDoUrgency.urgent))
+        
+        let expectation = XCTestExpectation(description: "The view model's toDoItems count is equal to 1 after calling viewModel.add")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             XCTAssertEqual(self.viewModel.toDoItems.count, 1)
@@ -77,8 +77,6 @@ class ToDoListTests: XCTestCase {
     }
     
     func testClearToDoItem() {
-        let expectation = XCTestExpectation(description: "After calling ViewModel.clear there should be n-1 items in toDoItems")
-        
         let item1 = ToDoItem(title: "Clean", urgency: ToDoUrgency.urgent)
         let item2 = ToDoItem(title: "Eat", urgency: ToDoUrgency.whenever)
         
@@ -88,6 +86,8 @@ class ToDoListTests: XCTestCase {
         viewModel.loadToDoItems()
         
         viewModel.clear(toDoItem: item1)
+        
+        let expectation = XCTestExpectation(description: "After calling ViewModel.clear there should be n-1 items in toDoItems")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             XCTAssertEqual(self.viewModel.toDoItems.count, 1)

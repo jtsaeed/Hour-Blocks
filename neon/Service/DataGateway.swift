@@ -153,9 +153,10 @@ extension DataGateway {
         
         do {
             let hourBlockEntities = try managedObjectContext.fetch(request)
-            let hourBlockEntity = hourBlockEntities.first!
             
-            hourBlockEntity.setValue(value, forKey: key)
+            if let hourBlockEntity = hourBlockEntities.first {
+                hourBlockEntity.setValue(value, forKey: key)
+            }
             
             try managedObjectContext.save()
         } catch {
@@ -169,6 +170,7 @@ extension DataGateway {
         
         do {
             let toDoEntities = try managedObjectContext.fetch(request)
+            
             if let toDoEntity = toDoEntities.first{
                 toDoEntity.setValue(value, forKey: key)
             }
