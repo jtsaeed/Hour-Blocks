@@ -20,12 +20,18 @@ struct ToDoListView: View {
                 IconButton(iconName: "plus",
                               iconWeight: .bold,
                               action: viewModel.presentAddToDoItemView)
-            }.sheet(isPresented: $viewModel.isAddToDoItemViewPresented) {
+            }.zIndex(1)
+            .sheet(isPresented: $viewModel.isAddToDoItemViewPresented) {
                 AddToDoItemView(viewModel: viewModel)
             }
             
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 24) {
+                    if let tip = viewModel.currentTip {
+                        TipCardView(tip: tip, onDismiss: viewModel.dismissTip)
+                        NeonDivider().padding(.horizontal, 32)
+                    }
+                    
                     ForEach(viewModel.toDoItems) { toDoItemViewModel in
                         ToDoItemView(viewModel: toDoItemViewModel,
                                      onItemCleared: { viewModel.clear(toDoItem: toDoItemViewModel.toDoItem) })

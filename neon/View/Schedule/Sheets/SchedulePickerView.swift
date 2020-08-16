@@ -33,16 +33,16 @@ struct SchedulePickerView: View {
                 }.padding(.top, 8)
                 .padding(.bottom, 24)
             }.navigationTitle(title)
-            .navigationBarItems(trailing: Button("Done", action: dismiss))
+            .navigationBarItems(trailing: Button("Save", action: dismiss))
         }.accentColor(Color("AccentColor"))
     }
     
     func add(hourBlock: HourBlock) {
         viewModel.addBlock(hourBlock)
-        NotificationCenter.default.post(name: Notification.Name("RefreshSchedule"), object: nil)
     }
     
     func dismiss() {
+        NotificationCenter.default.post(name: Notification.Name("RefreshSchedule"), object: nil)
         isPresented = false
     }
 }

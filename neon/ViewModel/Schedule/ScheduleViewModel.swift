@@ -19,15 +19,17 @@ class ScheduleViewModel: ObservableObject {
     let analyticsGateway: AnalyticsGatewayProtocol
     let remindersGateway: RemindersGatewayProtocol
     
+    @AppStorage("totalBlockCount") var totalBlockCount = 0
+    
     @Published var currentHour = Calendar.current.component(.hour, from: Date())
     @Published var currentDate = Calendar.current.startOfDay(for: Date())
     @Published var todaysHourBlocks = [HourBlockViewModel]()
     @Published var todaysCalendarBlocks = [EKEvent]()
     
+    @Published var currentTip: Tip?
+    
     @Published var isFilterEnabled = true
     @Published var isDatePickerViewPresented = false
-    
-    @AppStorage("totalBlockCount") var totalBlockCount = 0
     
     init(dataGateway: DataGateway, calendarGateway: CalendarGatewayProtocol, analyticsGateway: AnalyticsGatewayProtocol, remindersGateway: RemindersGatewayProtocol) {
         self.dataGateway = dataGateway
@@ -75,10 +77,10 @@ class ScheduleViewModel: ObservableObject {
         analyticsGateway.log(hourBlock: hourBlock)
         
         todaysHourBlocks[hourBlock.hour] = HourBlockViewModel(for: hourBlock)
-        updateCurrentHour()
         
         totalBlockCount = totalBlockCount + 1
-        if totalBlockCount > 10 { SKStoreReviewController.requestReview() }
+        if totalBlockCount == 1 { withAnimation { currentTip = .blockOptions } }
+        if totalBlockCount == 10 { SKStoreReviewController.requestReview() }
         
         WidgetCenter.shared.reloadAllTimelines()
     }
@@ -93,15 +95,18 @@ class ScheduleViewModel: ObservableObject {
         todaysHourBlocks[hourBlock.hour] = HourBlockViewModel(for: HourBlock(day: hourBlock.day,
                                                                              hour: hourBlock.hour,
                                                                              title: nil))
-        updateCurrentHour()
         
         WidgetCenter.shared.reloadAllTimelines()
+    }
+    
+    func dismissTip() {
+        HapticsGateway.shared.triggerLightImpact()
+        withAnimation { currentTip = nil }
     }
     
     func toggleFilter() {
         HapticsGateway.shared.triggerLightImpact()
         withAnimation { isFilterEnabled.toggle() }
-        updateCurrentHour()
     }
     
     func presentDatePickerView() {
@@ -111,10 +116,9 @@ class ScheduleViewModel: ObservableObject {
     
     func dismissDatePickerView() {
         isDatePickerViewPresented = false
-        updateCurrentHour()
     }
     
-    private func updateCurrentHour() {
+    func updateCurrentHour() {
         currentHour = Calendar.current.component(.hour, from: Date())
     }
 }

@@ -11,7 +11,8 @@ import SwiftDate
 
 struct ScheduleView: View {
     
-    let refreshPublisher = NotificationCenter.default.publisher(for: NSNotification.Name("RefreshSchedule"))
+    let refreshSchedulePublisher = NotificationCenter.default.publisher(for: NSNotification.Name("RefreshSchedule"))
+    let refreshHourPublisher = NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)
     
     @StateObject var viewModel = ScheduleViewModel()
     
@@ -24,7 +25,8 @@ struct ScheduleView: View {
                                   action: viewModel.toggleFilter)
                     IconButton(iconName: "calendar", action: viewModel.presentDatePickerView)
                 }
-            }.sheet(isPresented: $viewModel.isDatePickerViewPresented) {
+            }.zIndex(1)
+            .sheet(isPresented: $viewModel.isDatePickerViewPresented) {
                 ScheduleDatePicker(isPresented: $viewModel.isDatePickerViewPresented,
                                    scheduleDate: $viewModel.currentDate,
                                    onDateChanged: viewModel.loadHourBlocks)
@@ -32,7 +34,8 @@ struct ScheduleView: View {
             
             ScheduleBlocksListView(viewModel: viewModel)
         }.onAppear(perform: viewModel.handleCalendarPermissions)
-        .onReceive(refreshPublisher) { _ in viewModel.loadHourBlocks() }
+        .onReceive(refreshSchedulePublisher) { _ in viewModel.loadHourBlocks() }
+        .onReceive(refreshHourPublisher) { _ in viewModel.updateCurrentHour() }
         .navigationBarHidden(true)
     }
 }
@@ -44,6 +47,11 @@ private struct ScheduleBlocksListView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 24) {
+                if let tip = viewModel.currentTip {
+                    TipCardView(tip: tip, onDismiss: viewModel.dismissTip)
+                    NeonDivider().padding(.horizontal, 32)
+                }
+                
                 ForEach(viewModel.isFilterEnabled ? viewModel.todaysCalendarBlocks.filter { $0.endDate.hour >= viewModel.currentHour } : viewModel.todaysCalendarBlocks, id: \.self) { event in
                     CalendarBlockView(event: event)
                 }

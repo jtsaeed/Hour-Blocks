@@ -11,6 +11,7 @@ struct IconButton: View {
     
     let iconName: String
     var iconWeight: Font.Weight = .regular
+    var iconColor: String = "AccentColor"
     
     let action: () -> Void
     
@@ -18,10 +19,10 @@ struct IconButton: View {
         Button(action: action, label: {
             ZStack {
                 Circle()
-                    .foregroundColor(Color("AccentColorLight"))
+                    .foregroundColor(Color("\(iconColor)Light"))
                     .frame(width: 40, height: 40)
                 Image(systemName: iconName)
-                    .foregroundColor(Color("AccentColor"))
+                    .foregroundColor(Color(iconColor))
                     .font(.system(size: 20, weight: iconWeight, design: .rounded))
             }
         })

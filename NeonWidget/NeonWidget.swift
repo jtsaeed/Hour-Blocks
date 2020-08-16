@@ -11,9 +11,14 @@ import SwiftUI
 import CoreData
 
 struct Provider: TimelineProvider {
+    
     public typealias Entry = HourBlockEntry
-
-    public func snapshot(with context: Context, completion: @escaping (HourBlockEntry) -> ()) {
+    
+    public func placeholder(in context: Context) -> HourBlockEntry {
+        return HourBlockEntry(date: Date(), hourBlock: nil, relevance: TimelineEntryRelevance(score: 0))
+    }
+    
+    public func getSnapshot(in context: Context, completion: @escaping (HourBlockEntry) -> Void) {
         let hourBlocks = WidgetDataGateway.shared.getHourBlocks(for: Date()).sorted { $0.hour < $1.hour }
         
         if let firstBlock = hourBlocks.first {
@@ -29,11 +34,7 @@ struct Provider: TimelineProvider {
         }
     }
     
-    public func placeholder(in context: Context) -> HourBlockEntry {
-        return HourBlockEntry(date: Date(), hourBlock: nil, relevance: TimelineEntryRelevance(score: 0))
-    }
-
-    public func timeline(with context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+    public func getTimeline(in context: Context, completion: @escaping (Timeline<HourBlockEntry>) -> Void) {
         var entries: [HourBlockEntry] = []
         
         let hourBlocks = WidgetDataGateway.shared.getHourBlocks(for: Date()).sorted { $0.hour < $1.hour }

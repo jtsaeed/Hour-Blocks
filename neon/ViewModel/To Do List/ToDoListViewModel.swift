@@ -6,14 +6,18 @@
 //  Copyright © 2020 James Saeed. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
 class ToDoListViewModel: ObservableObject {
     
     let dataGateway: DataGateway
     let analyticsGateway: AnalyticsGatewayProtocol
     
+    @AppStorage("totalToDoCount") var totalToDoCount = 0
+    
     @Published var toDoItems = [ToDoItemViewModel]()
+    
+    @Published var currentTip: Tip?
     
     @Published var isAddToDoItemViewPresented = false
     
@@ -41,6 +45,10 @@ class ToDoListViewModel: ObservableObject {
         
         toDoItems.append(ToDoItemViewModel(for: toDoItem))
         toDoItems.sort()
+        
+        totalToDoCount = totalToDoCount + 1
+        if totalToDoCount == 2 { withAnimation { currentTip = .blockOptions } }
+        if totalToDoCount == 5 { withAnimation { currentTip = .toDoSiri } }
     }
     
     func clear(toDoItem: ToDoItem) {
@@ -49,6 +57,11 @@ class ToDoListViewModel: ObservableObject {
         dataGateway.delete(toDoItem: toDoItem)
         
         toDoItems.removeAll(where: { $0.toDoItem.id == toDoItem.id })
+    }
+    
+    func dismissTip() {
+        HapticsGateway.shared.triggerLightImpact()
+        withAnimation { currentTip = nil }
     }
     
     func presentAddToDoItemView() {

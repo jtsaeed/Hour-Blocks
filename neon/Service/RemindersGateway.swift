@@ -53,7 +53,7 @@ struct RemindersGateway: RemindersGatewayProtocol {
     private func createNotificationContent(from hourBlock: HourBlock) -> UNMutableNotificationContent {
         let content = UNMutableNotificationContent()
         content.title = "Upcoming Hour Block"
-        content.body = "You have \(hourBlock.title!.lowercased()) coming up at \(hourBlock.hour.get12hTime())"
+        content.body = "You have \(hourBlock.title!.smartCapitalization()) coming up at \(hourBlock.hour.get12hTime().lowercased())"
         content.sound = UNNotificationSound.init(named: UNNotificationSoundName("notification.aif"))
         
         return content
@@ -61,7 +61,7 @@ struct RemindersGateway: RemindersGatewayProtocol {
     
     private func createNotificationTrigger(from hourBlock: HourBlock) -> UNNotificationTrigger {
         var date = Calendar.current.date(bySettingHour: hourBlock.hour, minute: 0, second: 0, of: hourBlock.day)!
-        date = Calendar.current.date(byAdding: .minute, value: -10, to: date)!
+        date = Calendar.current.date(byAdding: .minute, value: -15, to: date)!
         
         let triggerDate = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: date)
         return UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)

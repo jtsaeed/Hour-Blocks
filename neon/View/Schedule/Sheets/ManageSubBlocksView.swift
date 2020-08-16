@@ -46,7 +46,6 @@ struct ManageSubBlocksView: View {
     func addSubBlock() {
         if !title.isEmpty {
             viewModel.addSubBlock(SubBlock(of: hourBlock, title: title))
-            dismiss()
         } else {
             HapticsGateway.shared.triggerErrorHaptic()
         }
@@ -67,7 +66,7 @@ private struct SubBlockCardView: View {
     var body: some View {
         Card {
             HStack {
-                CardLabels(title: subBlockTitle.smartCapitalization(),
+                CardLabels(title: subBlockTitle,
                            subtitle: hourBlockTitle.uppercased())
                 Spacer()
                 IconButton(iconName: "xmark",

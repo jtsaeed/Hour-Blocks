@@ -87,7 +87,7 @@ private struct SubBlockView: View {
             }
             
             Text(subBlock.title)
-                .font(.system(size: 20, weight: .medium, design: .rounded))
+                .font(.system(size: 18, weight: .medium, design: .rounded))
                 .opacity(0.85)
             
             Spacer()
