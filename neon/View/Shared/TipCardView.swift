@@ -32,11 +32,15 @@ struct TipCardView: View {
 enum Tip: CustomStringConvertible {
     
     case blockOptions
+    case headerSwipe
+    
     case toDoSiri
     
     var description: String {
         switch self {
         case .blockOptions: return "Hold down a block for more options"
+        case .headerSwipe: return "Swipe across the header to quickly change days"
+            
         case .toDoSiri: return "Ask Siri to add an item to your To Do List in Hour Blocks"
         }
     }

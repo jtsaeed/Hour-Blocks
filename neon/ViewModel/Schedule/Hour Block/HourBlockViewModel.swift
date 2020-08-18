@@ -5,12 +5,13 @@
 //  Created by James Saeed on 26/06/2020.
 //
 
-import Foundation
+import SwiftUI
 import WidgetKit
 
 class HourBlockViewModel: Identifiable, ObservableObject {
     
     private let dataGateway: DataGateway
+    private let remindersGateway: RemindersGatewayProtocol
     
     let hourBlock: HourBlock
     
@@ -23,8 +24,9 @@ class HourBlockViewModel: Identifiable, ObservableObject {
     
     @Published var isAddHourBlockViewPresented = false
     
-    init(for hourBlock: HourBlock, and subBlocks: [SubBlock], dataGateway: DataGateway) {
+    init(for hourBlock: HourBlock, and subBlocks: [SubBlock], dataGateway: DataGateway, remindersGateway: RemindersGatewayProtocol) {
         self.dataGateway = dataGateway
+        self.remindersGateway = remindersGateway
         
         self.hourBlock = hourBlock
         self.title = hourBlock.title ?? "Empty"
@@ -33,11 +35,11 @@ class HourBlockViewModel: Identifiable, ObservableObject {
     }
     
     convenience init(for hourBlock: HourBlock, and subBlocks: [SubBlock]) {
-        self.init(for: hourBlock, and: subBlocks, dataGateway: DataGateway())
+        self.init(for: hourBlock, and: subBlocks, dataGateway: DataGateway(), remindersGateway: RemindersGateway())
     }
     
     convenience init(for hourBlock: HourBlock) {
-        self.init(for: hourBlock, and: [SubBlock](), dataGateway: DataGateway())
+        self.init(for: hourBlock, and: [SubBlock](), dataGateway: DataGateway(), remindersGateway: RemindersGateway())
     }
     
     func saveChanges(title: String, icon: SelectableIcon?) {
@@ -51,6 +53,7 @@ class HourBlockViewModel: Identifiable, ObservableObject {
             dataGateway.edit(hourBlock: hourBlock, set: icon.rawValue, forKey: "iconOverride")
         }
         
+        remindersGateway.editReminder(for: hourBlock)
         dismissEditBlockView()
         
         WidgetCenter.shared.reloadAllTimelines()
@@ -61,7 +64,7 @@ class HourBlockViewModel: Identifiable, ObservableObject {
         
         dataGateway.save(subBlock: subBlock)
         
-        subBlocks.append(subBlock)
+        withAnimation { subBlocks.append(subBlock) }
     }
     
     func clearSubBlock(_ subBlock: SubBlock) {
@@ -69,7 +72,7 @@ class HourBlockViewModel: Identifiable, ObservableObject {
         
         dataGateway.delete(subBlock: subBlock)
         
-        subBlocks.removeAll { $0.id == subBlock.id }
+        withAnimation { subBlocks.removeAll { $0.id == subBlock.id } }
     }
     
     func getFormattedTime() -> String {

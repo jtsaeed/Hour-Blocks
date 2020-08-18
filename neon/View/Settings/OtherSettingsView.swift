@@ -15,6 +15,7 @@ struct OtherSettingsView: View {
     @AppStorage("reminders") var remindersValue: Int = 0
     @AppStorage("timeFormat") var timeFormatValue: Int = 1
     @AppStorage("autoCaps") var autoCapsValue: Int = 0
+    @AppStorage("dayStart") var dayStartValue: Int = 2
     
     var body: some View {
         NavigationView {
@@ -24,6 +25,10 @@ struct OtherSettingsView: View {
                                       title: "Reminders",
                                       description: "Enable reminders for upcoming Hour Blocks",
                                       options: ["On", "Off"])
+                    OtherSettingsCard(value: $dayStartValue,
+                                      title: "Day Start",
+                                      description: "Change the time (am) your Schedule starts in Hour Blocks",
+                                      options: ["12", "5", "6", "7", "8"])
                     OtherSettingsCard(value: $timeFormatValue,
                                       title: "Time Format",
                                       description: "Change the time format used throughout Hour Blocks",

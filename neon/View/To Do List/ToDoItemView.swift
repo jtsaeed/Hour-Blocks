@@ -32,7 +32,7 @@ struct ToDoItemView: View {
             }
             Divider()
             Button(action: onItemCleared) {
-                Label("Clear", systemImage: "trash")
+                Label("Complete", systemImage: "checkmark")
             }
         }))
         

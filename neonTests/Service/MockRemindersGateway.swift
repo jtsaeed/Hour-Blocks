@@ -13,4 +13,6 @@ struct MockRemindersGateway: RemindersGatewayProtocol {
     func setReminder(for hourBlock: HourBlock) { }
     
     func removeReminder(for hourBlock: HourBlock) { }
+    
+    func editReminder(for hourBlock: HourBlock) { }
 }

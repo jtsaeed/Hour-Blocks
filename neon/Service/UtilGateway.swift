@@ -28,4 +28,17 @@ struct UtilGateway {
     func isAutoCapsOn() -> Bool {
         return UserDefaults.standard.integer(forKey: "autoCaps") == 0
     }
+    
+    func dayStartHour() -> Int {
+        let dayStartValue = UserDefaults.standard.integer(forKey: "dayStart")
+        
+        switch dayStartValue {
+        case 0: return 12
+        case 1: return 5
+        case 2: return 6
+        case 3: return 7
+        case 4: return 8
+        default: return 6
+        }
+    }
 }

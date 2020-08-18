@@ -417,7 +417,6 @@
 				2338BEC2220A7840004F288F /* neon.xcdatamodeld */,
 				2304FA3A235F39E4006DA688 /* LaunchScreen.storyboard */,
 				2338BECA220A7841004F288F /* Info.plist */,
-				AB8C6FD124E70D8A0074AD08 /* AppIntentVocabulary.plist */,
 				23356ED42256676E00541A60 /* GoogleService-Info.plist */,
 				23E7851322AA753100A9650F /* notification.aif */,
 				238EA767223EA0D900981E98 /* neon.entitlements */,
@@ -502,6 +501,7 @@
 		AB31076224E2C24900909EC9 /* NeonSiri */ = {
 			isa = PBXGroup;
 			children = (
+				AB8C6FD124E70D8A0074AD08 /* AppIntentVocabulary.plist */,
 				AB31076924E2C24900909EC9 /* NeonSiri.entitlements */,
 				AB31076324E2C24900909EC9 /* IntentHandler.swift */,
 				AB31076524E2C24900909EC9 /* Info.plist */,
@@ -1323,7 +1323,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.42;
+				CURRENT_PROJECT_VERSION = 0.6;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1350,7 +1350,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.42;
+				CURRENT_PROJECT_VERSION = 0.6;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1463,7 +1463,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeonSiri/NeonSiri.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.42;
+				CURRENT_PROJECT_VERSION = 0.6;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = NeonSiri/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1489,7 +1489,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeonSiri/NeonSiri.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.42;
+				CURRENT_PROJECT_VERSION = 0.6;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = NeonSiri/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1517,7 +1517,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeonWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.42;
+				CURRENT_PROJECT_VERSION = 0.6;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = NeonWidget/Info.plist;
@@ -1546,7 +1546,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeonWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.42;
+				CURRENT_PROJECT_VERSION = 0.6;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = NeonWidget/Info.plist;

@@ -11,6 +11,7 @@ import CoreData
 import EventKit
 import WidgetKit
 import StoreKit
+import SwiftDate
 
 class ScheduleViewModel: ObservableObject {
     
@@ -20,6 +21,7 @@ class ScheduleViewModel: ObservableObject {
     let remindersGateway: RemindersGatewayProtocol
     
     @AppStorage("totalBlockCount") var totalBlockCount = 0
+    @AppStorage("dayStart") var dayStartValue = 0
     
     @Published var currentHour = Calendar.current.component(.hour, from: Date())
     @Published var currentDate = Calendar.current.startOfDay(for: Date())
@@ -76,13 +78,17 @@ class ScheduleViewModel: ObservableObject {
         remindersGateway.setReminder(for: hourBlock)
         analyticsGateway.log(hourBlock: hourBlock)
         
-        todaysHourBlocks[hourBlock.hour] = HourBlockViewModel(for: hourBlock)
+        withAnimation { todaysHourBlocks[hourBlock.hour] = HourBlockViewModel(for: hourBlock) }
         
+        handleBlockCountEvents()
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+    
+    private func handleBlockCountEvents() {
         totalBlockCount = totalBlockCount + 1
         if totalBlockCount == 1 { withAnimation { currentTip = .blockOptions } }
+        if totalBlockCount == 5 { withAnimation { currentTip = .headerSwipe } }
         if totalBlockCount == 10 { SKStoreReviewController.requestReview() }
-        
-        WidgetCenter.shared.reloadAllTimelines()
     }
     
     func clearBlock(_ hourBlock: HourBlock) {
@@ -116,6 +122,31 @@ class ScheduleViewModel: ObservableObject {
     
     func dismissDatePickerView() {
         isDatePickerViewPresented = false
+    }
+    
+    func advanceDate() {
+        HapticsGateway.shared.triggerLightImpact()
+        
+        withAnimation {
+            currentDate = currentDate + 1.days
+            loadHourBlocks()
+        }
+    }
+    
+    func regressDate() {
+        HapticsGateway.shared.triggerLightImpact()
+        
+        withAnimation {
+            currentDate = currentDate - 1.days
+            loadHourBlocks()
+        }
+    }
+    
+    func isCurrentDayToday() -> Bool {
+        let startOfToday = Calendar.current.startOfDay(for: Date())
+        let startOfCurrentDate = Calendar.current.startOfDay(for: currentDate)
+        
+        return startOfCurrentDate == startOfToday
     }
     
     func updateCurrentHour() {

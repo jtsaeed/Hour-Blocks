@@ -34,7 +34,10 @@ class HourBlockTests: XCTestCase {
             dataGateway.save(subBlock: subBlock)
         }
         
-        viewModel = HourBlockViewModel(for: hourBlock, and: subBlocks, dataGateway: dataGateway)
+        viewModel = HourBlockViewModel(for: hourBlock,
+                                       and: subBlocks,
+                                       dataGateway: dataGateway,
+                                       remindersGateway: MockRemindersGateway())
     }
     
     override func tearDownWithError() throws {

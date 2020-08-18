@@ -13,6 +13,7 @@ protocol RemindersGatewayProtocol {
     
     func setReminder(for hourBlock: HourBlock)
     func removeReminder(for hourBlock: HourBlock)
+    func editReminder(for hourBlock: HourBlock)
 }
 
 struct RemindersGateway: RemindersGatewayProtocol {
@@ -35,6 +36,11 @@ struct RemindersGateway: RemindersGatewayProtocol {
     func removeReminder(for hourBlock: HourBlock) {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [hourBlock.id])
     }
+
+    func editReminder(for hourBlock: HourBlock) {
+        removeReminder(for: hourBlock)
+        setReminder(for: hourBlock)
+    }
     
     private func hasPermissions(completion: @escaping (_ result: Bool) -> ()) {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
@@ -52,8 +58,8 @@ struct RemindersGateway: RemindersGatewayProtocol {
     
     private func createNotificationContent(from hourBlock: HourBlock) -> UNMutableNotificationContent {
         let content = UNMutableNotificationContent()
-        content.title = "Upcoming Hour Block"
-        content.body = "You have \(hourBlock.title!.smartCapitalization()) coming up at \(hourBlock.hour.get12hTime().lowercased())"
+        content.title = hourBlock.title!.smartCapitalization()
+        content.body = "Coming up at \(hourBlock.hour.get12hTime().lowercased())"
         content.sound = UNNotificationSound.init(named: UNNotificationSoundName("notification.aif"))
         
         return content

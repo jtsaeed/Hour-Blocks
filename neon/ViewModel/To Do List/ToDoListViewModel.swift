@@ -43,8 +43,10 @@ class ToDoListViewModel: ObservableObject {
         dataGateway.save(toDoItem: toDoItem)
         analyticsGateway.logToDoItem()
         
-        toDoItems.append(ToDoItemViewModel(for: toDoItem))
-        toDoItems.sort()
+        withAnimation {
+            toDoItems.append(ToDoItemViewModel(for: toDoItem))
+            toDoItems.sort()
+        }
         
         totalToDoCount = totalToDoCount + 1
         if totalToDoCount == 2 { withAnimation { currentTip = .blockOptions } }
