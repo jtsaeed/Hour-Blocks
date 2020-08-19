@@ -10,7 +10,7 @@ import SwiftUI
 
 struct IconPicker: View {
     
-    @Binding var selection: SelectableIcon?
+    @Binding var selection: SelectableIcon
     
     let columns = [
         GridItem(.flexible()),
@@ -69,6 +69,6 @@ private struct SelectableIconView: View {
 
 struct IconPicker_Previews: PreviewProvider {
     static var previews: some View {
-        IconPicker(selection: .constant(nil))
+        IconPicker(selection: .constant(.blocks))
     }
 }

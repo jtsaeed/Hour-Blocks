@@ -37,7 +37,9 @@ struct Provider: TimelineProvider {
     public func getTimeline(in context: Context, completion: @escaping (Timeline<HourBlockEntry>) -> Void) {
         var entries: [HourBlockEntry] = []
         
-        let hourBlocks = WidgetDataGateway.shared.getHourBlocks(for: Date()).sorted { $0.hour < $1.hour }
+        let hourBlocks = WidgetDataGateway.shared.getHourBlocks(for: Date())
+            .filter { $0.hour >= Calendar.current.component(.hour, from: Date()) }
+            .sorted { $0.hour < $1.hour }
         
         if let firstBlock = hourBlocks.first {
             let currentDate = Date()
@@ -123,12 +125,14 @@ struct NeonWidget_Previews: PreviewProvider {
         Group {
             UpcomingScheduleView(hourBlock: HourBlock(day: Date(),
                                                       hour: 19,
-                                                      title: "Dinner with Bonnie"))
+                                                      title: "Dinner with Bonnie",
+                                                      icon: .food))
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
     
             UpcomingScheduleView(hourBlock: HourBlock(day: Date(),
                                                       hour: 19,
-                                                      title: "Dinner with Bonnie"), small: false)
+                                                      title: "Dinner with Bonnie",
+                                                      icon: .food), small: false)
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
         }
     }

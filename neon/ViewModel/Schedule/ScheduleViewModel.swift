@@ -22,6 +22,7 @@ class ScheduleViewModel: ObservableObject {
     
     @AppStorage("totalBlockCount") var totalBlockCount = 0
     @AppStorage("dayStart") var dayStartValue = 0
+    @AppStorage("reminders") var remindersValue: Int = 0
     
     @Published var currentHour = Calendar.current.component(.hour, from: Date())
     @Published var currentDate = Calendar.current.startOfDay(for: Date())
@@ -53,7 +54,8 @@ class ScheduleViewModel: ObservableObject {
         var hourBlockViewModels = (0 ..< 24).map { hour in
             HourBlockViewModel(for: HourBlock(day: currentDate,
                                               hour: hour,
-                                              title: nil))
+                                              title: nil,
+                                              icon: .blocks))
         }
         
         for hourBlock in dataGateway.getHourBlocks(for: currentDate) {
@@ -75,8 +77,8 @@ class ScheduleViewModel: ObservableObject {
         HapticsGateway.shared.triggerAddBlockHaptic()
         
         dataGateway.save(hourBlock: hourBlock)
-        remindersGateway.setReminder(for: hourBlock)
         analyticsGateway.log(hourBlock: hourBlock)
+        if remindersValue == 0 { remindersGateway.setReminder(for: hourBlock) }
         
         withAnimation { todaysHourBlocks[hourBlock.hour] = HourBlockViewModel(for: hourBlock) }
         
@@ -100,7 +102,8 @@ class ScheduleViewModel: ObservableObject {
         
         todaysHourBlocks[hourBlock.hour] = HourBlockViewModel(for: HourBlock(day: hourBlock.day,
                                                                              hour: hourBlock.hour,
-                                                                             title: nil))
+                                                                             title: nil,
+                                                                             icon: .blocks))
         
         WidgetCenter.shared.reloadAllTimelines()
     }
@@ -160,5 +163,6 @@ class ScheduleViewModel: ObservableObject {
     
     func updateCurrentHour() {
         currentHour = Calendar.current.component(.hour, from: Date())
+        WidgetCenter.shared.reloadAllTimelines()
     }
 }

@@ -115,6 +115,8 @@
 		ABB477C024E42CEB004DC0E6 /* AddHourBlockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB477BF24E42CEB004DC0E6 /* AddHourBlockTests.swift */; };
 		ABB477C224E42DD8004DC0E6 /* ToDoListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB477C124E42DD8004DC0E6 /* ToDoListTests.swift */; };
 		ABB477C424E42FF3004DC0E6 /* ToDoItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB477C324E42FF3004DC0E6 /* ToDoItemTests.swift */; };
+		ABB5CA9D24ED4F860098D819 /* SelectableIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB372FE324E0884D008F6034 /* SelectableIcon.swift */; };
+		ABB5CA9E24ED4F860098D819 /* SelectableIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB372FE324E0884D008F6034 /* SelectableIcon.swift */; };
 		ABBA399324AD1782008A4A56 /* SuggestionsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBA399224AD1782008A4A56 /* SuggestionsGateway.swift */; };
 		ABBA399524AD5C3B008A4A56 /* ScheduleDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBA399424AD5C3B008A4A56 /* ScheduleDatePicker.swift */; };
 		ABC1D07F24D9DCA4001F8B6B /* RemindersGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC1D07E24D9DCA4001F8B6B /* RemindersGateway.swift */; };
@@ -1149,6 +1151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABB5CA9E24ED4F860098D819 /* SelectableIcon.swift in Sources */,
 				AB31076424E2C24900909EC9 /* IntentHandler.swift in Sources */,
 				AB31076F24E2C55E00909EC9 /* SiriDataGateway.swift in Sources */,
 				AB31077124E2C59400909EC9 /* ToDoItem.swift in Sources */,
@@ -1163,6 +1166,7 @@
 			files = (
 				AB31077224E2CCAD00909EC9 /* DomainsGateway.swift in Sources */,
 				AB33B26B24BF63A80057662F /* HourBlock.swift in Sources */,
+				ABB5CA9D24ED4F860098D819 /* SelectableIcon.swift in Sources */,
 				AB10A95324E05CC500FCB466 /* WidgetDataGateway.swift in Sources */,
 				AB31077324E2CCD200909EC9 /* BlockDomain.swift in Sources */,
 				AB33B25D24BF5EDD0057662F /* NeonWidget.swift in Sources */,
@@ -1327,7 +1331,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.60;
+				CURRENT_PROJECT_VERSION = 0.61;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1354,7 +1358,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.60;
+				CURRENT_PROJECT_VERSION = 0.61;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1467,7 +1471,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeonSiri/NeonSiri.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.60;
+				CURRENT_PROJECT_VERSION = 0.61;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = NeonSiri/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1493,7 +1497,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeonSiri/NeonSiri.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.60;
+				CURRENT_PROJECT_VERSION = 0.61;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = NeonSiri/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1521,7 +1525,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeonWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.60;
+				CURRENT_PROJECT_VERSION = 0.61;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = NeonWidget/Info.plist;
@@ -1550,7 +1554,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeonWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.60;
+				CURRENT_PROJECT_VERSION = 0.61;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = NeonWidget/Info.plist;

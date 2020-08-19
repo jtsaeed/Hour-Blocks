@@ -17,20 +17,22 @@ struct HourBlock: Identifiable {
     let day: Date
     let hour: Int
     
-    let iconOverride: String?
+    let icon: SelectableIcon
     
-    init(day: Date, hour: Int, title: String?, iconOverride: String?) {
+    init(day: Date, hour: Int, title: String?, icon: SelectableIcon) {
         self.id = UUID().uuidString
         
         self.title = title
         self.day = Calendar.current.startOfDay(for: day)
         self.hour = hour
         
-        self.iconOverride = iconOverride
+        self.icon = icon
     }
     
-    init(day: Date, hour: Int, title: String?) {
-        self.init(day: day, hour: hour, title: title, iconOverride: nil)
+    init(day: Date, hour: Int, title: String) {
+        let icon = DomainsGateway.shared.determineDomain(for: title)?.icon ?? .blocks
+        
+        self.init(day: day, hour: hour, title: title, icon: icon)
     }
     
     init?(fromEntity entity: HourBlockEntity) {
@@ -43,7 +45,12 @@ struct HourBlock: Identifiable {
         self.title = entityTitle
         self.day = entityDay
         self.hour = Int(entity.hour)
-        self.iconOverride = entity.iconOverride
+        
+        if let entityIconName = entity.iconOverride {
+            self.icon = SelectableIcon(rawValue: entityIconName) ?? .blocks
+        } else {
+            self.icon = .blocks
+        }
     }
     
     @discardableResult
@@ -55,7 +62,7 @@ struct HourBlock: Identifiable {
         entity.title = title
         entity.day = day
         entity.hour = Int64(hour)
-        entity.iconOverride = iconOverride
+        entity.iconOverride = icon.rawValue
         
         return entity
     }

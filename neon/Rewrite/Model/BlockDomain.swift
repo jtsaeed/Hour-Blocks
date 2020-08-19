@@ -56,60 +56,60 @@ enum BlockDomain: String, Domain, CaseIterable {
     case baseball, basketball, cricket, hockey, rugby, football, tennis, volleyball
     case winter
     
-    var iconName: String {
+    var icon: SelectableIcon {
         switch self {
-        case .wake: return "alarm_clock"
-        case .read, .book, .quran: return "menu_book"
-        case .birthday: return "cake"
-        case .code: return "code"
-        case .commute: return "commute"
-        case .home: return "home"
-        case .shopping: return "shopping_cart"
-        case .store: return "store"
-        case .movie: return "theaters"
-        case .work: return "work"
-        case .call: return "call"
-        case .email: return "email"
-        case .vote: return "how_to_vote"
-        case .write, .draw: return "create"
-        case .swim: return "pool"
-        case .tv: return "tv"
-        case .game: return "sports_esports"
-        case .music, .guitar, .piano: return "music_note"
-        case .paint: return "brush"
-        case .design: return "palette"
-        case .walk: return "nature_people"
-        case .morning: return "wb_sunny"
-        case .navigate: return "location_on"
-        case .cycle: return "directions_bike"
-        case .drive: return "directions_car"
-        case .run: return "directions_run"
-        case .bus: return "directions_bus"
-        case .train: return "directions_subway"
-        case .flight: return "flight"
-        case .love: return "favorite"
-        case .relax: return "weekend"
-        case .sleep, .nap: return "hotel"
-        case .party: return "local_bar"
-        case .coffee: return "local_cafe"
-        case .laundry: return "local_laundry"
-        case .meditate, .yoga: return "self_improvement"
-        case .eat, .cook, .breakfast, .lunch, .dinner: return "restaurant"
-        case .pets: return "pets"
-        case .exercise, .gym: return "fitness_center"
-        case .golf: return "golf_course"
-        case .competition: return "emoji_events"
-        case .meeting: return "group"
-        case .school, .lecture, .study, .homework, .exam: return "school"
-        case .baseball: return "sports_baseball"
-        case .basketball: return "sports_basketball"
-        case .cricket: return "sports_cricket"
-        case .hockey: return "sports_hockey"
-        case .rugby: return "sports_rugby"
-        case .football: return "sports_soccer"
-        case .tennis: return "sports_tennis"
-        case .volleyball: return "sports_volleyball"
-        case .winter: return "ac_unit"
+        case .wake: return .clock
+        case .read, .book, .quran: return .book
+        case .birthday: return .cake
+        case .code: return .code
+        case .commute: return .transport
+        case .home: return .house
+        case .shopping: return .shopping
+        case .store: return .shopping
+        case .movie: return .movie
+        case .work: return .work
+        case .call: return .phone
+        case .email: return .mail
+        case .vote: return .vote
+        case .write, .draw: return .pencil
+        case .swim: return .swim
+        case .tv: return .tv
+        case .game: return .gamepad
+        case .music, .guitar, .piano: return .music
+        case .paint: return .brush
+        case .design: return .palette
+        case .walk: return .nature
+        case .morning: return .sun
+        case .navigate: return .location
+        case .cycle: return .bike
+        case .drive: return .car
+        case .run: return .run
+        case .bus: return .bus
+        case .train: return .train
+        case .flight: return .plane
+        case .love: return .heart
+        case .relax: return .couch
+        case .sleep, .nap: return .bed
+        case .party: return .drink
+        case .coffee: return .coffee
+        case .laundry: return .laundry
+        case .meditate, .yoga: return .meditate
+        case .eat, .cook, .breakfast, .lunch, .dinner: return .food
+        case .pets: return .paw
+        case .exercise, .gym: return .gym
+        case .golf: return .golf
+        case .competition: return .trophy
+        case .meeting: return .people
+        case .school, .lecture, .study, .homework, .exam: return .school
+        case .baseball: return .baseball
+        case .basketball: return .basketball
+        case .cricket: return .cricket
+        case .hockey: return .hockey
+        case .rugby: return .rugby
+        case .football: return .football
+        case .tennis: return .tennis
+        case .volleyball: return .volleyball
+        case .winter: return .winter
         }
     }
     
@@ -189,6 +189,6 @@ enum BlockDomain: String, Domain, CaseIterable {
 
 protocol Domain: Hashable {
     
-    var iconName: String { get }
+    var icon: SelectableIcon { get }
     var suggestionTitle: String { get }
 }

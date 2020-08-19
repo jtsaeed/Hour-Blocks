@@ -19,7 +19,7 @@ struct CompactHourBlockView: View {
                     CardLabels(title: viewModel.title.smartCapitalization(),
                                subtitle: viewModel.getFormattedTime())
                     Spacer()
-                    HourBlockIcon(name: viewModel.selectedIcon == nil ? viewModel.getIconName() : viewModel.selectedIcon!.imageName)
+                    HourBlockIcon(name: viewModel.icon.imageName)
                 }
             }
         }.padding(.horizontal, 24)

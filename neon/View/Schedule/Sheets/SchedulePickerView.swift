@@ -72,7 +72,7 @@ private struct PickerEmptyBlockView: View {
         let newHourBlock = HourBlock(day: viewModel.hourBlock.day,
                                      hour: viewModel.hourBlock.hour,
                                      title: hourBlock.title,
-                                     iconOverride: hourBlock.iconOverride)
+                                     icon: hourBlock.icon)
         
         onNewBlockAdded(newHourBlock)
     }
@@ -82,6 +82,6 @@ struct SchedulePickerView_Previews: PreviewProvider {
     static var previews: some View {
         SchedulePickerView(isPresented: .constant(true),
                            title: "Picker",
-                           hourBlock: HourBlock(day: Date(), hour: 17, title: "Dinner"))
+                           hourBlock: HourBlock(day: Date(), hour: 17, title: "Dinner", icon: .food))
     }
 }

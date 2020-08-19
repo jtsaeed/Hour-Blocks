@@ -68,6 +68,7 @@ struct UpcomingScheduleView_Previews: PreviewProvider {
     static var previews: some View {
         UpcomingScheduleView(hourBlock: HourBlock(day: Date(),
                                                   hour: 19,
-                                                  title: "Dinner with Bonnie"))
+                                                  title: "Dinner with Bonnie",
+                                                  icon: .food))
     }
 }

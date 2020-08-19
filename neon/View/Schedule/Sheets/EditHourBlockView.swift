@@ -13,12 +13,12 @@ struct EditHourBlockView: View {
     @ObservedObject var viewModel: HourBlockViewModel
     
     @State var title: String
-    @State var icon: SelectableIcon?
+    @State var icon: SelectableIcon
     
     init(viewModel: HourBlockViewModel) {
         self.viewModel = viewModel
         self._title = State(initialValue: viewModel.title)
-        self._icon = State(initialValue: viewModel.selectedIcon)
+        self._icon = State(initialValue: viewModel.icon)
     }
     
     var body: some View {

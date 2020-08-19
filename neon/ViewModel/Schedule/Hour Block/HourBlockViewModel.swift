@@ -15,8 +15,10 @@ class HourBlockViewModel: Identifiable, ObservableObject {
     
     let hourBlock: HourBlock
     
+    @AppStorage("reminders") var remindersValue: Int = 0
+    
     @Published var title: String
-    @Published var selectedIcon: SelectableIcon?
+    @Published var icon: SelectableIcon
     @Published var subBlocks: [SubBlock]
     
     @Published var isSheetPresented = false
@@ -30,7 +32,7 @@ class HourBlockViewModel: Identifiable, ObservableObject {
         
         self.hourBlock = hourBlock
         self.title = hourBlock.title ?? "Empty"
-        if let iconOverride = hourBlock.iconOverride { self.selectedIcon = SelectableIcon(rawValue: iconOverride) }
+        self.icon = hourBlock.icon
         self.subBlocks = subBlocks
     }
     
@@ -49,11 +51,11 @@ class HourBlockViewModel: Identifiable, ObservableObject {
         dataGateway.edit(hourBlock: hourBlock, set: title, forKey: "title")
         
         if let icon = icon {
-            self.selectedIcon = icon
+            self.icon = icon
             dataGateway.edit(hourBlock: hourBlock, set: icon.rawValue, forKey: "iconOverride")
         }
         
-        remindersGateway.editReminder(for: hourBlock)
+        if remindersValue == 0 { remindersGateway.editReminder(for: hourBlock) }
         dismissEditBlockView()
         
         WidgetCenter.shared.reloadAllTimelines()
@@ -83,10 +85,6 @@ class HourBlockViewModel: Identifiable, ObservableObject {
         } else {
             return hourBlock.hour.get12hTime()
         }
-    }
-    
-    func getIconName() -> String {
-        return DomainsGateway.shared.determineDomain(for: title)?.iconName ?? "default"
     }
 }
 

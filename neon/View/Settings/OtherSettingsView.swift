@@ -23,7 +23,7 @@ struct OtherSettingsView: View {
                 VStack(spacing: 24) {
                     OtherSettingsCard(value: $remindersValue,
                                       title: "Reminders",
-                                      description: "Enable reminders for upcoming Hour Blocks",
+                                      description: "Enable reminders for upcoming Hour Blocks (changes only applied to new Hour Blocks)",
                                       options: ["On", "Off"])
                     OtherSettingsCard(value: $dayStartValue,
                                       title: "Day Start",
@@ -70,6 +70,7 @@ private struct OtherSettingsCard: View {
                     Text(description)
                         .font(.system(size: 17, weight: .regular, design: .default))
                         .opacity(0.6)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
             
                 Picker("", selection: $value) {
@@ -96,6 +97,7 @@ private struct IconChooserCard: View {
                     Text("Which Hour Blocks app icon would you like to be shown on your home screen?")
                         .font(.system(size: 17, weight: .regular, design: .default))
                         .opacity(0.6)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 
                 HStack(alignment: .center) {
