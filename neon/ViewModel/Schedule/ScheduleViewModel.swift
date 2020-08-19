@@ -125,7 +125,7 @@ class ScheduleViewModel: ObservableObject {
     }
     
     func advanceDate() {
-        HapticsGateway.shared.triggerLightImpact()
+        HapticsGateway.shared.triggerSoftImpact()
         
         withAnimation {
             currentDate = currentDate + 1.days
@@ -134,7 +134,7 @@ class ScheduleViewModel: ObservableObject {
     }
     
     func regressDate() {
-        HapticsGateway.shared.triggerLightImpact()
+        HapticsGateway.shared.triggerSoftImpact()
         
         withAnimation {
             currentDate = currentDate - 1.days
@@ -150,7 +150,12 @@ class ScheduleViewModel: ObservableObject {
     }
     
     func returnToToday() {
-        withAnimation { currentDate = Calendar.current.startOfDay(for: Date()) }
+        HapticsGateway.shared.triggerLightImpact()
+        
+        withAnimation {
+            currentDate = Calendar.current.startOfDay(for: Date())
+            loadHourBlocks()
+        }
     }
     
     func updateCurrentHour() {

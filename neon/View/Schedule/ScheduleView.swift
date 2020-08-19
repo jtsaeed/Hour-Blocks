@@ -21,9 +21,12 @@ struct ScheduleView: View {
             HeaderView(title: "Schedule", subtitle: viewModel.currentDate.getFormattedDate()) {
                 HStack(spacing: 16) {
                     if !viewModel.isCurrentDayToday() {
-                        IconButton(iconName: "arrow.uturn.left", action: viewModel.returnToToday)
+                        IconButton(iconName: "arrow.uturn.left",
+                                   iconWeight: .medium,
+                                   action: viewModel.returnToToday)
                     }
-                    IconButton(iconName: "calendar", action: viewModel.presentDatePickerView)
+                    IconButton(iconName: "calendar",
+                               action: viewModel.presentDatePickerView)
                 }
             }
             .gesture(DragGesture(minimumDistance: 128, coordinateSpace: .local).onEnded { drag in
