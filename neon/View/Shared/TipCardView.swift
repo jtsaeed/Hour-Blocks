@@ -18,7 +18,7 @@ struct TipCardView: View {
             HStack {
                 Text(tip.description)
                     .font(.system(size: 20, weight: .semibold, design: .rounded))
-                    .padding(.trailing, 12)
+                    .padding(.trailing, 16)
                 Spacer()
                 IconButton(iconName: "checkmark",
                            iconWeight: .semibold,
@@ -39,9 +39,9 @@ enum Tip: CustomStringConvertible {
     var description: String {
         switch self {
         case .blockOptions: return "Hold down a block for more options"
-        case .headerSwipe: return "Swipe across the header to quickly change days"
+        case .headerSwipe: return "Swipe across the header to change days"
             
-        case .toDoSiri: return "Ask Siri to add an item to your To Do List in Hour Blocks"
+        case .toDoSiri: return "Ask Siri to add an item in Hour Blocks"
         }
     }
 }

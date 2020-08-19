@@ -149,6 +149,10 @@ class ScheduleViewModel: ObservableObject {
         return startOfCurrentDate == startOfToday
     }
     
+    func returnToToday() {
+        withAnimation { currentDate = Calendar.current.startOfDay(for: Date()) }
+    }
+    
     func updateCurrentHour() {
         currentHour = Calendar.current.component(.hour, from: Date())
     }

@@ -44,7 +44,8 @@ struct CardLabels: View {
                 .foregroundColor(titleColor)
                 .opacity(titleOpacity)
                 .multilineTextAlignment(textAlignment)
-        }
+                .fixedSize(horizontal: false, vertical: true)
+        }.padding(.trailing, alignment == .leading ? 16 : 0)
     }
 }
 

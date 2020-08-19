@@ -35,7 +35,7 @@ struct ScheduleDatePicker: View {
                             viewModel.loadHourBlocks()
                         }
                 }.padding(.horizontal, 24)
-                .padding(.top, 24)
+                .padding(.top, 20)
                 
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 24) {

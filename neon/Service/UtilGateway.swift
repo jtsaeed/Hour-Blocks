@@ -30,15 +30,17 @@ struct UtilGateway {
     }
     
     func dayStartHour() -> Int {
-        let dayStartValue = UserDefaults.standard.integer(forKey: "dayStart")
-        
-        switch dayStartValue {
-        case 0: return 12
-        case 1: return 5
-        case 2: return 6
-        case 3: return 7
-        case 4: return 8
-        default: return 6
+        if let dayStartValue = UserDefaults.standard.value(forKey: "dayStart") as? Int {
+            switch dayStartValue {
+            case 0: return 0
+            case 1: return 5
+            case 2: return 6
+            case 3: return 7
+            case 4: return 8
+            default: return 6
+            }
+        } else {
+            return 6
         }
     }
 }

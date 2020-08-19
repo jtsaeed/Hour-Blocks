@@ -21,7 +21,7 @@ struct SchedulePickerView: View {
         NavigationView {
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 24) {
-                    ForEach(viewModel.todaysHourBlocks) { hourBlockViewModel in
+                    ForEach(viewModel.todaysHourBlocks.filter { $0.hourBlock.hour >= UtilGateway.shared.dayStartHour() }) { hourBlockViewModel in
                         if hourBlockViewModel.title != "Empty" {
                             CompactHourBlockView(viewModel: hourBlockViewModel)
                         } else {

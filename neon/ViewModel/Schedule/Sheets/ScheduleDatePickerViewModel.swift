@@ -22,14 +22,14 @@ class ScheduleDatePickerViewModel: ObservableObject {
         self.dataGateway = dataGateway
         self.calendarGateway = calendarGateway
         self.selectedDate = initialSelectedDate
-        
-        loadHourBlocks()
     }
     
     convenience init(initialSelectedDate: Date) {
         self.init(dataGateway: DataGateway(),
                   calendarGateway: CalendarGateway(),
                   initialSelectedDate: initialSelectedDate)
+        
+        loadHourBlocks()
     }
     
     func loadHourBlocks() {

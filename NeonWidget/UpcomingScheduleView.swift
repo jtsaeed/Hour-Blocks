@@ -10,14 +10,21 @@ import SwiftUI
 
 struct UpcomingScheduleView: View {
     
+    @Environment(\.colorScheme) var colorScheme
+
     let hourBlock: HourBlock?
     var small: Bool = true
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            LinearGradient(gradient: Gradient(colors: [Color("GradientStart"), Color("GradientEnd")]),
-                                        startPoint: .top,
-                                        endPoint: .bottom)
+            if colorScheme == .dark {
+                Color(.black)
+            } else {
+                LinearGradient(gradient: Gradient(colors: [Color("GradientStart"), Color("GradientEnd")]),
+                                            startPoint: .top,
+                                            endPoint: .bottom)
+            }
+            
             Group {
                 if let hourBlock = hourBlock {
                     VStack(alignment: .leading, spacing: 4) {
