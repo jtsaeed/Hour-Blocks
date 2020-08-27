@@ -13,20 +13,24 @@ struct HourBlock: Identifiable {
     
     let id: String
     
-    let title: String?
+    private(set) var title: String?
     let day: Date
     let hour: Int
     
-    let icon: SelectableIcon
+    private(set) var icon: SelectableIcon
     
-    init(day: Date, hour: Int, title: String?, icon: SelectableIcon) {
-        self.id = UUID().uuidString
+    init(id: String, day: Date, hour: Int, title: String?, icon: SelectableIcon) {
+        self.id = id
         
         self.title = title
         self.day = Calendar.current.startOfDay(for: day)
         self.hour = hour
         
         self.icon = icon
+    }
+    
+    init(day: Date, hour: Int, title: String?, icon: SelectableIcon) {
+        self.init(id: UUID().uuidString, day: day, hour: hour, title: title, icon: icon)
     }
     
     init(day: Date, hour: Int, title: String) {
@@ -65,5 +69,13 @@ struct HourBlock: Identifiable {
         entity.iconOverride = icon.rawValue
         
         return entity
+    }
+    
+    mutating func changeTitle(to title: String) {
+        self.title = title
+    }
+    
+    mutating func changeIcon(to icon: SelectableIcon) {
+        self.icon = icon
     }
 }

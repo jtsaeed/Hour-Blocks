@@ -10,18 +10,27 @@ import SwiftUI
 
 struct SchedulePickerView: View {
     
-    @StateObject var viewModel = ScheduleViewModel()
+    @ObservedObject var viewModel: ScheduleViewModel
     
     @Binding var isPresented: Bool
     
     let title: String
     let hourBlock: HourBlock
+    let subBlocks: [SubBlock]?
+    
+    init(isPresented: Binding<Bool>, title: String, hourBlock: HourBlock, subBlocks: [SubBlock]? = nil) {
+        self.viewModel = ScheduleViewModel(currentDate: hourBlock.day)
+        self._isPresented = isPresented
+        self.title = title
+        self.hourBlock = hourBlock
+        self.subBlocks = subBlocks
+    }
     
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 24) {
-                    ForEach(viewModel.todaysHourBlocks.filter { $0.hourBlock.hour >= UtilGateway.shared.dayStartHour() }) { hourBlockViewModel in
+                    ForEach(viewModel.todaysHourBlocks.filter { $0.hourBlock.hour >= (viewModel.isCurrentDayToday() ?  viewModel.currentHour : UtilGateway.shared.dayStartHour()) }) { hourBlockViewModel in
                         if hourBlockViewModel.title != "Empty" {
                             CompactHourBlockView(viewModel: hourBlockViewModel)
                         } else {
@@ -38,7 +47,12 @@ struct SchedulePickerView: View {
     }
     
     func add(hourBlock: HourBlock) {
-        viewModel.addBlock(hourBlock)
+        if let subBlocks = subBlocks {
+            let newSubBlocks = subBlocks.map { SubBlock(of: hourBlock, title: $0.title) }
+            viewModel.addBlock(hourBlock, newSubBlocks)
+        } else {
+            viewModel.addBlock(hourBlock)
+        }
     }
     
     func dismiss() {
@@ -82,6 +96,6 @@ struct SchedulePickerView_Previews: PreviewProvider {
     static var previews: some View {
         SchedulePickerView(isPresented: .constant(true),
                            title: "Picker",
-                           hourBlock: HourBlock(day: Date(), hour: 17, title: "Dinner", icon: .food))
+                           hourBlock: HourBlock(day: Date(), hour: 17, title: "Dinner", icon: .food), subBlocks: nil)
     }
 }

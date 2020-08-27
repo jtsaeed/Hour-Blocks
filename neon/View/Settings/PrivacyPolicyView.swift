@@ -24,7 +24,8 @@ struct PrivacyPolicyView: View {
                 Spacer()
                 
                 ActionButton(title: "View full privacy policy", action: viewFullPrivacyPolicy)
-            }.padding(40)
+            }.padding(.vertical, 24)
+            .padding(.horizontal, 32)
             .navigationBarTitle("Privacy Policy")
             .navigationBarItems(trailing: Button("Done", action: dismiss))
         }.accentColor(Color("AccentColor"))

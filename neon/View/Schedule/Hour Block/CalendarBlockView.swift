@@ -19,7 +19,7 @@ struct CalendarBlockView: View {
                 CardLabels(title: event.title,
                            subtitle: getSubtitle())
                 Spacer()
-                HourBlockIcon(name: "calendar_item")
+                HourBlockIcon(name: "event")
             }
         }.padding(.horizontal, 24)
     }

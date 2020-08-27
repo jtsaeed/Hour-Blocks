@@ -20,6 +20,7 @@ struct SettingsView: View {
             
             ScrollView {
                 VStack(spacing: 24) {
+                    /*
                     SettingsCardView(title: "Feedback",
                                      subtitle: "Provide valuable",
                                      iconName: "text.bubble.fill",
@@ -27,6 +28,7 @@ struct SettingsView: View {
                     .sheet(isPresented: $viewModel.isFeedbackViewPresented, content: {
                         FeedbackView(isPresented: $viewModel.isFeedbackViewPresented)
                     })
+ */
                     
                     SettingsCardView(title: "Calendars",
                                      subtitle: "Take control of",
@@ -45,8 +47,8 @@ struct SettingsView: View {
                     }
                     
                     SettingsCardView(title: "Twitter",
-                                     subtitle: "Follow me on",
-                                     iconName: "person.fill",
+                                     subtitle: "Provide feedback on",
+                                     iconName: "text.bubble.fill",
                                      action: viewModel.openTwitter)
                     
                     SettingsCardView(title: "Privacy Policy",

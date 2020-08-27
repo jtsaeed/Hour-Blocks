@@ -42,11 +42,15 @@ struct HourBlockView: View {
             Button(action: viewModel.presentManageSubBlocksView) {
                 Label("Sub Blocks", systemImage: "rectangle.grid.1x2")
             }
+            Divider()
+            Button(action: viewModel.presentRescheduleBlockView) {
+                Label("Reschedule", systemImage: "calendar.badge.clock")
+            }
             Button(action: viewModel.presentDuplicateBlockView) {
                 Label("Duplicate", systemImage: "plus.square.on.square")
             }
             Divider()
-            Button(action: onBlockCleared) {
+            Button(action: viewModel.presentClearBlockWarning) {
                 Label("Clear", systemImage: "trash")
             }
         }))
@@ -62,11 +66,24 @@ struct HourBlockView: View {
                                     hourBlock: viewModel.hourBlock)
             }
             
+            if viewModel.selectedSheet == .reschedule {
+                RescheduleBlockView(isPresented: $viewModel.isSheetPresented,
+                                    hourBlock: viewModel.hourBlock)
+            }
+            
             if viewModel.selectedSheet == .duplicate {
                 SchedulePickerView(isPresented: $viewModel.isSheetPresented,
                                    title: "Duplicate Hour Block",
-                                   hourBlock: viewModel.hourBlock)
+                                   hourBlock: viewModel.hourBlock,
+                                   subBlocks: viewModel.subBlocks)
             }
+        }
+        
+        .alert(isPresented: $viewModel.isClearBlockWarningPresented) {
+            Alert(title: Text("Clear Hour Block"),
+                  message: Text("Are you sure you would like to clear this Hour Block? This will also clear any Sub Blocks within the Hour Block"),
+                  primaryButton: .destructive(Text("Clear"), action: onBlockCleared),
+                  secondaryButton: .cancel())
         }
     }
 }

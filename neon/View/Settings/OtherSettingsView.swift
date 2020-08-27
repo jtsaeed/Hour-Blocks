@@ -33,12 +33,6 @@ struct OtherSettingsView: View {
                                       title: "Time Format",
                                       description: "Change the time format used throughout Hour Blocks",
                                       options: ["System", "12h", "24h"])
-                    /*
-                    OtherSettingsCard(value: $autoCapsValue,
-                                      title: "Autocapitalization",
-                                      description: "Would you like the titles of blocks to be automatically capitalized?",
-                                      options: ["Yes", "No"])
-                     */
                     IconChooserCard()
                 }.padding(.top, 8)
                 .padding(.bottom, 24)
@@ -62,7 +56,7 @@ private struct OtherSettingsCard: View {
     let options: [String]
     
     var body: some View {
-        Card {
+        Card(padding: EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20)) {
             VStack(alignment: .leading, spacing: 24) {
                 VStack(alignment: .leading, spacing: 8) {
                     Text(title)

@@ -39,7 +39,7 @@ struct TestSidebarView: View {
                     }
                 }
             }.listStyle(SidebarListStyle())
-            .navigationTitle("Hour Blocks")
+            .navigationTitle("Menu")
             
             ScheduleView()
         }.accentColor(Color("AccentColor"))

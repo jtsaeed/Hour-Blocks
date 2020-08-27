@@ -24,7 +24,7 @@ enum SelectableIcon: String, CorrespondableImage, Hashable, CaseIterable {
         case .bus: return "directions_bus"
         case .cake: return "cake"
         case .car: return "directions_car"
-        case .clock: return "alarm_clock"
+        case .clock: return "alarm"
         case .code: return "code"
         case .coffee: return "local_cafe"
         case .couch: return "weekend"

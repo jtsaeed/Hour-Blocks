@@ -46,6 +46,8 @@
 		AB22515124DEF30600DEFD92 /* UtilGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB22515024DEF30600DEFD92 /* UtilGateway.swift */; };
 		AB256C2A24EC919B0088997E /* AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB8C6FD124E70D8A0074AD08 /* AppIntentVocabulary.plist */; };
 		AB256C2B24EC92360088997E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2338BEC5220A7841004F288F /* Assets.xcassets */; };
+		AB2B63F024F5CE2B00A6EAEF /* RescheduleBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B63EF24F5CE2B00A6EAEF /* RescheduleBlockView.swift */; };
+		AB30376824F53959002C8310 /* ToDoGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB30376724F53959002C8310 /* ToDoGrid.swift */; };
 		AB31076424E2C24900909EC9 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB31076324E2C24900909EC9 /* IntentHandler.swift */; };
 		AB31076824E2C24900909EC9 /* NeonSiri.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AB31076124E2C24900909EC9 /* NeonSiri.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AB31076D24E2C55400909EC9 /* neon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEC2220A7840004F288F /* neon.xcdatamodeld */; };
@@ -240,6 +242,8 @@
 		AB22514A24DEE96900DEFD92 /* icon_dark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_dark@3x.png"; sourceTree = "<group>"; };
 		AB22514B24DEE96900DEFD92 /* icon_blueprint@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_blueprint@3x.png"; sourceTree = "<group>"; };
 		AB22515024DEF30600DEFD92 /* UtilGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilGateway.swift; sourceTree = "<group>"; };
+		AB2B63EF24F5CE2B00A6EAEF /* RescheduleBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RescheduleBlockView.swift; sourceTree = "<group>"; };
+		AB30376724F53959002C8310 /* ToDoGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoGrid.swift; sourceTree = "<group>"; };
 		AB31076124E2C24900909EC9 /* NeonSiri.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NeonSiri.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB31076324E2C24900909EC9 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		AB31076524E2C24900909EC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -490,6 +494,7 @@
 				ABBA399424AD5C3B008A4A56 /* ScheduleDatePicker.swift */,
 				AB5F9A2F24AE6E6E00C4C597 /* ManageSubBlocksView.swift */,
 				AB372FE524E09341008F6034 /* SchedulePickerView.swift */,
+				AB2B63EF24F5CE2B00A6EAEF /* RescheduleBlockView.swift */,
 			);
 			path = Sheets;
 			sourceTree = "<group>";
@@ -713,6 +718,7 @@
 			isa = PBXGroup;
 			children = (
 				AB0D3E8424D9B7D700CFF640 /* TestSidebarView.swift */,
+				AB30376724F53959002C8310 /* ToDoGrid.swift */,
 			);
 			path = Concepts;
 			sourceTree = "<group>";
@@ -1081,6 +1087,7 @@
 				2304FA1F235F2F28006DA688 /* DomainsGateway.swift in Sources */,
 				AB72E0D324ACEA47004DD577 /* IconButton.swift in Sources */,
 				2304FA14235F29ED006DA688 /* SceneDelegate.swift in Sources */,
+				AB30376824F53959002C8310 /* ToDoGrid.swift in Sources */,
 				AB849E1F24C877A700D27333 /* CalendarOptionsView.swift in Sources */,
 				AB6BED6724E41046000A00A5 /* MockRemindersGateway.swift in Sources */,
 				AB849E2324C8827400D27333 /* CalendarOptionsViewModel.swift in Sources */,
@@ -1105,6 +1112,7 @@
 				AB372FE624E09341008F6034 /* SchedulePickerView.swift in Sources */,
 				7A1AF6F823F440ED00425BB6 /* BlockDomain.swift in Sources */,
 				ABBA399524AD5C3B008A4A56 /* ScheduleDatePicker.swift in Sources */,
+				AB2B63F024F5CE2B00A6EAEF /* RescheduleBlockView.swift in Sources */,
 				AB849E1D24C86CA300D27333 /* SettingsCardView.swift in Sources */,
 				AB72E0B924ACE86E004DD577 /* ScheduleView.swift in Sources */,
 				AB0D3E8524D9B7D700CFF640 /* TestSidebarView.swift in Sources */,
@@ -1331,7 +1339,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.61;
+				CURRENT_PROJECT_VERSION = 0.71;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1358,7 +1366,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.61;
+				CURRENT_PROJECT_VERSION = 0.71;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1471,7 +1479,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeonSiri/NeonSiri.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.61;
+				CURRENT_PROJECT_VERSION = 0.71;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = NeonSiri/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1497,7 +1505,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeonSiri/NeonSiri.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.61;
+				CURRENT_PROJECT_VERSION = 0.71;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = NeonSiri/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1525,7 +1533,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeonWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.61;
+				CURRENT_PROJECT_VERSION = 0.71;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = NeonWidget/Info.plist;
@@ -1554,7 +1562,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeonWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.61;
+				CURRENT_PROJECT_VERSION = 0.71;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = NeonWidget/Info.plist;

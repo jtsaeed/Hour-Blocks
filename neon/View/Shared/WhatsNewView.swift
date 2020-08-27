@@ -19,7 +19,7 @@ struct WhatsNewView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
                     TextBlockView(title: "Redesigned Schedule 🖌",
-                                  content: "See your Sub Blocks directly in the schedule, preview your days with the new date picker, take a peek at blocks from earlier in the day + so much more!")
+                                  content: "See your Sub Blocks directly in the schedule, preview your days with the new date picker, reschedule blocks, along with so much more!")
                     TextBlockView(title: "Homescreen Widget 📱",
                                   content: "Get a snapshot of your upcoming schedule without even leaving your homescreen!")
                     TextBlockView(title: "Siri Support 🎤",
@@ -30,7 +30,8 @@ struct WhatsNewView: View {
             }.padding(.vertical, 32)
             
             ActionButton(title: "Let's go!", action: dismiss)
-        }.padding(40)
+        }.padding(.vertical, 24)
+        .padding(.horizontal, 32)
     }
     
     func dismiss() {

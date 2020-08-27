@@ -49,6 +49,18 @@ extension DataGateway {
         }
     }
     
+    func save(subBlocks: [SubBlock]) {
+        for subBlock in subBlocks {
+            subBlock.getEntity(context: managedObjectContext)
+        }
+        
+        do {
+            try managedObjectContext.save()
+        } catch {
+            print("error")
+        }
+    }
+    
     func save(toDoItem: ToDoItem) {
         toDoItem.getEntity(context: managedObjectContext)
         

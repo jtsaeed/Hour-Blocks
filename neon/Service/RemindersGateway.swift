@@ -11,19 +11,19 @@ import UserNotifications
 
 protocol RemindersGatewayProtocol {
     
-    func setReminder(for hourBlock: HourBlock)
+    func setReminder(for hourBlock: HourBlock, with title: String)
     func removeReminder(for hourBlock: HourBlock)
-    func editReminder(for hourBlock: HourBlock)
+    func editReminder(for hourBlock: HourBlock, with title: String)
 }
 
 struct RemindersGateway: RemindersGatewayProtocol {
     
-    func setReminder(for hourBlock: HourBlock) {
+    func setReminder(for hourBlock: HourBlock, with title: String) {
         hasPermissions { result in
             guard result == true else { return }
             guard UserDefaults.standard.integer(forKey: "reminders") == 0 else { return }
             
-            let content = self.createNotificationContent(from: hourBlock)
+            let content = self.createNotificationContent(from: hourBlock, with: title)
             let trigger = self.createNotificationTrigger(from: hourBlock)
             let request = UNNotificationRequest(identifier: hourBlock.id,
                                                 content: content,
@@ -37,9 +37,9 @@ struct RemindersGateway: RemindersGatewayProtocol {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [hourBlock.id])
     }
 
-    func editReminder(for hourBlock: HourBlock) {
+    func editReminder(for hourBlock: HourBlock, with title: String) {
         removeReminder(for: hourBlock)
-        setReminder(for: hourBlock)
+        setReminder(for: hourBlock, with: title)
     }
     
     private func hasPermissions(completion: @escaping (_ result: Bool) -> ()) {
@@ -48,17 +48,19 @@ struct RemindersGateway: RemindersGatewayProtocol {
                 completion(true)
             } else if settings.authorizationStatus == .notDetermined {
                 UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { result, error in
+                    if !result { UserDefaults.standard.set(1, forKey: "reminders") }
                     completion(result)
                 }
             } else {
+                UserDefaults.standard.set(1, forKey: "reminders")
                 completion(false)
             }
         }
     }
     
-    private func createNotificationContent(from hourBlock: HourBlock) -> UNMutableNotificationContent {
+    private func createNotificationContent(from hourBlock: HourBlock, with title: String) -> UNMutableNotificationContent {
         let content = UNMutableNotificationContent()
-        content.title = hourBlock.title!.smartCapitalization()
+        content.title = title.smartCapitalization()
         content.body = "Coming up at \(hourBlock.hour.get12hTime().lowercased())"
         content.sound = UNNotificationSound.init(named: UNNotificationSoundName("notification.aif"))
         

@@ -22,7 +22,8 @@ struct AcknowledgementsSheet: View {
                 TextBlockView(title: "Beta Testers 🐞",
                               content: "A big thank you to everyone who has beta tested and provided feedback for Hour Blocks!")
                 Spacer()
-            }.padding(40)
+            }.padding(.vertical, 24)
+            .padding(.horizontal, 32)
             .navigationBarTitle("Acknowledgements")
             .navigationBarItems(trailing: Button("Done", action: dismiss))
         }.accentColor(Color("AccentColor"))

@@ -41,12 +41,10 @@ struct ScheduleView: View {
                                    scheduleDate: $viewModel.currentDate,
                                    onDateChanged: viewModel.loadHourBlocks)
             }
-            
             ScheduleBlocksListView(viewModel: viewModel)
         }.onAppear(perform: viewModel.handleCalendarPermissions)
         .onReceive(refreshSchedulePublisher) { _ in viewModel.loadHourBlocks() }
         .onReceive(refreshHourPublisher) { _ in viewModel.updateCurrentHour() }
-        .navigationBarHidden(true)
     }
 }
 
@@ -62,11 +60,11 @@ private struct ScheduleBlocksListView: View {
                     NeonDivider().padding(.horizontal, 32)
                 }
                 
-                ForEach(viewModel.todaysCalendarBlocks.filter { $0.endDate.hour >= (viewModel.isCurrentDayToday() ? viewModel.currentHour : UtilGateway.shared.dayStartHour()) }, id: \.self) { event in
+                ForEach(viewModel.todaysCalendarBlocks.filter { $0.endDate.toLocalTime().hour >= (viewModel.isCurrentDayToday() ? viewModel.currentHour : UtilGateway.shared.dayStartHour()) }, id: \.self) { event in
                     CalendarBlockView(event: event)
                 }
                 
-                if (viewModel.todaysCalendarBlocks.filter { $0.endDate.hour >= (viewModel.isCurrentDayToday() ? viewModel.currentHour : UtilGateway.shared.dayStartHour()) }).count > 0 {
+                if (viewModel.todaysCalendarBlocks.filter { $0.endDate.toLocalTime().hour >= (viewModel.isCurrentDayToday() ? viewModel.currentHour : UtilGateway.shared.dayStartHour()) }).count > 0 {
                     NeonDivider().padding(.horizontal, 32)
                 }
                 

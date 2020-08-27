@@ -24,8 +24,8 @@ class ScheduleViewModel: ObservableObject {
     @AppStorage("dayStart") var dayStartValue = 0
     @AppStorage("reminders") var remindersValue: Int = 0
     
+    @Published var currentDate: Date
     @Published var currentHour = Calendar.current.component(.hour, from: Date())
-    @Published var currentDate = Calendar.current.startOfDay(for: Date())
     @Published var todaysHourBlocks = [HourBlockViewModel]()
     @Published var todaysCalendarBlocks = [EKEvent]()
     
@@ -34,20 +34,23 @@ class ScheduleViewModel: ObservableObject {
     @Published var isFilterEnabled = true
     @Published var isDatePickerViewPresented = false
     
-    init(dataGateway: DataGateway, calendarGateway: CalendarGatewayProtocol, analyticsGateway: AnalyticsGatewayProtocol, remindersGateway: RemindersGatewayProtocol) {
+    init(dataGateway: DataGateway, calendarGateway: CalendarGatewayProtocol, analyticsGateway: AnalyticsGatewayProtocol, remindersGateway: RemindersGatewayProtocol, currentDate: Date = Date()) {
         self.dataGateway = dataGateway
         self.calendarGateway = calendarGateway
         self.analyticsGateway = analyticsGateway
         self.remindersGateway = remindersGateway
         
+        self.currentDate = Calendar.current.startOfDay(for: currentDate)
+        
         loadHourBlocks()
     }
     
-    convenience init() {
+    convenience init(currentDate: Date = Date()) {
         self.init(dataGateway: DataGateway(),
                   calendarGateway: CalendarGateway(),
                   analyticsGateway: AnalyticsGateway(),
-                  remindersGateway: RemindersGateway())
+                  remindersGateway: RemindersGateway(),
+                  currentDate: currentDate)
     }
     
     func loadHourBlocks() {
@@ -73,12 +76,13 @@ class ScheduleViewModel: ObservableObject {
         }
     }
     
-    func addBlock(_ hourBlock: HourBlock) {
+    func addBlock(_ hourBlock: HourBlock, _ subBlocks: [SubBlock]? = nil) {
         HapticsGateway.shared.triggerAddBlockHaptic()
         
         dataGateway.save(hourBlock: hourBlock)
+        if let subBlocks = subBlocks { dataGateway.save(subBlocks: subBlocks) }
         analyticsGateway.log(hourBlock: hourBlock)
-        if remindersValue == 0 { remindersGateway.setReminder(for: hourBlock) }
+        if remindersValue == 0 { remindersGateway.setReminder(for: hourBlock, with: hourBlock.title!) }
         
         withAnimation { todaysHourBlocks[hourBlock.hour] = HourBlockViewModel(for: hourBlock) }
         
@@ -106,6 +110,19 @@ class ScheduleViewModel: ObservableObject {
                                                                              icon: .blocks))
         
         WidgetCenter.shared.reloadAllTimelines()
+    }
+    
+    func rescheduleBlock(originalBlock: HourBlock, rescheduledBlock: HourBlock, replacedBlock: HourBlock, swappedBlock: HourBlock?) {
+        HapticsGateway.shared.triggerLightImpact()
+        
+        dataGateway.delete(hourBlock: originalBlock)
+        dataGateway.delete(hourBlock: replacedBlock)
+        
+        dataGateway.save(hourBlock: rescheduledBlock)
+        
+        if let swappedBlock = swappedBlock {
+            dataGateway.save(hourBlock: swappedBlock)
+        }
     }
     
     func dismissTip() {

@@ -13,7 +13,7 @@ class HourBlockViewModel: Identifiable, ObservableObject {
     private let dataGateway: DataGateway
     private let remindersGateway: RemindersGatewayProtocol
     
-    let hourBlock: HourBlock
+    private(set) var hourBlock: HourBlock
     
     @AppStorage("reminders") var remindersValue: Int = 0
     
@@ -25,6 +25,9 @@ class HourBlockViewModel: Identifiable, ObservableObject {
     @Published var selectedSheet: HourBlockSheet?
     
     @Published var isAddHourBlockViewPresented = false
+    
+    @Published var isClearBlockWarningPresented = false
+    @Published var isReplaceBlockWarningPresented = false
     
     init(for hourBlock: HourBlock, and subBlocks: [SubBlock], dataGateway: DataGateway, remindersGateway: RemindersGatewayProtocol) {
         self.dataGateway = dataGateway
@@ -48,14 +51,16 @@ class HourBlockViewModel: Identifiable, ObservableObject {
         HapticsGateway.shared.triggerLightImpact()
         
         self.title = title
+        hourBlock.changeTitle(to: title)
         dataGateway.edit(hourBlock: hourBlock, set: title, forKey: "title")
         
         if let icon = icon {
             self.icon = icon
+            hourBlock.changeIcon(to: icon)
             dataGateway.edit(hourBlock: hourBlock, set: icon.rawValue, forKey: "iconOverride")
         }
         
-        if remindersValue == 0 { remindersGateway.editReminder(for: hourBlock) }
+        if remindersValue == 0 { remindersGateway.editReminder(for: hourBlock, with: title) }
         dismissEditBlockView()
         
         WidgetCenter.shared.reloadAllTimelines()
@@ -112,13 +117,26 @@ extension HourBlockViewModel {
         selectedSheet = .subBlocks
     }
     
+    func presentRescheduleBlockView() {
+        isSheetPresented = true
+        selectedSheet = .reschedule
+    }
+    
     func presentDuplicateBlockView() {
         isSheetPresented = true
         selectedSheet = .duplicate
+    }
+    
+    func presentClearBlockWarning() {
+        isClearBlockWarningPresented = true
+    }
+    
+    func presentReplaceBlockWarning() {
+        isReplaceBlockWarningPresented = true
     }
 }
 
 enum HourBlockSheet {
     
-    case edit, subBlocks, duplicate
+    case edit, subBlocks, reschedule, duplicate
 }

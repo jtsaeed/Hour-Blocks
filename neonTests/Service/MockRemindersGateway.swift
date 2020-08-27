@@ -10,9 +10,9 @@ import Foundation
 
 struct MockRemindersGateway: RemindersGatewayProtocol {
     
-    func setReminder(for hourBlock: HourBlock) { }
+    func setReminder(for hourBlock: HourBlock, with title: String) { }
     
     func removeReminder(for hourBlock: HourBlock) { }
     
-    func editReminder(for hourBlock: HourBlock) { }
+    func editReminder(for hourBlock: HourBlock, with title: String) { }
 }
