@@ -13,9 +13,9 @@ struct OtherSettingsView: View {
     @Binding var isPresented: Bool
     
     @AppStorage("reminders") var remindersValue: Int = 0
+    @AppStorage("dayStart") var dayStartValue: Int = 2
     @AppStorage("timeFormat") var timeFormatValue: Int = 1
     @AppStorage("autoCaps") var autoCapsValue: Int = 0
-    @AppStorage("dayStart") var dayStartValue: Int = 2
     
     var body: some View {
         NavigationView {
@@ -33,6 +33,10 @@ struct OtherSettingsView: View {
                                       title: "Time Format",
                                       description: "Change the time format used throughout Hour Blocks",
                                       options: ["System", "12h", "24h"])
+                    OtherSettingsCard(value: $autoCapsValue,
+                                      title: "Automatic Capitalization",
+                                      description: "Would you like the titles of blocks to be automatically capitalized?",
+                                      options: ["Yes", "No"])
                     IconChooserCard()
                 }.padding(.top, 8)
                 .padding(.bottom, 24)

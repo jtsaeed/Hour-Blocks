@@ -20,16 +20,6 @@ struct SettingsView: View {
             
             ScrollView {
                 VStack(spacing: 24) {
-                    /*
-                    SettingsCardView(title: "Feedback",
-                                     subtitle: "Provide valuable",
-                                     iconName: "text.bubble.fill",
-                                     action: viewModel.presentFeedbackView)
-                    .sheet(isPresented: $viewModel.isFeedbackViewPresented, content: {
-                        FeedbackView(isPresented: $viewModel.isFeedbackViewPresented)
-                    })
- */
-                    
                     SettingsCardView(title: "Calendars",
                                      subtitle: "Take control of",
                                      iconName: "calendar",

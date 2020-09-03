@@ -16,8 +16,9 @@ class HourBlockViewModel: Identifiable, ObservableObject {
     private(set) var hourBlock: HourBlock
     
     @AppStorage("reminders") var remindersValue: Int = 0
+    @AppStorage("timeFormat") var timeFormatValue: Int = 1
+    @AppStorage("autoCaps") var autoCapsValue: Int = 0
     
-    @Published var title: String
     @Published var icon: SelectableIcon
     @Published var subBlocks: [SubBlock]
     
@@ -34,7 +35,6 @@ class HourBlockViewModel: Identifiable, ObservableObject {
         self.remindersGateway = remindersGateway
         
         self.hourBlock = hourBlock
-        self.title = hourBlock.title ?? "Empty"
         self.icon = hourBlock.icon
         self.subBlocks = subBlocks
     }
@@ -50,7 +50,6 @@ class HourBlockViewModel: Identifiable, ObservableObject {
     func saveChanges(title: String, icon: SelectableIcon?) {
         HapticsGateway.shared.triggerLightImpact()
         
-        self.title = title
         hourBlock.changeTitle(to: title)
         dataGateway.edit(hourBlock: hourBlock, set: title, forKey: "title")
         
@@ -83,13 +82,17 @@ class HourBlockViewModel: Identifiable, ObservableObject {
     }
     
     func getFormattedTime() -> String {
-        let timeFormatValue = UserDefaults.standard.integer(forKey: "timeFormat")
-        
         if (timeFormatValue == 0 && !UtilGateway.shared.isSystemClock12h()) || timeFormatValue == 2 {
             return hourBlock.hour.get24hTime()
         } else {
             return hourBlock.hour.get12hTime()
         }
+    }
+    
+    func getTitle() -> String {
+        guard let title = hourBlock.title else { return "Empty" }
+        
+        return autoCapsValue == 0 ? title.smartCapitalization() : title
     }
 }
 

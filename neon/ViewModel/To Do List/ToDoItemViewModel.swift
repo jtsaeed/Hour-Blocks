@@ -6,15 +6,16 @@
 //  Copyright © 2020 James Saeed. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
 class ToDoItemViewModel: ObservableObject, Identifiable {
     
     private let dataGateway: DataGateway
     
-    let toDoItem: ToDoItem
+    private(set) var toDoItem: ToDoItem
     
-    @Published var title: String
+    @AppStorage("autoCaps") var autoCapsValue: Int = 0
+    
     @Published var urgency: String
     
     @Published var isSheetPresented = false
@@ -24,7 +25,6 @@ class ToDoItemViewModel: ObservableObject, Identifiable {
         self.dataGateway = dataGateway
         
         self.toDoItem = toDoItem
-        self.title = toDoItem.title
         self.urgency = toDoItem.urgency.rawValue
     }
     
@@ -48,7 +48,7 @@ class ToDoItemViewModel: ObservableObject, Identifiable {
     }
     
     func saveChanges(title: String, urgency: ToDoUrgency) {
-        self.title = title
+        toDoItem.changeTitle(to: title)
         self.urgency = urgency.rawValue
         
         dataGateway.edit(toDoItem: toDoItem, set: title, forKey: "title")
@@ -57,6 +57,10 @@ class ToDoItemViewModel: ObservableObject, Identifiable {
         dismissEditItemView()
         
         NotificationCenter.default.post(name: Notification.Name("RefreshToDoList"), object: nil)
+    }
+    
+    func getTitle() -> String {
+        return autoCapsValue == 0 ? toDoItem.title.smartCapitalization() : toDoItem.title
     }
 }
 

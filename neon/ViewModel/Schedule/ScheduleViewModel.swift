@@ -117,11 +117,15 @@ class ScheduleViewModel: ObservableObject {
         
         dataGateway.delete(hourBlock: originalBlock)
         dataGateway.delete(hourBlock: replacedBlock)
+        remindersGateway.removeReminder(for: originalBlock)
+        remindersGateway.removeReminder(for: replacedBlock)
         
         dataGateway.save(hourBlock: rescheduledBlock)
+        remindersGateway.setReminder(for: rescheduledBlock, with: rescheduledBlock.title!)
         
         if let swappedBlock = swappedBlock {
             dataGateway.save(hourBlock: swappedBlock)
+            remindersGateway.setReminder(for: swappedBlock, with: swappedBlock.title!)
         }
     }
     

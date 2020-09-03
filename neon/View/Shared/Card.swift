@@ -28,7 +28,7 @@ struct Card<Content>: View where Content: View {
         ZStack {
             RoundedRectangle(cornerRadius: 16)
                 .foregroundColor(.white)
-                .opacity(colorScheme == .light ? 1 : 0.08)
+                .opacity(colorScheme == .light ? 1 : 0.1)
                 .shadow(color: Color(white: 0).opacity(0.1), radius: 6, x: 0, y: 3)
             content()
                 .padding(padding)

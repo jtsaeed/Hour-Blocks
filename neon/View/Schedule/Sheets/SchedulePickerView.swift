@@ -31,7 +31,7 @@ struct SchedulePickerView: View {
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 24) {
                     ForEach(viewModel.todaysHourBlocks.filter { $0.hourBlock.hour >= (viewModel.isCurrentDayToday() ?  viewModel.currentHour : UtilGateway.shared.dayStartHour()) }) { hourBlockViewModel in
-                        if hourBlockViewModel.title != "Empty" {
+                        if hourBlockViewModel.getTitle() != "Empty" {
                             CompactHourBlockView(viewModel: hourBlockViewModel)
                         } else {
                             PickerEmptyBlockView(viewModel: hourBlockViewModel,

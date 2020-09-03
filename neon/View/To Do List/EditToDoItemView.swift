@@ -17,7 +17,7 @@ struct EditToDoItemView: View {
     
     init(viewModel: ToDoItemViewModel) {
         self.viewModel = viewModel
-        self._title = State(initialValue: viewModel.title)
+        self._title = State(initialValue: viewModel.toDoItem.title)
         self._urgency = State(initialValue: viewModel.toDoItem.urgency)
     }
     

@@ -10,11 +10,13 @@ import SwiftUI
 
 struct NeonDivider: View {
     
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         RoundedRectangle(cornerRadius: 1)
-            .foregroundColor(.black)
+            .foregroundColor(Color("TextColor"))
             .frame(height: 2)
-            .opacity(0.04)
+            .opacity(colorScheme == .light ? 0.04 : 0.12)
     }
 }
 

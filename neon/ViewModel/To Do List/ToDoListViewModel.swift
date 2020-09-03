@@ -34,7 +34,7 @@ class ToDoListViewModel: ObservableObject {
     
     func loadToDoItems() {
         toDoItems = dataGateway.getToDoItems().map { ToDoItemViewModel(for: $0) }
-        toDoItems.sort()
+        sortToDoItems()
     }
     
     func add(toDoItem: ToDoItem) {
@@ -45,7 +45,7 @@ class ToDoListViewModel: ObservableObject {
         
         withAnimation {
             toDoItems.append(ToDoItemViewModel(for: toDoItem))
-            toDoItems.sort()
+            sortToDoItems()
         }
         
         totalToDoCount = totalToDoCount + 1
@@ -73,5 +73,13 @@ class ToDoListViewModel: ObservableObject {
     
     func dismissAddToDoItemView() {
         isAddToDoItemViewPresented = false
+    }
+}
+
+extension ToDoListViewModel {
+    
+    private func sortToDoItems() {
+        toDoItems.sort(by: { $0.toDoItem.title > $1.toDoItem.title })
+        toDoItems.sort()
     }
 }

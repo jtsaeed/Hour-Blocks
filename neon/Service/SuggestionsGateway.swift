@@ -23,8 +23,8 @@ struct SuggestionsGateway {
         suggestions = suggestions.sorted(by: { $0.score > $1.score })
         
         // Filter to the first 3
-        if suggestions.count > 3 {
-            suggestions = suggestions.dropLast(suggestions.count - 3)
+        if suggestions.count > 5 {
+            suggestions = suggestions.dropLast(suggestions.count - 5)
         }
         
         return suggestions

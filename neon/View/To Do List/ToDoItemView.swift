@@ -16,7 +16,7 @@ struct ToDoItemView: View {
     
     var body: some View {
         Card {
-            CardLabels(title: viewModel.title,
+            CardLabels(title: viewModel.getTitle(),
                        subtitle: viewModel.urgency,
                        subtitleColor: Color(viewModel.urgency.urgencyToColorString()),
                        subtitleOpacity: viewModel.toDoItem.urgency == .whenever ? 0.4 : 1.0,
@@ -44,7 +44,7 @@ struct ToDoItemView: View {
             if viewModel.selectedSheet == .addToSchedule {
                 SchedulePickerView(isPresented: $viewModel.isSheetPresented,
                                    title: "Add to Today",
-                                   hourBlock: HourBlock(day: Date(), hour: 12, title: viewModel.title))
+                                   hourBlock: HourBlock(day: Date(), hour: 12, title: viewModel.toDoItem.title))
             }
         }
     }

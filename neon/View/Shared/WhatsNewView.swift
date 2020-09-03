@@ -14,12 +14,13 @@ struct WhatsNewView: View {
     
     var body: some View {
         VStack {
-            WhatsNewHeader(title: "What's new in Hour Blocks \(VersionGateway.shared.currentVersion)")
+            WhatsNewHeader(title: "What's new in\nHour Blocks \(VersionGateway.shared.currentVersion)")
+                .padding(.top, 20)
             
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
                     TextBlockView(title: "Redesigned Schedule 🖌",
-                                  content: "See your Sub Blocks directly in the schedule, preview your days with the new date picker, reschedule blocks, along with so much more!")
+                                  content: "See your Sub Blocks directly in the schedule, preview your days with the new date picker, reschedule blocks + so much more!")
                     TextBlockView(title: "Homescreen Widget 📱",
                                   content: "Get a snapshot of your upcoming schedule without even leaving your homescreen!")
                     TextBlockView(title: "Siri Support 🎤",
@@ -27,7 +28,7 @@ struct WhatsNewView: View {
                     TextBlockView(title: "Small Improvements ✨",
                                   content: "Hour Blocks 6.0 has been rewritten from the ground up, so expect to see plenty of small improvements and bug fixes all around")
                 }
-            }.padding(.vertical, 32)
+            }.padding(.top, 24)
             
             ActionButton(title: "Let's go!", action: dismiss)
         }.padding(.vertical, 24)
@@ -48,5 +49,11 @@ private struct WhatsNewHeader: View {
         Text(title)
             .font(.system(size: 34, weight: .bold, design: .default))
             .multilineTextAlignment(.center)
+    }
+}
+
+struct WhatsNewView_Previews: PreviewProvider {
+    static var previews: some View {
+        WhatsNewView(showWhatsNew: .constant(true))
     }
 }

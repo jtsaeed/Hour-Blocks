@@ -17,7 +17,7 @@ struct HourBlockView: View {
         Card {
             VStack(spacing: 20) {
                 HStack {
-                    CardLabels(title: viewModel.title.smartCapitalization(),
+                    CardLabels(title: viewModel.getTitle(),
                                subtitle: viewModel.getFormattedTime())
                     Spacer()
                     HourBlockIcon(name: viewModel.icon.imageName)

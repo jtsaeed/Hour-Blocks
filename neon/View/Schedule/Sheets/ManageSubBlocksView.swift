@@ -32,7 +32,7 @@ struct ManageSubBlocksView: View {
                     VStack(spacing: 24) {
                         ForEach(viewModel.subBlocks) { subBlock in
                             SubBlockCardView(subBlockTitle: subBlock.title,
-                                             hourBlockTitle: viewModel.title,
+                                             hourBlockTitle: viewModel.hourBlock.title!,
                                              onSubBlockCleared: { viewModel.clearSubBlock(subBlock) })
                         }
                     }.padding(.top, 8)

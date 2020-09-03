@@ -17,7 +17,7 @@ struct EditHourBlockView: View {
     
     init(viewModel: HourBlockViewModel) {
         self.viewModel = viewModel
-        self._title = State(initialValue: viewModel.title)
+        self._title = State(initialValue: viewModel.hourBlock.title!)
         self._icon = State(initialValue: viewModel.icon)
     }
     

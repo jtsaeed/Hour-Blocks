@@ -22,10 +22,6 @@ struct TestSidebarView: View {
                 }
                 
                 Section(header: Text("Settings")) {
-                    NavigationLink(destination: FeedbackView(isPresented: .constant(true))) {
-                        Label("Feedback", systemImage: "text.bubble.fill")
-                    }
-                    
                     NavigationLink(destination: CalendarOptionsView(isPresented: .constant(true))) {
                         Label("Calendars", systemImage: "calendar")
                     }

@@ -69,7 +69,7 @@ private struct ScheduleBlocksListView: View {
                 }
                 
                 ForEach(viewModel.todaysHourBlocks.filter { $0.hourBlock.hour >= (viewModel.isCurrentDayToday() ?  viewModel.currentHour : UtilGateway.shared.dayStartHour()) }) { hourBlockViewModel in
-                    if hourBlockViewModel.title != "Empty" {
+                    if hourBlockViewModel.getTitle() != "Empty" {
                         HourBlockView(viewModel: hourBlockViewModel,
                                       onBlockCleared: { viewModel.clearBlock(hourBlockViewModel.hourBlock) })
                     } else {

@@ -124,7 +124,6 @@
 		ABC1D07F24D9DCA4001F8B6B /* RemindersGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC1D07E24D9DCA4001F8B6B /* RemindersGateway.swift */; };
 		ABFC243624D022850091E3A5 /* ToDoItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFC243524D022850091E3A5 /* ToDoItemViewModel.swift */; };
 		ABFC243824D029730091E3A5 /* EditToDoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFC243724D029730091E3A5 /* EditToDoItemView.swift */; };
-		ABFC243A24D039B30091E3A5 /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFC243924D039B30091E3A5 /* FeedbackView.swift */; };
 		ACCF499AD9B1C82075601FF8 /* Pods_Hour_BlocksUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC17F140379ADAB615CD7BFE /* Pods_Hour_BlocksUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -313,7 +312,6 @@
 		ABC1D07E24D9DCA4001F8B6B /* RemindersGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersGateway.swift; sourceTree = "<group>"; };
 		ABFC243524D022850091E3A5 /* ToDoItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemViewModel.swift; sourceTree = "<group>"; };
 		ABFC243724D029730091E3A5 /* EditToDoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditToDoItemView.swift; sourceTree = "<group>"; };
-		ABFC243924D039B30091E3A5 /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
 		AC17F140379ADAB615CD7BFE /* Pods_Hour_BlocksUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hour_BlocksUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5DE115035038B9A1CA41814 /* Pods-Hour BlocksUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hour BlocksUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hour BlocksUITests/Pods-Hour BlocksUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BB00A606921CE762F9B8DC18 /* Pods-Hour Blocks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hour Blocks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hour Blocks/Pods-Hour Blocks.debug.xcconfig"; sourceTree = "<group>"; };
@@ -698,7 +696,6 @@
 				AB849E1C24C86CA300D27333 /* SettingsCardView.swift */,
 				AB849E1E24C877A700D27333 /* CalendarOptionsView.swift */,
 				AB849E2024C877C200D27333 /* OtherSettingsView.swift */,
-				ABFC243924D039B30091E3A5 /* FeedbackView.swift */,
 				23036F4D237B2D9000563206 /* PrivacyPolicyView.swift */,
 				AB5B933C24E2DABD006F2DED /* AcknowledgementsSheet.swift */,
 			);
@@ -1068,7 +1065,6 @@
 				AB22515124DEF30600DEFD92 /* UtilGateway.swift in Sources */,
 				234DF2FB237A113200EB248A /* Int+Ext.swift in Sources */,
 				AB5A9BEF24B3859200F97B10 /* CalendarBlockView.swift in Sources */,
-				ABFC243A24D039B30091E3A5 /* FeedbackView.swift in Sources */,
 				2336981F23818D52006ACD1E /* ActionButton.swift in Sources */,
 				AB72E0C724ACE8C5004DD577 /* HeaderView.swift in Sources */,
 				AB69CB9924E1888C00028715 /* URL+Ext.swift in Sources */,
@@ -1339,7 +1335,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.71;
+				CURRENT_PROJECT_VERSION = 0.73;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1366,7 +1362,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.71;
+				CURRENT_PROJECT_VERSION = 0.73;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1479,7 +1475,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeonSiri/NeonSiri.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.71;
+				CURRENT_PROJECT_VERSION = 0.73;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = NeonSiri/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1505,7 +1501,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeonSiri/NeonSiri.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.71;
+				CURRENT_PROJECT_VERSION = 0.73;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = NeonSiri/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1533,7 +1529,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeonWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.71;
+				CURRENT_PROJECT_VERSION = 0.73;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = NeonWidget/Info.plist;
@@ -1562,7 +1558,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeonWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.71;
+				CURRENT_PROJECT_VERSION = 0.73;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = NeonWidget/Info.plist;

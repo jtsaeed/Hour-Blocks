@@ -46,7 +46,7 @@ struct CalendarGateway: CalendarGatewayProtocol {
                                                             calendars: getEnabledCalendars())
         
         return eventStore.events(matching: eventsPredicate).filter { event in
-            !event.isAllDay || (event.isAllDay && event.endDate.day == startDate.day)
+            !event.isAllDay || (event.isAllDay && event.endDate.toLocalTime().day == startDate.day)
         }
     }
     

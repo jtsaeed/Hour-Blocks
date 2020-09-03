@@ -68,9 +68,9 @@ private struct RescheduleBlockCardView: View {
     var body: some View {
         Card {
             HStack {
-                CardLabels(title: viewModel.title.smartCapitalization(),
+                CardLabels(title: viewModel.getTitle(),
                            subtitle: viewModel.getFormattedTime(),
-                           titleOpacity: viewModel.title == "Empty" ? 0.4 : 0.9)
+                           titleOpacity: viewModel.getTitle() == "Empty" ? 0.4 : 0.9)
                 Spacer()
                 HStack(spacing: 12) {
                     if viewModel.hourBlock.title != nil {

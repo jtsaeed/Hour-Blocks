@@ -12,7 +12,7 @@ import CoreData
 struct ToDoItem: Identifiable {
     
     let id: String
-    var title: String
+    private(set) var title: String
     var urgency: ToDoUrgency
     
     init(title: String, urgency: ToDoUrgency) {
@@ -40,6 +40,10 @@ struct ToDoItem: Identifiable {
         entity.identifier = id
         entity.title = title
         entity.urgency = urgency.rawValue
+    }
+    
+    mutating func changeTitle(to title: String) {
+        self.title = title
     }
 }
 

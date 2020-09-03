@@ -13,10 +13,7 @@ struct IconPicker: View {
     @Binding var selection: SelectableIcon
     
     let columns = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible()),
+        GridItem(.adaptive(minimum: 72, maximum: 128))
     ]
     
     var body: some View {
