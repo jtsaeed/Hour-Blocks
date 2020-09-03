@@ -96,13 +96,8 @@ struct NeonWidgetEntryView : View {
     
     @Environment(\.widgetFamily) var family
 
-    @ViewBuilder
     var body: some View {
-        switch family {
-        case .systemSmall: UpcomingScheduleView(hourBlock: entry.hourBlock)
-        case .systemMedium: UpcomingScheduleView(hourBlock: entry.hourBlock, small: false)
-        default: UpcomingScheduleView(hourBlock: entry.hourBlock)
-        }
+        UpcomingScheduleView(hourBlock: entry.hourBlock)
     }
 }
 
@@ -116,7 +111,7 @@ struct NeonWidget: Widget {
         }
         .configurationDisplayName("Upcoming Schedule")
         .description("Take a quick peek at your upcoming schedule for the day")
-        .supportedFamilies([.systemSmall, .systemMedium])
+        .supportedFamilies([.systemSmall])
     }
 }
 
@@ -128,12 +123,6 @@ struct NeonWidget_Previews: PreviewProvider {
                                                       title: "Dinner with Bonnie",
                                                       icon: .food))
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
-    
-            UpcomingScheduleView(hourBlock: HourBlock(day: Date(),
-                                                      hour: 19,
-                                                      title: "Dinner with Bonnie",
-                                                      icon: .food), small: false)
-                .previewContext(WidgetPreviewContext(family: .systemMedium))
         }
     }
 }

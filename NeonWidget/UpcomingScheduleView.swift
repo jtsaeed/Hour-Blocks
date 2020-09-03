@@ -13,7 +13,6 @@ struct UpcomingScheduleView: View {
     @Environment(\.colorScheme) var colorScheme
 
     let hourBlock: HourBlock?
-    var small: Bool = true
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
@@ -28,16 +27,16 @@ struct UpcomingScheduleView: View {
             Group {
                 if let hourBlock = hourBlock {
                     VStack(alignment: .leading, spacing: 4) {
-                        Text(hourBlock.hour.get12hTime())
-                            .font(small ? .system(size: 17, weight: .semibold, design: .default) : .system(size: 20, weight: .semibold, design: .default))
+                        Text(hourBlock.hour == Calendar.current.component(.hour, from: Date()) ? "THIS HOUR" : hourBlock.hour.get12hTime())
+                            .font(.system(size: 17, weight: .semibold, design: .default))
                         Text(hourBlock.title!.smartCapitalization())
-                            .font(small ? .system(size: 24, weight: .medium, design: .rounded) : .system(size: 32, weight: .medium, design: .rounded))
+                            .font(.system(size: 24, weight: .medium, design: .rounded))
                     }
                 } else {
                     Text("Nothing scheduled today")
-                        .font(small ? .system(size: 24, weight: .medium, design: .rounded) : .system(size: 32, weight: .medium, design: .rounded))
+                        .font(.system(size: 24, weight: .medium, design: .rounded))
                 }
-            }.padding(small ? 16 : 20)
+            }.padding(16)
             .foregroundColor(.white)
         }
     }
