@@ -23,7 +23,7 @@ struct TipCardView: View {
                 Spacer()
                 IconButton(iconName: "checkmark",
                            iconWeight: .semibold,
-                           iconColor: "GreenColor",
+                           iconColor: "ConfirmColor",
                            action: onDismiss)
             }
         }.padding(.horizontal, 24)

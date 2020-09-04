@@ -21,7 +21,7 @@ struct ToDoGrid: View {
                     Card {
                         VStack(alignment: .leading, spacing: 4) {
                             Text("HIGH PRIORITY")
-                                .foregroundColor(Color("RedColor"))
+                                .foregroundColor(Color("UrgentColor"))
                                 .font(.system(size: 14, weight: .semibold, design: .default))
                             Text("Sort out Charlie's room")
                                 .opacity(0.9)
