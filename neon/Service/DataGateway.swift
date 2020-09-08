@@ -77,6 +77,8 @@ extension DataGateway {
 extension DataGateway {
     
     func getHourBlocks(for day: Date) -> [HourBlock] {
+        print("Pulling for \(day.description)")
+        
         var hourBlocks = [HourBlockEntity]()
         let request = NSFetchRequest<HourBlockEntity>(entityName: "HourBlockEntity")
         request.predicate = NSPredicate(format: "day == %@", Calendar.current.startOfDay(for: day) as NSDate)
@@ -111,7 +113,7 @@ extension DataGateway {
     func getLastMonthsHourBlocks(from day: Date, for hour: Int) -> [HourBlock] {
         var hourBlocks = [HourBlockEntity]()
         let request = NSFetchRequest<HourBlockEntity>(entityName: "HourBlockEntity")
-        let startOfDateRange = Calendar.current.startOfDay(for: day - 30.days) as NSDate
+        let startOfDateRange = Calendar.current.startOfDay(for: day - 28.days) as NSDate
         let endOfDateRange = Calendar.current.startOfDay(for: day) as NSDate
         request.predicate = NSPredicate(format: "(day >= %@) AND (day <= %@) AND (hour == %d)", startOfDateRange, endOfDateRange, hour)
         

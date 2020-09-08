@@ -21,8 +21,8 @@ struct WhatsNewView: View {
                 VStack(alignment: .leading, spacing: 16) {
                     TextBlockView(title: "Redesigned Schedule 🖌",
                                   content: "See your Sub Blocks directly in the schedule, preview your days with the new date picker, reschedule blocks + so much more!")
-                    TextBlockView(title: "Homescreen Widget 📱",
-                                  content: "Get a snapshot of your upcoming schedule without even leaving your homescreen!")
+                    TextBlockView(title: "Home Screen Widget 📱",
+                                  content: "Get a snapshot of your upcoming schedule without even leaving your home screen!")
                     TextBlockView(title: "Siri Support 🎤",
                                   content: "You can now ask Siri to add an item to your To Do List in Hour Blocks")
                     TextBlockView(title: "Small Improvements ✨",

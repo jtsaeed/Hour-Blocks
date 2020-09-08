@@ -40,7 +40,7 @@ class ScheduleViewModel: ObservableObject {
         self.analyticsGateway = analyticsGateway
         self.remindersGateway = remindersGateway
         
-        self.currentDate = Calendar.current.startOfDay(for: currentDate)
+        self.currentDate = currentDate
         
         loadHourBlocks()
     }
@@ -167,17 +167,14 @@ class ScheduleViewModel: ObservableObject {
     }
     
     func isCurrentDayToday() -> Bool {
-        let startOfToday = Calendar.current.startOfDay(for: Date())
-        let startOfCurrentDate = Calendar.current.startOfDay(for: currentDate)
-        
-        return startOfCurrentDate == startOfToday
+        return currentDate.isToday
     }
     
     func returnToToday() {
         HapticsGateway.shared.triggerLightImpact()
         
         withAnimation {
-            currentDate = Calendar.current.startOfDay(for: Date())
+            currentDate = Date()
             loadHourBlocks()
         }
     }
