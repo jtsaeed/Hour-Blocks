@@ -71,6 +71,8 @@ class HourBlockViewModel: Identifiable, ObservableObject {
         dataGateway.save(subBlock: subBlock)
         
         withAnimation { subBlocks.append(subBlock) }
+        
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     func clearSubBlock(_ subBlock: SubBlock) {
@@ -79,6 +81,8 @@ class HourBlockViewModel: Identifiable, ObservableObject {
         dataGateway.delete(subBlock: subBlock)
         
         withAnimation { subBlocks.removeAll { $0.id == subBlock.id } }
+        
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     func getFormattedTime() -> String {

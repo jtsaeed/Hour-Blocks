@@ -39,4 +39,20 @@ class WidgetDataGateway {
         
         return hourBlocks.compactMap { HourBlock(fromEntity: $0) }
     }
+    
+    func getSubBlocks(for hourBlock: HourBlock) -> [SubBlock] {
+        var subBlocks = [SubBlockEntity]()
+        
+        let request = NSFetchRequest<SubBlockEntity>(entityName: "SubBlockEntity")
+        request.predicate = NSPredicate(format: "hourBlockIdentifier == %@", hourBlock.id)
+        request.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: true)]
+        
+        do {
+            subBlocks = try persistentContainer.viewContext.fetch(request)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        return subBlocks.compactMap { SubBlock(fromEntity: $0) }
+    }
 }

@@ -15,20 +15,24 @@ struct Provider: TimelineProvider {
     public typealias Entry = HourBlockEntry
     
     public func placeholder(in context: Context) -> HourBlockEntry {
-        return HourBlockEntry(date: Date(), hourBlock: nil, relevance: TimelineEntryRelevance(score: 0))
+        return HourBlockEntry(date: Date(), hourBlock: nil, subBlocks: [], relevance: TimelineEntryRelevance(score: 0))
     }
     
     public func getSnapshot(in context: Context, completion: @escaping (HourBlockEntry) -> Void) {
         let hourBlocks = WidgetDataGateway.shared.getHourBlocks(for: Date()).sorted { $0.hour < $1.hour }
         
         if let firstBlock = hourBlocks.first {
+            let subBlocks = WidgetDataGateway.shared.getSubBlocks(for: firstBlock)
+                
             let entry = HourBlockEntry(date: Date(),
                                     hourBlock: firstBlock,
+                                    subBlocks: subBlocks,
                                     relevance: TimelineEntryRelevance(score: 0))
             completion(entry)
         } else {
             let entry = HourBlockEntry(date: Date(),
                                        hourBlock: nil,
+                                       subBlocks: [],
                                        relevance: nil)
             completion(entry)
         }
@@ -46,8 +50,10 @@ struct Provider: TimelineProvider {
             
             let hourDifference = firstBlock.hour - Calendar.current.component(.hour, from: currentDate)
             let entryScore = hourDifference < 2 ? 30 : 24 - hourDifference
+            let subBlocks = WidgetDataGateway.shared.getSubBlocks(for: firstBlock)
             let firstEntry = HourBlockEntry(date: currentDate,
                                             hourBlock: firstBlock,
+                                            subBlocks: subBlocks,
                                             relevance: TimelineEntryRelevance(score: Float(entryScore)))
             entries.append(firstEntry)
             
@@ -59,8 +65,10 @@ struct Provider: TimelineProvider {
                                                               of: currentDate)!
                     let hourDifference = hourBlocks[index].hour - Calendar.current.component(.hour, from: currentDate)
                     let entryScore = hourDifference < 2 ? 30 : 24 - hourDifference
+                    let subBlocks = WidgetDataGateway.shared.getSubBlocks(for: hourBlocks[index])
                     let entry = HourBlockEntry(date: entryDate,
                                                hourBlock: hourBlocks[index],
+                                               subBlocks: subBlocks,
                                                relevance: TimelineEntryRelevance(score: Float(entryScore)))
                     entries.append(entry)
                 }
@@ -68,6 +76,7 @@ struct Provider: TimelineProvider {
         } else {
             entries.append(HourBlockEntry(date: Date(),
                                           hourBlock: nil,
+                                          subBlocks: [],
                                           relevance: nil))
         }
 
@@ -80,6 +89,7 @@ struct HourBlockEntry: TimelineEntry {
     
     public let date: Date
     let hourBlock: HourBlock?
+    let subBlocks: [SubBlock]
     let relevance: TimelineEntryRelevance?
 }
 
@@ -97,7 +107,11 @@ struct NeonWidgetEntryView : View {
     @Environment(\.widgetFamily) var family
 
     var body: some View {
-        UpcomingScheduleView(hourBlock: entry.hourBlock)
+        switch family {
+        case .systemSmall: UpcomingScheduleView(hourBlock: entry.hourBlock, subBlocks: nil)
+        case .systemMedium: UpcomingScheduleView(hourBlock: entry.hourBlock, subBlocks: entry.subBlocks)
+        default: UpcomingScheduleView(hourBlock: entry.hourBlock, subBlocks: nil)
+        }
     }
 }
 
@@ -111,7 +125,7 @@ struct NeonWidget: Widget {
         }
         .configurationDisplayName("Upcoming Schedule")
         .description("Take a quick peek at your upcoming schedule for the day")
-        .supportedFamilies([.systemSmall])
+        .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
 
@@ -121,7 +135,8 @@ struct NeonWidget_Previews: PreviewProvider {
             UpcomingScheduleView(hourBlock: HourBlock(day: Date(),
                                                       hour: 19,
                                                       title: "Dinner with Bonnie",
-                                                      icon: .food))
+                                                      icon: .food),
+                                 subBlocks: nil)
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
         }
     }

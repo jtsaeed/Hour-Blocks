@@ -127,6 +127,8 @@ class ScheduleViewModel: ObservableObject {
             dataGateway.save(hourBlock: swappedBlock)
             remindersGateway.setReminder(for: swappedBlock, with: swappedBlock.title!)
         }
+        
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     func dismissTip() {
