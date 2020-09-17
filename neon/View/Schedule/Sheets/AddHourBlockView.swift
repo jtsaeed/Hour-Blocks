@@ -46,7 +46,7 @@ struct AddHourBlockView: View {
                     }.padding(.top, 8)
                 }
             }.navigationTitle("Add an Hour Block")
-            .navigationBarItems(leading: Button("Cancel", action: dismiss))
+            .navigationBarItems(leading: Button("Cancel", action: dismiss).hoverEffect(.highlight))
         }
         .onAppear {
             viewModel.loadSuggestions(for: hour, on: day)

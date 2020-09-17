@@ -44,7 +44,7 @@ struct ScheduleView: View {
             ScheduleBlocksListView(viewModel: viewModel)
         }.onAppear(perform: viewModel.handleCalendarPermissions)
         .onReceive(refreshSchedulePublisher) { _ in viewModel.loadHourBlocks() }
-        .onReceive(refreshHourPublisher) { _ in viewModel.updateCurrentHour() }
+        .onReceive(refreshHourPublisher) { _ in viewModel.updateCurrentDate() }
     }
 }
 

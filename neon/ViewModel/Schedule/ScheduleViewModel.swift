@@ -181,8 +181,10 @@ class ScheduleViewModel: ObservableObject {
         }
     }
     
-    func updateCurrentHour() {
+    func updateCurrentDate() {
+        currentDate = Date()
         currentHour = Calendar.current.component(.hour, from: Date())
+        
         WidgetCenter.shared.reloadAllTimelines()
     }
 }
