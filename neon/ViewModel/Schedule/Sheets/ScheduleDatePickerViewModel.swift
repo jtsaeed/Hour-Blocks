@@ -6,7 +6,7 @@
 //  Copyright © 2020 James Saeed. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import EventKit
 
 class ScheduleDatePickerViewModel: ObservableObject {

@@ -71,7 +71,7 @@ class ScheduleViewModel: ObservableObject {
     }
     
     func handleCalendarPermissions() {
-        calendarGateway.handlePermissions {
+        calendarGateway.handlePermissions { granted in
             DispatchQueue.main.async { self.loadHourBlocks() }
         }
     }

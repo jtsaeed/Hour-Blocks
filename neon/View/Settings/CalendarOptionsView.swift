@@ -18,10 +18,14 @@ struct CalendarOptionsView: View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 24) {
-                    ForEach(viewModel.allCalendars.sorted(by: { $0.title < $1.title }), id: \.self) { calendar in
-                        CalendarCard(calendarTitle: calendar.title,
-                                     isEnabled: viewModel.enabledCalendars[calendar.calendarIdentifier] ?? true,
-                                     onValueChanged: { updateCalendar(for: calendar.calendarIdentifier, with: $0) })
+                    if viewModel.calendarGateway.hasPermission() {
+                        ForEach(viewModel.allCalendars.sorted(by: { $0.title < $1.title }), id: \.self) { calendar in
+                            CalendarCard(calendarTitle: calendar.title,
+                                         isEnabled: viewModel.enabledCalendars[calendar.calendarIdentifier] ?? true,
+                                         onValueChanged: { updateCalendar(for: calendar.calendarIdentifier, with: $0) })
+                        }
+                    } else {
+                        NoPermissionsCard()
                     }
                 }.padding(.vertical, 24)
             }.navigationBarTitle("Calendars", displayMode: .inline)
@@ -66,6 +70,28 @@ private struct CalendarCard: View {
     
     func toggleChanged() {
         self.onValueChanged(isEnabled)
+    }
+}
+
+private struct NoPermissionsCard: View {
+    
+    var body: some View {
+        Card {
+            HStack {
+                Text("Calendar access hasn't been enabled")
+                    .font(.system(size: 18, weight: .semibold, design: .rounded))
+                Spacer()
+                IconButton(iconName: "lock.fill", action: requestPermission)
+            }
+        }.padding(.horizontal, 24)
+    }
+    
+    func requestPermission() {
+        if let url = URL(string:UIApplication.openSettingsURLString) {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
     }
 }
 

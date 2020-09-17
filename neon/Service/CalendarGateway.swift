@@ -12,29 +12,26 @@ import EventKit
 protocol CalendarGatewayProtocol {
     
     func hasPermission() -> Bool
-    func handlePermissions(completion: @escaping () -> Void)
+    func handlePermissions(completion: @escaping (_ granted: Bool) -> Void)
     func getEvents(for date: Date) -> [EKEvent]
     func initialiseEnabledCalendars() -> [String: Bool]
     func getCalendarName(for identifier: String) -> String
     func getAllCalendars() -> [EKCalendar]
 }
 
-struct CalendarGateway: CalendarGatewayProtocol {
+class CalendarGateway: CalendarGatewayProtocol {
     
-    let eventStore = EKEventStore()
+    var eventStore = EKEventStore()
     
     func hasPermission() -> Bool {
         let status = EKEventStore.authorizationStatus(for: EKEntityType.event)
         return status == EKAuthorizationStatus.authorized
     }
     
-    func handlePermissions(completion: @escaping () -> Void) {
-        let status = EKEventStore.authorizationStatus(for: EKEntityType.event)
-        
-        if status == EKAuthorizationStatus.notDetermined {
-            eventStore.requestAccess(to: .event) { granted, error in
-                completion()
-            }
+    func handlePermissions(completion: @escaping (_ granted: Bool) -> Void) {
+        eventStore.requestAccess(to: .event) { granted, error in
+            self.eventStore = EKEventStore()
+            completion(granted)
         }
     }
     

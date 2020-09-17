@@ -19,7 +19,7 @@ protocol RemindersGatewayProtocol {
 struct RemindersGateway: RemindersGatewayProtocol {
     
     func setReminder(for hourBlock: HourBlock, with title: String) {
-        hasPermissions { result in
+        handlePermissions { result in
             guard result == true else { return }
             guard UserDefaults.standard.integer(forKey: "reminders") == 0 else { return }
             
@@ -42,7 +42,7 @@ struct RemindersGateway: RemindersGatewayProtocol {
         setReminder(for: hourBlock, with: title)
     }
     
-    private func hasPermissions(completion: @escaping (_ result: Bool) -> ()) {
+    private func handlePermissions(completion: @escaping (_ result: Bool) -> ()) {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
             if settings.authorizationStatus == .authorized {
                 completion(true)
@@ -50,7 +50,10 @@ struct RemindersGateway: RemindersGatewayProtocol {
                 UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { result, error in
                     if !result { UserDefaults.standard.set(1, forKey: "reminders") }
                     completion(result)
+                    return
                 }
+                
+                completion(false)
             } else {
                 UserDefaults.standard.set(1, forKey: "reminders")
                 completion(false)

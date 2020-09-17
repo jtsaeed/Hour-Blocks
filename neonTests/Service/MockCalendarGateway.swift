@@ -15,8 +15,8 @@ struct MockCalendarGateway: CalendarGatewayProtocol {
         return false
     }
     
-    func handlePermissions(completion: @escaping () -> Void) {
-        completion()
+    func handlePermissions(completion: @escaping (_ granted: Bool) -> Void) {
+        completion(true)
     }
     
     func getEvents(for date: Date) -> [EKEvent] {

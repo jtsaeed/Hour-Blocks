@@ -77,8 +77,6 @@ extension DataGateway {
 extension DataGateway {
     
     func getHourBlocks(for day: Date) -> [HourBlock] {
-        print("Pulling for \(day.description)")
-        
         var hourBlocks = [HourBlockEntity]()
         let request = NSFetchRequest<HourBlockEntity>(entityName: "HourBlockEntity")
         request.predicate = NSPredicate(format: "day == %@", Calendar.current.startOfDay(for: day) as NSDate)
