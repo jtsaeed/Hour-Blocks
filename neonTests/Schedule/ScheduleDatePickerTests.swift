@@ -35,7 +35,7 @@ class ScheduleDatePickerTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Load Hour Blocks from view model")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            XCTAssertEqual(self.viewModel.hourBlocks[0].title, "Gym")
+            XCTAssertEqual(self.viewModel.hourBlocks[0].getTitle(), "Gym")
             expectation.fulfill()
         }
         

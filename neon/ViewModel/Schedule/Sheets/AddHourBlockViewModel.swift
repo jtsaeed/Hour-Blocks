@@ -29,9 +29,7 @@ class AddHourBlockViewModel: ObservableObject {
                                                                              on: day,
                                                                              with: self.dataGateway)
             
-            DispatchQueue.main.async {
-                self.currentSuggestions = pulledSuggestions
-            }
+            DispatchQueue.main.async { self.currentSuggestions = pulledSuggestions }
         }
     }
     

@@ -40,9 +40,8 @@ struct OtherSettingsView: View {
                     IconChooserCard()
                 }.padding(.top, 8)
                 .padding(.bottom, 24)
-            }
+            }.navigationBarTitle("Other Settings")
             .navigationBarItems(trailing: Button("Done", action: dismiss))
-            .navigationBarTitle("Other Settings")
         }.accentColor(Color("AccentColor"))
     }
     
@@ -99,29 +98,19 @@ private struct IconChooserCard: View {
                 }
                 
                 HStack(alignment: .center) {
-                    IconOption(iconName: "original", onSelect: setOriginalIcon)
+                    IconOption(iconName: "original", onSelect: { self.setAlternateIcon(nil) })
                     Spacer()
-                    IconOption(iconName: "dark", onSelect: setDarkIcon)
+                    IconOption(iconName: "dark", onSelect: { self.setAlternateIcon("icon_dark") })
                     Spacer()
-                    IconOption(iconName: "blueprint", onSelect: setBlueprintIcon)
+                    IconOption(iconName: "blueprint", onSelect: { self.setAlternateIcon("icon_blueprint") })
                 }.padding(.horizontal, 8)
             }
         }.padding(.horizontal, 24)
     }
     
-    func setOriginalIcon() {
+    func setAlternateIcon(_ iconName: String?) {
         HapticsGateway.shared.triggerAddBlockHaptic()
-        UIApplication.shared.setAlternateIconName(nil, completionHandler: nil)
-    }
-    
-    func setDarkIcon() {
-        HapticsGateway.shared.triggerLightImpact()
-        UIApplication.shared.setAlternateIconName("icon_dark", completionHandler: nil)
-    }
-    
-    func setBlueprintIcon() {
-        HapticsGateway.shared.triggerLightImpact()
-        UIApplication.shared.setAlternateIconName("icon_blueprint", completionHandler: nil)
+        UIApplication.shared.setAlternateIconName(iconName, completionHandler: nil)
     }
 }
 

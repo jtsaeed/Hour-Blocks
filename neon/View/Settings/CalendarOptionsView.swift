@@ -44,13 +44,15 @@ struct CalendarOptionsView: View {
 
 private struct CalendarCard: View {
     
-    let calendarTitle: String
     @State var isEnabled: Bool
+    
+    let calendarTitle: String
     let onValueChanged: (Bool) -> Void
     
     init(calendarTitle: String, isEnabled: Bool, onValueChanged: @escaping (Bool) -> Void) {
-        self.calendarTitle = calendarTitle
         self._isEnabled = State<Bool>(initialValue: isEnabled)
+        
+        self.calendarTitle = calendarTitle
         self.onValueChanged = onValueChanged
     }
     
@@ -81,12 +83,12 @@ private struct NoPermissionsCard: View {
                 Text("Calendar access hasn't been enabled")
                     .font(.system(size: 18, weight: .semibold, design: .rounded))
                 Spacer()
-                IconButton(iconName: "lock.fill", action: requestPermission)
+                IconButton(iconName: "lock.fill", action: openPermissionSettings)
             }
         }.padding(.horizontal, 24)
     }
     
-    func requestPermission() {
+    func openPermissionSettings() {
         if let url = URL(string:UIApplication.openSettingsURLString) {
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)

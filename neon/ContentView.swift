@@ -11,10 +11,6 @@ import CoreData
 
 struct ContentView: View {
     
-    let debug = false
-    
-    @Environment(\.managedObjectContext) var managedObjectContext
-    
     @State var showWhatsNew = VersionGateway.shared.isNewVersion()
  
     var body: some View {

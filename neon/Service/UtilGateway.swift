@@ -25,10 +25,6 @@ struct UtilGateway {
         return !(pmRange == nil && amRange == nil)
     }
     
-    func isAutoCapsOn() -> Bool {
-        return UserDefaults.standard.integer(forKey: "autoCaps") == 0
-    }
-    
     func dayStartHour() -> Int {
         if let dayStartValue = UserDefaults.standard.value(forKey: "dayStart") as? Int {
             switch dayStartValue {

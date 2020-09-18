@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import CoreData
 import EventKit
 import WidgetKit
 import StoreKit
@@ -31,7 +30,6 @@ class ScheduleViewModel: ObservableObject {
     
     @Published var currentTip: Tip?
     
-    @Published var isFilterEnabled = true
     @Published var isDatePickerViewPresented = false
     
     init(dataGateway: DataGateway, calendarGateway: CalendarGatewayProtocol, analyticsGateway: AnalyticsGatewayProtocol, remindersGateway: RemindersGatewayProtocol, currentDate: Date = Date()) {
@@ -71,7 +69,7 @@ class ScheduleViewModel: ObservableObject {
     }
     
     func handleCalendarPermissions() {
-        calendarGateway.handlePermissions { granted in
+        calendarGateway.handlePermissions { _ in
             DispatchQueue.main.async { self.loadHourBlocks() }
         }
     }
@@ -92,6 +90,7 @@ class ScheduleViewModel: ObservableObject {
     
     private func handleBlockCountEvents() {
         totalBlockCount = totalBlockCount + 1
+        
         if totalBlockCount == 1 { withAnimation { currentTip = .blockOptions } }
         if totalBlockCount == 5 { withAnimation { currentTip = .headerSwipe } }
         if totalBlockCount == 10 { SKStoreReviewController.requestReview() }
@@ -136,11 +135,6 @@ class ScheduleViewModel: ObservableObject {
         withAnimation { currentTip = nil }
     }
     
-    func toggleFilter() {
-        HapticsGateway.shared.triggerLightImpact()
-        withAnimation { isFilterEnabled.toggle() }
-    }
-    
     func presentDatePickerView() {
         HapticsGateway.shared.triggerLightImpact()
         isDatePickerViewPresented = true
@@ -166,10 +160,6 @@ class ScheduleViewModel: ObservableObject {
             currentDate = currentDate - 1.days
             loadHourBlocks()
         }
-    }
-    
-    func isCurrentDayToday() -> Bool {
-        return currentDate.isToday
     }
     
     func returnToToday() {

@@ -22,7 +22,7 @@ extension String {
             }
         }
         
-        return title
+        return String(title.dropLast())
     }
     
     func urgencyToColorString() -> String {

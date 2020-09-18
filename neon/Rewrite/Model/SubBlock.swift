@@ -12,10 +12,10 @@ import CoreData
 struct SubBlock: Identifiable {
     
     let id: String
-    let hourBlockId: String
+    private let hourBlockId: String
     
     let title: String
-    let timestamp: Date
+    private let timestamp: Date
     
     init(of hourBlock: HourBlock, title: String) {
         self.id = UUID().uuidString

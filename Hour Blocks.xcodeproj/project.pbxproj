@@ -75,12 +75,10 @@
 		AB5A9BF124B385DB00F97B10 /* HourBlockIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5A9BF024B385DB00F97B10 /* HourBlockIcon.swift */; };
 		AB5A9BF324B3867900F97B10 /* CalendarGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5A9BF224B3867900F97B10 /* CalendarGateway.swift */; };
 		AB5A9BF724B396BB00F97B10 /* NeonDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5A9BF624B396BB00F97B10 /* NeonDivider.swift */; };
-		AB5A9BF924B39DDE00F97B10 /* EKEvent+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5A9BF824B39DDE00F97B10 /* EKEvent+Ext.swift */; };
 		AB5B933D24E2DABD006F2DED /* AcknowledgementsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5B933C24E2DABD006F2DED /* AcknowledgementsSheet.swift */; };
 		AB5B933F24E2DB66006F2DED /* TextBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5B933E24E2DB66006F2DED /* TextBlockView.swift */; };
 		AB5F9A2E24AE63E800C4C597 /* SubBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F9A2D24AE63E800C4C597 /* SubBlock.swift */; };
 		AB5F9A3024AE6E6E00C4C597 /* ManageSubBlocksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F9A2F24AE6E6E00C4C597 /* ManageSubBlocksView.swift */; };
-		AB6841DD2437E06A009EF794 /* NSManagedObjectContext+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6841DC2437E06A009EF794 /* NSManagedObjectContext+Ext.swift */; };
 		AB69CB9724E17FDC00028715 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4E738323A01819008036ED /* CloudKit.framework */; };
 		AB69CB9924E1888C00028715 /* URL+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB69CB9824E1888C00028715 /* URL+Ext.swift */; };
 		AB69CB9A24E188AC00028715 /* URL+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB69CB9824E1888C00028715 /* URL+Ext.swift */; };
@@ -269,12 +267,10 @@
 		AB5A9BF024B385DB00F97B10 /* HourBlockIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourBlockIcon.swift; sourceTree = "<group>"; };
 		AB5A9BF224B3867900F97B10 /* CalendarGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGateway.swift; sourceTree = "<group>"; };
 		AB5A9BF624B396BB00F97B10 /* NeonDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeonDivider.swift; sourceTree = "<group>"; };
-		AB5A9BF824B39DDE00F97B10 /* EKEvent+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EKEvent+Ext.swift"; sourceTree = "<group>"; };
 		AB5B933C24E2DABD006F2DED /* AcknowledgementsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsSheet.swift; sourceTree = "<group>"; };
 		AB5B933E24E2DB66006F2DED /* TextBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBlockView.swift; sourceTree = "<group>"; };
 		AB5F9A2D24AE63E800C4C597 /* SubBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubBlock.swift; sourceTree = "<group>"; };
 		AB5F9A2F24AE6E6E00C4C597 /* ManageSubBlocksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageSubBlocksView.swift; sourceTree = "<group>"; };
-		AB6841DC2437E06A009EF794 /* NSManagedObjectContext+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Ext.swift"; sourceTree = "<group>"; };
 		AB69CB9824E1888C00028715 /* URL+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Ext.swift"; sourceTree = "<group>"; };
 		AB6BED6224E3FDB8000A00A5 /* MockCalendarGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCalendarGateway.swift; sourceTree = "<group>"; };
 		AB6BED6424E41026000A00A5 /* MockAnalyticsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAnalyticsGateway.swift; sourceTree = "<group>"; };
@@ -375,8 +371,6 @@
 				234C1A08220C8E9D00344316 /* Date+Ext.swift */,
 				23C53D802369E62800BA4378 /* String+Ext.swift */,
 				234DF2FA237A113200EB248A /* Int+Ext.swift */,
-				AB6841DC2437E06A009EF794 /* NSManagedObjectContext+Ext.swift */,
-				AB5A9BF824B39DDE00F97B10 /* EKEvent+Ext.swift */,
 				AB69CB9824E1888C00028715 /* URL+Ext.swift */,
 				ABE93F68251250BF005C0222 /* UIDevice+Ext.swift */,
 			);
@@ -1065,7 +1059,6 @@
 				7A666BCC23F06ADB003D6F1F /* ToDoItem.swift in Sources */,
 				AB9F12B324C8D83100F31F21 /* EditHourBlockView.swift in Sources */,
 				ABE93F69251250BF005C0222 /* UIDevice+Ext.swift in Sources */,
-				AB6841DD2437E06A009EF794 /* NSManagedObjectContext+Ext.swift in Sources */,
 				2338BEC4220A7840004F288F /* neon.xcdatamodeld in Sources */,
 				AB22515124DEF30600DEFD92 /* UtilGateway.swift in Sources */,
 				234DF2FB237A113200EB248A /* Int+Ext.swift in Sources */,
@@ -1123,7 +1116,6 @@
 				AB5B933F24E2DB66006F2DED /* TextBlockView.swift in Sources */,
 				AB72E0BB24ACE876004DD577 /* HourBlockView.swift in Sources */,
 				AB72E0C324ACE892004DD577 /* ScheduleViewModel.swift in Sources */,
-				AB5A9BF924B39DDE00F97B10 /* EKEvent+Ext.swift in Sources */,
 				234C1A09220C8E9D00344316 /* Date+Ext.swift in Sources */,
 				AB5B933D24E2DABD006F2DED /* AcknowledgementsSheet.swift in Sources */,
 				ABAFADFD24B231C40098B823 /* ToDoListViewModel.swift in Sources */,

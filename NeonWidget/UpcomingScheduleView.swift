@@ -46,8 +46,6 @@ struct UpcomingScheduleView: View {
                             }
                         }
                     }
-                    
-                    
                 } else {
                     Text("Nothing scheduled today")
                         .font(.system(size: 24, weight: .medium, design: .rounded))

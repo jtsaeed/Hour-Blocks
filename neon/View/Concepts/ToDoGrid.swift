@@ -28,7 +28,7 @@ struct ToDoGrid: View {
                                 .font(.system(size: 22, weight: .bold, design: .rounded))
                         }
                     }.frame(width: 160)
-                    .onDrag { return NSItemProvider(object: "Ye ma" as NSString) }
+                    .onDrag { return NSItemProvider(object: "test" as NSString) }
                 }
             }
         }

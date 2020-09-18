@@ -40,10 +40,6 @@ struct TestSidebarView: View {
             ScheduleView()
         }.accentColor(Color("AccentColor"))
     }
-    
-    func toggleSidebar() {
-//        NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)), with: nil)
-    }
 }
 
 struct TestSidebarView_Previews: PreviewProvider {

@@ -48,7 +48,17 @@ class ToDoListViewModel: ObservableObject {
             sortToDoItems()
         }
         
+        handleToDoCountEvents()
+    }
+    
+    private func sortToDoItems() {
+        toDoItems.sort(by: { $0.toDoItem.title > $1.toDoItem.title })
+        toDoItems.sort()
+    }
+    
+    private func handleToDoCountEvents() {
         totalToDoCount = totalToDoCount + 1
+        
         if totalToDoCount == 2 { withAnimation { currentTip = .blockOptions } }
         if totalToDoCount == 5 { withAnimation { currentTip = .toDoSiri } }
     }
@@ -57,7 +67,6 @@ class ToDoListViewModel: ObservableObject {
         HapticsGateway.shared.triggerClearBlockHaptic()
         
         dataGateway.delete(toDoItem: toDoItem)
-        
         toDoItems.removeAll(where: { $0.toDoItem.id == toDoItem.id })
     }
     
@@ -73,13 +82,5 @@ class ToDoListViewModel: ObservableObject {
     
     func dismissAddToDoItemView() {
         isAddToDoItemViewPresented = false
-    }
-}
-
-extension ToDoListViewModel {
-    
-    private func sortToDoItems() {
-        toDoItems.sort(by: { $0.toDoItem.title > $1.toDoItem.title })
-        toDoItems.sort()
     }
 }

@@ -20,8 +20,7 @@ struct ToDoListView: View {
                 IconButton(iconName: "plus",
                               iconWeight: .bold,
                               action: viewModel.presentAddToDoItemView)
-            }.zIndex(1)
-            .sheet(isPresented: $viewModel.isAddToDoItemViewPresented) {
+            }.sheet(isPresented: $viewModel.isAddToDoItemViewPresented) {
                 AddToDoItemView(viewModel: viewModel)
             }
             

@@ -35,7 +35,7 @@ extension DataGateway {
         do {
             try managedObjectContext.save()
         } catch {
-            print("error")
+            print(error.localizedDescription)
         }
     }
     
@@ -45,7 +45,7 @@ extension DataGateway {
         do {
             try managedObjectContext.save()
         } catch {
-            print("error")
+            print(error.localizedDescription)
         }
     }
     
@@ -57,7 +57,7 @@ extension DataGateway {
         do {
             try managedObjectContext.save()
         } catch {
-            print("error")
+            print(error.localizedDescription)
         }
     }
     
@@ -67,7 +67,7 @@ extension DataGateway {
         do {
             try managedObjectContext.save()
         } catch {
-            print("error")
+            print(error.localizedDescription)
         }
     }
 }
@@ -172,7 +172,7 @@ extension DataGateway {
             
             try managedObjectContext.save()
         } catch {
-            print("error")
+            print(error.localizedDescription)
         }
     }
     
@@ -189,7 +189,7 @@ extension DataGateway {
             
             try managedObjectContext.save()
         } catch {
-            print("error")
+            print(error.localizedDescription)
         }
     }
 }
@@ -211,7 +211,7 @@ extension DataGateway {
             
             try managedObjectContext.save()
         } catch {
-            print("error")
+            print(error.localizedDescription)
         }
     }
     
@@ -228,7 +228,7 @@ extension DataGateway {
             
             try managedObjectContext.save()
         } catch {
-            print("error")
+            print(error.localizedDescription)
         }
     }
     
@@ -245,7 +245,7 @@ extension DataGateway {
             
             try managedObjectContext.save()
         } catch {
-            print("error")
+            print(error.localizedDescription)
         }
     }
     
@@ -262,7 +262,7 @@ extension DataGateway {
             
             try managedObjectContext.save()
         } catch {
-            print("error")
+            print(error.localizedDescription)
         }
     }
     
@@ -279,7 +279,7 @@ extension DataGateway {
             
             try managedObjectContext.save()
         } catch {
-            print("error")
+            print(error.localizedDescription)
         }
     }
     
@@ -295,7 +295,7 @@ extension DataGateway {
             
             try managedObjectContext.save()
         } catch {
-            print("error")
+            print(error.localizedDescription)
         }
     }
 }

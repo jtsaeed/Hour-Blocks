@@ -34,7 +34,7 @@ class ToDoItemTests: XCTestCase {
         let expectation = XCTestExpectation(description: "The view model's title has changed after calling viewModel.saveChanges")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            XCTAssertEqual(self.viewModel.title, "new")
+            XCTAssertEqual(self.viewModel.getTitle(), "New")
             
             expectation.fulfill()
         }
@@ -43,7 +43,7 @@ class ToDoItemTests: XCTestCase {
     }
     
     func testSavePriorityChanges() {
-        viewModel.saveChanges(title: viewModel.title, urgency: .urgent)
+        viewModel.saveChanges(title: viewModel.getTitle(), urgency: .urgent)
         
         let expectation = XCTestExpectation(description: "view model's urgency is equal to ToDoPriority.urgent after calling viewModel.saveChanges")
         

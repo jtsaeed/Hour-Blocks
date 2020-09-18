@@ -20,7 +20,7 @@ struct ScheduleView: View {
         VStack {
             HeaderView(title: "Schedule", subtitle: viewModel.currentDate.getFormattedDate()) {
                 HStack(spacing: 16) {
-                    if !viewModel.isCurrentDayToday() {
+                    if !viewModel.currentDate.isToday {
                         IconButton(iconName: "arrow.uturn.left",
                                    iconWeight: .medium,
                                    action: viewModel.returnToToday)
@@ -41,6 +41,7 @@ struct ScheduleView: View {
                                    scheduleDate: $viewModel.currentDate,
                                    onDateChanged: viewModel.loadHourBlocks)
             }
+            
             ScheduleBlocksListView(viewModel: viewModel)
         }.onAppear(perform: viewModel.handleCalendarPermissions)
         .onReceive(refreshSchedulePublisher) { _ in viewModel.loadHourBlocks() }
@@ -60,15 +61,15 @@ private struct ScheduleBlocksListView: View {
                     NeonDivider().padding(.horizontal, 32)
                 }
                 
-                ForEach(viewModel.todaysCalendarBlocks.filter { $0.endDate.toLocalTime().hour >= (viewModel.isCurrentDayToday() ? viewModel.currentHour : UtilGateway.shared.dayStartHour()) }, id: \.self) { event in
+                ForEach(viewModel.todaysCalendarBlocks.filter { $0.endDate.toLocalTime().hour >= (viewModel.currentDate.isToday ? viewModel.currentHour : UtilGateway.shared.dayStartHour()) }, id: \.self) { event in
                     CalendarBlockView(event: event)
                 }
                 
-                if (viewModel.todaysCalendarBlocks.filter { $0.endDate.toLocalTime().hour >= (viewModel.isCurrentDayToday() ? viewModel.currentHour : UtilGateway.shared.dayStartHour()) }).count > 0 {
+                if (viewModel.todaysCalendarBlocks.filter { $0.endDate.toLocalTime().hour >= (viewModel.currentDate.isToday ? viewModel.currentHour : UtilGateway.shared.dayStartHour()) }).count > 0 {
                     NeonDivider().padding(.horizontal, 32)
                 }
                 
-                ForEach(viewModel.todaysHourBlocks.filter { $0.hourBlock.hour >= (viewModel.isCurrentDayToday() ?  viewModel.currentHour : UtilGateway.shared.dayStartHour()) }) { hourBlockViewModel in
+                ForEach(viewModel.todaysHourBlocks.filter { $0.hourBlock.hour >= (viewModel.currentDate.isToday ?  viewModel.currentHour : UtilGateway.shared.dayStartHour()) }) { hourBlockViewModel in
                     if hourBlockViewModel.getTitle() != "Empty" {
                         HourBlockView(viewModel: hourBlockViewModel,
                                       onBlockCleared: { viewModel.clearBlock(hourBlockViewModel.hourBlock) })

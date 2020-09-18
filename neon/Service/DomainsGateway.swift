@@ -13,9 +13,6 @@ class DomainsGateway {
     
     static let shared = DomainsGateway()
     
-    /// Determines the potential domain for a given Hour Block's title by evaluating the potential domain for each word within the title
-    ///
-    /// - Parameter title: The title of the given Hour Block
     func determineDomain(for title: String?) -> BlockDomain? {
         guard let words = title?.components(separatedBy: " ") else { return nil }
         
@@ -33,9 +30,6 @@ class DomainsGateway {
         return topDomain
     }
     
-    /// Determines the potential domain for a given word by using similar word embeddings
-    ///
-    /// - Parameter word: The word to evaluate
     private func determineDomainRating(for word: String) -> (domain: BlockDomain, rating: Double)? {
         var determinedDomain: BlockDomain?
         var rating = 0.0

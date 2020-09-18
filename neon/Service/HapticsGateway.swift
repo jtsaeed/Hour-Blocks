@@ -10,7 +10,7 @@ import Foundation
 import AVFoundation
 import SwiftUI
 
-class HapticsGateway {
+struct HapticsGateway {
     
     static let shared = HapticsGateway()
     

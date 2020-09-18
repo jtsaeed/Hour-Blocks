@@ -57,6 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         */
         let container = NSPersistentCloudKitContainer(name: "neon")
         let coordinator = container.persistentStoreCoordinator
+
         let storeURL = URL.storeURL(for: "group.com.evh98.neon", databaseName: "neon")
         
         var defaultURL: URL?
@@ -75,6 +76,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             if let url = defaultURL, url.absoluteString != storeURL.absoluteString {
                 let coordinator = container.persistentStoreCoordinator
+                
+                // attempt migration if necessary
                 if let oldStore = coordinator.persistentStore(for: url) {
                     do {
                         try coordinator.migratePersistentStore(oldStore, to: storeURL, options: nil, withType: NSSQLiteStoreType)
@@ -94,6 +97,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
         })
+        
         return container
     }()
 

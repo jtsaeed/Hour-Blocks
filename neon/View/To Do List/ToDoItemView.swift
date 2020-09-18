@@ -50,10 +50,9 @@ struct ToDoItemView: View {
     }
 }
 
-/*
-struct ToDoItemCardView_Previews: PreviewProvider {
+struct ToDoItemView_Previews: PreviewProvider {
     static var previews: some View {
-        ToDoItemCardView()
+        ToDoItemView(viewModel: ToDoItemViewModel(for: ToDoItem(title: "Test", urgency: .whenever)),
+                     onItemCleared: {})
     }
 }
-*/

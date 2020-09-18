@@ -74,10 +74,9 @@ struct ScheduleDatePicker: View {
         isPresented = false
     }
 }
-/*
-struct NewScheduleDatePicker_Previews: PreviewProvider {
+
+struct ScheduleDatePicker_Previews: PreviewProvider {
     static var previews: some View {
-        NewScheduleDatePicker(isPresented: .constant(true), date: .constant(Date()))
+        ScheduleDatePicker(isPresented: .constant(true), scheduleDate: .constant(Date()), onDateChanged: {})
     }
 }
-*/

@@ -45,7 +45,7 @@ struct HeaderView<Content>: View where Content: View {
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
         HeaderView(title: "Schedule", subtitle: "Sat 27 Jun") {
-            IconButton(iconName: "calendar", action: { print("ye ma") })
+            IconButton(iconName: "calendar", action: { print("test") })
         }
     }
 }

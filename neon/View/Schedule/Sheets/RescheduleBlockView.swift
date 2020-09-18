@@ -26,7 +26,7 @@ struct RescheduleBlockView: View {
         NavigationView {
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 24) {
-                    ForEach(viewModel.todaysHourBlocks.filter { $0.hourBlock.hour >= (viewModel.isCurrentDayToday() ?  viewModel.currentHour : UtilGateway.shared.dayStartHour()) }) { hourBlockViewModel in
+                    ForEach(viewModel.todaysHourBlocks.filter { $0.hourBlock.hour >= (viewModel.currentDate.isToday ?  viewModel.currentHour : UtilGateway.shared.dayStartHour()) }) { hourBlockViewModel in
                         if hourBlockViewModel.hourBlock.hour == hourBlock.hour {
                             CompactHourBlockView(viewModel: hourBlockViewModel)
                         } else {

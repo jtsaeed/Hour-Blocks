@@ -11,11 +11,8 @@ import Foundation
 struct Suggestion: Identifiable {
     
     let id = UUID().uuidString
-    var domain: BlockDomain
-    var reason: String
-    let score: Int
     
-    var title: String {
-        return domain.suggestionTitle
-    }
+    let domain: BlockDomain
+    let reason: String
+    let score: Int
 }

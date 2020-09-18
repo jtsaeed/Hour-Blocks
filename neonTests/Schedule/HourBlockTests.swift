@@ -49,7 +49,7 @@ class HourBlockTests: XCTestCase {
         
         viewModel.saveChanges(title: "Hello", icon: nil)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            XCTAssertEqual(self.viewModel.title, "Hello")
+            XCTAssertEqual(self.viewModel.getTitle(), "Hello")
             expectation.fulfill()
         }
         
@@ -57,12 +57,12 @@ class HourBlockTests: XCTestCase {
     }
     
     func testSaveIconChanges() {
-        viewModel.saveChanges(title: viewModel.title, icon: .people)
+        viewModel.saveChanges(title: viewModel.getTitle(), icon: .people)
         
         let expectation = XCTestExpectation(description: "Save icon changes icon param in view model")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            XCTAssertEqual(self.viewModel.selectedIcon, .people)
+            XCTAssertEqual(self.viewModel.hourBlock.icon, .people)
             expectation.fulfill()
         }
         
@@ -112,7 +112,7 @@ class HourBlockTests: XCTestCase {
         let expectation = XCTestExpectation(description: "getIconName returns the string restaurant from view model")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            XCTAssertEqual(self.viewModel.getIconName(), "restaurant" )
+            XCTAssertEqual(self.viewModel.hourBlock.icon.imageName, "restaurant")
             expectation.fulfill()
         }
         

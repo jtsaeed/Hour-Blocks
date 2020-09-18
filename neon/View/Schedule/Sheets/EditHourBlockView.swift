@@ -45,12 +45,10 @@ struct EditHourBlockView: View {
     }
 }
 
-/*
 struct EditHourBlockView_Previews: PreviewProvider {
     static var previews: some View {
-        EditHourBlockView(isPresented: .constant(true), hourBlock: NewHourBlock(day: Date(),
-                                                                                hour: 12,
-                                                                                title: "Lunch"))
+        EditHourBlockView(viewModel: HourBlockViewModel(for: HourBlock(day: Date(),
+                                                                       hour: 12,
+                                                                       title: "Lunch")))
     }
 }
-*/

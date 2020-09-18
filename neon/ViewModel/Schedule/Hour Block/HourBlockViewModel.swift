@@ -69,7 +69,6 @@ class HourBlockViewModel: Identifiable, ObservableObject {
         HapticsGateway.shared.triggerLightImpact()
         
         dataGateway.save(subBlock: subBlock)
-        
         withAnimation { subBlocks.append(subBlock) }
         
         WidgetCenter.shared.reloadAllTimelines()
@@ -79,7 +78,6 @@ class HourBlockViewModel: Identifiable, ObservableObject {
         HapticsGateway.shared.triggerClearBlockHaptic()
         
         dataGateway.delete(subBlock: subBlock)
-        
         withAnimation { subBlocks.removeAll { $0.id == subBlock.id } }
         
         WidgetCenter.shared.reloadAllTimelines()

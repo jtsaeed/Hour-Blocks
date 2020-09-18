@@ -35,7 +35,7 @@ struct EditToDoItemView: View {
                     Text("Soon").tag(ToDoUrgency.soon)
                     Text("Urgent").tag(ToDoUrgency.urgent)
                 }.pickerStyle(SegmentedPickerStyle())
-                    .padding(.horizontal, 24)
+                .padding(.horizontal, 24)
                 
                 Spacer()
             }.navigationTitle("Edit To Do Item")

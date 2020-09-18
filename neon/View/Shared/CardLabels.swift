@@ -53,8 +53,6 @@ struct CardSubtitleFont: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .font(.system(size: 14, weight: .semibold, design: .default))
-            .lineLimit(1)
     }
 }
 

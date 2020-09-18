@@ -12,8 +12,9 @@ import CoreData
 struct ToDoItem: Identifiable {
     
     let id: String
+    
     private(set) var title: String
-    var urgency: ToDoUrgency
+    let urgency: ToDoUrgency
     
     init(title: String, urgency: ToDoUrgency) {
         self.id = UUID().uuidString

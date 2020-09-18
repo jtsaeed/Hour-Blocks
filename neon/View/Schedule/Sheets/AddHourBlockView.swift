@@ -46,7 +46,7 @@ struct AddHourBlockView: View {
                     }.padding(.top, 8)
                 }
             }.navigationTitle("Add an Hour Block")
-            .navigationBarItems(leading: Button("Cancel", action: dismiss).hoverEffect(.highlight))
+            .navigationBarItems(leading: Button("Cancel", action: dismiss))
         }
         .onAppear {
             viewModel.loadSuggestions(for: hour, on: day)
@@ -55,7 +55,7 @@ struct AddHourBlockView: View {
     }
     
     func addSuggestionBlock(for suggestion: Suggestion) {
-        title = suggestion.title
+        title = suggestion.domain.suggestionTitle
         viewModel.logAddedSuggestion(suggestion)
         addHourBlock()
     }
