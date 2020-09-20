@@ -28,6 +28,7 @@ extension Date {
     func getFullFormattedTime(militaryTime: Bool) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = militaryTime ? "HH:mm" : "h:mma"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         
         return dateFormatter.string(from: self).uppercased()
     }

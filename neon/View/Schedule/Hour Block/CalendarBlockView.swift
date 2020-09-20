@@ -11,6 +11,8 @@ import EventKit
 
 struct CalendarBlockView: View {
     
+    @AppStorage("timeFormat") var timeFormatValue: Int = 1
+    
     let event: EKEvent
     
     var body: some View {
@@ -28,7 +30,11 @@ struct CalendarBlockView: View {
         if event.isAllDay {
             return "ALL DAY"
         } else {
-            return "\(event.startDate.getFullFormattedTime(militaryTime: false)) TO \(event.endDate.getFullFormattedTime(militaryTime: false))"
+            return "\(event.startDate.getFullFormattedTime(militaryTime: useMilitaryTime())) TO \(event.endDate.getFullFormattedTime(militaryTime: useMilitaryTime()))"
         }
+    }
+    
+    func useMilitaryTime() -> Bool {
+        return (timeFormatValue == 0 && !UtilGateway.shared.isSystemClock12h()) || timeFormatValue == 2
     }
 }
