@@ -37,7 +37,10 @@ struct OtherSettingsView: View {
                                       title: "Automatic Capitalization",
                                       description: "Would you like the titles of blocks to be automatically capitalized?",
                                       options: ["Yes", "No"])
-                    IconChooserCard()
+                    
+                    if UIApplication.shared.supportsAlternateIcons {
+                        IconChooserCard()
+                    }
                 }.padding(.top, 8)
                 .padding(.bottom, 24)
             }.navigationBarTitle("Other Settings")
@@ -120,11 +123,12 @@ private struct IconOption: View {
     let onSelect: () -> Void
     
     var body: some View {
-        Image("choose_\(iconName)_icon")
-            .resizable()
-            .frame(width: 48, height: 48)
-            .cornerRadius(12)
-            .onTapGesture(perform: onSelect)
+        Button(action: onSelect) {
+            Image("choose_\(iconName)_icon")
+                .resizable()
+                .frame(width: 48, height: 48)
+                .cornerRadius(12)
+        }
     }
 }
 
