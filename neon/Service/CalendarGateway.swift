@@ -8,6 +8,7 @@
 
 import Foundation
 import EventKit
+import SwiftDate
 
 protocol CalendarGatewayProtocol {
     
@@ -36,15 +37,13 @@ class CalendarGateway: CalendarGatewayProtocol {
     }
     
     func getEvents(for date: Date) -> [EKEvent] {
-        let startDate = date.toLocalTime().dateAtStartOf(.day)
+        let startDate = date.toLocalTime().dateAtStartOf(.day).toGlobalTime()
+        let endDate = date.toLocalTime().dateAtEndOf(.day).toGlobalTime()
+        let enabledCalendars = getEnabledCalendars()
+        guard !enabledCalendars.isEmpty else { return [] }
         
-        let eventsPredicate = eventStore.predicateForEvents(withStart: date.toLocalTime().dateAtStartOf(.day),
-                                                            end: date.toLocalTime().dateAtEndOf(.day),
-                                                            calendars: getEnabledCalendars())
-        
-        return eventStore.events(matching: eventsPredicate).filter { event in
-            !event.isAllDay || (event.isAllDay && event.endDate.toLocalTime().day == startDate.day)
-        }
+        let eventsPredicate = eventStore.predicateForEvents(withStart: startDate, end: endDate, calendars: enabledCalendars)
+        return eventStore.events(matching: eventsPredicate)
     }
     
     func initialiseEnabledCalendars() -> [String: Bool] {

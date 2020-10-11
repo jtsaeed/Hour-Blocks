@@ -38,6 +38,7 @@
 		AB0D3E8524D9B7D700CFF640 /* TestSidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0D3E8424D9B7D700CFF640 /* TestSidebarView.swift */; };
 		AB10A95324E05CC500FCB466 /* WidgetDataGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10A95124E05C6600FCB466 /* WidgetDataGateway.swift */; };
 		AB10A95524E05E2000FCB466 /* IconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10A95424E05E2000FCB466 /* IconPickerView.swift */; };
+		AB12008D252E36E0007A7D38 /* CurrentToDoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB12008C252E36E0007A7D38 /* CurrentToDoListView.swift */; };
 		AB1D6FCF24C47AC700D26D4B /* AddToDoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1D6FCE24C47AC700D26D4B /* AddToDoItemView.swift */; };
 		AB22514C24DEE96900DEFD92 /* icon_dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB22514824DEE96900DEFD92 /* icon_dark@2x.png */; };
 		AB22514D24DEE96900DEFD92 /* icon_blueprint@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB22514924DEE96900DEFD92 /* icon_blueprint@2x.png */; };
@@ -58,7 +59,7 @@
 		AB31077324E2CCD200909EC9 /* BlockDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1AF6F723F440ED00425BB6 /* BlockDomain.swift */; };
 		AB33B25824BF5EDD0057662F /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB33B25724BF5EDD0057662F /* WidgetKit.framework */; };
 		AB33B25A24BF5EDD0057662F /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB33B25924BF5EDD0057662F /* SwiftUI.framework */; };
-		AB33B25D24BF5EDD0057662F /* NeonWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B25C24BF5EDD0057662F /* NeonWidget.swift */; };
+		AB33B25D24BF5EDD0057662F /* ScheduleWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B25C24BF5EDD0057662F /* ScheduleWidget.swift */; };
 		AB33B25F24BF5EDE0057662F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB33B25E24BF5EDE0057662F /* Assets.xcassets */; };
 		AB33B26324BF5EDE0057662F /* NeonWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AB33B25624BF5EDD0057662F /* NeonWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AB33B26A24BF60BF0057662F /* UpcomingScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B26824BF5F030057662F /* UpcomingScheduleView.swift */; };
@@ -68,6 +69,9 @@
 		AB33B26E24BF642E0057662F /* neon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2338BEC2220A7840004F288F /* neon.xcdatamodeld */; };
 		AB372FE424E0884D008F6034 /* SelectableIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB372FE324E0884D008F6034 /* SelectableIcon.swift */; };
 		AB372FE624E09341008F6034 /* SchedulePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB372FE524E09341008F6034 /* SchedulePickerView.swift */; };
+		AB4211672530A9CD0052F0B2 /* NeonWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4211662530A9CD0052F0B2 /* NeonWidgets.swift */; };
+		AB4211752530AA6A0052F0B2 /* ToDoWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4211742530AA6A0052F0B2 /* ToDoWidget.swift */; };
+		AB42117E2530AB2C0052F0B2 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A666BCB23F06ADB003D6F1F /* ToDoItem.swift */; };
 		AB48A6CF24ACF0E100C50E58 /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6C624ACF0E100C50E58 /* ScheduleTests.swift */; };
 		AB48A6D624AD0FCA00C50E58 /* SuggestionBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A6D424ACFA9400C50E58 /* SuggestionBlockView.swift */; };
 		AB554EDD24BB7395006CFEBD /* ToDoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB554EDC24BB7395006CFEBD /* ToDoItemView.swift */; };
@@ -235,6 +239,7 @@
 		AB0D3E8424D9B7D700CFF640 /* TestSidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSidebarView.swift; sourceTree = "<group>"; };
 		AB10A95124E05C6600FCB466 /* WidgetDataGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDataGateway.swift; sourceTree = "<group>"; };
 		AB10A95424E05E2000FCB466 /* IconPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerView.swift; sourceTree = "<group>"; };
+		AB12008C252E36E0007A7D38 /* CurrentToDoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentToDoListView.swift; sourceTree = "<group>"; };
 		AB1D6FCE24C47AC700D26D4B /* AddToDoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoItemView.swift; sourceTree = "<group>"; };
 		AB22514824DEE96900DEFD92 /* icon_dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_dark@2x.png"; sourceTree = "<group>"; };
 		AB22514924DEE96900DEFD92 /* icon_blueprint@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_blueprint@2x.png"; sourceTree = "<group>"; };
@@ -251,13 +256,15 @@
 		AB33B25624BF5EDD0057662F /* NeonWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NeonWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB33B25724BF5EDD0057662F /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		AB33B25924BF5EDD0057662F /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		AB33B25C24BF5EDD0057662F /* NeonWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeonWidget.swift; sourceTree = "<group>"; };
+		AB33B25C24BF5EDD0057662F /* ScheduleWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWidget.swift; sourceTree = "<group>"; };
 		AB33B25E24BF5EDE0057662F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB33B26024BF5EDE0057662F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB33B26424BF5EDE0057662F /* NeonWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NeonWidgetExtension.entitlements; sourceTree = "<group>"; };
 		AB33B26824BF5F030057662F /* UpcomingScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingScheduleView.swift; sourceTree = "<group>"; };
 		AB372FE324E0884D008F6034 /* SelectableIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableIcon.swift; sourceTree = "<group>"; };
 		AB372FE524E09341008F6034 /* SchedulePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePickerView.swift; sourceTree = "<group>"; };
+		AB4211662530A9CD0052F0B2 /* NeonWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeonWidgets.swift; sourceTree = "<group>"; };
+		AB4211742530AA6A0052F0B2 /* ToDoWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoWidget.swift; sourceTree = "<group>"; };
 		AB48A6C624ACF0E100C50E58 /* ScheduleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTests.swift; sourceTree = "<group>"; };
 		AB48A6D424ACFA9400C50E58 /* SuggestionBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionBlockView.swift; sourceTree = "<group>"; };
 		AB4EDB05241813680025B284 /* neonWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = neonWatch.app; path = "/Users/jtsaeed/Documents/Brand Work/Hour Blocks/Projects/neon/build/Debug-watchos/neonWatch.app"; sourceTree = "<absolute>"; };
@@ -518,8 +525,9 @@
 		AB33B25B24BF5EDD0057662F /* NeonWidget */ = {
 			isa = PBXGroup;
 			children = (
-				AB33B25C24BF5EDD0057662F /* NeonWidget.swift */,
-				AB33B26824BF5F030057662F /* UpcomingScheduleView.swift */,
+				AB4211662530A9CD0052F0B2 /* NeonWidgets.swift */,
+				AB4211832530AB910052F0B2 /* Schedule */,
+				AB4211842530AB9C0052F0B2 /* To Do */,
 				AB33B25E24BF5EDE0057662F /* Assets.xcassets */,
 				AB33B26024BF5EDE0057662F /* Info.plist */,
 				AB10A95124E05C6600FCB466 /* WidgetDataGateway.swift */,
@@ -533,6 +541,24 @@
 				AB4EDB05241813680025B284 /* neonWatch.app */,
 			);
 			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		AB4211832530AB910052F0B2 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				AB33B25C24BF5EDD0057662F /* ScheduleWidget.swift */,
+				AB33B26824BF5F030057662F /* UpcomingScheduleView.swift */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
+		AB4211842530AB9C0052F0B2 /* To Do */ = {
+			isa = PBXGroup;
+			children = (
+				AB4211742530AA6A0052F0B2 /* ToDoWidget.swift */,
+				AB12008C252E36E0007A7D38 /* CurrentToDoListView.swift */,
+			);
+			path = "To Do";
 			sourceTree = "<group>";
 		};
 		AB48A6BF24ACF0CF00C50E58 /* Schedule */ = {
@@ -1166,16 +1192,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB31077224E2CCAD00909EC9 /* DomainsGateway.swift in Sources */,
+				AB4211672530A9CD0052F0B2 /* NeonWidgets.swift in Sources */,
 				AB33B26B24BF63A80057662F /* HourBlock.swift in Sources */,
+				AB4211752530AA6A0052F0B2 /* ToDoWidget.swift in Sources */,
 				ABB5CA9D24ED4F860098D819 /* SelectableIcon.swift in Sources */,
 				AB10A95324E05CC500FCB466 /* WidgetDataGateway.swift in Sources */,
 				AB31077324E2CCD200909EC9 /* BlockDomain.swift in Sources */,
-				AB33B25D24BF5EDD0057662F /* NeonWidget.swift in Sources */,
+				AB33B25D24BF5EDD0057662F /* ScheduleWidget.swift in Sources */,
 				ABADBB58250D301600BC158B /* SubBlock.swift in Sources */,
 				AB33B26A24BF60BF0057662F /* UpcomingScheduleView.swift in Sources */,
 				AB33B26E24BF642E0057662F /* neon.xcdatamodeld in Sources */,
 				AB33B26D24BF63E40057662F /* String+Ext.swift in Sources */,
+				AB12008D252E36E0007A7D38 /* CurrentToDoListView.swift in Sources */,
 				AB33B26C24BF63CC0057662F /* Int+Ext.swift in Sources */,
+				AB42117E2530AB2C0052F0B2 /* ToDoItem.swift in Sources */,
 				AB69CB9A24E188AC00028715 /* URL+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1341,7 +1371,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.0.2;
+				MARKETING_VERSION = 6.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1368,7 +1398,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.0.2;
+				MARKETING_VERSION = 6.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1482,7 +1512,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 6.0.2;
+				MARKETING_VERSION = 6.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.NeonSiriExt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1508,7 +1538,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 6.0.2;
+				MARKETING_VERSION = 6.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.NeonSiriExt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1537,7 +1567,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 6.0.2;
+				MARKETING_VERSION = 6.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.NeonWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1567,7 +1597,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 6.0.2;
+				MARKETING_VERSION = 6.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.NeonWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

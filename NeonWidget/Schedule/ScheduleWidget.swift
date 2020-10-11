@@ -10,7 +10,50 @@ import WidgetKit
 import SwiftUI
 import CoreData
 
-struct Provider: TimelineProvider {
+struct ScheduleWidget: Widget {
+    private let kind: String = "ScheduleWidget"
+
+    public var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: ScheduleProvider()) { entry in
+            ScheduleWidgetEntryView(entry: entry)
+        }
+        .configurationDisplayName("Upcoming Schedule")
+        .description("Take a quick peek at your upcoming schedule for the day")
+        .supportedFamilies([.systemSmall, .systemMedium])
+    }
+}
+
+struct ScheduleWidgetEntryView : View {
+    
+    var entry: ScheduleProvider.Entry
+    
+    @Environment(\.widgetFamily) var family
+
+    var body: some View {
+        switch family {
+        case .systemSmall: UpcomingScheduleView(hourBlock: entry.hourBlock, subBlocks: nil)
+        case .systemMedium: UpcomingScheduleView(hourBlock: entry.hourBlock, subBlocks: entry.subBlocks)
+        default: UpcomingScheduleView(hourBlock: entry.hourBlock, subBlocks: nil)
+        }
+    }
+}
+
+struct SchedulePlaceholderView : View {
+    
+    var body: some View {
+        PlaceholderUpcomingScheduleView()
+    }
+}
+
+struct HourBlockEntry: TimelineEntry {
+    
+    public let date: Date
+    let hourBlock: HourBlock?
+    let subBlocks: [SubBlock]
+    let relevance: TimelineEntryRelevance?
+}
+
+struct ScheduleProvider: TimelineProvider {
     
     public typealias Entry = HourBlockEntry
     
@@ -85,51 +128,7 @@ struct Provider: TimelineProvider {
     }
 }
 
-struct HourBlockEntry: TimelineEntry {
-    
-    public let date: Date
-    let hourBlock: HourBlock?
-    let subBlocks: [SubBlock]
-    let relevance: TimelineEntryRelevance?
-}
-
-struct PlaceholderView : View {
-    
-    var body: some View {
-        PlaceholderUpcomingScheduleView()
-    }
-}
-
-struct NeonWidgetEntryView : View {
-    
-    var entry: Provider.Entry
-    
-    @Environment(\.widgetFamily) var family
-
-    var body: some View {
-        switch family {
-        case .systemSmall: UpcomingScheduleView(hourBlock: entry.hourBlock, subBlocks: nil)
-        case .systemMedium: UpcomingScheduleView(hourBlock: entry.hourBlock, subBlocks: entry.subBlocks)
-        default: UpcomingScheduleView(hourBlock: entry.hourBlock, subBlocks: nil)
-        }
-    }
-}
-
-@main
-struct NeonWidget: Widget {
-    private let kind: String = "NeonWidget"
-
-    public var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            NeonWidgetEntryView(entry: entry)
-        }
-        .configurationDisplayName("Upcoming Schedule")
-        .description("Take a quick peek at your upcoming schedule for the day")
-        .supportedFamilies([.systemSmall, .systemMedium])
-    }
-}
-
-struct NeonWidget_Previews: PreviewProvider {
+struct ScheduleWidget_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             UpcomingScheduleView(hourBlock: HourBlock(day: Date(),

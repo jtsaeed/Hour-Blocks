@@ -49,12 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data stack
 
     lazy var persistentContainer: NSPersistentCloudKitContainer = {
-        /*
-         The persistent container for the application. This implementation
-         creates and returns a container, having loaded the store for the
-         application to it. This property is optional since there are legitimate
-         error conditions that could cause the creation of the store to fail.
-        */
         let container = NSPersistentCloudKitContainer(name: "neon")
         let coordinator = container.persistentStoreCoordinator
 
@@ -66,7 +60,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         if defaultURL == nil {
-            container.persistentStoreDescriptions = [NSPersistentStoreDescription(url: storeURL)]
+            container.persistentStoreDescriptions = [
+                NSPersistentStoreDescription(url: storeURL)
+            ]
         }
         
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in

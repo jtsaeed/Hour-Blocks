@@ -13,6 +13,7 @@ struct ScheduleView: View {
     
     let refreshSchedulePublisher = NotificationCenter.default.publisher(for: NSNotification.Name("RefreshSchedule"))
     let refreshHourPublisher = NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)
+    let refreshSyncPublisher = NotificationCenter.default.publisher(for: .NSPersistentStoreRemoteChange)
     
     @StateObject var viewModel = ScheduleViewModel()
     
@@ -45,6 +46,7 @@ struct ScheduleView: View {
             ScheduleBlocksListView(viewModel: viewModel)
         }.onAppear(perform: viewModel.handleCalendarPermissions)
         .onReceive(refreshSchedulePublisher) { _ in viewModel.loadHourBlocks() }
+        .onReceive(refreshSyncPublisher) { _ in viewModel.loadHourBlocks() }
         .onReceive(refreshHourPublisher) { _ in viewModel.updateCurrentDate() }
     }
 }

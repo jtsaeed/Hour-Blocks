@@ -15,14 +15,48 @@ class WidgetDataGateway {
     
     lazy var persistentContainer: NSPersistentCloudKitContainer = {
         let container = NSPersistentCloudKitContainer(name: "neon")
+        let coordinator = container.persistentStoreCoordinator
+
         let storeURL = URL.storeURL(for: "group.com.evh98.neon", databaseName: "neon")
-        let storeDescription = NSPersistentStoreDescription(url: storeURL)
-        container.persistentStoreDescriptions = [storeDescription]
+        
+        var defaultURL: URL?
+        if let storeDescription = container.persistentStoreDescriptions.first, let url = storeDescription.url {
+            defaultURL = FileManager.default.fileExists(atPath: url.path) ? url : nil
+        }
+        
+        if defaultURL == nil {
+            container.persistentStoreDescriptions = [NSPersistentStoreDescription(url: storeURL)]
+        }
+        
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
+            
+            if let url = defaultURL, url.absoluteString != storeURL.absoluteString {
+                let coordinator = container.persistentStoreCoordinator
+                
+                // attempt migration if necessary
+                if let oldStore = coordinator.persistentStore(for: url) {
+                    do {
+                        try coordinator.migratePersistentStore(oldStore, to: storeURL, options: nil, withType: NSSQLiteStoreType)
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+
+                    // delete old store
+                    let fileCoordinator = NSFileCoordinator(filePresenter: nil)
+                    fileCoordinator.coordinate(writingItemAt: url, options: .forDeleting, error: nil, byAccessor: { url in
+                        do {
+                            try FileManager.default.removeItem(at: url)
+                        } catch {
+                            print(error.localizedDescription)
+                        }
+                    })
+                }
+            }
         })
+        
         return container
     }()
     
@@ -54,5 +88,19 @@ class WidgetDataGateway {
         }
         
         return subBlocks.compactMap { SubBlock(fromEntity: $0) }
+    }
+    
+    func getToDoItems() -> [ToDoItem] {
+        var toDoItems = [ToDoEntity]()
+        
+        let request = NSFetchRequest<ToDoEntity>(entityName: "ToDoEntity")
+        
+        do {
+            toDoItems = try persistentContainer.viewContext.fetch(request)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        return toDoItems.compactMap { ToDoItem(fromEntity: $0) }
     }
 }

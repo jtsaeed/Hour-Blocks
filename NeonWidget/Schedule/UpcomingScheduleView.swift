@@ -33,8 +33,6 @@ struct UpcomingScheduleView: View {
                                 .font(.system(size: subBlocks == nil ? 17 : 18, weight: .semibold, design: .default))
                             Text(hourBlock.title!.smartCapitalization())
                                 .font(.system(size: subBlocks == nil ? 24 : 26, weight: .medium, design: .rounded))
-                            
-                            
                         }
                         
                         if let subBlocks = subBlocks {
