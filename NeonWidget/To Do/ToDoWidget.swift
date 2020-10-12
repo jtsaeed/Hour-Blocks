@@ -70,7 +70,16 @@ struct ToDoProvider: TimelineProvider {
         var todos = WidgetDataGateway.shared.getToDoItems()
         todos.sort( by: { $0.title < $1.title })
         
-        let entry = ToDoItemsEntry(date: Date(), toDoItems: todos, relevance: TimelineEntryRelevance(score: 0))
+        var score: Float = 0.0
+        todos.forEach { item in
+            switch item.urgency {
+            case .whenever: score += 1
+            case .soon: score += 3
+            case .urgent: score += 5
+            }
+        }
+        
+        let entry = ToDoItemsEntry(date: Date(), toDoItems: todos, relevance: TimelineEntryRelevance(score: score))
         let timeline = Timeline(entries: [entry], policy: .atEnd)
         completion(timeline)
     }
