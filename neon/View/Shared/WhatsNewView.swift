@@ -15,10 +15,10 @@ struct WhatsNewView: View {
     var body: some View {
         VStack {
             WhatsNewHeader(title: "What's new in\nHour Blocks \(VersionGateway.shared.currentVersion)")
-                .padding(.top, 20)
+                .padding(.top, 24)
             
             ScrollView {
-                VStack(alignment: .leading, spacing: 16) {
+                VStack(alignment: .leading, spacing: 20) {
                     TextBlockView(title: "To Do List Widget 📱",
                                   content: "Get a snapshot of your To Do List without even leaving your home screen!")
                     TextBlockView(title: "More Alternative Icons 🎨",
