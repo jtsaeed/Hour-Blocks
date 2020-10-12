@@ -17,7 +17,6 @@ struct CurrentToDoListView: View {
                            startPoint: .top,
                            endPoint: .bottom)
             
-            
             if let todos = todos {
                 VStack(alignment: .leading, spacing: 4) {
                     ForEach(todos, id: \.self.id) { todo in
@@ -28,13 +27,10 @@ struct CurrentToDoListView: View {
                 .padding(16)
                 .foregroundColor(.white)
                 
-            }else {
+            } else {
                 Text("No todo items today")
                     .font(.system(size: 24, weight: .semibold, design: .default))
             }
-            
-            
-            
         }
     }
 }
