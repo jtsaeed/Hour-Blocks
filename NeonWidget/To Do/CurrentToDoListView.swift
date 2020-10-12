@@ -21,7 +21,7 @@ struct CurrentToDoListView: View {
                     VStack(alignment: .leading, spacing: 4) {
                         ForEach(todos, id: \.self.id) { todo in
                             Text("• " + todo.title)
-                                .font(.system(size: 17, weight: .semibold, design: .default))
+                                .font(.system(size: 17, weight: .medium, design: .rounded))
                         }
                     }
                 } else {

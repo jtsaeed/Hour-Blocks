@@ -53,9 +53,7 @@ struct ToDoProvider: TimelineProvider {
     public typealias Entry = ToDoItemsEntry
     
     public func placeholder(in context: Context) -> ToDoItemsEntry {
-        return ToDoItemsEntry(date: Date(),
-                              toDoItems: [],
-                              relevance: TimelineEntryRelevance(score: 0))
+        return ToDoItemsEntry(date: Date(), toDoItems: [], relevance: TimelineEntryRelevance(score: 0))
     }
     
     public func getSnapshot(in context: Context, completion: @escaping (ToDoItemsEntry) -> Void) {
