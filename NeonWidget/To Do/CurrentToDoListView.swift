@@ -9,28 +9,28 @@
 import SwiftUI
 
 struct CurrentToDoListView: View {
-    let todos: [ToDoItem]?
+    let todos: [ToDoItem]
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
             LinearGradient(gradient: Gradient(colors: [Color("GradientEnd"), Color("UrgentColor")]),
                            startPoint: .top,
                            endPoint: .bottom)
-            
-            if let todos = todos {
-                VStack(alignment: .leading, spacing: 4) {
-                    ForEach(todos, id: \.self.id) { todo in
-                        Text("• " + todo.title)
-                            .font(.system(size: 17, weight: .semibold, design: .default))
+            Group{
+                if !todos.isEmpty {
+                    VStack(alignment: .leading, spacing: 4) {
+                        ForEach(todos, id: \.self.id) { todo in
+                            Text("• " + todo.title)
+                                .font(.system(size: 17, weight: .semibold, design: .default))
+                        }
                     }
+                } else {
+                    Text("Your to do list is empty")
+                        .font(.system(size: 24, weight: .medium, design: .rounded))
                 }
-                .padding(16)
-                .foregroundColor(.white)
-                
-            } else {
-                Text("No todo items today")
-                    .font(.system(size: 24, weight: .semibold, design: .default))
             }
+            .padding(16)
+            .foregroundColor(.white)
         }
     }
 }
