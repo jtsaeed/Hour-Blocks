@@ -24,7 +24,7 @@ struct WhatsNewView: View {
                     TextBlockView(title: "More Alternative Icons 🎨",
                                   content: "Have your pick from a total of 6 alternative app icons for Hour Blocks")
                     TextBlockView(title: "Small Improvements ✨",
-                                  content: "Fixed a bug that would sometimes cause a crash on launch + other small fixes & tweks")
+                                  content: "Fixed a bug that would sometimes cause a crash on launch + other small fixes & tweaks")
                 }
             }.padding(.top, 24)
             
