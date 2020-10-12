@@ -30,7 +30,7 @@ struct ToDoWidgetEntryView : View {
     @Environment(\.widgetFamily) var family
 
     var body: some View {
-        CurrentToDoListView()
+        CurrentToDoListView(todos: [])
     }
 }
 
