@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 class ToDoListViewModel: ObservableObject {
     
@@ -49,6 +50,7 @@ class ToDoListViewModel: ObservableObject {
         }
         
         handleToDoCountEvents()
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     private func sortToDoItems() {
@@ -68,6 +70,7 @@ class ToDoListViewModel: ObservableObject {
         
         dataGateway.delete(toDoItem: toDoItem)
         toDoItems.removeAll(where: { $0.toDoItem.id == toDoItem.id })
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     func dismissTip() {
