@@ -63,7 +63,7 @@ private struct ScheduleBlocksListView: View {
                     NeonDivider().padding(.horizontal, 32)
                 }
                 
-                ForEach(viewModel.todaysCalendarBlocks.filter { $0.endDate.toLocalTime().hour >= (viewModel.currentDate.isToday ? viewModel.currentHour : UtilGateway.shared.dayStartHour()) }, id: \.self) { event in
+                ForEach(viewModel.todaysCalendarBlocks.filter { $0.endDate.toLocalTime().hour >= (viewModel.currentDate.isToday ? viewModel.currentHour : UtilGateway.shared.dayStartHour()) }) { event in
                     CalendarBlockView(event: event)
                 }
                 
