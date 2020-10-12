@@ -12,7 +12,7 @@ import CoreData
 
 struct ToDoWidget: Widget {
     private let kind: String = "ToDoWidget"
-
+    
     public var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: ToDoProvider()) { entry in
             ToDoWidgetEntryView(entry: entry)
@@ -28,9 +28,9 @@ struct ToDoWidgetEntryView : View {
     var entry: ToDoProvider.Entry
     
     @Environment(\.widgetFamily) var family
-
+    
     var body: some View {
-        CurrentToDoListView()
+        CurrentToDoListView(todos: entry.toDoItems)
     }
 }
 
@@ -53,23 +53,35 @@ struct ToDoProvider: TimelineProvider {
     public typealias Entry = ToDoItemsEntry
     
     public func placeholder(in context: Context) -> ToDoItemsEntry {
-        return ToDoItemsEntry(date: Date(),
-                             toDoItems: [],
-                             relevance: TimelineEntryRelevance(score: 0))
+        return ToDoItemsEntry(date: Date(), toDoItems: [], relevance: TimelineEntryRelevance(score: 0))
     }
     
     public func getSnapshot(in context: Context, completion: @escaping (ToDoItemsEntry) -> Void) {
-        // TODO: Get to do list items from Core Data and create an entry
-
-//        completion(entry)
+        var todos = WidgetDataGateway.shared.getToDoItems()
+        todos.sort( by: { $0.title < $1.title })
+        
+        let entry = ToDoItemsEntry(date: Date(), toDoItems: todos, relevance: TimelineEntryRelevance(score: 0))
+        completion(entry)
     }
     
     public func getTimeline(in context: Context, completion: @escaping (Timeline<ToDoItemsEntry>) -> Void) {
-        // TODO: Get to do list items from Core Data and create an entry, exact same as the snapshot function
-
-//        let timeline = Timeline(entries: [entry], policy: .atEnd)
-//        completion(timeline)
+        var todos = WidgetDataGateway.shared.getToDoItems()
+        todos.sort( by: { $0.title < $1.title })
+        
+        var score: Float = 0.0
+        todos.forEach { item in
+            switch item.urgency {
+            case .whenever: score += 1
+            case .soon: score += 3
+            case .urgent: score += 5
+            }
+        }
+        
+        let entry = ToDoItemsEntry(date: Date(), toDoItems: todos, relevance: TimelineEntryRelevance(score: score))
+        let timeline = Timeline(entries: [entry], policy: .atEnd)
+        completion(timeline)
     }
+    
 }
 
 struct ToDoWidget_Previews: PreviewProvider {
