@@ -19,7 +19,7 @@ struct CurrentToDoListView: View {
             Group {
                 if !todos.isEmpty {
                     VStack(alignment: .leading, spacing: 4) {
-                        ForEach(todos, id: \.self.id) { todo in
+                        ForEach(todos) { todo in
                             Text("• " + todo.title)
                                 .font(.system(size: 17, weight: .medium, design: .rounded))
                         }
