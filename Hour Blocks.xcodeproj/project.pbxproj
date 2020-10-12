@@ -111,6 +111,13 @@
 		AB849E2324C8827400D27333 /* CalendarOptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB849E2224C8827400D27333 /* CalendarOptionsViewModel.swift */; };
 		AB8C6FD024E6EA7C0074AD08 /* TipCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C6FCF24E6EA7C0074AD08 /* TipCardView.swift */; };
 		AB8C6FD224E70D8A0074AD08 /* AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB8C6FD124E70D8A0074AD08 /* AppIntentVocabulary.plist */; };
+		AB9ACE5C253484FE00BDB6E7 /* icon_purple@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9ACE56253484FD00BDB6E7 /* icon_purple@3x.png */; };
+		AB9ACE5D253484FE00BDB6E7 /* icon_blue@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9ACE57253484FD00BDB6E7 /* icon_blue@3x.png */; };
+		AB9ACE5E253484FE00BDB6E7 /* icon_urgency@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9ACE58253484FD00BDB6E7 /* icon_urgency@2x.png */; };
+		AB9ACE5F253484FE00BDB6E7 /* icon_purple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9ACE59253484FD00BDB6E7 /* icon_purple@2x.png */; };
+		AB9ACE60253484FE00BDB6E7 /* icon_urgency@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9ACE5A253484FD00BDB6E7 /* icon_urgency@3x.png */; };
+		AB9ACE61253484FE00BDB6E7 /* icon_blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9ACE5B253484FE00BDB6E7 /* icon_blue@2x.png */; };
+		AB9ACE6B253487F600BDB6E7 /* EKEvent+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9ACE6A253487F600BDB6E7 /* EKEvent+Ext.swift */; };
 		AB9F12B324C8D83100F31F21 /* EditHourBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F12B224C8D83100F31F21 /* EditHourBlockView.swift */; };
 		ABADBB58250D301600BC158B /* SubBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F9A2D24AE63E800C4C597 /* SubBlock.swift */; };
 		ABAFADFA24B231700098B823 /* ToDoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAFADF924B231700098B823 /* ToDoListView.swift */; };
@@ -304,6 +311,13 @@
 		AB849E2224C8827400D27333 /* CalendarOptionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarOptionsViewModel.swift; sourceTree = "<group>"; };
 		AB8C6FCF24E6EA7C0074AD08 /* TipCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipCardView.swift; sourceTree = "<group>"; };
 		AB8C6FD124E70D8A0074AD08 /* AppIntentVocabulary.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		AB9ACE56253484FD00BDB6E7 /* icon_purple@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_purple@3x.png"; sourceTree = "<group>"; };
+		AB9ACE57253484FD00BDB6E7 /* icon_blue@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_blue@3x.png"; sourceTree = "<group>"; };
+		AB9ACE58253484FD00BDB6E7 /* icon_urgency@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_urgency@2x.png"; sourceTree = "<group>"; };
+		AB9ACE59253484FD00BDB6E7 /* icon_purple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_purple@2x.png"; sourceTree = "<group>"; };
+		AB9ACE5A253484FD00BDB6E7 /* icon_urgency@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_urgency@3x.png"; sourceTree = "<group>"; };
+		AB9ACE5B253484FE00BDB6E7 /* icon_blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_blue@2x.png"; sourceTree = "<group>"; };
+		AB9ACE6A253487F600BDB6E7 /* EKEvent+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EKEvent+Ext.swift"; sourceTree = "<group>"; };
 		AB9F12B224C8D83100F31F21 /* EditHourBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHourBlockView.swift; sourceTree = "<group>"; };
 		ABAFADF924B231700098B823 /* ToDoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListView.swift; sourceTree = "<group>"; };
 		ABAFADFC24B231C40098B823 /* ToDoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewModel.swift; sourceTree = "<group>"; };
@@ -380,6 +394,7 @@
 				234DF2FA237A113200EB248A /* Int+Ext.swift */,
 				AB69CB9824E1888C00028715 /* URL+Ext.swift */,
 				ABE93F68251250BF005C0222 /* UIDevice+Ext.swift */,
+				AB9ACE6A253487F600BDB6E7 /* EKEvent+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -472,6 +487,12 @@
 		7A8BA9AE23CCCC6D0078E67D /* App Icons */ = {
 			isa = PBXGroup;
 			children = (
+				AB9ACE5B253484FE00BDB6E7 /* icon_blue@2x.png */,
+				AB9ACE57253484FD00BDB6E7 /* icon_blue@3x.png */,
+				AB9ACE59253484FD00BDB6E7 /* icon_purple@2x.png */,
+				AB9ACE56253484FD00BDB6E7 /* icon_purple@3x.png */,
+				AB9ACE58253484FD00BDB6E7 /* icon_urgency@2x.png */,
+				AB9ACE5A253484FD00BDB6E7 /* icon_urgency@3x.png */,
 				AB22514924DEE96900DEFD92 /* icon_blueprint@2x.png */,
 				AB22514B24DEE96900DEFD92 /* icon_blueprint@3x.png */,
 				AB22514824DEE96900DEFD92 /* icon_dark@2x.png */,
@@ -943,12 +964,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB9ACE5E253484FE00BDB6E7 /* icon_urgency@2x.png in Resources */,
 				AB22514C24DEE96900DEFD92 /* icon_dark@2x.png in Resources */,
+				AB9ACE60253484FE00BDB6E7 /* icon_urgency@3x.png in Resources */,
 				AB22514D24DEE96900DEFD92 /* icon_blueprint@2x.png in Resources */,
 				7A629DAB238C059300C186B1 /* notification.aif in Resources */,
+				AB9ACE5C253484FE00BDB6E7 /* icon_purple@3x.png in Resources */,
+				AB9ACE5F253484FE00BDB6E7 /* icon_purple@2x.png in Resources */,
 				2338BEC6220A7841004F288F /* Assets.xcassets in Resources */,
+				AB9ACE5D253484FE00BDB6E7 /* icon_blue@3x.png in Resources */,
 				2304FA3B235F39E4006DA688 /* LaunchScreen.storyboard in Resources */,
 				AB256C2A24EC919B0088997E /* AppIntentVocabulary.plist in Resources */,
+				AB9ACE61253484FE00BDB6E7 /* icon_blue@2x.png in Resources */,
 				AB22514E24DEE96900DEFD92 /* icon_dark@3x.png in Resources */,
 				23356ED52256676E00541A60 /* GoogleService-Info.plist in Resources */,
 				AB22514F24DEE96900DEFD92 /* icon_blueprint@3x.png in Resources */,
@@ -1137,6 +1164,7 @@
 				AB72E0B924ACE86E004DD577 /* ScheduleView.swift in Sources */,
 				AB0D3E8524D9B7D700CFF640 /* TestSidebarView.swift in Sources */,
 				AB1D6FCF24C47AC700D26D4B /* AddToDoItemView.swift in Sources */,
+				AB9ACE6B253487F600BDB6E7 /* EKEvent+Ext.swift in Sources */,
 				23C53D812369E62800BA4378 /* String+Ext.swift in Sources */,
 				23036F4E237B2D9000563206 /* PrivacyPolicyView.swift in Sources */,
 				AB5B933F24E2DB66006F2DED /* TextBlockView.swift in Sources */,
@@ -1363,7 +1391,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0.1;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1371,7 +1399,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.0.5;
+				MARKETING_VERSION = 6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1390,7 +1418,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0.1;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1398,7 +1426,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.0.5;
+				MARKETING_VERSION = 6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1503,7 +1531,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeonSiri/NeonSiri.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0.1;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = NeonSiri/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1512,7 +1540,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 6.0.5;
+				MARKETING_VERSION = 6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.NeonSiriExt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1529,7 +1557,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeonSiri/NeonSiri.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0.1;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = NeonSiri/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1538,7 +1566,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 6.0.5;
+				MARKETING_VERSION = 6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.NeonSiriExt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1557,7 +1585,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeonWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0.1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = NeonWidget/Info.plist;
@@ -1567,7 +1595,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 6.0.5;
+				MARKETING_VERSION = 6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.NeonWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1587,7 +1615,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeonWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0.1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = NeonWidget/Info.plist;
@@ -1597,7 +1625,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 6.0.5;
+				MARKETING_VERSION = 6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.NeonWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

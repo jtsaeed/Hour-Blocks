@@ -15,18 +15,16 @@ struct WhatsNewView: View {
     var body: some View {
         VStack {
             WhatsNewHeader(title: "What's new in\nHour Blocks \(VersionGateway.shared.currentVersion)")
-                .padding(.top, 20)
+                .padding(.top, 24)
             
             ScrollView {
-                VStack(alignment: .leading, spacing: 16) {
-                    TextBlockView(title: "Redesigned Schedule 🖌",
-                                  content: "See your Sub Blocks directly in the schedule, preview your days with the new date picker, reschedule blocks + so much more!")
-                    TextBlockView(title: "Home Screen Widget 📱",
-                                  content: "Get a snapshot of your upcoming schedule without even leaving your home screen!")
-                    TextBlockView(title: "Siri Support 🎤",
-                                  content: "You can now ask Siri to add an item to your To Do List in Hour Blocks")
+                VStack(alignment: .leading, spacing: 20) {
+                    TextBlockView(title: "To Do List Widget 📱",
+                                  content: "Get a snapshot of your To Do List without even leaving your home screen!")
+                    TextBlockView(title: "More Alternative Icons 🎨",
+                                  content: "Have your pick from a total of 6 alternative app icons for Hour Blocks")
                     TextBlockView(title: "Small Improvements ✨",
-                                  content: "Hour Blocks 6.0 has been rewritten from the ground up, so expect to see plenty of small improvements and bug fixes all around")
+                                  content: "Fixed a bug that would sometimes cause a crash on launch + other small fixes & tweaks")
                 }
             }.padding(.top, 24)
             
