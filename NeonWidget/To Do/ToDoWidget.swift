@@ -59,7 +59,8 @@ struct ToDoProvider: TimelineProvider {
     }
     
     public func getSnapshot(in context: Context, completion: @escaping (ToDoItemsEntry) -> Void) {
-        let todos = WidgetDataGateway.shared.getToDoItems()
+        var todos = WidgetDataGateway.shared.getToDoItems()
+        todos.sort( by: { $0.title < $1.title })
         
         let entry = ToDoItemsEntry(date: Date(), toDoItems: todos, relevance: TimelineEntryRelevance(score: 0))
         completion(entry)
@@ -70,7 +71,6 @@ struct ToDoProvider: TimelineProvider {
         todos.sort( by: { $0.title < $1.title })
         
         let entry = ToDoItemsEntry(date: Date(), toDoItems: todos, relevance: TimelineEntryRelevance(score: 0))
-        
         let timeline = Timeline(entries: [entry], policy: .atEnd)
         completion(timeline)
     }

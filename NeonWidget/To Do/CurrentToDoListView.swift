@@ -16,7 +16,7 @@ struct CurrentToDoListView: View {
             LinearGradient(gradient: Gradient(colors: [Color("GradientEnd"), Color("UrgentColor")]),
                            startPoint: .top,
                            endPoint: .bottom)
-            Group{
+            Group {
                 if !todos.isEmpty {
                     VStack(alignment: .leading, spacing: 4) {
                         ForEach(todos, id: \.self.id) { todo in
@@ -28,8 +28,7 @@ struct CurrentToDoListView: View {
                     Text("Your to do list is empty")
                         .font(.system(size: 24, weight: .medium, design: .rounded))
                 }
-            }
-            .padding(16)
+            }.padding(16)
             .foregroundColor(.white)
         }
     }
@@ -42,17 +41,13 @@ struct PlaceholderCurrentToDoListView: View {
             LinearGradient(gradient: Gradient(colors: [Color("GradientEnd"), Color("UrgentColor")]),
                            startPoint: .top,
                            endPoint: .bottom)
-            
             VStack(alignment: .leading, spacing: 4) {
-                
                 Text("Clear out fridge.")
                     .font(.system(size: 17, weight: .semibold, design: .default))
                     .redacted(reason: .placeholder)
-                
                 Text("Tidy room.")
                     .font(.system(size: 17, weight: .semibold, design: .default))
                     .redacted(reason: .placeholder)
-                
             }.padding(16)
             .foregroundColor(.white)
         }
