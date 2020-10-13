@@ -8,63 +8,51 @@
 
 import SwiftUI
 
+/// The double header labels used in Cards throughout Hour Blocks.
 struct CardLabels: View {
     
-    @Environment(\.colorScheme) var colorScheme
-    
+    /// The text string for the main label on the bottom.
     let title: String
+    /// The text string for the secondary label at the top.
     let subtitle: String
     
+    /// The color of the main label on the bottom. By default, this is set to the app's TextColor.
     var titleColor = Color("TextColor")
+    /// The text string for the secondary label at the top. By default, this is set to the app's TextColor.
     var subtitleColor = Color("TextColor")
     
+    /// The opacity of the main label on the bottom. By default, this is set to 90%.
     var titleOpacity = 0.9
+    /// The opacity of the secondary label at the top. By default, this is set to 40%.
     var subtitleOpacity = 0.4
     
-    var alignment: HorizontalAlignment = .leading
+    /// The horizontal alignment of the card labels
+    var horizontalAlignment: HorizontalAlignment = .leading
     
-    var textAlignment: TextAlignment {
-        if alignment == .trailing {
-            return .trailing
-        } else if alignment == .center {
-            return .center
+    /// A computed property for determining the correct TextAlignment from the HorizontalAlignment
+    private var textAlignment: TextAlignment {
+        switch horizontalAlignment {
+        case .leading: return .leading
+        case .center: return .center
+        case .trailing: return .trailing
+        default: return .leading
         }
-        
-        return .leading
     }
     
     var body: some View {
-        VStack(alignment: alignment, spacing: 4) {
+        VStack(alignment: horizontalAlignment, spacing: 4) {
             Text(subtitle.uppercased())
-                .modifier(CardSubtitleFont())
+                .font(.system(size: 14, weight: .semibold, design: .default))
                 .foregroundColor(subtitleColor)
                 .opacity(subtitleOpacity)
+                .lineLimit(1)
             Text(title)
-                .modifier(CardTitleFont())
+                .font(.system(size: 22, weight: .bold, design: .rounded))
                 .foregroundColor(titleColor)
                 .opacity(titleOpacity)
+                .lineLimit(2)
                 .multilineTextAlignment(textAlignment)
                 .fixedSize(horizontal: false, vertical: true)
-        }.padding(.trailing, alignment == .leading ? 16 : 0)
+        }.padding(.trailing, horizontalAlignment == .leading ? 16 : 0)
     }
 }
-
-struct CardSubtitleFont: ViewModifier {
-    
-    func body(content: Content) -> some View {
-        content
-            .font(.system(size: 14, weight: .semibold, design: .default))
-            .lineLimit(1)
-    }
-}
-
-struct CardTitleFont: ViewModifier {
-    
-    func body(content: Content) -> some View {
-        content
-            .font(.system(size: 22, weight: .bold, design: .rounded))
-            .lineLimit(2)
-    }
-}
-
-

@@ -20,7 +20,7 @@ struct ToDoItemView: View {
                        subtitle: viewModel.urgency,
                        subtitleColor: Color(viewModel.urgency.urgencyToColorString()),
                        subtitleOpacity: viewModel.toDoItem.urgency == .whenever ? 0.4 : 1.0,
-                       alignment: .center)
+                       horizontalAlignment: .center)
         }.padding(.horizontal, 24)
         
         .contextMenu(ContextMenu(menuItems: {

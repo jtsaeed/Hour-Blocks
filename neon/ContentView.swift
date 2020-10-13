@@ -11,6 +11,7 @@ import CoreData
 
 struct ContentView: View {
     
+    /// Used to determine whether or not to show the 'What's New in Hour Blocks ...' sheet
     @State var showWhatsNew = VersionGateway.shared.isNewVersion()
  
     var body: some View {

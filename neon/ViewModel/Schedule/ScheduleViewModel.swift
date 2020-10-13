@@ -85,7 +85,7 @@ class ScheduleViewModel: ObservableObject {
         withAnimation { todaysHourBlocks[hourBlock.hour] = HourBlockViewModel(for: hourBlock) }
         
         handleBlockCountEvents()
-        WidgetCenter.shared.reloadAllTimelines()
+        WidgetCenter.shared.reloadTimelines(ofKind: "ScheduleWidget")
     }
     
     private func handleBlockCountEvents() {
@@ -108,7 +108,7 @@ class ScheduleViewModel: ObservableObject {
                                                                              title: nil,
                                                                              icon: .blocks))
         
-        WidgetCenter.shared.reloadAllTimelines()
+        WidgetCenter.shared.reloadTimelines(ofKind: "ScheduleWidget")
     }
     
     func rescheduleBlock(originalBlock: HourBlock, rescheduledBlock: HourBlock, replacedBlock: HourBlock, swappedBlock: HourBlock?) {
@@ -127,7 +127,7 @@ class ScheduleViewModel: ObservableObject {
             remindersGateway.setReminder(for: swappedBlock, with: swappedBlock.title!)
         }
         
-        WidgetCenter.shared.reloadAllTimelines()
+        WidgetCenter.shared.reloadTimelines(ofKind: "ScheduleWidget")
     }
     
     func dismissTip() {
@@ -175,6 +175,7 @@ class ScheduleViewModel: ObservableObject {
         currentDate = Date()
         currentHour = Calendar.current.component(.hour, from: Date())
         
-        WidgetCenter.shared.reloadAllTimelines()
+        loadHourBlocks()
+        WidgetCenter.shared.reloadTimelines(ofKind: "ScheduleWidget")
     }
 }

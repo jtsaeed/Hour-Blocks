@@ -50,7 +50,7 @@ class ToDoListViewModel: ObservableObject {
         }
         
         handleToDoCountEvents()
-        WidgetCenter.shared.reloadAllTimelines()
+        WidgetCenter.shared.reloadTimelines(ofKind: "ToDoWidget")
     }
     
     private func sortToDoItems() {
@@ -70,6 +70,7 @@ class ToDoListViewModel: ObservableObject {
         
         dataGateway.delete(toDoItem: toDoItem)
         toDoItems.removeAll(where: { $0.toDoItem.id == toDoItem.id })
+        
         WidgetCenter.shared.reloadAllTimelines()
     }
     

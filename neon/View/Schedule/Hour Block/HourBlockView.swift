@@ -86,6 +86,10 @@ struct HourBlockView: View {
                   secondaryButton: .cancel())
         }
     }
+    
+    func refreshSchedule() {
+        NotificationCenter.default.post(name: Notification.Name("RefreshSchedule"), object: nil)
+    }
 }
 
 private struct SubBlockView: View {
@@ -120,7 +124,7 @@ struct NoHourBlocksView: View {
                 CardLabels(title: "Hour Blocks",
                            subtitle: "No",
                            titleColor: Color("TextColor"),
-                           alignment: .center)
+                           horizontalAlignment: .center)
             }
         }.padding(.horizontal, 24)
     }

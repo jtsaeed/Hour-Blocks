@@ -35,7 +35,7 @@ struct NoSuggestionsBlockView: View {
                 CardLabels(title: "None",
                            subtitle: "Currently",
                            titleColor: Color("TextColor"),
-                           alignment: .center)
+                           horizontalAlignment: .center)
             }
         }.padding(.horizontal, 24)
     }
