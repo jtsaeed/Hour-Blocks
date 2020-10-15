@@ -11,25 +11,38 @@ import SwiftUI
 /// The double header labels used in Cards throughout Hour Blocks.
 struct CardLabels: View {
     
-    /// The text string for the main label on the bottom.
-    let title: String
-    /// The text string for the secondary label at the top.
-    let subtitle: String
+    private let title: String
+    private let subtitle: String
     
-    /// The color of the main label on the bottom. By default, this is set to the app's TextColor.
-    var titleColor = Color("TextColor")
-    /// The text string for the secondary label at the top. By default, this is set to the app's TextColor.
-    var subtitleColor = Color("TextColor")
+    private let titleColor: Color
+    private let subtitleColor: Color
     
-    /// The opacity of the main label on the bottom. By default, this is set to 90%.
-    var titleOpacity = 0.9
-    /// The opacity of the secondary label at the top. By default, this is set to 40%.
-    var subtitleOpacity = 0.4
+    private let titleOpacity: Double
+    private let subtitleOpacity: Double
     
-    /// The horizontal alignment of the card labels
-    var horizontalAlignment: HorizontalAlignment = .leading
+    private let horizontalAlignment: HorizontalAlignment
     
-    /// A computed property for determining the correct TextAlignment from the HorizontalAlignment
+    /// Creates an instance of the CardLabels view.
+    ///
+    /// - Parameters:
+    ///   - title: The text string for the main label on the bottom.
+    ///   - subtitle: The text string for the secondary label at the top.
+    ///   - titleColor: The color of the main label on the bottom. By default, this is set to the app's TextColor.
+    ///   - subtitleColor: The text string for the secondary label at the top. By default, this is set to the app's TextColor.
+    ///   - titleOpacity: The opacity of the main label on the bottom. By default, this is set to 90%.
+    ///   - subtitleOpacity: The opacity of the secondary label at the top. By default, this is set to 40%.
+    ///   - horizontalAlignment: The horizontal alignment of the card labels.
+    init(title: String, subtitle: String, titleColor: Color = Color("TextColor"), subtitleColor: Color = Color("SubtitleColor"), titleOpacity: Double = 0.9, subtitleOpacity: Double = 0.4, horizontalAlignment: HorizontalAlignment = .leading) {
+        self.title = title
+        self.subtitle = subtitle
+        self.titleColor = titleColor
+        self.subtitleColor = subtitleColor
+        self.titleOpacity = titleOpacity
+        self.subtitleOpacity = subtitleOpacity
+        self.horizontalAlignment = horizontalAlignment
+    }
+    
+    /// A computed property for determining the correct TextAlignment from the HorizontalAlignment.
     private var textAlignment: TextAlignment {
         switch horizontalAlignment {
         case .leading: return .leading

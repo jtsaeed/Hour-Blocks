@@ -8,21 +8,30 @@
 
 import SwiftUI
 
+/// A wrapper around the native SwiftUI TextField with Hour Blocks styling. Used for all text fields within Hour Blocks.
 struct NeonTextField: View {
     
-    @Binding var input: String
+    @Binding var text: String
     
-    var color: Color = Color("AccentColorLight")
+    private let onReturn: () -> Void
     
-    let didReturn: () -> Void
+    /// Creates an instance of the NeonTextField view.
+    ///
+    /// - Parameters:
+    ///   - text: A binding of the input text.
+    ///   - onReturn: The callback function to be triggered when the user hits the return key on the keyboard. By default this is set to be empty.
+    init(text: Binding<String>, onReturn: @escaping () -> Void = {}) {
+        self._text = text
+        self.onReturn = onReturn
+    }
 
     var body: some View {
         ZStack() {
             Rectangle()
                 .frame(height: 40)
-                .foregroundColor(color)
+                .foregroundColor(Color("AccentColorLight"))
                 .cornerRadius(8)
-            TextField("Enter the title here...", text: $input, onCommit: didReturn)
+            TextField("Enter the title here...", text: $text, onCommit: onReturn)
                 .autocapitalization(.none)
                 .font(.system(size: 17, weight: .medium, design: .default))
                 .foregroundColor(Color("TextColor"))
@@ -33,6 +42,6 @@ struct NeonTextField: View {
 
 struct NeonTextField_Previews: PreviewProvider {
     static var previews: some View {
-        NeonTextField(input: .constant("Lecture"), didReturn: {})
+        NeonTextField(text: .constant("Lecture"))
     }
 }

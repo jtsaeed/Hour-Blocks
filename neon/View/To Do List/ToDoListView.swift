@@ -27,7 +27,7 @@ struct ToDoListView: View {
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 24) {
                     if let tip = viewModel.currentTip {
-                        TipCardView(tip: tip, onDismiss: viewModel.dismissTip)
+                        TipCardView(for: tip, onDismiss: viewModel.dismissTip)
                         NeonDivider().padding(.horizontal, 32)
                     }
                     

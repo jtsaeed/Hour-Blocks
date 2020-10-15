@@ -8,13 +8,24 @@
 
 import SwiftUI
 
+/// A view displaying the changelog for the latest version of Hour Blocks
 struct WhatsNewView: View {
     
-    @Binding var showWhatsNew: Bool
+    @Binding private var isPresented: Bool
+    
+    /// Creates an instance of WhatsNewView.
+    ///
+    /// - Parameters:
+    ///   - isPresented: A binding determining whether or not the view is presented.
+    init(isPresented: Binding<Bool>) {
+        self._isPresented = isPresented
+    }
     
     var body: some View {
         VStack {
-            WhatsNewHeader(title: "What's new in\nHour Blocks \(VersionGateway.shared.currentVersion)")
+            Text("What's new in\nHour Blocks \(VersionGateway.shared.currentVersion)")
+                .font(.system(size: 34, weight: .bold, design: .default))
+                .multilineTextAlignment(.center)
                 .padding(.top, 24)
             
             ScrollView {
@@ -28,30 +39,19 @@ struct WhatsNewView: View {
                 }
             }.padding(.top, 24)
             
-            ActionButton(title: "Let's go!", action: dismiss)
+            ActionButton("Let's go!", action: dismiss)
         }.padding(.vertical, 24)
         .padding(.horizontal, 32)
     }
     
-    func dismiss() {
+    private func dismiss() {
         HapticsGateway.shared.triggerLightImpact()
-        showWhatsNew = false
-    }
-}
-
-private struct WhatsNewHeader: View {
-    
-    let title: String
-    
-    var body: some View {
-        Text(title)
-            .font(.system(size: 34, weight: .bold, design: .default))
-            .multilineTextAlignment(.center)
+        isPresented = false
     }
 }
 
 struct WhatsNewView_Previews: PreviewProvider {
     static var previews: some View {
-        WhatsNewView(showWhatsNew: .constant(true))
+        WhatsNewView(isPresented: .constant(true))
     }
 }

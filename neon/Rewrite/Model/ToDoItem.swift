@@ -48,7 +48,7 @@ struct ToDoItem: Identifiable {
     }
 }
 
-enum ToDoUrgency: String {
+enum ToDoUrgency: String, CaseIterable {
     
-    case urgent, soon, whenever
+    case whenever, soon, urgent
 }

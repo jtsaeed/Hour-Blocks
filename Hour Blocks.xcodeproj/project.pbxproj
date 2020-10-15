@@ -35,6 +35,9 @@
 		AB05597824CEFB21006F0228 /* ScheduleDatePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB05597724CEFB21006F0228 /* ScheduleDatePickerViewModel.swift */; };
 		AB05597A24CF085B006F0228 /* CompactHourBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB05597924CF085B006F0228 /* CompactHourBlockView.swift */; };
 		AB05598224CF5E1C006F0228 /* VersionGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB05598124CF5E1C006F0228 /* VersionGateway.swift */; };
+		AB0CE89125371C5E00284E7B /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0CE89025371C5E00284E7B /* Tip.swift */; };
+		AB0CE89225371C5E00284E7B /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0CE89025371C5E00284E7B /* Tip.swift */; };
+		AB0CE89325371C5E00284E7B /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0CE89025371C5E00284E7B /* Tip.swift */; };
 		AB0D3E8524D9B7D700CFF640 /* TestSidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0D3E8424D9B7D700CFF640 /* TestSidebarView.swift */; };
 		AB10A95324E05CC500FCB466 /* WidgetDataGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10A95124E05C6600FCB466 /* WidgetDataGateway.swift */; };
 		AB10A95524E05E2000FCB466 /* IconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10A95424E05E2000FCB466 /* IconPickerView.swift */; };
@@ -243,6 +246,7 @@
 		AB05597724CEFB21006F0228 /* ScheduleDatePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDatePickerViewModel.swift; sourceTree = "<group>"; };
 		AB05597924CF085B006F0228 /* CompactHourBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactHourBlockView.swift; sourceTree = "<group>"; };
 		AB05598124CF5E1C006F0228 /* VersionGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionGateway.swift; sourceTree = "<group>"; };
+		AB0CE89025371C5E00284E7B /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
 		AB0D3E8424D9B7D700CFF640 /* TestSidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSidebarView.swift; sourceTree = "<group>"; };
 		AB10A95124E05C6600FCB466 /* WidgetDataGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDataGateway.swift; sourceTree = "<group>"; };
 		AB10A95424E05E2000FCB466 /* IconPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerView.swift; sourceTree = "<group>"; };
@@ -656,6 +660,7 @@
 				7A1AF6F723F440ED00425BB6 /* BlockDomain.swift */,
 				7A1AF6F923F456F600425BB6 /* Suggestion.swift */,
 				AB372FE324E0884D008F6034 /* SelectableIcon.swift */,
+				AB0CE89025371C5E00284E7B /* Tip.swift */,
 			);
 			name = Model;
 			path = Rewrite/Model;
@@ -1141,6 +1146,7 @@
 				AB72E0D024ACE9F9004DD577 /* Card.swift in Sources */,
 				2304FA17235F2A2A006DA688 /* ContentView.swift in Sources */,
 				AB5A9BF324B3867900F97B10 /* CalendarGateway.swift in Sources */,
+				AB0CE89125371C5E00284E7B /* Tip.swift in Sources */,
 				AB72E0C124ACE88A004DD577 /* AddHourBlockViewModel.swift in Sources */,
 				AB5F9A2E24AE63E800C4C597 /* SubBlock.swift in Sources */,
 				AB5A9BF124B385DB00F97B10 /* HourBlockIcon.swift in Sources */,
@@ -1209,6 +1215,7 @@
 				ABB5CA9E24ED4F860098D819 /* SelectableIcon.swift in Sources */,
 				AB31076424E2C24900909EC9 /* IntentHandler.swift in Sources */,
 				AB31076F24E2C55E00909EC9 /* SiriDataGateway.swift in Sources */,
+				AB0CE89325371C5E00284E7B /* Tip.swift in Sources */,
 				AB31077124E2C59400909EC9 /* ToDoItem.swift in Sources */,
 				AB31076D24E2C55400909EC9 /* neon.xcdatamodeld in Sources */,
 				AB31077024E2C57E00909EC9 /* URL+Ext.swift in Sources */,
@@ -1231,6 +1238,7 @@
 				AB33B26A24BF60BF0057662F /* UpcomingScheduleView.swift in Sources */,
 				AB33B26E24BF642E0057662F /* neon.xcdatamodeld in Sources */,
 				AB33B26D24BF63E40057662F /* String+Ext.swift in Sources */,
+				AB0CE89225371C5E00284E7B /* Tip.swift in Sources */,
 				AB12008D252E36E0007A7D38 /* CurrentToDoListView.swift in Sources */,
 				AB33B26C24BF63CC0057662F /* Int+Ext.swift in Sources */,
 				AB42117E2530AB2C0052F0B2 /* ToDoItem.swift in Sources */,

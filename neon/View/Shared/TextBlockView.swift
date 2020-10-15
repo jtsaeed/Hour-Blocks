@@ -8,10 +8,22 @@
 
 import SwiftUI
 
+/// A view that contains a title text view above a multiline content text view
 struct TextBlockView: View {
     
-    let title: String
-    let content: String
+    private let title: String
+    private let content: String
+    
+    
+    /// Creates an instance of TextBlockView.
+    ///
+    /// - Parameters:
+    ///   - title: The text string for the main label at the top.
+    ///   - content: The text string for the secondary content on the bottom.
+    init(title: String, content: String) {
+        self.title = title
+        self.content = content
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {

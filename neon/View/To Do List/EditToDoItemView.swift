@@ -24,16 +24,16 @@ struct EditToDoItemView: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                NeonTextField(input: $title, didReturn: {})
+                NeonTextField(text: $title)
                     .padding(24)
                 
                 Text("Urgency")
                     .font(.system(size: 28, weight: .bold, design: .default))
                     .padding(.leading, 24)
                 Picker("", selection: $urgency) {
-                    Text("Whenever").tag(ToDoUrgency.whenever)
-                    Text("Soon").tag(ToDoUrgency.soon)
-                    Text("Urgent").tag(ToDoUrgency.urgent)
+                    ForEach(ToDoUrgency.allCases, id: \.self) { toDoUrgency in
+                        Text(toDoUrgency.rawValue.capitalized).tag(toDoUrgency)
+                    }
                 }.pickerStyle(SegmentedPickerStyle())
                 .padding(.horizontal, 24)
                 

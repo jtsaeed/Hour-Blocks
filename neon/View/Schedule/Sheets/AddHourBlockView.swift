@@ -22,11 +22,11 @@ struct AddHourBlockView: View {
         NavigationView {
             VStack(alignment: .leading) {
                 HStack(spacing: 16) {
-                    NeonTextField(input: $title,
-                                  didReturn: addHourBlock)
+                    NeonTextField(text: $title,
+                                  onReturn: addHourBlock)
                     IconButton(iconName: "plus",
-                                  iconWeight: .bold,
-                                  action: addHourBlock)
+                               iconWeight: .bold,
+                               action: addHourBlock)
                 }.padding(24)
                 
                 Text("Suggestions")

@@ -8,16 +8,24 @@
 
 import SwiftUI
 
+/// The double header view used at the top of root views within Hour Blocks.
 struct HeaderView<Content>: View where Content: View {
     
-    let title: String
-    let subtitle: String
-    let headerDetail: () -> Content
+    private let title: String
+    private let subtitle: String
     
-    init(title: String, subtitle: String, @ViewBuilder headerDetail: @escaping () -> Content) {
+    private let accessory: () -> Content
+    
+    /// Creates an instance of the Header view.
+    ///
+    /// - Parameters:
+    ///   - title: The text string for the main label on the bottom.
+    ///   - subtitle: The text string for the secondary label at the top.
+    ///   - accessory: Any header accessory views; usually an icon button.
+    init(title: String, subtitle: String, @ViewBuilder accessory: @escaping () -> Content) {
         self.title = title
         self.subtitle = subtitle
-        self.headerDetail = headerDetail
+        self.accessory = accessory
     }
     
     var body: some View {
@@ -34,7 +42,7 @@ struct HeaderView<Content>: View where Content: View {
                         .font(.system(size: 28, weight: .bold, design: .default))
                 }
                 Spacer()
-                headerDetail()
+                accessory()
             }.padding(.leading, 32)
             .padding(.trailing, 56)
             .padding(.top, 16)

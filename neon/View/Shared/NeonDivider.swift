@@ -8,15 +8,13 @@
 
 import SwiftUI
 
+/// An adaptation of the native SwiftUI Divider with Hour Blocks styling. Used to seperate groups of Card based views.
 struct NeonDivider: View {
-    
-    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         RoundedRectangle(cornerRadius: 1)
-            .foregroundColor(Color("TextColor"))
+            .foregroundColor(Color("DividerColor"))
             .frame(height: 2)
-            .opacity(colorScheme == .light ? 0.04 : 0.12)
     }
 }
 

@@ -21,8 +21,8 @@ struct ManageSubBlocksView: View {
         NavigationView {
             VStack(alignment: .leading) {
                 HStack(spacing: 16) {
-                    NeonTextField(input: $title,
-                                  didReturn: addSubBlock)
+                    NeonTextField(text: $title,
+                                  onReturn: addSubBlock)
                     IconButton(iconName: "plus",
                                iconWeight: .bold,
                                action: addSubBlock)

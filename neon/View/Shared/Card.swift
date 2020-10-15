@@ -8,8 +8,8 @@ import SwiftUI
 /// The underlying 'Card' view used throughout the Hour Blocks UI.
 struct Card<Content>: View where Content: View {
     
-    let content: () -> Content
-    var padding: EdgeInsets
+    private let content: () -> Content
+    private let padding: EdgeInsets
     
     /// Creates an instance of the Card view.
     ///

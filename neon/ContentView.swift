@@ -12,7 +12,7 @@ import CoreData
 struct ContentView: View {
     
     /// Used to determine whether or not to show the 'What's New in Hour Blocks ...' sheet
-    @State var showWhatsNew = VersionGateway.shared.isNewVersion()
+    @State var isWhatsNewPresented = VersionGateway.shared.isNewVersion()
  
     var body: some View {
         TabView {
@@ -29,9 +29,9 @@ struct ContentView: View {
                 Text("Settings")
             }
         }.accentColor(Color("AccentColor"))
-        .sheet(isPresented: $showWhatsNew, content: {
-            WhatsNewView(showWhatsNew: self.$showWhatsNew)
-        })
+        .sheet(isPresented: $isWhatsNewPresented) {
+            WhatsNewView(isPresented: $isWhatsNewPresented)
+        }
     }
 }
 

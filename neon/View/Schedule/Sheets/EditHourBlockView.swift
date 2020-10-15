@@ -25,7 +25,7 @@ struct EditHourBlockView: View {
         NavigationView {
             ScrollView {
             VStack(alignment: .leading) {
-                NeonTextField(input: $title, didReturn: {})
+                NeonTextField(text: $title)
                     .padding(24)
                 
                 IconPicker(selection: $icon)
