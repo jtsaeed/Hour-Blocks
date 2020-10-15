@@ -114,6 +114,7 @@
 		AB849E2324C8827400D27333 /* CalendarOptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB849E2224C8827400D27333 /* CalendarOptionsViewModel.swift */; };
 		AB8C6FD024E6EA7C0074AD08 /* TipCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C6FCF24E6EA7C0074AD08 /* TipCardView.swift */; };
 		AB8C6FD224E70D8A0074AD08 /* AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB8C6FD124E70D8A0074AD08 /* AppIntentVocabulary.plist */; };
+		AB9040C725386B5C007D3BA6 /* NoHourBlocksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9040C625386B5C007D3BA6 /* NoHourBlocksView.swift */; };
 		AB9ACE5C253484FE00BDB6E7 /* icon_purple@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9ACE56253484FD00BDB6E7 /* icon_purple@3x.png */; };
 		AB9ACE5D253484FE00BDB6E7 /* icon_blue@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9ACE57253484FD00BDB6E7 /* icon_blue@3x.png */; };
 		AB9ACE5E253484FE00BDB6E7 /* icon_urgency@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9ACE58253484FD00BDB6E7 /* icon_urgency@2x.png */; };
@@ -315,6 +316,7 @@
 		AB849E2224C8827400D27333 /* CalendarOptionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarOptionsViewModel.swift; sourceTree = "<group>"; };
 		AB8C6FCF24E6EA7C0074AD08 /* TipCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipCardView.swift; sourceTree = "<group>"; };
 		AB8C6FD124E70D8A0074AD08 /* AppIntentVocabulary.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		AB9040C625386B5C007D3BA6 /* NoHourBlocksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoHourBlocksView.swift; sourceTree = "<group>"; };
 		AB9ACE56253484FD00BDB6E7 /* icon_purple@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_purple@3x.png"; sourceTree = "<group>"; };
 		AB9ACE57253484FD00BDB6E7 /* icon_blue@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_blue@3x.png"; sourceTree = "<group>"; };
 		AB9ACE58253484FD00BDB6E7 /* icon_urgency@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_urgency@2x.png"; sourceTree = "<group>"; };
@@ -606,6 +608,7 @@
 				AB5A9BEE24B3859200F97B10 /* CalendarBlockView.swift */,
 				AB48A6D424ACFA9400C50E58 /* SuggestionBlockView.swift */,
 				AB5A9BF024B385DB00F97B10 /* HourBlockIcon.swift */,
+				AB9040C625386B5C007D3BA6 /* NoHourBlocksView.swift */,
 			);
 			path = "Hour Block";
 			sourceTree = "<group>";
@@ -1136,6 +1139,7 @@
 				ABFC243824D029730091E3A5 /* EditToDoItemView.swift in Sources */,
 				AB72E0D124ACE9F9004DD577 /* CardLabels.swift in Sources */,
 				7A1AF6FA23F456F600425BB6 /* Suggestion.swift in Sources */,
+				AB9040C725386B5C007D3BA6 /* NoHourBlocksView.swift in Sources */,
 				2304FA1F235F2F28006DA688 /* DomainsGateway.swift in Sources */,
 				AB72E0D324ACEA47004DD577 /* IconButton.swift in Sources */,
 				2304FA14235F29ED006DA688 /* SceneDelegate.swift in Sources */,

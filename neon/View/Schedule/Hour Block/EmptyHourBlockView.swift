@@ -26,15 +26,11 @@ struct EmptyHourBlockView: View {
             }
         }.padding(.horizontal, 24)
         
-        .sheet(isPresented: $viewModel.isAddHourBlockViewPresented, onDismiss: refreshSchedule) {
+        .sheet(isPresented: $viewModel.isAddHourBlockViewPresented) {
             AddHourBlockView(isPresented: $viewModel.isAddHourBlockViewPresented,
                              hour: viewModel.hourBlock.hour,
                              day: viewModel.hourBlock.day,
-                             onAdded: { self.onNewBlockAdded($0) })
+                             onAdded: { onNewBlockAdded($0) })
         }
-    }
-    
-    func refreshSchedule() {
-        NotificationCenter.default.post(name: Notification.Name("RefreshSchedule"), object: nil)
     }
 }

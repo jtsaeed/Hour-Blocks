@@ -112,17 +112,3 @@ private struct SubBlockView: View {
         }
     }
 }
-
-struct NoHourBlocksView: View {
-    
-    var body: some View {
-        Card {
-            HStack {
-                CardLabels(title: "Hour Blocks",
-                           subtitle: "No",
-                           titleColor: Color("TextColor"),
-                           horizontalAlignment: .center)
-            }
-        }.padding(.horizontal, 24)
-    }
-}
