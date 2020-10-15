@@ -140,10 +140,6 @@ class ScheduleViewModel: ObservableObject {
         isDatePickerViewPresented = true
     }
     
-    func dismissDatePickerView() {
-        isDatePickerViewPresented = false
-    }
-    
     func advanceDate() {
         HapticsGateway.shared.triggerSoftImpact()
         

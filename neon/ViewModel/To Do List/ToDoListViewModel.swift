@@ -66,7 +66,7 @@ class ToDoListViewModel: ObservableObject {
     }
     
     func clear(toDoItem: ToDoItem) {
-        HapticsGateway.shared.triggerClearBlockHaptic()
+        HapticsGateway.shared.triggerCompletionHaptic()
         
         dataGateway.delete(toDoItem: toDoItem)
         toDoItems.removeAll(where: { $0.toDoItem.id == toDoItem.id })

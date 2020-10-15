@@ -90,24 +90,6 @@ extension DataGateway {
         return hourBlocks.compactMap { HourBlock(fromEntity: $0) }
     }
     
-    func getHourBlock(for hour: Int, on day: Date) -> HourBlock? {
-        var hourBlocks = [HourBlockEntity]()
-        let request = NSFetchRequest<HourBlockEntity>(entityName: "HourBlockEntity")
-        request.predicate = NSPredicate(format: "day == %@ && hour == %d", Calendar.current.startOfDay(for: day) as NSDate, hour)
-        
-        do {
-            hourBlocks = try managedObjectContext.fetch(request)
-        } catch let error {
-            print(error.localizedDescription)
-        }
-        
-        if let firstBlock = hourBlocks.first {
-            return HourBlock(fromEntity: firstBlock)
-        } else {
-            return nil
-        }
-    }
-    
     func getLastMonthsHourBlocks(from day: Date, for hour: Int) -> [HourBlock] {
         var hourBlocks = [HourBlockEntity]()
         let request = NSFetchRequest<HourBlockEntity>(entityName: "HourBlockEntity")

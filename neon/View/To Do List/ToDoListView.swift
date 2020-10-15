@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+/// The root view of the To Do List tab
 struct ToDoListView: View {
     
     let refreshPublisher = NotificationCenter.default.publisher(for: NSNotification.Name("RefreshToDoList"))

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// A Card based view for displaying an Hour Block
 struct HourBlockView: View {
     
     @ObservedObject var viewModel: HourBlockViewModel
@@ -85,10 +86,6 @@ struct HourBlockView: View {
                   primaryButton: .destructive(Text("Clear"), action: onBlockCleared),
                   secondaryButton: .cancel())
         }
-    }
-    
-    func refreshSchedule() {
-        NotificationCenter.default.post(name: Notification.Name("RefreshSchedule"), object: nil)
     }
 }
 

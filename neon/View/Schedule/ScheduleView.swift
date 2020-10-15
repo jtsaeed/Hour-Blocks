@@ -9,6 +9,7 @@
 import SwiftUI
 import SwiftDate
 
+/// The root view of the Schedule tab
 struct ScheduleView: View {
     
     let refreshSchedulePublisher = NotificationCenter.default.publisher(for: NSNotification.Name("RefreshSchedule"))
