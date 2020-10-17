@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-/// A Card based view for displaying a Tip
+/// A Card based view for displaying a Tip.
 struct TipCardView: View {
     
     private let tip: Tip

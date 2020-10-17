@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-/// A view that contains a title text view above a multiline content text view
+/// A view that contains a title text view above a multiline content text view.
 struct TextBlockView: View {
     
     private let title: String

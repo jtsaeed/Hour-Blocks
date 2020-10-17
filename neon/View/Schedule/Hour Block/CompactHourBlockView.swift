@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+/// A Card based view for displaying an Hour Block without its corresponding Sub Blocks or interactions
 struct CompactHourBlockView: View {
     
     @ObservedObject var viewModel: HourBlockViewModel

@@ -10,11 +10,12 @@ import SwiftUI
 
 struct ScheduleDatePicker: View {
     
-    @Binding var isPresented: Bool
-    @Binding var scheduleDate: Date
-    let onDateChanged: () -> Void
+    @Binding private var isPresented: Bool
+    @Binding private var scheduleDate: Date
     
-    @StateObject var viewModel: ScheduleDatePickerViewModel
+    private let onDateChanged: () -> Void
+    
+    @StateObject private var viewModel: ScheduleDatePickerViewModel
     
     init(isPresented: Binding<Bool>, scheduleDate: Binding<Date>, onDateChanged: @escaping () -> Void) {
         self._isPresented = isPresented
@@ -39,8 +40,8 @@ struct ScheduleDatePicker: View {
                 
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 24) {
-                        ForEach(viewModel.calendarBlocks, id: \.self) { event in
-                            CalendarBlockView(event: event)
+                        ForEach(viewModel.calendarBlocks) { event in
+                            CalendarBlockView(for: event)
                         }
                         
                         if !viewModel.calendarBlocks.isEmpty && !viewModel.hourBlocks.isEmpty {

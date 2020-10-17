@@ -9,13 +9,13 @@
 import SwiftUI
 import SwiftDate
 
-/// The root view of the Schedule tab
+/// The root view of the Schedule tab.
 struct ScheduleView: View {
     
     let refreshSchedulePublisher = NotificationCenter.default.publisher(for: NSNotification.Name("RefreshSchedule"))
     let refreshOnLaunchPublisher = NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)
     
-    @StateObject var viewModel = ScheduleViewModel()
+    @StateObject private var viewModel = ScheduleViewModel()
     
     var body: some View {
         VStack {
@@ -63,7 +63,7 @@ private struct ScheduleBlocksListView: View {
                 }
                 
                 ForEach(viewModel.todaysCalendarBlocks.filter { $0.endDate.toLocalTime().hour >= (viewModel.currentDate.isToday ? viewModel.currentHour : UtilGateway.shared.dayStartHour()) }) { event in
-                    CalendarBlockView(event: event)
+                    CalendarBlockView(for: event)
                 }
                 
                 if (viewModel.todaysCalendarBlocks.filter { $0.endDate.toLocalTime().hour >= (viewModel.currentDate.isToday ? viewModel.currentHour : UtilGateway.shared.dayStartHour()) }).count > 0 {

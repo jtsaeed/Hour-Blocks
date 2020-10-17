@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-/// A view displaying the changelog for the latest version of Hour Blocks
+/// A view displaying the changelog for the latest version of Hour Blocks.
 struct WhatsNewView: View {
     
     @Binding private var isPresented: Bool

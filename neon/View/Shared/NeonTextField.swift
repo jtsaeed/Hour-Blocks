@@ -11,7 +11,7 @@ import SwiftUI
 /// A wrapper around the native SwiftUI TextField with Hour Blocks styling. Used for all text fields within Hour Blocks.
 struct NeonTextField: View {
     
-    @Binding var text: String
+    @Binding private var text: String
     
     private let onReturn: () -> Void
     

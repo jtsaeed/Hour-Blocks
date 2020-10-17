@@ -7,12 +7,22 @@
 
 import SwiftUI
 
-/// A Card based view for displaying an Hour Block
+/// A Card based view for displaying an Hour Block.
 struct HourBlockView: View {
     
-    @ObservedObject var viewModel: HourBlockViewModel
+    @ObservedObject private var viewModel: HourBlockViewModel
     
-    let onBlockCleared: () -> Void
+    private let onBlockCleared: () -> Void
+    
+    /// Creates an instance of HourBlockView.
+    ///
+    /// - Parameters:
+    ///   - viewModel: The corresponding view model for the given Hour Block.
+    ///   - onBlockCleared: The callback function to be triggered when the user chooses to clear the corresponding Hour Block.
+    init(viewModel: HourBlockViewModel, onBlockCleared: @escaping () -> Void) {
+        self.viewModel = viewModel
+        self.onBlockCleared = onBlockCleared
+    }
     
     var body: some View {
         Card {
@@ -29,7 +39,7 @@ struct HourBlockView: View {
                     
                     VStack(spacing: 12) {
                         ForEach(viewModel.subBlocks) { subBlock in
-                            SubBlockView(subBlock: subBlock)
+                            SubBlockView(for: subBlock)
                         }
                     }
                 }
@@ -89,9 +99,18 @@ struct HourBlockView: View {
     }
 }
 
+/// A Label-like view for displaying a Sub Block.
 private struct SubBlockView: View {
     
-    let subBlock: SubBlock
+    private let subBlock: SubBlock
+    
+    /// Creates an instance of SubBlockView.
+    ///
+    /// - Parameters:
+    ///   - subBlock: The Sub Block to be displayed.
+    init(for subBlock: SubBlock) {
+        self.subBlock = subBlock
+    }
     
     var body: some View {
         HStack(spacing: 12) {

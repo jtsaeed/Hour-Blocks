@@ -37,8 +37,8 @@ struct AddHourBlockView: View {
                     VStack(spacing: 24) {
                         if !viewModel.currentSuggestions.isEmpty {
                             ForEach(viewModel.currentSuggestions) { suggestion in
-                                SuggestionBlockView(suggestion: suggestion,
-                                                    onAdded: { addSuggestionBlock(for: suggestion) })
+                                SuggestionBlockView(for: suggestion,
+                                                    onSuggestionAdded: { addSuggestionBlock(for: suggestion) })
                             }
                         } else {
                             NoSuggestionsBlockView()

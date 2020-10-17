@@ -7,11 +7,22 @@
 
 import SwiftUI
 
+/// A Card based view for displaying an empty Hour Block.
 struct EmptyHourBlockView: View {
     
-    @ObservedObject var viewModel: HourBlockViewModel
+    @ObservedObject private var viewModel: HourBlockViewModel
     
-    let onNewBlockAdded: (HourBlock) -> Void
+    private let onNewBlockAdded: (HourBlock) -> Void
+    
+    /// Creates an instance of HourBlockView.
+    ///
+    /// - Parameters:
+    ///   - viewModel: The corresponding view model for the given Hour Block.
+    ///   - onNewBlockAdded: The callback function to be triggered when the user chooses to add to the corresponding Hour Block.
+    init(viewModel: HourBlockViewModel, onNewBlockAdded: @escaping (HourBlock) -> Void) {
+        self.viewModel = viewModel
+        self.onNewBlockAdded = onNewBlockAdded
+    }
     
     var body: some View {
         Card {
