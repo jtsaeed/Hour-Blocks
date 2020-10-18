@@ -9,13 +9,13 @@
 import SwiftUI
 import SwiftDate
 
+/// The root view of the Schedule tab.
 struct ScheduleView: View {
     
     let refreshSchedulePublisher = NotificationCenter.default.publisher(for: NSNotification.Name("RefreshSchedule"))
-    let refreshHourPublisher = NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)
-    let refreshSyncPublisher = NotificationCenter.default.publisher(for: .NSPersistentStoreRemoteChange)
+    let refreshOnLaunchPublisher = NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)
     
-    @StateObject var viewModel = ScheduleViewModel()
+    @StateObject private var viewModel = ScheduleViewModel()
     
     var body: some View {
         VStack {
@@ -39,15 +39,14 @@ struct ScheduleView: View {
             })
             .sheet(isPresented: $viewModel.isDatePickerViewPresented) {
                 ScheduleDatePicker(isPresented: $viewModel.isDatePickerViewPresented,
-                                   scheduleDate: $viewModel.currentDate,
+                                   currentScheduleDate: $viewModel.currentDate,
                                    onDateChanged: viewModel.loadHourBlocks)
             }
             
             ScheduleBlocksListView(viewModel: viewModel)
         }.onAppear(perform: viewModel.handleCalendarPermissions)
         .onReceive(refreshSchedulePublisher) { _ in viewModel.loadHourBlocks() }
-        .onReceive(refreshSyncPublisher) { _ in viewModel.loadHourBlocks() }
-        .onReceive(refreshHourPublisher) { _ in viewModel.updateCurrentDate() }
+        .onReceive(refreshOnLaunchPublisher) { _ in viewModel.updateCurrentDate() }
     }
 }
 
@@ -59,12 +58,12 @@ private struct ScheduleBlocksListView: View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 24) {
                 if let tip = viewModel.currentTip {
-                    TipCardView(tip: tip, onDismiss: viewModel.dismissTip)
+                    TipCardView(for: tip, onDismiss: viewModel.dismissTip)
                     NeonDivider().padding(.horizontal, 32)
                 }
                 
-                ForEach(viewModel.todaysCalendarBlocks.filter { $0.endDate.toLocalTime().hour >= (viewModel.currentDate.isToday ? viewModel.currentHour : UtilGateway.shared.dayStartHour()) }, id: \.self) { event in
-                    CalendarBlockView(event: event)
+                ForEach(viewModel.todaysCalendarBlocks.filter { $0.endDate.toLocalTime().hour >= (viewModel.currentDate.isToday ? viewModel.currentHour : UtilGateway.shared.dayStartHour()) }) { event in
+                    CalendarBlockView(for: event)
                 }
                 
                 if (viewModel.todaysCalendarBlocks.filter { $0.endDate.toLocalTime().hour >= (viewModel.currentDate.isToday ? viewModel.currentHour : UtilGateway.shared.dayStartHour()) }).count > 0 {

@@ -18,16 +18,16 @@ extension Date {
         return dateFormatter.string(from: self).uppercased()
     }
     
-    func getFormattedTime(militaryTime: Bool) -> String {
+    func getFormattedTime(usingMilitaryTime: Bool) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = militaryTime ? "HH:00" : "ha"
+        dateFormatter.dateFormat = usingMilitaryTime ? "HH:00" : "ha"
         
         return dateFormatter.string(from: self).uppercased()
     }
     
-    func getFullFormattedTime(militaryTime: Bool) -> String {
+    func getFullFormattedTime(usingMilitaryTime: Bool) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = militaryTime ? "HH:mm" : "h:mma"
+        dateFormatter.dateFormat = usingMilitaryTime ? "HH:mm" : "h:mma"
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         
         return dateFormatter.string(from: self).uppercased()

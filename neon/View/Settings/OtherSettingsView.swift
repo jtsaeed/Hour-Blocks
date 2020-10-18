@@ -100,13 +100,14 @@ private struct IconChooserCard: View {
                         .fixedSize(horizontal: false, vertical: true)
                 }
                 
-                HStack(alignment: .center) {
-                    IconOption(iconName: "original", onSelect: { self.setAlternateIcon(nil) })
-                    Spacer()
-                    IconOption(iconName: "dark", onSelect: { self.setAlternateIcon("icon_dark") })
-                    Spacer()
-                    IconOption(iconName: "blueprint", onSelect: { self.setAlternateIcon("icon_blueprint") })
-                }.padding(.horizontal, 8)
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 72, maximum: 112))], spacing: 24) {
+                    IconOption(iconName: "Original", internalIconName: "original") { setAlternateIcon(nil) }
+                    IconOption(iconName: "Urgency", internalIconName: "urgency") { setAlternateIcon("icon_urgency") }
+                    IconOption(iconName: "Blue", internalIconName: "blue") { setAlternateIcon("icon_blue") }
+                    IconOption(iconName: "Purple", internalIconName: "purple") { setAlternateIcon("icon_purple") }
+                    IconOption(iconName: "Night", internalIconName: "dark") { setAlternateIcon("icon_dark") }
+                    IconOption(iconName: "Launched", internalIconName: "blueprint") { setAlternateIcon("icon_blueprint") }
+                }
             }
         }.padding(.horizontal, 24)
     }
@@ -120,14 +121,20 @@ private struct IconChooserCard: View {
 private struct IconOption: View {
     
     let iconName: String
+    let internalIconName: String
     let onSelect: () -> Void
     
     var body: some View {
-        Button(action: onSelect) {
-            Image("choose_\(iconName)_icon")
-                .resizable()
-                .frame(width: 48, height: 48)
-                .cornerRadius(12)
+        VStack(alignment: .center, spacing: 8) {
+            Button(action: onSelect) {
+                Image("choose_\(internalIconName)_icon")
+                    .resizable()
+                    .frame(width: 48, height: 48)
+                    .cornerRadius(12)
+            }
+            Text(iconName)
+                .font(.system(size: 14, weight: .semibold, design: .rounded))
+                .opacity(0.5)
         }
     }
 }

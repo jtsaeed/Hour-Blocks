@@ -8,52 +8,51 @@
 
 import SwiftUI
 
+/// A view displaying the changelog for the latest version of Hour Blocks.
 struct WhatsNewView: View {
     
-    @Binding var showWhatsNew: Bool
+    @Binding private var isPresented: Bool
+    
+    /// Creates an instance of WhatsNewView.
+    ///
+    /// - Parameters:
+    ///   - isPresented: A binding determining whether or not the view is presented.
+    init(isPresented: Binding<Bool>) {
+        self._isPresented = isPresented
+    }
     
     var body: some View {
         VStack {
-            WhatsNewHeader(title: "What's new in\nHour Blocks \(VersionGateway.shared.currentVersion)")
-                .padding(.top, 20)
+            Text("What's new in\nHour Blocks \(VersionGateway.shared.fullCurrentVersion)")
+                .font(.system(size: 34, weight: .bold, design: .default))
+                .multilineTextAlignment(.center)
+                .padding(.top, 24)
             
             ScrollView {
-                VStack(alignment: .leading, spacing: 16) {
-                    TextBlockView(title: "Redesigned Schedule 🖌",
-                                  content: "See your Sub Blocks directly in the schedule, preview your days with the new date picker, reschedule blocks + so much more!")
-                    TextBlockView(title: "Home Screen Widget 📱",
-                                  content: "Get a snapshot of your upcoming schedule without even leaving your home screen!")
-                    TextBlockView(title: "Siri Support 🎤",
-                                  content: "You can now ask Siri to add an item to your To Do List in Hour Blocks")
+                VStack(alignment: .leading, spacing: 20) {
+                    TextBlockView(title: "To Do List Widget 📱",
+                                  content: "Get a snapshot of your To Do List without even leaving your home screen!")
+                    TextBlockView(title: "More Alternative Icons 🎨",
+                                  content: "Have your pick from a total of 6 alternative app icons for Hour Blocks")
                     TextBlockView(title: "Small Improvements ✨",
-                                  content: "Hour Blocks 6.0 has been rewritten from the ground up, so expect to see plenty of small improvements and bug fixes all around")
+                                  content: "Fixed a bug that would sometimes cause a crash on launch + other small fixes & tweaks")
                 }
             }.padding(.top, 24)
             
-            ActionButton(title: "Let's go!", action: dismiss)
+            ActionButton("Let's go!", action: dismiss)
         }.padding(.vertical, 24)
         .padding(.horizontal, 32)
     }
     
-    func dismiss() {
+    /// Dismisses the current view.
+    private func dismiss() {
         HapticsGateway.shared.triggerLightImpact()
-        showWhatsNew = false
-    }
-}
-
-private struct WhatsNewHeader: View {
-    
-    let title: String
-    
-    var body: some View {
-        Text(title)
-            .font(.system(size: 34, weight: .bold, design: .default))
-            .multilineTextAlignment(.center)
+        isPresented = false
     }
 }
 
 struct WhatsNewView_Previews: PreviewProvider {
     static var previews: some View {
-        WhatsNewView(showWhatsNew: .constant(true))
+        WhatsNewView(isPresented: .constant(true))
     }
 }

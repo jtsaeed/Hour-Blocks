@@ -23,7 +23,7 @@ struct PrivacyPolicyView: View {
                 }
                 Spacer()
                 
-                ActionButton(title: "View full privacy policy", action: viewFullPrivacyPolicy)
+                ActionButton("View full privacy policy", action: viewFullPrivacyPolicy)
             }.padding(.vertical, 24)
             .padding(.horizontal, 32)
             .navigationBarTitle("Privacy Policy")

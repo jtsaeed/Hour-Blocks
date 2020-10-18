@@ -8,63 +8,64 @@
 
 import SwiftUI
 
+/// The double header labels used in Cards throughout Hour Blocks.
 struct CardLabels: View {
     
-    @Environment(\.colorScheme) var colorScheme
+    private let title: String
+    private let subtitle: String
     
-    let title: String
-    let subtitle: String
+    private let titleColor: Color
+    private let subtitleColor: Color
     
-    var titleColor = Color("TextColor")
-    var subtitleColor = Color("TextColor")
+    private let titleOpacity: Double
+    private let subtitleOpacity: Double
     
-    var titleOpacity = 0.9
-    var subtitleOpacity = 0.4
+    private let horizontalAlignment: HorizontalAlignment
     
-    var alignment: HorizontalAlignment = .leading
+    /// Creates an instance of the CardLabels view.
+    ///
+    /// - Parameters:
+    ///   - title: The text string for the main label on the bottom.
+    ///   - subtitle: The text string for the secondary label at the top.
+    ///   - titleColor: The color of the main label on the bottom. By default, this is set to the app's TextColor.
+    ///   - subtitleColor: The text string for the secondary label at the top. By default, this is set to the app's TextColor.
+    ///   - titleOpacity: The opacity of the main label on the bottom. By default, this is set to 90%.
+    ///   - subtitleOpacity: The opacity of the secondary label at the top. By default, this is set to 40%.
+    ///   - horizontalAlignment: The horizontal alignment of the card labels.
+    init(title: String, subtitle: String, titleColor: Color = Color("TextColor"), subtitleColor: Color = Color("TextColor"), titleOpacity: Double = 0.9, subtitleOpacity: Double = 0.4, horizontalAlignment: HorizontalAlignment = .leading) {
+        self.title = title
+        self.subtitle = subtitle
+        self.titleColor = titleColor
+        self.subtitleColor = subtitleColor
+        self.titleOpacity = titleOpacity
+        self.subtitleOpacity = subtitleOpacity
+        self.horizontalAlignment = horizontalAlignment
+    }
     
-    var textAlignment: TextAlignment {
-        if alignment == .trailing {
-            return .trailing
-        } else if alignment == .center {
-            return .center
+    /// A computed property for determining the correct TextAlignment from the HorizontalAlignment.
+    private var textAlignment: TextAlignment {
+        switch horizontalAlignment {
+        case .leading: return .leading
+        case .center: return .center
+        case .trailing: return .trailing
+        default: return .leading
         }
-        
-        return .leading
     }
     
     var body: some View {
-        VStack(alignment: alignment, spacing: 4) {
+        VStack(alignment: horizontalAlignment, spacing: 4) {
             Text(subtitle.uppercased())
-                .modifier(CardSubtitleFont())
+                .font(.system(size: 14, weight: .semibold, design: .default))
                 .foregroundColor(subtitleColor)
                 .opacity(subtitleOpacity)
+                .lineLimit(1)
             Text(title)
-                .modifier(CardTitleFont())
+                .font(.system(size: 22, weight: .bold, design: .rounded))
                 .foregroundColor(titleColor)
                 .opacity(titleOpacity)
+                .lineLimit(2)
                 .multilineTextAlignment(textAlignment)
                 .fixedSize(horizontal: false, vertical: true)
-        }.padding(.trailing, alignment == .leading ? 16 : 0)
+        }.padding(.trailing, horizontalAlignment == .leading ? 16 : 0)
     }
 }
-
-struct CardSubtitleFont: ViewModifier {
-    
-    func body(content: Content) -> some View {
-        content
-            .font(.system(size: 14, weight: .semibold, design: .default))
-            .lineLimit(1)
-    }
-}
-
-struct CardTitleFont: ViewModifier {
-    
-    func body(content: Content) -> some View {
-        content
-            .font(.system(size: 22, weight: .bold, design: .rounded))
-            .lineLimit(2)
-    }
-}
-
-

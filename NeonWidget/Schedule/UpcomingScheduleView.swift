@@ -18,7 +18,7 @@ struct UpcomingScheduleView: View {
     var body: some View {
         ZStack(alignment: .bottomLeading) {
             if colorScheme == .dark {
-                Color(.black)
+                Color("DarkWidgetBackgroundColor")
             } else {
                 LinearGradient(gradient: Gradient(colors: [Color("GradientStart"), Color("GradientEnd")]),
                                             startPoint: .top,

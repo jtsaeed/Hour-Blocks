@@ -20,7 +20,7 @@ struct ToDoItemView: View {
                        subtitle: viewModel.urgency,
                        subtitleColor: Color(viewModel.urgency.urgencyToColorString()),
                        subtitleOpacity: viewModel.toDoItem.urgency == .whenever ? 0.4 : 1.0,
-                       alignment: .center)
+                       horizontalAlignment: .center)
         }.padding(.horizontal, 24)
         
         .contextMenu(ContextMenu(menuItems: {
@@ -43,7 +43,7 @@ struct ToDoItemView: View {
             
             if viewModel.selectedSheet == .addToSchedule {
                 SchedulePickerView(isPresented: $viewModel.isSheetPresented,
-                                   title: "Add to Today",
+                                   navigationTitle: "Add to Today",
                                    hourBlock: HourBlock(day: Date(), hour: 12, title: viewModel.toDoItem.title))
             }
         }

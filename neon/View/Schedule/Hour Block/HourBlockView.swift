@@ -7,11 +7,22 @@
 
 import SwiftUI
 
+/// A Card based view for displaying an Hour Block.
 struct HourBlockView: View {
     
     @ObservedObject var viewModel: HourBlockViewModel
     
-    let onBlockCleared: () -> Void
+    private let onBlockCleared: () -> Void
+    
+    /// Creates an instance of HourBlockView.
+    ///
+    /// - Parameters:
+    ///   - viewModel: The corresponding view model for the given Hour Block.
+    ///   - onBlockCleared: The callback function to be triggered when the user chooses to clear the corresponding Hour Block.
+    init(viewModel: HourBlockViewModel, onBlockCleared: @escaping () -> Void) {
+        self.viewModel = viewModel
+        self.onBlockCleared = onBlockCleared
+    }
     
     var body: some View {
         Card {
@@ -20,7 +31,7 @@ struct HourBlockView: View {
                     CardLabels(title: viewModel.getTitle(),
                                subtitle: viewModel.getFormattedTime())
                     Spacer()
-                    HourBlockIcon(name: viewModel.icon.imageName)
+                    HourBlockIcon(viewModel.icon.imageName)
                 }
                 
                 if !viewModel.subBlocks.isEmpty {
@@ -28,7 +39,7 @@ struct HourBlockView: View {
                     
                     VStack(spacing: 12) {
                         ForEach(viewModel.subBlocks) { subBlock in
-                            SubBlockView(subBlock: subBlock)
+                            SubBlockView(for: subBlock)
                         }
                     }
                 }
@@ -56,24 +67,19 @@ struct HourBlockView: View {
         }))
         
         .sheet(isPresented: $viewModel.isSheetPresented) {
-            if viewModel.selectedSheet == .edit {
+            switch viewModel.selectedSheet {
+            case .none:
+                EmptyView()
+            case .edit:
                 EditHourBlockView(viewModel: viewModel)
-            }
-            
-            if viewModel.selectedSheet == .subBlocks {
-                ManageSubBlocksView(isPresented: $viewModel.isSheetPresented,
-                                    viewModel: viewModel,
-                                    hourBlock: viewModel.hourBlock)
-            }
-            
-            if viewModel.selectedSheet == .reschedule {
+            case .subBlocks:
+                ManageSubBlocksView(viewModel: viewModel)
+            case .reschedule:
                 RescheduleBlockView(isPresented: $viewModel.isSheetPresented,
                                     hourBlock: viewModel.hourBlock)
-            }
-            
-            if viewModel.selectedSheet == .duplicate {
+            case .duplicate:
                 SchedulePickerView(isPresented: $viewModel.isSheetPresented,
-                                   title: "Duplicate Hour Block",
+                                   navigationTitle: "Duplicate Hour Block",
                                    hourBlock: viewModel.hourBlock,
                                    subBlocks: viewModel.subBlocks)
             }
@@ -88,9 +94,18 @@ struct HourBlockView: View {
     }
 }
 
+/// A Label-like view for displaying a Sub Block.
 private struct SubBlockView: View {
     
-    let subBlock: SubBlock
+    private let subBlock: SubBlock
+    
+    /// Creates an instance of SubBlockView.
+    ///
+    /// - Parameters:
+    ///   - subBlock: The Sub Block to be displayed.
+    init(for subBlock: SubBlock) {
+        self.subBlock = subBlock
+    }
     
     var body: some View {
         HStack(spacing: 12) {
@@ -109,19 +124,5 @@ private struct SubBlockView: View {
             
             Spacer()
         }
-    }
-}
-
-struct NoHourBlocksView: View {
-    
-    var body: some View {
-        Card {
-            HStack {
-                CardLabels(title: "Hour Blocks",
-                           subtitle: "No",
-                           titleColor: Color("TextColor"),
-                           alignment: .center)
-            }
-        }.padding(.horizontal, 24)
     }
 }

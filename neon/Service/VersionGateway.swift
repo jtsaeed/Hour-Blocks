@@ -12,8 +12,8 @@ struct VersionGateway {
     
     static let shared = VersionGateway()
     
-    let currentVersion = 6.0
-    let fullCurrentVersion = "6.0.5"
+    let currentVersion = 6.1
+    let fullCurrentVersion = "6.1"
     
     func isNewVersion() -> Bool {
         guard let userVersion = UserDefaults.standard.object(forKey: "currentVersion") as? Double else {

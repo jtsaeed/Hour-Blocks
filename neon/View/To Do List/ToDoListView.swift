@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+/// The root view of the To Do List tab
 struct ToDoListView: View {
     
     let refreshPublisher = NotificationCenter.default.publisher(for: NSNotification.Name("RefreshToDoList"))
@@ -27,7 +28,7 @@ struct ToDoListView: View {
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 24) {
                     if let tip = viewModel.currentTip {
-                        TipCardView(tip: tip, onDismiss: viewModel.dismissTip)
+                        TipCardView(for: tip, onDismiss: viewModel.dismissTip)
                         NeonDivider().padding(.horizontal, 32)
                     }
                     

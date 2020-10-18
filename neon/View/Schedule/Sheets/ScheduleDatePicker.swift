@@ -8,18 +8,26 @@
 
 import SwiftUI
 
+/// A date picker view for the schedule.
 struct ScheduleDatePicker: View {
     
-    @Binding var isPresented: Bool
-    @Binding var scheduleDate: Date
-    let onDateChanged: () -> Void
+    @ObservedObject private var viewModel: ScheduleDatePickerViewModel
     
-    @StateObject var viewModel: ScheduleDatePickerViewModel
+    @Binding private var isPresented: Bool
+    @Binding private var currentScheduleDate: Date
     
-    init(isPresented: Binding<Bool>, scheduleDate: Binding<Date>, onDateChanged: @escaping () -> Void) {
+    private let onDateChanged: () -> Void
+    
+    /// Creates an instance of the ScheduleDatePicker view.
+    ///
+    /// - Parameters:
+    ///   - isPresented: A binding determining whether or not the view is presented.
+    ///   - currentScheduleDate: The current date of the schedule.
+    ///   - onDateChanged: The callback function to be triggered when the user has selected a date.
+    init(isPresented: Binding<Bool>, currentScheduleDate: Binding<Date>, onDateChanged: @escaping () -> Void) {
+        self.viewModel = ScheduleDatePickerViewModel(initialSelectedDate: currentScheduleDate.wrappedValue)
         self._isPresented = isPresented
-        self._scheduleDate = scheduleDate
-        self._viewModel = StateObject<ScheduleDatePickerViewModel>(wrappedValue: ScheduleDatePickerViewModel(initialSelectedDate: scheduleDate.wrappedValue))
+        self._currentScheduleDate = currentScheduleDate
         self.onDateChanged = onDateChanged
     }
     
@@ -31,16 +39,14 @@ struct ScheduleDatePicker: View {
                         .datePickerStyle(GraphicalDatePickerStyle())
                         .frame(maxHeight: geometry.size.width)
                         .accentColor(Color("AccentColor"))
-                        .onChange(of: viewModel.selectedDate) { _ in
-                            viewModel.loadHourBlocks()
-                        }
+                        .onChange(of: viewModel.selectedDate) { _ in viewModel.loadHourBlocks() }
                 }.padding(.horizontal, 24)
                 .padding(.top, 20)
                 
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 24) {
-                        ForEach(viewModel.calendarBlocks, id: \.self) { event in
-                            CalendarBlockView(event: event)
+                        ForEach(viewModel.calendarBlocks) { event in
+                            CalendarBlockView(for: event)
                         }
                         
                         if !viewModel.calendarBlocks.isEmpty && !viewModel.hourBlocks.isEmpty {
@@ -57,26 +63,27 @@ struct ScheduleDatePicker: View {
                     }.padding(.top, 8)
                     .padding(.bottom, 24)
                 }.padding(.top, UIDevice.current.hasNotch ? 0 : 40)
-            }
-            .navigationBarTitle("Date Picker", displayMode: .inline)
+            }.navigationBarTitle("Date Picker", displayMode: .inline)
             .navigationBarItems(leading: Button("Cancel", action: dismiss),
                                 trailing: Button("Save", action: save))
         }.accentColor(Color("AccentColor"))
     }
     
-    func save() {
-        scheduleDate = viewModel.selectedDate
+    /// Updates the schedule's current date then dismisses the view.
+    private func save() {
+        currentScheduleDate = viewModel.selectedDate
         onDateChanged()
         dismiss()
     }
     
-    func dismiss() {
+    /// Dismisses the current view.
+    private func dismiss() {
         isPresented = false
     }
 }
 
 struct ScheduleDatePicker_Previews: PreviewProvider {
     static var previews: some View {
-        ScheduleDatePicker(isPresented: .constant(true), scheduleDate: .constant(Date()), onDateChanged: {})
+        ScheduleDatePicker(isPresented: .constant(true), currentScheduleDate: .constant(Date()), onDateChanged: {})
     }
 }

@@ -7,16 +7,31 @@
 
 import SwiftUI
 
+/// The circular coloured icon button used throughout Hour Blocks.
 struct IconButton: View {
     
-    let iconName: String
-    var iconWeight: Font.Weight = .regular
-    var iconColor: String = "AccentColor"
+    private let iconName: String
+    private let iconWeight: Font.Weight
+    private let iconColor: String
     
-    let action: () -> Void
+    private let action: () -> Void
+    
+    /// Creates an instance of the IconButton view.
+    ///
+    /// - Parameters:
+    ///   - iconName: The SF Symbol name of the icon to be used.
+    ///   - iconWeight: The weight of the icon. By default, this is set to regular.
+    ///   - iconColor: The color of the icon. By default, this is set to be the accent color.
+    ///   - action: The callback function to be triggered when the user has tapped on the button.
+    init(iconName: String, iconWeight: Font.Weight = .regular, iconColor: String = "AccentColor", action: @escaping () -> Void) {
+        self.iconName = iconName
+        self.iconWeight = iconWeight
+        self.iconColor = iconColor
+        self.action = action
+    }
     
     var body: some View {
-        Button(action: action, label: {
+        Button(action: action) {
             ZStack {
                 Circle()
                     .foregroundColor(Color("\(iconColor)Light"))
@@ -25,7 +40,7 @@ struct IconButton: View {
                     .foregroundColor(Color(iconColor))
                     .font(.system(size: 20, weight: iconWeight, design: .rounded))
             }
-        })
+        }
     }
 }
 

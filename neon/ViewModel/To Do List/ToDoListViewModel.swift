@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 class ToDoListViewModel: ObservableObject {
     
@@ -49,6 +50,7 @@ class ToDoListViewModel: ObservableObject {
         }
         
         handleToDoCountEvents()
+        WidgetCenter.shared.reloadTimelines(ofKind: "ToDoWidget")
     }
     
     private func sortToDoItems() {
@@ -64,10 +66,12 @@ class ToDoListViewModel: ObservableObject {
     }
     
     func clear(toDoItem: ToDoItem) {
-        HapticsGateway.shared.triggerClearBlockHaptic()
+        HapticsGateway.shared.triggerCompletionHaptic()
         
         dataGateway.delete(toDoItem: toDoItem)
         toDoItems.removeAll(where: { $0.toDoItem.id == toDoItem.id })
+        
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     func dismissTip() {

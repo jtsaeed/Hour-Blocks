@@ -8,10 +8,21 @@
 
 import SwiftUI
 
+/// A Card based view for displaying a Tip.
 struct TipCardView: View {
     
-    let tip: Tip
-    let onDismiss: () -> Void
+    private let tip: Tip
+    private let onDismiss: () -> Void
+    
+    /// Creates an instance of WhatsNewView.
+    ///
+    /// - Parameters:
+    ///   - tip: The instance of Tip to be displayed.
+    ///   - onDismiss: The callback function to be triggered when the user dismisses the tip card.
+    init(for tip: Tip, onDismiss: @escaping () -> Void) {
+        self.tip = tip
+        self.onDismiss = onDismiss
+    }
     
     var body: some View {
         Card {
@@ -30,25 +41,8 @@ struct TipCardView: View {
     }
 }
 
-enum Tip: CustomStringConvertible {
-    
-    case blockOptions
-    case headerSwipe
-    
-    case toDoSiri
-    
-    var description: String {
-        switch self {
-        case .blockOptions: return "Hold down on a block for more options"
-        case .headerSwipe: return "Swipe across the header to change days"
-            
-        case .toDoSiri: return "Ask Siri to add an item in Hour Blocks"
-        }
-    }
-}
-
 struct TipCardView_Previews: PreviewProvider {
     static var previews: some View {
-        TipCardView(tip: .blockOptions, onDismiss: {})
+        TipCardView(for: .blockOptions, onDismiss: {})
     }
 }

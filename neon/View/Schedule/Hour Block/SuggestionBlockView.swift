@@ -8,10 +8,21 @@
 
 import SwiftUI
 
+/// A Card based view for displaying a suggested Hour Block.
 struct SuggestionBlockView: View {
     
-    let suggestion: Suggestion
-    let onAdded: () -> Void
+    private let suggestion: Suggestion
+    private let onSuggestionAdded: () -> Void
+    
+    /// Creates an instance of SuggestionBlockView.
+    ///
+    /// - Parameters:
+    ///   - suggestion: The suggestion to display.
+    ///   - onSuggestionAdded: The callback function to be triggered when the user chooses to add the suggested Hour Block.
+    init(for suggestion: Suggestion, onSuggestionAdded: @escaping () -> Void) {
+        self.suggestion = suggestion
+        self.onSuggestionAdded = onSuggestionAdded
+    }
     
     var body: some View {
         Card {
@@ -21,21 +32,7 @@ struct SuggestionBlockView: View {
                 Spacer()
                 IconButton(iconName: "plus",
                               iconWeight: .bold,
-                              action: onAdded)
-            }
-        }.padding(.horizontal, 24)
-    }
-}
-
-struct NoSuggestionsBlockView: View {
-    
-    var body: some View {
-        Card {
-            HStack {
-                CardLabels(title: "None",
-                           subtitle: "Currently",
-                           titleColor: Color("TextColor"),
-                           alignment: .center)
+                              action: onSuggestionAdded)
             }
         }.padding(.horizontal, 24)
     }
@@ -43,7 +40,7 @@ struct NoSuggestionsBlockView: View {
 
 struct SuggestionView_Previews: PreviewProvider {
     static var previews: some View {
-        SuggestionBlockView(suggestion: Suggestion(domain: .baseball, reason: "popular", score: 0),
-                            onAdded: {})
+        SuggestionBlockView(for: Suggestion(domain: .baseball, reason: "popular", score: 0),
+                            onSuggestionAdded: {})
     }
 }

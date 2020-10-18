@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+/// The root view of the Settings tab
 struct SettingsView: View {
     
     @StateObject var viewModel = SettingsViewModel()

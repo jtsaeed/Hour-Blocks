@@ -8,23 +8,30 @@
 
 import SwiftUI
 
+/// The large material icon used on the right-hand side of Hour Block cards.
 struct HourBlockIcon: View {
     
-    @Environment(\.colorScheme) var colorScheme
+    private let name: String
     
-    let name: String
+    /// Creates an instance of the HourBlockIcon view.
+    ///
+    /// - Parameters:
+    ///   - name: The name of the icon to be displayed.
+    init(_ name: String) {
+        self.name = name
+    }
     
     var body: some View {
         Image(name)
             .resizable()
             .frame(width: 40, height: 40)
-            .foregroundColor(Color("TextColor"))
-            .opacity(colorScheme == .light ? 0.1 : 0.25)
+            .foregroundColor(Color("HourBlockIconColor"))
     }
 }
 
 struct HourBlockIcon_Previews: PreviewProvider {
     static var previews: some View {
-        HourBlockIcon(name: "calendar")
+        HourBlockIcon("calendar")
     }
 }
+
