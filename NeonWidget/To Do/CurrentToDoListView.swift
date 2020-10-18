@@ -9,13 +9,21 @@
 import SwiftUI
 
 struct CurrentToDoListView: View {
+    
+    @Environment(\.colorScheme) var colorScheme
+    
     let todos: [ToDoItem]
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            LinearGradient(gradient: Gradient(colors: [Color("GradientEnd"), Color("UrgentColor")]),
-                           startPoint: .top,
-                           endPoint: .bottom)
+            if colorScheme == .dark {
+                Color("DarkWidgetBackgroundColor")
+            } else {
+                LinearGradient(gradient: Gradient(colors: [Color("GradientEnd"), Color("UrgentColor")]),
+                               startPoint: .top,
+                               endPoint: .bottom)
+            }
+            
             Group {
                 if !todos.isEmpty {
                     VStack(alignment: .leading, spacing: 4) {
