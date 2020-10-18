@@ -14,7 +14,7 @@ struct EmptyHourBlockView: View {
     
     private let onNewBlockAdded: (HourBlock) -> Void
     
-    /// Creates an instance of HourBlockView.
+    /// Creates an instance of EmptyHourBlockView.
     ///
     /// - Parameters:
     ///   - viewModel: The corresponding view model for the given Hour Block.
@@ -39,9 +39,8 @@ struct EmptyHourBlockView: View {
         
         .sheet(isPresented: $viewModel.isAddHourBlockViewPresented) {
             AddHourBlockView(isPresented: $viewModel.isAddHourBlockViewPresented,
-                             hour: viewModel.hourBlock.hour,
-                             day: viewModel.hourBlock.day,
-                             onAdded: { onNewBlockAdded($0) })
+                             for: viewModel.hourBlock.day, viewModel.hourBlock.hour,
+                             onNewBlockAdded: { onNewBlockAdded($0) })
         }
     }
 }

@@ -20,7 +20,7 @@ struct CompactHourBlockView: View {
                     CardLabels(title: viewModel.getTitle(),
                                subtitle: viewModel.getFormattedTime())
                     Spacer()
-                    HourBlockIcon(name: viewModel.icon.imageName)
+                    HourBlockIcon(viewModel.icon.imageName)
                 }
             }
         }.padding(.horizontal, 24)

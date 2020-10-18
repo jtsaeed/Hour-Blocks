@@ -122,6 +122,11 @@ extension HourBlockViewModel {
         selectedSheet = .subBlocks
     }
     
+    func dismissManageSubBlocksView() {
+        isSheetPresented = false
+        selectedSheet = nil
+    }
+    
     func presentRescheduleBlockView() {
         isSheetPresented = true
         selectedSheet = .reschedule

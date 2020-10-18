@@ -10,7 +10,7 @@ import SwiftUI
 /// A Card based view for displaying an Hour Block.
 struct HourBlockView: View {
     
-    @ObservedObject private var viewModel: HourBlockViewModel
+    @ObservedObject var viewModel: HourBlockViewModel
     
     private let onBlockCleared: () -> Void
     
@@ -31,7 +31,7 @@ struct HourBlockView: View {
                     CardLabels(title: viewModel.getTitle(),
                                subtitle: viewModel.getFormattedTime())
                     Spacer()
-                    HourBlockIcon(name: viewModel.icon.imageName)
+                    HourBlockIcon(viewModel.icon.imageName)
                 }
                 
                 if !viewModel.subBlocks.isEmpty {
@@ -67,24 +67,19 @@ struct HourBlockView: View {
         }))
         
         .sheet(isPresented: $viewModel.isSheetPresented) {
-            if viewModel.selectedSheet == .edit {
+            switch viewModel.selectedSheet {
+            case .none:
+                EmptyView()
+            case .edit:
                 EditHourBlockView(viewModel: viewModel)
-            }
-            
-            if viewModel.selectedSheet == .subBlocks {
-                ManageSubBlocksView(isPresented: $viewModel.isSheetPresented,
-                                    viewModel: viewModel,
-                                    hourBlock: viewModel.hourBlock)
-            }
-            
-            if viewModel.selectedSheet == .reschedule {
+            case .subBlocks:
+                ManageSubBlocksView(viewModel: viewModel)
+            case .reschedule:
                 RescheduleBlockView(isPresented: $viewModel.isSheetPresented,
                                     hourBlock: viewModel.hourBlock)
-            }
-            
-            if viewModel.selectedSheet == .duplicate {
+            case .duplicate:
                 SchedulePickerView(isPresented: $viewModel.isSheetPresented,
-                                   title: "Duplicate Hour Block",
+                                   navigationTitle: "Duplicate Hour Block",
                                    hourBlock: viewModel.hourBlock,
                                    subBlocks: viewModel.subBlocks)
             }

@@ -8,18 +8,24 @@
 
 import SwiftUI
 
+/// A view for rescheduling an pre-determined block.
 struct RescheduleBlockView: View {
     
-    @ObservedObject var viewModel: ScheduleViewModel
+    @ObservedObject private var viewModel: ScheduleViewModel
     
-    @Binding var isPresented: Bool
+    @Binding private var isPresented: Bool
     
-    let hourBlock: HourBlock
+    private let originalHourBlock: HourBlock
     
+    /// Creates an instance of RescheduleBlockView.
+    ///
+    /// - Parameters:
+    ///   - isPresented: A binding determining whether or not the view is presented.
+    ///   - hourBlock: The Hour Block to be rescheduled.
     init(isPresented: Binding<Bool>, hourBlock: HourBlock) {
         self.viewModel = ScheduleViewModel(currentDate: hourBlock.day)
         self._isPresented = isPresented
-        self.hourBlock = hourBlock
+        self.originalHourBlock = hourBlock
     }
     
     var body: some View {
@@ -27,12 +33,12 @@ struct RescheduleBlockView: View {
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 24) {
                     ForEach(viewModel.todaysHourBlocks.filter { $0.hourBlock.hour >= (viewModel.currentDate.isToday ?  viewModel.currentHour : UtilGateway.shared.dayStartHour()) }) { hourBlockViewModel in
-                        if hourBlockViewModel.hourBlock.hour == hourBlock.hour {
+                        if hourBlockViewModel.hourBlock.hour == originalHourBlock.hour {
                             CompactHourBlockView(viewModel: hourBlockViewModel)
                         } else {
                             RescheduleBlockCardView(viewModel: hourBlockViewModel,
-                                                    hourBlock: hourBlock,
-                                                    onReschedule: { self.reschedule($0, $1, $2) })
+                                                    originalHourBlock: originalHourBlock,
+                                                    onReschedule: { reschedule($0, $1, $2) })
                         }
                     }
                 }.padding(.top, 8)
@@ -41,29 +47,49 @@ struct RescheduleBlockView: View {
             .navigationBarItems(leading: Button("Cancel", action: dismiss))
         }.accentColor(Color("AccentColor"))
     }
-
-    func reschedule(_ rescheduledBlock: HourBlock, _ replacedBlock: HourBlock, _ swappedBlock: HourBlock?) {
-        viewModel.rescheduleBlock(originalBlock: hourBlock,
-                                  rescheduledBlock: rescheduledBlock,
-                                  replacedBlock: replacedBlock,
-                                  swappedBlock: swappedBlock)
+    
+    /// Reschedules an Hour Block to the schedule, then dismisses the view after refreshing the schedule.
+    ///
+    /// - Parameters:
+    ///   - rescheduledBlock: The newly rescheduled Hour Block.
+    ///   - replacedBlock: The Hour Block to be replaced, which may be empty.
+    ///   - swappedBlock: The Hour Block being swapped, if there is one.
+    private func reschedule(_ rescheduledHourBlock: HourBlock, _ replacedHourBlock: HourBlock, _ swappedHourBlock: HourBlock?) {
+        viewModel.rescheduleBlock(originalBlock: originalHourBlock,
+                                  rescheduledBlock: rescheduledHourBlock,
+                                  replacedBlock: replacedHourBlock,
+                                  swappedBlock: swappedHourBlock)
         
         NotificationCenter.default.post(name: Notification.Name("RefreshSchedule"), object: nil)
         
         dismiss()
     }
-
-    func dismiss() {
+    
+    /// Dismisses the current view.
+    private func dismiss() {
         isPresented = false
     }
 }
 
+/// A Card based view for displaying an Hour Block with rescheduling controls.
 private struct RescheduleBlockCardView: View {
     
-    @ObservedObject var viewModel: HourBlockViewModel
+    @ObservedObject private var viewModel: HourBlockViewModel
     
-    let hourBlock: HourBlock
-    let onReschedule: (HourBlock, HourBlock, HourBlock?) -> Void
+    private let originalHourBlock: HourBlock
+    private let onReschedule: (HourBlock, HourBlock, HourBlock?) -> Void
+    
+    /// Creates an instance of RescheduleBlockCardView.
+    ///
+    /// - Parameters:
+    ///   - viewModel: The view model for the potentially rescheduled Hour Block.
+    ///   - originalHourBlock: The Hour Block to be rescheduled.
+    ///   - onReschedule: The callback function to be triggered when the user confirms a rescheduling action.
+    init(viewModel: HourBlockViewModel, originalHourBlock: HourBlock, onReschedule: @escaping (_ rescheduleHourBlock: HourBlock, _ replacedHourBlock: HourBlock, _ swappedHourBlock: HourBlock?) -> Void) {
+        self.viewModel = viewModel
+        self.originalHourBlock = originalHourBlock
+        self.onReschedule = onReschedule
+    }
     
     var body: some View {
         Card {
@@ -78,7 +104,7 @@ private struct RescheduleBlockCardView: View {
                                    iconWeight: .medium,
                                    action: swap)
                     }
-                    IconButton(iconName: hourBlock.hour < viewModel.hourBlock.hour ? "arrow.turn.left.down" : "arrow.turn.left.up",
+                    IconButton(iconName: originalHourBlock.hour < viewModel.hourBlock.hour ? "arrow.turn.left.down" : "arrow.turn.left.up",
                                iconWeight: .medium,
                                action: attemptToReschedule)
                 }
@@ -93,7 +119,8 @@ private struct RescheduleBlockCardView: View {
         }
     }
     
-    func attemptToReschedule() {
+    /// Performs the reschedule request if the target block is empty, otherwise a warning is presented to the user to confirm the request
+    private func attemptToReschedule() {
         if viewModel.hourBlock.title == nil {
             reschedule()
         } else {
@@ -101,26 +128,33 @@ private struct RescheduleBlockCardView: View {
         }
     }
     
-    func reschedule() {
-        self.onReschedule(getRescheduledBlock(), viewModel.hourBlock, nil)
+    /// Performs the reschedule request.
+    private func reschedule() {
+        onReschedule(getRescheduledBlock(), viewModel.hourBlock, nil)
     }
     
-    func swap() {
+    /// Creates the swapped block by taking the target block's properties and replacing the day and hour with that of the original block.
+    /// The reschedule request is then perfromed with the swapped block.
+    private func swap() {
         let swappedBlock = HourBlock(id: viewModel.hourBlock.id,
-                                     day: hourBlock.day,
-                                     hour: hourBlock.hour,
+                                     day: originalHourBlock.day,
+                                     hour: originalHourBlock.hour,
                                      title: viewModel.hourBlock.title,
                                      icon: viewModel.hourBlock.icon)
         
-        self.onReschedule(getRescheduledBlock(), viewModel.hourBlock, swappedBlock)
+        onReschedule(getRescheduledBlock(), viewModel.hourBlock, swappedBlock)
     }
     
+    /// Creates the rescheduled block by taking the original block's properties and replacing the day and hour with that of the target block.
+    ///
+    /// - Returns:
+    /// The rescheduled block
     private func getRescheduledBlock() -> HourBlock {
-        return HourBlock(id: hourBlock.id,
+        return HourBlock(id: originalHourBlock.id,
                          day: viewModel.hourBlock.day,
                          hour: viewModel.hourBlock.hour,
-                         title: hourBlock.title,
-                         icon: hourBlock.icon)
+                         title: originalHourBlock.title,
+                         icon: originalHourBlock.icon)
     }
 }
 

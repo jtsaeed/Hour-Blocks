@@ -43,7 +43,7 @@ struct ToDoItemView: View {
             
             if viewModel.selectedSheet == .addToSchedule {
                 SchedulePickerView(isPresented: $viewModel.isSheetPresented,
-                                   title: "Add to Today",
+                                   navigationTitle: "Add to Today",
                                    hourBlock: HourBlock(day: Date(), hour: 12, title: viewModel.toDoItem.title))
             }
         }

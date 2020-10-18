@@ -8,14 +8,20 @@
 
 import SwiftUI
 
+/// A view for adding and removing Sub Blocks for a particular Hour Block.
 struct ManageSubBlocksView: View {
     
-    @Binding var isPresented: Bool
     @ObservedObject var viewModel: HourBlockViewModel
     
-    let hourBlock: HourBlock
-    
     @State var title = ""
+    
+    /// Creates an instance of ManageSubBlocksView.
+    ///
+    /// - Parameters:
+    ///   - viewModel: The corresponding view model of the Hour Block for which Sub Blocks are being managed.
+    init(viewModel: HourBlockViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         NavigationView {
@@ -38,22 +44,17 @@ struct ManageSubBlocksView: View {
                     }.padding(.top, 8)
                 }
             }.navigationTitle("Sub Blocks")
-            .navigationBarItems(trailing: Button("Done", action: dismiss))
-        }
-        .accentColor(Color("AccentColor"))
+            .navigationBarItems(trailing: Button("Done", action: viewModel.dismissManageSubBlocksView))
+        }.accentColor(Color("AccentColor"))
     }
     
     func addSubBlock() {
         if !title.isEmpty {
-            viewModel.addSubBlock(SubBlock(of: hourBlock, title: title))
+            viewModel.addSubBlock(SubBlock(of: viewModel.hourBlock, title: title))
             title = ""
         } else {
             HapticsGateway.shared.triggerErrorHaptic()
         }
-    }
-    
-    func dismiss() {
-        isPresented = false
     }
 }
 

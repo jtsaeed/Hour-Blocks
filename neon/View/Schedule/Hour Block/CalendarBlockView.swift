@@ -17,7 +17,7 @@ struct CalendarBlockView: View {
     
     private let event: EKEvent
     
-    /// Creates an instance of HourBlockView.
+    /// Creates an instance of CalendarBlockView.
     ///
     /// - Parameters:
     ///   - event: The event to be displayed.
@@ -31,7 +31,7 @@ struct CalendarBlockView: View {
                 CardLabels(title: event.title,
                            subtitle: getSubtitle())
                 Spacer()
-                HourBlockIcon(name: "event")
+                HourBlockIcon("event")
             }
         }.padding(.horizontal, 24)
     }

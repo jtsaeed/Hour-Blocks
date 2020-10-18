@@ -44,6 +44,7 @@ struct WhatsNewView: View {
         .padding(.horizontal, 32)
     }
     
+    /// Dismisses the current view.
     private func dismiss() {
         HapticsGateway.shared.triggerLightImpact()
         isPresented = false

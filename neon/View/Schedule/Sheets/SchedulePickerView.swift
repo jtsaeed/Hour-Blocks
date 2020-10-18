@@ -8,20 +8,28 @@
 
 import SwiftUI
 
+/// A view for adding an pre-determined block to the schedule.
 struct SchedulePickerView: View {
     
-    @ObservedObject var viewModel: ScheduleViewModel
+    @ObservedObject private var viewModel: ScheduleViewModel
     
-    @Binding var isPresented: Bool
+    @Binding private var isPresented: Bool
     
-    let title: String
-    let hourBlock: HourBlock
-    let subBlocks: [SubBlock]?
+    private let navigationTitle: String
+    private let hourBlock: HourBlock
+    private let subBlocks: [SubBlock]?
     
-    init(isPresented: Binding<Bool>, title: String, hourBlock: HourBlock, subBlocks: [SubBlock]? = nil) {
+    /// Creates an instance of SchedulePickerView.
+    ///
+    /// - Parameters:
+    ///   - isPresented: A binding determining whether or not the view is presented.
+    ///   - navigationTitle: The string to be used for the view's navigation title.
+    ///   - hourBlock: The Hour Block to be added to the schedule within the picker.
+    ///   - subBlocks: The array of Sub Blocks of the Hour Block to be added. By default, this is set to nil.
+    init(isPresented: Binding<Bool>, navigationTitle: String, hourBlock: HourBlock, subBlocks: [SubBlock]? = nil) {
         self.viewModel = ScheduleViewModel(currentDate: hourBlock.day)
         self._isPresented = isPresented
-        self.title = title
+        self.navigationTitle = navigationTitle
         self.hourBlock = hourBlock
         self.subBlocks = subBlocks
     }
@@ -36,37 +44,51 @@ struct SchedulePickerView: View {
                         } else {
                             PickerEmptyBlockView(viewModel: hourBlockViewModel,
                                                  hourBlock: hourBlock,
-                                                 onNewBlockAdded: { self.add(hourBlock: $0) })
+                                                 onNewBlockAdded: { add(hourBlock: $0) })
                         }
                     }
                 }.padding(.top, 8)
                 .padding(.bottom, 24)
-            }.navigationTitle(title)
+            }.navigationTitle(navigationTitle)
             .navigationBarItems(trailing: Button("Save", action: dismiss))
         }.accentColor(Color("AccentColor"))
     }
     
-    func add(hourBlock: HourBlock) {
-        if let subBlocks = subBlocks {
-            let newSubBlocks = subBlocks.map { SubBlock(of: hourBlock, title: $0.title) }
-            viewModel.addBlock(hourBlock, newSubBlocks)
-        } else {
-            viewModel.addBlock(hourBlock)
-        }
+    /// Adds an Hour Block to the schedule.
+    ///
+    /// - Parameters:
+    ///   - hourBlock: The Hour Block to be added.
+    private func add(hourBlock: HourBlock) {
+        let updatedSubBlocks = subBlocks?.map { SubBlock(of: hourBlock, title: $0.title) }
+        viewModel.addBlock(hourBlock, updatedSubBlocks)
     }
     
-    func dismiss() {
+    /// Dismisses the current view after refreshing the schedule.
+    private func dismiss() {
         NotificationCenter.default.post(name: Notification.Name("RefreshSchedule"), object: nil)
         isPresented = false
     }
 }
 
+/// A Card based view for displaying an empty Hour Block within the picker view.
 private struct PickerEmptyBlockView: View {
     
     @ObservedObject var viewModel: HourBlockViewModel
     
     let hourBlock: HourBlock
     let onNewBlockAdded: (HourBlock) -> Void
+    
+    /// Creates an instance of PickerEmptyBlockView.
+    ///
+    /// - Parameters:
+    ///   - viewModel: The view model for the empty Hour Block.
+    ///   - hourBlock: The Hour Block to be added to the schedule within the picker.
+    ///   - onNewBlockAdded: The callback function to be triggered when the user chooses to add the Hour Block.
+    init(viewModel: HourBlockViewModel, hourBlock: HourBlock, onNewBlockAdded: @escaping (HourBlock) -> Void) {
+        self.viewModel = viewModel
+        self.hourBlock = hourBlock
+        self.onNewBlockAdded = onNewBlockAdded
+    }
     
     var body: some View {
         Card {
@@ -82,7 +104,8 @@ private struct PickerEmptyBlockView: View {
         }.padding(.horizontal, 24)
     }
     
-    func addNewHourBlock() {
+    /// Creates the new block by taking the original block's properties and replacing the day and hour with that of the empty block.
+    private func addNewHourBlock() {
         let newHourBlock = HourBlock(day: viewModel.hourBlock.day,
                                      hour: viewModel.hourBlock.hour,
                                      title: hourBlock.title,
@@ -95,7 +118,7 @@ private struct PickerEmptyBlockView: View {
 struct SchedulePickerView_Previews: PreviewProvider {
     static var previews: some View {
         SchedulePickerView(isPresented: .constant(true),
-                           title: "Picker",
+                           navigationTitle: "Picker",
                            hourBlock: HourBlock(day: Date(), hour: 17, title: "Dinner", icon: .food), subBlocks: nil)
     }
 }

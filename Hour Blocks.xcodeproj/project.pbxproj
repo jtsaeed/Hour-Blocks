@@ -40,7 +40,7 @@
 		AB0CE89325371C5E00284E7B /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0CE89025371C5E00284E7B /* Tip.swift */; };
 		AB0D3E8524D9B7D700CFF640 /* TestSidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0D3E8424D9B7D700CFF640 /* TestSidebarView.swift */; };
 		AB10A95324E05CC500FCB466 /* WidgetDataGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10A95124E05C6600FCB466 /* WidgetDataGateway.swift */; };
-		AB10A95524E05E2000FCB466 /* IconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10A95424E05E2000FCB466 /* IconPickerView.swift */; };
+		AB10A95524E05E2000FCB466 /* IconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10A95424E05E2000FCB466 /* IconPicker.swift */; };
 		AB12008D252E36E0007A7D38 /* CurrentToDoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB12008C252E36E0007A7D38 /* CurrentToDoListView.swift */; };
 		AB1D6FCF24C47AC700D26D4B /* AddToDoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1D6FCE24C47AC700D26D4B /* AddToDoItemView.swift */; };
 		AB22514C24DEE96900DEFD92 /* icon_dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB22514824DEE96900DEFD92 /* icon_dark@2x.png */; };
@@ -251,7 +251,7 @@
 		AB0CE89025371C5E00284E7B /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
 		AB0D3E8424D9B7D700CFF640 /* TestSidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSidebarView.swift; sourceTree = "<group>"; };
 		AB10A95124E05C6600FCB466 /* WidgetDataGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDataGateway.swift; sourceTree = "<group>"; };
-		AB10A95424E05E2000FCB466 /* IconPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerView.swift; sourceTree = "<group>"; };
+		AB10A95424E05E2000FCB466 /* IconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPicker.swift; sourceTree = "<group>"; };
 		AB12008C252E36E0007A7D38 /* CurrentToDoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentToDoListView.swift; sourceTree = "<group>"; };
 		AB1D6FCE24C47AC700D26D4B /* AddToDoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoItemView.swift; sourceTree = "<group>"; };
 		AB22514824DEE96900DEFD92 /* icon_dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_dark@2x.png"; sourceTree = "<group>"; };
@@ -522,7 +522,7 @@
 			children = (
 				AB72E0CA24ACE981004DD577 /* AddHourBlockView.swift */,
 				AB9F12B224C8D83100F31F21 /* EditHourBlockView.swift */,
-				AB10A95424E05E2000FCB466 /* IconPickerView.swift */,
+				AB10A95424E05E2000FCB466 /* IconPicker.swift */,
 				ABBA399424AD5C3B008A4A56 /* ScheduleDatePicker.swift */,
 				AB5F9A2F24AE6E6E00C4C597 /* ManageSubBlocksView.swift */,
 				AB372FE524E09341008F6034 /* SchedulePickerView.swift */,
@@ -1162,7 +1162,7 @@
 				AB849E2124C877C200D27333 /* OtherSettingsView.swift in Sources */,
 				2338BEBC220A7840004F288F /* AppDelegate.swift in Sources */,
 				AB72E0BF24ACE885004DD577 /* HourBlockViewModel.swift in Sources */,
-				AB10A95524E05E2000FCB466 /* IconPickerView.swift in Sources */,
+				AB10A95524E05E2000FCB466 /* IconPicker.swift in Sources */,
 				AB72E0CB24ACE981004DD577 /* AddHourBlockView.swift in Sources */,
 				AB48A6D624AD0FCA00C50E58 /* SuggestionBlockView.swift in Sources */,
 				ABC1D07F24D9DCA4001F8B6B /* RemindersGateway.swift in Sources */,
@@ -1407,7 +1407,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.2;
+				CURRENT_PROJECT_VERSION = 0.3;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1434,7 +1434,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.2;
+				CURRENT_PROJECT_VERSION = 0.3;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1547,7 +1547,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeonSiri/NeonSiri.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.2;
+				CURRENT_PROJECT_VERSION = 0.3;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = NeonSiri/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1573,7 +1573,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeonSiri/NeonSiri.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.2;
+				CURRENT_PROJECT_VERSION = 0.3;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = NeonSiri/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1601,7 +1601,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeonWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.2;
+				CURRENT_PROJECT_VERSION = 0.3;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = NeonWidget/Info.plist;
@@ -1631,7 +1631,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeonWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.2;
+				CURRENT_PROJECT_VERSION = 0.3;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = NeonWidget/Info.plist;

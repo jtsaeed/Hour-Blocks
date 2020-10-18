@@ -39,7 +39,7 @@ struct ScheduleView: View {
             })
             .sheet(isPresented: $viewModel.isDatePickerViewPresented) {
                 ScheduleDatePicker(isPresented: $viewModel.isDatePickerViewPresented,
-                                   scheduleDate: $viewModel.currentDate,
+                                   currentScheduleDate: $viewModel.currentDate,
                                    onDateChanged: viewModel.loadHourBlocks)
             }
             
