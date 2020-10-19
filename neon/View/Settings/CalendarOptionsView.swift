@@ -8,11 +8,20 @@
 
 import SwiftUI
 
+/// A view allowing the user to toggle which of their calendars are to be shown within Hour Blocks.
 struct CalendarOptionsView: View {
     
-    @Binding var isPresented: Bool
+    @StateObject private var viewModel = CalendarOptionsViewModel()
     
-    @StateObject var viewModel = CalendarOptionsViewModel()
+    @Binding private var isPresented: Bool
+    
+    /// Creates an instance of CalendarOptionsView.
+    ///
+    /// - Parameters:
+    ///   - isPresented: A binding determining whether or not the view is presented.
+    init(isPresented: Binding<Bool>) {
+        self._isPresented = isPresented
+    }
     
     var body: some View {
         NavigationView {
@@ -20,8 +29,8 @@ struct CalendarOptionsView: View {
                 VStack(spacing: 24) {
                     if viewModel.calendarGateway.hasPermission() {
                         ForEach(viewModel.allCalendars.sorted(by: { $0.title < $1.title }), id: \.self) { calendar in
-                            CalendarCard(calendarTitle: calendar.title,
-                                         isEnabled: viewModel.enabledCalendars[calendar.calendarIdentifier] ?? true,
+                            CalendarCard(isEnabled: viewModel.enabledCalendars[calendar.calendarIdentifier] ?? true,
+                                         calendarTitle: calendar.title,
                                          onValueChanged: { updateCalendar(for: calendar.calendarIdentifier, with: $0) })
                         }
                     } else {
@@ -33,25 +42,37 @@ struct CalendarOptionsView: View {
         }.accentColor(Color("AccentColor"))
     }
     
-    func updateCalendar(for calendarIdentifier: String, with value: Bool) {
+    /// Performs a request to update whether or not a specific calendar is enabled or not.
+    ///
+    /// - Parameters:
+    ///   - calendarIdentifier: The unique string identifier of the calendar for which the status is to be updated.
+    ///   - value: The value determining whether or not the calendar is set to be enabled or not.
+    private func updateCalendar(for calendarIdentifier: String, with value: Bool) {
         viewModel.updateCalendar(for: calendarIdentifier, with: value)
     }
     
-    func dismiss() {
+    /// Dismisses the current view.
+    private func dismiss() {
         isPresented = false
     }
 }
 
+/// A Card based view allowing the user to toggle a particular calendar's selected state.
 private struct CalendarCard: View {
     
-    @State var isEnabled: Bool
+    @State private var isEnabled: Bool
     
-    let calendarTitle: String
-    let onValueChanged: (Bool) -> Void
+    private let calendarTitle: String
+    private let onValueChanged: (Bool) -> Void
     
-    init(calendarTitle: String, isEnabled: Bool, onValueChanged: @escaping (Bool) -> Void) {
+    /// Creates an instance of the CalendarCard view.
+    ///
+    /// - Parameters:
+    ///   - isEnabled : The initial value of whether or not the corresponding calendar is selected.
+    ///   - calendarTitle: The title of the corresponding calendar.
+    ///   - onValueChanegd: The callback function to be triggered when the value of the trailing toggle view has been changed.
+    init(isEnabled: Bool, calendarTitle: String, onValueChanged: @escaping (Bool) -> Void) {
         self._isEnabled = State<Bool>(initialValue: isEnabled)
-        
         self.calendarTitle = calendarTitle
         self.onValueChanged = onValueChanged
     }
@@ -70,26 +91,30 @@ private struct CalendarCard: View {
         }.padding(.horizontal, 24)
     }
     
-    func toggleChanged() {
-        self.onValueChanged(isEnabled)
+    /// Performs the toggle request.
+    private func toggleChanged() {
+        onValueChanged(isEnabled)
     }
 }
 
+/// A Card based view that allows the user to prompts the user to grant calendar access.
 private struct NoPermissionsCard: View {
     
     var body: some View {
         Card {
             HStack {
-                Text("Calendar access hasn't been enabled")
+                Text("Calendar access hasn't been granted")
                     .font(.system(size: 18, weight: .semibold, design: .rounded))
                 Spacer()
-                IconButton(iconName: "lock.fill", action: openPermissionSettings)
+                IconButton(iconName: "lock.fill",
+                           action: openPermissionSettings)
             }
         }.padding(.horizontal, 24)
     }
     
-    func openPermissionSettings() {
-        if let url = URL(string:UIApplication.openSettingsURLString) {
+    /// Opens the Hour Blocks section of the Settings app.
+    private func openPermissionSettings() {
+        if let url = URL(string: UIApplication.openSettingsURLString) {
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }

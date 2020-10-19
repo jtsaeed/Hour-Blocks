@@ -8,9 +8,18 @@
 
 import SwiftUI
 
+/// A view displaying the acknowledgements for Hour Blocks.
 struct AcknowledgementsSheet: View {
     
-    @Binding var isPresented: Bool
+    @Binding private var isPresented: Bool
+    
+    /// Creates an instance of the AcknowledgementsSheet view.
+    ///
+    /// - Parameters:
+    ///   - isPresented: A binding determining whether or not the view is presented.
+    init(isPresented: Binding<Bool>) {
+        self._isPresented = isPresented
+    }
     
     var body: some View {
         NavigationView {
@@ -29,7 +38,8 @@ struct AcknowledgementsSheet: View {
         }.accentColor(Color("AccentColor"))
     }
     
-    func dismiss() {
+    /// Dismisses the current view.
+    private func dismiss() {
         isPresented = false
     }
 }

@@ -8,35 +8,44 @@
 
 import SwiftUI
 
+/// A view displaying all of the miscellaneous settings.
 struct OtherSettingsView: View {
     
-    @Binding var isPresented: Bool
+    @Binding private var isPresented: Bool
     
-    @AppStorage("reminders") var remindersValue: Int = 0
-    @AppStorage("dayStart") var dayStartValue: Int = 2
-    @AppStorage("timeFormat") var timeFormatValue: Int = 1
-    @AppStorage("autoCaps") var autoCapsValue: Int = 0
+    @AppStorage("reminders") private var remindersValue: Int = 0
+    @AppStorage("dayStart") private var dayStartValue: Int = 2
+    @AppStorage("timeFormat") private var timeFormatValue: Int = 1
+    @AppStorage("autoCaps") private var autoCapsValue: Int = 0
+    
+    /// Creates an instance of OtherSettingsView.
+    ///
+    /// - Parameters:
+    ///   - isPresented: A binding determining whether or not the view is presented.
+    init(isPresented: Binding<Bool>) {
+        self._isPresented = isPresented
+    }
     
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 24) {
-                    OtherSettingsCard(value: $remindersValue,
-                                      title: "Reminders",
+                    OtherSettingsCard(title: "Reminders",
                                       description: "Enable reminders for upcoming Hour Blocks (changes only applied to new Hour Blocks)",
-                                      options: ["On", "Off"])
-                    OtherSettingsCard(value: $dayStartValue,
-                                      title: "Day Start",
+                                      options: ["On", "Off"],
+                                      value: $remindersValue)
+                    OtherSettingsCard(title: "Day Start",
                                       description: "Change the time (am) your Schedule starts in Hour Blocks",
-                                      options: ["12", "5", "6", "7", "8"])
-                    OtherSettingsCard(value: $timeFormatValue,
-                                      title: "Time Format",
+                                      options: ["12", "5", "6", "7", "8"],
+                                      value: $dayStartValue)
+                    OtherSettingsCard(title: "Time Format",
                                       description: "Change the time format used throughout Hour Blocks",
-                                      options: ["System", "12h", "24h"])
-                    OtherSettingsCard(value: $autoCapsValue,
-                                      title: "Automatic Capitalization",
+                                      options: ["System", "12h", "24h"],
+                                      value: $timeFormatValue)
+                    OtherSettingsCard(title: "Automatic Capitalization",
                                       description: "Would you like the titles of blocks to be automatically capitalized?",
-                                      options: ["Yes", "No"])
+                                      options: ["Yes", "No"],
+                                      value: $autoCapsValue)
                     
                     if UIApplication.shared.supportsAlternateIcons {
                         IconChooserCard()
@@ -48,18 +57,34 @@ struct OtherSettingsView: View {
         }.accentColor(Color("AccentColor"))
     }
     
-    func dismiss() {
+    /// Dismisses the current view.
+    private func dismiss() {
         isPresented = false
     }
 }
 
+/// A Card based view allowing the user to choose from a set of options.
 private struct OtherSettingsCard: View {
     
-    @Binding var value: Int
+    @Binding private var value: Int
     
-    let title: String
-    let description: String
-    let options: [String]
+    private let title: String
+    private let description: String
+    private let options: [String]
+    
+    /// Creates an instance of OtherSettingsView.
+    ///
+    /// - Parameters:
+    ///   - title: The text string for the header label at the top.
+    ///   - description: The text string for the description label below the header.
+    ///   - options: An array of strings of the picker options to be displayed at the bottom.
+    ///   - value: The currently selected picker index.
+    init(title: String, description: String, options: [String], value: Binding<Int>) {
+        self._value = value
+        self.title = title
+        self.description = description
+        self.options = options
+    }
     
     var body: some View {
         Card(padding: EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20)) {
@@ -80,12 +105,16 @@ private struct OtherSettingsCard: View {
                 }.pickerStyle(SegmentedPickerStyle())
             }
         }.padding(.horizontal, 24)
-        .onChange(of: value) { _ in
-            NotificationCenter.default.post(name: Notification.Name("RefreshSchedule"), object: nil)
-        }
+        .onChange(of: value) { _ in refreshSchedule() }
+    }
+    
+    /// Refreshes the schedule when a value has been changed.
+    private func refreshSchedule() {
+        NotificationCenter.default.post(name: Notification.Name("RefreshSchedule"), object: nil)
     }
 }
 
+/// A Card based view allowing the user to choose from a set of app icons.
 private struct IconChooserCard: View {
     
     var body: some View {
@@ -101,41 +130,54 @@ private struct IconChooserCard: View {
                 }
                 
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 72, maximum: 112))], spacing: 24) {
-                    IconOption(iconName: "Original", internalIconName: "original") { setAlternateIcon(nil) }
-                    IconOption(iconName: "Urgency", internalIconName: "urgency") { setAlternateIcon("icon_urgency") }
-                    IconOption(iconName: "Blue", internalIconName: "blue") { setAlternateIcon("icon_blue") }
-                    IconOption(iconName: "Purple", internalIconName: "purple") { setAlternateIcon("icon_purple") }
-                    IconOption(iconName: "Night", internalIconName: "dark") { setAlternateIcon("icon_dark") }
-                    IconOption(iconName: "Launched", internalIconName: "blueprint") { setAlternateIcon("icon_blueprint") }
+                    IconOption(label: "Original", iconName: "original")
+                    IconOption(label: "Urgency", iconName: "urgency")
+                    IconOption(label: "Blue", iconName: "blue")
+                    IconOption(label: "Purple", iconName: "purple")
+                    IconOption(label: "Night", iconName: "dark")
+                    IconOption(label: "Launched", iconName: "blueprint")
                 }
             }
         }.padding(.horizontal, 24)
     }
-    
-    func setAlternateIcon(_ iconName: String?) {
-        HapticsGateway.shared.triggerAddBlockHaptic()
-        UIApplication.shared.setAlternateIconName(iconName, completionHandler: nil)
-    }
 }
 
+/// A tile view for a selectable icon.
 private struct IconOption: View {
     
-    let iconName: String
-    let internalIconName: String
-    let onSelect: () -> Void
+    private let label: String
+    private let iconName: String
+    
+    /// Creates an instance of the IconOption view.
+    ///
+    /// - Parameters:
+    ///   - label: The text string for the label at the bottom of the tile.
+    ///   - iconName: The internal icon name.
+    init(label: String, iconName: String) {
+        self.label = label
+        self.iconName = iconName
+    }
     
     var body: some View {
         VStack(alignment: .center, spacing: 8) {
-            Button(action: onSelect) {
-                Image("choose_\(internalIconName)_icon")
+            Button(action: setIcon) {
+                Image("choose_\(iconName)_icon")
                     .resizable()
                     .frame(width: 48, height: 48)
                     .cornerRadius(12)
             }
-            Text(iconName)
+            Text(label)
                 .font(.system(size: 14, weight: .semibold, design: .rounded))
                 .opacity(0.5)
         }
+    }
+    
+    /// Sets the icon when the tile gets tapped.
+    private func setIcon() {
+        HapticsGateway.shared.triggerAddBlockHaptic()
+        
+        let iconFileName = iconName == "original" ? nil : "icon_\(iconName)"
+        UIApplication.shared.setAlternateIconName(iconFileName, completionHandler: nil)
     }
 }
 
