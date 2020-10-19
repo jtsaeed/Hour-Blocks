@@ -8,13 +8,18 @@
 
 import SwiftUI
 
+/// A view where a To Do item can be edited.
 struct EditToDoItemView: View {
     
-    @ObservedObject var viewModel: ToDoItemViewModel
+    @ObservedObject private var viewModel: ToDoItemViewModel
     
-    @State var title = ""
-    @State var urgency: ToDoUrgency = .whenever
-    
+    @State private var title = ""
+    @State private var urgency: ToDoUrgency = .whenever
+
+    /// Creates an instance of EditToDoItemView.
+    ///
+    /// - Parameters:
+    ///   - viewModel: The corresponding view model of the To Do item to be edited.
     init(viewModel: ToDoItemViewModel) {
         self.viewModel = viewModel
         self._title = State(initialValue: viewModel.toDoItem.title)
@@ -45,7 +50,8 @@ struct EditToDoItemView: View {
         .accentColor(Color("AccentColor"))
     }
     
-    func save() {
+    /// Performs the save changes request.
+    private func save() {
         viewModel.saveChanges(title: title, urgency: urgency)
     }
 }

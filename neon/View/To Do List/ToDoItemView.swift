@@ -8,11 +8,22 @@
 
 import SwiftUI
 
+/// A Card based view for displaying a To Do item.
 struct ToDoItemView: View {
     
-    @ObservedObject var viewModel: ToDoItemViewModel
+    @ObservedObject private var viewModel: ToDoItemViewModel
     
-    let onItemCleared: () -> Void
+    private let onItemCleared: () -> Void
+    
+    /// Creates an instance of ToDoItemView.
+    ///
+    /// - Parameters:
+    ///   - viewModel: The corresponding view model for the given To Do item.
+    ///   - onBlockCleared: The callback function to be triggered when the user chooses to clear the corresponding To Do item.
+    init(viewModel: ToDoItemViewModel, onItemCleared: @escaping () -> Void) {
+        self.viewModel = viewModel
+        self.onItemCleared = onItemCleared
+    }
     
     var body: some View {
         Card {

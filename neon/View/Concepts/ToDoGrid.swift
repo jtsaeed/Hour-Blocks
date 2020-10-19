@@ -11,26 +11,26 @@ import SwiftUI
 struct ToDoGrid: View {
     
     let columns: [GridItem] = [
-        GridItem(.adaptive(minimum: 128, maximum: 512))
+        GridItem(.adaptive(minimum: 160, maximum: 512))
     ]
     
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: columns) {
+            LazyVGrid(columns: columns, spacing: 20) {
                 ForEach(1 ..< 20) { _ in
                     Card {
                         VStack(alignment: .leading, spacing: 4) {
                             Text("HIGH PRIORITY")
                                 .foregroundColor(Color("UrgentColor"))
                                 .font(.system(size: 14, weight: .semibold, design: .default))
-                            Text("Sort out Charlie's room")
+                            Text("Sort out Joe's room")
                                 .opacity(0.9)
                                 .font(.system(size: 22, weight: .bold, design: .rounded))
                         }
                     }.frame(width: 160)
                     .onDrag { return NSItemProvider(object: "test" as NSString) }
                 }
-            }
+            }.padding(20)
         }
     }
 }
