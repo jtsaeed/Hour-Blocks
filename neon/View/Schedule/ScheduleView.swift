@@ -32,9 +32,9 @@ struct ScheduleView: View {
             }
             .gesture(DragGesture(minimumDistance: 128, coordinateSpace: .local).onEnded { drag in
                 if drag.translation.width > 0 {
-                    viewModel.regressDate()
+                    viewModel.regressCurrentDay()
                 } else {
-                    viewModel.advanceDate()
+                    viewModel.advanceCurentDay()
                 }
             })
             .sheet(isPresented: $viewModel.isDatePickerViewPresented) {
@@ -46,7 +46,7 @@ struct ScheduleView: View {
             ScheduleBlocksListView(viewModel: viewModel)
         }.onAppear(perform: viewModel.handleCalendarPermissions)
         .onReceive(refreshSchedulePublisher) { _ in viewModel.loadHourBlocks() }
-        .onReceive(refreshOnLaunchPublisher) { _ in viewModel.updateCurrentDate() }
+        .onReceive(refreshOnLaunchPublisher) { _ in viewModel.refreshCurrentDate() }
     }
 }
 

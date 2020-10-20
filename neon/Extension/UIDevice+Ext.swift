@@ -10,6 +10,7 @@ import UIKit
 
 extension UIDevice {
     
+    /// Determines whether or not the current device has a notch or not.
     var hasNotch: Bool {
         let bottom = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
         return bottom > 0

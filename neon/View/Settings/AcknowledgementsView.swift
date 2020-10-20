@@ -9,11 +9,11 @@
 import SwiftUI
 
 /// A view displaying the acknowledgements for Hour Blocks.
-struct AcknowledgementsSheet: View {
+struct AcknowledgementsView: View {
     
     @Binding private var isPresented: Bool
     
-    /// Creates an instance of the AcknowledgementsSheet view.
+    /// Creates an instance of the AcknowledgementsView.
     ///
     /// - Parameters:
     ///   - isPresented: A binding determining whether or not the view is presented.
@@ -44,8 +44,8 @@ struct AcknowledgementsSheet: View {
     }
 }
 
-struct AcknowledgementsSheet_Previews: PreviewProvider {
+struct AcknowledgementsView_Previews: PreviewProvider {
     static var previews: some View {
-        AcknowledgementsSheet(isPresented: .constant(true))
+        AcknowledgementsView(isPresented: .constant(true))
     }
 }

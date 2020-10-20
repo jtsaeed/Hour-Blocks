@@ -12,7 +12,7 @@ import EventKit
 /// A Card based view for displaying a Calendar event.
 struct CalendarBlockView: View {
     
-    /// A UserDefaults property determining what hour format to use when displaying times
+    /// A UserDefaults property determining what hour format to use when displaying times.
     @AppStorage("timeFormat") private var timeFormatValue: Int = 1
     
     private let event: EKEvent

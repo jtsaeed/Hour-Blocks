@@ -13,9 +13,13 @@ struct OtherSettingsView: View {
     
     @Binding private var isPresented: Bool
     
+    /// A UserDefaults property determining whether or not a reminder should be set with the creation of an Hour Block.
     @AppStorage("reminders") private var remindersValue: Int = 0
+    /// A UserDefaults property determining what time the schedule starts.
     @AppStorage("dayStart") private var dayStartValue: Int = 2
+    /// A UserDefaults property determining what hour format to use when displaying times.
     @AppStorage("timeFormat") private var timeFormatValue: Int = 1
+    /// A UserDefaults property determining whether or not to automatically capitalize Hour Blocks and To Do items.
     @AppStorage("autoCaps") private var autoCapsValue: Int = 0
     
     /// Creates an instance of OtherSettingsView.

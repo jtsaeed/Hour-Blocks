@@ -82,7 +82,7 @@
 		AB5A9BF124B385DB00F97B10 /* HourBlockIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5A9BF024B385DB00F97B10 /* HourBlockIcon.swift */; };
 		AB5A9BF324B3867900F97B10 /* CalendarGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5A9BF224B3867900F97B10 /* CalendarGateway.swift */; };
 		AB5A9BF724B396BB00F97B10 /* NeonDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5A9BF624B396BB00F97B10 /* NeonDivider.swift */; };
-		AB5B933D24E2DABD006F2DED /* AcknowledgementsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5B933C24E2DABD006F2DED /* AcknowledgementsSheet.swift */; };
+		AB5B933D24E2DABD006F2DED /* AcknowledgementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5B933C24E2DABD006F2DED /* AcknowledgementsView.swift */; };
 		AB5B933F24E2DB66006F2DED /* TextBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5B933E24E2DB66006F2DED /* TextBlockView.swift */; };
 		AB5F9A2E24AE63E800C4C597 /* SubBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F9A2D24AE63E800C4C597 /* SubBlock.swift */; };
 		AB5F9A3024AE6E6E00C4C597 /* ManageSubBlocksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F9A2F24AE6E6E00C4C597 /* ManageSubBlocksView.swift */; };
@@ -287,7 +287,7 @@
 		AB5A9BF024B385DB00F97B10 /* HourBlockIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourBlockIcon.swift; sourceTree = "<group>"; };
 		AB5A9BF224B3867900F97B10 /* CalendarGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGateway.swift; sourceTree = "<group>"; };
 		AB5A9BF624B396BB00F97B10 /* NeonDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeonDivider.swift; sourceTree = "<group>"; };
-		AB5B933C24E2DABD006F2DED /* AcknowledgementsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsSheet.swift; sourceTree = "<group>"; };
+		AB5B933C24E2DABD006F2DED /* AcknowledgementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsView.swift; sourceTree = "<group>"; };
 		AB5B933E24E2DB66006F2DED /* TextBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBlockView.swift; sourceTree = "<group>"; };
 		AB5F9A2D24AE63E800C4C597 /* SubBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubBlock.swift; sourceTree = "<group>"; };
 		AB5F9A2F24AE6E6E00C4C597 /* ManageSubBlocksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageSubBlocksView.swift; sourceTree = "<group>"; };
@@ -753,7 +753,7 @@
 				AB849E1E24C877A700D27333 /* CalendarOptionsView.swift */,
 				AB849E2024C877C200D27333 /* OtherSettingsView.swift */,
 				23036F4D237B2D9000563206 /* PrivacyPolicyView.swift */,
-				AB5B933C24E2DABD006F2DED /* AcknowledgementsSheet.swift */,
+				AB5B933C24E2DABD006F2DED /* AcknowledgementsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1185,7 +1185,7 @@
 				AB72E0BB24ACE876004DD577 /* HourBlockView.swift in Sources */,
 				AB72E0C324ACE892004DD577 /* ScheduleViewModel.swift in Sources */,
 				234C1A09220C8E9D00344316 /* Date+Ext.swift in Sources */,
-				AB5B933D24E2DABD006F2DED /* AcknowledgementsSheet.swift in Sources */,
+				AB5B933D24E2DABD006F2DED /* AcknowledgementsView.swift in Sources */,
 				ABAFADFD24B231C40098B823 /* ToDoListViewModel.swift in Sources */,
 				AB554EDD24BB7395006CFEBD /* ToDoItemView.swift in Sources */,
 				AB5F9A3024AE6E6E00C4C597 /* ManageSubBlocksView.swift in Sources */,

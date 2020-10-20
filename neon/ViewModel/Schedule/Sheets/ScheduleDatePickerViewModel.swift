@@ -9,29 +9,29 @@
 import UIKit
 import EventKit
 
+/// The view model for the ScheduleDatePickerView.
 class ScheduleDatePickerViewModel: ObservableObject {
     
-    let dataGateway: DataGateway
-    let calendarGateway: CalendarGatewayProtocol
+    private let dataGateway: DataGateway
+    private let calendarGateway: CalendarGatewayProtocol
     
     @Published var selectedDate: Date
-    @Published var hourBlocks = [HourBlockViewModel]()
-    @Published var calendarBlocks = [EKEvent]()
+    @Published private(set) var hourBlocks = [HourBlockViewModel]()
+    @Published private(set) var calendarBlocks = [EKEvent]()
     
-    init(dataGateway: DataGateway, calendarGateway: CalendarGatewayProtocol, initialSelectedDate: Date) {
+    /// Creates an instance of the ScheduleDatePickerViewModel.
+    ///
+    /// - Parameters:
+    ///   - dataGateway: The data gateway instance used to interface with Core Data. By default, this is set to an instance of DataGateway.
+    ///   - calendarGateway: The calendar gateway instance used to interface with EventKit. By default, this is set to an instance of CalendarGateway.
+    ///   - initialSelectedDate: The current date of the schedule; set as the initially selected date within the date picker.
+    init(dataGateway: DataGateway = DataGateway(), calendarGateway: CalendarGatewayProtocol = CalendarGateway(), initialSelectedDate: Date) {
         self.dataGateway = dataGateway
         self.calendarGateway = calendarGateway
         self.selectedDate = initialSelectedDate
     }
     
-    convenience init(initialSelectedDate: Date) {
-        self.init(dataGateway: DataGateway(),
-                  calendarGateway: CalendarGateway(),
-                  initialSelectedDate: initialSelectedDate)
-        
-        loadHourBlocks()
-    }
-    
+    /// Loads the selected day's hour blocks and calendar blocks.
     func loadHourBlocks() {
         hourBlocks = dataGateway.getHourBlocks(for: selectedDate)
             .sorted(by: { $0.hour < $1.hour })

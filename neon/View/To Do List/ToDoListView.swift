@@ -21,8 +21,9 @@ struct ToDoListView: View {
                 IconButton(iconName: "plus",
                               iconWeight: .bold,
                               action: viewModel.presentAddToDoItemView)
-            }.sheet(isPresented: $viewModel.isAddToDoItemViewPresented) {
-                AddToDoItemView(viewModel: viewModel)
+                    .sheet(isPresented: $viewModel.isAddToDoItemViewPresented) {
+                        AddToDoItemView(viewModel: viewModel)
+                    }
             }
             
             ScrollView(showsIndicators: false) {

@@ -55,7 +55,7 @@ struct SettingsView: View {
                                      iconName: "star.fill",
                                      action: viewModel.presentAcknowledgementsView)
                     .sheet(isPresented: $viewModel.isAcknowledgementsViewPresented) {
-                        AcknowledgementsSheet(isPresented: $viewModel.isAcknowledgementsViewPresented)
+                        AcknowledgementsView(isPresented: $viewModel.isAcknowledgementsViewPresented)
                     }
                 }.padding(.top, 8)
                 .padding(.bottom, 24)

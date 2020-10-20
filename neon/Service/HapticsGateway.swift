@@ -31,7 +31,7 @@ struct HapticsGateway {
     }
     
     func triggerSoftImpact() {
-        UIImpactFeedbackGenerator(style: .soft).impactOccurred(intensity: 0.5)
+        UIImpactFeedbackGenerator(style: .soft).impactOccurred(intensity: 0.6)
     }
     
     func triggerErrorHaptic() {
