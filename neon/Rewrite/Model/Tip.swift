@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// An enum mapping the tips that can be shown as Tip Cards within the app.
 enum Tip: CustomStringConvertible {
     
     case blockOptions

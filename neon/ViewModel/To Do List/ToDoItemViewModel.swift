@@ -29,7 +29,6 @@ class ToDoItemViewModel: ObservableObject, Identifiable {
     ///   - dataGateway: The data gateway instance used to interface with Core Data. By default, this is set to an instance of DataGateway.
     init(for toDoItem: ToDoItem, dataGateway: DataGateway = DataGateway()) {
         self.dataGateway = dataGateway
-        
         self.toDoItem = toDoItem
         self.urgency = toDoItem.urgency.rawValue
     }

@@ -43,7 +43,6 @@ class HourBlockViewModel: Identifiable, ObservableObject {
     init(for hourBlock: HourBlock, and subBlocks: [SubBlock] = [SubBlock](), dataGateway: DataGateway = DataGateway(), remindersGateway: RemindersGatewayProtocol = RemindersGateway()) {
         self.dataGateway = dataGateway
         self.remindersGateway = remindersGateway
-        
         self.hourBlock = hourBlock
         self.icon = hourBlock.icon
         self.subBlocks = subBlocks

@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// An enum dictating the 'category' of an Hour Block in the form of a 'domain'; similar to SiriKit's domains.
 enum BlockDomain: String, Domain, CaseIterable {
     
     case wake
@@ -56,6 +57,7 @@ enum BlockDomain: String, Domain, CaseIterable {
     case baseball, basketball, cricket, hockey, rugby, football, tennis, volleyball
     case winter
     
+    /// The corresponding icon for a domain.
     var icon: SelectableIcon {
         switch self {
         case .wake: return .clock
@@ -113,6 +115,7 @@ enum BlockDomain: String, Domain, CaseIterable {
         }
     }
     
+    /// The corrresponding title to be shown when the domain is used as a suggested Hour Block.
     var suggestionTitle: String {
         switch self {
         case .wake: return "wake up"

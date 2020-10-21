@@ -8,10 +8,12 @@
 
 import Foundation
 
+/// An enum mapping all of the possible icons for an Hour Block.
 enum SelectableIcon: String, CorrespondableImage, Hashable, CaseIterable {
     
     case baseball, basketball, bed, bike, blocks, book, brush, bus, cake, car, clock, code, coffee, couch, cricket, drink, food, football, gamepad, golf, gym, heart, hockey, house, laundry, location, mail, meditate, movie, music, nature, palette, paw, pencil, people, phone, plane, rugby, run, school, shopping, sun, swim, tennis, train, transport, trophy, tv, volleyball, vote, winter, work
     
+    /// The corresponding image name for an icon.
     var imageName: String {
         switch self {
         case .baseball: return "sports_baseball"
