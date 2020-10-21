@@ -22,7 +22,7 @@ struct TestSidebarView: View {
                 }
                 
                 Section(header: Text("Settings")) {
-                    NavigationLink(destination: CalendarOptionsView(isPresented: .constant(true))) {
+                    NavigationLink(destination: CalendarSettingsView(isPresented: .constant(true))) {
                         Label("Calendars", systemImage: "calendar")
                     }
                     

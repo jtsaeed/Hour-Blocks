@@ -24,9 +24,9 @@ struct SettingsView: View {
                     SettingsCardView(title: "Calendars",
                                      subtitle: "Take control of",
                                      iconName: "calendar",
-                                     action: viewModel.presentCalendarOptionsView)
-                    .sheet(isPresented: $viewModel.isCalendarOptionsViewPresented) {
-                        CalendarOptionsView(isPresented: $viewModel.isCalendarOptionsViewPresented)
+                                     action: viewModel.presentCalendarSettingsView)
+                    .sheet(isPresented: $viewModel.isCalendarSettingsViewPresented) {
+                        CalendarSettingsView(isPresented: $viewModel.isCalendarSettingsViewPresented)
                     }
                     
                     SettingsCardView(title: "Other Stuff",

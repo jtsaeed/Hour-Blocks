@@ -109,7 +109,7 @@
 		AB7EABDE24B4FE8300041AB1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7EABDD24B4FE8300041AB1 /* SettingsView.swift */; };
 		AB849E1B24C86BFF00D27333 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB849E1A24C86BFF00D27333 /* SettingsViewModel.swift */; };
 		AB849E1D24C86CA300D27333 /* SettingsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB849E1C24C86CA300D27333 /* SettingsCardView.swift */; };
-		AB849E1F24C877A700D27333 /* CalendarOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB849E1E24C877A700D27333 /* CalendarOptionsView.swift */; };
+		AB849E1F24C877A700D27333 /* CalendarSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB849E1E24C877A700D27333 /* CalendarSettingsView.swift */; };
 		AB849E2124C877C200D27333 /* OtherSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB849E2024C877C200D27333 /* OtherSettingsView.swift */; };
 		AB849E2324C8827400D27333 /* CalendarOptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB849E2224C8827400D27333 /* CalendarOptionsViewModel.swift */; };
 		AB8C6FD024E6EA7C0074AD08 /* TipCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C6FCF24E6EA7C0074AD08 /* TipCardView.swift */; };
@@ -312,7 +312,7 @@
 		AB7EABDD24B4FE8300041AB1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		AB849E1A24C86BFF00D27333 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		AB849E1C24C86CA300D27333 /* SettingsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCardView.swift; sourceTree = "<group>"; };
-		AB849E1E24C877A700D27333 /* CalendarOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarOptionsView.swift; sourceTree = "<group>"; };
+		AB849E1E24C877A700D27333 /* CalendarSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSettingsView.swift; sourceTree = "<group>"; };
 		AB849E2024C877C200D27333 /* OtherSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSettingsView.swift; sourceTree = "<group>"; };
 		AB849E2224C8827400D27333 /* CalendarOptionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarOptionsViewModel.swift; sourceTree = "<group>"; };
 		AB8C6FCF24E6EA7C0074AD08 /* TipCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipCardView.swift; sourceTree = "<group>"; };
@@ -750,7 +750,7 @@
 			children = (
 				AB7EABDD24B4FE8300041AB1 /* SettingsView.swift */,
 				AB849E1C24C86CA300D27333 /* SettingsCardView.swift */,
-				AB849E1E24C877A700D27333 /* CalendarOptionsView.swift */,
+				AB849E1E24C877A700D27333 /* CalendarSettingsView.swift */,
 				AB849E2024C877C200D27333 /* OtherSettingsView.swift */,
 				23036F4D237B2D9000563206 /* PrivacyPolicyView.swift */,
 				AB5B933C24E2DABD006F2DED /* AcknowledgementsView.swift */,
@@ -1148,7 +1148,7 @@
 				AB72E0D324ACEA47004DD577 /* IconButton.swift in Sources */,
 				2304FA14235F29ED006DA688 /* SceneDelegate.swift in Sources */,
 				AB30376824F53959002C8310 /* ToDoGrid.swift in Sources */,
-				AB849E1F24C877A700D27333 /* CalendarOptionsView.swift in Sources */,
+				AB849E1F24C877A700D27333 /* CalendarSettingsView.swift in Sources */,
 				AB6BED6724E41046000A00A5 /* MockRemindersGateway.swift in Sources */,
 				AB849E2324C8827400D27333 /* CalendarOptionsViewModel.swift in Sources */,
 				AB72E0D024ACE9F9004DD577 /* Card.swift in Sources */,

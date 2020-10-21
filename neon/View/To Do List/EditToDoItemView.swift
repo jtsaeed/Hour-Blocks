@@ -52,7 +52,7 @@ struct EditToDoItemView: View {
     
     /// Performs the save changes request.
     private func save() {
-        viewModel.saveChanges(title: title, urgency: urgency)
+        viewModel.saveChanges(newTitle: title, newUrgency: urgency)
     }
 }
 

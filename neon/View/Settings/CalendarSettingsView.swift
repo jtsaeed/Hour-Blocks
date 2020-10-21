@@ -9,7 +9,7 @@
 import SwiftUI
 
 /// A view allowing the user to toggle which of their calendars are to be shown within Hour Blocks.
-struct CalendarOptionsView: View {
+struct CalendarSettingsView: View {
     
     @StateObject private var viewModel = CalendarOptionsViewModel()
     
@@ -27,7 +27,7 @@ struct CalendarOptionsView: View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 24) {
-                    if viewModel.calendarGateway.hasPermission() {
+                    if viewModel.calendarAccessGranted() {
                         ForEach(viewModel.allCalendars.sorted(by: { $0.title < $1.title }), id: \.self) { calendar in
                             CalendarCard(isEnabled: viewModel.enabledCalendars[calendar.calendarIdentifier] ?? true,
                                          calendarTitle: calendar.title,
@@ -124,6 +124,6 @@ private struct NoPermissionsCard: View {
 
 struct CalendarOptionsView_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarOptionsView(isPresented: .constant(true))
+        CalendarSettingsView(isPresented: .constant(true))
     }
 }

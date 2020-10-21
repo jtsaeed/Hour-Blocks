@@ -27,7 +27,7 @@ class HourBlockViewModel: Identifiable, ObservableObject {
     @Published var subBlocks: [SubBlock]
     
     @Published var isSheetPresented = false
-    @Published var selectedSheet: HourBlockSheet?
+    @Published private(set) var selectedSheet: HourBlockSheet?
     
     @Published var isAddHourBlockViewPresented = false
     @Published var isClearBlockWarningPresented = false
