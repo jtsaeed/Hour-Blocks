@@ -42,7 +42,7 @@ extension ToDoListViewModel {
     
     /// Loads the user's To Do items from the Core Data store and then sorts them.
     func loadToDoItems() {
-        toDoItems = dataGateway.getToDoItems().map { ToDoItemViewModel(for: $0) }
+        toDoItems = dataGateway.getIncompleteToDoItems().map { ToDoItemViewModel(for: $0) }
         sortToDoItems()
     }
     
