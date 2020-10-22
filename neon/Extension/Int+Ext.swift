@@ -10,6 +10,10 @@ import Foundation
 
 extension Int {
     
+    /// Converts an hour value to a formatted 12h string.
+    ///
+    /// - Returns:
+    /// A formatted 12h string.
     func get12hTime() -> String {
         if self == 0 {
             return "12AM"
@@ -22,6 +26,10 @@ extension Int {
         }
     }
     
+    /// Converts an hour value to a formatted 24h string.
+    ///
+    /// - Returns:
+    /// A formatted 24h string.
     func get24hTime() -> String {
         if self >= 10 {
             return "\(self):00"
