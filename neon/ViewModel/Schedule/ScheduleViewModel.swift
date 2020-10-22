@@ -190,7 +190,7 @@ extension ScheduleViewModel {
     
     /// Requests permission to access user calendars, then reloads the Schedule's Hour Blocks if permission is granted
     func handleCalendarPermissions() {
-        calendarGateway.handlePermissions { granted in
+        calendarGateway.requestPermissions { granted in
             if granted {
                 DispatchQueue.main.async { self.loadHourBlocks() }
             }

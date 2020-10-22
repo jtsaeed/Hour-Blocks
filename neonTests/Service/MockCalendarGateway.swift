@@ -15,7 +15,7 @@ struct MockCalendarGateway: CalendarGatewayProtocol {
         return false
     }
     
-    func handlePermissions(completion: @escaping (_ granted: Bool) -> Void) {
+    func requestPermissions(completion: @escaping (_ granted: Bool) -> Void) {
         completion(true)
     }
     
@@ -25,10 +25,6 @@ struct MockCalendarGateway: CalendarGatewayProtocol {
     
     func initialiseEnabledCalendars() -> [String : Bool] {
         return [String: Bool]()
-    }
-    
-    func getCalendarName(for identifier: String) -> String {
-        return ""
     }
     
     func getAllCalendars() -> [EKCalendar] {

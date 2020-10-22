@@ -23,7 +23,7 @@ struct WhatsNewView: View {
     
     var body: some View {
         VStack {
-            Text("What's new in\nHour Blocks \(VersionGateway.shared.fullCurrentVersion)")
+            Text("What's new in\nHour Blocks \(VersionGateway.shared.currentFullVersion)")
                 .font(.system(size: 34, weight: .bold, design: .default))
                 .multilineTextAlignment(.center)
                 .padding(.top, 24)

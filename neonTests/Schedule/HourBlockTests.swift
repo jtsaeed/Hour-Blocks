@@ -40,14 +40,12 @@ class HourBlockTests: XCTestCase {
                                        remindersGateway: MockRemindersGateway())
     }
     
-    override func tearDownWithError() throws {
-        dataGateway.deleteAllHourBlocks()
-    }
+    override func tearDownWithError() throws { }
     
     func testSaveTitleChanges() {
         let expectation = XCTestExpectation(description: "Save title changes title param in view model")
         
-        viewModel.saveChanges(title: "Hello", icon: nil)
+        viewModel.saveChanges(newTitle: "Hello", newIcon: nil)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             XCTAssertEqual(self.viewModel.getTitle(), "Hello")
             expectation.fulfill()
@@ -57,7 +55,7 @@ class HourBlockTests: XCTestCase {
     }
     
     func testSaveIconChanges() {
-        viewModel.saveChanges(title: viewModel.getTitle(), icon: .people)
+        viewModel.saveChanges(newTitle: viewModel.getTitle(), newIcon: .people)
         
         let expectation = XCTestExpectation(description: "Save icon changes icon param in view model")
         

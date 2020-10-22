@@ -24,9 +24,7 @@ class ScheduleDatePickerTests: XCTestCase {
                                                 initialSelectedDate: date)
     }
     
-    override func tearDownWithError() throws {
-        dataGateway.deleteAllHourBlocks()
-    }
+    override func tearDownWithError() throws { }
     
     func testLoadHourBlocks() {
         dataGateway.save(hourBlock: HourBlock(day: date, hour: 15, title: "Gym"))

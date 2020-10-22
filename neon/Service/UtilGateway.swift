@@ -8,10 +8,15 @@
 
 import Foundation
 
+/// A singleton gateway service used to interface with any utility functions that don't belong anywhere else.
 struct UtilGateway {
     
     static let shared = UtilGateway()
     
+    /// Determines the system time format setting.
+    ///
+    /// - Returns:
+    /// Whether or not the system time setting is 12h.
     func isSystemClock12h() -> Bool {
         let formatter = DateFormatter()
         formatter.locale = Locale.current
@@ -25,6 +30,7 @@ struct UtilGateway {
         return !(pmRange == nil && amRange == nil)
     }
     
+    @available(*, deprecated, message: "This function will be redundant after a small ScheduleViewModel refactor")
     func dayStartHour() -> Int {
         if let dayStartValue = UserDefaults.standard.value(forKey: "dayStart") as? Int {
             switch dayStartValue {

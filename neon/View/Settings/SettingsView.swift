@@ -15,7 +15,7 @@ struct SettingsView: View {
     
     var body: some View {
         VStack {
-            HeaderView(title: "Settings", subtitle: "Hour Blocks \(VersionGateway.shared.fullCurrentVersion)") {
+            HeaderView(title: "Settings", subtitle: "Hour Blocks \(VersionGateway.shared.currentFullVersion)") {
                 EmptyView()
             }
             

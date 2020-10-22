@@ -29,7 +29,7 @@ class ToDoItemTests: XCTestCase {
     }
     
     func testSaveTitleChanges() {
-        viewModel.saveChanges(title: "new", urgency: .soon)
+        viewModel.saveChanges(newTitle: "new", newUrgency: .soon)
         
         let expectation = XCTestExpectation(description: "The view model's title has changed after calling viewModel.saveChanges")
         
@@ -43,7 +43,7 @@ class ToDoItemTests: XCTestCase {
     }
     
     func testSavePriorityChanges() {
-        viewModel.saveChanges(title: viewModel.getTitle(), urgency: .urgent)
+        viewModel.saveChanges(newTitle: viewModel.getTitle(), newUrgency: .urgent)
         
         let expectation = XCTestExpectation(description: "view model's urgency is equal to ToDoPriority.urgent after calling viewModel.saveChanges")
         
