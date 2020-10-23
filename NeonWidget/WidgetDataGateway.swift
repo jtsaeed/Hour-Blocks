@@ -94,6 +94,7 @@ class WidgetDataGateway {
         var toDoItems = [ToDoEntity]()
         
         let request = NSFetchRequest<ToDoEntity>(entityName: "ToDoEntity")
+        request.predicate = NSPredicate(format: "completed == %@", NSNumber(value: false))
         
         do {
             toDoItems = try persistentContainer.viewContext.fetch(request)

@@ -167,14 +167,34 @@ extension DataGateway {
         return subBlocks.compactMap { SubBlock(fromEntity: $0) }
     }
     
-    /// Retrieves all To Do items from the Core Data store.
+    /// Retrieves all incomplete To Do items from the Core Data store.
     ///
     /// - Returns:
-    /// An array of saved To Do items.
-    func getToDoItems() -> [ToDoItem] {
+    /// An array of incomplete To Do items.
+    func getIncompleteToDoItems() -> [ToDoItem] {
         var toDoEntities = [ToDoEntity]()
         
         let request = NSFetchRequest<ToDoEntity>(entityName: "ToDoEntity")
+        request.predicate = NSPredicate(format: "completed == %@", NSNumber(value: false))
+        
+        do {
+            toDoEntities = try managedObjectContext.fetch(request)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        return toDoEntities.compactMap { ToDoItem(fromEntity: $0) }
+    }
+    
+    /// Retrieves all completed To Do items from the Core Data store.
+    ///
+    /// - Returns:
+    /// An array of completed To Do items.
+    func getCompletedToDoItems() -> [ToDoItem] {
+        var toDoEntities = [ToDoEntity]()
+        
+        let request = NSFetchRequest<ToDoEntity>(entityName: "ToDoEntity")
+        request.predicate = NSPredicate(format: "completed == %@", NSNumber(value: true))
         
         do {
             toDoEntities = try managedObjectContext.fetch(request)

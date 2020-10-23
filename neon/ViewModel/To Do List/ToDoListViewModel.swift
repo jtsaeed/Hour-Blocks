@@ -20,8 +20,8 @@ class ToDoListViewModel: ObservableObject {
     
     @Published private(set) var toDoItems = [ToDoItemViewModel]()
     @Published private(set) var currentTip: Tip?
-    
     @Published var isAddToDoItemViewPresented = false
+    @Published var isToDoListHistoryViewPresented = false
     
     /// Creates an instance of the ToDoListViewModel and then loads the user's To Do items.
     ///
@@ -42,7 +42,7 @@ extension ToDoListViewModel {
     
     /// Loads the user's To Do items from the Core Data store and then sorts them.
     func loadToDoItems() {
-        toDoItems = dataGateway.getToDoItems().map { ToDoItemViewModel(for: $0) }
+        toDoItems = dataGateway.getIncompleteToDoItems().map { ToDoItemViewModel(for: $0) }
         sortToDoItems()
     }
     
@@ -65,12 +65,26 @@ extension ToDoListViewModel {
         WidgetCenter.shared.reloadTimelines(ofKind: "ToDoWidget")
     }
     
+    /// Marks a given To Do item as completed in the Core Data store and the view model.
+    ///
+    /// - Parameters:
+    ///   - toDoItem: The To Do item to be marked as complete.
+    func markAsCompleted(toDoItem: ToDoItem) {
+        HapticsGateway.shared.triggerCompletionHaptic()
+        
+        dataGateway.edit(toDoItem: toDoItem, set: true, forKey: "completed")
+        dataGateway.edit(toDoItem: toDoItem, set: Date(), forKey: "completionDate")
+        
+        toDoItems.removeAll(where: { $0.toDoItem.id == toDoItem.id })
+        WidgetCenter.shared.reloadTimelines(ofKind: "ToDoWidget")
+    }
+    
     /// Removes a given To Do item from the Core Data store and the view model.
     ///
     /// - Parameters:
     ///   - toDoItem: The To Do item to be removed.
     func clear(toDoItem: ToDoItem) {
-        HapticsGateway.shared.triggerCompletionHaptic()
+        HapticsGateway.shared.triggerClearBlockHaptic()
         
         dataGateway.delete(toDoItem: toDoItem)
         toDoItems.removeAll(where: { $0.toDoItem.id == toDoItem.id })
@@ -87,6 +101,12 @@ extension ToDoListViewModel {
     func presentAddToDoItemView() {
         HapticsGateway.shared.triggerLightImpact()
         isAddToDoItemViewPresented = true
+    }
+    
+    /// Presents the ToDoListHistoryView.
+    func presentToDoListHistoryView() {
+        HapticsGateway.shared.triggerLightImpact()
+        isToDoListHistoryViewPresented = true
     }
     
     /// Dismisses the AddToDoItemView.
