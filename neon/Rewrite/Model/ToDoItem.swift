@@ -13,8 +13,8 @@ struct ToDoItem: Identifiable {
     
     let id: String
     
-    let completed: bool
-    let completedDate: Date?
+    let completed: Bool
+    let completionDate: Date?
     
     private(set) var title: String
     let urgency: ToDoUrgency
@@ -29,7 +29,7 @@ struct ToDoItem: Identifiable {
         self.title = title
         self.urgency = urgency
         self.completed = false
-        self.completedDate = nil
+        self.completionDate = nil
     }
     
     /// Creates an instance of a To Do item from a Core Data entity.
@@ -44,7 +44,7 @@ struct ToDoItem: Identifiable {
         self.title = entityTitle
         
         self.completed = entity.completed
-        self.completedDate = entity.completedDate
+        self.completionDate = entity.completionDate
         
         if let entityUrgency = entity.urgency {
             self.urgency = ToDoUrgency(rawValue: entityUrgency)!
@@ -64,6 +64,8 @@ struct ToDoItem: Identifiable {
         entity.identifier = id
         entity.title = title
         entity.urgency = urgency.rawValue
+        entity.completed = completed
+        entity.completionDate = completionDate
         
         return entity
     }
