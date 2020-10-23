@@ -18,18 +18,18 @@ struct ToDoListView: View {
     var body: some View {
         VStack {
             HeaderView(title: "To Do List", subtitle: "\(viewModel.toDoItems.count) Items") {
+                IconButton(iconName: "clock",
+                           iconWeight: .medium,
+                           action: viewModel.presentToDoListHistoryView)
+                    .sheet(isPresented: $viewModel.isToDoListHistoryViewPresented) {
+                        ToDoListHistoryView(isPresented: $viewModel.isToDoListHistoryViewPresented )
+                    }
+                
                 IconButton(iconName: "plus",
                            iconWeight: .bold,
                            action: viewModel.presentAddToDoItemView)
                     .sheet(isPresented: $viewModel.isAddToDoItemViewPresented) {
                         AddToDoItemView(viewModel: viewModel)
-                    }
-                
-                IconButton(iconName: "clock",
-                           iconWeight: .bold,
-                           action: viewModel.presentToDoListHistoryView)
-                    .sheet(isPresented: $viewModel.isToDoListHistoryViewPresented) {
-                        ToDoListHistoryView(isPresented: $viewModel.isToDoListHistoryViewPresented )
                     }
             }
             

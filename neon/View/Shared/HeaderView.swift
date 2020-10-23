@@ -33,7 +33,7 @@ struct HeaderView<Content>: View where Content: View {
             Rectangle()
                 .foregroundColor(Color("BackgroundColor"))
                 .frame(height: 96)
-            HStack {
+            HStack(spacing: 16) {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(subtitle.uppercased())
                         .font(.system(size: 14, weight: .semibold, design: .default))

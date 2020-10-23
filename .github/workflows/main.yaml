@@ -13,4 +13,4 @@ jobs:
       - name: Select Xcode 
         run: sudo xcode-select -switch /Applications/Xcode_12.app
       - name: Test & Build
-        run: xcodebuild clean test -workspace neon.xcworkspace -scheme oxygen -destination "platform=iOS Simulator,name=iPhone 11 Pro"
+        run: xcodebuild clean test -workspace neon.xcworkspace -scheme neon -destination "platform=iOS Simulator,name=iPhone 11 Pro"
