@@ -23,6 +23,7 @@ class ToDoListViewModel: ObservableObject {
     
     @Published var isAddToDoItemViewPresented = false
     
+    
     /// Creates an instance of the ToDoListViewModel and then loads the user's To Do items.
     ///
     /// - Parameters:
@@ -65,12 +66,26 @@ extension ToDoListViewModel {
         WidgetCenter.shared.reloadTimelines(ofKind: "ToDoWidget")
     }
     
+    /// Marks a given To Do item as completed in the Core Data store and the view model.
+    ///
+    /// - Parameters:
+    ///   - toDoItem: The To Do item to be marked as complete.
+    func markAsCompleted(toDoItem: ToDoItem) {
+        HapticsGateway.shared.triggerCompletionHaptic()
+        
+        dataGateway.edit(toDoItem: toDoItem, set: true, forKey: "completed")
+        dataGateway.edit(toDoItem: toDoItem, set: Date(), forKey: "completedDate")
+        
+        toDoItems.removeAll(where: { $0.toDoItem.id == toDoItem.id })
+        WidgetCenter.shared.reloadTimelines(ofKind: "ToDoWidget")
+    }
+    
     /// Removes a given To Do item from the Core Data store and the view model.
     ///
     /// - Parameters:
     ///   - toDoItem: The To Do item to be removed.
     func clear(toDoItem: ToDoItem) {
-        HapticsGateway.shared.triggerCompletionHaptic()
+        HapticsGateway.shared.triggerClearBlockHaptic()
         
         dataGateway.delete(toDoItem: toDoItem)
         toDoItems.removeAll(where: { $0.toDoItem.id == toDoItem.id })
