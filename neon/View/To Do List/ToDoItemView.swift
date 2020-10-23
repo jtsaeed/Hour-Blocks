@@ -14,15 +14,18 @@ struct ToDoItemView: View {
     @ObservedObject private var viewModel: ToDoItemViewModel
     
     private let onItemCleared: () -> Void
+    private let onItemCompleted: () -> Void
     
     /// Creates an instance of ToDoItemView.
     ///
     /// - Parameters:
     ///   - viewModel: The corresponding view model for the given To Do item.
     ///   - onBlockCleared: The callback function to be triggered when the user chooses to clear the corresponding To Do item.
-    init(viewModel: ToDoItemViewModel, onItemCleared: @escaping () -> Void) {
+    ///   - onBlockCompleted: The callback function to be triggered when the user chooses to complete the corresponding To Do item.
+    init(viewModel: ToDoItemViewModel, onItemCleared: @escaping () -> Void, onItemCompleted: @escaping ()-> Void) {
         self.viewModel = viewModel
         self.onItemCleared = onItemCleared
+        self.onItemCompleted = onItemCompleted
     }
     
     var body: some View {
@@ -35,6 +38,11 @@ struct ToDoItemView: View {
         }.padding(.horizontal, 24)
         
         .contextMenu(ContextMenu(menuItems: {
+            Button(action: onItemCompleted) {
+                Label("Complete", systemImage: "checkmark")
+            }
+            
+            Divider()
             Button(action: viewModel.presentEditItemView) {
                 Label("Edit", systemImage: "pencil")
             }
@@ -43,7 +51,7 @@ struct ToDoItemView: View {
             }
             Divider()
             Button(action: onItemCleared) {
-                Label("Complete", systemImage: "checkmark")
+                Label("Clear", systemImage: "trash")
             }
         }))
         
@@ -64,6 +72,6 @@ struct ToDoItemView: View {
 struct ToDoItemView_Previews: PreviewProvider {
     static var previews: some View {
         ToDoItemView(viewModel: ToDoItemViewModel(for: ToDoItem(title: "Test", urgency: .whenever)),
-                     onItemCleared: {})
+                     onItemCleared: {}, onItemCompleted: {})
     }
 }

@@ -19,10 +19,17 @@ struct ToDoListView: View {
         VStack {
             HeaderView(title: "To Do List", subtitle: "\(viewModel.toDoItems.count) Items") {
                 IconButton(iconName: "plus",
-                              iconWeight: .bold,
-                              action: viewModel.presentAddToDoItemView)
+                           iconWeight: .bold,
+                           action: viewModel.presentAddToDoItemView)
                     .sheet(isPresented: $viewModel.isAddToDoItemViewPresented) {
                         AddToDoItemView(viewModel: viewModel)
+                    }
+                
+                IconButton(iconName: "clock",
+                           iconWeight: .bold,
+                           action: viewModel.presentToDoListHistoryView)
+                    .sheet(isPresented: $viewModel.isToDoListHistoryPresented) {
+                        ToDoListHistoryView(isPresented: $viewModel.isToDoListHistoryPresented )
                     }
             }
             
@@ -35,7 +42,8 @@ struct ToDoListView: View {
                     
                     ForEach(viewModel.toDoItems) { toDoItemViewModel in
                         ToDoItemView(viewModel: toDoItemViewModel,
-                                     onItemCleared: { viewModel.clear(toDoItem: toDoItemViewModel.toDoItem) })
+                                     onItemCleared: { viewModel.clear(toDoItem: toDoItemViewModel.toDoItem) },
+                                     onItemCompleted: { viewModel.markAsCompleted(toDoItem: toDoItemViewModel.toDoItem)})
                     }
                 }.padding(.top, 8)
                 .padding(.bottom, 24)

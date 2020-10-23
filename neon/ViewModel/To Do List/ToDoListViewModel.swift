@@ -23,6 +23,7 @@ class ToDoListViewModel: ObservableObject {
     
     @Published var isAddToDoItemViewPresented = false
     
+    @Published var isToDoListHistoryPresented = false
     
     /// Creates an instance of the ToDoListViewModel and then loads the user's To Do items.
     ///
@@ -74,7 +75,7 @@ extension ToDoListViewModel {
         HapticsGateway.shared.triggerCompletionHaptic()
         
         dataGateway.edit(toDoItem: toDoItem, set: true, forKey: "completed")
-        dataGateway.edit(toDoItem: toDoItem, set: Date(), forKey: "completedDate")
+        dataGateway.edit(toDoItem: toDoItem, set: Date(), forKey: "completionDate")
         
         toDoItems.removeAll(where: { $0.toDoItem.id == toDoItem.id })
         WidgetCenter.shared.reloadTimelines(ofKind: "ToDoWidget")
@@ -102,6 +103,12 @@ extension ToDoListViewModel {
     func presentAddToDoItemView() {
         HapticsGateway.shared.triggerLightImpact()
         isAddToDoItemViewPresented = true
+    }
+    
+    /// Presents the ToDoListHistoryView.
+    func presentToDoListHistoryView() {
+        HapticsGateway.shared.triggerLightImpact()
+        isToDoListHistoryPresented = true
     }
     
     /// Dismisses the AddToDoItemView.
