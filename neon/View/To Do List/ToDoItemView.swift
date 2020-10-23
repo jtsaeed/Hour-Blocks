@@ -41,7 +41,6 @@ struct ToDoItemView: View {
             Button(action: onItemCompleted) {
                 Label("Complete", systemImage: "checkmark")
             }
-            
             Divider()
             Button(action: viewModel.presentEditItemView) {
                 Label("Edit", systemImage: "pencil")

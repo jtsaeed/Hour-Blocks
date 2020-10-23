@@ -20,10 +20,8 @@ class ToDoListViewModel: ObservableObject {
     
     @Published private(set) var toDoItems = [ToDoItemViewModel]()
     @Published private(set) var currentTip: Tip?
-    
     @Published var isAddToDoItemViewPresented = false
-    
-    @Published var isToDoListHistoryPresented = false
+    @Published var isToDoListHistoryViewPresented = false
     
     /// Creates an instance of the ToDoListViewModel and then loads the user's To Do items.
     ///
@@ -108,7 +106,7 @@ extension ToDoListViewModel {
     /// Presents the ToDoListHistoryView.
     func presentToDoListHistoryView() {
         HapticsGateway.shared.triggerLightImpact()
-        isToDoListHistoryPresented = true
+        isToDoListHistoryViewPresented = true
     }
     
     /// Dismisses the AddToDoItemView.

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1AC3EE9E2542D54700598CD2 /* ToDoListHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC3EE9D2542D54700598CD2 /* ToDoListHistoryViewModel.swift */; };
+		1AC3EEA42542D77C00598CD2 /* CompletedToDoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC3EEA32542D77C00598CD2 /* CompletedToDoItemView.swift */; };
+		1AC3EEAA2542D9ED00598CD2 /* ToDoListHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC3EEA92542D9ED00598CD2 /* ToDoListHistoryView.swift */; };
+		1AC3EEB02543105D00598CD2 /* ToDoListHistoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC3EEAF2543105D00598CD2 /* ToDoListHistoryTests.swift */; };
 		23036F4E237B2D9000563206 /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23036F4D237B2D9000563206 /* PrivacyPolicyView.swift */; };
 		2304FA14235F29ED006DA688 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA13235F29ED006DA688 /* SceneDelegate.swift */; };
 		2304FA17235F2A2A006DA688 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FA16235F2A2A006DA688 /* ContentView.swift */; };
@@ -211,6 +215,10 @@
 
 /* Begin PBXFileReference section */
 		12A40077628A72E8344C9A4E /* Pods_Hour_BlocksTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hour_BlocksTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1AC3EE9D2542D54700598CD2 /* ToDoListHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListHistoryViewModel.swift; sourceTree = "<group>"; };
+		1AC3EEA32542D77C00598CD2 /* CompletedToDoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedToDoItemView.swift; sourceTree = "<group>"; };
+		1AC3EEA92542D9ED00598CD2 /* ToDoListHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListHistoryView.swift; sourceTree = "<group>"; };
+		1AC3EEAF2543105D00598CD2 /* ToDoListHistoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListHistoryTests.swift; sourceTree = "<group>"; };
 		23036F4D237B2D9000563206 /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 		2304FA13235F29ED006DA688 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2304FA16235F2A2A006DA688 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -621,6 +629,7 @@
 			children = (
 				ABB477C124E42DD8004DC0E6 /* ToDoListTests.swift */,
 				ABB477C324E42FF3004DC0E6 /* ToDoItemTests.swift */,
+				1AC3EEAF2543105D00598CD2 /* ToDoListHistoryTests.swift */,
 			);
 			path = "To Do List";
 			sourceTree = "<group>";
@@ -741,6 +750,8 @@
 				AB554EDC24BB7395006CFEBD /* ToDoItemView.swift */,
 				AB1D6FCE24C47AC700D26D4B /* AddToDoItemView.swift */,
 				ABFC243724D029730091E3A5 /* EditToDoItemView.swift */,
+				1AC3EEA32542D77C00598CD2 /* CompletedToDoItemView.swift */,
+				1AC3EEA92542D9ED00598CD2 /* ToDoListHistoryView.swift */,
 			);
 			path = "To Do List";
 			sourceTree = "<group>";
@@ -763,6 +774,7 @@
 			children = (
 				ABAFADFC24B231C40098B823 /* ToDoListViewModel.swift */,
 				ABFC243524D022850091E3A5 /* ToDoItemViewModel.swift */,
+				1AC3EE9D2542D54700598CD2 /* ToDoListHistoryViewModel.swift */,
 			);
 			path = "To Do List";
 			sourceTree = "<group>";
@@ -1135,6 +1147,7 @@
 				AB05598224CF5E1C006F0228 /* VersionGateway.swift in Sources */,
 				AB05597A24CF085B006F0228 /* CompactHourBlockView.swift in Sources */,
 				23E82155236DB57A004E6F15 /* WhatsNewView.swift in Sources */,
+				1AC3EEA42542D77C00598CD2 /* CompletedToDoItemView.swift in Sources */,
 				AB72E0C924ACE8ED004DD577 /* HourBlock.swift in Sources */,
 				AB6BED6324E3FDB8000A00A5 /* MockCalendarGateway.swift in Sources */,
 				AB72E0BD24ACE87D004DD577 /* EmptyHourBlockView.swift in Sources */,
@@ -1150,8 +1163,10 @@
 				AB30376824F53959002C8310 /* ToDoGrid.swift in Sources */,
 				AB849E1F24C877A700D27333 /* CalendarSettingsView.swift in Sources */,
 				AB6BED6724E41046000A00A5 /* MockRemindersGateway.swift in Sources */,
+				1AC3EE9E2542D54700598CD2 /* ToDoListHistoryViewModel.swift in Sources */,
 				AB849E2324C8827400D27333 /* CalendarOptionsViewModel.swift in Sources */,
 				AB72E0D024ACE9F9004DD577 /* Card.swift in Sources */,
+				1AC3EEAA2542D9ED00598CD2 /* ToDoListHistoryView.swift in Sources */,
 				2304FA17235F2A2A006DA688 /* ContentView.swift in Sources */,
 				AB5A9BF324B3867900F97B10 /* CalendarGateway.swift in Sources */,
 				AB0CE89125371C5E00284E7B /* Tip.swift in Sources */,
@@ -1202,6 +1217,7 @@
 				ABB477C224E42DD8004DC0E6 /* ToDoListTests.swift in Sources */,
 				ABB477BC24E419DE004DC0E6 /* HourBlockTests.swift in Sources */,
 				ABB477BE24E41BB6004DC0E6 /* ScheduleDatePickerTests.swift in Sources */,
+				1AC3EEB02543105D00598CD2 /* ToDoListHistoryTests.swift in Sources */,
 				ABB477C024E42CEB004DC0E6 /* AddHourBlockTests.swift in Sources */,
 				ABB477C424E42FF3004DC0E6 /* ToDoItemTests.swift in Sources */,
 				AB48A6CF24ACF0E100C50E58 /* ScheduleTests.swift in Sources */,
@@ -1409,6 +1425,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 577WSH643L;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1436,6 +1453,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 577WSH643L;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = neon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (

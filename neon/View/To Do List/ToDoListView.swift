@@ -28,8 +28,8 @@ struct ToDoListView: View {
                 IconButton(iconName: "clock",
                            iconWeight: .bold,
                            action: viewModel.presentToDoListHistoryView)
-                    .sheet(isPresented: $viewModel.isToDoListHistoryPresented) {
-                        ToDoListHistoryView(isPresented: $viewModel.isToDoListHistoryPresented )
+                    .sheet(isPresented: $viewModel.isToDoListHistoryViewPresented) {
+                        ToDoListHistoryView(isPresented: $viewModel.isToDoListHistoryViewPresented )
                     }
             }
             

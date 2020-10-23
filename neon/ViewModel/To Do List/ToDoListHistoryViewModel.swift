@@ -20,12 +20,13 @@ class ToDoListHistoryViewModel: ObservableObject {
     ///
     /// - Parameters:
     ///   - dataGateway: The data gateway instance used to interface with Core Data. By default, this is set to an instance of DataGateway.
-    init(dataGateway: DataGateway = DataGateway(), analyticsGateway: AnalyticsGatewayProtocol = AnalyticsGateway()) {
+    init(dataGateway: DataGateway = DataGateway()) {
         self.dataGateway = dataGateway
         
         loadCompletedToDoItems()
     }
     
+    /// Loads the user's completed To Do items from the Core Data store.
     func loadCompletedToDoItems() {
         completedToDoItems = dataGateway.getCompletedToDoItems().map { ToDoItemViewModel(for: $0) }
     }

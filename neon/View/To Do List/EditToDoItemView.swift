@@ -46,8 +46,7 @@ struct EditToDoItemView: View {
             }.navigationTitle("Edit To Do Item")
             .navigationBarItems(leading: Button("Cancel", action: viewModel.dismissEditItemView),
                                 trailing: Button("Save", action: save))
-        }
-        .accentColor(Color("AccentColor"))
+        }.accentColor(Color("AccentColor"))
     }
     
     /// Performs the save changes request.

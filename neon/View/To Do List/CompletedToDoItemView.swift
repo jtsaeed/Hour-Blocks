@@ -10,8 +10,8 @@ import SwiftUI
 
 /// A Card based view for displaying a Completed To Do Item.
 struct CompletedToDoItemView: View {
-    @ObservedObject private var viewModel: ToDoItemViewModel
     
+    @ObservedObject private var viewModel: ToDoItemViewModel
     
     /// Creates an instance of ToDoItemView.
     ///
@@ -24,9 +24,8 @@ struct CompletedToDoItemView: View {
     var body: some View {
         Card {
             CardLabels(title: viewModel.getTitle(),
-                       subtitle: viewModel.toDoItem.completionDate?.getFormattedDate() ?? Date().getFormattedDate(),
+                       subtitle: viewModel.toDoItem.completionDate?.getFormattedDate() ?? "N/A",
                        horizontalAlignment: .center)
         }.padding(.horizontal, 24)
-        
     }
 }

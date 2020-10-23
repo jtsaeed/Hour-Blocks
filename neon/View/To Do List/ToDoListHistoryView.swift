@@ -23,8 +23,7 @@ struct ToDoListHistoryView: View {
                     }
                 }.padding(.top, 8)
                 .padding(.bottom, 24)
-            }
-            .navigationTitle("History")
+            }.navigationTitle("History")
             
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -35,7 +34,10 @@ struct ToDoListHistoryView: View {
         }.accentColor(Color("AccentColor"))
     }
     
-    func dismiss() { isPresented = false }
+    /// function to dismiss the current view.
+    func dismiss() {
+        isPresented = false
+    }
     
     struct ToDoListHistoryView_Previews: PreviewProvider {
         static var previews: some View {
