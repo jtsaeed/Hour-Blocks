@@ -1,8 +1,8 @@
 //
-//  ToDoItemTests.swift
+//  ToDoListHistoryTest.swift
 //  Hour BlocksTests
 //
-//  Created by James Saeed on 12/08/2020.
+//  Created by James Litchfield on 23/10/2020.
 //  Copyright © 2020 James Saeed. All rights reserved.
 //
 
@@ -10,44 +10,34 @@ import XCTest
 import CoreData
 @testable import Hour_Blocks
 
-class ToDoItemTests: XCTestCase {
+class ToDoListHistorTests: XCTestCase {
     
     var dataGateway: DataGateway!
-    var viewModel: ToDoItemViewModel!
-
+    var viewModel: ToDoListHistoryViewModel!
+    
     override func setUpWithError() throws {
         dataGateway = DataGateway(for: mockPersistantContainer.viewContext)
-        
-        let toDoItem = ToDoItem(title: "Book meeting room", urgency: .soon)
-        dataGateway.save(toDoItem: toDoItem)
-        
-        viewModel = ToDoItemViewModel(for: toDoItem)
+        viewModel = ToDoListHistoryViewModel(dataGateway: dataGateway)
     }
-
+    
     override func tearDownWithError() throws {
     }
     
-    func testSaveTitleChanges() {
-        viewModel.saveChanges(newTitle: "new", newUrgency: .soon)
+    func testLoadCompletedToDoItems() {
+        let item1 = ToDoItem(title: "Clean", urgency: ToDoUrgency.urgent)
+        let item2 = ToDoItem(title: "Eat", urgency: ToDoUrgency.whenever)
         
-        let expectation = XCTestExpectation(description: "The view model's title has changed after calling viewModel.saveChanges")
+        dataGateway.save(toDoItem: item1)
+        dataGateway.save(toDoItem: item2)
+        dataGateway.edit(toDoItem: item1, set: true, forKey: "completed")
+        dataGateway.edit(toDoItem: item2, set: Date(), forKey: "completionDate")
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            XCTAssertEqual(self.viewModel.getTitle(), "New")
-            
-            expectation.fulfill()
-        }
+        viewModel.loadCompletedToDoItems()
         
-        wait(for: [expectation], timeout: 2.0)
-    }
-    
-    func testSavePriorityChanges() {
-        viewModel.saveChanges(newTitle: viewModel.getTitle(), newUrgency: .urgent)
-        
-        let expectation = XCTestExpectation(description: "view model's urgency is equal to ToDoPriority.urgent after calling viewModel.saveChanges")
+        let expectation = XCTestExpectation(description: "view model's completedToDoItems array size is equal to the amount of toDoItems that have been completed")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            XCTAssertEqual(self.viewModel.urgency, "urgent")
+            XCTAssertEqual(self.viewModel.completedToDoItems.count, 1)
             
             expectation.fulfill()
         }
@@ -65,7 +55,7 @@ class ToDoItemTests: XCTestCase {
         container.loadPersistentStores { (description, error) in
             // Check if the data store is in memory
             precondition( description.type == NSInMemoryStoreType )
-                                        
+            
             // Check if creating container wrong
             if let error = error {
                 fatalError("Create an in-mem coordinator failed \(error)")
