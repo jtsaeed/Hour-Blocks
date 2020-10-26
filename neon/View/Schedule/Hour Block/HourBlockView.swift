@@ -97,6 +97,9 @@ struct HourBlockView: View {
 /// A Label-like view for displaying a Sub Block.
 private struct SubBlockView: View {
     
+    /// Environment variable identifying the current device colour scheme between dark or light mode.
+    @Environment(\.colorScheme) var colorScheme
+    
     private let subBlock: SubBlock
     
     /// Creates an instance of SubBlockView.
@@ -111,7 +114,7 @@ private struct SubBlockView: View {
         HStack(spacing: 12) {
             ZStack {
                 Circle()
-                    .foregroundColor(Color("AccentColorLight"))
+                    .foregroundColor(Color("AccentColor").getLightColor(darkMode: colorScheme == .dark))
                     .frame(width: 16, height: 16)
                 Circle()
                     .foregroundColor(Color("AccentColor"))

@@ -11,6 +11,9 @@ import SwiftUI
 /// A wrapper around the native SwiftUI TextField with Hour Blocks styling. Used for all text fields within Hour Blocks.
 struct NeonTextField: View {
     
+    /// Environment variable identifying the current device colour scheme between dark or light mode.
+    @Environment(\.colorScheme) var colorScheme
+    
     @Binding private var text: String
     
     private let onReturn: () -> Void
@@ -29,7 +32,7 @@ struct NeonTextField: View {
         ZStack() {
             Rectangle()
                 .frame(height: 40)
-                .foregroundColor(Color("AccentColorLight"))
+                .foregroundColor(Color("AccentColor").getLightColor(darkMode: colorScheme == .dark))
                 .cornerRadius(8)
             TextField("Enter the title here...", text: $text, onCommit: onReturn)
                 .autocapitalization(.none)

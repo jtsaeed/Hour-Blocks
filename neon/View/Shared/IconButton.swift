@@ -10,6 +10,9 @@ import SwiftUI
 /// The circular coloured icon button used throughout Hour Blocks.
 struct IconButton: View {
     
+    /// Environment variable identifying the current device colour scheme between dark or light mode.
+    @Environment(\.colorScheme) var colorScheme
+    
     private let iconName: String
     private let iconWeight: Font.Weight
     private let iconColor: String
@@ -34,7 +37,7 @@ struct IconButton: View {
         Button(action: action) {
             ZStack {
                 Circle()
-                    .foregroundColor(Color("\(iconColor)Light"))
+                    .foregroundColor(Color(iconColor).getLightColor(darkMode: colorScheme == .dark))
                     .frame(width: 40, height: 40)
                 Image(systemName: iconName)
                     .foregroundColor(Color(iconColor))
