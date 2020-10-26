@@ -47,7 +47,11 @@ struct AddToDoItemView: View {
                 
                 Spacer()
             }.navigationTitle("Add a To Do Item")
-            .navigationBarItems(leading: Button("Cancel", action: dismiss))
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Cancel", action: dismiss)
+                }
+            }
         }
         .accentColor(Color("AccentColor"))
     }

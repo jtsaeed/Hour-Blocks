@@ -38,7 +38,11 @@ struct CalendarSettingsView: View {
                     }
                 }.padding(.vertical, 24)
             }.navigationBarTitle("Calendars", displayMode: .inline)
-            .navigationBarItems(trailing: Button("Done", action: dismiss))
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Done", action: dismiss)
+                }
+            }
         }.accentColor(Color("AccentColor"))
     }
     

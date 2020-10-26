@@ -8,15 +8,15 @@
 
 import SwiftUI
 
+/// A scrollable view to contain a list of Card based views.
 struct CardsListView<Content>: View where Content: View {
     
     private let content: () -> Content
     
-    /// Creates an instance of the Card view.
+    /// Creates an instance of the CardList view.
     ///
     /// - Parameters:
-    ///   - padding: The padding around the card's content. A default value is provided.
-    ///   - content: The view content to be rendered on top of the card.
+    ///   - content: The Cards content to be rendered within the scrollable list view.
     init(@ViewBuilder content: @escaping () -> Content) {
         self.content = content
     }

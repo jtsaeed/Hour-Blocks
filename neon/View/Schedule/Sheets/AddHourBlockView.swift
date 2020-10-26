@@ -61,7 +61,11 @@ struct AddHourBlockView: View {
                     }
                 }
             }.navigationTitle("Add an Hour Block")
-            .navigationBarItems(leading: Button("Cancel", action: dismiss))
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Cancel", action: dismiss)
+                }
+            }
         }.accentColor(Color("AccentColor"))
         .onAppear { viewModel.loadSuggestions(for: hour, on: day) }
     }

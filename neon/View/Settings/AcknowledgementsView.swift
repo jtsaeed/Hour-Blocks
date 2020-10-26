@@ -34,7 +34,11 @@ struct AcknowledgementsView: View {
             }.padding(.vertical, 24)
             .padding(.horizontal, 32)
             .navigationBarTitle("Acknowledgements")
-            .navigationBarItems(trailing: Button("Done", action: dismiss))
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Done", action: dismiss)
+                }
+            }
         }.accentColor(Color("AccentColor"))
     }
     

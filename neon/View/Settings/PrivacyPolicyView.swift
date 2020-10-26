@@ -37,7 +37,11 @@ struct PrivacyPolicyView: View {
             }.padding(.vertical, 24)
             .padding(.horizontal, 32)
             .navigationBarTitle("Privacy Policy")
-            .navigationBarItems(trailing: Button("Done", action: dismiss))
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Done", action: dismiss)
+                }
+            }
         }.accentColor(Color("AccentColor"))
     }
     

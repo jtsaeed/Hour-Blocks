@@ -61,8 +61,14 @@ struct ScheduleDatePicker: View {
                     }
                 }.padding(.top, UIDevice.current.hasNotch ? 0 : 40)
             }.navigationBarTitle("Date Picker", displayMode: .inline)
-            .navigationBarItems(leading: Button("Cancel", action: dismiss),
-                                trailing: Button("Save", action: save))
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Cancel", action: dismiss)
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Save", action: save)
+                }
+            }
         }.accentColor(Color("AccentColor"))
     }
     

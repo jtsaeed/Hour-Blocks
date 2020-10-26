@@ -41,7 +41,11 @@ struct RescheduleBlockView: View {
                     }
                 }
             }.navigationTitle("Reschedule Block")
-            .navigationBarItems(leading: Button("Cancel", action: dismiss))
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Cancel", action: dismiss)
+                }
+            }
         }.accentColor(Color("AccentColor"))
     }
     

@@ -47,7 +47,11 @@ struct SchedulePickerView: View {
                     }
                 }
             }.navigationTitle(navigationTitle)
-            .navigationBarItems(trailing: Button("Save", action: dismiss))
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Save", action: dismiss)
+                }
+            }
         }.accentColor(Color("AccentColor"))
     }
     

@@ -57,7 +57,11 @@ struct OtherSettingsView: View {
                 }.padding(.top, 8)
                 .padding(.bottom, 24)
             }.navigationBarTitle("Other Settings")
-            .navigationBarItems(trailing: Button("Done", action: dismiss))
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Done", action: dismiss)
+                }
+            }
         }.accentColor(Color("AccentColor"))
     }
     

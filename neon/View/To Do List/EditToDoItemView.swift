@@ -44,8 +44,14 @@ struct EditToDoItemView: View {
                 
                 Spacer()
             }.navigationTitle("Edit To Do Item")
-            .navigationBarItems(leading: Button("Cancel", action: viewModel.dismissEditItemView),
-                                trailing: Button("Save", action: save))
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Cancel", action: viewModel.dismissEditItemView)
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Save", action: save)
+                }
+            }
         }.accentColor(Color("AccentColor"))
     }
     

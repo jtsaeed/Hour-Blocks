@@ -42,7 +42,11 @@ struct ManageSubBlocksView: View {
                     }
                 }
             }.navigationTitle("Sub Blocks")
-            .navigationBarItems(trailing: Button("Done", action: viewModel.dismissManageSubBlocksView))
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Done", action: viewModel.dismissManageSubBlocksView)
+                }
+            }
         }.accentColor(Color("AccentColor"))
     }
     

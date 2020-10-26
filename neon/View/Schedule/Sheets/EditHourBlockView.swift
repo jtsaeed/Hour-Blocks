@@ -38,8 +38,16 @@ struct EditHourBlockView: View {
                     Spacer()
                 }
             }.navigationTitle("Edit Hour Block")
-            .navigationBarItems(leading: Button("Cancel", action: viewModel.dismissEditBlockView),
-                                trailing: Button("Save", action: { viewModel.saveChanges(newTitle: title, newIcon: icon) }))
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Cancel", action: viewModel.dismissEditBlockView)
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Save") {
+                        viewModel.saveChanges(newTitle: title, newIcon: icon)
+                    }
+                }
+            }
         }.accentColor(Color("AccentColor"))
     }
 }
