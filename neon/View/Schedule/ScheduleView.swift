@@ -55,32 +55,29 @@ private struct ScheduleBlocksListView: View {
     @ObservedObject var viewModel: ScheduleViewModel
     
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            VStack(spacing: 24) {
-                if let tip = viewModel.currentTip {
-                    TipCardView(for: tip, onDismiss: viewModel.dismissTip)
-                    NeonDivider().padding(.horizontal, 32)
+        CardsListView {
+            if let tip = viewModel.currentTip {
+                TipCardView(for: tip, onDismiss: viewModel.dismissTip)
+                NeonDivider().padding(.horizontal, 32)
+            }
+            
+            ForEach(viewModel.todaysCalendarBlocks.filter { $0.endDate.toLocalTime().hour >= (viewModel.currentDate.isToday ? viewModel.currentHour : UtilGateway.shared.dayStartHour()) }) { event in
+                CalendarBlockView(for: event)
+            }
+            
+            if (viewModel.todaysCalendarBlocks.filter { $0.endDate.toLocalTime().hour >= (viewModel.currentDate.isToday ? viewModel.currentHour : UtilGateway.shared.dayStartHour()) }).count > 0 {
+                NeonDivider().padding(.horizontal, 32)
+            }
+            
+            ForEach(viewModel.todaysHourBlocks.filter { $0.hourBlock.hour >= (viewModel.currentDate.isToday ?  viewModel.currentHour : UtilGateway.shared.dayStartHour()) }) { hourBlockViewModel in
+                if hourBlockViewModel.getTitle() != "Empty" {
+                    HourBlockView(viewModel: hourBlockViewModel,
+                                  onBlockCleared: { viewModel.clearBlock(hourBlockViewModel.hourBlock) })
+                } else {
+                    EmptyHourBlockView(viewModel: hourBlockViewModel,
+                                       onNewBlockAdded: { viewModel.addBlock($0) })
                 }
-                
-                ForEach(viewModel.todaysCalendarBlocks.filter { $0.endDate.toLocalTime().hour >= (viewModel.currentDate.isToday ? viewModel.currentHour : UtilGateway.shared.dayStartHour()) }) { event in
-                    CalendarBlockView(for: event)
-                }
-                
-                if (viewModel.todaysCalendarBlocks.filter { $0.endDate.toLocalTime().hour >= (viewModel.currentDate.isToday ? viewModel.currentHour : UtilGateway.shared.dayStartHour()) }).count > 0 {
-                    NeonDivider().padding(.horizontal, 32)
-                }
-                
-                ForEach(viewModel.todaysHourBlocks.filter { $0.hourBlock.hour >= (viewModel.currentDate.isToday ?  viewModel.currentHour : UtilGateway.shared.dayStartHour()) }) { hourBlockViewModel in
-                    if hourBlockViewModel.getTitle() != "Empty" {
-                        HourBlockView(viewModel: hourBlockViewModel,
-                                      onBlockCleared: { viewModel.clearBlock(hourBlockViewModel.hourBlock) })
-                    } else {
-                        EmptyHourBlockView(viewModel: hourBlockViewModel,
-                                           onNewBlockAdded: { viewModel.addBlock($0) })
-                    }
-                }
-            }.padding(.top, 8)
-            .padding(.bottom, 24)
+            }
         }
     }
 }

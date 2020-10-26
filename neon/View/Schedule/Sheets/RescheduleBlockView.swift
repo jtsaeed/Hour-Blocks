@@ -30,19 +30,16 @@ struct RescheduleBlockView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView(showsIndicators: false) {
-                VStack(spacing: 24) {
-                    ForEach(viewModel.todaysHourBlocks.filter { $0.hourBlock.hour >= (viewModel.currentDate.isToday ?  viewModel.currentHour : UtilGateway.shared.dayStartHour()) }) { hourBlockViewModel in
-                        if hourBlockViewModel.hourBlock.hour == originalHourBlock.hour {
-                            CompactHourBlockView(viewModel: hourBlockViewModel)
-                        } else {
-                            RescheduleBlockCardView(viewModel: hourBlockViewModel,
-                                                    originalHourBlock: originalHourBlock,
-                                                    onReschedule: { reschedule($0, $1, $2) })
-                        }
+            CardsListView {
+                ForEach(viewModel.todaysHourBlocks.filter { $0.hourBlock.hour >= (viewModel.currentDate.isToday ?  viewModel.currentHour : UtilGateway.shared.dayStartHour()) }) { hourBlockViewModel in
+                    if hourBlockViewModel.hourBlock.hour == originalHourBlock.hour {
+                        CompactHourBlockView(viewModel: hourBlockViewModel)
+                    } else {
+                        RescheduleBlockCardView(viewModel: hourBlockViewModel,
+                                                originalHourBlock: originalHourBlock,
+                                                onReschedule: { reschedule($0, $1, $2) })
                     }
-                }.padding(.top, 8)
-                .padding(.bottom, 24)
+                }
             }.navigationTitle("Reschedule Block")
             .navigationBarItems(leading: Button("Cancel", action: dismiss))
         }.accentColor(Color("AccentColor"))

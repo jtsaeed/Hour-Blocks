@@ -34,14 +34,12 @@ struct ManageSubBlocksView: View {
                                action: addSubBlock)
                 }.padding(24)
                 
-                ScrollView(showsIndicators: false) {
-                    VStack(spacing: 24) {
-                        ForEach(viewModel.subBlocks) { subBlock in
-                            SubBlockCardView(subBlockTitle: subBlock.title,
-                                             hourBlockTitle: viewModel.hourBlock.title!,
-                                             onSubBlockCleared: { viewModel.clearSubBlock(subBlock) })
-                        }
-                    }.padding(.top, 8)
+                CardsListView {
+                    ForEach(viewModel.subBlocks) { subBlock in
+                        SubBlockCardView(subBlockTitle: subBlock.title,
+                                         hourBlockTitle: viewModel.hourBlock.title!,
+                                         onSubBlockCleared: { viewModel.clearSubBlock(subBlock) })
+                    }
                 }
             }.navigationTitle("Sub Blocks")
             .navigationBarItems(trailing: Button("Done", action: viewModel.dismissManageSubBlocksView))

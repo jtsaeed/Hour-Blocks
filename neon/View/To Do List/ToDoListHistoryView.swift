@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-/// The view of the To Do List History
+/// The view of the To Do List History.
 struct ToDoListHistoryView: View {
     
     @Binding var isPresented: Bool
@@ -16,13 +16,10 @@ struct ToDoListHistoryView: View {
     
     var body: some View {
         NavigationView{
-            ScrollView(showsIndicators: false) {
-                VStack(spacing: 24) {
-                    ForEach(viewModel.completedToDoItems) { completedToDoItemViewModel in
-                        CompletedToDoItemView(viewModel: completedToDoItemViewModel)
-                    }
-                }.padding(.top, 8)
-                .padding(.bottom, 24)
+            CardsListView {
+                ForEach(viewModel.completedToDoItems) { completedToDoItemViewModel in
+                    CompletedToDoItemView(viewModel: completedToDoItemViewModel)
+                }
             }.navigationTitle("History")
             
             .toolbar {
@@ -30,11 +27,10 @@ struct ToDoListHistoryView: View {
                     Button("Done") { dismiss() }
                 }
             }
-            
         }.accentColor(Color("AccentColor"))
     }
     
-    /// function to dismiss the current view.
+    /// Dismisses the current view.
     func dismiss() {
         isPresented = false
     }

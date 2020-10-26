@@ -50,17 +50,15 @@ struct AddHourBlockView: View {
                     .font(.system(size: 28, weight: .bold, design: .default))
                     .padding(.leading, 32)
                 
-                ScrollView(showsIndicators: false) {
-                    VStack(spacing: 24) {
-                        if !viewModel.currentSuggestions.isEmpty {
-                            ForEach(viewModel.currentSuggestions) { suggestion in
-                                SuggestionBlockView(for: suggestion,
-                                                    onSuggestionAdded: { addSuggestionBlock(for: suggestion) })
-                            }
-                        } else {
-                            NoSuggestionsBlockView()
+                CardsListView {
+                    if !viewModel.currentSuggestions.isEmpty {
+                        ForEach(viewModel.currentSuggestions) { suggestion in
+                            SuggestionBlockView(for: suggestion,
+                                                onSuggestionAdded: { addSuggestionBlock(for: suggestion) })
                         }
-                    }.padding(.top, 8)
+                    } else {
+                        NoSuggestionsBlockView()
+                    }
                 }
             }.navigationTitle("Add an Hour Block")
             .navigationBarItems(leading: Button("Cancel", action: dismiss))

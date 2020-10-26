@@ -33,20 +33,17 @@ struct ToDoListView: View {
                     }
             }
             
-            ScrollView(showsIndicators: false) {
-                VStack(spacing: 24) {
-                    if let tip = viewModel.currentTip {
-                        TipCardView(for: tip, onDismiss: viewModel.dismissTip)
-                        NeonDivider().padding(.horizontal, 32)
-                    }
-                    
-                    ForEach(viewModel.toDoItems) { toDoItemViewModel in
-                        ToDoItemView(viewModel: toDoItemViewModel,
-                                     onItemCleared: { viewModel.clear(toDoItem: toDoItemViewModel.toDoItem) },
-                                     onItemCompleted: { viewModel.markAsCompleted(toDoItem: toDoItemViewModel.toDoItem)})
-                    }
-                }.padding(.top, 8)
-                .padding(.bottom, 24)
+            CardsListView {
+                if let tip = viewModel.currentTip {
+                    TipCardView(for: tip, onDismiss: viewModel.dismissTip)
+                    NeonDivider().padding(.horizontal, 32)
+                }
+                
+                ForEach(viewModel.toDoItems) { toDoItemViewModel in
+                    ToDoItemView(viewModel: toDoItemViewModel,
+                                 onItemCleared: { viewModel.clear(toDoItem: toDoItemViewModel.toDoItem) },
+                                 onItemCompleted: { viewModel.markAsCompleted(toDoItem: toDoItemViewModel.toDoItem)})
+                }
             }
         }.navigationBarHidden(true)
         .onAppear(perform: viewModel.loadToDoItems)

@@ -43,25 +43,22 @@ struct ScheduleDatePicker: View {
                 }.padding(.horizontal, 24)
                 .padding(.top, 20)
                 
-                ScrollView(showsIndicators: false) {
-                    VStack(spacing: 24) {
-                        ForEach(viewModel.calendarBlocks) { event in
-                            CalendarBlockView(for: event)
-                        }
-                        
-                        if !viewModel.calendarBlocks.isEmpty && !viewModel.hourBlocks.isEmpty {
-                            NeonDivider().padding(.horizontal, 32)
-                        }
-                        
-                        ForEach(viewModel.hourBlocks) { hourBlockViewModel in
-                            CompactHourBlockView(viewModel: hourBlockViewModel)
-                        }
-                        
-                        if viewModel.calendarBlocks.isEmpty && viewModel.hourBlocks.isEmpty {
-                            NoHourBlocksView()
-                        }
-                    }.padding(.top, 8)
-                    .padding(.bottom, 24)
+                CardsListView {
+                    ForEach(viewModel.calendarBlocks) { event in
+                        CalendarBlockView(for: event)
+                    }
+                    
+                    if !viewModel.calendarBlocks.isEmpty && !viewModel.hourBlocks.isEmpty {
+                        NeonDivider().padding(.horizontal, 32)
+                    }
+                    
+                    ForEach(viewModel.hourBlocks) { hourBlockViewModel in
+                        CompactHourBlockView(viewModel: hourBlockViewModel)
+                    }
+                    
+                    if viewModel.calendarBlocks.isEmpty && viewModel.hourBlocks.isEmpty {
+                        NoHourBlocksView()
+                    }
                 }.padding(.top, UIDevice.current.hasNotch ? 0 : 40)
             }.navigationBarTitle("Date Picker", displayMode: .inline)
             .navigationBarItems(leading: Button("Cancel", action: dismiss),

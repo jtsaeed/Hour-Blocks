@@ -36,19 +36,16 @@ struct SchedulePickerView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView(showsIndicators: false) {
-                VStack(spacing: 24) {
-                    ForEach(viewModel.todaysHourBlocks.filter { $0.hourBlock.hour >= (viewModel.currentDate.isToday ?  viewModel.currentHour : UtilGateway.shared.dayStartHour()) }) { hourBlockViewModel in
-                        if hourBlockViewModel.getTitle() != "Empty" {
-                            CompactHourBlockView(viewModel: hourBlockViewModel)
-                        } else {
-                            PickerEmptyBlockView(viewModel: hourBlockViewModel,
-                                                 hourBlock: hourBlock,
-                                                 onNewBlockAdded: { add(hourBlock: $0) })
-                        }
+            CardsListView {
+                ForEach(viewModel.todaysHourBlocks.filter { $0.hourBlock.hour >= (viewModel.currentDate.isToday ?  viewModel.currentHour : UtilGateway.shared.dayStartHour()) }) { hourBlockViewModel in
+                    if hourBlockViewModel.getTitle() != "Empty" {
+                        CompactHourBlockView(viewModel: hourBlockViewModel)
+                    } else {
+                        PickerEmptyBlockView(viewModel: hourBlockViewModel,
+                                             hourBlock: hourBlock,
+                                             onNewBlockAdded: { add(hourBlock: $0) })
                     }
-                }.padding(.top, 8)
-                .padding(.bottom, 24)
+                }
             }.navigationTitle(navigationTitle)
             .navigationBarItems(trailing: Button("Save", action: dismiss))
         }.accentColor(Color("AccentColor"))
