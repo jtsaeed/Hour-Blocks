@@ -11,21 +11,19 @@ import SwiftUI
 /// The root view of the To Do List tab
 struct ToDoListView: View {
     
-    let refreshPublisher = NotificationCenter.default.publisher(for: NSNotification.Name("RefreshToDoList"))
-    
     @StateObject var viewModel = ToDoListViewModel()
     
     var body: some View {
         VStack {
-            HeaderView(title: "To Do List", subtitle: "\(viewModel.toDoItems.count) Items") {
-                IconButton(iconName: "clock",
+            HeaderView(title: AppStrings.ToDoList.header, subtitle: AppStrings.ToDoList.itemsCount(count: viewModel.toDoItems.count)) {
+                IconButton(iconName: AppStrings.Icons.history,
                            iconWeight: .medium,
                            action: viewModel.presentToDoListHistoryView)
                     .sheet(isPresented: $viewModel.isToDoListHistoryViewPresented) {
                         ToDoListHistoryView(isPresented: $viewModel.isToDoListHistoryViewPresented )
                     }
                 
-                IconButton(iconName: "plus",
+                IconButton(iconName: AppStrings.Icons.add,
                            iconWeight: .bold,
                            action: viewModel.presentAddToDoItemView)
                     .sheet(isPresented: $viewModel.isAddToDoItemViewPresented) {
@@ -47,7 +45,7 @@ struct ToDoListView: View {
             }
         }.navigationBarHidden(true)
         .onAppear(perform: viewModel.loadToDoItems)
-        .onReceive(refreshPublisher) { _ in viewModel.loadToDoItems() }
+        .onReceive(AppPublishers.refreshToDoListPublisher) { _ in viewModel.loadToDoItems() }
     }
 }
 

@@ -24,8 +24,8 @@ struct Card<Content>: View where Content: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 16)
-                .foregroundColor(Color("CardBackingColor"))
-                .shadow(color: Color("CardShadowColor"), radius: 6, x: 0, y: 3)
+                .foregroundColor(Color(AppStrings.Colors.cardBacking))
+                .shadow(color: Color(AppStrings.Colors.cardShadow), radius: 6, x: 0, y: 3)
             content()
                 .padding(padding)
         }

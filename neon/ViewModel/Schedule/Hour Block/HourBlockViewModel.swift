@@ -65,7 +65,7 @@ class HourBlockViewModel: Identifiable, ObservableObject {
     /// - Returns:
     /// The formatted title of the view model's Hour Block.
     func getTitle() -> String {
-        guard let title = hourBlock.title else { return "Empty" }
+        guard let title = hourBlock.title else { return AppStrings.Schedule.HourBlock.empty }
         
         return autoCapsValue == 0 ? title.smartCapitalization() : title
     }

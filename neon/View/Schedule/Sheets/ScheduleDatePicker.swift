@@ -35,10 +35,10 @@ struct ScheduleDatePicker: View {
         NavigationView {
             VStack {
                 GeometryReader { geometry in
-                    DatePicker("Picker", selection: $viewModel.selectedDate, displayedComponents: .date)
+                    DatePicker("", selection: $viewModel.selectedDate, displayedComponents: .date)
                         .datePickerStyle(GraphicalDatePickerStyle())
                         .frame(maxHeight: geometry.size.width)
-                        .accentColor(Color("AccentColor"))
+                        .accentColor(Color(AppStrings.Colors.accent))
                         .onChange(of: viewModel.selectedDate) { _ in viewModel.loadHourBlocks() }
                 }.padding(.horizontal, 24)
                 .padding(.top, 20)
@@ -60,16 +60,16 @@ struct ScheduleDatePicker: View {
                         NoHourBlocksView()
                     }
                 }.padding(.top, UIDevice.current.hasNotch ? 0 : 40)
-            }.navigationBarTitle("Date Picker", displayMode: .inline)
+            }.navigationBarTitle(AppStrings.Schedule.datePickerHeader, displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancel", action: dismiss)
+                    Button(AppStrings.Global.cancel, action: dismiss)
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Save", action: save)
+                    Button(AppStrings.Global.save, action: save)
                 }
             }
-        }.accentColor(Color("AccentColor"))
+        }.accentColor(Color(AppStrings.Colors.accent))
     }
     
     /// Updates the schedule's current date then dismisses the view.

@@ -15,43 +15,48 @@ struct SettingsView: View {
     
     var body: some View {
         VStack {
-            HeaderView(title: "Settings", subtitle: "Hour Blocks \(VersionGateway.shared.currentFullVersion)") {
+            HeaderView(title: AppStrings.Settings.header, subtitle: AppStrings.Settings.appVersion) {
                 EmptyView()
             }
             
             CardsListView {
-                SettingsCardView(title: "Calendars",
-                                 subtitle: "Take control of",
-                                 iconName: "calendar",
+                // MARK: - Calendars
+                SettingsCardView(title: AppStrings.Settings.calendarsTitle,
+                                 subtitle: AppStrings.Settings.calendarsSubtitle,
+                                 iconName: AppStrings.Icons.calendar,
                                  action: viewModel.presentCalendarSettingsView)
                 .sheet(isPresented: $viewModel.isCalendarSettingsViewPresented) {
                     CalendarSettingsView(isPresented: $viewModel.isCalendarSettingsViewPresented)
                 }
                 
-                SettingsCardView(title: "Other Stuff",
-                                 subtitle: "Take control of",
-                                 iconName: "gearshape.fill",
+                // MARK: - Other Stuff
+                SettingsCardView(title: AppStrings.Settings.otherTitle,
+                                 subtitle: AppStrings.Settings.otherSubtitle,
+                                 iconName: AppStrings.Icons.gear,
                                  action: viewModel.presentOtherSettingsView)
                 .sheet(isPresented: $viewModel.isOtherSettingsViewPresented) {
                     OtherSettingsView(isPresented: $viewModel.isOtherSettingsViewPresented)
                 }
                 
-                SettingsCardView(title: "Twitter",
-                                 subtitle: "Provide feedback on",
-                                 iconName: "text.bubble.fill",
+                // MARK: - Twitter Feedback
+                SettingsCardView(title: AppStrings.Settings.feedbackTitle,
+                                 subtitle: AppStrings.Settings.feedbackSubtitle,
+                                 iconName: AppStrings.Icons.feedback,
                                  action: viewModel.openTwitter)
                 
-                SettingsCardView(title: "Privacy Policy",
-                                 subtitle: "Take a look at the",
-                                 iconName: "lock.fill",
+                // MARK: - Privacy Policy
+                SettingsCardView(title: AppStrings.Settings.privacyTitle,
+                                 subtitle: AppStrings.Settings.privacySubtitle,
+                                 iconName: AppStrings.Icons.privacy,
                                  action: viewModel.presentPrivacyPolicyView)
                 .sheet(isPresented: $viewModel.isPrivacyPolicyViewPresented) {
                     PrivacyPolicyView(isPresented: $viewModel.isPrivacyPolicyViewPresented)
                 }
                 
-                SettingsCardView(title: "Acknowledgements",
-                                 subtitle: "Take a look at the",
-                                 iconName: "star.fill",
+                // MARK: - Acknowledgements
+                SettingsCardView(title: AppStrings.Settings.acknowledgementsTitle,
+                                 subtitle: AppStrings.Settings.acknowledgementsSubtitle,
+                                 iconName: AppStrings.Icons.star,
                                  action: viewModel.presentAcknowledgementsView)
                 .sheet(isPresented: $viewModel.isAcknowledgementsViewPresented) {
                     AcknowledgementsView(isPresented: $viewModel.isAcknowledgementsViewPresented)

@@ -20,14 +20,14 @@ struct ToDoListHistoryView: View {
                 ForEach(viewModel.completedToDoItems) { completedToDoItemViewModel in
                     CompletedToDoItemView(viewModel: completedToDoItemViewModel)
                 }
-            }.navigationTitle("History")
+            }.navigationTitle(AppStrings.ToDoList.historyHeader)
             
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done") { dismiss() }
+                    Button(AppStrings.Global.done, action: dismiss)
                 }
             }
-        }.accentColor(Color("AccentColor"))
+        }.accentColor(Color(AppStrings.Colors.accent))
     }
     
     /// Dismisses the current view.

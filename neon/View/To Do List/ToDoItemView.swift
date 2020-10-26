@@ -39,18 +39,18 @@ struct ToDoItemView: View {
         
         .contextMenu(ContextMenu(menuItems: {
             Button(action: onItemCompleted) {
-                Label("Complete", systemImage: "checkmark")
+                Label(AppStrings.ToDoList.ToDoItem.menuComplete, systemImage: AppStrings.Icons.checkmark)
             }
             Divider()
             Button(action: viewModel.presentEditItemView) {
-                Label("Edit", systemImage: "pencil")
+                Label(AppStrings.ToDoList.ToDoItem.menuEdit, systemImage: AppStrings.Icons.edit)
             }
             Button(action: viewModel.presentAddToScheduleView) {
-                Label("Add to Today", systemImage: "calendar.badge.plus")
+                Label(AppStrings.ToDoList.ToDoItem.menuAddToToday, systemImage: AppStrings.Icons.addToSchedule)
             }
             Divider()
             Button(action: onItemCleared) {
-                Label("Clear", systemImage: "trash")
+                Label(AppStrings.ToDoList.ToDoItem.menuClear, systemImage: AppStrings.Icons.clear)
             }
         }))
         
@@ -61,7 +61,7 @@ struct ToDoItemView: View {
             
             if viewModel.selectedSheet == .addToSchedule {
                 SchedulePickerView(isPresented: $viewModel.isSheetPresented,
-                                   navigationTitle: "Add to Today",
+                                   navigationTitle: AppStrings.ToDoList.ToDoItem.addToTodayHeader,
                                    hourBlock: HourBlock(day: Date(), hour: 12, title: viewModel.toDoItem.title))
             }
         }

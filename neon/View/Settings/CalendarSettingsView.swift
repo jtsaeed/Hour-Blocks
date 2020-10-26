@@ -37,13 +37,13 @@ struct CalendarSettingsView: View {
                         NoPermissionsCard()
                     }
                 }.padding(.vertical, 24)
-            }.navigationBarTitle("Calendars", displayMode: .inline)
+            }.navigationBarTitle(AppStrings.Settings.calendarsTitle, displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done", action: dismiss)
+                    Button(AppStrings.Global.done, action: dismiss)
                 }
             }
-        }.accentColor(Color("AccentColor"))
+        }.accentColor(Color(AppStrings.Colors.accent))
     }
     
     /// Performs a request to update whether or not a specific calendar is enabled or not.
@@ -88,7 +88,7 @@ private struct CalendarCard: View {
                     .font(.system(size: 18, weight: .semibold, design: .rounded))
                 Spacer()
                 Toggle("", isOn: $isEnabled)
-                    .toggleStyle(SwitchToggleStyle(tint: Color("AccentColor")))
+                    .toggleStyle(SwitchToggleStyle(tint: Color(AppStrings.Colors.accent)))
                     .onChange(of: isEnabled) { _ in toggleChanged() }
                     .frame(width: 40)
             }
@@ -107,10 +107,10 @@ private struct NoPermissionsCard: View {
     var body: some View {
         Card {
             HStack {
-                Text("Calendar access hasn't been granted")
+                Text(AppStrings.Settings.noCalendarAccess)
                     .font(.system(size: 18, weight: .semibold, design: .rounded))
                 Spacer()
-                IconButton(iconName: "lock.fill",
+                IconButton(iconName: AppStrings.Icons.privacy,
                            action: openPermissionSettings)
             }
         }.padding(.horizontal, 24)

@@ -15,7 +15,7 @@ struct IconButton: View {
     
     private let iconName: String
     private let iconWeight: Font.Weight
-    private let iconColor: String
+    private let iconColor: Color
     
     private let action: () -> Void
     
@@ -26,7 +26,7 @@ struct IconButton: View {
     ///   - iconWeight: The weight of the icon. By default, this is set to regular.
     ///   - iconColor: The color of the icon. By default, this is set to be the accent color.
     ///   - action: The callback function to be triggered when the user has tapped on the button.
-    init(iconName: String, iconWeight: Font.Weight = .regular, iconColor: String = "AccentColor", action: @escaping () -> Void) {
+    init(iconName: String, iconWeight: Font.Weight = .regular, iconColor: Color = Color(AppStrings.Colors.accent), action: @escaping () -> Void) {
         self.iconName = iconName
         self.iconWeight = iconWeight
         self.iconColor = iconColor
@@ -37,10 +37,10 @@ struct IconButton: View {
         Button(action: action) {
             ZStack {
                 Circle()
-                    .foregroundColor(Color(iconColor).getLightColor(darkMode: colorScheme == .dark))
+                    .foregroundColor(iconColor.getLightColor(darkMode: colorScheme == .dark))
                     .frame(width: 40, height: 40)
                 Image(systemName: iconName)
-                    .foregroundColor(Color(iconColor))
+                    .foregroundColor(iconColor)
                     .font(.system(size: 20, weight: iconWeight, design: .rounded))
             }
         }
@@ -49,6 +49,6 @@ struct IconButton: View {
 
 struct IconButton_Previews: PreviewProvider {
     static var previews: some View {
-        IconButton(iconName: "plus", action: { print("test") })
+        IconButton(iconName: AppStrings.Icons.add, action: { print("test") })
     }
 }

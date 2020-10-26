@@ -14,9 +14,9 @@ struct NoHourBlocksView: View {
     var body: some View {
         Card {
             HStack {
-                CardLabels(title: "Hour Blocks",
-                           subtitle: "No",
-                           titleColor: Color("TextColor"),
+                CardLabels(title: AppStrings.Schedule.HourBlock.noHourBlocksTitle,
+                           subtitle: AppStrings.Schedule.HourBlock.noHourBlocksSubtitle,
+                           titleColor: Color(AppStrings.Colors.text),
                            horizontalAlignment: .center)
             }
         }.padding(.horizontal, 24)

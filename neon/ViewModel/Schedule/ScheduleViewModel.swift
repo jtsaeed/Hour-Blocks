@@ -93,7 +93,7 @@ extension ScheduleViewModel {
         
         analyticsGateway.log(hourBlock: hourBlock)
         handleBlockCountEvents()
-        WidgetCenter.shared.reloadTimelines(ofKind: "ScheduleWidget")
+        WidgetCenter.shared.reloadTimelines(ofKind: AppPublishers.Names.scheduleWidgetTimeline)
     }
     
     
@@ -113,7 +113,7 @@ extension ScheduleViewModel {
                                                                              title: nil,
                                                                              icon: .blocks))
         
-        WidgetCenter.shared.reloadTimelines(ofKind: "ScheduleWidget")
+        WidgetCenter.shared.reloadTimelines(ofKind: AppPublishers.Names.scheduleWidgetTimeline)
     }
     
     /// Reschedules a given Hour Block within the Core Data store and the view model.
@@ -139,7 +139,7 @@ extension ScheduleViewModel {
             remindersGateway.setReminder(for: swappedBlock, with: swappedBlock.title!)
         }
         
-        WidgetCenter.shared.reloadTimelines(ofKind: "ScheduleWidget")
+        WidgetCenter.shared.reloadTimelines(ofKind: AppPublishers.Names.scheduleWidgetTimeline)
     }
 }
 
@@ -203,7 +203,7 @@ extension ScheduleViewModel {
         currentHour = Calendar.current.component(.hour, from: Date())
         
         loadHourBlocks()
-        WidgetCenter.shared.reloadTimelines(ofKind: "ScheduleWidget")
+        WidgetCenter.shared.reloadTimelines(ofKind: AppPublishers.Names.scheduleWidgetTimeline)
     }
     
     /// Sets the current tip to be nil, resulting in the current tip card being dismissed from the Schedule.

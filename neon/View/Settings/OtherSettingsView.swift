@@ -56,13 +56,13 @@ struct OtherSettingsView: View {
                     }
                 }.padding(.top, 8)
                 .padding(.bottom, 24)
-            }.navigationBarTitle("Other Settings")
+            }.navigationBarTitle(AppStrings.Settings.otherTitle)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done", action: dismiss)
+                    Button(AppStrings.Global.done, action: dismiss)
                 }
             }
-        }.accentColor(Color("AccentColor"))
+        }.accentColor(Color(AppStrings.Colors.accent))
     }
     
     /// Dismisses the current view.
@@ -118,7 +118,7 @@ private struct OtherSettingsCard: View {
     
     /// Refreshes the schedule when a value has been changed.
     private func refreshSchedule() {
-        NotificationCenter.default.post(name: Notification.Name("RefreshSchedule"), object: nil)
+        NotificationCenter.default.post(name: Notification.Name(AppPublishers.Names.refreshSchedule), object: nil)
     }
 }
 

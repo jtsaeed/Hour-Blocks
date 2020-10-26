@@ -30,7 +30,7 @@ struct SuggestionBlockView: View {
                 CardLabels(title: suggestion.domain.suggestionTitle.smartCapitalization(),
                            subtitle: suggestion.reason)
                 Spacer()
-                IconButton(iconName: "plus",
+                IconButton(iconName: AppStrings.Icons.add,
                               iconWeight: .bold,
                               action: onSuggestionAdded)
             }

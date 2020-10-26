@@ -23,7 +23,7 @@ struct WhatsNewView: View {
     
     var body: some View {
         VStack {
-            Text("What's new in\nHour Blocks \(VersionGateway.shared.currentFullVersion)")
+            Text(AppStrings.WhatsNew.header)
                 .font(.system(size: 34, weight: .bold, design: .default))
                 .multilineTextAlignment(.center)
                 .padding(.top, 24)
@@ -39,7 +39,7 @@ struct WhatsNewView: View {
                 }
             }.padding(.top, 24)
             
-            ActionButton("Let's go!", action: dismiss)
+            ActionButton(AppStrings.WhatsNew.dismissButtonTitle, action: dismiss)
         }.padding(.vertical, 24)
         .padding(.horizontal, 32)
     }

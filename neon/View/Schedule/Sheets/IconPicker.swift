@@ -65,14 +65,14 @@ private struct SelectableIconTile: View {
         VStack(spacing: 12) {
             ZStack(alignment: .center) {
                 RoundedRectangle(cornerRadius: 16)
-                    .foregroundColor(Color("BackgroundColor"))
+                    .foregroundColor(Color(AppStrings.Colors.background))
                     .shadow(color: Color(white: 0).opacity(0.1), radius: 4, x: 0, y: 2)
                     .frame(width: 64, height: 64)
                 Image(icon.imageName)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: selected ? 36 : 32, height: selected ? 36 : 32)
-                    .foregroundColor(Color("TextColor"))
+                    .foregroundColor(Color(AppStrings.Colors.text))
                     .opacity(selected ? 0.6 : 0.25)
             }
             

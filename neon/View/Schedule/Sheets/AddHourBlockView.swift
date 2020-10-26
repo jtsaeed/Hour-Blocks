@@ -41,12 +41,12 @@ struct AddHourBlockView: View {
                 HStack(spacing: 16) {
                     NeonTextField(text: $hourBlockTitle,
                                   onReturn: addHourBlock)
-                    IconButton(iconName: "plus",
+                    IconButton(iconName: AppStrings.Icons.add,
                                iconWeight: .bold,
                                action: addHourBlock)
                 }.padding(24)
                 
-                Text("Suggestions")
+                Text(AppStrings.Schedule.HourBlock.suggestionsHeader)
                     .font(.system(size: 28, weight: .bold, design: .default))
                     .padding(.leading, 32)
                 
@@ -60,13 +60,13 @@ struct AddHourBlockView: View {
                         NoSuggestionsBlockView()
                     }
                 }
-            }.navigationTitle("Add an Hour Block")
+            }.navigationTitle(AppStrings.Schedule.HourBlock.addHeader)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancel", action: dismiss)
+                    Button(AppStrings.Global.cancel, action: dismiss)
                 }
             }
-        }.accentColor(Color("AccentColor"))
+        }.accentColor(Color(AppStrings.Colors.accent))
         .onAppear { viewModel.loadSuggestions(for: hour, on: day) }
     }
     

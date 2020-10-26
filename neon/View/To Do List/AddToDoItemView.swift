@@ -30,12 +30,12 @@ struct AddToDoItemView: View {
                 HStack(spacing: 16) {
                     NeonTextField(text: $title,
                                   onReturn: addToDoItem)
-                    IconButton(iconName: "plus",
+                    IconButton(iconName: AppStrings.Icons.add,
                                iconWeight: .bold,
                                action: addToDoItem)
                 }.padding(24)
                 
-                Text("Urgency")
+                Text(AppStrings.ToDoList.ToDoItem.urgency)
                     .font(.system(size: 28, weight: .bold, design: .default))
                     .padding(.leading, 24)
                 Picker("", selection: $urgency) {
@@ -46,14 +46,14 @@ struct AddToDoItemView: View {
                     .padding(.horizontal, 24)
                 
                 Spacer()
-            }.navigationTitle("Add a To Do Item")
+            }.navigationTitle(AppStrings.ToDoList.addHeader)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancel", action: dismiss)
+                    Button(AppStrings.Global.cancel, action: dismiss)
                 }
             }
         }
-        .accentColor(Color("AccentColor"))
+        .accentColor(Color(AppStrings.Colors.accent))
     }
     
     /// Adds a given To Do item after checking if the title is empty.

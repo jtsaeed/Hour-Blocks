@@ -32,12 +32,12 @@ struct NeonTextField: View {
         ZStack() {
             Rectangle()
                 .frame(height: 40)
-                .foregroundColor(Color("AccentColor").getLightColor(darkMode: colorScheme == .dark))
+                .foregroundColor(Color(AppStrings.Colors.accent).getLightColor(darkMode: colorScheme == .dark))
                 .cornerRadius(8)
-            TextField("Enter the title here...", text: $text, onCommit: onReturn)
+            TextField(AppStrings.Global.textFieldPlaceholder, text: $text, onCommit: onReturn)
                 .autocapitalization(.none)
                 .font(.system(size: 17, weight: .medium, design: .default))
-                .foregroundColor(Color("TextColor"))
+                .foregroundColor(Color(AppStrings.Colors.text))
                 .padding(.horizontal, 16)
         }
     }

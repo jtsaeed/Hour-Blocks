@@ -27,11 +27,11 @@ struct EmptyHourBlockView: View {
     var body: some View {
         Card {
             HStack {
-                CardLabels(title: "Empty",
+                CardLabels(title: AppStrings.Schedule.HourBlock.empty,
                            subtitle: viewModel.getFormattedTime(),
                            titleOpacity: 0.4)
                 Spacer()
-                IconButton(iconName: "plus",
+                IconButton(iconName: AppStrings.Icons.add,
                            iconWeight: .bold,
                            action: viewModel.presentAddHourBlockView)
             }

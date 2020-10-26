@@ -12,21 +12,18 @@ import SwiftDate
 /// The root view of the Schedule tab.
 struct ScheduleView: View {
     
-    let refreshSchedulePublisher = NotificationCenter.default.publisher(for: NSNotification.Name("RefreshSchedule"))
-    let refreshOnLaunchPublisher = NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)
-    
     @StateObject private var viewModel = ScheduleViewModel()
     
     var body: some View {
         VStack {
-            HeaderView(title: "Schedule", subtitle: viewModel.currentDate.getFormattedDate()) {
+            HeaderView(title: AppStrings.Schedule.header, subtitle: viewModel.currentDate.getFormattedDate()) {
                 HStack(spacing: 16) {
                     if !viewModel.currentDate.isToday {
-                        IconButton(iconName: "arrow.uturn.left",
+                        IconButton(iconName: AppStrings.Icons.undo,
                                    iconWeight: .medium,
                                    action: viewModel.returnToToday)
                     }
-                    IconButton(iconName: "calendar",
+                    IconButton(iconName: AppStrings.Icons.calendar,
                                action: viewModel.presentDatePickerView)
                 }
             }
@@ -45,8 +42,8 @@ struct ScheduleView: View {
             
             ScheduleBlocksListView(viewModel: viewModel)
         }.onAppear(perform: viewModel.handleCalendarPermissions)
-        .onReceive(refreshSchedulePublisher) { _ in viewModel.loadHourBlocks() }
-        .onReceive(refreshOnLaunchPublisher) { _ in viewModel.refreshCurrentDate() }
+        .onReceive(AppPublishers.refreshSchedulePublisher) { _ in viewModel.loadHourBlocks() }
+        .onReceive(AppPublishers.refreshOnLaunchPublisher) { _ in viewModel.refreshCurrentDate() }
     }
 }
 
@@ -70,7 +67,7 @@ private struct ScheduleBlocksListView: View {
             }
             
             ForEach(viewModel.todaysHourBlocks.filter { $0.hourBlock.hour >= (viewModel.currentDate.isToday ?  viewModel.currentHour : UtilGateway.shared.dayStartHour()) }) { hourBlockViewModel in
-                if hourBlockViewModel.getTitle() != "Empty" {
+                if hourBlockViewModel.getTitle() != AppStrings.Schedule.HourBlock.empty {
                     HourBlockView(viewModel: hourBlockViewModel,
                                   onBlockCleared: { viewModel.clearBlock(hourBlockViewModel.hourBlock) })
                 } else {

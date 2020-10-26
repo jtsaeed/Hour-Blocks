@@ -30,8 +30,8 @@ struct RemindersGateway: RemindersGatewayProtocol {
             guard result == true else { return }
             guard UserDefaults.standard.integer(forKey: "reminders") == 0 else { return }
             
-            let content = self.createNotificationContent(from: hourBlock, with: title)
-            let trigger = self.createNotificationTrigger(from: hourBlock)
+            let content = createNotificationContent(from: hourBlock, with: title)
+            let trigger = createNotificationTrigger(from: hourBlock)
             let request = UNNotificationRequest(identifier: hourBlock.id,
                                                 content: content,
                                                 trigger: trigger)

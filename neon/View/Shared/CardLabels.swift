@@ -32,7 +32,7 @@ struct CardLabels: View {
     ///   - titleOpacity: The opacity of the main label on the bottom. By default, this is set to 90%.
     ///   - subtitleOpacity: The opacity of the secondary label at the top. By default, this is set to 40%.
     ///   - horizontalAlignment: The horizontal alignment of the card labels.
-    init(title: String, subtitle: String, titleColor: Color = Color("TextColor"), subtitleColor: Color = Color("TextColor"), titleOpacity: Double = 0.9, subtitleOpacity: Double = 0.4, horizontalAlignment: HorizontalAlignment = .leading) {
+    init(title: String, subtitle: String, titleColor: Color = Color(AppStrings.Colors.text), subtitleColor: Color = Color(AppStrings.Colors.text), titleOpacity: Double = 0.9, subtitleOpacity: Double = 0.4, horizontalAlignment: HorizontalAlignment = .leading) {
         self.title = title
         self.subtitle = subtitle
         self.titleColor = titleColor

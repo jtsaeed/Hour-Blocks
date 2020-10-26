@@ -32,7 +32,7 @@ struct EditToDoItemView: View {
                 NeonTextField(text: $title)
                     .padding(24)
                 
-                Text("Urgency")
+                Text(AppStrings.ToDoList.ToDoItem.urgency)
                     .font(.system(size: 28, weight: .bold, design: .default))
                     .padding(.leading, 24)
                 Picker("", selection: $urgency) {
@@ -43,16 +43,16 @@ struct EditToDoItemView: View {
                 .padding(.horizontal, 24)
                 
                 Spacer()
-            }.navigationTitle("Edit To Do Item")
+            }.navigationTitle(AppStrings.ToDoList.ToDoItem.editHeader)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancel", action: viewModel.dismissEditItemView)
+                    Button(AppStrings.Global.cancel, action: viewModel.dismissEditItemView)
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Save", action: save)
+                    Button(AppStrings.Global.save, action: save)
                 }
             }
-        }.accentColor(Color("AccentColor"))
+        }.accentColor(Color(AppStrings.Colors.accent))
     }
     
     /// Performs the save changes request.

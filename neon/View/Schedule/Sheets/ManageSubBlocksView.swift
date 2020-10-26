@@ -29,7 +29,7 @@ struct ManageSubBlocksView: View {
                 HStack(spacing: 16) {
                     NeonTextField(text: $title,
                                   onReturn: addSubBlock)
-                    IconButton(iconName: "plus",
+                    IconButton(iconName: AppStrings.Icons.add,
                                iconWeight: .bold,
                                action: addSubBlock)
                 }.padding(24)
@@ -41,13 +41,13 @@ struct ManageSubBlocksView: View {
                                          onSubBlockCleared: { viewModel.clearSubBlock(subBlock) })
                     }
                 }
-            }.navigationTitle("Sub Blocks")
+            }.navigationTitle(AppStrings.Schedule.HourBlock.subBlocksHeader)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done", action: viewModel.dismissManageSubBlocksView)
+                    Button(AppStrings.Global.done, action: viewModel.dismissManageSubBlocksView)
                 }
             }
-        }.accentColor(Color("AccentColor"))
+        }.accentColor(Color(AppStrings.Colors.accent))
     }
     
     func addSubBlock() {
@@ -73,9 +73,10 @@ private struct SubBlockCardView: View {
                 CardLabels(title: subBlockTitle,
                            subtitle: hourBlockTitle.uppercased())
                 Spacer()
-                IconButton(iconName: "xmark",
-                              iconWeight: .bold,
-                              action: onSubBlockCleared)
+                IconButton(iconName: AppStrings.Icons.clear,
+                           iconWeight: .medium,
+                           iconColor: Color(AppStrings.Colors.urgent),
+                           action: onSubBlockCleared)
             }
         }.padding(.horizontal, 24)
     }

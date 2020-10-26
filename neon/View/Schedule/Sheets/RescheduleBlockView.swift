@@ -40,13 +40,13 @@ struct RescheduleBlockView: View {
                                                 onReschedule: { reschedule($0, $1, $2) })
                     }
                 }
-            }.navigationTitle("Reschedule Block")
+            }.navigationTitle(AppStrings.Schedule.HourBlock.rescheduleHeader)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancel", action: dismiss)
+                    Button(AppStrings.Global.cancel, action: dismiss)
                 }
             }
-        }.accentColor(Color("AccentColor"))
+        }.accentColor(Color(AppStrings.Colors.accent))
     }
     
     /// Reschedules an Hour Block to the schedule, then dismisses the view after refreshing the schedule.
@@ -61,7 +61,7 @@ struct RescheduleBlockView: View {
                                   replacedBlock: replacedHourBlock,
                                   swappedBlock: swappedHourBlock)
         
-        NotificationCenter.default.post(name: Notification.Name("RefreshSchedule"), object: nil)
+        NotificationCenter.default.post(name: Notification.Name(AppPublishers.Names.refreshSchedule), object: nil)
         
         dismiss()
     }
@@ -97,15 +97,15 @@ private struct RescheduleBlockCardView: View {
             HStack {
                 CardLabels(title: viewModel.getTitle(),
                            subtitle: viewModel.getFormattedTime(),
-                           titleOpacity: viewModel.getTitle() == "Empty" ? 0.4 : 0.9)
+                           titleOpacity: viewModel.getTitle() == AppStrings.Schedule.HourBlock.empty ? 0.4 : 0.9)
                 Spacer()
                 HStack(spacing: 12) {
                     if viewModel.hourBlock.title != nil {
-                        IconButton(iconName: "arrow.up.arrow.down",
+                        IconButton(iconName: AppStrings.Icons.swap,
                                    iconWeight: .medium,
                                    action: swap)
                     }
-                    IconButton(iconName: originalHourBlock.hour < viewModel.hourBlock.hour ? "arrow.turn.left.down" : "arrow.turn.left.up",
+                    IconButton(iconName: originalHourBlock.hour < viewModel.hourBlock.hour ? AppStrings.Icons.below : AppStrings.Icons.above,
                                iconWeight: .medium,
                                action: attemptToReschedule)
                 }
@@ -113,9 +113,9 @@ private struct RescheduleBlockCardView: View {
         }.padding(.horizontal, 24)
         
         .alert(isPresented: $viewModel.isReplaceBlockWarningPresented) {
-            Alert(title: Text("Overwrite Existing Hour Block"),
-                  message: Text("Are you sure you would like to overwrite an existing Hour Block? This will also clear any Sub Blocks within the Hour Block"),
-                  primaryButton: .destructive(Text("Overwrite"), action: reschedule),
+            Alert(title: Text(AppStrings.Schedule.HourBlock.overwriteAlertTitle),
+                  message: Text(AppStrings.Schedule.HourBlock.overwriteAlertText),
+                  primaryButton: .destructive(Text(AppStrings.Schedule.HourBlock.overwriteAlertButton), action: reschedule),
                   secondaryButton: .cancel())
         }
     }

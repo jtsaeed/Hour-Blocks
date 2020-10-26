@@ -28,7 +28,7 @@ struct ActionButton: View {
         Button(action: action) {
             ZStack {
                 RoundedRectangle(cornerRadius: 12)
-                    .foregroundColor(Color("AccentColor"))
+                    .foregroundColor(Color(AppStrings.Colors.accent))
                     .frame(height: 48)
                 Text(title)
                     .font(.system(size: 17, weight: .semibold, design: .default))

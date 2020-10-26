@@ -38,7 +38,7 @@ struct SchedulePickerView: View {
         NavigationView {
             CardsListView {
                 ForEach(viewModel.todaysHourBlocks.filter { $0.hourBlock.hour >= (viewModel.currentDate.isToday ?  viewModel.currentHour : UtilGateway.shared.dayStartHour()) }) { hourBlockViewModel in
-                    if hourBlockViewModel.getTitle() != "Empty" {
+                    if hourBlockViewModel.getTitle() != AppStrings.Schedule.HourBlock.empty {
                         CompactHourBlockView(viewModel: hourBlockViewModel)
                     } else {
                         PickerEmptyBlockView(viewModel: hourBlockViewModel,
@@ -49,10 +49,10 @@ struct SchedulePickerView: View {
             }.navigationTitle(navigationTitle)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Save", action: dismiss)
+                    Button(AppStrings.Global.save, action: dismiss)
                 }
             }
-        }.accentColor(Color("AccentColor"))
+        }.accentColor(Color(AppStrings.Colors.accent))
     }
     
     /// Adds an Hour Block to the schedule.
@@ -66,7 +66,7 @@ struct SchedulePickerView: View {
     
     /// Dismisses the current view after refreshing the schedule.
     private func dismiss() {
-        NotificationCenter.default.post(name: Notification.Name("RefreshSchedule"), object: nil)
+        NotificationCenter.default.post(name: Notification.Name(AppPublishers.Names.refreshSchedule), object: nil)
         isPresented = false
     }
 }
@@ -94,11 +94,11 @@ private struct PickerEmptyBlockView: View {
     var body: some View {
         Card {
             HStack {
-                CardLabels(title: "Empty",
+                CardLabels(title: AppStrings.Schedule.HourBlock.empty,
                            subtitle: viewModel.getFormattedTime(),
                            titleOpacity: 0.4)
                 Spacer()
-                IconButton(iconName: "plus",
+                IconButton(iconName: AppStrings.Icons.add,
                            iconWeight: .bold,
                            action: addNewHourBlock)
             }

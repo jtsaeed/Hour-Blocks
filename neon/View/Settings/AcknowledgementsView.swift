@@ -24,22 +24,22 @@ struct AcknowledgementsView: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 16) {
-                TextBlockView(title: "Icons 🖼",
-                              content: "Hour Blocks uses Material Design Icons by Google for its block icons")
-                TextBlockView(title: "Date Manipulation 🗓",
-                              content: "Hour Blocks uses the SwiftDate library for a lot of its date manipulation work")
-                TextBlockView(title: "Beta Testers 🐞",
-                              content: "A big thank you to everyone who has beta tested and provided feedback for Hour Blocks!")
+                TextBlockView(title: AppStrings.Settings.iconsAcknowledgementTitle,
+                              content: AppStrings.Settings.iconsAcknowledgementContent)
+                TextBlockView(title: AppStrings.Settings.datesAcknowledgementTitle,
+                              content: AppStrings.Settings.datesAcknowledgementContent)
+                TextBlockView(title: AppStrings.Settings.testersAcknowledgementTitle,
+                              content: AppStrings.Settings.datesAcknowledgementContent)
                 Spacer()
             }.padding(.vertical, 24)
             .padding(.horizontal, 32)
-            .navigationBarTitle("Acknowledgements")
+            .navigationBarTitle(AppStrings.Settings.acknowledgementsTitle)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done", action: dismiss)
+                    Button(AppStrings.Global.done, action: dismiss)
                 }
             }
-        }.accentColor(Color("AccentColor"))
+        }.accentColor(Color(AppStrings.Colors.accent))
     }
     
     /// Dismisses the current view.
