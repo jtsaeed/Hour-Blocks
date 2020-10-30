@@ -10,9 +10,6 @@ import SwiftUI
 /// The circular coloured icon button used throughout Hour Blocks.
 struct IconButton: View {
     
-    /// Environment variable identifying the current device colour scheme between dark or light mode.
-    @Environment(\.colorScheme) var colorScheme
-    
     private let iconName: String
     private let iconWeight: Font.Weight
     private let iconColor: Color
@@ -35,15 +32,31 @@ struct IconButton: View {
     
     var body: some View {
         Button(action: action) {
-            ZStack {
-                Circle()
-                    .foregroundColor(iconColor.getLightColor(darkMode: colorScheme == .dark))
-                    .frame(width: 40, height: 40)
-                Image(systemName: iconName)
-                    .foregroundColor(iconColor)
-                    .font(.system(size: 20, weight: iconWeight, design: .rounded))
-            }
-        }
+            Image(systemName: iconName)
+        }.buttonStyle(IconButtonStyle(iconWeight: iconWeight, iconColor: iconColor))
+    }
+}
+
+private struct IconButtonStyle: ButtonStyle {
+    
+    /// Environment variable identifying the current device colour scheme between dark or light mode.
+    @Environment(\.colorScheme) var colorScheme
+    
+    let iconWeight: Font.Weight
+    let iconColor: Color
+
+    func makeBody(configuration: Configuration) -> some View {
+        ZStack {
+            Circle()
+                .foregroundColor(iconColor.getLightColor(darkMode: colorScheme == .dark))
+                .opacity(configuration.isPressed ? 0.5 : 1)
+                .frame(width: 40, height: 40)
+            configuration.label
+                .foregroundColor(iconColor)
+                .opacity(configuration.isPressed ? 0.75 : 1)
+                .font(.system(size: 20, weight: iconWeight, design: .rounded))
+        }.scaleEffect(configuration.isPressed ? 0.9 : 1)
+        .animation(.easeInOut(duration: 0.2))
     }
 }
 
