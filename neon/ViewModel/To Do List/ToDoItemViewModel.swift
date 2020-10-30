@@ -17,7 +17,7 @@ class ToDoItemViewModel: ObservableObject, Identifiable {
     
     @AppStorage("autoCaps") private var autoCapsValue: Int = 0
     
-    @Published private(set) var urgency: String
+    @Published private(set) var urgency: ToDoUrgency
     
     @Published var isSheetPresented = false
     @Published private(set) var selectedSheet: ToDoItemSheet?
@@ -30,7 +30,7 @@ class ToDoItemViewModel: ObservableObject, Identifiable {
     init(for toDoItem: ToDoItem, dataGateway: DataGateway = DataGateway()) {
         self.dataGateway = dataGateway
         self.toDoItem = toDoItem
-        self.urgency = toDoItem.urgency.rawValue
+        self.urgency = toDoItem.urgency
     }
     
     /// Applies capitalisation to the To Do item title if need be, based on user preferences.
@@ -53,7 +53,7 @@ extension ToDoItemViewModel {
     ///   - newUrgency: The new urgency value to be updated.
     func saveChanges(newTitle: String, newUrgency: ToDoUrgency) {
         toDoItem.changeTitle(to: newTitle)
-        urgency = newUrgency.rawValue
+        urgency = newUrgency
         
         dataGateway.edit(toDoItem: toDoItem, set: newTitle, forKey: "title")
         dataGateway.edit(toDoItem: toDoItem, set: newUrgency.rawValue, forKey: "urgency")

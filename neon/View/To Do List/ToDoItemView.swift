@@ -31,9 +31,9 @@ struct ToDoItemView: View {
     var body: some View {
         Card {
             CardLabels(title: viewModel.getTitle(),
-                       subtitle: viewModel.urgency,
-                       subtitleColor: Color(viewModel.urgency.urgencyToColorString()),
-                       subtitleOpacity: viewModel.toDoItem.urgency == .whenever ? 0.4 : 1.0,
+                       subtitle: viewModel.urgency.rawValue,
+                       subtitleColor: viewModel.urgency.color,
+                       subtitleOpacity: viewModel.urgency == .whenever ? 0.4 : 1.0,
                        horizontalAlignment: .center)
         }.padding(.horizontal, 24)
         

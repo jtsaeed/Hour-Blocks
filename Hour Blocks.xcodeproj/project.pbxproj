@@ -150,6 +150,13 @@
 		ABD89EFE254C088500CC96E4 /* UserPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD89EFB254C088500CC96E4 /* UserPreference.swift */; };
 		ABD89F05254C0CC300CC96E4 /* OtherSettingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD89F04254C0CC300CC96E4 /* OtherSettingsCard.swift */; };
 		ABD89F19254C0D0900CC96E4 /* IconChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD89F18254C0D0900CC96E4 /* IconChooser.swift */; };
+		ABD89F25254C162200CC96E4 /* ToDoUrgency.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD89F24254C162200CC96E4 /* ToDoUrgency.swift */; };
+		ABD89F38254C183300CC96E4 /* ToDoUrgency.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD89F24254C162200CC96E4 /* ToDoUrgency.swift */; };
+		ABD89F3D254C183900CC96E4 /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC63F5B2546C60B0097702D /* AppStrings.swift */; };
+		ABD89F42254C183900CC96E4 /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC63F5B2546C60B0097702D /* AppStrings.swift */; };
+		ABD89F47254C184500CC96E4 /* VersionGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB05598124CF5E1C006F0228 /* VersionGateway.swift */; };
+		ABD89F4C254C184500CC96E4 /* VersionGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB05598124CF5E1C006F0228 /* VersionGateway.swift */; };
+		ABD89F51254C185400CC96E4 /* ToDoUrgency.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD89F24254C162200CC96E4 /* ToDoUrgency.swift */; };
 		ABE93F69251250BF005C0222 /* UIDevice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE93F68251250BF005C0222 /* UIDevice+Ext.swift */; };
 		ABF949832539F61E004D435A /* NoSuggestionsBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF949822539F61E004D435A /* NoSuggestionsBlockView.swift */; };
 		ABFC243624D022850091E3A5 /* ToDoItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFC243524D022850091E3A5 /* ToDoItemViewModel.swift */; };
@@ -361,6 +368,7 @@
 		ABD89EFB254C088500CC96E4 /* UserPreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreference.swift; sourceTree = "<group>"; };
 		ABD89F04254C0CC300CC96E4 /* OtherSettingsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSettingsCard.swift; sourceTree = "<group>"; };
 		ABD89F18254C0D0900CC96E4 /* IconChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconChooser.swift; sourceTree = "<group>"; };
+		ABD89F24254C162200CC96E4 /* ToDoUrgency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoUrgency.swift; sourceTree = "<group>"; };
 		ABE93F68251250BF005C0222 /* UIDevice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Ext.swift"; sourceTree = "<group>"; };
 		ABF949822539F61E004D435A /* NoSuggestionsBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSuggestionsBlockView.swift; sourceTree = "<group>"; };
 		ABFC243524D022850091E3A5 /* ToDoItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemViewModel.swift; sourceTree = "<group>"; };
@@ -693,6 +701,7 @@
 				AB72E0C824ACE8ED004DD577 /* HourBlock.swift */,
 				AB5F9A2D24AE63E800C4C597 /* SubBlock.swift */,
 				7A666BCB23F06ADB003D6F1F /* ToDoItem.swift */,
+				ABD89F24254C162200CC96E4 /* ToDoUrgency.swift */,
 				7A1AF6F723F440ED00425BB6 /* BlockDomain.swift */,
 				7A1AF6F923F456F600425BB6 /* Suggestion.swift */,
 				AB372FE324E0884D008F6034 /* SelectableIcon.swift */,
@@ -1181,6 +1190,7 @@
 				AB69CB9924E1888C00028715 /* URL+Ext.swift in Sources */,
 				ABD89F05254C0CC300CC96E4 /* OtherSettingsCard.swift in Sources */,
 				AB5A9BF724B396BB00F97B10 /* NeonDivider.swift in Sources */,
+				ABD89F25254C162200CC96E4 /* ToDoUrgency.swift in Sources */,
 				AB05598224CF5E1C006F0228 /* VersionGateway.swift in Sources */,
 				AB05597A24CF085B006F0228 /* CompactHourBlockView.swift in Sources */,
 				ABC63F5C2546C60B0097702D /* AppStrings.swift in Sources */,
@@ -1281,10 +1291,13 @@
 				ABB5CA9E24ED4F860098D819 /* SelectableIcon.swift in Sources */,
 				AB31076424E2C24900909EC9 /* IntentHandler.swift in Sources */,
 				AB31076F24E2C55E00909EC9 /* SiriDataGateway.swift in Sources */,
+				ABD89F4C254C184500CC96E4 /* VersionGateway.swift in Sources */,
 				AB0CE89325371C5E00284E7B /* Tip.swift in Sources */,
 				AB31077124E2C59400909EC9 /* ToDoItem.swift in Sources */,
 				ABD89EFE254C088500CC96E4 /* UserPreference.swift in Sources */,
 				AB31076D24E2C55400909EC9 /* neon.xcdatamodeld in Sources */,
+				ABD89F38254C183300CC96E4 /* ToDoUrgency.swift in Sources */,
+				ABD89F42254C183900CC96E4 /* AppStrings.swift in Sources */,
 				AB31077024E2C57E00909EC9 /* URL+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1304,13 +1317,16 @@
 				AB33B25D24BF5EDD0057662F /* ScheduleWidget.swift in Sources */,
 				ABADBB58250D301600BC158B /* SubBlock.swift in Sources */,
 				AB33B26A24BF60BF0057662F /* UpcomingScheduleView.swift in Sources */,
+				ABD89F3D254C183900CC96E4 /* AppStrings.swift in Sources */,
 				AB33B26E24BF642E0057662F /* neon.xcdatamodeld in Sources */,
+				ABD89F51254C185400CC96E4 /* ToDoUrgency.swift in Sources */,
 				AB33B26D24BF63E40057662F /* String+Ext.swift in Sources */,
 				AB0CE89225371C5E00284E7B /* Tip.swift in Sources */,
 				AB12008D252E36E0007A7D38 /* CurrentToDoListView.swift in Sources */,
 				AB33B26C24BF63CC0057662F /* Int+Ext.swift in Sources */,
 				AB42117E2530AB2C0052F0B2 /* ToDoItem.swift in Sources */,
 				AB69CB9A24E188AC00028715 /* URL+Ext.swift in Sources */,
+				ABD89F47254C184500CC96E4 /* VersionGateway.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
