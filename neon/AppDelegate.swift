@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Firebase
+import Mixpanel
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
+        Mixpanel.initialize(token: "5b6cce2279b18865e7cb4f98f299bba0")
         
         return true
     }

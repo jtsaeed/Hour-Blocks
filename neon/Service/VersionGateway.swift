@@ -13,8 +13,8 @@ struct VersionGateway {
     
     static let shared = VersionGateway()
     
-    let currentMajorVersion = 6.1
-    let currentFullVersion = "6.1"
+    let currentMajorVersion = 6.2
+    let currentFullVersion = "6.2 Beta 1"
     
     /// Determines whether or not the user has launched a new major app update for the first time; called in order to trigger the presentation of the WhatsNewView.
     ///

@@ -144,6 +144,12 @@
 		ABC63F562546C16A0097702D /* CardsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC63F552546C16A0097702D /* CardsListView.swift */; };
 		ABC63F5C2546C60B0097702D /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC63F5B2546C60B0097702D /* AppStrings.swift */; };
 		ABC63F662546CA730097702D /* AppPublishers.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC63F652546CA730097702D /* AppPublishers.swift */; };
+		ABC63F7725470E660097702D /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = ABC63F7625470E660097702D /* Mixpanel */; };
+		ABD89EFC254C088500CC96E4 /* UserPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD89EFB254C088500CC96E4 /* UserPreference.swift */; };
+		ABD89EFD254C088500CC96E4 /* UserPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD89EFB254C088500CC96E4 /* UserPreference.swift */; };
+		ABD89EFE254C088500CC96E4 /* UserPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD89EFB254C088500CC96E4 /* UserPreference.swift */; };
+		ABD89F05254C0CC300CC96E4 /* OtherSettingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD89F04254C0CC300CC96E4 /* OtherSettingsCard.swift */; };
+		ABD89F19254C0D0900CC96E4 /* IconChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD89F18254C0D0900CC96E4 /* IconChooser.swift */; };
 		ABE93F69251250BF005C0222 /* UIDevice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE93F68251250BF005C0222 /* UIDevice+Ext.swift */; };
 		ABF949832539F61E004D435A /* NoSuggestionsBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF949822539F61E004D435A /* NoSuggestionsBlockView.swift */; };
 		ABFC243624D022850091E3A5 /* ToDoItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFC243524D022850091E3A5 /* ToDoItemViewModel.swift */; };
@@ -352,6 +358,9 @@
 		ABC63F552546C16A0097702D /* CardsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsListView.swift; sourceTree = "<group>"; };
 		ABC63F5B2546C60B0097702D /* AppStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStrings.swift; sourceTree = "<group>"; };
 		ABC63F652546CA730097702D /* AppPublishers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPublishers.swift; sourceTree = "<group>"; };
+		ABD89EFB254C088500CC96E4 /* UserPreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreference.swift; sourceTree = "<group>"; };
+		ABD89F04254C0CC300CC96E4 /* OtherSettingsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSettingsCard.swift; sourceTree = "<group>"; };
+		ABD89F18254C0D0900CC96E4 /* IconChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconChooser.swift; sourceTree = "<group>"; };
 		ABE93F68251250BF005C0222 /* UIDevice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Ext.swift"; sourceTree = "<group>"; };
 		ABF949822539F61E004D435A /* NoSuggestionsBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSuggestionsBlockView.swift; sourceTree = "<group>"; };
 		ABFC243524D022850091E3A5 /* ToDoItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemViewModel.swift; sourceTree = "<group>"; };
@@ -370,6 +379,7 @@
 			files = (
 				7ADE54ED23F0B898007FAE38 /* SwiftDate in Frameworks */,
 				7A4E738423A01819008036ED /* CloudKit.framework in Frameworks */,
+				ABC63F7725470E660097702D /* Mixpanel in Frameworks */,
 				815BF6060562A2DC79C991CC /* Pods_Hour_Blocks.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -687,6 +697,7 @@
 				7A1AF6F923F456F600425BB6 /* Suggestion.swift */,
 				AB372FE324E0884D008F6034 /* SelectableIcon.swift */,
 				AB0CE89025371C5E00284E7B /* Tip.swift */,
+				ABD89EFB254C088500CC96E4 /* UserPreference.swift */,
 			);
 			name = Model;
 			path = Rewrite/Model;
@@ -774,9 +785,9 @@
 				AB7EABDD24B4FE8300041AB1 /* SettingsView.swift */,
 				AB849E1C24C86CA300D27333 /* SettingsCardView.swift */,
 				AB849E1E24C877A700D27333 /* CalendarSettingsView.swift */,
-				AB849E2024C877C200D27333 /* OtherSettingsView.swift */,
 				23036F4D237B2D9000563206 /* PrivacyPolicyView.swift */,
 				AB5B933C24E2DABD006F2DED /* AcknowledgementsView.swift */,
+				ABD89F03254C0CAF00CC96E4 /* Other Settings */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -789,6 +800,16 @@
 				1AC3EE9D2542D54700598CD2 /* ToDoListHistoryViewModel.swift */,
 			);
 			path = "To Do List";
+			sourceTree = "<group>";
+		};
+		ABD89F03254C0CAF00CC96E4 /* Other Settings */ = {
+			isa = PBXGroup;
+			children = (
+				AB849E2024C877C200D27333 /* OtherSettingsView.swift */,
+				ABD89F04254C0CC300CC96E4 /* OtherSettingsCard.swift */,
+				ABD89F18254C0D0900CC96E4 /* IconChooser.swift */,
+			);
+			path = "Other Settings";
 			sourceTree = "<group>";
 		};
 		ABF5833624D9C01F006F6448 /* Concepts */ = {
@@ -841,6 +862,7 @@
 			name = "Hour Blocks";
 			packageProductDependencies = (
 				7ADE54EC23F0B898007FAE38 /* SwiftDate */,
+				ABC63F7625470E660097702D /* Mixpanel */,
 			);
 			productName = neon;
 			productReference = 2338BEB8220A7840004F288F /* Hour Blocks.app */;
@@ -980,6 +1002,7 @@
 			mainGroup = 2338BEAF220A7840004F288F;
 			packageReferences = (
 				7ADE54EB23F0B898007FAE38 /* XCRemoteSwiftPackageReference "SwiftDate" */,
+				ABC63F7525470E660097702D /* XCRemoteSwiftPackageReference "mixpanel-swift" */,
 			);
 			productRefGroup = 2338BEB9220A7840004F288F /* Products */;
 			projectDirPath = "";
@@ -1156,6 +1179,7 @@
 				2336981F23818D52006ACD1E /* ActionButton.swift in Sources */,
 				AB72E0C724ACE8C5004DD577 /* HeaderView.swift in Sources */,
 				AB69CB9924E1888C00028715 /* URL+Ext.swift in Sources */,
+				ABD89F05254C0CC300CC96E4 /* OtherSettingsCard.swift in Sources */,
 				AB5A9BF724B396BB00F97B10 /* NeonDivider.swift in Sources */,
 				AB05598224CF5E1C006F0228 /* VersionGateway.swift in Sources */,
 				AB05597A24CF085B006F0228 /* CompactHourBlockView.swift in Sources */,
@@ -1176,6 +1200,7 @@
 				2304FA14235F29ED006DA688 /* SceneDelegate.swift in Sources */,
 				AB30376824F53959002C8310 /* ToDoGrid.swift in Sources */,
 				AB849E1F24C877A700D27333 /* CalendarSettingsView.swift in Sources */,
+				ABD89EFC254C088500CC96E4 /* UserPreference.swift in Sources */,
 				AB6BED6724E41046000A00A5 /* MockRemindersGateway.swift in Sources */,
 				1AC3EE9E2542D54700598CD2 /* ToDoListHistoryViewModel.swift in Sources */,
 				AB849E2324C8827400D27333 /* CalendarOptionsViewModel.swift in Sources */,
@@ -1190,6 +1215,7 @@
 				ABAFADFA24B231700098B823 /* ToDoListView.swift in Sources */,
 				AB849E2124C877C200D27333 /* OtherSettingsView.swift in Sources */,
 				2338BEBC220A7840004F288F /* AppDelegate.swift in Sources */,
+				ABD89F19254C0D0900CC96E4 /* IconChooser.swift in Sources */,
 				AB72E0BF24ACE885004DD577 /* HourBlockViewModel.swift in Sources */,
 				AB10A95524E05E2000FCB466 /* IconPicker.swift in Sources */,
 				AB72E0CB24ACE981004DD577 /* AddHourBlockView.swift in Sources */,
@@ -1257,6 +1283,7 @@
 				AB31076F24E2C55E00909EC9 /* SiriDataGateway.swift in Sources */,
 				AB0CE89325371C5E00284E7B /* Tip.swift in Sources */,
 				AB31077124E2C59400909EC9 /* ToDoItem.swift in Sources */,
+				ABD89EFE254C088500CC96E4 /* UserPreference.swift in Sources */,
 				AB31076D24E2C55400909EC9 /* neon.xcdatamodeld in Sources */,
 				AB31077024E2C57E00909EC9 /* URL+Ext.swift in Sources */,
 			);
@@ -1273,6 +1300,7 @@
 				ABB5CA9D24ED4F860098D819 /* SelectableIcon.swift in Sources */,
 				AB10A95324E05CC500FCB466 /* WidgetDataGateway.swift in Sources */,
 				AB31077324E2CCD200909EC9 /* BlockDomain.swift in Sources */,
+				ABD89EFD254C088500CC96E4 /* UserPreference.swift in Sources */,
 				AB33B25D24BF5EDD0057662F /* ScheduleWidget.swift in Sources */,
 				ABADBB58250D301600BC158B /* SubBlock.swift in Sources */,
 				AB33B26A24BF60BF0057662F /* UpcomingScheduleView.swift in Sources */,
@@ -1439,7 +1467,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0.1;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = neon/Info.plist;
@@ -1448,7 +1476,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.1;
+				MARKETING_VERSION = 6.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1467,7 +1495,7 @@
 				CODE_SIGN_ENTITLEMENTS = neon/neon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0.1;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = neon/Info.plist;
@@ -1476,7 +1504,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.1;
+				MARKETING_VERSION = 6.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1581,7 +1609,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeonSiri/NeonSiri.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0.1;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = NeonSiri/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1590,7 +1618,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 6.1;
+				MARKETING_VERSION = 6.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.NeonSiriExt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1607,7 +1635,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeonSiri/NeonSiri.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0.1;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = NeonSiri/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1616,7 +1644,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 6.1;
+				MARKETING_VERSION = 6.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.NeonSiriExt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1635,7 +1663,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeonWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0.1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = NeonWidget/Info.plist;
@@ -1645,7 +1673,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 6.1;
+				MARKETING_VERSION = 6.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.NeonWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1665,7 +1693,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeonWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0.1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 577WSH643L;
 				INFOPLIST_FILE = NeonWidget/Info.plist;
@@ -1675,7 +1703,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 6.1;
+				MARKETING_VERSION = 6.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evh98.neon.NeonWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1754,6 +1782,14 @@
 				minimumVersion = 6.1.0;
 			};
 		};
+		ABC63F7525470E660097702D /* XCRemoteSwiftPackageReference "mixpanel-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mixpanel/mixpanel-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1761,6 +1797,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7ADE54EB23F0B898007FAE38 /* XCRemoteSwiftPackageReference "SwiftDate" */;
 			productName = SwiftDate;
+		};
+		ABC63F7625470E660097702D /* Mixpanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ABC63F7525470E660097702D /* XCRemoteSwiftPackageReference "mixpanel-swift" */;
+			productName = Mixpanel;
 		};
 /* End XCSwiftPackageProductDependency section */
 

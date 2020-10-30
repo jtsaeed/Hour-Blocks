@@ -133,6 +133,9 @@ struct AppStrings {
         static let acknowledgementsTitle = "Acknowledgements"
         static let acknowledgementsSubtitle = "Take a look at the"
         
+        static let appIconChooserTitle = "App Icon"
+        static let appIconChooserContent = "Which Hour Blocks app icon would you like to be shown on your home screen?"
+        
         static let noCalendarAccess = "Calendar access hasn't been granted"
         
         static let personalDataPrivacyTitle = "Your personal data is safe 🔐"

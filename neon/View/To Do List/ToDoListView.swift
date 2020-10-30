@@ -17,7 +17,7 @@ struct ToDoListView: View {
         VStack {
             HeaderView(title: AppStrings.ToDoList.header, subtitle: AppStrings.ToDoList.itemsCount(count: viewModel.toDoItems.count)) {
                 IconButton(iconName: AppStrings.Icons.history,
-                           iconWeight: .medium,
+                           iconWeight: .semibold,
                            action: viewModel.presentToDoListHistoryView)
                     .sheet(isPresented: $viewModel.isToDoListHistoryViewPresented) {
                         ToDoListHistoryView(isPresented: $viewModel.isToDoListHistoryViewPresented )

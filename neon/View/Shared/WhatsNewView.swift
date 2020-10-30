@@ -30,12 +30,10 @@ struct WhatsNewView: View {
             
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
-                    TextBlockView(title: "To Do List Widget 📱",
-                                  content: "Get a snapshot of your To Do List without even leaving your home screen!")
-                    TextBlockView(title: "More Alternative Icons 🎨",
-                                  content: "Have your pick from a total of 6 alternative app icons for Hour Blocks")
+                    TextBlockView(title: "To Do List History 🕖",
+                                  content: "After being such a popular request for so long, you can now finally view your completed To Do List items in one convenient sheet!")
                     TextBlockView(title: "Small Improvements ✨",
-                                  content: "Fixed a bug that would sometimes cause a crash on launch + other small fixes & tweaks")
+                                  content: "Minor UI tweaks in various places")
                 }
             }.padding(.top, 24)
             

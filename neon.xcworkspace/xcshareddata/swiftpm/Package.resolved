@@ -2,12 +2,21 @@
   "object": {
     "pins": [
       {
+        "package": "Mixpanel",
+        "repositoryURL": "https://github.com/mixpanel/mixpanel-swift",
+        "state": {
+          "branch": null,
+          "revision": "c1b10842b7982450a89437b7d8d0b68bc9483326",
+          "version": "2.8.0"
+        }
+      },
+      {
         "package": "SwiftDate",
         "repositoryURL": "https://github.com/malcommac/SwiftDate",
         "state": {
           "branch": null,
-          "revision": "700dde1b3417fd4a7fd2bec9f5bc8ab2de1b96b4",
-          "version": "6.1.0"
+          "revision": "a25913b19833860b61fac161a706e44834f03c47",
+          "version": "6.2.0"
         }
       }
     ]
