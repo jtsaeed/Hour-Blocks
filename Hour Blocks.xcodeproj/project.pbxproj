@@ -118,6 +118,8 @@
 		AB849E2324C8827400D27333 /* CalendarOptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB849E2224C8827400D27333 /* CalendarOptionsViewModel.swift */; };
 		AB8C6FD024E6EA7C0074AD08 /* TipCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C6FCF24E6EA7C0074AD08 /* TipCardView.swift */; };
 		AB8C6FD224E70D8A0074AD08 /* AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB8C6FD124E70D8A0074AD08 /* AppIntentVocabulary.plist */; };
+		AB8F4D7B254EC69D0067DBD8 /* Amplitude in Frameworks */ = {isa = PBXBuildFile; productRef = AB8F4D7A254EC69D0067DBD8 /* Amplitude */; };
+		AB8F4D82254EC6F00067DBD8 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = AB8F4D81254EC6F00067DBD8 /* Sentry */; };
 		AB9040C725386B5C007D3BA6 /* NoHourBlocksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9040C625386B5C007D3BA6 /* NoHourBlocksView.swift */; };
 		AB9ACE5C253484FE00BDB6E7 /* icon_purple@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9ACE56253484FD00BDB6E7 /* icon_purple@3x.png */; };
 		AB9ACE5D253484FE00BDB6E7 /* icon_blue@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9ACE57253484FD00BDB6E7 /* icon_blue@3x.png */; };
@@ -144,7 +146,6 @@
 		ABC63F562546C16A0097702D /* CardsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC63F552546C16A0097702D /* CardsListView.swift */; };
 		ABC63F5C2546C60B0097702D /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC63F5B2546C60B0097702D /* AppStrings.swift */; };
 		ABC63F662546CA730097702D /* AppPublishers.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC63F652546CA730097702D /* AppPublishers.swift */; };
-		ABC63F7725470E660097702D /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = ABC63F7625470E660097702D /* Mixpanel */; };
 		ABD89EFC254C088500CC96E4 /* UserPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD89EFB254C088500CC96E4 /* UserPreference.swift */; };
 		ABD89EFD254C088500CC96E4 /* UserPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD89EFB254C088500CC96E4 /* UserPreference.swift */; };
 		ABD89EFE254C088500CC96E4 /* UserPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD89EFB254C088500CC96E4 /* UserPreference.swift */; };
@@ -387,8 +388,9 @@
 			files = (
 				7ADE54ED23F0B898007FAE38 /* SwiftDate in Frameworks */,
 				7A4E738423A01819008036ED /* CloudKit.framework in Frameworks */,
-				ABC63F7725470E660097702D /* Mixpanel in Frameworks */,
+				AB8F4D7B254EC69D0067DBD8 /* Amplitude in Frameworks */,
 				815BF6060562A2DC79C991CC /* Pods_Hour_Blocks.framework in Frameworks */,
+				AB8F4D82254EC6F00067DBD8 /* Sentry in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -871,7 +873,8 @@
 			name = "Hour Blocks";
 			packageProductDependencies = (
 				7ADE54EC23F0B898007FAE38 /* SwiftDate */,
-				ABC63F7625470E660097702D /* Mixpanel */,
+				AB8F4D7A254EC69D0067DBD8 /* Amplitude */,
+				AB8F4D81254EC6F00067DBD8 /* Sentry */,
 			);
 			productName = neon;
 			productReference = 2338BEB8220A7840004F288F /* Hour Blocks.app */;
@@ -1011,7 +1014,8 @@
 			mainGroup = 2338BEAF220A7840004F288F;
 			packageReferences = (
 				7ADE54EB23F0B898007FAE38 /* XCRemoteSwiftPackageReference "SwiftDate" */,
-				ABC63F7525470E660097702D /* XCRemoteSwiftPackageReference "mixpanel-swift" */,
+				AB8F4D79254EC69D0067DBD8 /* XCRemoteSwiftPackageReference "Amplitude-iOS" */,
+				AB8F4D80254EC6F00067DBD8 /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
 			);
 			productRefGroup = 2338BEB9220A7840004F288F /* Products */;
 			projectDirPath = "";
@@ -1798,12 +1802,20 @@
 				minimumVersion = 6.1.0;
 			};
 		};
-		ABC63F7525470E660097702D /* XCRemoteSwiftPackageReference "mixpanel-swift" */ = {
+		AB8F4D79254EC69D0067DBD8 /* XCRemoteSwiftPackageReference "Amplitude-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mixpanel/mixpanel-swift";
+			repositoryURL = "https://github.com/amplitude/Amplitude-iOS";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.8.0;
+				minimumVersion = 7.2.0;
+			};
+		};
+		AB8F4D80254EC6F00067DBD8 /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/getsentry/sentry-cocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.6;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1814,10 +1826,15 @@
 			package = 7ADE54EB23F0B898007FAE38 /* XCRemoteSwiftPackageReference "SwiftDate" */;
 			productName = SwiftDate;
 		};
-		ABC63F7625470E660097702D /* Mixpanel */ = {
+		AB8F4D7A254EC69D0067DBD8 /* Amplitude */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = ABC63F7525470E660097702D /* XCRemoteSwiftPackageReference "mixpanel-swift" */;
-			productName = Mixpanel;
+			package = AB8F4D79254EC69D0067DBD8 /* XCRemoteSwiftPackageReference "Amplitude-iOS" */;
+			productName = Amplitude;
+		};
+		AB8F4D81254EC6F00067DBD8 /* Sentry */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB8F4D80254EC6F00067DBD8 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
+			productName = Sentry;
 		};
 /* End XCSwiftPackageProductDependency section */
 

@@ -9,7 +9,8 @@
 import UIKit
 import CoreData
 import Firebase
-import Mixpanel
+import Amplitude
+import Sentry
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,7 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
-        Mixpanel.initialize(token: "5b6cce2279b18865e7cb4f98f299bba0")
+        Amplitude.instance().initializeApiKey("b875f7d7fce79d083d2a1ff3168b530e")
+        
+        SentrySDK.start { options in
+            options.dsn = "https://074428a9187846d8be9bd2cb0656a053@o470189.ingest.sentry.io/5500494"
+            options.debug = true // Enabled debug when first installing is always helpful
+        }
+        
+        SentrySDK.capture(message: "My first test message")
         
         return true
     }

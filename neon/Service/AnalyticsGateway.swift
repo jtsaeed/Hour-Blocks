@@ -8,7 +8,7 @@
 
 import Foundation
 import Firebase
-import Mixpanel
+import Amplitude
 
 protocol AnalyticsGatewayProtocol {
     
@@ -27,7 +27,7 @@ struct AnalyticsGateway: AnalyticsGatewayProtocol {
     func log(hourBlock: HourBlock) {
         Analytics.logEvent("hourBlock5", parameters: ["domain": DomainsGateway.shared.determineDomain(for: hourBlock.title!)?.rawValue ?? "Default"])
         
-        Mixpanel.mainInstance().track(event: "hour_block_added", properties: ["domain": DomainsGateway.shared.determineDomain(for: hourBlock.title!)?.rawValue ?? "Default"])
+        Amplitude.instance().logEvent("hour_block_added", withEventProperties: ["domain": DomainsGateway.shared.determineDomain(for: hourBlock.title!)?.rawValue ?? "Default"])
     }
     
     /// Log a newly added suggestion.
@@ -38,15 +38,14 @@ struct AnalyticsGateway: AnalyticsGatewayProtocol {
         Analytics.logEvent("suggestion", parameters: ["domain": suggestion.domain.rawValue,
                                                       "reason": suggestion.reason])
         
-        Mixpanel.mainInstance().track(event: "suggestion_added",
-                                      properties: ["domain": suggestion.domain.rawValue,
-                                                   "reason": suggestion.reason])
+        Amplitude.instance().logEvent("suggestion_added", withEventProperties: ["domain": suggestion.domain.rawValue,
+                                                                                "reason": suggestion.reason])
     }
     
     /// Log a newly added To Do item.
     func logToDoItem() {
         Analytics.logEvent("toDo", parameters: nil)
         
-        Mixpanel.mainInstance().track(event: "to_do_item_added")
+        Amplitude.instance().logEvent("to_do_item_added")
     }
 }
