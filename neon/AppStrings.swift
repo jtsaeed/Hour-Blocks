@@ -115,6 +115,7 @@ struct AppStrings {
             static let menuEdit = "Edit"
             static let menuAddToToday = "Add to Today"
             static let menuClear = "Clear"
+            static let menuIncomplete = "Mark as Incomplete"
             
             static let clearAlertTitle = "Clear To Do Item"
             static let clearAlertText = "Are you sure you would like to clear this To Do Item?"
