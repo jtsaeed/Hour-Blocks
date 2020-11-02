@@ -65,6 +65,7 @@ struct ToDoItemView: View {
                                    hourBlock: HourBlock(day: Date(), hour: 12, title: viewModel.toDoItem.title))
             }
         }
+        
         .alert(isPresented: $viewModel.isClearToDoWarningPresented) {
             Alert(title: Text(AppStrings.ToDoList.ToDoItem.clearAlertTitle),
                   message: Text(AppStrings.ToDoList.ToDoItem.clearAlertText),
