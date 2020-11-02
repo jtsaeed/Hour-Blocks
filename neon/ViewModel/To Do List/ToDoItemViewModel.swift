@@ -18,7 +18,7 @@ class ToDoItemViewModel: ObservableObject, Identifiable {
     @AppStorage("autoCaps") private var autoCapsValue: Int = 0
     
     @Published private(set) var urgency: ToDoUrgency
-    
+    @Published var isClearToDoWarningPresented = false
     @Published var isSheetPresented = false
     @Published private(set) var selectedSheet: ToDoItemSheet?
     
@@ -79,6 +79,11 @@ extension ToDoItemViewModel {
     func presentAddToScheduleView() {
         isSheetPresented = true
         selectedSheet = .addToSchedule
+    }
+    
+    /// Presents a warning alert for clearing the view model's corresponding ToDo block.
+    func presentClearToDoWarning() {
+        isClearToDoWarningPresented = true
     }
 }
 
