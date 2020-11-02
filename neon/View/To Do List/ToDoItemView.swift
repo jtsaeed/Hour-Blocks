@@ -49,7 +49,7 @@ struct ToDoItemView: View {
                 Label(AppStrings.ToDoList.ToDoItem.menuAddToToday, systemImage: AppStrings.Icons.addToSchedule)
             }
             Divider()
-            Button(action: onItemCleared) {
+            Button(action: viewModel.presentClearToDoWarning) {
                 Label(AppStrings.ToDoList.ToDoItem.menuClear, systemImage: AppStrings.Icons.clear)
             }
         }))
@@ -64,6 +64,12 @@ struct ToDoItemView: View {
                                    navigationTitle: AppStrings.ToDoList.ToDoItem.addToTodayHeader,
                                    hourBlock: HourBlock(day: Date(), hour: 12, title: viewModel.toDoItem.title))
             }
+        }
+        .alert(isPresented: $viewModel.isClearToDoWarningPresented) {
+            Alert(title: Text(AppStrings.ToDoList.ToDoItem.clearAlertTitle),
+                  message: Text(AppStrings.ToDoList.ToDoItem.clearAlertText),
+                  primaryButton: .destructive(Text(AppStrings.Global.clear), action: onItemCleared),
+                  secondaryButton: .cancel())
         }
     }
 }
