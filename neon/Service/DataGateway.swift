@@ -28,6 +28,7 @@ struct DataGateway {
     ///   - managedObjectContext: The managed object context to be used.
     init(for managedObjectContext: NSManagedObjectContext) {
         self.managedObjectContext = managedObjectContext
+        self.managedObjectContext.automaticallyMergesChangesFromParent = true
     }
 }
 
