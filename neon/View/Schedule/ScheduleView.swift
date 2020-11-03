@@ -43,7 +43,6 @@ struct ScheduleView: View {
             ScheduleBlocksListView(viewModel: viewModel)
         }.onAppear(perform: viewModel.handleCalendarPermissions)
         .onReceive(AppPublishers.refreshSchedulePublisher) { _ in viewModel.loadHourBlocks() }
-        .onReceive(AppPublishers.refreshOnCloudSyncPublisher) { _ in viewModel.loadHourBlocks() }
         .onReceive(AppPublishers.refreshOnLaunchPublisher) { _ in viewModel.refreshCurrentDate() }
     }
 }
