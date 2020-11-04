@@ -27,5 +27,11 @@ struct CompletedToDoItemView: View {
                        subtitle: viewModel.toDoItem.completionDate?.getFormattedDate() ?? "N/A",
                        horizontalAlignment: .center)
         }.padding(.horizontal, 24)
+        
+        .contextMenu(ContextMenu(menuItems: {
+            Button(action: viewModel.markAsIncomplete) {
+                Label(AppStrings.ToDoList.ToDoItem.menuIncomplete, systemImage: AppStrings.Icons.undo)
+            }
+        }))
     }
 }

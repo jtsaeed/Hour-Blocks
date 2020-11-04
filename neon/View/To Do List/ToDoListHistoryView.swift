@@ -28,6 +28,7 @@ struct ToDoListHistoryView: View {
                 }
             }
         }.accentColor(Color(AppStrings.Colors.accent))
+        .onReceive(AppPublishers.refreshToDoListPublisher) { _ in viewModel.loadCompletedToDoItems() }
     }
     
     /// Dismisses the current view.
