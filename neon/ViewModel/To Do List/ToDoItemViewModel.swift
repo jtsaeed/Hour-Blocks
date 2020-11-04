@@ -71,7 +71,7 @@ extension ToDoItemViewModel {
         dataGateway.edit(toDoItem: toDoItem, set: false, forKey: "completed")
         dataGateway.edit(toDoItem: toDoItem, set: nil, forKey: "completionDate")
         
-        NotificationCenter.default.post(name: Notification.Name(AppPublishers.Names.refreshSchedule), object: nil)
+        NotificationCenter.default.post(name: Notification.Name(AppPublishers.Names.refreshToDoList), object: nil)
         WidgetCenter.shared.reloadTimelines(ofKind: "ToDoWidget")
     }
     
