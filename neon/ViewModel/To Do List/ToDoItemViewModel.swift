@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 /// The view model for the ToDoItemView.
 class ToDoItemViewModel: ObservableObject, Identifiable {
@@ -61,6 +62,17 @@ extension ToDoItemViewModel {
         dismissEditItemView()
         
         NotificationCenter.default.post(name: Notification.Name("RefreshToDoList"), object: nil)
+    }
+    
+    /// Marks a given To Do item as incompleted in the Core Data store and the view model.
+    func markAsIncomplete() {
+        HapticsGateway.shared.triggerClearBlockHaptic()
+        
+        dataGateway.edit(toDoItem: toDoItem, set: false, forKey: "completed")
+        dataGateway.edit(toDoItem: toDoItem, set: nil, forKey: "completionDate")
+        
+        NotificationCenter.default.post(name: Notification.Name(AppPublishers.Names.refreshSchedule), object: nil)
+        WidgetCenter.shared.reloadTimelines(ofKind: "ToDoWidget")
     }
     
     /// Presents the EditToDoItemView.
