@@ -1,0 +1,34 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Amplitude",
+        "repositoryURL": "https://github.com/amplitude/Amplitude-iOS",
+        "state": {
+          "branch": null,
+          "revision": "f6b19721defbb5424941a4ff80407804a664d15b",
+          "version": "7.2.0"
+        }
+      },
+      {
+        "package": "Sentry",
+        "repositoryURL": "https://github.com/getsentry/sentry-cocoa",
+        "state": {
+          "branch": null,
+          "revision": "5559277356fb435a61d48ecb73582ed5581d2105",
+          "version": "6.0.7"
+        }
+      },
+      {
+        "package": "SwiftDate",
+        "repositoryURL": "https://github.com/malcommac/SwiftDate",
+        "state": {
+          "branch": null,
+          "revision": "a25913b19833860b61fac161a706e44834f03c47",
+          "version": "6.2.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

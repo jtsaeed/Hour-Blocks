@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import Firebase
 import Amplitude
 import Sentry
 
@@ -17,12 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        FirebaseApp.configure()
         Amplitude.instance().initializeApiKey("b875f7d7fce79d083d2a1ff3168b530e")
         
         SentrySDK.start { options in
             options.dsn = "https://074428a9187846d8be9bd2cb0656a053@o470189.ingest.sentry.io/5500494"
-            options.debug = true // Enabled debug when first installing is always helpful
         }
         
         return true

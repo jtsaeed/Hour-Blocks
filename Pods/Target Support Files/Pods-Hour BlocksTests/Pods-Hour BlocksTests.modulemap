@@ -1,6 +1,0 @@
-framework module Pods_Hour_BlocksTests {
-  umbrella header "Pods-Hour BlocksTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
