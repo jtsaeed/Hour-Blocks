@@ -47,7 +47,7 @@ class ToDoItemTests: XCTestCase {
         let expectation = XCTestExpectation(description: "view model's urgency is equal to ToDoPriority.urgent after calling viewModel.saveChanges")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            XCTAssertEqual(self.viewModel.urgency, "urgent")
+            XCTAssertEqual(self.viewModel.urgency, .urgent)
             
             expectation.fulfill()
         }
