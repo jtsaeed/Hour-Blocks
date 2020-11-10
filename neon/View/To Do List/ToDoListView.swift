@@ -14,33 +14,36 @@ struct ToDoListView: View {
     @StateObject var viewModel = ToDoListViewModel()
     
     var body: some View {
-        VStack {
-            HeaderView(title: AppStrings.ToDoList.header, subtitle: AppStrings.ToDoList.itemsCount(count: viewModel.toDoItems.count)) {
-                IconButton(iconName: AppStrings.Icons.history,
-                           iconWeight: .semibold,
-                           action: viewModel.presentToDoListHistoryView)
-                    .sheet(isPresented: $viewModel.isToDoListHistoryViewPresented) {
-                        ToDoListHistoryView(isPresented: $viewModel.isToDoListHistoryViewPresented )
-                    }
-                
-                IconButton(iconName: AppStrings.Icons.add,
-                           iconWeight: .bold,
-                           action: viewModel.presentAddToDoItemView)
-                    .sheet(isPresented: $viewModel.isAddToDoItemViewPresented) {
-                        AddToDoItemView(viewModel: viewModel)
-                    }
-            }
-            
-            CardsListView {
-                if let tip = viewModel.currentTip {
-                    TipCardView(for: tip, onDismiss: viewModel.dismissTip)
-                    NeonDivider().padding(.horizontal, 32)
+        ZStack {
+            Color(AppStrings.Colors.background)
+            VStack {
+                HeaderView(title: AppStrings.ToDoList.header, subtitle: AppStrings.ToDoList.itemsCount(count: viewModel.toDoItems.count)) {
+                    IconButton(iconName: AppStrings.Icons.history,
+                               iconWeight: .semibold,
+                               action: viewModel.presentToDoListHistoryView)
+                        .sheet(isPresented: $viewModel.isToDoListHistoryViewPresented) {
+                            ToDoListHistoryView(isPresented: $viewModel.isToDoListHistoryViewPresented )
+                        }
+                    
+                    IconButton(iconName: AppStrings.Icons.add,
+                               iconWeight: .bold,
+                               action: viewModel.presentAddToDoItemView)
+                        .sheet(isPresented: $viewModel.isAddToDoItemViewPresented) {
+                            AddToDoItemView(viewModel: viewModel)
+                        }
                 }
                 
-                ForEach(viewModel.toDoItems) { toDoItemViewModel in
-                    ToDoItemView(viewModel: toDoItemViewModel,
-                                 onItemCleared: { viewModel.clear(toDoItem: toDoItemViewModel.toDoItem) },
-                                 onItemCompleted: { viewModel.markAsCompleted(toDoItem: toDoItemViewModel.toDoItem)})
+                CardsListView {
+                    if let tip = viewModel.currentTip {
+                        TipCardView(for: tip, onDismiss: viewModel.dismissTip)
+                        NeonDivider().padding(.horizontal, 32)
+                    }
+                    
+                    ForEach(viewModel.toDoItems) { toDoItemViewModel in
+                        ToDoItemView(viewModel: toDoItemViewModel,
+                                     onItemCleared: { viewModel.clear(toDoItem: toDoItemViewModel.toDoItem) },
+                                     onItemCompleted: { viewModel.markAsCompleted(toDoItem: toDoItemViewModel.toDoItem)})
+                    }
                 }
             }
         }.navigationBarHidden(true)

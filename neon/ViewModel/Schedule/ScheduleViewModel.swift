@@ -221,12 +221,19 @@ extension ScheduleViewModel {
     private func handleBlockCountEvents() {
         totalBlockCount = totalBlockCount + 1
         
+        #if targetEnvironment(macCatalyst)
+        switch totalBlockCount {
+        case 1: setCurrentTip(as: .blockOptions)
+        default: break
+        }
+        #else
         switch totalBlockCount {
         case 1: setCurrentTip(as: .blockOptions)
         case 5: setCurrentTip(as: .headerSwipe)
         case 10: SKStoreReviewController.requestReview()
         default: break
         }
+        #endif
     }
     
     /// Sets the current tip to a given tip.

@@ -30,12 +30,12 @@ struct WhatsNewView: View {
             
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
-                    TextBlockView(title: "To Do List History 🕖",
-                                  content: "After being such a popular request for so long, you can now finally view your completed To Do List items in one convenient sheet!")
                     TextBlockView(title: "iCloud Sync ☁️",
-                                  content: "Hour Blocks and To Do Items now sync across your iOS & iPadOS devices (macOS coming soon!)")
+                                  content: "Hour Blocks and To Do Items now sync across your iOS, iPadOS & macOS")
+                    TextBlockView(title: "To Do List History 🕖",
+                                  content: "You can now view your completed To Do List items in one convenient sheet")
                     TextBlockView(title: "Small Improvements ✨",
-                                  content: "Minor UI tweaks in various places")
+                                  content: "Native support for iPhone 12 & some minor UI tweaks in various places")
                 }
             }.padding(.top, 24)
             

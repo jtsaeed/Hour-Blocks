@@ -128,7 +128,7 @@ struct AppStrings {
         
         static let calendarsTitle = "Calendars"
         static let calendarsSubtitle = "Take control of"
-        static let otherTitle = "Other stuff"
+        static let otherTitle = "Other Stuff"
         static let otherSubtitle = "Take control of"
         static let feedbackTitle = "Twitter"
         static let feedbackSubtitle = "Provide feedback on"
@@ -154,7 +154,7 @@ struct AppStrings {
         static let datesAcknowledgementTitle = "Date Manipulation 🗓"
         static let datesAcknowledgementContent = "Hour Blocks uses the SwiftDate library for a lot of its date manipulation work"
         static let testersAcknowledgementTitle = "Beta Testers 🐞"
-        static let testersAcknowlegdementContent = "A big thank you to everyone who has beta tested and provided feedback for Hour Blocks!"
+        static let testersAcknowledgementContent = "A big thank you to everyone who has beta tested and provided feedback for Hour Blocks!"
     }
     
     struct WhatsNew {

@@ -29,7 +29,7 @@ struct AcknowledgementsView: View {
                 TextBlockView(title: AppStrings.Settings.datesAcknowledgementTitle,
                               content: AppStrings.Settings.datesAcknowledgementContent)
                 TextBlockView(title: AppStrings.Settings.testersAcknowledgementTitle,
-                              content: AppStrings.Settings.datesAcknowledgementContent)
+                              content: AppStrings.Settings.testersAcknowledgementContent)
                 Spacer()
             }.padding(.vertical, 24)
             .padding(.horizontal, 32)

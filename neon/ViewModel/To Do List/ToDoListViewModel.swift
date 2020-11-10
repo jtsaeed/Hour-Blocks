@@ -135,8 +135,18 @@ extension ToDoListViewModel {
     private func handleToDoCountEvents() {
         totalToDoCount = totalToDoCount + 1
         
-        if totalToDoCount == 2 { setCurrentTip(as: .blockOptions) }
-        if totalToDoCount == 5 { setCurrentTip(as: .toDoSiri) }
+        #if targetEnvironment(macCatalyst)
+        switch totalToDoCount {
+        case 2: setCurrentTip(as: .blockOptions)
+        default: break
+        }
+        #else
+        switch totalToDoCount {
+        case 2: setCurrentTip(as: .blockOptions)
+        case 5: setCurrentTip(as: .toDoSiri)
+        default: break
+        }
+        #endif
     }
     
     /// Sets the current tip to a given tip.

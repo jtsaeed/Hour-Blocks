@@ -15,32 +15,35 @@ struct ScheduleView: View {
     @StateObject private var viewModel = ScheduleViewModel()
     
     var body: some View {
-        VStack {
-            HeaderView(title: AppStrings.Schedule.header, subtitle: viewModel.currentDate.getFormattedDate()) {
-                HStack(spacing: 16) {
-                    if !viewModel.currentDate.isToday {
-                        IconButton(iconName: AppStrings.Icons.undo,
-                                   iconWeight: .medium,
-                                   action: viewModel.returnToToday)
+        ZStack {
+            Color(AppStrings.Colors.background)
+            VStack {
+                HeaderView(title: AppStrings.Schedule.header, subtitle: viewModel.currentDate.getFormattedDate()) {
+                    HStack(spacing: 16) {
+                        if !viewModel.currentDate.isToday {
+                            IconButton(iconName: AppStrings.Icons.undo,
+                                       iconWeight: .medium,
+                                       action: viewModel.returnToToday)
+                        }
+                        IconButton(iconName: AppStrings.Icons.calendar,
+                                   action: viewModel.presentDatePickerView)
                     }
-                    IconButton(iconName: AppStrings.Icons.calendar,
-                               action: viewModel.presentDatePickerView)
                 }
-            }
-            .gesture(DragGesture(minimumDistance: 128, coordinateSpace: .local).onEnded { drag in
-                if drag.translation.width > 0 {
-                    viewModel.regressCurrentDay()
-                } else {
-                    viewModel.advanceCurentDay()
+                .gesture(DragGesture(minimumDistance: 128, coordinateSpace: .local).onEnded { drag in
+                    if drag.translation.width > 0 {
+                        viewModel.regressCurrentDay()
+                    } else {
+                        viewModel.advanceCurentDay()
+                    }
+                })
+                .sheet(isPresented: $viewModel.isDatePickerViewPresented) {
+                    ScheduleDatePicker(isPresented: $viewModel.isDatePickerViewPresented,
+                                       currentScheduleDate: $viewModel.currentDate,
+                                       onDateChanged: viewModel.loadHourBlocks)
                 }
-            })
-            .sheet(isPresented: $viewModel.isDatePickerViewPresented) {
-                ScheduleDatePicker(isPresented: $viewModel.isDatePickerViewPresented,
-                                   currentScheduleDate: $viewModel.currentDate,
-                                   onDateChanged: viewModel.loadHourBlocks)
+                
+                ScheduleBlocksListView(viewModel: viewModel)
             }
-            
-            ScheduleBlocksListView(viewModel: viewModel)
         }.onAppear(perform: viewModel.handleCalendarPermissions)
         .onReceive(AppPublishers.refreshSchedulePublisher) { _ in viewModel.loadHourBlocks() }
         .onReceive(AppPublishers.refreshOnLaunchPublisher) { _ in viewModel.refreshCurrentDate() }
