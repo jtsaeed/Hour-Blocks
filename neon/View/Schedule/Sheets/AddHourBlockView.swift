@@ -41,30 +41,32 @@ struct AddHourBlockView: View {
                 HStack(spacing: 16) {
                     NeonTextField(text: $hourBlockTitle,
                                   onReturn: addHourBlock)
-                    IconButton(iconName: "plus",
+                    IconButton(iconName: AppStrings.Icons.add,
                                iconWeight: .bold,
                                action: addHourBlock)
                 }.padding(24)
                 
-                Text("Suggestions")
+                Text(AppStrings.Schedule.HourBlock.suggestionsHeader)
                     .font(.system(size: 28, weight: .bold, design: .default))
                     .padding(.leading, 32)
                 
-                ScrollView(showsIndicators: false) {
-                    VStack(spacing: 24) {
-                        if !viewModel.currentSuggestions.isEmpty {
-                            ForEach(viewModel.currentSuggestions) { suggestion in
-                                SuggestionBlockView(for: suggestion,
-                                                    onSuggestionAdded: { addSuggestionBlock(for: suggestion) })
-                            }
-                        } else {
-                            NoSuggestionsBlockView()
+                CardsListView {
+                    if !viewModel.currentSuggestions.isEmpty {
+                        ForEach(viewModel.currentSuggestions) { suggestion in
+                            SuggestionBlockView(for: suggestion,
+                                                onSuggestionAdded: { addSuggestionBlock(for: suggestion) })
                         }
-                    }.padding(.top, 8)
+                    } else {
+                        NoSuggestionsBlockView()
+                    }
                 }
-            }.navigationTitle("Add an Hour Block")
-            .navigationBarItems(leading: Button("Cancel", action: dismiss))
-        }.accentColor(Color("AccentColor"))
+            }.navigationTitle(AppStrings.Schedule.HourBlock.addHeader)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(AppStrings.Global.cancel, action: dismiss)
+                }
+            }
+        }.accentColor(Color(AppStrings.Colors.accent))
         .onAppear { viewModel.loadSuggestions(for: hour, on: day) }
     }
     

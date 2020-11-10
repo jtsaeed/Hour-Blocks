@@ -12,8 +12,8 @@ import EventKit
 /// A Card based view for displaying a Calendar event.
 struct CalendarBlockView: View {
     
-    /// A UserDefaults property determining what hour format to use when displaying times
-    @AppStorage("timeFormat") private var timeFormatValue: Int = 1
+    /// A UserDefaults property determining what hour format to use when displaying times.
+    @AppStorage(AppStrings.AppStorage.timeFormat) private var timeFormatValue: Int = 1
     
     private let event: EKEvent
     
@@ -31,7 +31,7 @@ struct CalendarBlockView: View {
                 CardLabels(title: event.title,
                            subtitle: getSubtitle())
                 Spacer()
-                HourBlockIcon("event")
+                HourBlockIcon(AppStrings.Icons.calendarEvent)
             }
         }.padding(.horizontal, 24)
     }
@@ -42,7 +42,7 @@ struct CalendarBlockView: View {
     /// A formatted subtitle string
     private func getSubtitle() -> String {
         if event.isAllDay {
-            return "ALL DAY"
+            return AppStrings.Schedule.HourBlock.calendarBlockAllDay
         } else {
             return "\(event.startDate.getFullFormattedTime(usingMilitaryTime: isUsingMilitaryTime())) TO \(event.endDate.getFullFormattedTime(usingMilitaryTime: isUsingMilitaryTime()))"
         }

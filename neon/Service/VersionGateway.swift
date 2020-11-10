@@ -8,22 +8,28 @@
 
 import Foundation
 
+/// A singleton gateway service used to interface with app version related activity.
 struct VersionGateway {
     
     static let shared = VersionGateway()
     
-    let currentVersion = 6.1
-    let fullCurrentVersion = "6.1"
+    let currentMajorVersion = 6.2
+    let currentFullVersion = "6.2"
     
+    /// Determines whether or not the user has launched a new major app update for the first time; called in order to trigger the presentation of the WhatsNewView.
+    ///
+    /// - Returns:
+    /// Whether a new major version has been launched for the first time or not.
     func isNewVersion() -> Bool {
+        // Check if the user has had a previous version of the app installed
         guard let userVersion = UserDefaults.standard.object(forKey: "currentVersion") as? Double else {
-            UserDefaults.standard.set(currentVersion, forKey: "currentVersion")
+            UserDefaults.standard.set(currentMajorVersion, forKey: "currentVersion")
             return false
         }
         
-        UserDefaults.standard.set(currentVersion, forKey: "currentVersion")
+        UserDefaults.standard.set(currentMajorVersion, forKey: "currentVersion")
         UserDefaults.standard.synchronize()
         
-        return userVersion < currentVersion
+        return userVersion < currentMajorVersion
     }
 }

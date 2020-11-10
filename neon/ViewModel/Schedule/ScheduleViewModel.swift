@@ -12,27 +12,36 @@ import WidgetKit
 import StoreKit
 import SwiftDate
 
+/// The view model for the ScheduleView; governs most of the core Hour Blocks functionality.
 class ScheduleViewModel: ObservableObject {
     
-    let dataGateway: DataGateway
-    let calendarGateway: CalendarGatewayProtocol
-    let analyticsGateway: AnalyticsGatewayProtocol
-    let remindersGateway: RemindersGatewayProtocol
+    private let dataGateway: DataGateway
+    private let calendarGateway: CalendarGatewayProtocol
+    private let analyticsGateway: AnalyticsGatewayProtocol
+    private let remindersGateway: RemindersGatewayProtocol
     
-    @AppStorage("totalBlockCount") var totalBlockCount = 0
-    @AppStorage("dayStart") var dayStartValue = 0
-    @AppStorage("reminders") var remindersValue: Int = 0
+    /// A UserDefaults property of the total count of Hour Blocks the user has added.
+    @AppStorage("totalBlockCount") private var totalBlockCount = 0
+    /// A UserDefaults property determining whether or not a reminder should be set with the creation of an Hour Block.
+    @AppStorage("reminders") private var remindersValue: Int = 0
     
     @Published var currentDate: Date
-    @Published var currentHour = Calendar.current.component(.hour, from: Date())
-    @Published var todaysHourBlocks = [HourBlockViewModel]()
-    @Published var todaysCalendarBlocks = [EKEvent]()
-    
-    @Published var currentTip: Tip?
+    @Published private(set) var currentHour = Calendar.current.component(.hour, from: Date())
+    @Published private(set) var todaysHourBlocks = [HourBlockViewModel]()
+    @Published private(set) var todaysCalendarBlocks = [EKEvent]()
+    @Published private(set) var currentTip: Tip?
     
     @Published var isDatePickerViewPresented = false
     
-    init(dataGateway: DataGateway, calendarGateway: CalendarGatewayProtocol, analyticsGateway: AnalyticsGatewayProtocol, remindersGateway: RemindersGatewayProtocol, currentDate: Date = Date()) {
+    /// Creates an instance of the ScheduleViewModel and then loads the user's Hour Blocks for that day.
+    ///
+    /// - Parameters:
+    ///   - dataGateway: The data gateway instance used to interface with Core Data. By default, this is set to an instance of DataGateway.
+    ///   - calendarGateway: The calendar gateway instance used to interface with EventKit. By default, this is set to an instance of CalendarGateway.
+    ///   - analyticsGateway: The analytics gateway instance used to interface with Firebase Analytics. By default, this is set to an instance of AnalyticsGateway.
+    ///   - remindersGateway: The reminders gateway instance used to interface with UNUserNotificationCenter. By default, this is set to an instance of RemindersGateway.
+    ///   - currentDate: The date to be used for the Schedule. By default, this is set to today's date.
+    init(dataGateway: DataGateway = DataGateway(), calendarGateway: CalendarGatewayProtocol = CalendarGateway(), analyticsGateway: AnalyticsGatewayProtocol = AnalyticsGateway(), remindersGateway: RemindersGatewayProtocol = RemindersGateway(), currentDate: Date = Date()) {
         self.dataGateway = dataGateway
         self.calendarGateway = calendarGateway
         self.analyticsGateway = analyticsGateway
@@ -42,16 +51,15 @@ class ScheduleViewModel: ObservableObject {
         
         loadHourBlocks()
     }
+}
+
+// MARK: - Hour Block Operations
+
+extension ScheduleViewModel {
     
-    convenience init(currentDate: Date = Date()) {
-        self.init(dataGateway: DataGateway(),
-                  calendarGateway: CalendarGateway(),
-                  analyticsGateway: AnalyticsGateway(),
-                  remindersGateway: RemindersGateway(),
-                  currentDate: currentDate)
-    }
-    
+    /// Loads the current day's Hour Blocks from the Core Data store and calendar blocks from EventKit.
     func loadHourBlocks() {
+        // Create empty Hour Block view models for all 24 hours in the day
         var hourBlockViewModels = (0 ..< 24).map { hour in
             HourBlockViewModel(for: HourBlock(day: currentDate,
                                               hour: hour,
@@ -59,6 +67,7 @@ class ScheduleViewModel: ObservableObject {
                                               icon: .blocks))
         }
         
+        // Replace empty Hour Block view models with any Hour Blocks loaded from Core Data
         for hourBlock in dataGateway.getHourBlocks(for: currentDate) {
             let subBlocks = dataGateway.getSubBlocks(for: hourBlock)
             hourBlockViewModels[hourBlock.hour] = HourBlockViewModel(for: hourBlock, and: subBlocks)
@@ -68,34 +77,30 @@ class ScheduleViewModel: ObservableObject {
         todaysCalendarBlocks = calendarGateway.getEvents(for: currentDate)
     }
     
-    func handleCalendarPermissions() {
-        calendarGateway.handlePermissions { _ in
-            DispatchQueue.main.async { self.loadHourBlocks() }
-        }
-    }
-    
+    /// Adds a given Hour Block to the Core Data store and the view model.
+    ///
+    /// - Parameters:
+    ///   - hourBlock: The Hour Block to be added.
+    ///   - subBlocks: The array of corresponding Sub Blocks to be added as part of the Hour Block. By default, this is set to nil.
     func addBlock(_ hourBlock: HourBlock, _ subBlocks: [SubBlock]? = nil) {
         HapticsGateway.shared.triggerAddBlockHaptic()
         
         dataGateway.save(hourBlock: hourBlock)
         if let subBlocks = subBlocks { dataGateway.save(subBlocks: subBlocks) }
-        analyticsGateway.log(hourBlock: hourBlock)
-        if remindersValue == 0 { remindersGateway.setReminder(for: hourBlock, with: hourBlock.title!) }
-        
         withAnimation { todaysHourBlocks[hourBlock.hour] = HourBlockViewModel(for: hourBlock) }
         
-        handleBlockCountEvents()
-        WidgetCenter.shared.reloadTimelines(ofKind: "ScheduleWidget")
-    }
-    
-    private func handleBlockCountEvents() {
-        totalBlockCount = totalBlockCount + 1
+        if remindersValue == 0 { remindersGateway.setReminder(for: hourBlock, with: hourBlock.title!) }
         
-        if totalBlockCount == 1 { withAnimation { currentTip = .blockOptions } }
-        if totalBlockCount == 5 { withAnimation { currentTip = .headerSwipe } }
-        if totalBlockCount == 10 { SKStoreReviewController.requestReview() }
+        analyticsGateway.log(hourBlock: hourBlock)
+        handleBlockCountEvents()
+        WidgetCenter.shared.reloadTimelines(ofKind: AppPublishers.Names.scheduleWidgetTimeline)
     }
     
+    
+    /// Removes a given Hour Block from the Core Data store and the view model.
+    ///
+    /// - Parameters:
+    ///   - hourBlock: The Hour Block to be removed.
     func clearBlock(_ hourBlock: HourBlock) {
         HapticsGateway.shared.triggerClearBlockHaptic()
         
@@ -108,9 +113,16 @@ class ScheduleViewModel: ObservableObject {
                                                                              title: nil,
                                                                              icon: .blocks))
         
-        WidgetCenter.shared.reloadTimelines(ofKind: "ScheduleWidget")
+        WidgetCenter.shared.reloadTimelines(ofKind: AppPublishers.Names.scheduleWidgetTimeline)
     }
     
+    /// Reschedules a given Hour Block within the Core Data store and the view model.
+    ///
+    /// - Parameters:
+    ///   - originalBlock: The original Hour Block that is set to be rescheduled.
+    ///   - rescheduledBlock: The newly rescheduled Hour Block.
+    ///   - replacedBlock: The Hour Block to be replaced, which may be empty.
+    ///   - swappedBlock: The Hour Block being swapped, if there is one.
     func rescheduleBlock(originalBlock: HourBlock, rescheduledBlock: HourBlock, replacedBlock: HourBlock, swappedBlock: HourBlock?) {
         HapticsGateway.shared.triggerLightImpact()
         
@@ -127,20 +139,22 @@ class ScheduleViewModel: ObservableObject {
             remindersGateway.setReminder(for: swappedBlock, with: swappedBlock.title!)
         }
         
-        WidgetCenter.shared.reloadTimelines(ofKind: "ScheduleWidget")
+        WidgetCenter.shared.reloadTimelines(ofKind: AppPublishers.Names.scheduleWidgetTimeline)
     }
+}
+
+// MARK: - Date Picker Functionality
+
+extension ScheduleViewModel {
     
-    func dismissTip() {
-        HapticsGateway.shared.triggerLightImpact()
-        withAnimation { currentTip = nil }
-    }
-    
+    /// Presents the ScheduleDatePickerView.
     func presentDatePickerView() {
         HapticsGateway.shared.triggerLightImpact()
         isDatePickerViewPresented = true
     }
     
-    func advanceDate() {
+    /// Advances the schedule's current day by 1 then reloads the Hour Blocks for the new date.
+    func advanceCurentDay() {
         HapticsGateway.shared.triggerSoftImpact()
         
         withAnimation {
@@ -149,7 +163,8 @@ class ScheduleViewModel: ObservableObject {
         }
     }
     
-    func regressDate() {
+    /// Regresses the schedule's current day by 1 then reloads the Hour Blocks for the new date.
+    func regressCurrentDay() {
         HapticsGateway.shared.triggerSoftImpact()
         
         withAnimation {
@@ -158,6 +173,7 @@ class ScheduleViewModel: ObservableObject {
         }
     }
     
+    /// Sets the schedule's current day to today then reloads the Hour Blocks for the new date.
     func returnToToday() {
         HapticsGateway.shared.triggerLightImpact()
         
@@ -166,12 +182,65 @@ class ScheduleViewModel: ObservableObject {
             loadHourBlocks()
         }
     }
+}
+
+// MARK: - Miscellaneous Functionality
+
+extension ScheduleViewModel {
     
-    func updateCurrentDate() {
+    /// Requests permission to access user calendars, then reloads the Schedule's Hour Blocks if permission is granted
+    func handleCalendarPermissions() {
+        calendarGateway.requestPermissions { granted in
+            if granted {
+                DispatchQueue.main.async { self.loadHourBlocks() }
+            }
+        }
+    }
+    
+    /// Refreshes the current date and hour, then reloads the Hour Blocks for the schedule.
+    func refreshCurrentDate() {
         currentDate = Date()
         currentHour = Calendar.current.component(.hour, from: Date())
         
         loadHourBlocks()
-        WidgetCenter.shared.reloadTimelines(ofKind: "ScheduleWidget")
+        WidgetCenter.shared.reloadTimelines(ofKind: AppPublishers.Names.scheduleWidgetTimeline)
+    }
+    
+    /// Sets the current tip to be nil, resulting in the current tip card being dismissed from the Schedule.
+    func dismissTip() {
+        HapticsGateway.shared.triggerLightImpact()
+        setCurrentTip(as: nil)
+    }
+}
+
+// MARK: - Private Functionality
+
+extension ScheduleViewModel {
+    
+    /// Increases the total count of Hour Blocks added by 1, then performs any block count related events.
+    private func handleBlockCountEvents() {
+        totalBlockCount = totalBlockCount + 1
+        
+        #if targetEnvironment(macCatalyst)
+        switch totalBlockCount {
+        case 1: setCurrentTip(as: .blockOptions)
+        default: break
+        }
+        #else
+        switch totalBlockCount {
+        case 1: setCurrentTip(as: .blockOptions)
+        case 5: setCurrentTip(as: .headerSwipe)
+        case 10: SKStoreReviewController.requestReview()
+        default: break
+        }
+        #endif
+    }
+    
+    /// Sets the current tip to a given tip.
+    ///
+    /// - Parameters:
+    ///   - tip: The tip to be set as the current tip.
+    private func setCurrentTip(as tip: Tip?) {
+        withAnimation { currentTip = tip }
     }
 }

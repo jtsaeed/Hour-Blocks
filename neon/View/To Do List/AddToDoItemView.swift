@@ -8,12 +8,21 @@
 
 import SwiftUI
 
+/// A view where a To Do item can be added by a user inputted title.
 struct AddToDoItemView: View {
     
-    @ObservedObject var viewModel: ToDoListViewModel
+    @ObservedObject private var viewModel: ToDoListViewModel
     
-    @State var title = ""
-    @State var urgency: ToDoUrgency = .whenever
+    @State private var title = ""
+    @State private var urgency: ToDoUrgency = .whenever
+    
+    /// Creates an instance of AddToDoItemView.
+    ///
+    /// - Parameters:
+    ///   - viewModel: The view model of the To Do List.
+    init(viewModel: ToDoListViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         NavigationView {
@@ -21,12 +30,12 @@ struct AddToDoItemView: View {
                 HStack(spacing: 16) {
                     NeonTextField(text: $title,
                                   onReturn: addToDoItem)
-                    IconButton(iconName: "plus",
+                    IconButton(iconName: AppStrings.Icons.add,
                                iconWeight: .bold,
                                action: addToDoItem)
                 }.padding(24)
                 
-                Text("Urgency")
+                Text(AppStrings.ToDoList.ToDoItem.urgency)
                     .font(.system(size: 28, weight: .bold, design: .default))
                     .padding(.leading, 24)
                 Picker("", selection: $urgency) {
@@ -37,13 +46,18 @@ struct AddToDoItemView: View {
                     .padding(.horizontal, 24)
                 
                 Spacer()
-            }.navigationTitle("Add a To Do Item")
-            .navigationBarItems(leading: Button("Cancel", action: dismiss))
+            }.navigationTitle(AppStrings.ToDoList.addHeader)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(AppStrings.Global.cancel, action: dismiss)
+                }
+            }
         }
-        .accentColor(Color("AccentColor"))
+        .accentColor(Color(AppStrings.Colors.accent))
     }
     
-    func addToDoItem() {
+    /// Adds a given To Do item after checking if the title is empty.
+    private func addToDoItem() {
         if !title.isEmpty {
             viewModel.add(toDoItem: ToDoItem(title: title, urgency: urgency))
             dismiss()
@@ -52,7 +66,8 @@ struct AddToDoItemView: View {
         }
     }
     
-    func dismiss() {
+    /// Dismisses the current view.
+    private func dismiss() {
         viewModel.dismissAddToDoItemView()
     }
 }

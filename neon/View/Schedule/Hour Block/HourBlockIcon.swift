@@ -25,7 +25,7 @@ struct HourBlockIcon: View {
         Image(name)
             .resizable()
             .frame(width: 40, height: 40)
-            .foregroundColor(Color("HourBlockIconColor"))
+            .foregroundColor(Color(AppStrings.Colors.hourBlockIcon))
     }
 }
 

@@ -23,23 +23,23 @@ struct WhatsNewView: View {
     
     var body: some View {
         VStack {
-            Text("What's new in\nHour Blocks \(VersionGateway.shared.fullCurrentVersion)")
+            Text(AppStrings.WhatsNew.header)
                 .font(.system(size: 34, weight: .bold, design: .default))
                 .multilineTextAlignment(.center)
                 .padding(.top, 24)
             
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
-                    TextBlockView(title: "To Do List Widget 📱",
-                                  content: "Get a snapshot of your To Do List without even leaving your home screen!")
-                    TextBlockView(title: "More Alternative Icons 🎨",
-                                  content: "Have your pick from a total of 6 alternative app icons for Hour Blocks")
+                    TextBlockView(title: "iCloud Sync ☁️",
+                                  content: "Hour Blocks and To Do Items now sync across your iOS, iPadOS & macOS")
+                    TextBlockView(title: "To Do List History 🕖",
+                                  content: "You can now view your completed To Do List items in one convenient sheet")
                     TextBlockView(title: "Small Improvements ✨",
-                                  content: "Fixed a bug that would sometimes cause a crash on launch + other small fixes & tweaks")
+                                  content: "Native support for iPhone 12 & some minor UI tweaks in various places")
                 }
             }.padding(.top, 24)
             
-            ActionButton("Let's go!", action: dismiss)
+            ActionButton(AppStrings.WhatsNew.dismissButtonTitle, action: dismiss)
         }.padding(.vertical, 24)
         .padding(.horizontal, 32)
     }

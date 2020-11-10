@@ -32,9 +32,9 @@ struct TipCardView: View {
                     .padding(.trailing, 16)
                     .fixedSize(horizontal: false, vertical: true)
                 Spacer()
-                IconButton(iconName: "checkmark",
+                IconButton(iconName: AppStrings.Icons.checkmark,
                            iconWeight: .semibold,
-                           iconColor: "ConfirmColor",
+                           iconColor: Color(AppStrings.Colors.confirmation),
                            action: onDismiss)
             }
         }.padding(.horizontal, 24)

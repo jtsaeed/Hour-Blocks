@@ -37,10 +37,18 @@ struct EditHourBlockView: View {
                     
                     Spacer()
                 }
-            }.navigationTitle("Edit Hour Block")
-            .navigationBarItems(leading: Button("Cancel", action: viewModel.dismissEditBlockView),
-                                trailing: Button("Save", action: { viewModel.saveChanges(title: title, icon: icon) }))
-        }.accentColor(Color("AccentColor"))
+            }.navigationTitle(AppStrings.Schedule.HourBlock.editHeader)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(AppStrings.Global.cancel, action: viewModel.dismissEditBlockView)
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(AppStrings.Global.save) {
+                        viewModel.saveChanges(newTitle: title, newIcon: icon)
+                    }
+                }
+            }
+        }.accentColor(Color(AppStrings.Colors.accent))
     }
 }
 

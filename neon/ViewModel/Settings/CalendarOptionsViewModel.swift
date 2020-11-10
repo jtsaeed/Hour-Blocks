@@ -9,29 +9,44 @@
 import Foundation
 import EventKit
 
+/// The view model for the CalendarOptionsView.
 class CalendarOptionsViewModel: ObservableObject {
     
-    let calendarGateway: CalendarGateway
+    private let calendarGateway: CalendarGatewayProtocol
     
-    @Published var allCalendars = [EKCalendar]()
-    @Published var enabledCalendars = [String: Bool]()
+    @Published private(set) var allCalendars = [EKCalendar]()
+    @Published private(set) var enabledCalendars = [String: Bool]()
     
-    init(calendarGateway: CalendarGateway) {
+    /// Creates an instance of the CalendarOptionsViewModel and then loads the user's calendars.
+    ///
+    /// - Parameters:
+    ///   - calendarGateway: The calendar gateway instance used to interface with EventKit. By default, this is set to an instance of CalendarGateway.
+    init(calendarGateway: CalendarGatewayProtocol = CalendarGateway()) {
         self.calendarGateway = calendarGateway
         
         loadCalendars()
     }
     
-    convenience init() {
-        self.init(calendarGateway: CalendarGateway())
+    /// Determines whether or not the user has granted calendar access permissions to the app.
+    ///
+    /// - Returns:
+    /// Whether access is graned or not.
+    func calendarAccessGranted() -> Bool {
+        return calendarGateway.hasPermission()
     }
     
+    /// Loads all of the users available calendars, and loads which ones are enabled to be synced with the app.
     func loadCalendars() {
         allCalendars = calendarGateway.getAllCalendars()
         
         enabledCalendars = UserDefaults.standard.dictionary(forKey: "enabledCalendars") as? [String: Bool] ?? calendarGateway.initialiseEnabledCalendars()
     }
     
+    /// Updates the enabled status of a specific user calendar.
+    ///
+    /// - Parameters:
+    ///   - identifier: The unique identifier of the calendar to be updated.
+    ///   - value: Whether or not to set the calendar as enabled to be sync with the app.
     func updateCalendar(for identifier: String, with value: Bool) {
         enabledCalendars[identifier] = value
         

@@ -9,4 +9,5 @@
 import Foundation
 import EventKit
 
+/// Conformity for the purpose of ensuring each instance of EKEvent is unique
 extension EKEvent: Identifiable { }

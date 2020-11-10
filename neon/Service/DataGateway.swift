@@ -11,24 +11,35 @@ import UIKit
 import CoreData
 import SwiftDate
 
+/// The gateway service used to interface with Core Data.
 struct DataGateway {
     
     let managedObjectContext: NSManagedObjectContext
     
+    /// Creates an instance of the DataGateway with the managed object context from the AppDelegate.
     init() {
         self.managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         self.managedObjectContext.automaticallyMergesChangesFromParent = true
     }
     
+    /// Creates an instance of the DataGateway.
+    ///
+    /// - Parameters:
+    ///   - managedObjectContext: The managed object context to be used.
     init(for managedObjectContext: NSManagedObjectContext) {
         self.managedObjectContext = managedObjectContext
+        self.managedObjectContext.automaticallyMergesChangesFromParent = true
     }
 }
 
-// MARK: - Create
+// MARK: - Create Operations
 
 extension DataGateway {
     
+    /// Saves a given Hour Block to the Core Data store.
+    ///
+    /// - Parameters:
+    ///   - hourBlock: The Hour Block to be saved.
     func save(hourBlock: HourBlock) {
         hourBlock.getEntity(context: managedObjectContext)
         
@@ -39,6 +50,10 @@ extension DataGateway {
         }
     }
     
+    /// Saves a given Sub Block to the Core Data store.
+    ///
+    /// - Parameters:
+    ///   - subBlock: The Sub Block to be saved.
     func save(subBlock: SubBlock) {
         subBlock.getEntity(context: managedObjectContext)
         
@@ -49,6 +64,10 @@ extension DataGateway {
         }
     }
     
+    /// Saves a given array of Sub Blocks to the Core Data store.
+    ///
+    /// - Parameters:
+    ///   - subBlocks: The array of Sub Blocks to be saved.
     func save(subBlocks: [SubBlock]) {
         for subBlock in subBlocks {
             subBlock.getEntity(context: managedObjectContext)
@@ -61,6 +80,10 @@ extension DataGateway {
         }
     }
     
+    /// Saves a given To Do item to the Core Data store.
+    ///
+    /// - Parameters:
+    ///   - hourBlock: The To Do item to be saved.
     func save(toDoItem: ToDoItem) {
         toDoItem.getEntity(context: managedObjectContext)
         
@@ -72,10 +95,17 @@ extension DataGateway {
     }
 }
 
-// MARK: - Retrieve
+// MARK: - Retrieve Operations
 
 extension DataGateway {
     
+    /// Retrieves all Hour Blocks for a given day from the Core Data store.
+    ///
+    /// - Parameters:
+    ///   - day: The day to match when querying Hour Blocks from the Core Data store.
+    ///
+    /// - Returns:
+    /// An array of saved Hour Blocks.
     func getHourBlocks(for day: Date) -> [HourBlock] {
         var hourBlocks = [HourBlockEntity]()
         let request = NSFetchRequest<HourBlockEntity>(entityName: "HourBlockEntity")
@@ -90,6 +120,15 @@ extension DataGateway {
         return hourBlocks.compactMap { HourBlock(fromEntity: $0) }
     }
     
+    /// Retrieves all Hour Blocks within a month prior for a given day and matching a given hour from the Core Data store.
+    /// This function is purely used to determine frequently added Hour Blocks to generate suggestions within the SuggestionsGateway.
+    ///
+    /// - Parameters:
+    ///   - day: The day from which the previous month's Hour Blocks are to be queried from the Core Data store.
+    ///   - hour: The hour to match when querying Hour Blocks from the Core Data store.
+    ///
+    /// - Returns:
+    /// An array of saved Hour Blocks.
     func getLastMonthsHourBlocks(from day: Date, for hour: Int) -> [HourBlock] {
         var hourBlocks = [HourBlockEntity]()
         let request = NSFetchRequest<HourBlockEntity>(entityName: "HourBlockEntity")
@@ -106,6 +145,13 @@ extension DataGateway {
         return hourBlocks.compactMap({ HourBlock(fromEntity: $0) })
     }
     
+    /// Retrieves all Sub Blocks corresponding to a given Hour Block from the Core Data store.
+    ///
+    /// - Parameters:
+    ///   - hourBlock: The Hour Block to match when querying Sub Blocks from the Core Data store.
+    ///
+    /// - Returns:
+    /// An array of saved Sub Blocks.
     func getSubBlocks(for hourBlock: HourBlock) -> [SubBlock] {
         var subBlocks = [SubBlockEntity]()
         
@@ -122,10 +168,34 @@ extension DataGateway {
         return subBlocks.compactMap { SubBlock(fromEntity: $0) }
     }
     
-    func getToDoItems() -> [ToDoItem] {
+    /// Retrieves all incomplete To Do items from the Core Data store.
+    ///
+    /// - Returns:
+    /// An array of incomplete To Do items.
+    func getIncompleteToDoItems() -> [ToDoItem] {
         var toDoEntities = [ToDoEntity]()
         
         let request = NSFetchRequest<ToDoEntity>(entityName: "ToDoEntity")
+        request.predicate = NSPredicate(format: "completed == %@", NSNumber(value: false))
+        
+        do {
+            toDoEntities = try managedObjectContext.fetch(request)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        return toDoEntities.compactMap { ToDoItem(fromEntity: $0) }
+    }
+    
+    /// Retrieves all completed To Do items from the Core Data store.
+    ///
+    /// - Returns:
+    /// An array of completed To Do items.
+    func getCompletedToDoItems() -> [ToDoItem] {
+        var toDoEntities = [ToDoEntity]()
+        
+        let request = NSFetchRequest<ToDoEntity>(entityName: "ToDoEntity")
+        request.predicate = NSPredicate(format: "completed == %@", NSNumber(value: true))
         
         do {
             toDoEntities = try managedObjectContext.fetch(request)
@@ -137,10 +207,16 @@ extension DataGateway {
     }
 }
 
-// MARK: - Update
+// MARK: - Update Operations
 
 extension DataGateway {
     
+    /// Updates a given property for a given Hour Block within the Core Data store.
+    ///
+    /// - Parameters:
+    ///   - hourBlock: The Hour Block to be updated.
+    ///   - value: The new value to be set.
+    ///   - key: The key of the property to be updated.
     func edit(hourBlock: HourBlock, set value: Any?, forKey key: String) {
         let request = NSFetchRequest<HourBlockEntity>(entityName: "HourBlockEntity")
         request.predicate = NSPredicate(format: "identifier == %@", hourBlock.id)
@@ -158,6 +234,12 @@ extension DataGateway {
         }
     }
     
+    /// Updates a given property for a given To Do item within the Core Data store.
+    ///
+    /// - Parameters:
+    ///   - toDoItem: The To Do item to be updated.
+    ///   - value: The new value to be set.
+    ///   - key: The key of the property to be updated.
     func edit(toDoItem: ToDoItem, set value: Any?, forKey key: String) {
         let request = NSFetchRequest<ToDoEntity>(entityName: "ToDoEntity")
         request.predicate = NSPredicate(format: "identifier == %@", toDoItem.id)
@@ -176,10 +258,14 @@ extension DataGateway {
     }
 }
 
-// MARK: - Delete
+// MARK: - Delete Operations
 
 extension DataGateway {
     
+    /// Deletes a given Hour Block from the Core Data store.
+    ///
+    /// - Parameters:
+    ///   - hourBlock: The Hour Block to be deleted.
     func delete(hourBlock: HourBlock) {
         let request = NSFetchRequest<HourBlockEntity>(entityName: "HourBlockEntity")
         request.predicate = NSPredicate(format: "identifier == %@", hourBlock.id)
@@ -197,23 +283,10 @@ extension DataGateway {
         }
     }
     
-    func deleteAllHourBlocks() {
-        let request = NSFetchRequest<HourBlockEntity>(entityName: "HourBlockEntity")
-        
-        do {
-            let hourBlockEntities = try managedObjectContext.fetch(request)
-            
-            for hourBlockEntity in hourBlockEntities {
-                managedObjectContext.delete(hourBlockEntity)
-                deleteSubBlocks(of: HourBlock(fromEntity: hourBlockEntity)!)
-            }
-            
-            try managedObjectContext.save()
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-    
+    /// Deletes all Sub Blocks corresponding to a given Hour Block from the Core Data store.
+    ///
+    /// - Parameters:
+    ///   - hourBlock: The Hour Block to match when querying Sub Blocks from the Core Data store.
     func deleteSubBlocks(of hourBlock: HourBlock) {
         let request = NSFetchRequest<SubBlockEntity>(entityName: "SubBlockEntity")
         request.predicate = NSPredicate(format: "hourBlockIdentifier == %@", hourBlock.id)
@@ -231,6 +304,10 @@ extension DataGateway {
         }
     }
     
+    /// Deletes a given Sub Block from the Core Data store.
+    ///
+    /// - Parameters:
+    ///   - subBlock: The Sub Block to be deleted.
     func delete(subBlock: SubBlock) {
         let request = NSFetchRequest<SubBlockEntity>(entityName: "SubBlockEntity")
         request.predicate = NSPredicate(format: "identifier == %@", subBlock.id)
@@ -248,6 +325,10 @@ extension DataGateway {
         }
     }
     
+    /// Deletes a given To Do item from the Core Data store.
+    ///
+    /// - Parameters:
+    ///   - toDoItem: The To Do item to be deleted.
     func delete(toDoItem: ToDoItem) {
         let request = NSFetchRequest<ToDoEntity>(entityName: "ToDoEntity")
         request.predicate = NSPredicate(format: "identifier == %@", toDoItem.id)
@@ -256,22 +337,6 @@ extension DataGateway {
             let toDoEntities = try managedObjectContext.fetch(request)
             
             if let toDoEntity = toDoEntities.first {
-                managedObjectContext.delete(toDoEntity)
-            }
-            
-            try managedObjectContext.save()
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-    
-    func deleteAllToDoItems() {
-        let request = NSFetchRequest<ToDoEntity>(entityName: "ToDoEntity")
-        
-        do {
-            let toDoEntities = try managedObjectContext.fetch(request)
-            
-            for toDoEntity in toDoEntities {
                 managedObjectContext.delete(toDoEntity)
             }
             

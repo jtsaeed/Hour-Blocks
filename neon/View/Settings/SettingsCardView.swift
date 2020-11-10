@@ -8,12 +8,27 @@
 
 import SwiftUI
 
+/// A Card based view for displaying a Settings section.
 struct SettingsCardView: View {
     
-    let title: String
-    let subtitle: String
-    let iconName: String
-    let action: () -> Void
+    private let title: String
+    private let subtitle: String
+    private let iconName: String
+    private let action: () -> Void
+    
+    /// Creates an instance of SettingsCardView.
+    ///
+    /// - Parameters:
+    ///   - title: The text string for the main label on the bottom.
+    ///   - subtitle: The text string for the secondary label at the top.
+    ///   - iconName: The SF Symbol name of the icon to be used as part of the Card's trailing IconButton.
+    ///   - action: The callback function to be triggered when the user has tapped on the Card's trailing IconButton.
+    init(title: String, subtitle: String, iconName: String, action: @escaping () -> Void) {
+        self.title = title
+        self.subtitle = subtitle
+        self.iconName = iconName
+        self.action = action
+    }
     
     var body: some View {
         Card {

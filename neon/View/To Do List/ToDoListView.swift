@@ -11,22 +11,29 @@ import SwiftUI
 /// The root view of the To Do List tab
 struct ToDoListView: View {
     
-    let refreshPublisher = NotificationCenter.default.publisher(for: NSNotification.Name("RefreshToDoList"))
-    
     @StateObject var viewModel = ToDoListViewModel()
     
     var body: some View {
-        VStack {
-            HeaderView(title: "To Do List", subtitle: "\(viewModel.toDoItems.count) Items") {
-                IconButton(iconName: "plus",
-                              iconWeight: .bold,
-                              action: viewModel.presentAddToDoItemView)
-            }.sheet(isPresented: $viewModel.isAddToDoItemViewPresented) {
-                AddToDoItemView(viewModel: viewModel)
-            }
-            
-            ScrollView(showsIndicators: false) {
-                VStack(spacing: 24) {
+        ZStack {
+            Color(AppStrings.Colors.background)
+            VStack {
+                HeaderView(title: AppStrings.ToDoList.header, subtitle: AppStrings.ToDoList.itemsCount(count: viewModel.toDoItems.count)) {
+                    IconButton(iconName: AppStrings.Icons.history,
+                               iconWeight: .semibold,
+                               action: viewModel.presentToDoListHistoryView)
+                        .sheet(isPresented: $viewModel.isToDoListHistoryViewPresented) {
+                            ToDoListHistoryView(isPresented: $viewModel.isToDoListHistoryViewPresented )
+                        }
+                    
+                    IconButton(iconName: AppStrings.Icons.add,
+                               iconWeight: .bold,
+                               action: viewModel.presentAddToDoItemView)
+                        .sheet(isPresented: $viewModel.isAddToDoItemViewPresented) {
+                            AddToDoItemView(viewModel: viewModel)
+                        }
+                }
+                
+                CardsListView {
                     if let tip = viewModel.currentTip {
                         TipCardView(for: tip, onDismiss: viewModel.dismissTip)
                         NeonDivider().padding(.horizontal, 32)
@@ -34,14 +41,14 @@ struct ToDoListView: View {
                     
                     ForEach(viewModel.toDoItems) { toDoItemViewModel in
                         ToDoItemView(viewModel: toDoItemViewModel,
-                                     onItemCleared: { viewModel.clear(toDoItem: toDoItemViewModel.toDoItem) })
+                                     onItemCleared: { viewModel.clear(toDoItem: toDoItemViewModel.toDoItem) },
+                                     onItemCompleted: { viewModel.markAsCompleted(toDoItem: toDoItemViewModel.toDoItem)})
                     }
-                }.padding(.top, 8)
-                .padding(.bottom, 24)
+                }
             }
         }.navigationBarHidden(true)
         .onAppear(perform: viewModel.loadToDoItems)
-        .onReceive(refreshPublisher) { _ in viewModel.loadToDoItems() }
+        .onReceive(AppPublishers.refreshToDoListPublisher) { _ in viewModel.loadToDoItems() }
     }
 }
 

@@ -22,10 +22,14 @@ class WidgetDataGateway {
         var defaultURL: URL?
         if let storeDescription = container.persistentStoreDescriptions.first, let url = storeDescription.url {
             defaultURL = FileManager.default.fileExists(atPath: url.path) ? url : nil
+            storeDescription.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.com.evh98.neon")
         }
         
         if defaultURL == nil {
-            container.persistentStoreDescriptions = [NSPersistentStoreDescription(url: storeURL)]
+            let storeDescription = NSPersistentStoreDescription(url: storeURL)
+            storeDescription.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.com.evh98.neon")
+            
+            container.persistentStoreDescriptions = [storeDescription]
         }
         
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -94,6 +98,7 @@ class WidgetDataGateway {
         var toDoItems = [ToDoEntity]()
         
         let request = NSFetchRequest<ToDoEntity>(entityName: "ToDoEntity")
+        request.predicate = NSPredicate(format: "completed == %@", NSNumber(value: false))
         
         do {
             toDoItems = try persistentContainer.viewContext.fetch(request)

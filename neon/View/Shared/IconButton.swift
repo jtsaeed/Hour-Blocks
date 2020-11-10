@@ -10,9 +10,12 @@ import SwiftUI
 /// The circular coloured icon button used throughout Hour Blocks.
 struct IconButton: View {
     
+    /// Environment variable identifying the current device colour scheme between dark or light mode.
+    @Environment(\.colorScheme) var colorScheme
+    
     private let iconName: String
     private let iconWeight: Font.Weight
-    private let iconColor: String
+    private let iconColor: Color
     
     private let action: () -> Void
     
@@ -23,7 +26,7 @@ struct IconButton: View {
     ///   - iconWeight: The weight of the icon. By default, this is set to regular.
     ///   - iconColor: The color of the icon. By default, this is set to be the accent color.
     ///   - action: The callback function to be triggered when the user has tapped on the button.
-    init(iconName: String, iconWeight: Font.Weight = .regular, iconColor: String = "AccentColor", action: @escaping () -> Void) {
+    init(iconName: String, iconWeight: Font.Weight = .regular, iconColor: Color = Color(AppStrings.Colors.accent), action: @escaping () -> Void) {
         self.iconName = iconName
         self.iconWeight = iconWeight
         self.iconColor = iconColor
@@ -32,20 +35,36 @@ struct IconButton: View {
     
     var body: some View {
         Button(action: action) {
-            ZStack {
-                Circle()
-                    .foregroundColor(Color("\(iconColor)Light"))
-                    .frame(width: 40, height: 40)
-                Image(systemName: iconName)
-                    .foregroundColor(Color(iconColor))
-                    .font(.system(size: 20, weight: iconWeight, design: .rounded))
-            }
-        }
+            Image(systemName: iconName)
+        }.buttonStyle(IconButtonStyle(iconWeight: iconWeight,
+                                      iconColor: iconColor,
+                                      backgroundColor: iconColor.getLightColor(darkMode: colorScheme == .dark)))
+    }
+}
+
+private struct IconButtonStyle: ButtonStyle {
+    
+    let iconWeight: Font.Weight
+    let iconColor: Color
+    let backgroundColor: Color
+
+    func makeBody(configuration: Configuration) -> some View {
+        ZStack {
+            Circle()
+                .foregroundColor(backgroundColor)
+                .opacity(configuration.isPressed ? 0.5 : 1)
+                .frame(width: 40, height: 40)
+            configuration.label
+                .foregroundColor(iconColor)
+                .opacity(configuration.isPressed ? 0.75 : 1)
+                .font(.system(size: 20, weight: iconWeight, design: .rounded))
+        }.scaleEffect(configuration.isPressed ? 0.9 : 1)
+        .animation(.easeInOut(duration: 0.2))
     }
 }
 
 struct IconButton_Previews: PreviewProvider {
     static var previews: some View {
-        IconButton(iconName: "plus", action: { print("test") })
+        IconButton(iconName: AppStrings.Icons.add, action: { print("test") })
     }
 }

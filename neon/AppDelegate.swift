@@ -8,14 +8,19 @@
 
 import UIKit
 import CoreData
-import Firebase
+import Amplitude
+import Sentry
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        FirebaseApp.configure()
+        Amplitude.instance().initializeApiKey("b875f7d7fce79d083d2a1ff3168b530e")
+        
+        SentrySDK.start { options in
+            options.dsn = "https://074428a9187846d8be9bd2cb0656a053@o470189.ingest.sentry.io/5500494"
+        }
         
         return true
     }
@@ -57,12 +62,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var defaultURL: URL?
         if let storeDescription = container.persistentStoreDescriptions.first, let url = storeDescription.url {
             defaultURL = FileManager.default.fileExists(atPath: url.path) ? url : nil
+            storeDescription.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.com.evh98.neon")
         }
         
         if defaultURL == nil {
-            container.persistentStoreDescriptions = [
-                NSPersistentStoreDescription(url: storeURL)
-            ]
+            let storeDescription = NSPersistentStoreDescription(url: storeURL)
+            storeDescription.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.com.evh98.neon")
+            
+            container.persistentStoreDescriptions = [storeDescription]
         }
         
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in

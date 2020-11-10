@@ -31,9 +31,9 @@ struct HeaderView<Content>: View where Content: View {
     var body: some View {
         ZStack(alignment: .leading) {
             Rectangle()
-                .foregroundColor(Color("BackgroundColor"))
+                .foregroundColor(Color(AppStrings.Colors.background))
                 .frame(height: 96)
-            HStack {
+            HStack(spacing: 16) {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(subtitle.uppercased())
                         .font(.system(size: 14, weight: .semibold, design: .default))
@@ -53,7 +53,7 @@ struct HeaderView<Content>: View where Content: View {
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
         HeaderView(title: "Schedule", subtitle: "Sat 27 Jun") {
-            IconButton(iconName: "calendar", action: { print("test") })
+            IconButton(iconName: AppStrings.Icons.calendar, action: { print("test") })
         }
     }
 }

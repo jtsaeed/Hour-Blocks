@@ -10,6 +10,10 @@ import Foundation
 
 extension String {
     
+    /// Capitalizes a string but excludes commonly non-capitalized words & excludes dates
+    ///
+    /// - Returns:
+    /// A 'smart' capitalized string
     func smartCapitalization() -> String {
         var title = ""
         let words = self.lowercased().components(separatedBy: " ")
@@ -25,6 +29,7 @@ extension String {
         return String(title.dropLast())
     }
     
+    @available(*, deprecated, message: "This function will be redundant after a small ToDoUrgency refactor")
     func urgencyToColorString() -> String {
         if self == "urgent" {
             return "UrgentColor"

@@ -13,7 +13,7 @@ struct NeonDivider: View {
     
     var body: some View {
         RoundedRectangle(cornerRadius: 1)
-            .foregroundColor(Color("DividerColor"))
+            .foregroundColor(Color(AppStrings.Colors.divider))
             .frame(height: 2)
     }
 }

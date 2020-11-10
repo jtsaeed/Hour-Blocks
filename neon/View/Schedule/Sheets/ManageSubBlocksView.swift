@@ -29,23 +29,25 @@ struct ManageSubBlocksView: View {
                 HStack(spacing: 16) {
                     NeonTextField(text: $title,
                                   onReturn: addSubBlock)
-                    IconButton(iconName: "plus",
+                    IconButton(iconName: AppStrings.Icons.add,
                                iconWeight: .bold,
                                action: addSubBlock)
                 }.padding(24)
                 
-                ScrollView(showsIndicators: false) {
-                    VStack(spacing: 24) {
-                        ForEach(viewModel.subBlocks) { subBlock in
-                            SubBlockCardView(subBlockTitle: subBlock.title,
-                                             hourBlockTitle: viewModel.hourBlock.title!,
-                                             onSubBlockCleared: { viewModel.clearSubBlock(subBlock) })
-                        }
-                    }.padding(.top, 8)
+                CardsListView {
+                    ForEach(viewModel.subBlocks) { subBlock in
+                        SubBlockCardView(subBlockTitle: subBlock.title,
+                                         hourBlockTitle: viewModel.hourBlock.title!,
+                                         onSubBlockCleared: { viewModel.clearSubBlock(subBlock) })
+                    }
                 }
-            }.navigationTitle("Sub Blocks")
-            .navigationBarItems(trailing: Button("Done", action: viewModel.dismissManageSubBlocksView))
-        }.accentColor(Color("AccentColor"))
+            }.navigationTitle(AppStrings.Schedule.HourBlock.subBlocksHeader)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(AppStrings.Global.done, action: viewModel.dismissManageSubBlocksView)
+                }
+            }
+        }.accentColor(Color(AppStrings.Colors.accent))
     }
     
     func addSubBlock() {
@@ -71,9 +73,10 @@ private struct SubBlockCardView: View {
                 CardLabels(title: subBlockTitle,
                            subtitle: hourBlockTitle.uppercased())
                 Spacer()
-                IconButton(iconName: "xmark",
-                              iconWeight: .bold,
-                              action: onSubBlockCleared)
+                IconButton(iconName: AppStrings.Icons.clear,
+                           iconWeight: .medium,
+                           iconColor: Color(AppStrings.Colors.urgent),
+                           action: onSubBlockCleared)
             }
         }.padding(.horizontal, 24)
     }

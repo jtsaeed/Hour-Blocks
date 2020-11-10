@@ -48,21 +48,21 @@ struct HourBlockView: View {
 
         .contextMenu(ContextMenu(menuItems: {
             Button(action: viewModel.presentEditBlockView) {
-                Label("Edit", systemImage: "pencil")
+                Label(AppStrings.Schedule.HourBlock.menuEdit, systemImage: AppStrings.Icons.edit)
             }
             Button(action: viewModel.presentManageSubBlocksView) {
-                Label("Sub Blocks", systemImage: "rectangle.grid.1x2")
+                Label(AppStrings.Schedule.HourBlock.menuSubBlocks, systemImage: AppStrings.Icons.subBlocks)
             }
             Divider()
             Button(action: viewModel.presentRescheduleBlockView) {
-                Label("Reschedule", systemImage: "calendar.badge.clock")
+                Label(AppStrings.Schedule.HourBlock.menuReschedule, systemImage: AppStrings.Icons.reschedule)
             }
             Button(action: viewModel.presentDuplicateBlockView) {
-                Label("Duplicate", systemImage: "plus.square.on.square")
+                Label(AppStrings.Schedule.HourBlock.menuDuplicate, systemImage: AppStrings.Icons.copy)
             }
             Divider()
             Button(action: viewModel.presentClearBlockWarning) {
-                Label("Clear", systemImage: "trash")
+                Label(AppStrings.Global.clear, systemImage: AppStrings.Icons.clear)
             }
         }))
         
@@ -79,16 +79,16 @@ struct HourBlockView: View {
                                     hourBlock: viewModel.hourBlock)
             case .duplicate:
                 SchedulePickerView(isPresented: $viewModel.isSheetPresented,
-                                   navigationTitle: "Duplicate Hour Block",
+                                   navigationTitle: AppStrings.Schedule.HourBlock.duplicateHeader,
                                    hourBlock: viewModel.hourBlock,
                                    subBlocks: viewModel.subBlocks)
             }
         }
         
         .alert(isPresented: $viewModel.isClearBlockWarningPresented) {
-            Alert(title: Text("Clear Hour Block"),
-                  message: Text("Are you sure you would like to clear this Hour Block? This will also clear any Sub Blocks within the Hour Block"),
-                  primaryButton: .destructive(Text("Clear"), action: onBlockCleared),
+            Alert(title: Text(AppStrings.Schedule.HourBlock.clearAlertTitle),
+                  message: Text(AppStrings.Schedule.HourBlock.clearAlertText),
+                  primaryButton: .destructive(Text(AppStrings.Global.clear), action: onBlockCleared),
                   secondaryButton: .cancel())
         }
     }
@@ -96,6 +96,9 @@ struct HourBlockView: View {
 
 /// A Label-like view for displaying a Sub Block.
 private struct SubBlockView: View {
+    
+    /// Environment variable identifying the current device colour scheme between dark or light mode.
+    @Environment(\.colorScheme) var colorScheme
     
     private let subBlock: SubBlock
     
@@ -111,10 +114,10 @@ private struct SubBlockView: View {
         HStack(spacing: 12) {
             ZStack {
                 Circle()
-                    .foregroundColor(Color("AccentColorLight"))
+                    .foregroundColor(Color(AppStrings.Colors.accent).getLightColor(darkMode: colorScheme == .dark))
                     .frame(width: 16, height: 16)
                 Circle()
-                    .foregroundColor(Color("AccentColor"))
+                    .foregroundColor(Color(AppStrings.Colors.accent))
                     .frame(width: 8, height: 8)
             }
             

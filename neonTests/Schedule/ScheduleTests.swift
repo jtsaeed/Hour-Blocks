@@ -25,9 +25,7 @@ class ScheduleTests: XCTestCase {
                                       remindersGateway: MockRemindersGateway())
     }
     
-    override func tearDownWithError() throws {
-        dataGateway.deleteAllHourBlocks()
-    }
+    override func tearDownWithError() throws { }
     
     func testLoadHourBlocks() {
         dataGateway.save(hourBlock: HourBlock(day: date, hour: 13, title: "Lunch"))

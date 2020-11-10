@@ -23,9 +23,7 @@ class AddHourBlockTests: XCTestCase {
         viewModel = AddHourBlockViewModel(dataGateway: dataGateway, analyticsGateway: MockAnalyticsGateway())
     }
 
-    override func tearDownWithError() throws {
-        dataGateway.deleteAllHourBlocks()
-    }
+    override func tearDownWithError() throws { }
 
     func testLoadSuggestions() {
         viewModel.loadSuggestions(for: hour, on: date)

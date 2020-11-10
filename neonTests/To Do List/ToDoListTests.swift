@@ -21,7 +21,6 @@ class ToDoListTests: XCTestCase {
     }
     
     override func tearDownWithError() throws {
-        dataGateway.deleteAllToDoItems()
     }
     
     func testLoadToDoItems() {
@@ -88,6 +87,27 @@ class ToDoListTests: XCTestCase {
         viewModel.clear(toDoItem: item1)
         
         let expectation = XCTestExpectation(description: "After calling ViewModel.clear there should be n-1 items in toDoItems")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            XCTAssertEqual(self.viewModel.toDoItems.count, 1)
+            
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 2.0)
+    }
+    
+    func testCompletedToDoItem() {
+        let item1 = ToDoItem(title: "Clean", urgency: ToDoUrgency.urgent)
+        let item2 = ToDoItem(title: "Eat", urgency: ToDoUrgency.whenever)
+        
+        dataGateway.save(toDoItem: item1)
+        dataGateway.save(toDoItem: item2)
+        
+        viewModel.loadToDoItems()
+        viewModel.markAsCompleted(toDoItem: item1)
+        
+        let expectation = XCTestExpectation(description: "After calling ViewModel.markAsComplete there should be n-1 items in toDoItems.")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             XCTAssertEqual(self.viewModel.toDoItems.count, 1)

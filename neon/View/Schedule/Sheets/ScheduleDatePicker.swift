@@ -35,38 +35,41 @@ struct ScheduleDatePicker: View {
         NavigationView {
             VStack {
                 GeometryReader { geometry in
-                    DatePicker("Picker", selection: $viewModel.selectedDate, displayedComponents: .date)
+                    DatePicker("", selection: $viewModel.selectedDate, displayedComponents: .date)
                         .datePickerStyle(GraphicalDatePickerStyle())
                         .frame(maxHeight: geometry.size.width)
-                        .accentColor(Color("AccentColor"))
+                        .accentColor(Color(AppStrings.Colors.accent))
                         .onChange(of: viewModel.selectedDate) { _ in viewModel.loadHourBlocks() }
                 }.padding(.horizontal, 24)
                 .padding(.top, 20)
                 
-                ScrollView(showsIndicators: false) {
-                    VStack(spacing: 24) {
-                        ForEach(viewModel.calendarBlocks) { event in
-                            CalendarBlockView(for: event)
-                        }
-                        
-                        if !viewModel.calendarBlocks.isEmpty && !viewModel.hourBlocks.isEmpty {
-                            NeonDivider().padding(.horizontal, 32)
-                        }
-                        
-                        ForEach(viewModel.hourBlocks) { hourBlockViewModel in
-                            CompactHourBlockView(viewModel: hourBlockViewModel)
-                        }
-                        
-                        if viewModel.calendarBlocks.isEmpty && viewModel.hourBlocks.isEmpty {
-                            NoHourBlocksView()
-                        }
-                    }.padding(.top, 8)
-                    .padding(.bottom, 24)
+                CardsListView {
+                    ForEach(viewModel.calendarBlocks) { event in
+                        CalendarBlockView(for: event)
+                    }
+                    
+                    if !viewModel.calendarBlocks.isEmpty && !viewModel.hourBlocks.isEmpty {
+                        NeonDivider().padding(.horizontal, 32)
+                    }
+                    
+                    ForEach(viewModel.hourBlocks) { hourBlockViewModel in
+                        CompactHourBlockView(viewModel: hourBlockViewModel)
+                    }
+                    
+                    if viewModel.calendarBlocks.isEmpty && viewModel.hourBlocks.isEmpty {
+                        NoHourBlocksView()
+                    }
                 }.padding(.top, UIDevice.current.hasNotch ? 0 : 40)
-            }.navigationBarTitle("Date Picker", displayMode: .inline)
-            .navigationBarItems(leading: Button("Cancel", action: dismiss),
-                                trailing: Button("Save", action: save))
-        }.accentColor(Color("AccentColor"))
+            }.navigationBarTitle(AppStrings.Schedule.datePickerHeader, displayMode: .inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(AppStrings.Global.cancel, action: dismiss)
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(AppStrings.Global.save, action: save)
+                }
+            }
+        }.accentColor(Color(AppStrings.Colors.accent))
     }
     
     /// Updates the schedule's current date then dismisses the view.
