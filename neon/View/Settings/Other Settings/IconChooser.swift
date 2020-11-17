@@ -22,9 +22,8 @@ struct IconChooserCard: View {
                         .opacity(0.6)
                         .fixedSize(horizontal: false, vertical: true)
                 }
-                
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 72, maximum: 112))], spacing: 24) {
-                    ForEach(IconOption.allCases) { iconOption in
+                    ForEach(IconOption.allCases, id: \.self) { iconOption in
                         IconOptionView(for: iconOption)
                     }
                 }
@@ -69,13 +68,9 @@ private struct IconOptionView: View {
     }
 }
 
-private enum IconOption: String, CaseIterable, Identifiable {
+private enum IconOption: String, CaseIterable {
     
     case original, urgency, blue, purple, night, launched
-    
-    var id: String {
-        UUID().uuidString
-    }
     
     var label: String {
         return self.rawValue.capitalized
