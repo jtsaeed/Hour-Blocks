@@ -40,6 +40,7 @@ struct HeaderView<Content>: View where Content: View {
                         .opacity(0.5)
                     Text(title)
                         .font(.system(size: 28, weight: .bold, design: .default))
+                        .lineLimit(1)
                 }
                 Spacer()
                 accessory()
