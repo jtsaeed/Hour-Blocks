@@ -23,7 +23,7 @@ struct ToDoListHistoryView: View {
             }.navigationTitle(AppStrings.ToDoList.historyHeader)
             
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .confirmationAction) {
                     Button(AppStrings.Global.done, action: dismiss)
                 }
             }

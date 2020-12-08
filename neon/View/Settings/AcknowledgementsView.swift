@@ -35,7 +35,7 @@ struct AcknowledgementsView: View {
             .padding(.horizontal, 32)
             .navigationBarTitle(AppStrings.Settings.acknowledgementsTitle)
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .confirmationAction) {
                     Button(AppStrings.Global.done, action: dismiss)
                 }
             }
