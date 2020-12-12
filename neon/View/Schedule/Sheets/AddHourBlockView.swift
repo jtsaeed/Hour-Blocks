@@ -62,7 +62,7 @@ struct AddHourBlockView: View {
                 }
             }.navigationTitle(AppStrings.Schedule.HourBlock.addHeader)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .cancellationAction) {
                     Button(AppStrings.Global.cancel, action: dismiss)
                 }
             }

@@ -42,7 +42,7 @@ struct RescheduleBlockView: View {
                 }
             }.navigationTitle(AppStrings.Schedule.HourBlock.rescheduleHeader)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .cancellationAction) {
                     Button(AppStrings.Global.cancel, action: dismiss)
                 }
             }

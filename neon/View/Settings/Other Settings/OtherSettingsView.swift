@@ -50,7 +50,7 @@ struct OtherSettingsView: View {
                 .padding(.bottom, 24)
             }.navigationBarTitle(AppStrings.Settings.otherTitle)
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .confirmationAction) {
                     Button(AppStrings.Global.done, action: dismiss)
                 }
             }

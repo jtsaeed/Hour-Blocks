@@ -43,7 +43,7 @@ struct ManageSubBlocksView: View {
                 }
             }.navigationTitle(AppStrings.Schedule.HourBlock.subBlocksHeader)
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .confirmationAction) {
                     Button(AppStrings.Global.done, action: viewModel.dismissManageSubBlocksView)
                 }
             }

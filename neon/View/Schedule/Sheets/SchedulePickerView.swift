@@ -48,7 +48,7 @@ struct SchedulePickerView: View {
                 }
             }.navigationTitle(navigationTitle)
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .confirmationAction) {
                     Button(AppStrings.Global.save, action: dismiss)
                 }
             }

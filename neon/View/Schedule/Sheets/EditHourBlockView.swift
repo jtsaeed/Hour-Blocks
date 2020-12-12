@@ -39,10 +39,10 @@ struct EditHourBlockView: View {
                 }
             }.navigationTitle(AppStrings.Schedule.HourBlock.editHeader)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .cancellationAction) {
                     Button(AppStrings.Global.cancel, action: viewModel.dismissEditBlockView)
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .confirmationAction) {
                     Button(AppStrings.Global.save) {
                         viewModel.saveChanges(newTitle: title, newIcon: icon)
                     }

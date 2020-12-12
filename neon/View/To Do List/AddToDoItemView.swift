@@ -48,7 +48,7 @@ struct AddToDoItemView: View {
                 Spacer()
             }.navigationTitle(AppStrings.ToDoList.addHeader)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .cancellationAction) {
                     Button(AppStrings.Global.cancel, action: dismiss)
                 }
             }

@@ -45,10 +45,10 @@ struct EditToDoItemView: View {
                 Spacer()
             }.navigationTitle(AppStrings.ToDoList.ToDoItem.editHeader)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .cancellationAction) {
                     Button(AppStrings.Global.cancel, action: viewModel.dismissEditItemView)
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .confirmationAction) {
                     Button(AppStrings.Global.save, action: save)
                 }
             }

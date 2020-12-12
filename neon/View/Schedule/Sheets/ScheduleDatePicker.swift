@@ -62,10 +62,10 @@ struct ScheduleDatePicker: View {
                 }.padding(.top, UIDevice.current.hasNotch ? 0 : 40)
             }.navigationBarTitle(AppStrings.Schedule.datePickerHeader, displayMode: .inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .cancellationAction) {
                     Button(AppStrings.Global.cancel, action: dismiss)
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .confirmationAction) {
                     Button(AppStrings.Global.save, action: save)
                 }
             }

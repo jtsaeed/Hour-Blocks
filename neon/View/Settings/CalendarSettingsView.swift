@@ -39,7 +39,7 @@ struct CalendarSettingsView: View {
                 }.padding(.vertical, 24)
             }.navigationBarTitle(AppStrings.Settings.calendarsTitle, displayMode: .inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .confirmationAction) {
                     Button(AppStrings.Global.done, action: dismiss)
                 }
             }
