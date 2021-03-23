@@ -2,7 +2,7 @@ name: Test & Build
 
 on:
   pull_request:
-    branches: [ master, 6_2 ]
+    branches: [ master ]
 
 jobs:
   build:
