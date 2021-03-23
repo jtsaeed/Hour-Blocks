@@ -24,35 +24,18 @@ class ToDoItemTests: XCTestCase {
         viewModel = ToDoItemViewModel(for: toDoItem)
     }
 
-    override func tearDownWithError() throws {
-    }
+    override func tearDownWithError() throws { }
     
     func testSaveTitleChanges() {
         viewModel.saveChanges(newTitle: "new", newUrgency: .soon)
         
-        let expectation = XCTestExpectation(description: "The view model's title has changed after calling viewModel.saveChanges")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            XCTAssertEqual(self.viewModel.getTitle(), "New")
-            
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 2.0)
+        XCTAssertEqual(self.viewModel.getTitle(), "New")
     }
     
     func testSavePriorityChanges() {
         viewModel.saveChanges(newTitle: viewModel.getTitle(), newUrgency: .urgent)
         
-        let expectation = XCTestExpectation(description: "view model's urgency is equal to ToDoPriority.urgent after calling viewModel.saveChanges")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            XCTAssertEqual(self.viewModel.urgency, .urgent)
-            
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 2.0)
+        XCTAssertEqual(self.viewModel.urgency, .urgent)
     }
     
     lazy var mockPersistantContainer: NSPersistentContainer = {

@@ -35,44 +35,22 @@ class ScheduleTests: XCTestCase {
         viewModel.currentDate = date
         viewModel.loadHourBlocks()
         
-        let expectation = XCTestExpectation(description: "Load Hour Blocks from view model")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            
-            XCTAssertEqual(self.viewModel.todaysHourBlocks[15].getTitle(), "Gym")
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 5.0)
+        XCTAssertEqual(self.viewModel.todaysHourBlocks[15].getTitle(), "Gym")
     }
     
     func testAddHourBlock() {
         viewModel.addBlock(HourBlock(day: Date(), hour: 14, title: "Walk"))
         
-        let expectation = XCTestExpectation(description: "Add Hour Block to view model")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            XCTAssertEqual(self.viewModel.todaysHourBlocks[14].getTitle(), "Walk")
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 2.0)
+        XCTAssertEqual(self.viewModel.todaysHourBlocks[14].getTitle(), "Walk")
     }
     
     func testClearHourBlock() {
         let block = HourBlock(day: Date(), hour: 13, title: "Lunch")
-        
         dataGateway.save(hourBlock: block)
+        
         viewModel.clearBlock(block)
         
-        let expectation = XCTestExpectation(description: "Clear Hour Block from view model")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            XCTAssertEqual(self.viewModel.todaysHourBlocks[14].getTitle(), "Empty")
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 2.0)
+        XCTAssertEqual(self.viewModel.todaysHourBlocks[14].getTitle(), "Empty")
     }
     
     lazy var mockPersistantContainer: NSPersistentContainer = {

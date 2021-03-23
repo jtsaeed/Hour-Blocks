@@ -43,79 +43,37 @@ class HourBlockTests: XCTestCase {
     override func tearDownWithError() throws { }
     
     func testSaveTitleChanges() {
-        let expectation = XCTestExpectation(description: "Save title changes title param in view model")
-        
         viewModel.saveChanges(newTitle: "Hello", newIcon: nil)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            XCTAssertEqual(self.viewModel.getTitle(), "Hello")
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 2.0)
+            
+        XCTAssertEqual(self.viewModel.getTitle(), "Hello")
     }
     
     func testSaveIconChanges() {
         viewModel.saveChanges(newTitle: viewModel.getTitle(), newIcon: .people)
         
-        let expectation = XCTestExpectation(description: "Save icon changes icon param in view model")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            XCTAssertEqual(self.viewModel.hourBlock.icon, .people)
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 2.0)
+        XCTAssertEqual(self.viewModel.hourBlock.icon, .people)
     }
     
     func testAddSubBlock() {
         let initialSubBlockCount = viewModel.subBlocks.count
         viewModel.addSubBlock(SubBlock(of: viewModel.hourBlock, title: "food"))
         
-        let expectation = XCTestExpectation(description: "Adding a subblock increases subblock array count in view model")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            XCTAssertGreaterThan(self.viewModel.subBlocks.count, initialSubBlockCount)
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 2.0)
+        XCTAssertGreaterThan(self.viewModel.subBlocks.count, initialSubBlockCount)
     }
     
     func testClearSubBlock() {
         let initialSubBlockCount = viewModel.subBlocks.count
         viewModel.clearSubBlock(viewModel.subBlocks[0])
         
-        let expectation = XCTestExpectation(description: "Clear a subblock decreases subblock array count in view model")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            XCTAssertLessThan(self.viewModel.subBlocks.count, initialSubBlockCount)
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 2.0)
+        XCTAssertLessThan(self.viewModel.subBlocks.count, initialSubBlockCount)
     }
     
     func testGetFormattedTime() {
-        let expectation = XCTestExpectation(description: "Gets the string 1PM from view model")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            XCTAssertEqual(self.viewModel.getFormattedTime(), "1PM" )
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 2.0)
+        XCTAssertEqual(self.viewModel.getFormattedTime(), "1PM")
     }
     
     func testGetIconName() {
-        let expectation = XCTestExpectation(description: "getIconName returns the string restaurant from view model")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            XCTAssertEqual(self.viewModel.hourBlock.icon.imageName, "restaurant")
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 2.0)
-        
+        XCTAssertEqual(self.viewModel.hourBlock.icon.imageName, "restaurant")
     }
     
     lazy var mockPersistantContainer: NSPersistentContainer = {

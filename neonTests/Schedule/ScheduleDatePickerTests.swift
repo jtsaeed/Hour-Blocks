@@ -28,16 +28,10 @@ class ScheduleDatePickerTests: XCTestCase {
     
     func testLoadHourBlocks() {
         dataGateway.save(hourBlock: HourBlock(day: date, hour: 15, title: "Gym"))
+        
         viewModel.loadHourBlocks()
         
-        let expectation = XCTestExpectation(description: "Load Hour Blocks from view model")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            XCTAssertEqual(self.viewModel.hourBlocks[0].getTitle(), "Gym")
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 5.0)
+        XCTAssertEqual(self.viewModel.hourBlocks[0].getTitle(), "Gym")
     }
     
     lazy var mockPersistantContainer: NSPersistentContainer = {

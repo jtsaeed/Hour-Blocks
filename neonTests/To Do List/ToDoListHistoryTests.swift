@@ -10,7 +10,7 @@ import XCTest
 import CoreData
 @testable import Hour_Blocks
 
-class ToDoListHistorTests: XCTestCase {
+class ToDoListHistoryTests: XCTestCase {
     
     var dataGateway: DataGateway!
     var viewModel: ToDoListHistoryViewModel!
@@ -20,13 +20,11 @@ class ToDoListHistorTests: XCTestCase {
         viewModel = ToDoListHistoryViewModel(dataGateway: dataGateway)
     }
     
-    override func tearDownWithError() throws {
-    }
+    override func tearDownWithError() throws { }
     
     func testLoadCompletedToDoItems() {
         let item1 = ToDoItem(title: "Clean", urgency: ToDoUrgency.urgent)
         let item2 = ToDoItem(title: "Eat", urgency: ToDoUrgency.whenever)
-        
         dataGateway.save(toDoItem: item1)
         dataGateway.save(toDoItem: item2)
         dataGateway.edit(toDoItem: item1, set: true, forKey: "completed")
@@ -34,15 +32,7 @@ class ToDoListHistorTests: XCTestCase {
         
         viewModel.loadCompletedToDoItems()
         
-        let expectation = XCTestExpectation(description: "view model's completedToDoItems array size is equal to the amount of toDoItems that have been completed")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            XCTAssertEqual(self.viewModel.completedToDoItems.count, 1)
-            
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 2.0)
+        XCTAssertEqual(self.viewModel.completedToDoItems.count, 1)
     }
     
     lazy var mockPersistantContainer: NSPersistentContainer = {
