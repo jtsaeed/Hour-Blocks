@@ -429,7 +429,6 @@
 		2338BEAF220A7840004F288F = {
 			isa = PBXGroup;
 			children = (
-				AB33B26424BF5EDE0057662F /* NeonWidgetExtension.entitlements */,
 				2338BEBA220A7840004F288F /* neon */,
 				2338BED2220A7841004F288F /* neonTests */,
 				2338BEDD220A7841004F288F /* neonUITests */,
@@ -566,6 +565,7 @@
 				AB33B25E24BF5EDE0057662F /* Assets.xcassets */,
 				AB33B26024BF5EDE0057662F /* Info.plist */,
 				AB10A95124E05C6600FCB466 /* WidgetDataGateway.swift */,
+				AB33B26424BF5EDE0057662F /* NeonWidgetExtension.entitlements */,
 			);
 			path = NeonWidget;
 			sourceTree = "<group>";
