@@ -40,11 +40,11 @@ struct SchedulePickerView: View {
                 ForEach(viewModel.todaysHourBlocks.filter { $0.hourBlock.hour >= (viewModel.currentDate.isToday ?  viewModel.currentHour : UtilGateway.shared.dayStartHour()) }) { hourBlockViewModel in
                     if hourBlockViewModel.getTitle() != AppStrings.Schedule.HourBlock.empty {
                       CompactHourBlockView(viewModel: hourBlockViewModel)
-                        .contextMenu(ContextMenu(menuItems: {
-                          Button(action: { viewModel.clearBlock(hourBlockViewModel.hourBlock) }) {
-                              Label(AppStrings.ToDoList.ToDoItem.menuClear, systemImage: AppStrings.Icons.clear)
-                          }
-                      }))
+                        .contextMenu {
+                            Button(action: { viewModel.clearBlock(hourBlockViewModel.hourBlock) }) {
+                                Label(AppStrings.ToDoList.ToDoItem.menuClear, systemImage: AppStrings.Icons.clear)
+                            }
+                        }
                     } else {
                         PickerEmptyBlockView(viewModel: hourBlockViewModel,
                                              hourBlock: hourBlock,
