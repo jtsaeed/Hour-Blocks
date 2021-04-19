@@ -142,10 +142,8 @@ struct AppStrings {
         
         static let noCalendarAccess = "Calendar access hasn't been granted"
         
-        static let personalDataPrivacyTitle = "Your personal data is safe 🔐"
-        static let personalDataPrivacyContent = "Personal identifiers such as name and phone number aren't even asked for by Hour Blocks- we simply don't need that from you"
-        static let collectedDataPrivacyTitle = "So what do we collect? 🤔"
-        static let collectedDataPrivacyContent = "In order to improve certain aspects of Hour Blocks such as icon generation and suggestions, we collect just simply the 'category' of a block you add- and it's completely anonymized, so it can't be traced back to you"
+        static let collectedDataPrivacyTitle = "What data do we collect? 🤔"
+        static let collectedDataPrivacyContent = "Absolutely none. Hour Blocks values your privacy over anything else."
         static let viewFullPrivacyPolicyButton = "View full privacy policy"
         static let fullPrivacyPolicyURL = "https://app.termly.io/document/privacy-policy/0a585245-4a5e-415c-af29-adf25c1b031c"
         
@@ -153,8 +151,10 @@ struct AppStrings {
         static let iconsAcknowledgementContent = "Hour Blocks uses Material Design Icons by Google for its block icons"
         static let datesAcknowledgementTitle = "Date Manipulation 🗓"
         static let datesAcknowledgementContent = "Hour Blocks uses the SwiftDate library for a lot of its date manipulation work"
+        static let contributersAcknowledgementTitle = "Contributers 🌟"
+        static let contributersAcknowledgementContent = "A huge thank you to our open source source contributers: Ilya Kulgavy"
         static let testersAcknowledgementTitle = "Beta Testers 🐞"
-        static let testersAcknowledgementContent = "A big thank you to everyone who has beta tested and provided feedback for Hour Blocks!"
+        static let testersAcknowledgementContent = "Thank you to everyone who has beta tested and provided feedback for Hour Blocks!"
     }
     
     struct WhatsNew {

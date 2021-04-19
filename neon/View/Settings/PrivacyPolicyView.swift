@@ -25,8 +25,6 @@ struct PrivacyPolicyView: View {
         NavigationView {
             VStack {
                 VStack(alignment: .leading, spacing: 16) {
-                    TextBlockView(title: AppStrings.Settings.personalDataPrivacyTitle,
-                                  content: AppStrings.Settings.personalDataPrivacyContent)
                     TextBlockView(title: AppStrings.Settings.collectedDataPrivacyTitle,
                                   content: AppStrings.Settings.collectedDataPrivacyContent)
                 }

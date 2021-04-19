@@ -28,6 +28,8 @@ struct AcknowledgementsView: View {
                               content: AppStrings.Settings.iconsAcknowledgementContent)
                 TextBlockView(title: AppStrings.Settings.datesAcknowledgementTitle,
                               content: AppStrings.Settings.datesAcknowledgementContent)
+                TextBlockView(title: AppStrings.Settings.contributersAcknowledgementTitle,
+                              content: AppStrings.Settings.contributersAcknowledgementContent)
                 TextBlockView(title: AppStrings.Settings.testersAcknowledgementTitle,
                               content: AppStrings.Settings.testersAcknowledgementContent)
                 Spacer()
